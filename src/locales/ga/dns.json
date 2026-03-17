@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Bainisteoir DNS",
+        "addDomain": "Cuir Fearann Leis",
+        "deleteDomain": "Scrios Fearann",
+        "domainName": "Ainm Fearainn",
+        "dnsServers": "Freastalaithe DNS",
+        "confirmDelete": "An bhfuil tú cinnte gur mhaith leat an fearann seo a scriosadh?",
+        "noDomains": "Níor aimsíodh fearainn"
+    },
+    "editor": {
+        "title": "Eagarthóir DNS",
+        "addRecord": "Cuir Taifead Leis",
+        "deleteRecord": "Scrios Taifead",
+        "editRecord": "Cuir Taifead in Eagar",
+        "recordType": "Cineál Taifid",
+        "hostname": "Ainm Óstaigh",
+        "address": "Seoladh",
+        "distance": "Fad",
+        "weight": "Meáchan",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Gníomhartha",
+        "confirmDelete": "An bhfuil tú cinnte gur mhaith leat an taifead seo a scriosadh?"
+    }
+}

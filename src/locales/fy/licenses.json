@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lisintsjelist",
+        "orderTitle": "Lisint Registraasjes Bestelle"
+    },
+    "view": {
+        "title": "Lisint {id} Besjen",
+        "package": "Pakket",
+        "nextInvoiceDate": "Folgjende Faktuerdatum:",
+        "billing": "Fakturearring",
+        "billed": "faktureare:",
+        "statusIs": "Status is:",
+        "licenseInfo": "Lisint Ynfo",
+        "cpanelInfo": "cPanel Ynfo",
+        "links": "Keppelingen",
+        "welcomeEmailConfirm": "Binne jo wis dat jo de wolkom-e-post opnij ferstjoere wolle?",
+        "emailSent": "E-post Ferstjoerd",
+        "emailSentMessage": "De wolkom-e-post is opnij ferstjoerd. Kontrolearje jo postfek."
+    },
+    "order": {
+        "title": "Lisint Bestelle"
+    },
+    "changeIp": {
+        "title": "IP Wizigje"
+    },
+    "changeOs": {
+        "title": "OS Wizigje",
+        "selectLicenseOs": "Lisint OS Selektearje"
+    }
+}

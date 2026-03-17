@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lista usług pocztowych",
+        "orderTitle": "Zamów rejestracje poczty"
+    },
+    "view": {
+        "title": "Wyświetl pocztę {id}",
+        "package": "Pakiet",
+        "nextInvoiceDate": "Data następnej faktury:",
+        "billing": "Rozliczenie",
+        "billed": "rozliczane:",
+        "statusIs": "Status:",
+        "mailApi": "API poczty",
+        "usageCount": "Liczba użyć:",
+        "links": "Linki",
+        "connectionInfo": "Informacje o połączeniu",
+        "welcomeEmailConfirm": "Czy na pewno chcesz ponownie wysłać e-mail powitalny?",
+        "emailSent": "E-mail wysłany",
+        "emailSentMessage": "E-mail powitalny został ponownie wysłany. Sprawdź swoją skrzynkę odbiorczą."
+    },
+    "order": {
+        "title": "Zamów pocztę"
+    },
+    "alerts": {
+        "title": "Alerty",
+        "addAlert": "Dodaj alert",
+        "editAlert": "Edytuj alert",
+        "noAlerts": "Nie znaleziono alertów"
+    },
+    "delist": {
+        "title": "Usuń z listy",
+        "blockedEmails": "Zablokowane e-maile"
+    },
+    "denyRules": {
+        "title": "Reguły odmowy",
+        "addRule": "Dodaj regułę",
+        "noRules": "Nie znaleziono reguł odmowy"
+    },
+    "logs": {
+        "title": "Dzienniki",
+        "searchLogs": "Szukaj w dziennikach"
+    },
+    "stats": {
+        "title": "Statystyki"
+    },
+    "deliverability": {
+        "title": "Dostarczalność"
+    }
+}

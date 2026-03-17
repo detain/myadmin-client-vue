@@ -1,0 +1,12 @@
+{
+    "required": "{field} je obavezno",
+    "email": "Mora biti valjana e-mail adresa",
+    "minLength": "Mora imati najmanje {min} znakova",
+    "maxLength": "Mora imati najviše {max} znakova",
+    "passwordMatch": "Lozinke moraju biti iste",
+    "invalidFormat": "Nevažeći format",
+    "numeric": "Mora biti broj",
+    "url": "Mora biti valjani URL",
+    "ipAddress": "Mora biti valjana IP adresa",
+    "hostname": "Mora biti valjano ime poslužitelja"
+}

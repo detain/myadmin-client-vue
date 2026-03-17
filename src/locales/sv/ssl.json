@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Lista över SSL-certifikat",
+        "orderTitle": "Beställ SSL-registreringar"
+    },
+    "view": {
+        "title": "Visa SSL {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Nästa fakturadatum:",
+        "billing": "Fakturering",
+        "billed": "fakturerad:",
+        "statusIs": "Status är:",
+        "orderInfo": "Beställningsinformation",
+        "certificateInfo": "Certifikatinformation",
+        "links": "Länkar",
+        "welcomeEmailConfirm": "Är du säker på att du vill skicka om välkomstmejlet?",
+        "emailSent": "E-post skickad",
+        "emailSentMessage": "Välkomstmejlet har skickats om. Kontrollera din inkorg."
+    },
+    "order": {
+        "title": "Beställ SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Ändra godkännar-e-post",
+        "selectApproverEmail": "Välj godkännar-e-post"
+    }
+}

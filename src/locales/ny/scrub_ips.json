@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Mndandanda wa Utumiki wa Scrub IP",
+        "orderTitle": "Ika Dongosolo la Scrub IP"
+    },
+    "view": {
+        "title": "Onani Scrub IP",
+        "currentIp": "IP Yamakono",
+        "ipAddress": "Adilesi ya IP",
+        "ipFromService": "IP Yochokera pa Utumiki"
+    },
+    "filters": {
+        "title": "Zosantha",
+        "createNew": "Pangani Yatsopano",
+        "createNewFilter": "Pangani Chosantha Chatsopano",
+        "filterType": "Mtundu wa Chosantha",
+        "selectFilterType": "Sankhani Mtundu wa Chosantha",
+        "ipAddress": "Adilesi ya IP",
+        "portNo": "Nambala ya Port",
+        "filter": "Chosantha",
+        "destinationIp": "IP Yolinga",
+        "destinationPort": "Port Yolinga",
+        "noFiltersFound": "Palibe zosantha zapezeka!",
+        "deleteFilterConfirm": "Muli ndi chitsimikiziro chofufuta chosantha ichi?",
+        "unableToCreateFilter": "Nthawi zake singathe kupanga chosantha tsopano.",
+        "unableToDeleteFilter": "Nthawi zake singathe kufufuta chosantha tsopano."
+    },
+    "firewallRules": {
+        "title": "Malamulo a Firewall",
+        "createNew": "Pangani Yatsopano",
+        "createNewFirewall": "Pangani Lamulo Latsopano la Firewall",
+        "protocol": "Protokolo",
+        "destinationIp": "IP Yolinga",
+        "destinationPort": "Port Yolinga",
+        "sourceIp": "IP ya Gwero",
+        "sourcePort": "Port ya Gwero",
+        "xdpAction": "Zochita za XDP",
+        "ipRequired": "Adilesi ya IP ikufunikira",
+        "block": "Tsekani",
+        "whitelist": "Mndandanda Woyera",
+        "noRulesFound": "Palibe malamulo apezeka!",
+        "deleteRuleConfirm": "Muli ndi chitsimikiziro chofufuta lamulo ili?",
+        "unableToCreateRule": "Nthawi zake singathe kupanga lamulo la firewall tsopano.",
+        "unableToDeleteRule": "Nthawi zake singathe kufufuta lamulo la firewall tsopano."
+    },
+    "geoFirewallRules": {
+        "title": "Malamulo a Geo Firewall",
+        "createNew": "Pangani Yatsopano",
+        "createNewGeoRule": "Pangani Lamulo Latsopano la Geo Firewall",
+        "destinationIp": "IP Yolinga",
+        "destinationPort": "Port Yolinga",
+        "sourceCountry": "Dziko la Gwero",
+        "sourceAsn": "ASN ya Gwero",
+        "xdpAction": "Zochita za XDP",
+        "portNo": "Nambala ya Port",
+        "selectCountry": "Sankhani Dziko",
+        "asn": "ASN",
+        "block": "Tsekani",
+        "whitelist": "Mndandanda Woyera",
+        "noRulesFound": "Palibe malamulo apezeka!",
+        "deleteGeoRuleConfirm": "Muli ndi chitsimikiziro chofufuta lamulo ili la geo?",
+        "unableToCreateRule": "Nthawi zake singathe kupanga lamulo la firewall tsopano.",
+        "unableToDeleteRule": "Nthawi zake singathe kufufuta lamulo la geo firewall tsopano."
+    }
+}

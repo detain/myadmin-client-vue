@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Vefhýsingarlistinn",
+        "orderTitle": "Panta vefhýsingu"
+    },
+    "view": {
+        "title": "Skoða vefsíðu {id}",
+        "package": "Pakki",
+        "nextInvoiceDate": "Dagsetning næsta reiknings:",
+        "billing": "Reikningur",
+        "billed": "reikningsfært",
+        "billingStatusIs": "Reikningstaða er:",
+        "hostInfo": "Hýsingarupplýsingar",
+        "username": "Notandanafn:",
+        "ip": "IP:",
+        "server": "Þjónn:",
+        "notSetYet": "Ekki stillt ennþá",
+        "login": "Innskráning",
+        "types": "Tegundir:",
+        "linksLabel": "Tenglar:",
+        "manualLogin": "Handvirk innskráning",
+        "automaticLogin": "Sjálfvirk innskráning",
+        "clickHere": "Smelltu hér",
+        "defaultNameservers": "Sjálfgefnir nafnaþjónar",
+        "nameservers": "Nafnaþjónar:",
+        "externalLinks": "Ytri tenglar",
+        "names": "Nöfn:",
+        "websitePreview": "Forskoðun vefsíðu",
+        "links": "Tenglar",
+        "welcomeEmailConfirm": "Ertu viss um að þú viljir senda velkomin tölvupóstinn aftur?",
+        "emailSent": "Tölvupóstur sendur",
+        "emailSentMessage": "Velkomin tölvupósturinn hefur verið sendur aftur. Athugaðu pósthólfið þitt."
+    },
+    "buyIp": {
+        "title": "Kaupa aukalega IP viðbót",
+        "existingAddonIps": "Núverandi viðbótar IP-tölur",
+        "additionalIp": "Aukaleg IP",
+        "monthlyCost": "Mánaðarlegur kostnaður ({symbol})",
+        "costDescription": "Kostnaður ({symbol}) á hverjum mánuði þar sem vefsíðan er reikningsfærð",
+        "confirmPurchase": "Staðfesta kaup",
+        "confirmMessage": "Kostnaður við aukalega IP: {symbol}{cost}/mánuð. Ertu viss um að þú viljir panta aukalega IP?",
+        "placeOrder": "Leggja inn pöntun",
+        "orderPlaced": "Pöntun lögð inn"
+    },
+    "reverseDns": {
+        "title": "Öfugt DNS",
+        "updateReverseDns": "Uppfæra öfugt DNS"
+    },
+    "downloadBackups": {
+        "title": "Hlaða niður öryggisafritum",
+        "backup": "Öryggisafrit",
+        "size": "Stærð",
+        "options": "Valkostur"
+    },
+    "migration": {
+        "title": "Flytja vefsíðuna þína",
+        "currentWebHostInfo": "Núverandi vefhýsingarupplýsingar",
+        "customerPortalUrl": "URL viðskiptavinagáttar",
+        "portalExample": "Til dæmis: sso.godaddy.com",
+        "registeredUsername": "Skráð notandanafn / Tölvupóstur / ID",
+        "password": "Lykilorð",
+        "controlPanelUrl": "URL stjórnborðs",
+        "controlPanelExample": "Til dæmis: þínlén.com/cpanel",
+        "ftpUsername": "FTP / Notandanafn stjórnborðs",
+        "ftpPassword": "FTP / Lykilorð stjórnborðs",
+        "holdingPageQuestion": "Ef síðan er lifandi/þrungin með mikla umferð, getum við sett upp bráðabirgðasíðu á meðan flutningur stendur?",
+        "specialRequirementsQuestion": "Hefur þessi síða sérstaka kröfur eins og PHP útgáfu / einingar?",
+        "domainRegistryInfo": "Lénaskráningarupplýsingar",
+        "transferDomainQuestion": "Viltu að við hjálpum þér einnig við flutning á lénsskráningu?",
+        "updateNameserversQuestion": "Viltu að við uppfærum nafnaþjóna um leið og við ljúkum gagnaflutningunum?",
+        "domainRegistryPortal": "Viðskiptavinagátt lénaskrár",
+        "importantNotes": "Mikilvægar athugasemdir",
+        "note1": "Að fylla út þetta eyðublað mun opna nýtt mál fyrir þjónustuverið okkar til að hefja flutninga þinn.",
+        "note2": "Vinsamlegast vertu eins ítarlegur og nákvæmur og mögulegt er til að forðast tafir.",
+        "note3": "Dæmigerður flutningur lýkur innan 48 til 72 klukkustunda. Stundum lengur ef magn gagna til afritunar er mikið.",
+        "note4": "Gamla hýsingarreikninginn þarf að vera á netinu og aðgengilegt á meðan við framkvæmum flutninginn, annars gætum við lent í erfiðleikum.",
+        "note5": "Vinsamlegast gerðu engar uppfærslur á síðunni þinni á meðan við framkvæmum flutninginn, annars gætu þessi gögn ekki verið afrituð á nýja hýsinguna."
+    },
+    "order": {
+        "title": "Panta vefsíðu"
+    }
+}

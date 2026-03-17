@@ -1,0 +1,12 @@
+{
+    "required": "{field} är obligatoriskt",
+    "email": "Måste vara en giltig e-postadress",
+    "minLength": "Måste vara minst {min} tecken",
+    "maxLength": "Får inte vara mer än {max} tecken",
+    "passwordMatch": "Lösenorden måste stämma överens",
+    "invalidFormat": "Ogiltigt format",
+    "numeric": "Måste vara ett nummer",
+    "url": "Måste vara en giltig URL",
+    "ipAddress": "Måste vara en giltig IP-adress",
+    "hostname": "Måste vara ett giltigt värdnamn"
+}

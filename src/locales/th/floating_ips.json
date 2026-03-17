@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "รายการบริการ Floating IPs",
+        "orderTitle": "สั่งซื้อการลงทะเบียน Floating IP"
+    },
+    "view": {
+        "title": "ดู Floating IP {id}",
+        "package": "แพ็คเกจ",
+        "nextInvoiceDate": "วันที่ออกใบแจ้งหนี้ถัดไป:",
+        "billing": "การเรียกเก็บเงิน",
+        "billed": "เรียกเก็บเงิน:",
+        "statusIs": "สถานะ:",
+        "floatingIp": "Floating IP",
+        "links": "ลิงก์",
+        "welcomeEmailConfirm": "คุณแน่ใจหรือไม่ว่าต้องการส่งอีเมลต้อนรับอีกครั้ง?",
+        "emailSent": "ส่งอีเมลแล้ว",
+        "emailSentMessage": "ส่งอีเมลต้อนรับอีกครั้งแล้ว กรุณาตรวจสอบกล่องจดหมาย"
+    },
+    "order": {
+        "title": "สั่งซื้อ Floating IP"
+    },
+    "changeIp": {
+        "title": "เปลี่ยน IP เป้าหมาย"
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "స్క్రబ్ IPs సేవల జాబితా",
+        "orderTitle": "స్క్రబ్ IPs ఆర్డర్ చేయండి"
+    },
+    "view": {
+        "title": "స్క్రబ్ IPs చూడండి",
+        "currentIp": "ప్రస్తుత IP",
+        "ipAddress": "IP చిరునామా",
+        "ipFromService": "సేవ నుండి IP"
+    },
+    "filters": {
+        "title": "ఫిల్టర్లు",
+        "createNew": "కొత్తది సృష్టించండి",
+        "createNewFilter": "కొత్త ఫిల్టర్ సృష్టించండి",
+        "filterType": "ఫిల్టర్ రకం",
+        "selectFilterType": "ఫిల్టర్ రకం ఎంచుకోండి",
+        "ipAddress": "IP చిరునామా",
+        "portNo": "పోర్ట్ నం",
+        "filter": "ఫిల్టర్",
+        "destinationIp": "గమ్యం IP",
+        "destinationPort": "గమ్యం పోర్ట్",
+        "noFiltersFound": "ఫిల్టర్లు కనుగొనబడలేదు!",
+        "deleteFilterConfirm": "ఈ ఫిల్టర్ తొలగించాలా?",
+        "unableToCreateFilter": "ఇప్పుడు ఫిల్టర్ సృష్టించలేకపోయాం.",
+        "unableToDeleteFilter": "ఇప్పుడు ఫిల్టర్ తొలగించలేకపోయాం."
+    },
+    "firewallRules": {
+        "title": "ఫైర్‌వాల్ నిబంధనలు",
+        "createNew": "కొత్తది సృష్టించండి",
+        "createNewFirewall": "కొత్త ఫైర్‌వాల్ నిబంధన సృష్టించండి",
+        "protocol": "ప్రోటోకాల్",
+        "destinationIp": "గమ్యం IP",
+        "destinationPort": "గమ్యం పోర్ట్",
+        "sourceIp": "మూల IP",
+        "sourcePort": "మూల పోర్ట్",
+        "xdpAction": "XDP చర్య",
+        "ipRequired": "IP చిరునామా అవసరం",
+        "block": "బ్లాక్ చేయండి",
+        "whitelist": "వైట్‌లిస్ట్",
+        "noRulesFound": "నిబంధనలు కనుగొనబడలేదు!",
+        "deleteRuleConfirm": "ఈ నిబంధన తొలగించాలా?",
+        "unableToCreateRule": "ఇప్పుడు ఫైర్‌వాల్ నిబంధన సృష్టించలేకపోయాం.",
+        "unableToDeleteRule": "ఇప్పుడు ఫైర్‌వాల్ నిబంధన తొలగించలేకపోయాం."
+    },
+    "geoFirewallRules": {
+        "title": "జియో ఫైర్‌వాల్ నిబంధనలు",
+        "createNew": "కొత్తది సృష్టించండి",
+        "createNewGeoRule": "కొత్త జియో ఫైర్‌వాల్ నిబంధన సృష్టించండి",
+        "destinationIp": "గమ్యం IP",
+        "destinationPort": "గమ్యం పోర్ట్",
+        "sourceCountry": "మూల దేశం",
+        "sourceAsn": "మూల ASN",
+        "xdpAction": "XDP చర్య",
+        "portNo": "పోర్ట్ నం",
+        "selectCountry": "దేశం ఎంచుకోండి",
+        "asn": "ASN",
+        "block": "బ్లాక్ చేయండి",
+        "whitelist": "వైట్‌లిస్ట్",
+        "noRulesFound": "నిబంధనలు కనుగొనబడలేదు!",
+        "deleteGeoRuleConfirm": "ఈ జియో నిబంధన తొలగించాలా?",
+        "unableToCreateRule": "ఇప్పుడు ఫైర్‌వాల్ నిబంధన సృష్టించలేకపోయాం.",
+        "unableToDeleteRule": "ఇప్పుడు జియో ఫైర్‌వాల్ నిబంధన తొలగించలేకపోయాం."
+    }
+}

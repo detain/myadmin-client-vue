@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Λίστα Αδειών",
+        "orderTitle": "Παραγγελία Εγγραφών Άδειας"
+    },
+    "view": {
+        "title": "Προβολή Άδειας {id}",
+        "package": "Πακέτο",
+        "nextInvoiceDate": "Επόμενη Ημερομηνία Τιμολογίου:",
+        "billing": "Χρέωση",
+        "billed": "χρεώθηκε:",
+        "statusIs": "Η κατάσταση είναι:",
+        "licenseInfo": "Πληροφορίες Άδειας",
+        "cpanelInfo": "Πληροφορίες cPanel",
+        "links": "Σύνδεσμοι",
+        "welcomeEmailConfirm": "Είστε σίγουροι ότι θέλετε να στείλετε ξανά το email καλωσορίσματος;",
+        "emailSent": "Το Email Εστάλη",
+        "emailSentMessage": "Το email καλωσορίσματος εστάλη εκ νέου. Ελέγξτε τα εισερχόμενά σας."
+    },
+    "order": {
+        "title": "Παραγγελία Άδειας"
+    },
+    "changeIp": {
+        "title": "Αλλαγή IP"
+    },
+    "changeOs": {
+        "title": "Αλλαγή OS",
+        "selectLicenseOs": "Επιλέξτε OS Άδειας"
+    }
+}

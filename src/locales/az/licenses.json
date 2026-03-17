@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Lisenziya Siyahısı",
+        "orderTitle": "Lisenziya Qeydiyyatı Sifariş Et"
+    },
+    "view": {
+        "title": "Lisenziya {id}-ə Bax",
+        "package": "Paket",
+        "nextInvoiceDate": "Növbəti Faktura Tarixi:",
+        "billing": "Ödəniş",
+        "billed": "ödənildi:",
+        "statusIs": "Status:",
+        "licenseInfo": "Lisenziya Məlumatı",
+        "cpanelInfo": "cPanel Məlumatı",
+        "links": "Keçidlər",
+        "welcomeEmailConfirm": "Xoş gəlmisiniz e-poçtunu yenidən göndərmək istədiyinizə əminsiniz?",
+        "emailSent": "E-poçt Göndərildi",
+        "emailSentMessage": "Xoş gəlmisiniz e-poçtu yenidən göndərildi. Gələn qutunuzu yoxlayın."
+    },
+    "order": {
+        "title": "Lisenziya Sifariş Et"
+    },
+    "changeIp": {
+        "title": "IP-ni Dəyiş"
+    },
+    "changeOs": {
+        "title": "OS-ni Dəyiş",
+        "selectLicenseOs": "Lisenziya OS-ni Seçin"
+    }
+}

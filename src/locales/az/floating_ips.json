@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Üzən IP Xidmətlər Siyahısı",
+        "orderTitle": "Üzən IP Qeydiyyatı Sifariş Et"
+    },
+    "view": {
+        "title": "Üzən IP {id}-ə Bax",
+        "package": "Paket",
+        "nextInvoiceDate": "Növbəti Faktura Tarixi:",
+        "billing": "Ödəniş",
+        "billed": "ödənildi:",
+        "statusIs": "Status:",
+        "floatingIp": "Üzən IP",
+        "links": "Keçidlər",
+        "welcomeEmailConfirm": "Xoş gəlmisiniz e-poçtunu yenidən göndərmək istədiyinizə əminsiniz?",
+        "emailSent": "E-poçt Göndərildi",
+        "emailSentMessage": "Xoş gəlmisiniz e-poçtu yenidən göndərildi. Gələn qutunuzu yoxlayın."
+    },
+    "order": {
+        "title": "Üzən IP Sifariş Et"
+    },
+    "changeIp": {
+        "title": "Hədəf IP-ni Dəyiş"
+    }
+}

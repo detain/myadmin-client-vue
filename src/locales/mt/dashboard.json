@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Merħba, {name}",
+    "lastLogin": "L-Aħħar Dħul",
+    "lastLoginIp": "IP tal-Aħħar Dħul",
+    "prepay": {
+        "title": "Bilanċ Mħallas Minn Qabel",
+        "remainingBalance": "Bilanċ Rimanenti Mħallas Minn Qabel",
+        "manageAccount": "Immaniġġja l-Kont",
+        "manageTooltip": "Immaniġġja l-Kont Mħallas Minn Qabel Tiegħek"
+    },
+    "invoices": {
+        "title": "Fatturi Mhux Imħallsa",
+        "totalUnpaid": "Total ta' Fatturi Mhux Imħallsa",
+        "totalAmount": "L-Ammont Totali li Jrid Jitħallas",
+        "payTotalTooltip": "Ħallas l-Ammont Totali"
+    },
+    "callInPin": "PIN tat-Telefonata",
+    "recentTickets": "Biljetti Reċenti",
+    "viewAllTickets": "Ara l-Biljetti Kollha",
+    "editTicket": "Editja l-Biljett",
+    "serviceCount": "L-ebda servizzi attivi | {count} servizz attiv | {count} servizzi attivi",
+    "affiliate": {
+        "earnPerSale": "Aqla' {amount} Għal Kull Bejgħ",
+        "urlPlaceholder": "URL Affiljat",
+        "shareWith": "Aqsam ma'"
+    }
+}

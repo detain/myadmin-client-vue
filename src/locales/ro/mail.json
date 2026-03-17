@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Listă Servicii de E-mail",
+        "orderTitle": "Comandă Înregistrări E-mail"
+    },
+    "view": {
+        "title": "Vizualizare E-mail {id}",
+        "package": "Pachet",
+        "nextInvoiceDate": "Data Următoarei Facturi:",
+        "billing": "Facturare",
+        "billed": "facturat:",
+        "statusIs": "Starea este:",
+        "mailApi": "API E-mail",
+        "usageCount": "Număr Utilizări:",
+        "links": "Linkuri",
+        "connectionInfo": "Informații Conexiune",
+        "welcomeEmailConfirm": "Sigur doriți să retrimiteți e-mailul de bun venit?",
+        "emailSent": "E-mail Trimis",
+        "emailSentMessage": "E-mailul de bun venit a fost retrimis. Verificați căsuța de intrare."
+    },
+    "order": {
+        "title": "Comandă E-mail"
+    },
+    "alerts": {
+        "title": "Alerte",
+        "addAlert": "Adaugă Alertă",
+        "editAlert": "Editare Alertă",
+        "noAlerts": "Nu s-au găsit alerte"
+    },
+    "delist": {
+        "title": "Eliminare din Listă",
+        "blockedEmails": "E-mailuri Blocate"
+    },
+    "denyRules": {
+        "title": "Reguli de Respingere",
+        "addRule": "Adaugă Regulă",
+        "noRules": "Nu s-au găsit reguli de respingere"
+    },
+    "logs": {
+        "title": "Jurnale",
+        "searchLogs": "Căutare Jurnale"
+    },
+    "stats": {
+        "title": "Statistici"
+    },
+    "deliverability": {
+        "title": "Livrabilitate"
+    }
+}

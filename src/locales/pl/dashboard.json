@@ -1,0 +1,28 @@
+{
+    "title": "Panel główny",
+    "welcome": "Witaj, {name}",
+    "lastLogin": "Ostatnie logowanie",
+    "lastLoginIp": "IP ostatniego logowania",
+    "prepay": {
+        "title": "Saldo przedpłaty",
+        "remainingBalance": "Pozostałe saldo przedpłaty",
+        "manageAccount": "Zarządzaj kontem",
+        "manageTooltip": "Zarządzaj swoim kontem przedpłaconym"
+    },
+    "invoices": {
+        "title": "Nieopłacone faktury",
+        "totalUnpaid": "Łączna liczba nieopłaconych faktur",
+        "totalAmount": "Łączna kwota do zapłaty",
+        "payTotalTooltip": "Zapłać łączną kwotę"
+    },
+    "callInPin": "PIN do kontaktu telefonicznego",
+    "recentTickets": "Ostatnie zgłoszenia",
+    "viewAllTickets": "Wyświetl wszystkie zgłoszenia",
+    "editTicket": "Edytuj zgłoszenie",
+    "serviceCount": "Brak aktywnych usług | {count} aktywna usługa | {count} aktywne usługi",
+    "affiliate": {
+        "earnPerSale": "Zarabiaj {amount} za sprzedaż",
+        "urlPlaceholder": "URL partnerski",
+        "shareWith": "Udostępnij"
+    }
+}

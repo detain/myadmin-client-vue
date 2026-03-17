@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Λίστα Πιστοποιητικών SSL",
+        "orderTitle": "Παραγγελία Εγγραφών SSL"
+    },
+    "view": {
+        "title": "Προβολή SSL {id}",
+        "package": "Πακέτο",
+        "nextInvoiceDate": "Επόμενη Ημερομηνία Τιμολογίου:",
+        "billing": "Χρέωση",
+        "billed": "χρεώθηκε:",
+        "statusIs": "Η κατάσταση είναι:",
+        "orderInfo": "Πληροφορίες Παραγγελίας",
+        "certificateInfo": "Πληροφορίες Πιστοποιητικού",
+        "links": "Σύνδεσμοι",
+        "welcomeEmailConfirm": "Είστε σίγουροι ότι θέλετε να στείλετε ξανά το email καλωσορίσματος;",
+        "emailSent": "Το Email Εστάλη",
+        "emailSentMessage": "Το email καλωσορίσματος εστάλη εκ νέου. Ελέγξτε τα εισερχόμενά σας."
+    },
+    "order": {
+        "title": "Παραγγελία SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Αλλαγή Email Εγκριτή",
+        "selectApproverEmail": "Επιλέξτε Email Εγκριτή"
+    }
+}

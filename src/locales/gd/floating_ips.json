@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Liosta sheirbheisean IP snàmhach",
+        "orderTitle": "Òrdaich clàrachaidhean IP snàmhach"
+    },
+    "view": {
+        "title": "Seall IP snàmhach {id}",
+        "package": "Pasgan",
+        "nextInvoiceDate": "Ceann-latha an ath-chunntas:",
+        "billing": "Cunntas",
+        "billed": "air a chunntas:",
+        "statusIs": "An staid a th' ann:",
+        "floatingIp": "IP snàmhach",
+        "links": "Ceanglaichean",
+        "welcomeEmailConfirm": "A bheil thu cinnteach gu bheil thu airson am post-d fàilteachaidh a chur a-rithist?",
+        "emailSent": "Chaidh post-d a chur",
+        "emailSentMessage": "Chaidh am post-d fàilteachaidh a chur a-rithist. Thoir sùil air a' bhogsa a-steach agad."
+    },
+    "order": {
+        "title": "Òrdaich IP snàmhach"
+    },
+    "changeIp": {
+        "title": "Atharraich IP targaid"
+    }
+}

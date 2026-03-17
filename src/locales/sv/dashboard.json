@@ -1,0 +1,28 @@
+{
+    "title": "Instrumentpanel",
+    "welcome": "Välkommen, {name}",
+    "lastLogin": "Senaste inloggning",
+    "lastLoginIp": "Senaste inloggnings-IP",
+    "prepay": {
+        "title": "Förskottsbetalningssaldo",
+        "remainingBalance": "Kvarvarande förskottsbetalningssaldo",
+        "manageAccount": "Hantera konto",
+        "manageTooltip": "Hantera ditt förskottsbetalningskonto"
+    },
+    "invoices": {
+        "title": "Obetalda fakturor",
+        "totalUnpaid": "Totalt obetalda fakturor",
+        "totalAmount": "Totalt belopp att betala",
+        "payTotalTooltip": "Betala totalt belopp"
+    },
+    "callInPin": "Ring-in PIN",
+    "recentTickets": "Senaste ärenden",
+    "viewAllTickets": "Visa alla ärenden",
+    "editTicket": "Redigera ärende",
+    "serviceCount": "Inga aktiva tjänster | {count} aktiv tjänst | {count} aktiva tjänster",
+    "affiliate": {
+        "earnPerSale": "Tjäna {amount} per försäljning",
+        "urlPlaceholder": "Affiliate-URL",
+        "shareWith": "Dela med"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS మేనేజర్",
+        "addDomain": "డొమైన్ జోడించు",
+        "deleteDomain": "డొమైన్ తొలగించు",
+        "domainName": "డొమైన్ పేరు",
+        "dnsServers": "DNS సర్వర్లు",
+        "confirmDelete": "మీరు ఈ డొమైన్‌ను తొలగించాలనుకుంటున్నారా?",
+        "noDomains": "డొమైన్లు కనుగొనబడలేదు"
+    },
+    "editor": {
+        "title": "DNS ఎడిటర్",
+        "addRecord": "రికార్డ్ జోడించు",
+        "deleteRecord": "రికార్డ్ తొలగించు",
+        "editRecord": "రికార్డ్ సవరించు",
+        "recordType": "రికార్డ్ రకం",
+        "hostname": "హోస్ట్‌నేమ్",
+        "address": "చిరునామా",
+        "distance": "దూరం",
+        "weight": "బరువు",
+        "port": "పోర్ట్",
+        "ttl": "TTL",
+        "actions": "చర్యలు",
+        "confirmDelete": "మీరు ఈ రికార్డ్‌ను తొలగించాలనుకుంటున్నారా?"
+    }
+}

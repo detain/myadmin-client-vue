@@ -1,0 +1,28 @@
+{
+    "title": "Dashibodi",
+    "welcome": "Takulandirani, {name}",
+    "lastLogin": "Kulowa Komaliza",
+    "lastLoginIp": "IP ya Kulowa Komaliza",
+    "prepay": {
+        "title": "Balanse ya Malipiro Atsogolo",
+        "remainingBalance": "Balanse Yotsala ya Malipiro Atsogolo",
+        "manageAccount": "Yang'anirani Akaunti",
+        "manageTooltip": "Yang'anirani Akaunti Yanu ya Malipiro Atsogolo"
+    },
+    "invoices": {
+        "title": "Mafatura Osakulipilidwa",
+        "totalUnpaid": "Mafatura Onse Osakulipilidwa",
+        "totalAmount": "Ndalama Yonse Yolipidwa",
+        "payTotalTooltip": "Lipirani Ndalama Yonse"
+    },
+    "callInPin": "PIN ya Kuimbira",
+    "recentTickets": "Matikiti Atsopano",
+    "viewAllTickets": "Onani Matikiti Onse",
+    "editTicket": "Sinthani Tikiti",
+    "serviceCount": "Palibe utumiki woyenda | {count} utumiki woyenda | {count} autumiki oyenda",
+    "affiliate": {
+        "earnPerSale": "Pezani {amount} Pa Kugulitsa",
+        "urlPlaceholder": "URL ya Agenti",
+        "shareWith": "Gawanani ndi"
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Nastavenia účtu"
+    },
+    "changePassword": {
+        "title": "Zmeniť heslo",
+        "cardTitle": "Aktualizovať heslo",
+        "currentPassword": "Aktuálne heslo",
+        "newPassword": "Nové heslo",
+        "confirmPassword": "Potvrdiť heslo",
+        "updatePassword": "Aktualizovať heslo"
+    },
+    "changeUsername": {
+        "title": "Zmeniť používateľské meno",
+        "disabled": "Zmena používateľského mena je dočasne zakázaná.",
+        "currentUsername": "Aktuálne používateľské meno",
+        "newDesiredUsername": "Nové požadované používateľské meno",
+        "confirmationCode": "Potvrdzovací kód",
+        "pleaseWait": "Prosím čakajte!",
+        "gotError": "Nastala chyba {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktné informácie",
+        "cardTitle": "Aktualizovať kontaktné informácie",
+        "headsUp": "Upozornenie!",
+        "headsUpMessage": "Hoci tieto informácie sú voliteľné, poskytnutie (presných) informácií pomôže obohatiť naše interakcie a znížiť vaše Skóre rizika %, čo vám poskytne rýchlejší a pohodlnejší prístup k časti webu (napríklad bez nutnosti overovať kreditnú kartu).",
+        "riskScore": "Skóre rizika %",
+        "personalInformation": "Osobné informácie",
+        "name": "Meno",
+        "namePlaceholder": "Joe Cool",
+        "company": "Spoločnosť",
+        "gstinTaxId": "GSTIN daňové identifikačné číslo",
+        "gstinPlaceholder": "Identifikačné číslo platcu dane z tovarov a služieb",
+        "addressLine1": "Adresa, riadok 1",
+        "addressLine2": "Adresa, riadok 2",
+        "cityState": "Mesto, štát",
+        "city": "Mesto",
+        "state": "Štát",
+        "country": "Krajina",
+        "zipcode": "PSČ",
+        "phoneNo": "Telefónne číslo",
+        "phoneNumber": "Telefónne číslo",
+        "language": "Jazyk",
+        "auto": "Automaticky",
+        "currency": "Mena",
+        "timeZone": "Časové pásmo",
+        "otherSettings": "Ďalšie nastavenia",
+        "disablePasswordResets": "Zakázať obnovenie hesla (Zabudli ste heslo).",
+        "disableInvoiceReminders": "Zakázať e-mailové upozornenia na pripomienku faktúry.",
+        "disableServerInvoiceReminders": "Zakázať e-mailové upozornenia na pripomienku faktúry servera.",
+        "disableReinstall": "Zakázať preinštalovanie.",
+        "alternateEmailInvoices": "Alternatívny e-mail pre faktúry",
+        "alternateEmailInvoicesPlaceholder": "Alternatívny e-mail na zasielanie faktúr",
+        "alternateEmailAbuse": "Alternatívny e-mail pre hlásenia zneužívania",
+        "updateInfo": "Aktualizovať informácie"
+    }
+}

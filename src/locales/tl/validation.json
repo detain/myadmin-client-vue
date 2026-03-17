@@ -1,0 +1,12 @@
+{
+    "required": "Kinakailangan ang {field}",
+    "email": "Dapat na wastong email address",
+    "minLength": "Dapat na kahit man lang {min} na karakter",
+    "maxLength": "Dapat na hindi hihigit sa {max} na karakter",
+    "passwordMatch": "Dapat na magkatugma ang mga password",
+    "invalidFormat": "Hindi wastong format",
+    "numeric": "Dapat na numero",
+    "url": "Dapat na wastong URL",
+    "ipAddress": "Dapat na wastong IP address",
+    "hostname": "Dapat na wastong hostname"
+}

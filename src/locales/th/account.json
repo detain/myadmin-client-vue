@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "การตั้งค่าบัญชี"
+    },
+    "changePassword": {
+        "title": "เปลี่ยนรหัสผ่าน",
+        "cardTitle": "อัปเดตรหัสผ่าน",
+        "currentPassword": "รหัสผ่านปัจจุบัน",
+        "newPassword": "รหัสผ่านใหม่",
+        "confirmPassword": "ยืนยันรหัสผ่าน",
+        "updatePassword": "อัปเดตรหัสผ่าน"
+    },
+    "changeUsername": {
+        "title": "เปลี่ยนชื่อผู้ใช้",
+        "disabled": "การเปลี่ยนชื่อผู้ใช้ถูกปิดใช้งานชั่วคราว",
+        "currentUsername": "ชื่อผู้ใช้ปัจจุบัน",
+        "newDesiredUsername": "ชื่อผู้ใช้ใหม่ที่ต้องการ",
+        "confirmationCode": "รหัสยืนยัน",
+        "pleaseWait": "กรุณารอสักครู่!",
+        "gotError": "เกิดข้อผิดพลาด {error}"
+    },
+    "contactInfo": {
+        "title": "ข้อมูลติดต่อ",
+        "cardTitle": "อัปเดตข้อมูลติดต่อ",
+        "headsUp": "แจ้งให้ทราบ!",
+        "headsUpMessage": "แม้ว่าข้อมูลนี้จะเป็นทางเลือก การให้ข้อมูล (ที่ถูกต้อง) จะช่วยเพิ่มคุณภาพการโต้ตอบและลดคะแนนความเสี่ยง % ของคุณ ทำให้เข้าถึงส่วนต่างๆ ของไซต์ได้เร็วและสะดวกยิ่งขึ้น (เช่น ไม่ต้องยืนยันบัตรเครดิต)",
+        "riskScore": "คะแนนความเสี่ยง %",
+        "personalInformation": "ข้อมูลส่วนตัว",
+        "name": "ชื่อ",
+        "namePlaceholder": "สมชาย ใจดี",
+        "company": "บริษัท",
+        "gstinTaxId": "หมายเลขผู้เสียภาษี GSTIN",
+        "gstinPlaceholder": "หมายเลขประจำตัวผู้เสียภาษีสินค้าและบริการ",
+        "addressLine1": "ที่อยู่บรรทัดที่ 1",
+        "addressLine2": "ที่อยู่บรรทัดที่ 2",
+        "cityState": "เมือง, รัฐ",
+        "city": "เมือง",
+        "state": "รัฐ/จังหวัด",
+        "country": "ประเทศ",
+        "zipcode": "รหัสไปรษณีย์",
+        "phoneNo": "หมายเลขโทรศัพท์",
+        "phoneNumber": "เบอร์โทรศัพท์",
+        "language": "ภาษา",
+        "auto": "อัตโนมัติ",
+        "currency": "สกุลเงิน",
+        "timeZone": "เขตเวลา",
+        "otherSettings": "การตั้งค่าอื่นๆ",
+        "disablePasswordResets": "ปิดใช้งานการรีเซ็ตรหัสผ่าน (ลืมรหัสผ่าน)",
+        "disableInvoiceReminders": "ปิดใช้งานการแจ้งเตือนใบแจ้งหนี้ทางอีเมล",
+        "disableServerInvoiceReminders": "ปิดใช้งานการแจ้งเตือนใบแจ้งหนี้เซิร์ฟเวอร์ทางอีเมล",
+        "disableReinstall": "ปิดใช้งานการติดตั้งใหม่",
+        "alternateEmailInvoices": "อีเมลสำรองสำหรับใบแจ้งหนี้",
+        "alternateEmailInvoicesPlaceholder": "อีเมลสำรองสำหรับส่งใบแจ้งหนี้",
+        "alternateEmailAbuse": "อีเมลสำรองสำหรับรายงานการละเมิด",
+        "updateInfo": "อัปเดตข้อมูล"
+    }
+}

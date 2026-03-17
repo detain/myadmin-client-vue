@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Seznam spletnih gostovanj",
+        "orderTitle": "Naroči registracije spletnih mest"
+    },
+    "view": {
+        "title": "Ogled spletnega mesta {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum naslednjega računa:",
+        "billing": "Zaračunavanje",
+        "billed": "zaračunano",
+        "billingStatusIs": "Status zaračunavanja je:",
+        "hostInfo": "Informacije o gostitelju",
+        "username": "Uporabniško ime:",
+        "ip": "IP:",
+        "server": "Strežnik:",
+        "notSetYet": "Še ni nastavljeno",
+        "login": "Prijava",
+        "types": "Vrste:",
+        "linksLabel": "Povezave:",
+        "manualLogin": "Ročna prijava",
+        "automaticLogin": "Samodejna prijava",
+        "clickHere": "Kliknite tukaj",
+        "defaultNameservers": "Privzeti imenski strežniki",
+        "nameservers": "Imenski strežniki:",
+        "externalLinks": "Zunanje povezave",
+        "names": "Imena:",
+        "websitePreview": "Predogled spletnega mesta",
+        "links": "Povezave",
+        "welcomeEmailConfirm": "Ali ste prepričani, da želite znova poslati pozdravno e-pošto?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Pozdravna e-pošta je bila znova poslana. Preverite svojo nabiralo."
+    },
+    "buyIp": {
+        "title": "Kupi dodaten IP dodatek",
+        "existingAddonIps": "Obstoječi dodatni IP-ji",
+        "additionalIp": "Dodatni IP",
+        "monthlyCost": "Mesečni strošek ({symbol})",
+        "costDescription": "Strošek ({symbol}) vsak mesec ob zaračunavanju spletnega mesta",
+        "confirmPurchase": "Potrdi nakup",
+        "confirmMessage": "Strošek dodatnega IP: {symbol}{cost}/mesec. Ali ste prepričani, da želite naročiti dodaten IP?",
+        "placeOrder": "Oddaj naročilo",
+        "orderPlaced": "Naročilo oddano"
+    },
+    "reverseDns": {
+        "title": "Obratni DNS",
+        "updateReverseDns": "Posodobi obratni DNS"
+    },
+    "downloadBackups": {
+        "title": "Prenesi varnostne kopije",
+        "backup": "Varnostna kopija",
+        "size": "Velikost",
+        "options": "Možnosti"
+    },
+    "migration": {
+        "title": "Preseli vaše spletno mesto",
+        "currentWebHostInfo": "Informacije o trenutnem spletnem gostovanju",
+        "customerPortalUrl": "URL portala za stranke",
+        "portalExample": "Na primer: sso.godaddy.com",
+        "registeredUsername": "Registrirano uporabniško ime / E-pošta / ID",
+        "password": "Geslo",
+        "controlPanelUrl": "URL nadzorne plošče",
+        "controlPanelExample": "Na primer: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Uporabniško ime nadzorne plošče",
+        "ftpPassword": "FTP / Geslo nadzorne plošče",
+        "holdingPageQuestion": "Če je spletno mesto aktivno/obremenjeno z visoko prometom, ali lahko med selitvijo postavimo zadrževalno stran?",
+        "specialRequirementsQuestion": "Ali ima to spletno mesto posebne zahteve, kot so različica PHP / moduli?",
+        "domainRegistryInfo": "Informacije o registru domene",
+        "transferDomainQuestion": "Ali želite, da vam pomagamo pri prenosu registracije domene?",
+        "updateNameserversQuestion": "Ali želite, da posodobimo imenski strežnike takoj, ko končamo selitev podatkov?",
+        "domainRegistryPortal": "Portal za stranke registra domene",
+        "importantNotes": "Pomembne opombe",
+        "note1": "Izpolnitev tega obrazca bo odprla nov zahtevek za našo ekipo za podporo, da začne vašo selitev.",
+        "note2": "Prosimo, bodite čim bolj popolni in natančni, da se izognete kakšnim zamudah.",
+        "note3": "Tipična selitev je zaključena v 48 do 72 urah. Včasih dlje, če je količina podatkov za kopiranje velika.",
+        "note4": "Staro račun gostovanja mora biti spletno in dostopno med izvajanjem selitve, sicer se lahko soočimo s težavami.",
+        "note5": "Prosimo, ne izvajajte nobenih posodobitev na svojem spletnem mestu med selitvijo, sicer ti podatki morda ne bodo kopirani na novo gostovanje."
+    },
+    "order": {
+        "title": "Naroči spletno mesto"
+    }
+}

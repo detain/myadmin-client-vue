@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Poçt Xidmətləri Siyahısı",
+        "orderTitle": "Poçt Qeydiyyatı Sifariş Et"
+    },
+    "view": {
+        "title": "Poçt {id}-ə Bax",
+        "package": "Paket",
+        "nextInvoiceDate": "Növbəti Faktura Tarixi:",
+        "billing": "Ödəniş",
+        "billed": "ödənildi:",
+        "statusIs": "Status:",
+        "mailApi": "Poçt API",
+        "usageCount": "İstifadə Sayı:",
+        "links": "Keçidlər",
+        "connectionInfo": "Bağlantı Məlumatı",
+        "welcomeEmailConfirm": "Xoş gəlmisiniz e-poçtunu yenidən göndərmək istədiyinizə əminsiniz?",
+        "emailSent": "E-poçt Göndərildi",
+        "emailSentMessage": "Xoş gəlmisiniz e-poçtu yenidən göndərildi. Gələn qutunuzu yoxlayın."
+    },
+    "order": {
+        "title": "Poçt Sifariş Et"
+    },
+    "alerts": {
+        "title": "Xəbərdarlıqlar",
+        "addAlert": "Xəbərdarlıq Əlavə Et",
+        "editAlert": "Xəbərdarlığı Redaktə Et",
+        "noAlerts": "Xəbərdarlıq tapılmadı"
+    },
+    "delist": {
+        "title": "Siyahıdan Çıxar",
+        "blockedEmails": "Bloklanmış E-poçtlar"
+    },
+    "denyRules": {
+        "title": "Rədd Qaydaları",
+        "addRule": "Qayda Əlavə Et",
+        "noRules": "Rədd qaydası tapılmadı"
+    },
+    "logs": {
+        "title": "Jurnallar",
+        "searchLogs": "Jurnallarda Axtar"
+    },
+    "stats": {
+        "title": "Statistika"
+    },
+    "deliverability": {
+        "title": "Çatdırılabilirlik"
+    }
+}

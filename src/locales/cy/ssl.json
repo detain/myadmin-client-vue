@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Rhestr Tystysgrifau SSL",
+        "orderTitle": "Archebu Cofrestriadau SSL"
+    },
+    "view": {
+        "title": "Gweld SSL {id}",
+        "package": "Pecyn",
+        "nextInvoiceDate": "Dyddiad Anfoneb Nesaf:",
+        "billing": "Bilio",
+        "billed": "wedi'i filio:",
+        "statusIs": "Mae'r statws yn:",
+        "orderInfo": "Gwybodaeth Archeb",
+        "certificateInfo": "Gwybodaeth Tystysgrif",
+        "links": "Dolenni",
+        "welcomeEmailConfirm": "Ydych chi'n siŵr eich bod am ailanfon yr e-bost croeso?",
+        "emailSent": "E-bost Wedi'i Anfon",
+        "emailSentMessage": "Mae'r e-bost croeso wedi'i ailanfon. Gwiriwch eich blwch derbyn."
+    },
+    "order": {
+        "title": "Archebu SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Newid E-bost y Cymeradwywyr",
+        "selectApproverEmail": "Dewis E-bost y Cymeradwywyr"
+    }
+}

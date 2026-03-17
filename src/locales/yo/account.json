@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Eto Akọọlẹ"
+    },
+    "changePassword": {
+        "title": "Yipada Ọrọ Aṣina",
+        "cardTitle": "Ṣe Imudojuiwọn Ọrọ Aṣina",
+        "currentPassword": "Ọrọ Aṣina Lọwọlọwọ",
+        "newPassword": "Ọrọ Aṣina Tuntun",
+        "confirmPassword": "Jẹrisi Ọrọ Aṣina",
+        "updatePassword": "Imudojuiwọn Ọrọ Aṣina"
+    },
+    "changeUsername": {
+        "title": "Yipada Orukọ Olumulo",
+        "disabled": "Awọn iyipada orukọ olumulo ti ni aitọ fun igba diẹ.",
+        "currentUsername": "Orukọ Olumulo Lọwọlọwọ",
+        "newDesiredUsername": "Orukọ Olumulo Tuntun Ti O Fẹ",
+        "confirmationCode": "Koodu Ijẹrisi",
+        "pleaseWait": "Jọwọ duro!",
+        "gotError": "Aṣiṣe wa {error}"
+    },
+    "contactInfo": {
+        "title": "Alaye Olubasọrọ",
+        "cardTitle": "Ṣe Imudojuiwọn Alaye Olubasọrọ",
+        "headsUp": "Akiyesi!",
+        "headsUpMessage": "Botilẹjẹpe alaye yii jẹ aṣayan, fifun alaye (deede) yoo ṣe iranlọwọ lati mu awọn ibaraẹnisọrọ wa pọ si ati ki o dinku Dimegilio Ewu % rẹ ti o fun ọ ni iraye sare ati irọrun si awọn apakan ti aaye naa (gẹgẹbi pe ko ni lati ṣe ẹrí ẹrọ kaadi kirẹditi).",
+        "riskScore": "Dimegilio Ewu %",
+        "personalInformation": "Alaye Ti ara ẹni",
+        "name": "Orukọ",
+        "namePlaceholder": "Ade Ọlọjẹ",
+        "company": "Ile-iṣẹ",
+        "gstinTaxId": "ID Owo-ori GSTIN",
+        "gstinPlaceholder": "Nọmba Idanimọ Olusan-ori Ẹru ati Iṣẹ",
+        "addressLine1": "Laini Adirẹsi 1",
+        "addressLine2": "Laini Adirẹsi 2",
+        "cityState": "Ilu, Ipinle",
+        "city": "Ilu",
+        "state": "Ipinle",
+        "country": "Orilẹ-ede",
+        "zipcode": "Koodu Ifiweranṣẹ",
+        "phoneNo": "Nọ Foonu",
+        "phoneNumber": "Nọmba Foonu",
+        "language": "Ede",
+        "auto": "Laifọwọyi",
+        "currency": "Owo",
+        "timeZone": "Agbegbe Akoko",
+        "otherSettings": "Awọn Eto Miiran",
+        "disablePasswordResets": "Pa (Ti o gbagbe ọrọ aṣina rẹ) Awọn Atunṣeto Ọrọ Aṣina.",
+        "disableInvoiceReminders": "Pa Awọn Iwifunni Imeeli Iranti Iwe Isan.",
+        "disableServerInvoiceReminders": "Pa Awọn Iwifunni Imeeli Iranti Iwe Isan Sarvari.",
+        "disableReinstall": "Pa Fifi sori ẹrọ Lẹẹkansi.",
+        "alternateEmailInvoices": "Imeeli Miiran fun Awọn Iwe Isan",
+        "alternateEmailInvoicesPlaceholder": "Imeeli yiyan fun fifiranṣẹ awọn iwe isan",
+        "alternateEmailAbuse": "Imeeli Miiran fun Awọn Ìjábọ Ilokulo",
+        "updateInfo": "Ṣe Imudojuiwọn Alaye"
+    }
+}

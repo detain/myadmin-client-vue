@@ -1,0 +1,28 @@
+{
+    "title": "Dashboard",
+    "welcome": "Wauya, {name}",
+    "lastLogin": "Kupinda Kwekupedzisira",
+    "lastLoginIp": "IP yekupinda kwekupedzisira",
+    "prepay": {
+        "title": "Balance yePrePay",
+        "remainingBalance": "Balance yePrePay Yakasara",
+        "manageAccount": "Tonga Akaundi",
+        "manageTooltip": "Tonga Akaundi yako yePrePay"
+    },
+    "invoices": {
+        "title": "Invoice Dzisina kubhadharwa",
+        "totalUnpaid": "Invoice Dzose Dzisina kubhadharwa",
+        "totalAmount": "Huwandu hwose Hwekubhada",
+        "payTotalTooltip": "Bhadhara Huwandu hwose"
+    },
+    "callInPin": "PIN yekufona",
+    "recentTickets": "Matikiti apashure",
+    "viewAllTickets": "Ona Matikiti Ose",
+    "editTicket": "Shandura Tikiti",
+    "serviceCount": "Hapana sevhisi inoshanda | {count} sevhisi inoshanda | {count} masevhisi anoshanda",
+    "affiliate": {
+        "earnPerSale": "Wana {amount} Pakutengesa",
+        "urlPlaceholder": "URL yeMubatsiri",
+        "shareWith": "Govana na"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Úsáideoirí",
+    "addUser": "Cuir Úsáideoir Leis",
+    "editUser": "Cuir Úsáideoir in Eagar",
+    "firstName": "Céad Ainm",
+    "lastName": "Sloinne",
+    "username": "Ainm Úsáideora",
+    "password": "Pasfhocal",
+    "keepSamePassword": "Fág folamh chun an pasfhocal céanna a choinneáil",
+    "errorLoading": "Earráid ag lódáil úsáideoirí:",
+    "errorLoadingUser": "Earráid ag lódáil úsáideoir:"
+}

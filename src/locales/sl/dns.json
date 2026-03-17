@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS upravitelj",
+        "addDomain": "Dodaj domeno",
+        "deleteDomain": "Izbriši domeno",
+        "domainName": "Ime domene",
+        "dnsServers": "DNS strežniki",
+        "confirmDelete": "Ali ste prepričani, da želite izbrisati to domeno?",
+        "noDomains": "Ni najdenih domen"
+    },
+    "editor": {
+        "title": "DNS urejevalnik",
+        "addRecord": "Dodaj zapis",
+        "deleteRecord": "Izbriši zapis",
+        "editRecord": "Uredi zapis",
+        "recordType": "Vrsta zapisa",
+        "hostname": "Ime gostitelja",
+        "address": "Naslov",
+        "distance": "Razdalja",
+        "weight": "Teža",
+        "port": "Vrata",
+        "ttl": "TTL",
+        "actions": "Dejanja",
+        "confirmDelete": "Ali ste prepričani, da želite izbrisati ta zapis?"
+    }
+}

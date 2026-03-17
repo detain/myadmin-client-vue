@@ -1,0 +1,28 @@
+{
+    "title": "Idashbodi",
+    "welcome": "Wamukelekile, {name}",
+    "lastLogin": "Ukungena Kokugcina",
+    "lastLoginIp": "I-IP Yokungena Kokugcina",
+    "prepay": {
+        "title": "Ibhalansi Ye-Prepay",
+        "remainingBalance": "Ibhalansi Ye-Prepay Esasele",
+        "manageAccount": "Phatha I-akhawunti",
+        "manageTooltip": "Phatha I-akhawunti Yakho Ye-Prepay"
+    },
+    "invoices": {
+        "title": "Izikweletu Ezikhokhelwanga",
+        "totalUnpaid": "Izikweletu Ezikhokhelwanga Eziphelele",
+        "totalAmount": "Inani Eliphelele Okusazokhokhwa",
+        "payTotalTooltip": "Khokha Inani Eliphelele"
+    },
+    "callInPin": "Inombolo ye-PIN Yokufonela",
+    "recentTickets": "Amathikithi Amuva",
+    "viewAllTickets": "Buka Wonke Amathikithi",
+    "editTicket": "Hlela Ithikithi",
+    "serviceCount": "Azikho izinkonzo ezisebenzayo | Inkonzo eyodwa esebenzayo ethi {count} | Izinkonzo ezisebenzayo ezingu-{count}",
+    "affiliate": {
+        "earnPerSale": "Hola {amount} Ngokuthengiswa",
+        "urlPlaceholder": "I-URL ye-Affiliate",
+        "shareWith": "Yabelana nabo"
+    }
+}

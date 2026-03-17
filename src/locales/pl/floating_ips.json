@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lista usług pływających IP",
+        "orderTitle": "Zamów rejestracje pływającego IP"
+    },
+    "view": {
+        "title": "Wyświetl pływające IP {id}",
+        "package": "Pakiet",
+        "nextInvoiceDate": "Data następnej faktury:",
+        "billing": "Rozliczenie",
+        "billed": "rozliczane:",
+        "statusIs": "Status:",
+        "floatingIp": "Pływające IP",
+        "links": "Linki",
+        "welcomeEmailConfirm": "Czy na pewno chcesz ponownie wysłać e-mail powitalny?",
+        "emailSent": "E-mail wysłany",
+        "emailSentMessage": "E-mail powitalny został ponownie wysłany. Sprawdź swoją skrzynkę odbiorczą."
+    },
+    "order": {
+        "title": "Zamów pływające IP"
+    },
+    "changeIp": {
+        "title": "Zmień docelowe IP"
+    }
+}

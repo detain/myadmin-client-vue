@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Listă Servicii IP-uri Flotante",
+        "orderTitle": "Comandă Înregistrări IP Flotant"
+    },
+    "view": {
+        "title": "Vizualizare IP Flotant {id}",
+        "package": "Pachet",
+        "nextInvoiceDate": "Data Următoarei Facturi:",
+        "billing": "Facturare",
+        "billed": "facturat:",
+        "statusIs": "Starea este:",
+        "floatingIp": "IP Flotant",
+        "links": "Linkuri",
+        "welcomeEmailConfirm": "Sigur doriți să retrimiteți e-mailul de bun venit?",
+        "emailSent": "E-mail Trimis",
+        "emailSentMessage": "E-mailul de bun venit a fost retrimis. Verificați căsuța de intrare."
+    },
+    "order": {
+        "title": "Comandă IP Flotant"
+    },
+    "changeIp": {
+        "title": "Schimbare IP Țintă"
+    }
+}

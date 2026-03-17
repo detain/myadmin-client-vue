@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Web Hosting ලැයිස්තුව",
+        "orderTitle": "වෙබ් අඩවි ලියාපදිංචිය ඇණවුම් කරන්න"
+    },
+    "view": {
+        "title": "වෙබ් අඩවිය {id} බලන්න",
+        "package": "පැකේජය",
+        "nextInvoiceDate": "ඊළඟ Invoice දිනය:",
+        "billing": "බිල්කිරීම",
+        "billed": "බිල් කළ",
+        "billingStatusIs": "Billing තත්ත්වය:",
+        "hostInfo": "Host තොරතුරු",
+        "username": "පරිශීලක නාමය:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "තවම සකස් කර නැත",
+        "login": "Login",
+        "types": "වර්ග:",
+        "linksLabel": "සබැඳි:",
+        "manualLogin": "අතින් Login",
+        "automaticLogin": "ස්වයංක්‍රීය Login",
+        "clickHere": "මෙහි Click කරන්න",
+        "defaultNameservers": "Default Nameservers",
+        "nameservers": "Nameservers:",
+        "externalLinks": "බාහිර සබැඳි",
+        "names": "නාම:",
+        "websitePreview": "වෙබ් අඩවිය Preview",
+        "links": "සබැඳි",
+        "welcomeEmailConfirm": "ඔබ ආයේ ආයුබෝවන් email එවීමට නිශ්චිතද?",
+        "emailSent": "Email යවා ඇත",
+        "emailSentMessage": "ආයුබෝවන් email නැවත යවා ඇත. ඔබේ inbox පරීක්ෂා කරන්න."
+    },
+    "buyIp": {
+        "title": "අතිරේක IP ඇඩෝනය මිලදී ගන්න",
+        "existingAddonIps": "පවතින ඇඩෝන IPs",
+        "additionalIp": "අතිරේක IP",
+        "monthlyCost": "මාසික පිරිවැය ({symbol})",
+        "costDescription": "ඔබේ වෙබ් අඩවිය invoice කරන විට සෑම මාසයකම ({symbol}) පිරිවැය",
+        "confirmPurchase": "මිලදී ගැනීම තහවුරු කරන්න",
+        "confirmMessage": "අතිරේක IP පිරිවැය: {symbol}{cost}/මාසය. ඔබ අතිරේක IP ඇණවුම් කිරීමට නිශ්චිතද?",
+        "placeOrder": "ඇණවුම ලබා දෙන්න",
+        "orderPlaced": "ඇණවුම ලබා දී ඇත"
+    },
+    "reverseDns": {
+        "title": "Reverse DNS",
+        "updateReverseDns": "Reverse DNS යාවත්කාලීන කරන්න"
+    },
+    "downloadBackups": {
+        "title": "Backups download කරන්න",
+        "backup": "Backup",
+        "size": "ප්‍රමාණය",
+        "options": "විකල්ප"
+    },
+    "migration": {
+        "title": "ඔබේ වෙබ් අඩවිය 移行 කරන්න",
+        "currentWebHostInfo": "වර්තමාන Web Host තොරතුරු",
+        "customerPortalUrl": "Customer Portal URL",
+        "portalExample": "උදාහරණ: sso.godaddy.com",
+        "registeredUsername": "ලියාපදිංචි Username / Email / ID",
+        "password": "Password",
+        "controlPanelUrl": "Control Panel URL",
+        "controlPanelExample": "උදාහරණ: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Control Panel Username",
+        "ftpPassword": "FTP / Control Panel Password",
+        "holdingPageQuestion": "Site live/busy නම්, migration අතරතුර holding page ලබා දිය හැකිද?",
+        "specialRequirementsQuestion": "PHP Version / Modules වැනි විශේෂ අවශ්‍යතා ඇතිද?",
+        "domainRegistryInfo": "Domain Registry තොරතුරු",
+        "transferDomainQuestion": "Domain name registration transfer කිරීමට සහාය ලබා ගැනීමද?",
+        "updateNameserversQuestion": "Data migration ඉවත් වූ වහාම name servers යාවත්කාලීන කිරීමද?",
+        "domainRegistryPortal": "Domain Registry Customer Portal",
+        "importantNotes": "වැදගත් සටහන්",
+        "note1": "මෙම form සම්පූර්ණ කිරීම migration ආරම්භ කිරීමට support team සඳහා නව ticket එකක් විවෘත කරනු ඇත.",
+        "note2": "ප්‍රමාදය වළක්වා ගැනීමට හැකි තරම් සම්පූර්ණ හා නිවැරදිව ලියා දෙන්න.",
+        "note3": "සාමාන්‍ය migration, පැය 48 සිට 72 ක් ඇතුළත සම්පූර්ණ වේ. Data ප්‍රමාණය වැඩිනම් දිගු කාලයක් ගතවිය හැක.",
+        "note4": "Migration කරන අතරතුර පැරණි hosting ගිණුම online සහ ප්‍රවේශ විය හැකි ලෙස තිබිය යුතුය.",
+        "note5": "Migration කරන අතරතුර site update නොකරන්න, එසේ නොමැතිනම් ඒ data නව hosting ට copy නොවිය හැක."
+    },
+    "order": {
+        "title": "වෙබ් අඩවිය ඇණවුම් කරන්න"
+    }
+}

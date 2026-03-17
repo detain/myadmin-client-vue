@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Mndandanda wa Zidutswa za SSL",
+        "orderTitle": "Ika Dongosolo la Kulemba SSL"
+    },
+    "view": {
+        "title": "Onani SSL {id}",
+        "package": "Phukusi",
+        "nextInvoiceDate": "Tsiku Lotsatira la Fatura:",
+        "billing": "Kulipira",
+        "billed": "walipira:",
+        "statusIs": "Mkhalidwe ndi:",
+        "orderInfo": "Zambiri za Dongosolo",
+        "certificateInfo": "Zambiri za Chidule",
+        "links": "Maulalo",
+        "welcomeEmailConfirm": "Muli ndi chitsimikiziro chokutumizira imelo yoyambirira?",
+        "emailSent": "Imelo Yatumizidwa",
+        "emailSentMessage": "Imelo yoyambirira yatumizidwanso. Onani inbox yanu."
+    },
+    "order": {
+        "title": "Ika Dongosolo la SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Sinthani Imelo ya Wovomera",
+        "selectApproverEmail": "Sankhani Imelo ya Wovomera"
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Liosta sheirbheisean Scrub IPs",
+        "orderTitle": "Òrdaich Scrub IPs"
+    },
+    "view": {
+        "title": "Seall Scrub IPs",
+        "currentIp": "IP gnàthach",
+        "ipAddress": "Seòladh IP",
+        "ipFromService": "IP bhon t-seirbheis"
+    },
+    "filters": {
+        "title": "Criathagan",
+        "createNew": "Cruthaich ùr",
+        "createNewFilter": "Cruthaich criathar ùr",
+        "filterType": "Seòrsa criathair",
+        "selectFilterType": "Tagh seòrsa criathair",
+        "ipAddress": "Seòladh IP",
+        "portNo": "Àir. puirt",
+        "filter": "Criathar",
+        "destinationIp": "IP ceann-uidhe",
+        "destinationPort": "Port ceann-uidhe",
+        "noFiltersFound": "Cha deach criatharan a lorg!",
+        "deleteFilterConfirm": "A bheil thu cinnteach gu bheil thu airson an criathar seo a sguabadh às?",
+        "unableToCreateFilter": "Chan urrainn criathar a chruthachadh aig an àm seo.",
+        "unableToDeleteFilter": "Chan urrainn criathar a sguabadh às aig an àm seo."
+    },
+    "firewallRules": {
+        "title": "Riaghailtean balla-teine",
+        "createNew": "Cruthaich ùr",
+        "createNewFirewall": "Cruthaich riaghailt balla-teine ùr",
+        "protocol": "Pròtacal",
+        "destinationIp": "IP ceann-uidhe",
+        "destinationPort": "Port ceann-uidhe",
+        "sourceIp": "IP tùs",
+        "sourcePort": "Port tùs",
+        "xdpAction": "Gnìomh XDP",
+        "ipRequired": "Tha seòladh IP riatanach",
+        "block": "Bac",
+        "whitelist": "Liosta gheal",
+        "noRulesFound": "Cha deach riaghailtean a lorg!",
+        "deleteRuleConfirm": "A bheil thu cinnteach gu bheil thu airson an riaghailt seo a sguabadh às?",
+        "unableToCreateRule": "Chan urrainn riaghailt balla-teine a chruthachadh aig an àm seo.",
+        "unableToDeleteRule": "Chan urrainn riaghailt balla-teine a sguabadh às aig an àm seo."
+    },
+    "geoFirewallRules": {
+        "title": "Riaghailtean balla-teine geo",
+        "createNew": "Cruthaich ùr",
+        "createNewGeoRule": "Cruthaich riaghailt balla-teine geo ùr",
+        "destinationIp": "IP ceann-uidhe",
+        "destinationPort": "Port ceann-uidhe",
+        "sourceCountry": "Dùthaich tùs",
+        "sourceAsn": "ASN tùs",
+        "xdpAction": "Gnìomh XDP",
+        "portNo": "Àir. puirt",
+        "selectCountry": "Tagh dùthaich",
+        "asn": "ASN",
+        "block": "Bac",
+        "whitelist": "Liosta gheal",
+        "noRulesFound": "Cha deach riaghailtean a lorg!",
+        "deleteGeoRuleConfirm": "A bheil thu cinnteach gu bheil thu airson an riaghailt geo seo a sguabadh às?",
+        "unableToCreateRule": "Chan urrainn riaghailt balla-teine a chruthachadh aig an àm seo.",
+        "unableToDeleteRule": "Chan urrainn riaghailt balla-teine geo a sguabadh às aig an àm seo."
+    }
+}

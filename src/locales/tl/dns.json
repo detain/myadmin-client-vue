@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Magdagdag ng Domain",
+        "deleteDomain": "Burahin ang Domain",
+        "domainName": "Pangalan ng Domain",
+        "dnsServers": "Mga DNS Server",
+        "confirmDelete": "Sigurado ba kayong nais ninyong burahin ang domain na ito?",
+        "noDomains": "Walang nahanap na domain"
+    },
+    "editor": {
+        "title": "DNS Editor",
+        "addRecord": "Magdagdag ng Talaan",
+        "deleteRecord": "Burahin ang Talaan",
+        "editRecord": "Baguhin ang Talaan",
+        "recordType": "Uri ng Talaan",
+        "hostname": "Hostname",
+        "address": "Address",
+        "distance": "Distansya",
+        "weight": "Bigat",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Mga Aksyon",
+        "confirmDelete": "Sigurado ba kayong nais ninyong burahin ang talanang ito?"
+    }
+}

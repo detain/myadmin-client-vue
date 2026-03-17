@@ -1,0 +1,28 @@
+{
+    "title": "ផ្ទាំងគ្រប់គ្រង",
+    "welcome": "សូមស្វាគមន៍, {name}",
+    "lastLogin": "ការចូលចុងក្រោយ",
+    "lastLoginIp": "IP ចូលចុងក្រោយ",
+    "prepay": {
+        "title": "សមតុល្យការបង់ជាមុន",
+        "remainingBalance": "សមតុល្យនៅសល់ការបង់ជាមុន",
+        "manageAccount": "គ្រប់គ្រងគណនី",
+        "manageTooltip": "គ្រប់គ្រងគណនីការបង់ជាមុនរបស់អ្នក"
+    },
+    "invoices": {
+        "title": "វិក្កយបត្រដែលមិនទាន់បង់",
+        "totalUnpaid": "វិក្កយបត្រដែលមិនទាន់បង់សរុប",
+        "totalAmount": "ចំនួនទឹកប្រាក់សរុបត្រូវបង់",
+        "payTotalTooltip": "បង់ចំនួនសរុប"
+    },
+    "callInPin": "PIN ការហៅទូរស័ព្ទ",
+    "recentTickets": "សំបុត្រថ្មីៗ",
+    "viewAllTickets": "មើលសំបុត្រទាំងអស់",
+    "editTicket": "កែសម្រួលសំបុត្រ",
+    "serviceCount": "គ្មានសេវាសកម្ម | {count} សេវាសកម្ម | {count} សេវាសកម្ម",
+    "affiliate": {
+        "earnPerSale": "រកបាន {amount} ក្នុងមួយការលក់",
+        "urlPlaceholder": "URL សម្ព័ន្ធ",
+        "shareWith": "ចែករំលែកជាមួយ"
+    }
+}

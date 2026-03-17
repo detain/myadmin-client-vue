@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Liosta Seirbhísí IP Scrubaigh",
+        "orderTitle": "Ordaigh IP Scrubaigh"
+    },
+    "view": {
+        "title": "Féach ar IP Scrubaigh",
+        "currentIp": "IP Reatha",
+        "ipAddress": "Seoladh IP",
+        "ipFromService": "IP ón tseirbhís"
+    },
+    "filters": {
+        "title": "Scagairí",
+        "createNew": "Cruthaigh Nua",
+        "createNewFilter": "Cruthaigh Scagaire Nua",
+        "filterType": "Cineál Scagaire",
+        "selectFilterType": "Roghnaigh Cineál Scagaire",
+        "ipAddress": "Seoladh IP",
+        "portNo": "Uimh. Poirt",
+        "filter": "Scagaire",
+        "destinationIp": "IP Ceann Scríbe",
+        "destinationPort": "Port Ceann Scríbe",
+        "noFiltersFound": "Níor aimsíodh aon scagairí!",
+        "deleteFilterConfirm": "An bhfuil tú cinnte gur mhaith leat an scagaire seo a scriosadh?",
+        "unableToCreateFilter": "Ní féidir scagaire a chruthú faoi láthair.",
+        "unableToDeleteFilter": "Ní féidir scagaire a scriosadh faoi láthair."
+    },
+    "firewallRules": {
+        "title": "Rialacha Balla Dóiteáin",
+        "createNew": "Cruthaigh Nua",
+        "createNewFirewall": "Cruthaigh Riail Bhalla Dóiteáin Nua",
+        "protocol": "Prótacal",
+        "destinationIp": "IP Ceann Scríbe",
+        "destinationPort": "Port Ceann Scríbe",
+        "sourceIp": "IP Foinse",
+        "sourcePort": "Port Foinse",
+        "xdpAction": "Gníomh XDP",
+        "ipRequired": "Tá seoladh IP ag teastáil",
+        "block": "Blocáil",
+        "whitelist": "Liosta Bán",
+        "noRulesFound": "Níor aimsíodh aon rialacha!",
+        "deleteRuleConfirm": "An bhfuil tú cinnte gur mhaith leat an riail seo a scriosadh?",
+        "unableToCreateRule": "Ní féidir riail bhalla dóiteáin a chruthú faoi láthair.",
+        "unableToDeleteRule": "Ní féidir riail bhalla dóiteáin a scriosadh faoi láthair."
+    },
+    "geoFirewallRules": {
+        "title": "Rialacha Geo Bhalla Dóiteáin",
+        "createNew": "Cruthaigh Nua",
+        "createNewGeoRule": "Cruthaigh Riail Geo Bhalla Dóiteáin Nua",
+        "destinationIp": "IP Ceann Scríbe",
+        "destinationPort": "Port Ceann Scríbe",
+        "sourceCountry": "Tír Foinse",
+        "sourceAsn": "ASN Foinse",
+        "xdpAction": "Gníomh XDP",
+        "portNo": "Uimh. Poirt",
+        "selectCountry": "Roghnaigh Tír",
+        "asn": "ASN",
+        "block": "Blocáil",
+        "whitelist": "Liosta Bán",
+        "noRulesFound": "Níor aimsíodh aon rialacha!",
+        "deleteGeoRuleConfirm": "An bhfuil tú cinnte gur mhaith leat an riail geo seo a scriosadh?",
+        "unableToCreateRule": "Ní féidir riail bhalla dóiteáin a chruthú faoi láthair.",
+        "unableToDeleteRule": "Ní féidir riail geo bhalla dóiteáin a scriosadh faoi láthair."
+    }
+}

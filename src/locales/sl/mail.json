@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Seznam poštnih storitev",
+        "orderTitle": "Naroči registracije pošte"
+    },
+    "view": {
+        "title": "Ogled pošte {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum naslednjega računa:",
+        "billing": "Zaračunavanje",
+        "billed": "zaračunano:",
+        "statusIs": "Status je:",
+        "mailApi": "Poštni API",
+        "usageCount": "Število uporab:",
+        "links": "Povezave",
+        "connectionInfo": "Informacije o povezavi",
+        "welcomeEmailConfirm": "Ali ste prepričani, da želite znova poslati pozdravno e-pošto?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Pozdravna e-pošta je bila znova poslana. Preverite svojo nabiralo."
+    },
+    "order": {
+        "title": "Naroči pošto"
+    },
+    "alerts": {
+        "title": "Opozorila",
+        "addAlert": "Dodaj opozorilo",
+        "editAlert": "Uredi opozorilo",
+        "noAlerts": "Ni najdenih opozoril"
+    },
+    "delist": {
+        "title": "Odstraniitev s seznama",
+        "blockedEmails": "Blokirane e-pošte"
+    },
+    "denyRules": {
+        "title": "Pravila zavrnitve",
+        "addRule": "Dodaj pravilo",
+        "noRules": "Ni najdenih pravil zavrnitve"
+    },
+    "logs": {
+        "title": "Dnevniki",
+        "searchLogs": "Iskanje dnevnikov"
+    },
+    "stats": {
+        "title": "Statistika"
+    },
+    "deliverability": {
+        "title": "Dostavljivost"
+    }
+}

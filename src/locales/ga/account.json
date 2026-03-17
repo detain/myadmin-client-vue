@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Socruithe Cuntais"
+    },
+    "changePassword": {
+        "title": "Athraigh Pasfhocal",
+        "cardTitle": "Nuashonraigh Pasfhocal",
+        "currentPassword": "Pasfhocal Reatha",
+        "newPassword": "Pasfhocal Nua",
+        "confirmPassword": "Deimhnigh Pasfhocal",
+        "updatePassword": "Nuashonraigh Pasfhocal"
+    },
+    "changeUsername": {
+        "title": "Athraigh Ainm Úsáideora",
+        "disabled": "Tá athruithe ar ainm úsáideora díchumasaithe go sealadach.",
+        "currentUsername": "Ainm Úsáideora Reatha",
+        "newDesiredUsername": "Ainm Úsáideora Nua Atá Uait",
+        "confirmationCode": "Cód Deimhnithe",
+        "pleaseWait": "Fan le do thoil!",
+        "gotError": "Earráid faighte {error}"
+    },
+    "contactInfo": {
+        "title": "Eolas Teagmhála",
+        "cardTitle": "Nuashonraigh Eolas Teagmhála",
+        "headsUp": "Aire!",
+        "headsUpMessage": "Cé go bhfuil an t-eolas seo roghnach, cuideoidh faisnéis (chruinn) a sholáthar lenár n-idirghníomhaíochtaí a shaibhriú agus do Scór % Riosca a ísliú ag tabhairt rochtain níos tapúla agus níos áisiúla duit ar chodanna den suíomh (mar shampla gan cárta creidmheasa a fhíordheimhniú).",
+        "riskScore": "Scór % Riosca",
+        "personalInformation": "Faisnéis Phearsanta",
+        "name": "Ainm",
+        "namePlaceholder": "Joe Cool",
+        "company": "Cuideachta",
+        "gstinTaxId": "GSTIN Cáin-ID",
+        "gstinPlaceholder": "Uimhir Aitheantais Cáiníocóra Earraí agus Seirbhísí",
+        "addressLine1": "Líne Seoltaí 1",
+        "addressLine2": "Líne Seoltaí 2",
+        "cityState": "Cathair, Stát",
+        "city": "Cathair",
+        "state": "Stát",
+        "country": "Tír",
+        "zipcode": "Cód Poist",
+        "phoneNo": "Uimh. Fóin",
+        "phoneNumber": "Uimhir Fóin",
+        "language": "Teanga",
+        "auto": "Uathoibríoch",
+        "currency": "Airgeadra",
+        "timeZone": "Crios Ama",
+        "otherSettings": "Socruithe Eile",
+        "disablePasswordResets": "Díchumasaigh Athshocruithe Pasfhocail (Dearmad Pasfhocal).",
+        "disableInvoiceReminders": "Díchumasaigh Fógraí Ríomhphoist Meabhrúcháin Sonrasc.",
+        "disableServerInvoiceReminders": "Díchumasaigh Fógraí Ríomhphoist Meabhrúcháin Sonrasc Freastalaí.",
+        "disableReinstall": "Díchumasaigh Athshuiteáil.",
+        "alternateEmailInvoices": "Ríomhphost Malartach do Shonraisc",
+        "alternateEmailInvoicesPlaceholder": "Ríomhphost malartach chun sonraisc a sheoladh",
+        "alternateEmailAbuse": "Ríomhphost Malartach do Thuarascálacha Mí-úsáide",
+        "updateInfo": "Nuashonraigh Eolas"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Maneja weDNS",
+        "addDomain": "Wedzera Domain",
+        "deleteDomain": "Dzima Domain",
+        "domainName": "Zita reDomain",
+        "dnsServers": "Maseva eDNS",
+        "confirmDelete": "Unoda kudzima domain iyi here?",
+        "noDomains": "Hapana domain dzawanikwa"
+    },
+    "editor": {
+        "title": "Mushanyi weDNS",
+        "addRecord": "Wedzera Rekodhisi",
+        "deleteRecord": "Dzima Rekodhisi",
+        "editRecord": "Shandura Rekodhisi",
+        "recordType": "Mhando yeRekodhisi",
+        "hostname": "Zita reseva",
+        "address": "Kero",
+        "distance": "Kure",
+        "weight": "Uzito",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Zviito",
+        "confirmDelete": "Unoda kudzima rekodhisi iyi here?"
+    }
+}

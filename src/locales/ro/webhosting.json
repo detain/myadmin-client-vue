@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Listă Găzduire Web",
+        "orderTitle": "Comandă Înregistrări Website"
+    },
+    "view": {
+        "title": "Vizualizare Website {id}",
+        "package": "Pachet",
+        "nextInvoiceDate": "Data Următoarei Facturi:",
+        "billing": "Facturare",
+        "billed": "facturat",
+        "billingStatusIs": "Starea de Facturare este:",
+        "hostInfo": "Informații Gazdă",
+        "username": "Nume Utilizator:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Nesetat încă",
+        "login": "Conectare",
+        "types": "Tipuri:",
+        "linksLabel": "Linkuri:",
+        "manualLogin": "Conectare Manuală",
+        "automaticLogin": "Conectare Automată",
+        "clickHere": "Faceți Clic Aici",
+        "defaultNameservers": "Servere de Nume Implicite",
+        "nameservers": "Servere de Nume:",
+        "externalLinks": "Linkuri Externe",
+        "names": "Nume:",
+        "websitePreview": "Previzualizare Website",
+        "links": "Linkuri",
+        "welcomeEmailConfirm": "Sigur doriți să retrimiteți e-mailul de bun venit?",
+        "emailSent": "E-mail Trimis",
+        "emailSentMessage": "E-mailul de bun venit a fost retrimis. Verificați căsuța de intrare."
+    },
+    "buyIp": {
+        "title": "Cumpărare Add-on IP Suplimentar",
+        "existingAddonIps": "IP-uri Add-on Existente",
+        "additionalIp": "IP Suplimentar",
+        "monthlyCost": "Cost Lunar ({symbol})",
+        "costDescription": "Cost ({symbol}) în fiecare lună pe măsură ce website-ul este facturat",
+        "confirmPurchase": "Confirmare Achiziție",
+        "confirmMessage": "Cost IP suplimentar: {symbol}{cost}/lună. Sigur doriți să comandați un IP suplimentar?",
+        "placeOrder": "Plasare Comandă",
+        "orderPlaced": "Comandă Plasată"
+    },
+    "reverseDns": {
+        "title": "DNS Invers",
+        "updateReverseDns": "Actualizare DNS Invers"
+    },
+    "downloadBackups": {
+        "title": "Descărcare Backup-uri",
+        "backup": "Backup",
+        "size": "Dimensiune",
+        "options": "Opțiuni"
+    },
+    "migration": {
+        "title": "Migrați Website-ul",
+        "currentWebHostInfo": "Informații Gazdă Web Curentă",
+        "customerPortalUrl": "URL Portal Client",
+        "portalExample": "De exemplu: sso.godaddy.com",
+        "registeredUsername": "Nume Utilizator / E-mail / ID Înregistrat",
+        "password": "Parolă",
+        "controlPanelUrl": "URL Panou de Control",
+        "controlPanelExample": "De exemplu: yourdomain.com/cpanel",
+        "ftpUsername": "Nume Utilizator FTP / Panou de Control",
+        "ftpPassword": "Parolă FTP / Panou de Control",
+        "holdingPageQuestion": "Dacă site-ul este live/ocupat cu trafic ridicat, putem seta o pagină de așteptare în timpul migrării?",
+        "specialRequirementsQuestion": "Are acest site cerințe speciale precum Versiune PHP / Module?",
+        "domainRegistryInfo": "Informații Registru Domeniu",
+        "transferDomainQuestion": "Doriți, de asemenea, să vă ajutăm să transferați înregistrarea numelui de domeniu?",
+        "updateNameserversQuestion": "Doriți să actualizăm serverele de nume imediat ce finalizăm migrarea datelor?",
+        "domainRegistryPortal": "Portal Client Registru Domeniu",
+        "importantNotes": "Note Importante",
+        "note1": "Completarea acestui formular va deschide un tichet nou pentru departamentul nostru de asistență pentru a începe migrarea.",
+        "note2": "Vă rugăm să fiți cât mai complet și precis posibil pentru a evita orice întârzieri.",
+        "note3": "O migrare tipică este finalizată în 48 până la 72 de ore. Uneori mai mult dacă cantitatea de date de copiat este mare.",
+        "note4": "Contul de găzduire vechi trebuie să fie online și accesibil în timp ce efectuăm migrarea, altfel putem întâmpina dificultăți.",
+        "note5": "Vă rugăm să nu faceți nicio actualizare pe site-ul dumneavoastră în timp ce efectuăm migrarea, altfel acele date s-ar putea să nu fie copiate în noua găzduire."
+    },
+    "order": {
+        "title": "Comandă Website"
+    }
+}

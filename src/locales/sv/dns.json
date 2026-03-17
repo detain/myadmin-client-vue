@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS-hanterare",
+        "addDomain": "Lägg till domän",
+        "deleteDomain": "Ta bort domän",
+        "domainName": "Domännamn",
+        "dnsServers": "DNS-servrar",
+        "confirmDelete": "Är du säker på att du vill ta bort denna domän?",
+        "noDomains": "Inga domäner hittades"
+    },
+    "editor": {
+        "title": "DNS-redigerare",
+        "addRecord": "Lägg till post",
+        "deleteRecord": "Ta bort post",
+        "editRecord": "Redigera post",
+        "recordType": "Posttyp",
+        "hostname": "Värdnamn",
+        "address": "Adress",
+        "distance": "Avstånd",
+        "weight": "Vikt",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Åtgärder",
+        "confirmDelete": "Är du säker på att du vill ta bort denna post?"
+    }
+}

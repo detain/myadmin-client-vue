@@ -1,0 +1,12 @@
+{
+    "required": "{field} je povinné",
+    "email": "Musí být platná e-mailová adresa",
+    "minLength": "Musí mít alespoň {min} znaků",
+    "maxLength": "Nesmí mít více než {max} znaků",
+    "passwordMatch": "Hesla se musí shodovat",
+    "invalidFormat": "Neplatný formát",
+    "numeric": "Musí být číslo",
+    "url": "Musí být platná URL",
+    "ipAddress": "Musí být platná IP adresa",
+    "hostname": "Musí být platný název hostitele"
+}

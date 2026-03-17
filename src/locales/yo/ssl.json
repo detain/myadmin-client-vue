@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Atokọ Awọn Iwe-ẹri SSL",
+        "orderTitle": "Paṣẹ Awọn Iforukọsilẹ SSL"
+    },
+    "view": {
+        "title": "Wo SSL {id}",
+        "package": "Idii",
+        "nextInvoiceDate": "Ọjọ Iwe Isan Atẹle:",
+        "billing": "Isan",
+        "billed": "ti isan:",
+        "statusIs": "Ipo ni:",
+        "orderInfo": "Alaye Aṣẹ",
+        "certificateInfo": "Alaye Iwe-ẹri",
+        "links": "Awọn Ọna Asopọ",
+        "welcomeEmailConfirm": "Ṣe o da ọ loju pe o fẹ tun fi imeeli kaabọ ranṣẹ?",
+        "emailSent": "Imeeli Ti Ranṣẹ",
+        "emailSentMessage": "Imeeli kaabọ ti tun ranṣẹ. Ṣayẹwo apamọwọ rẹ."
+    },
+    "order": {
+        "title": "Paṣẹ SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Yipada Imeeli Olufọwọsi",
+        "selectApproverEmail": "Yan Imeeli Olufọwọsi"
+    }
+}

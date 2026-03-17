@@ -1,0 +1,12 @@
+{
+    "title": "Användare",
+    "addUser": "Lägg till användare",
+    "editUser": "Redigera användare",
+    "firstName": "Förnamn",
+    "lastName": "Efternamn",
+    "username": "Användarnamn",
+    "password": "Lösenord",
+    "keepSamePassword": "Lämna tomt för att behålla samma lösenord",
+    "errorLoading": "Fel vid inläsning av användare:",
+    "errorLoadingUser": "Fel vid inläsning av användare:"
+}

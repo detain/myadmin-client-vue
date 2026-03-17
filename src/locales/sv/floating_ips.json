@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Lista över flytande IP-tjänster",
+        "orderTitle": "Beställ flytande IP-registreringar"
+    },
+    "view": {
+        "title": "Visa flytande IP {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Nästa fakturadatum:",
+        "billing": "Fakturering",
+        "billed": "fakturerad:",
+        "statusIs": "Status är:",
+        "floatingIp": "Flytande IP",
+        "links": "Länkar",
+        "welcomeEmailConfirm": "Är du säker på att du vill skicka om välkomstmejlet?",
+        "emailSent": "E-post skickad",
+        "emailSentMessage": "Välkomstmejlet har skickats om. Kontrollera din inkorg."
+    },
+    "order": {
+        "title": "Beställ flytande IP"
+    },
+    "changeIp": {
+        "title": "Ändra mål-IP"
+    }
+}

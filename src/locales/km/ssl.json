@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "បញ្ជីវិញ្ញាបនប័ត្រ SSL",
+        "orderTitle": "ការចុះឈ្មោះ SSL"
+    },
+    "view": {
+        "title": "មើល SSL {id}",
+        "package": "កញ្ចប់",
+        "nextInvoiceDate": "កាលបរិច្ឆេទវិក្កយបត្របន្ទាប់:",
+        "billing": "វិក្កយបត្រ",
+        "billed": "បានដំណើរការ:",
+        "statusIs": "ស្ថានភាពគឺ:",
+        "orderInfo": "ព័ត៌មានបញ្ជាទិញ",
+        "certificateInfo": "ព័ត៌មានវិញ្ញាបនប័ត្រ",
+        "links": "តំណ",
+        "welcomeEmailConfirm": "តើអ្នកប្រាកដថាចង់ផ្ញើអ៊ីមែលស្វាគមន៍ម្តងទៀតមែនទេ?",
+        "emailSent": "អ៊ីមែលត្រូវបានផ្ញើ",
+        "emailSentMessage": "អ៊ីមែលស្វាគមន៍ត្រូវបានផ្ញើម្តងទៀត។ ពិនិត្យប្រអប់ចូលរបស់អ្នក។"
+    },
+    "order": {
+        "title": "ការបញ្ជាទិញ SSL"
+    },
+    "changeApproverEmail": {
+        "title": "ផ្លាស់ប្តូរអ៊ីមែលអ្នកអនុម័ត",
+        "selectApproverEmail": "ជ្រើសរើសអ៊ីមែលអ្នកអនុម័ត"
+    }
+}

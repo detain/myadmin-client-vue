@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Liosta Deimhnithe SSL",
+        "orderTitle": "Ordaigh Clárúcháin SSL"
+    },
+    "view": {
+        "title": "Féach ar SSL {id}",
+        "package": "Pacáiste",
+        "nextInvoiceDate": "Dáta an Chéad Sonraisc Eile:",
+        "billing": "Billeáil",
+        "billed": "billeáilte:",
+        "statusIs": "Is é an stádas:",
+        "orderInfo": "Eolas Ordaithe",
+        "certificateInfo": "Eolas Deimhnithe",
+        "links": "Naisc",
+        "welcomeEmailConfirm": "An bhfuil tú cinnte gur mhaith leat an ríomhphost fáilte a athsheolachán?",
+        "emailSent": "Ríomhphost Seolta",
+        "emailSentMessage": "Seoladh an ríomhphost fáilte arís. Seiceáil do bhosca isteach."
+    },
+    "order": {
+        "title": "Ordaigh SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Athraigh Ríomhphost an Cheadaitheora",
+        "selectApproverEmail": "Roghnaigh Ríomhphost an Cheadaitheora"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "title": "Deais",
+    "welcome": "Fáilte, {name}",
+    "lastLogin": "Logáil Isteach is Déanaí",
+    "lastLoginIp": "IP Logála Isteach is Déanaí",
+    "prepay": {
+        "title": "Iarmhéid Réamhíoca",
+        "remainingBalance": "Iarmhéid Réamhíoca Atá Fágtha",
+        "manageAccount": "Bainistigh Cuntas",
+        "manageTooltip": "Bainistigh do Chuntas Réamhíoca"
+    },
+    "invoices": {
+        "title": "Sonraisc Neamhíoctha",
+        "totalUnpaid": "Sonraisc Neamhíoctha Iomlána",
+        "totalAmount": "Méid Iomlán le hÍoc",
+        "payTotalTooltip": "Íoc Méid Iomlán"
+    },
+    "callInPin": "PIN Glao-Isteach",
+    "recentTickets": "Ticéid le Déanaí",
+    "viewAllTickets": "Féach ar Gach Ticéad",
+    "editTicket": "Cuir Ticéad in Eagar",
+    "serviceCount": "Gan seirbhísí gníomhacha | {count} seirbhís ghníomhach | {count} seirbhís ghníomhach",
+    "affiliate": {
+        "earnPerSale": "Tuill {amount} in Aghaidh Gach Díola",
+        "urlPlaceholder": "URL Cleamhnaithe",
+        "shareWith": "Roinn le"
+    }
+}

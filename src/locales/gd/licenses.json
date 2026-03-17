@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Liosta cheadasan",
+        "orderTitle": "Òrdaich clàrachaidhean ceadasan"
+    },
+    "view": {
+        "title": "Seall cead {id}",
+        "package": "Pasgan",
+        "nextInvoiceDate": "Ceann-latha an ath-chunntas:",
+        "billing": "Cunntas",
+        "billed": "air a chunntas:",
+        "statusIs": "An staid a th' ann:",
+        "licenseInfo": "Fiosrachadh ceadais",
+        "cpanelInfo": "Fiosrachadh cPanel",
+        "links": "Ceanglaichean",
+        "welcomeEmailConfirm": "A bheil thu cinnteach gu bheil thu airson am post-d fàilteachaidh a chur a-rithist?",
+        "emailSent": "Chaidh post-d a chur",
+        "emailSentMessage": "Chaidh am post-d fàilteachaidh a chur a-rithist. Thoir sùil air a' bhogsa a-steach agad."
+    },
+    "order": {
+        "title": "Òrdaich cead"
+    },
+    "changeIp": {
+        "title": "Atharraich IP"
+    },
+    "changeOs": {
+        "title": "Atharraich OS",
+        "selectLicenseOs": "Tagh OS ceadais"
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lista tal-Hosting Web",
+        "orderTitle": "Ordna Reġistrazzjonijiet ta' Sit Web"
+    },
+    "view": {
+        "title": "Ara s-Sit Web {id}",
+        "package": "Pakkett",
+        "nextInvoiceDate": "Data tal-Fattura li Jmiss:",
+        "billing": "Fatturazzjoni",
+        "billed": "fatturata",
+        "billingStatusIs": "L-Istat tal-Fatturazzjoni huwa:",
+        "hostInfo": "Informazzjoni tal-Host",
+        "username": "Username:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Għadu mhux issettjat",
+        "login": "Login",
+        "types": "Tipi:",
+        "linksLabel": "Links:",
+        "manualLogin": "Login Manwali",
+        "automaticLogin": "Login Awtomatiku",
+        "clickHere": "Ikklikkja Hawn",
+        "defaultNameservers": "Servers tal-Ismijiet Default",
+        "nameservers": "Servers tal-Ismijiet:",
+        "externalLinks": "Links Esterni",
+        "names": "Ismijiet:",
+        "websitePreview": "Anteprima tas-Sit Web",
+        "links": "Links",
+        "welcomeEmailConfirm": "Ċert li trid tibgħat mill-ġdid l-email ta' merħba?",
+        "emailSent": "Email Mibgħut",
+        "emailSentMessage": "L-email ta' merħba ntbagħtet mill-ġdid. Iċċekkja l-inbox tiegħek."
+    },
+    "buyIp": {
+        "title": "Ixtri Addon ta' IP Addizzjonali",
+        "existingAddonIps": "IPs tal-Addon Eżistenti",
+        "additionalIp": "IP Addizzjonali",
+        "monthlyCost": "Kost ta' Kull Xahar ({symbol})",
+        "costDescription": "Kost ({symbol}) kull xahar kif jiġi fatturata s-sit web tiegħek",
+        "confirmPurchase": "Ikkonferma x-Xiri",
+        "confirmMessage": "Kost ta' IP addizzjonali: {symbol}{cost}/xahar. Ċert li trid tordna IP addizzjonali?",
+        "placeOrder": "Poġġi l-Ordni",
+        "orderPlaced": "Ordni Mqiegħda"
+    },
+    "reverseDns": {
+        "title": "DNS Inversa",
+        "updateReverseDns": "Aġġorna d-DNS Inversa"
+    },
+    "downloadBackups": {
+        "title": "Niżżel il-Backups",
+        "backup": "Backup",
+        "size": "Daqs",
+        "options": "Għażliet"
+    },
+    "migration": {
+        "title": "Immigra s-Sit Web Tiegħek",
+        "currentWebHostInfo": "Informazzjoni tal-Host Web Attwali",
+        "customerPortalUrl": "URL tal-Portal tal-Klijent",
+        "portalExample": "Pereżempju: sso.godaddy.com",
+        "registeredUsername": "Username / Email / ID Irreġistrat",
+        "password": "Password",
+        "controlPanelUrl": "URL tal-Panel ta' Kontroll",
+        "controlPanelExample": "Pereżempju: id-dominju.com/cpanel",
+        "ftpUsername": "Username FTP / Panel ta' Kontroll",
+        "ftpPassword": "Password FTP / Panel ta' Kontroll",
+        "holdingPageQuestion": "Jekk is-sit huwa sit ħaj/okkupat b'traffiku għoli, nistgħu nissettjaw paġna ta' żamma waqt il-migrazzjoni?",
+        "specialRequirementsQuestion": "Dan is-sit għandu rekwiżiti speċjali bħal Verżjoni PHP / Moduli?",
+        "domainRegistryInfo": "Informazzjoni tar-Reġistru tad-Dominji",
+        "transferDomainQuestion": "Trid ukoll li ngħinuk titrasferixxi r-reġistrazzjoni tal-isem tad-dominju?",
+        "updateNameserversQuestion": "Trid li naġġornaw is-servers tal-ismijiet malli nlestu l-migrazzjoni tad-data?",
+        "domainRegistryPortal": "Portal tal-Klijent tar-Reġistru tad-Dominji",
+        "importantNotes": "Noti Importanti",
+        "note1": "Il-mili ta' din il-formola tiftaħ biljett ġdid għad-dipartiment ta' appoġġ tagħna biex jibda l-migrazzjoni tiegħek.",
+        "note2": "Jekk jogħġbok kun kemm jista' jkun komplet u preċiż biex tevita kwalunkwe dewmien.",
+        "note3": "Migrazzjoni tipika tiġi kompluta fi żmien 48 sa 72 siegħa. Xi drabi aktar jekk il-kwantità ta' data li trid tiġi kkupjata hija kbira.",
+        "note4": "Il-kont tal-hosting qadim irid ikun online u aċċessibbli waqt li nkunu qed inwettqu l-migrazzjoni, inkella jista' jkun hemm diffikultajiet.",
+        "note5": "Jekk jogħġbok tindirizzax aġġornamenti fuq is-sit tiegħek waqt li nwettqu l-migrazzjoni, inkella dik id-data jista' ma tiġix ikkupjata għall-hosting il-ġdid."
+    },
+    "order": {
+        "title": "Ordna Sit Web"
+    }
+}

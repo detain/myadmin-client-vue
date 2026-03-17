@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Rhestr Gwasanaethau Post",
+        "orderTitle": "Archebu Cofrestriadau Post"
+    },
+    "view": {
+        "title": "Gweld Post {id}",
+        "package": "Pecyn",
+        "nextInvoiceDate": "Dyddiad Anfoneb Nesaf:",
+        "billing": "Bilio",
+        "billed": "wedi'i filio:",
+        "statusIs": "Mae'r statws yn:",
+        "mailApi": "API Post",
+        "usageCount": "Cyfrif Defnydd:",
+        "links": "Dolenni",
+        "connectionInfo": "Gwybodaeth Cysylltiad",
+        "welcomeEmailConfirm": "Ydych chi'n siŵr eich bod am ailanfon yr e-bost croeso?",
+        "emailSent": "E-bost Wedi'i Anfon",
+        "emailSentMessage": "Mae'r e-bost croeso wedi'i ailanfon. Gwiriwch eich blwch derbyn."
+    },
+    "order": {
+        "title": "Archebu Post"
+    },
+    "alerts": {
+        "title": "Rhybuddion",
+        "addAlert": "Ychwanegu Rhybudd",
+        "editAlert": "Golygu Rhybudd",
+        "noAlerts": "Ni chanfuwyd rhybuddion"
+    },
+    "delist": {
+        "title": "Tynnu o'r Rhestr",
+        "blockedEmails": "E-byst wedi'u Rhwystro"
+    },
+    "denyRules": {
+        "title": "Rheolau Gwrthod",
+        "addRule": "Ychwanegu Rheol",
+        "noRules": "Ni chanfuwyd rheolau gwrthod"
+    },
+    "logs": {
+        "title": "Logiau",
+        "searchLogs": "Chwilio Logiau"
+    },
+    "stats": {
+        "title": "Ystadegau"
+    },
+    "deliverability": {
+        "title": "Danfonebedd"
+    }
+}

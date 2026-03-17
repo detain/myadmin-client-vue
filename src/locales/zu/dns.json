@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Umphathi we-DNS",
+        "addDomain": "Engeza Idomeini",
+        "deleteDomain": "Susa Idomeini",
+        "domainName": "Igama Ledomeini",
+        "dnsServers": "Izeva ze-DNS",
+        "confirmDelete": "Uqinisekile ukuthi ufuna ukususa leli domeini?",
+        "noDomains": "Awakatholwanga amagama edomeini"
+    },
+    "editor": {
+        "title": "Umhleli we-DNS",
+        "addRecord": "Engeza Irekhodi",
+        "deleteRecord": "Susa Irekhodi",
+        "editRecord": "Hlela Irekhodi",
+        "recordType": "Uhlobo Lwerekhodi",
+        "hostname": "Igama Lomsingatha",
+        "address": "Ikheli",
+        "distance": "Ibanga",
+        "weight": "Isisindo",
+        "port": "Imbobo",
+        "ttl": "TTL",
+        "actions": "Izenzo",
+        "confirmDelete": "Uqinisekile ukuthi ufuna ukususa leli rekhodi?"
+    }
+}

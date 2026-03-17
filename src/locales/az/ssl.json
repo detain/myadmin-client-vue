@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL Sertifikatları Siyahısı",
+        "orderTitle": "SSL Qeydiyyatı Sifariş Et"
+    },
+    "view": {
+        "title": "SSL {id}-ə Bax",
+        "package": "Paket",
+        "nextInvoiceDate": "Növbəti Faktura Tarixi:",
+        "billing": "Ödəniş",
+        "billed": "ödənildi:",
+        "statusIs": "Status:",
+        "orderInfo": "Sifariş Məlumatı",
+        "certificateInfo": "Sertifikat Məlumatı",
+        "links": "Keçidlər",
+        "welcomeEmailConfirm": "Xoş gəlmisiniz e-poçtunu yenidən göndərmək istədiyinizə əminsiniz?",
+        "emailSent": "E-poçt Göndərildi",
+        "emailSentMessage": "Xoş gəlmisiniz e-poçtu yenidən göndərildi. Gələn qutunuzu yoxlayın."
+    },
+    "order": {
+        "title": "SSL Sifariş Et"
+    },
+    "changeApproverEmail": {
+        "title": "Təsdiqləyici E-poçtu Dəyiş",
+        "selectApproverEmail": "Təsdiqləyici E-poçtu Seçin"
+    }
+}

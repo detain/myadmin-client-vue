@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Listă Servicii IP-uri Scrub",
+        "orderTitle": "Comandă IP-uri Scrub"
+    },
+    "view": {
+        "title": "Vizualizare IP-uri Scrub",
+        "currentIp": "IP Curent",
+        "ipAddress": "Adresă IP",
+        "ipFromService": "IP din serviciu"
+    },
+    "filters": {
+        "title": "Filtre",
+        "createNew": "Creare Nouă",
+        "createNewFilter": "Creare Filtru Nou",
+        "filterType": "Tip Filtru",
+        "selectFilterType": "Selectare Tip Filtru",
+        "ipAddress": "Adresă IP",
+        "portNo": "Nr. Port",
+        "filter": "Filtru",
+        "destinationIp": "IP Destinație",
+        "destinationPort": "Port Destinație",
+        "noFiltersFound": "Nu s-au găsit filtre!",
+        "deleteFilterConfirm": "Sigur doriți să ștergeți acest filtru?",
+        "unableToCreateFilter": "Nu se poate crea filtrul în acest moment.",
+        "unableToDeleteFilter": "Nu se poate șterge filtrul în acest moment."
+    },
+    "firewallRules": {
+        "title": "Reguli Firewall",
+        "createNew": "Creare Nouă",
+        "createNewFirewall": "Creare Regulă Firewall Nouă",
+        "protocol": "Protocol",
+        "destinationIp": "IP Destinație",
+        "destinationPort": "Port Destinație",
+        "sourceIp": "IP Sursă",
+        "sourcePort": "Port Sursă",
+        "xdpAction": "Acțiune XDP",
+        "ipRequired": "Adresa IP este obligatorie",
+        "block": "Blocare",
+        "whitelist": "Listă Albă",
+        "noRulesFound": "Nu s-au găsit reguli!",
+        "deleteRuleConfirm": "Sigur doriți să ștergeți această regulă?",
+        "unableToCreateRule": "Nu se poate crea regula de firewall în acest moment.",
+        "unableToDeleteRule": "Nu se poate șterge regula de firewall în acest moment."
+    },
+    "geoFirewallRules": {
+        "title": "Reguli Firewall Geo",
+        "createNew": "Creare Nouă",
+        "createNewGeoRule": "Creare Regulă Firewall Geo Nouă",
+        "destinationIp": "IP Destinație",
+        "destinationPort": "Port Destinație",
+        "sourceCountry": "Țară Sursă",
+        "sourceAsn": "ASN Sursă",
+        "xdpAction": "Acțiune XDP",
+        "portNo": "Nr. Port",
+        "selectCountry": "Selectare Țară",
+        "asn": "ASN",
+        "block": "Blocare",
+        "whitelist": "Listă Albă",
+        "noRulesFound": "Nu s-au găsit reguli!",
+        "deleteGeoRuleConfirm": "Sigur doriți să ștergeți această regulă geo?",
+        "unableToCreateRule": "Nu se poate crea regula de firewall în acest moment.",
+        "unableToDeleteRule": "Nu se poate șterge regula de firewall geo în acest moment."
+    }
+}

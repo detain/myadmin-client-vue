@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Seznam služeb Scrub IPs",
+        "orderTitle": "Objednat Scrub IPs"
+    },
+    "view": {
+        "title": "Zobrazit Scrub IPs",
+        "currentIp": "Aktuální IP",
+        "ipAddress": "IP adresa",
+        "ipFromService": "IP ze služby"
+    },
+    "filters": {
+        "title": "Filtry",
+        "createNew": "Vytvořit nový",
+        "createNewFilter": "Vytvořit nový filtr",
+        "filterType": "Typ filtru",
+        "selectFilterType": "Vybrat typ filtru",
+        "ipAddress": "IP adresa",
+        "portNo": "Číslo portu",
+        "filter": "Filtr",
+        "destinationIp": "Cílová IP",
+        "destinationPort": "Cílový port",
+        "noFiltersFound": "Žádné filtry nenalezeny!",
+        "deleteFilterConfirm": "Opravdu chcete smazat tento filtr?",
+        "unableToCreateFilter": "Nelze v tuto chvíli vytvořit filtr.",
+        "unableToDeleteFilter": "Nelze v tuto chvíli smazat filtr."
+    },
+    "firewallRules": {
+        "title": "Pravidla brány firewall",
+        "createNew": "Vytvořit nový",
+        "createNewFirewall": "Vytvořit nové pravidlo brány firewall",
+        "protocol": "Protokol",
+        "destinationIp": "Cílová IP",
+        "destinationPort": "Cílový port",
+        "sourceIp": "Zdrojová IP",
+        "sourcePort": "Zdrojový port",
+        "xdpAction": "Akce XDP",
+        "ipRequired": "IP adresa je povinná",
+        "block": "Blokovat",
+        "whitelist": "Bílý seznam",
+        "noRulesFound": "Žádná pravidla nenalezena!",
+        "deleteRuleConfirm": "Opravdu chcete smazat toto pravidlo?",
+        "unableToCreateRule": "Nelze v tuto chvíli vytvořit pravidlo brány firewall.",
+        "unableToDeleteRule": "Nelze v tuto chvíli smazat pravidlo brány firewall."
+    },
+    "geoFirewallRules": {
+        "title": "Geo pravidla brány firewall",
+        "createNew": "Vytvořit nový",
+        "createNewGeoRule": "Vytvořit nové geo pravidlo brány firewall",
+        "destinationIp": "Cílová IP",
+        "destinationPort": "Cílový port",
+        "sourceCountry": "Zdrojová země",
+        "sourceAsn": "Zdrojové ASN",
+        "xdpAction": "Akce XDP",
+        "portNo": "Číslo portu",
+        "selectCountry": "Vybrat zemi",
+        "asn": "ASN",
+        "block": "Blokovat",
+        "whitelist": "Bílý seznam",
+        "noRulesFound": "Žádná pravidla nenalezena!",
+        "deleteGeoRuleConfirm": "Opravdu chcete smazat toto geo pravidlo?",
+        "unableToCreateRule": "Nelze v tuto chvíli vytvořit pravidlo brány firewall.",
+        "unableToDeleteRule": "Nelze v tuto chvíli smazat geo pravidlo brány firewall."
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Manager DNS",
+        "addDomain": "Adaugă Domeniu",
+        "deleteDomain": "Șterge Domeniu",
+        "domainName": "Nume Domeniu",
+        "dnsServers": "Servere DNS",
+        "confirmDelete": "Sigur doriți să ștergeți acest domeniu?",
+        "noDomains": "Nu s-au găsit domenii"
+    },
+    "editor": {
+        "title": "Editor DNS",
+        "addRecord": "Adaugă Înregistrare",
+        "deleteRecord": "Șterge Înregistrare",
+        "editRecord": "Editează Înregistrare",
+        "recordType": "Tip Înregistrare",
+        "hostname": "Nume Gazdă",
+        "address": "Adresă",
+        "distance": "Distanță",
+        "weight": "Greutate",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Acțiuni",
+        "confirmDelete": "Sigur doriți să ștergeți această înregistrare?"
+    }
+}

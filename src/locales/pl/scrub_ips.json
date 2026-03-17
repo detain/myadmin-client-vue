@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lista usług Scrub IPs",
+        "orderTitle": "Zamów Scrub IPs"
+    },
+    "view": {
+        "title": "Wyświetl Scrub IPs",
+        "currentIp": "Aktualne IP",
+        "ipAddress": "Adres IP",
+        "ipFromService": "IP z usługi"
+    },
+    "filters": {
+        "title": "Filtry",
+        "createNew": "Utwórz nowy",
+        "createNewFilter": "Utwórz nowy filtr",
+        "filterType": "Typ filtra",
+        "selectFilterType": "Wybierz typ filtra",
+        "ipAddress": "Adres IP",
+        "portNo": "Nr portu",
+        "filter": "Filtr",
+        "destinationIp": "Docelowe IP",
+        "destinationPort": "Port docelowy",
+        "noFiltersFound": "Nie znaleziono filtrów!",
+        "deleteFilterConfirm": "Czy na pewno chcesz usunąć ten filtr?",
+        "unableToCreateFilter": "Nie można teraz utworzyć filtra.",
+        "unableToDeleteFilter": "Nie można teraz usunąć filtra."
+    },
+    "firewallRules": {
+        "title": "Reguły zapory",
+        "createNew": "Utwórz nową",
+        "createNewFirewall": "Utwórz nową regułę zapory",
+        "protocol": "Protokół",
+        "destinationIp": "Docelowe IP",
+        "destinationPort": "Port docelowy",
+        "sourceIp": "Źródłowe IP",
+        "sourcePort": "Port źródłowy",
+        "xdpAction": "Akcja XDP",
+        "ipRequired": "Adres IP jest wymagany",
+        "block": "Blokuj",
+        "whitelist": "Lista dozwolonych",
+        "noRulesFound": "Nie znaleziono reguł!",
+        "deleteRuleConfirm": "Czy na pewno chcesz usunąć tę regułę?",
+        "unableToCreateRule": "Nie można teraz utworzyć reguły zapory.",
+        "unableToDeleteRule": "Nie można teraz usunąć reguły zapory."
+    },
+    "geoFirewallRules": {
+        "title": "Geograficzne reguły zapory",
+        "createNew": "Utwórz nową",
+        "createNewGeoRule": "Utwórz nową geograficzną regułę zapory",
+        "destinationIp": "Docelowe IP",
+        "destinationPort": "Port docelowy",
+        "sourceCountry": "Kraj źródłowy",
+        "sourceAsn": "Źródłowy ASN",
+        "xdpAction": "Akcja XDP",
+        "portNo": "Nr portu",
+        "selectCountry": "Wybierz kraj",
+        "asn": "ASN",
+        "block": "Blokuj",
+        "whitelist": "Lista dozwolonych",
+        "noRulesFound": "Nie znaleziono reguł!",
+        "deleteGeoRuleConfirm": "Czy na pewno chcesz usunąć tę geograficzną regułę?",
+        "unableToCreateRule": "Nie można teraz utworzyć reguły zapory.",
+        "unableToDeleteRule": "Nie można teraz usunąć geograficznej reguły zapory."
+    }
+}

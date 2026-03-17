@@ -1,0 +1,12 @@
+{
+    "required": "{field} tələb olunur",
+    "email": "Etibarlı e-poçt ünvanı olmalıdır",
+    "minLength": "Ən az {min} simvol olmalıdır",
+    "maxLength": "Ən çox {max} simvol olmalıdır",
+    "passwordMatch": "Şifrələr uyğun olmalıdır",
+    "invalidFormat": "Yanlış format",
+    "numeric": "Rəqəm olmalıdır",
+    "url": "Etibarlı URL olmalıdır",
+    "ipAddress": "Etibarlı IP ünvanı olmalıdır",
+    "hostname": "Etibarlı host adı olmalıdır"
+}

@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs Tsjinsten List",
+        "orderTitle": "Scrub IPs Bestelle"
+    },
+    "view": {
+        "title": "Scrub IPs Besjen",
+        "currentIp": "Huidig IP",
+        "ipAddress": "IP-adres",
+        "ipFromService": "IP fan tsjinst"
+    },
+    "filters": {
+        "title": "Filters",
+        "createNew": "Nij Oanmeitsje",
+        "createNewFilter": "Nij Filter Oanmeitsje",
+        "filterType": "Filtertype",
+        "selectFilterType": "Filtertype Selektearje",
+        "ipAddress": "IP-adres",
+        "portNo": "Poartenûmer",
+        "filter": "Filter",
+        "destinationIp": "Bestimmings IP",
+        "destinationPort": "Bestimmingspoarte",
+        "noFiltersFound": "Gjin filters fûn!",
+        "deleteFilterConfirm": "Binne jo wis dat jo dit filter wiskje wolle?",
+        "unableToCreateFilter": "Kin op dit stuit gjin filter oanmeitsje.",
+        "unableToDeleteFilter": "Kin op dit stuit gjin filter wiskje."
+    },
+    "firewallRules": {
+        "title": "Firewall Regels",
+        "createNew": "Nij Oanmeitsje",
+        "createNewFirewall": "Nije Firewall Regel Oanmeitsje",
+        "protocol": "Protokol",
+        "destinationIp": "Bestimmings IP",
+        "destinationPort": "Bestimmingspoarte",
+        "sourceIp": "Boarne IP",
+        "sourcePort": "Boarnepoarte",
+        "xdpAction": "XDP Aksje",
+        "ipRequired": "IP-adres is fereaske",
+        "block": "Blokkearje",
+        "whitelist": "Wytlist",
+        "noRulesFound": "Gjin regels fûn!",
+        "deleteRuleConfirm": "Binne jo wis dat jo dizze regel wiskje wolle?",
+        "unableToCreateRule": "Kin op dit stuit gjin firewall regel oanmeitsje.",
+        "unableToDeleteRule": "Kin op dit stuit gjin firewall regel wiskje."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Firewall Regels",
+        "createNew": "Nij Oanmeitsje",
+        "createNewGeoRule": "Nije Geo Firewall Regel Oanmeitsje",
+        "destinationIp": "Bestimmings IP",
+        "destinationPort": "Bestimmingspoarte",
+        "sourceCountry": "Boarne Lân",
+        "sourceAsn": "Boarne ASN",
+        "xdpAction": "XDP Aksje",
+        "portNo": "Poartenûmer",
+        "selectCountry": "Lân Selektearje",
+        "asn": "ASN",
+        "block": "Blokkearje",
+        "whitelist": "Wytlist",
+        "noRulesFound": "Gjin regels fûn!",
+        "deleteGeoRuleConfirm": "Binne jo wis dat jo dizze geo-regel wiskje wolle?",
+        "unableToCreateRule": "Kin op dit stuit gjin firewall regel oanmeitsje.",
+        "unableToDeleteRule": "Kin op dit stuit gjin geo-firewall regel wiskje."
+    }
+}

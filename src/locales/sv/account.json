@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Kontoinställningar"
+    },
+    "changePassword": {
+        "title": "Byt lösenord",
+        "cardTitle": "Uppdatera lösenord",
+        "currentPassword": "Nuvarande lösenord",
+        "newPassword": "Nytt lösenord",
+        "confirmPassword": "Bekräfta lösenord",
+        "updatePassword": "Uppdatera lösenord"
+    },
+    "changeUsername": {
+        "title": "Byt användarnamn",
+        "disabled": "Byte av användarnamn är tillfälligt inaktiverat.",
+        "currentUsername": "Nuvarande användarnamn",
+        "newDesiredUsername": "Önskat nytt användarnamn",
+        "confirmationCode": "Bekräftelsekod",
+        "pleaseWait": "Vänta!",
+        "gotError": "Fel uppstod {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktuppgifter",
+        "cardTitle": "Uppdatera kontaktuppgifter",
+        "headsUp": "Obs!",
+        "headsUpMessage": "Även om denna information är frivillig, hjälper det att ge (korrekt) information att berika våra interaktioner och sänka din riskpoäng, vilket ger dig snabbare och mer bekväm tillgång till delar av webbplatsen (t.ex. utan att behöva autentisera ett kreditkort).",
+        "riskScore": "Riskpoäng %",
+        "personalInformation": "Personuppgifter",
+        "name": "Namn",
+        "namePlaceholder": "Johan Svensson",
+        "company": "Företag",
+        "gstinTaxId": "GSTIN Skatte-ID",
+        "gstinPlaceholder": "Skatteidentifikationsnummer för varor och tjänster",
+        "addressLine1": "Adressrad 1",
+        "addressLine2": "Adressrad 2",
+        "cityState": "Stad, Stat",
+        "city": "Stad",
+        "state": "Stat",
+        "country": "Land",
+        "zipcode": "Postnummer",
+        "phoneNo": "Telefonnr",
+        "phoneNumber": "Telefonnummer",
+        "language": "Språk",
+        "auto": "Auto",
+        "currency": "Valuta",
+        "timeZone": "Tidszon",
+        "otherSettings": "Andra inställningar",
+        "disablePasswordResets": "Inaktivera (Glömt lösenordet) lösenordsåterställning.",
+        "disableInvoiceReminders": "Inaktivera e-postpåminnelser om fakturor.",
+        "disableServerInvoiceReminders": "Inaktivera e-postpåminnelser om serverfakturor.",
+        "disableReinstall": "Inaktivera ominstallation.",
+        "alternateEmailInvoices": "Alternativ e-post för fakturor",
+        "alternateEmailInvoicesPlaceholder": "Alternativ e-postadress för att skicka fakturor",
+        "alternateEmailAbuse": "Alternativ e-post för missbruksrapporter",
+        "updateInfo": "Uppdatera uppgifter"
+    }
+}

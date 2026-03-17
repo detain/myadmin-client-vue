@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Liosta Seirbhísí Ríomhphoist",
+        "orderTitle": "Ordaigh Clárúcháin Ríomhphoist"
+    },
+    "view": {
+        "title": "Féach ar Ríomhphost {id}",
+        "package": "Pacáiste",
+        "nextInvoiceDate": "Dáta an Chéad Sonraisc Eile:",
+        "billing": "Billeáil",
+        "billed": "billeáilte:",
+        "statusIs": "Is é an stádas:",
+        "mailApi": "API Ríomhphoist",
+        "usageCount": "Líon Úsáide:",
+        "links": "Naisc",
+        "connectionInfo": "Eolas Naisc",
+        "welcomeEmailConfirm": "An bhfuil tú cinnte gur mhaith leat an ríomhphost fáilte a athsheolachán?",
+        "emailSent": "Ríomhphost Seolta",
+        "emailSentMessage": "Seoladh an ríomhphost fáilte arís. Seiceáil do bhosca isteach."
+    },
+    "order": {
+        "title": "Ordaigh Ríomhphost"
+    },
+    "alerts": {
+        "title": "Foláirimh",
+        "addAlert": "Cuir Foláireamh Leis",
+        "editAlert": "Cuir Foláireamh in Eagar",
+        "noAlerts": "Níor aimsíodh aon fholáirimh"
+    },
+    "delist": {
+        "title": "Díchlárú",
+        "blockedEmails": "Ríomhphoist Blocáilte"
+    },
+    "denyRules": {
+        "title": "Rialacha Séanta",
+        "addRule": "Cuir Riail Leis",
+        "noRules": "Níor aimsíodh aon rialacha séanta"
+    },
+    "logs": {
+        "title": "Logaí",
+        "searchLogs": "Cuardaigh Logaí"
+    },
+    "stats": {
+        "title": "Staitisticí"
+    },
+    "deliverability": {
+        "title": "Inseachadachta"
+    }
+}

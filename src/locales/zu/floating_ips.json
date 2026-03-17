@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Uhlu Lwezinkonzo Ze-IP Ezihukazayo",
+        "orderTitle": "Nika Umyalelo Wokubhalisa Kwe-IP Ezihukazayo"
+    },
+    "view": {
+        "title": "Buka I-IP Ezihukazayo {id}",
+        "package": "Iphakheji",
+        "nextInvoiceDate": "Usuku Lwekheli Lokulandelayo:",
+        "billing": "Ukubhilela",
+        "billed": "ibhilwe:",
+        "statusIs": "Isimo siyini:",
+        "floatingIp": "I-IP Ezihukazayo",
+        "links": "Izixhumanisi",
+        "welcomeEmailConfirm": "Uqinisekile ukuthi ufuna ukuthumela kabusha i-imeyili yamukelekile?",
+        "emailSent": "I-imeyili Ithunyelwe",
+        "emailSentMessage": "I-imeyili yamukelekile ithunyelwe kabusha. Hlola ibhokisi lakho lokungena."
+    },
+    "order": {
+        "title": "Nika Umyalelo We-IP Ezihukazayo"
+    },
+    "changeIp": {
+        "title": "Shintsha I-IP Yomgomo"
+    }
+}

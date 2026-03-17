@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Mndandanda wa Utumiki wa IP Zoyendayenda",
+        "orderTitle": "Ika Dongosolo la Kulemba IP Zoyendayenda"
+    },
+    "view": {
+        "title": "Onani IP Yoyendayenda {id}",
+        "package": "Phukusi",
+        "nextInvoiceDate": "Tsiku Lotsatira la Fatura:",
+        "billing": "Kulipira",
+        "billed": "walipira:",
+        "statusIs": "Mkhalidwe ndi:",
+        "floatingIp": "IP Yoyendayenda",
+        "links": "Maulalo",
+        "welcomeEmailConfirm": "Muli ndi chitsimikiziro chokutumizira imelo yoyambirira?",
+        "emailSent": "Imelo Yatumizidwa",
+        "emailSentMessage": "Imelo yoyambirira yatumizidwanso. Onani inbox yanu."
+    },
+    "order": {
+        "title": "Ika Dongosolo la IP Yoyendayenda"
+    },
+    "changeIp": {
+        "title": "Sinthani IP Yolinga"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Listă Certificate SSL",
+        "orderTitle": "Comandă Înregistrări SSL"
+    },
+    "view": {
+        "title": "Vizualizare SSL {id}",
+        "package": "Pachet",
+        "nextInvoiceDate": "Data Următoarei Facturi:",
+        "billing": "Facturare",
+        "billed": "facturat:",
+        "statusIs": "Starea este:",
+        "orderInfo": "Informații Comandă",
+        "certificateInfo": "Informații Certificat",
+        "links": "Linkuri",
+        "welcomeEmailConfirm": "Sigur doriți să retrimiteți e-mailul de bun venit?",
+        "emailSent": "E-mail Trimis",
+        "emailSentMessage": "E-mailul de bun venit a fost retrimis. Verificați căsuța de intrare."
+    },
+    "order": {
+        "title": "Comandă SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Schimbare E-mail Aprobator",
+        "selectApproverEmail": "Selectare E-mail Aprobator"
+    }
+}

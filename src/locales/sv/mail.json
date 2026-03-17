@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lista över e-posttjänster",
+        "orderTitle": "Beställ e-postregistreringar"
+    },
+    "view": {
+        "title": "Visa e-post {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Nästa fakturadatum:",
+        "billing": "Fakturering",
+        "billed": "fakturerad:",
+        "statusIs": "Status är:",
+        "mailApi": "E-post-API",
+        "usageCount": "Användningsantal:",
+        "links": "Länkar",
+        "connectionInfo": "Anslutningsinformation",
+        "welcomeEmailConfirm": "Är du säker på att du vill skicka om välkomstmejlet?",
+        "emailSent": "E-post skickad",
+        "emailSentMessage": "Välkomstmejlet har skickats om. Kontrollera din inkorg."
+    },
+    "order": {
+        "title": "Beställ e-post"
+    },
+    "alerts": {
+        "title": "Varningar",
+        "addAlert": "Lägg till varning",
+        "editAlert": "Redigera varning",
+        "noAlerts": "Inga varningar hittades"
+    },
+    "delist": {
+        "title": "Ta bort från lista",
+        "blockedEmails": "Blockerade e-postadresser"
+    },
+    "denyRules": {
+        "title": "Neka-regler",
+        "addRule": "Lägg till regel",
+        "noRules": "Inga neka-regler hittades"
+    },
+    "logs": {
+        "title": "Loggar",
+        "searchLogs": "Sök i loggar"
+    },
+    "stats": {
+        "title": "Statistik"
+    },
+    "deliverability": {
+        "title": "Leveransbarhet"
+    }
+}

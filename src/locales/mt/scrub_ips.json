@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Lista tas-Servizzi tal-IPs Scrub",
+        "orderTitle": "Ordna IPs Scrub"
+    },
+    "view": {
+        "title": "Ara l-IPs Scrub",
+        "currentIp": "IP Attwali",
+        "ipAddress": "Indirizz IP",
+        "ipFromService": "IP mis-servizz"
+    },
+    "filters": {
+        "title": "Filtri",
+        "createNew": "Oħloq Ġdid",
+        "createNewFilter": "Oħloq Filtru Ġdid",
+        "filterType": "Tip ta' Filtru",
+        "selectFilterType": "Agħżel Tip ta' Filtru",
+        "ipAddress": "Indirizz IP",
+        "portNo": "Nru. tal-Port",
+        "filter": "Filtru",
+        "destinationIp": "IP tad-Destinazzjoni",
+        "destinationPort": "Port tad-Destinazzjoni",
+        "noFiltersFound": "Ma nstabu l-ebda filtri!",
+        "deleteFilterConfirm": "Ċert li trid tħassar dan il-filtru?",
+        "unableToCreateFilter": "Ma nistax noħloq filtru bħalissa.",
+        "unableToDeleteFilter": "Ma nistax nħassar filtru bħalissa."
+    },
+    "firewallRules": {
+        "title": "Regoli tal-Firewall",
+        "createNew": "Oħloq Ġdid",
+        "createNewFirewall": "Oħloq Regola Ġdida tal-Firewall",
+        "protocol": "Protokoll",
+        "destinationIp": "IP tad-Destinazzjoni",
+        "destinationPort": "Port tad-Destinazzjoni",
+        "sourceIp": "IP tas-Sors",
+        "sourcePort": "Port tas-Sors",
+        "xdpAction": "Azzjoni XDP",
+        "ipRequired": "L-indirizz IP huwa meħtieġ",
+        "block": "Ibblokka",
+        "whitelist": "Lista Bajda",
+        "noRulesFound": "Ma nstabu l-ebda regoli!",
+        "deleteRuleConfirm": "Ċert li trid tħassar din ir-regola?",
+        "unableToCreateRule": "Ma nistax noħloq regola tal-firewall bħalissa.",
+        "unableToDeleteRule": "Ma nistax nħassar regola tal-firewall bħalissa."
+    },
+    "geoFirewallRules": {
+        "title": "Regoli Ġeografiċi tal-Firewall",
+        "createNew": "Oħloq Ġdid",
+        "createNewGeoRule": "Oħloq Regola Ġeografika Ġdida tal-Firewall",
+        "destinationIp": "IP tad-Destinazzjoni",
+        "destinationPort": "Port tad-Destinazzjoni",
+        "sourceCountry": "Pajjiż tas-Sors",
+        "sourceAsn": "ASN tas-Sors",
+        "xdpAction": "Azzjoni XDP",
+        "portNo": "Nru. tal-Port",
+        "selectCountry": "Agħżel Pajjiż",
+        "asn": "ASN",
+        "block": "Ibblokka",
+        "whitelist": "Lista Bajda",
+        "noRulesFound": "Ma nstabu l-ebda regoli!",
+        "deleteGeoRuleConfirm": "Ċert li trid tħassar din ir-regola ġeografika?",
+        "unableToCreateRule": "Ma nistax noħloq regola tal-firewall bħalissa.",
+        "unableToDeleteRule": "Ma nistax nħassar regola ġeografika tal-firewall bħalissa."
+    }
+}

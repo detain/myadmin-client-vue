@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lista över webbhotell",
+        "orderTitle": "Beställ webbplatsregistreringar"
+    },
+    "view": {
+        "title": "Visa webbplats {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Nästa fakturadatum:",
+        "billing": "Fakturering",
+        "billed": "fakturerad",
+        "billingStatusIs": "Faktureringsstatus är:",
+        "hostInfo": "Värdinformation",
+        "username": "Användarnamn:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Inte inställt ännu",
+        "login": "Logga in",
+        "types": "Typer:",
+        "linksLabel": "Länkar:",
+        "manualLogin": "Manuell inloggning",
+        "automaticLogin": "Automatisk inloggning",
+        "clickHere": "Klicka här",
+        "defaultNameservers": "Standard namnservrar",
+        "nameservers": "Namnservrar:",
+        "externalLinks": "Externa länkar",
+        "names": "Namn:",
+        "websitePreview": "Förhandsgranskning av webbplats",
+        "links": "Länkar",
+        "welcomeEmailConfirm": "Är du säker på att du vill skicka om välkomstmejlet?",
+        "emailSent": "E-post skickad",
+        "emailSentMessage": "Välkomstmejlet har skickats om. Kontrollera din inkorg."
+    },
+    "buyIp": {
+        "title": "Köp ytterligare IP-tillägg",
+        "existingAddonIps": "Befintliga tilläggs-IPs",
+        "additionalIp": "Ytterligare IP",
+        "monthlyCost": "Månadskostnad ({symbol})",
+        "costDescription": "Kostnad ({symbol}) varje månad som din webbplats faktureras",
+        "confirmPurchase": "Bekräfta köp",
+        "confirmMessage": "Ytterligare IP-kostnad: {symbol}{cost}/månad. Är du säker på att du vill beställa en ytterligare IP?",
+        "placeOrder": "Lägg beställning",
+        "orderPlaced": "Beställning lagd"
+    },
+    "reverseDns": {
+        "title": "Omvänd DNS",
+        "updateReverseDns": "Uppdatera omvänd DNS"
+    },
+    "downloadBackups": {
+        "title": "Ladda ner säkerhetskopior",
+        "backup": "Säkerhetskopia",
+        "size": "Storlek",
+        "options": "Alternativ"
+    },
+    "migration": {
+        "title": "Migrera din webbplats",
+        "currentWebHostInfo": "Nuvarande webbvärds information",
+        "customerPortalUrl": "Kundportalens URL",
+        "portalExample": "Till exempel: sso.godaddy.com",
+        "registeredUsername": "Registrerat användarnamn / E-post / ID",
+        "password": "Lösenord",
+        "controlPanelUrl": "Kontrollpanelens URL",
+        "controlPanelExample": "Till exempel: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Kontrollpanelens användarnamn",
+        "ftpPassword": "FTP / Kontrollpanelens lösenord",
+        "holdingPageQuestion": "Om webbplatsen är aktiv/populär med hög trafik, kan vi sätta en hållningssida under migreringen?",
+        "specialRequirementsQuestion": "Har den här webbplatsen särskilda krav som PHP-version / Moduler?",
+        "domainRegistryInfo": "Domänregistreringsinformation",
+        "transferDomainQuestion": "Vill du också att vi hjälper dig att överföra domännamnsregistreringen?",
+        "updateNameserversQuestion": "Vill du att vi uppdaterar namnservrarna så snart vi är klara med datamigreringa?",
+        "domainRegistryPortal": "Domänregistrets kundportal",
+        "importantNotes": "Viktiga noteringar",
+        "note1": "Att fylla i det här formuläret öppnar en ny biljett för vår supportavdelning för att påbörja din migrering.",
+        "note2": "Var så komplett och korrekt som möjligt för att undvika förseningar.",
+        "note3": "En typisk migrering slutförs inom 48 till 72 timmar. Ibland längre om mängden data som ska kopieras är stor.",
+        "note4": "Det gamla värdkontot måste vara online och tillgängligt medan vi utför migreringen, annars kan vi stöta på svårigheter.",
+        "note5": "Gör inga uppdateringar på din webbplats medan vi utför migreringen, annars kanske dessa data inte kopieras till det nya webbhotellet."
+    },
+    "order": {
+        "title": "Beställ webbplats"
+    }
+}

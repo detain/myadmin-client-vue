@@ -1,0 +1,12 @@
+{
+    "required": "Tá {field} ag teastáil",
+    "email": "Ní mór seoladh ríomhphoist bailí a bheith ann",
+    "minLength": "Ní mór {min} carachtar ar a laghad a bheith ann",
+    "maxLength": "Ní mór nach mó ná {max} carachtar",
+    "passwordMatch": "Ní mór na pasfhocail a bheith ag teacht le chéile",
+    "invalidFormat": "Formáid neamhbhailí",
+    "numeric": "Ní mór uimhir a bheith ann",
+    "url": "Ní mór URL bailí a bheith ann",
+    "ipAddress": "Ní mór seoladh IP bailí a bheith ann",
+    "hostname": "Ní mór ainm óstaigh bailí a bheith ann"
+}

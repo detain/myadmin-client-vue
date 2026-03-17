@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Oluṣakoso DNS",
+        "addDomain": "Fi Orukọ Agbegbe Kun",
+        "deleteDomain": "Pa Orukọ Agbegbe",
+        "domainName": "Orukọ Agbegbe",
+        "dnsServers": "Awọn Sarvari DNS",
+        "confirmDelete": "Ṣe o da ọ loju pe o fẹ pa orukọ agbegbe yii?",
+        "noDomains": "Ko si awọn orukọ agbegbe ti a ri"
+    },
+    "editor": {
+        "title": "Olùtọ DNS",
+        "addRecord": "Fi Igbasilẹ Kun",
+        "deleteRecord": "Pa Igbasilẹ",
+        "editRecord": "Ṣatunkọ Igbasilẹ",
+        "recordType": "Iru Igbasilẹ",
+        "hostname": "Orukọ Ogun",
+        "address": "Adirẹsi",
+        "distance": "Ijinna",
+        "weight": "Iwuwo",
+        "port": "Ẹnu-ọna",
+        "ttl": "TTL",
+        "actions": "Awọn Iṣe",
+        "confirmDelete": "Ṣe o da ọ loju pe o fẹ pa igbasilẹ yii?"
+    }
+}

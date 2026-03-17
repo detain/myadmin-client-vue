@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Rondedzero yeKubata Kweweb",
+        "orderTitle": "Oda Kushandisa Kwedomain"
+    },
+    "view": {
+        "title": "Ona Webhusaiti {id}",
+        "package": "Pakisi",
+        "nextInvoiceDate": "Zuva Rinotevera reInvoice:",
+        "billing": "Kubhadharwa",
+        "billed": "kubhadharwa",
+        "billingStatusIs": "Mamiriro ekubhadharwa ndi:",
+        "hostInfo": "Ruzivo rweMudzimai",
+        "username": "Zita reshandisi:",
+        "ip": "IP:",
+        "server": "Seva:",
+        "notSetYet": "Haisati yasikwa",
+        "login": "Kupinda",
+        "types": "Mhando:",
+        "linksLabel": "Zvibatanidzo:",
+        "manualLogin": "Kupinda Nemaoko",
+        "automaticLogin": "Kupinda Nemagetsi",
+        "clickHere": "Dzvanya Pano",
+        "defaultNameservers": "Maserver eZita eDefault",
+        "nameservers": "Maserver eZita:",
+        "externalLinks": "Zvibatanidzo zvekune",
+        "names": "Mazita:",
+        "websitePreview": "Kuongorora Webhusaiti",
+        "links": "Zvibatanidzo",
+        "welcomeEmailConfirm": "Une chokwadi here kuti unoda kutumira zvakare imero yokukutsigira?",
+        "emailSent": "Imero Yatumirwa",
+        "emailSentMessage": "Imero yokukutsigira yatumirwa zvakare. Tarisa inbox yako."
+    },
+    "buyIp": {
+        "title": "Tenga IP ye-Add-on Yakawedzerwa",
+        "existingAddonIps": "IPs dze-Add-on dziripo",
+        "additionalIp": "IP Yakawedzerwa",
+        "monthlyCost": "Mutengo weMwedzi ({symbol})",
+        "costDescription": "Mutengo ({symbol}) mwedzi wose webhusaiti yako inobhadharwa",
+        "confirmPurchase": "Simbisa Kutenga",
+        "confirmMessage": "Mutengo weIP yakawedzerwa: {symbol}{cost}/mwedzi. Une chokwadi here kuti unoda kuoda IP yakawedzerwa?",
+        "placeOrder": "Isa Order",
+        "orderPlaced": "Order Yaiswa"
+    },
+    "reverseDns": {
+        "title": "DNS Yokudzokera",
+        "updateReverseDns": "Shandura DNS Yokudzokera"
+    },
+    "downloadBackups": {
+        "title": "Dhawunirodha Backup",
+        "backup": "Backup",
+        "size": "Hukuru",
+        "options": "Sarudzo"
+    },
+    "migration": {
+        "title": "Endesai Webhusaiti Yako",
+        "currentWebHostInfo": "Ruzivo rweMudzimai weWebhu Wazvo",
+        "customerPortalUrl": "URL yePortal yaGona",
+        "portalExample": "Semuenzaniso: sso.godaddy.com",
+        "registeredUsername": "Zita reshandisi / Imero / ID Yakanyoreswa",
+        "password": "Muringi",
+        "controlPanelUrl": "URL yePaneji yokutonga",
+        "controlPanelExample": "Semuenzaniso: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Zita reshandisi rePaneji yokutonga",
+        "ftpPassword": "FTP / Muringi wePaneji yokutonga",
+        "holdingPageQuestion": "Kana saiti iri mubasa / saiti inofamba ine traffic yakawanda, tinogona kuisa peji yokubata munguva yekunyamutsa here?",
+        "specialRequirementsQuestion": "Saiti iyi ine zvinodiwa zvakasarudzika sePHP Version / Modules here?",
+        "domainRegistryInfo": "Ruzivo reRegistry yeDomain",
+        "transferDomainQuestion": "Unodawo kuti tikubatsire kunyamutsa kushandiswa kwedomain yako here?",
+        "updateNameserversQuestion": "Unoda kuti tishandure maserver emazita pano zvino tapedza kunyamutsa data here?",
+        "domainRegistryPortal": "Portal yaGona yeRegistry yeDomain",
+        "importantNotes": "Zvechiremera Zvinodikanwa",
+        "note1": "Kuzadza fomu iyi kuchasara tikiti idzva yedhasibhodhi yedu kuti ritange kunyamutsa kwako.",
+        "note2": "Ndapota ive wakachena uye wakakwana nguva dzose kuti udzivirire kucheneswa.",
+        "note3": "Kunyamutsa kwazvo kwapedza mukati memaawa 48 kusvika 72. Dzimwe nguva kunenge kupfuura kana data yakakura.",
+        "note4": "Akaunti yakare yekubata kweweb inofanira kuva online uye inowanikwa tichinyamutsa, zvingaita kuti tibate zvakaoma.",
+        "note5": "Ndapota usaite shanduko pazviziviso zvako tichinyamutsa, izvo zvinogona kushaikwa pa hosting idzva."
+    },
+    "order": {
+        "title": "Oda Webhusaiti"
+    }
+}

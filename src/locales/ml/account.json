@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "അക്കൗണ്ട് ക്രമീകരണങ്ങൾ"
+    },
+    "changePassword": {
+        "title": "പാസ്‌വേഡ് മാറ്റുക",
+        "cardTitle": "പാസ്‌വേഡ് അപ്‌ഡേറ്റ് ചെയ്യുക",
+        "currentPassword": "നിലവിലെ പാസ്‌വേഡ്",
+        "newPassword": "പുതിയ പാസ്‌വേഡ്",
+        "confirmPassword": "പാസ്‌വേഡ് സ്ഥിരീകരിക്കുക",
+        "updatePassword": "പാസ്‌വേഡ് അപ്‌ഡേറ്റ് ചെയ്യുക"
+    },
+    "changeUsername": {
+        "title": "ഉപയോക്തൃനാമം മാറ്റുക",
+        "disabled": "ഉപയോക്തൃനാമ മാറ്റങ്ങൾ താൽക്കാലികമായി നിഷ്‌ക്രിയമാക്കിയിരിക്കുന്നു.",
+        "currentUsername": "നിലവിലെ ഉപയോക്തൃനാമം",
+        "newDesiredUsername": "ആവശ്യമുള്ള പുതിയ ഉപയോക്തൃനാമം",
+        "confirmationCode": "സ്ഥിരീകരണ കോഡ്",
+        "pleaseWait": "ദയവായി കാത്തിരിക്കുക!",
+        "gotError": "പിശക് ലഭിച്ചു {error}"
+    },
+    "contactInfo": {
+        "title": "ബന്ധപ്പെടൽ വിവരങ്ങൾ",
+        "cardTitle": "ബന്ധപ്പെടൽ വിവരങ്ങൾ അപ്‌ഡേറ്റ് ചെയ്യുക",
+        "headsUp": "ശ്രദ്ധിക്കുക!",
+        "headsUpMessage": "ഈ വിവരങ്ങൾ ഐച്ഛികമാണെങ്കിലും, (കൃത്യമായ) വിവരങ്ങൾ നൽകുന്നത് ഞങ്ങളുടെ ഇടപെടലുകൾ മെച്ചപ്പെടുത്തും.",
+        "riskScore": "റിസ്‌ക് % സ്കോർ",
+        "personalInformation": "വ്യക്തിഗത വിവരങ്ങൾ",
+        "name": "പേര്",
+        "namePlaceholder": "Joe Cool",
+        "company": "കമ്പനി",
+        "gstinTaxId": "GSTIN നികുതി ID",
+        "gstinPlaceholder": "ചരക്കും സേവനവും നികുതിദായക തിരിച്ചറിയൽ നമ്പർ",
+        "addressLine1": "വിലാസ വരി 1",
+        "addressLine2": "വിലാസ വരി 2",
+        "cityState": "നഗരം, സംസ്ഥാനം",
+        "city": "നഗരം",
+        "state": "സംസ്ഥാനം",
+        "country": "രാജ്യം",
+        "zipcode": "പിൻകോഡ്",
+        "phoneNo": "ഫോൺ നം",
+        "phoneNumber": "ഫോൺ നമ്പർ",
+        "language": "ഭാഷ",
+        "auto": "ഓട്ടോ",
+        "currency": "കറൻസി",
+        "timeZone": "സമയ മേഖല",
+        "otherSettings": "മറ്റ് ക്രമീകരണങ്ങൾ",
+        "disablePasswordResets": "പാസ്‌വേഡ് റീസെറ്റ് നിഷ്‌ക്രിയമാക്കുക.",
+        "disableInvoiceReminders": "ഇൻവോയ്‌സ് ഓർമ്മപ്പെടുത്തൽ ഇ-മെയിൽ അറിയിപ്പുകൾ നിഷ്‌ക്രിയമാക്കുക.",
+        "disableServerInvoiceReminders": "സർവർ ഇൻവോയ്‌സ് ഓർമ്മപ്പെടുത്തൽ ഇ-മെയിൽ അറിയിപ്പുകൾ നിഷ്‌ക്രിയമാക്കുക.",
+        "disableReinstall": "പുനഃസ്ഥാപനം നിഷ്‌ക്രിയമാക്കുക.",
+        "alternateEmailInvoices": "ഇൻവോയ്‌സുകൾക്കുള്ള ഇതര ഇ-മെയിൽ",
+        "alternateEmailInvoicesPlaceholder": "ഇൻവോയ്‌സ് അയക്കാനുള്ള ബദൽ ഇ-മെയിൽ",
+        "alternateEmailAbuse": "ദുരുപയോഗ റിപ്പോർട്ടുകൾക്കുള്ള ഇതര ഇ-മെയിൽ",
+        "updateInfo": "വിവരങ്ങൾ അപ്‌ഡേറ്റ് ചെയ്യുക"
+    }
+}

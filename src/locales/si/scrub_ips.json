@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IPs සේවා ලැයිස්තුව",
+        "orderTitle": "Scrub IPs ඇණවුම් කරන්න"
+    },
+    "view": {
+        "title": "Scrub IPs බලන්න",
+        "currentIp": "වර්තමාන IP",
+        "ipAddress": "IP ලිපිනය",
+        "ipFromService": "සේවාවෙන් IP"
+    },
+    "filters": {
+        "title": "පෙරහන්",
+        "createNew": "නව සාදන්න",
+        "createNewFilter": "නව පෙරහනක් සාදන්න",
+        "filterType": "පෙරහන් වර්ගය",
+        "selectFilterType": "පෙරහන් වර්ගය තෝරන්න",
+        "ipAddress": "IP ලිපිනය",
+        "portNo": "Port අංකය",
+        "filter": "පෙරහන",
+        "destinationIp": "ගමනාන්ත IP",
+        "destinationPort": "ගමනාන්ත Port",
+        "noFiltersFound": "පෙරහන් හමු නොවීය!",
+        "deleteFilterConfirm": "ඔබ මෙම පෙරහන ඉවත් කිරීමට නිශ්චිතද?",
+        "unableToCreateFilter": "දැනට පෙරහනක් සාදා ගත නොහැක.",
+        "unableToDeleteFilter": "දැනට පෙරහනක් ඉවත් කිරීමට නොහැක."
+    },
+    "firewallRules": {
+        "title": "Firewall නීති",
+        "createNew": "නව සාදන්න",
+        "createNewFirewall": "නව Firewall නීතියක් සාදන්න",
+        "protocol": "ප්‍රොටොකෝලය",
+        "destinationIp": "ගමනාන්ත IP",
+        "destinationPort": "ගමනාන්ත Port",
+        "sourceIp": "මූලාශ්‍ර IP",
+        "sourcePort": "මූලාශ්‍ර Port",
+        "xdpAction": "XDP ක්‍රියාව",
+        "ipRequired": "IP ලිපිනය අවශ්‍යයි",
+        "block": "අවහිර කරන්න",
+        "whitelist": "Whitelist",
+        "noRulesFound": "නීති හමු නොවීය!",
+        "deleteRuleConfirm": "ඔබ මෙම නීතිය ඉවත් කිරීමට නිශ්චිතද?",
+        "unableToCreateRule": "දැනට firewall නීතියක් සාදා ගත නොහැක.",
+        "unableToDeleteRule": "දැනට firewall නීතියක් ඉවත් කිරීමට නොහැක."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Firewall නීති",
+        "createNew": "නව සාදන්න",
+        "createNewGeoRule": "නව Geo Firewall නීතියක් සාදන්න",
+        "destinationIp": "ගමනාන්ත IP",
+        "destinationPort": "ගමනාන්ත Port",
+        "sourceCountry": "මූලාශ්‍ර රට",
+        "sourceAsn": "මූලාශ්‍ර ASN",
+        "xdpAction": "XDP ක්‍රියාව",
+        "portNo": "Port අංකය",
+        "selectCountry": "රට තෝරන්න",
+        "asn": "ASN",
+        "block": "අවහිර කරන්න",
+        "whitelist": "Whitelist",
+        "noRulesFound": "නීති හමු නොවීය!",
+        "deleteGeoRuleConfirm": "ඔබ මෙම geo නීතිය ඉවත් කිරීමට නිශ්චිතද?",
+        "unableToCreateRule": "දැනට firewall නීතියක් සාදා ගත නොහැක.",
+        "unableToDeleteRule": "දැනට geo firewall නීතියක් ඉවත් කිරීමට නොහැක."
+    }
+}

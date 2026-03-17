@@ -1,0 +1,12 @@
+{
+    "required": "{field} inodiwa",
+    "email": "Inofanira kuva kero yeimeli yakanaka",
+    "minLength": "Inofanira kuva nemavara mazhinji {min}",
+    "maxLength": "Inofanira kusawanda kupfuura mavara {max}",
+    "passwordMatch": "Mhapo dzinofanira kufanana",
+    "invalidFormat": "Fomati isina kunaka",
+    "numeric": "Inofanira kuva nhamba",
+    "url": "Inofanira kuva URL yakanaka",
+    "ipAddress": "Inofanira kuva kero yeIP yakanaka",
+    "hostname": "Inofanira kuva hostname yakanaka"
+}

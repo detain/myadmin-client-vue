@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "ליצנז רשימה",
+        "orderTitle": "באשטעלן ליצנז רעגיסטראציעס"
+    },
+    "view": {
+        "title": "קוקן ליצנז {id}",
+        "package": "פאקעט",
+        "nextInvoiceDate": "נעקסטע חשבון דאטום:",
+        "billing": "רעכענונג",
+        "billed": "רעכנט:",
+        "statusIs": "סטאטוס איז:",
+        "licenseInfo": "ליצנז אינפארמאציע",
+        "cpanelInfo": "cPanel אינפארמאציע",
+        "links": "לינקס",
+        "welcomeEmailConfirm": "זייט איר זיכער אז איר ווילט צוריקשיקן דעם באגריסונגס-בריוו?",
+        "emailSent": "בריוו אריבערגעשיקט",
+        "emailSentMessage": "דער באגריסונגס-בריוו איז צוריקגעשיקט. קוקט אין אייער אריינגעקומענע פאסט."
+    },
+    "order": {
+        "title": "באשטעלן ליצנז"
+    },
+    "changeIp": {
+        "title": "ענדערן IP"
+    },
+    "changeOs": {
+        "title": "ענדערן OS",
+        "selectLicenseOs": "אויסוועלן ליצנז OS"
+    }
+}

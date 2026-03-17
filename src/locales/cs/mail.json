@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Seznam poštovních služeb",
+        "orderTitle": "Objednat poštovní registrace"
+    },
+    "view": {
+        "title": "Zobrazit poštu {id}",
+        "package": "Balíček",
+        "nextInvoiceDate": "Datum příští faktury:",
+        "billing": "Fakturace",
+        "billed": "účtováno:",
+        "statusIs": "Stav je:",
+        "mailApi": "Poštovní API",
+        "usageCount": "Počet použití:",
+        "links": "Odkazy",
+        "connectionInfo": "Informace o připojení",
+        "welcomeEmailConfirm": "Opravdu chcete znovu odeslat uvítací e-mail?",
+        "emailSent": "E-mail odeslán",
+        "emailSentMessage": "Uvítací e-mail byl znovu odeslán. Zkontrolujte svou schránku."
+    },
+    "order": {
+        "title": "Objednat poštu"
+    },
+    "alerts": {
+        "title": "Upozornění",
+        "addAlert": "Přidat upozornění",
+        "editAlert": "Upravit upozornění",
+        "noAlerts": "Žádná upozornění nenalezena"
+    },
+    "delist": {
+        "title": "Odebrat ze seznamu",
+        "blockedEmails": "Blokované e-maily"
+    },
+    "denyRules": {
+        "title": "Pravidla odmítnutí",
+        "addRule": "Přidat pravidlo",
+        "noRules": "Žádná pravidla odmítnutí nenalezena"
+    },
+    "logs": {
+        "title": "Záznamy",
+        "searchLogs": "Prohledat záznamy"
+    },
+    "stats": {
+        "title": "Statistiky"
+    },
+    "deliverability": {
+        "title": "Doručitelnost"
+    }
+}

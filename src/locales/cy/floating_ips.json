@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Rhestr Gwasanaethau IPau Arnofio",
+        "orderTitle": "Archebu Cofrestriadau IP Arnofio"
+    },
+    "view": {
+        "title": "Gweld IP Arnofio {id}",
+        "package": "Pecyn",
+        "nextInvoiceDate": "Dyddiad Anfoneb Nesaf:",
+        "billing": "Bilio",
+        "billed": "wedi'i filio:",
+        "statusIs": "Mae'r statws yn:",
+        "floatingIp": "IP Arnofio",
+        "links": "Dolenni",
+        "welcomeEmailConfirm": "Ydych chi'n siŵr eich bod am ailanfon yr e-bost croeso?",
+        "emailSent": "E-bost Wedi'i Anfon",
+        "emailSentMessage": "Mae'r e-bost croeso wedi'i ailanfon. Gwiriwch eich blwch derbyn."
+    },
+    "order": {
+        "title": "Archebu IP Arnofio"
+    },
+    "changeIp": {
+        "title": "Newid IP Targed"
+    }
+}

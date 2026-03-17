@@ -1,0 +1,28 @@
+{
+    "title": "Panou de Control",
+    "welcome": "Bun venit, {name}",
+    "lastLogin": "Ultima Conectare",
+    "lastLoginIp": "IP Ultima Conectare",
+    "prepay": {
+        "title": "Sold PrePlată",
+        "remainingBalance": "Sold Rămas PrePlată",
+        "manageAccount": "Gestionare Cont",
+        "manageTooltip": "Gestionați Contul PrePlată"
+    },
+    "invoices": {
+        "title": "Facturi Neplătite",
+        "totalUnpaid": "Total Facturi Neplătite",
+        "totalAmount": "Suma Totală de Plătit",
+        "payTotalTooltip": "Plătește Suma Totală"
+    },
+    "callInPin": "PIN Apel Telefonic",
+    "recentTickets": "Tichete Recente",
+    "viewAllTickets": "Vizualizare Toate Tichetele",
+    "editTicket": "Editare Tichet",
+    "serviceCount": "Niciun serviciu activ | {count} serviciu activ | {count} servicii active",
+    "affiliate": {
+        "earnPerSale": "Câștigă {amount} Per Vânzare",
+        "urlPlaceholder": "URL Afiliat",
+        "shareWith": "Distribuie cu"
+    }
+}
