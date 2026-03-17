@@ -21,7 +21,17 @@
     "softReboot": "Soft Reboot",
     "paymentStatus": "Bezuelungsstatus:",
     "emailSent": "E-Mail geschéckt",
-    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang."
+    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
+    "unBilled": "Net verrechent",
+    "orderedOn": "Bestellt den:",
+    "moreInfo": "Méi Infoen",
+    "cycle": "Zyklus",
+    "reset": "Zrécksetzen",
+    "on": "Un",
+    "off": "Aus",
+    "unknown": "Onbekannt",
+    "noLease": "Kee Lease",
+    "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
   },
   "order": {
     "title": "Server bestalln",
@@ -43,6 +53,58 @@
     "buyNow": "Elo kafen",
     "monthly": "Monatlech",
     "perMonth": "/Mount",
-    "confirmOrder": "Bestellung confirméieren"
+    "confirmOrder": "Bestellung confirméieren",
+    "orderDedicated": "Dedizéiert bestellen",
+    "customizeOrder": "Bestellung personaliséieren",
+    "hostnameExample": "Beispill: server.hostname.com",
+    "hostnameHelp": "Benotzt den Hostname fir de Server z'identifizéieren. D'Domän muss net valide oder registréiert sinn. Een Punkt ass erfuerderlech. Aner Beispiller: database.local, web.server oder your.name.",
+    "passwordRequirement": "Notiz: D'Passwuert muss mindestens 8 Zeechen, ee Klengbuchstaf, ee Groussbuchstaf, eng Zuel, e spezielle Zeechen enthalen.",
+    "comments": "Kommentaren",
+    "addToCart": "An de Wuerekuerf",
+    "monthlyTotal": "Monatleche Gesamtbetrag",
+    "serverRegion": "Serverregioun",
+    "enterServerDetails": "Serverdetailer aginn",
+    "currentlySoldOut": "Momentan ausverkaaf!",
+    "contactSales": "Wannechgelift kontaktéiert eisen Verkafsservice.",
+    "autoRenewNotice": "D'Abonnement gëtt automatesch all Mount fir {cost} verlängert bis zur Kündegung.",
+    "tosAcknowledgement": "Mat dësem Häkchen bestätegt Dir, datt Dir en Abonnementprodukt kaaft, dat automatesch verlängert gëtt (wéi uewen beschriwwen) a vun der Kreditkaart, déi Dir haut uginn, belast gëtt. Wann Dir Är automatesch Verlängerung wëllt kënzegen, kënnt Dir op de Clientsportal zougräifen, den aktive Service auswählen a op de Link Kündegen klicken oder eng E-Mail schécken un: billing{'@'}interserver.net oder eng aner Method benotzen, déi an den Allgemenge Geschäftsbedingunge beschriwwen ass. Mat dësem Häkchen a Klick op Meng Bestellung opginn bestätegt Dir och, datt Dir eis Allgemeng Geschäftsbedingungen a Dateschutzrichtlinie gelies, verstanen a mat hinnen averstanen sidd.",
+    "continue": "Weider",
+    "selectCpu": "CPU auswählen",
+    "selectDrives": "Laufwierker auswählen",
+    "selectedDrives": "Ausgewählte Laufwierker",
+    "noDrivesSelected": "Keng Laufwierker ausgewählt",
+    "totalDrives": "Gesamtlaufwierker",
+    "selectBandwidth": "Bandbreede auswählen",
+    "selectIps": "IPs auswählen",
+    "selectControlPanel": "Kontrollpanel auswählen",
+    "selectRaid": "RAID auswählen",
+    "setupTime": "Opsetzzäit",
+    "showMore": "Méi weisen",
+    "showLess": "Manner weisen",
+    "editDetails": "Detailer änneren",
+    "backToOptions": "Zréck zu den Optiounen"
+  },
+  "reverseDns": {
+    "title": "Ëmgekéiert DNS Astellungen",
+    "changeWarning": "Ännerunge brauchen bis zu enger Stonn.",
+    "ipAddresses": "IP-Adressen",
+    "hostnames": "Hostnimm",
+    "updateReverseDns": "Ëmgekéierten DNS aktualiséieren"
+  },
+  "bandwidthGraph": {
+    "title": "Bandbreedegraphiken",
+    "graphTitle": "Bandbreedegraphik"
+  },
+  "ipmiLive": {
+    "title": "IPMI IP",
+    "whatThisDoes": "Wat mécht dat?",
+    "description": "Gëtt eng Live-IP un de IPMI-Controller, ageschränkt op Är IP a limitéiert op 24 Stonnen.",
+    "emailIpmiCredentials": "IPMI Umeldedaten per E-Mail schécken",
+    "assetId": "Asset ID",
+    "serverId": "Server ID",
+    "hostname": "Hostname",
+    "serverIp": "Server IP",
+    "serverIpmi": "Server IPMI",
+    "yourIpAddress": "Är IP-Adress"
   }
 }

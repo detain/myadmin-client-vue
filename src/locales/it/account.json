@@ -44,6 +44,14 @@
     "disableInvoiceReminders": "Disabilita Notifiche Email Promemoria Fattura.",
     "alternateEmailInvoices": "Email Alternativa per Fatture",
     "alternateEmailAbuse": "Email Alternativa per Segnalazioni di Abuso",
-    "updateInfo": "Aggiorna Informazioni"
+    "updateInfo": "Aggiorna Informazioni",
+    "namePlaceholder": "Mario Rossi",
+    "gstinTaxId": "Codice Fiscale GSTIN",
+    "gstinPlaceholder": "Numero identificativo contribuente per beni e servizi",
+    "cityState": "Città, Provincia",
+    "phoneNo": "Numero di telefono",
+    "disableServerInvoiceReminders": "Disabilita le notifiche email di promemoria fattura server.",
+    "disableReinstall": "Disabilita reinstallazione.",
+    "alternateEmailInvoicesPlaceholder": "Email alternativa per l'invio delle fatture"
   }
 }

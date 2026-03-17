@@ -20,7 +20,10 @@
     "destinationIp": "Paskirties IP",
     "destinationPort": "Paskirties prievadas",
     "noFiltersFound": "Filtrų nerasta!",
-    "deleteFilterConfirm": "Ar tikrai norite ištrinti šį filtrą?"
+    "deleteFilterConfirm": "Ar tikrai norite ištrinti šį filtrą?",
+    "selectFilterType": "Pasirinkite filtro tipą",
+    "unableToCreateFilter": "Šiuo metu nepavyksta sukurti filtro.",
+    "unableToDeleteFilter": "Šiuo metu nepavyksta ištrinti filtro."
   },
   "firewallRules": {
     "title": "Ugniasienės taisyklės",
@@ -31,7 +34,14 @@
     "block": "Blokuoti",
     "whitelist": "Baltasis sąrašas",
     "noRulesFound": "Taisyklių nerasta!",
-    "deleteRuleConfirm": "Ar tikrai norite ištrinti šią taisyklę?"
+    "deleteRuleConfirm": "Ar tikrai norite ištrinti šią taisyklę?",
+    "createNew": "Sukurti naują",
+    "destinationPort": "Paskirties prievadas",
+    "sourcePort": "Šaltinio prievadas",
+    "xdpAction": "XDP veiksmas",
+    "ipRequired": "IP adresas yra privalomas",
+    "unableToCreateRule": "Šiuo metu nepavyksta sukurti ugniasienės taisyklės.",
+    "unableToDeleteRule": "Šiuo metu nepavyksta ištrinti ugniasienės taisyklės."
   },
   "geoFirewallRules": {
     "title": "Geografinės ugniasienės taisyklės",
@@ -43,6 +53,13 @@
     "block": "Blokuoti",
     "whitelist": "Baltasis sąrašas",
     "noRulesFound": "Taisyklių nerasta!",
-    "deleteGeoRuleConfirm": "Ar tikrai norite ištrinti šią geografinę taisyklę?"
+    "deleteGeoRuleConfirm": "Ar tikrai norite ištrinti šią geografinę taisyklę?",
+    "createNew": "Sukurti naują",
+    "destinationPort": "Paskirties prievadas",
+    "xdpAction": "XDP veiksmas",
+    "portNo": "Prievado nr.",
+    "asn": "ASN",
+    "unableToCreateRule": "Šiuo metu nepavyksta sukurti ugniasienės taisyklės.",
+    "unableToDeleteRule": "Šiuo metu nepavyksta ištrinti geo ugniasienės taisyklės."
   }
 }

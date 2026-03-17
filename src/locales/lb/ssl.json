@@ -14,7 +14,8 @@
     "certificateInfo": "Zertifikatsinformatioun",
     "links": "Linken",
     "emailSent": "E-Mail geschéckt",
-    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang."
+    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
+    "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
   },
   "order": {
     "title": "SSL bestalln"

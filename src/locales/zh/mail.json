@@ -1,11 +1,49 @@
 {
-    "list": { "title": "邮件服务列表", "orderTitle": "订购邮件注册" },
-    "view": { "title": "查看邮件 {id}", "package": "套餐", "nextInvoiceDate": "下次发票日期：", "billing": "账单", "billed": "已计费：", "statusIs": "状态：", "mailApi": "邮件 API", "usageCount": "使用次数：", "links": "链接", "connectionInfo": "连接信息", "emailSent": "邮件已发送", "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。" },
-    "order": { "title": "订购邮件" },
-    "alerts": { "title": "警报", "addAlert": "添加警报", "editAlert": "编辑警报", "noAlerts": "未找到警报" },
-    "delist": { "title": "移出黑名单", "blockedEmails": "被封锁的邮件" },
-    "denyRules": { "title": "拒绝规则", "addRule": "添加规则", "noRules": "未找到拒绝规则" },
-    "logs": { "title": "日志", "searchLogs": "搜索日志" },
-    "stats": { "title": "统计" },
-    "deliverability": { "title": "送达率" }
+  "list": {
+    "title": "邮件服务列表",
+    "orderTitle": "订购邮件注册"
+  },
+  "view": {
+    "title": "查看邮件 {id}",
+    "package": "套餐",
+    "nextInvoiceDate": "下次发票日期：",
+    "billing": "账单",
+    "billed": "已计费：",
+    "statusIs": "状态：",
+    "mailApi": "邮件 API",
+    "usageCount": "使用次数：",
+    "links": "链接",
+    "connectionInfo": "连接信息",
+    "emailSent": "邮件已发送",
+    "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。",
+    "welcomeEmailConfirm": "您确定要重新发送欢迎邮件吗？"
+  },
+  "order": {
+    "title": "订购邮件"
+  },
+  "alerts": {
+    "title": "警报",
+    "addAlert": "添加警报",
+    "editAlert": "编辑警报",
+    "noAlerts": "未找到警报"
+  },
+  "delist": {
+    "title": "移出黑名单",
+    "blockedEmails": "被封锁的邮件"
+  },
+  "denyRules": {
+    "title": "拒绝规则",
+    "addRule": "添加规则",
+    "noRules": "未找到拒绝规则"
+  },
+  "logs": {
+    "title": "日志",
+    "searchLogs": "搜索日志"
+  },
+  "stats": {
+    "title": "统计"
+  },
+  "deliverability": {
+    "title": "送达率"
+  }
 }

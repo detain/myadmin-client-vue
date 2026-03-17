@@ -24,7 +24,18 @@
     "updateComment": "Atjaunināt komentāru",
     "saveChanges": "Saglabāt izmaiņas",
     "emailSent": "E-pasts nosūtīts",
-    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni."
+    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni.",
+    "hostServer": "Galvenais serveris:",
+    "ipIs": "IP ir:",
+    "vzid": "Vzid:",
+    "comment": "Komentārs:",
+    "none": "nav",
+    "connections": "Savienojumi",
+    "vncInfo": "VNC informācija",
+    "spiceInfo": "Spice informācija",
+    "noDataToShow": "Nav datu ko rādīt",
+    "ipInformation": "IP informācija",
+    "welcomeEmailConfirm": "Vai tiešām vēlaties atkārtoti nosūtīt sveiciena e-pastu?"
   },
   "order": {
     "title": "Pasūtīt ātrās izvietošanas serveri",
@@ -38,6 +49,19 @@
     "operatingSystem": "Operētājsistēma",
     "agreeToTerms": "Piekrītu piedāvājuma noteikumiem",
     "iAgreeToTerms": "Esmu izlasījis iepriekš minētos noteikumus un piekrītu tiem.",
-    "placeOrder": "Veikt pasūtījumu"
+    "placeOrder": "Veikt pasūtījumu",
+    "qsNo": "QS NR.",
+    "quickserver": "ĀTRAIS SERVERIS",
+    "ram": "RAM",
+    "hdd": "HDD",
+    "cores": "KODOLI",
+    "passwordRequirement": "Piezīme: parolei jāsatur vismaz 8 rakstzīmes, viens mazais burts, viens lielais burts, viens cipars un speciāla rakstzīme.",
+    "rapidDeployServer": "Ātrās izvietošanas serveris",
+    "oneMonth": "1 mēnesis",
+    "packageCost": "Pakotnes izmaksas",
+    "currentlySoldOut": "Pašlaik izpārdots!",
+    "contactSales": "Lūdzu, sazinieties ar mūsu pārdošanas nodaļu.",
+    "editDetails": "Rediģēt datus",
+    "quickServerId": "QuickServer ID"
   }
 }

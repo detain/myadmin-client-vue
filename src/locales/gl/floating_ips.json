@@ -1,1 +1,25 @@
-{ "list": { "title": "Lista de servizos de IPs flotantes", "orderTitle": "Pedir rexistros de IPs flotantes" }, "view": { "title": "Ver IP flotante {id}", "package": "Paquete", "nextInvoiceDate": "Data da próxima factura:", "billing": "Facturación", "billed": "facturado:", "statusIs": "O estado é:", "floatingIp": "IP flotante", "links": "Ligazóns", "emailSent": "Correo enviado", "emailSentMessage": "O correo de benvida foi reenviado. Comprobe a súa caixa de entrada." }, "order": { "title": "Pedir IP flotante" }, "changeIp": { "title": "Cambiar IP de destino" } }
+{
+  "list": {
+    "title": "Lista de servizos de IPs flotantes",
+    "orderTitle": "Pedir rexistros de IPs flotantes"
+  },
+  "view": {
+    "title": "Ver IP flotante {id}",
+    "package": "Paquete",
+    "nextInvoiceDate": "Data da próxima factura:",
+    "billing": "Facturación",
+    "billed": "facturado:",
+    "statusIs": "O estado é:",
+    "floatingIp": "IP flotante",
+    "links": "Ligazóns",
+    "emailSent": "Correo enviado",
+    "emailSentMessage": "O correo de benvida foi reenviado. Comprobe a súa caixa de entrada.",
+    "welcomeEmailConfirm": "¿Está seguro de que quere reenviar o correo de benvida?"
+  },
+  "order": {
+    "title": "Pedir IP flotante"
+  },
+  "changeIp": {
+    "title": "Cambiar IP de destino"
+  }
+}

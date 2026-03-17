@@ -21,7 +21,17 @@
     "softReboot": "ソフト再起動",
     "paymentStatus": "支払いステータス:",
     "emailSent": "メール送信済み",
-    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。"
+    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。",
+    "unBilled": "未請求",
+    "orderedOn": "注文日:",
+    "moreInfo": "詳細情報",
+    "cycle": "サイクル",
+    "reset": "リセット",
+    "on": "オン",
+    "off": "オフ",
+    "unknown": "不明",
+    "noLease": "リースなし",
+    "welcomeEmailConfirm": "ウェルカムメールを再送してもよろしいですか？"
   },
   "order": {
     "title": "サーバーを注文",
@@ -43,6 +53,58 @@
     "buyNow": "今すぐ購入",
     "monthly": "月額",
     "perMonth": "/月",
-    "confirmOrder": "注文を確認"
+    "confirmOrder": "注文を確認",
+    "orderDedicated": "専用サーバーを注文",
+    "customizeOrder": "注文をカスタマイズ",
+    "hostnameExample": "例：server.hostname.com",
+    "hostnameHelp": "ホスト名を使用してサーバーを識別します。ドメインは有効である必要も登録されている必要もありません。ホスト名にはピリオドが1つ必要です。その他の例：database.local、web.server、your.name。",
+    "passwordRequirement": "注意：パスワードには少なくとも8文字、小文字1文字、大文字1文字、数字1文字、特殊文字1文字が必要です。",
+    "comments": "コメント",
+    "addToCart": "カートに追加",
+    "monthlyTotal": "月額合計",
+    "serverRegion": "サーバーリージョン",
+    "enterServerDetails": "サーバー詳細を入力",
+    "currentlySoldOut": "現在売り切れです！",
+    "contactSales": "営業部門にお問い合わせください。",
+    "autoRenewNotice": "サブスクリプションはキャンセルされるまで毎月{cost}で自動更新されます。",
+    "tosAcknowledgement": "このボックスをチェックすることで、自動更新されるサブスクリプション製品（上記の条件に従って）を購入し、本日提供するクレジットカードに請求されることを承認します。自動更新をキャンセルしたい場合は、顧客ポータルにアクセスしてアクティブなサービスを選択してキャンセルリンクをクリックするか、billing{'@'}interserver.netにメールするか、利用規約に記載された別の方法を使用してください。ボックスをチェックして注文を確定することで、利用規約とプライバシーポリシーを読み、理解し、同意したことを認めます。",
+    "continue": "続ける",
+    "selectCpu": "CPUを選択",
+    "selectDrives": "ドライブを選択",
+    "selectedDrives": "選択済みドライブ",
+    "noDrivesSelected": "ドライブが選択されていません",
+    "totalDrives": "合計ドライブ数",
+    "selectBandwidth": "帯域幅を選択",
+    "selectIps": "IPを選択",
+    "selectControlPanel": "コントロールパネルを選択",
+    "selectRaid": "RAIDを選択",
+    "setupTime": "セットアップ時間",
+    "showMore": "もっと見る",
+    "showLess": "少なく表示",
+    "editDetails": "詳細を編集",
+    "backToOptions": "オプションに戻る"
+  },
+  "reverseDns": {
+    "title": "逆引きDNS設定",
+    "changeWarning": "逆引きDNSの変更が反映されるまで最大1時間かかります。",
+    "ipAddresses": "IPアドレス",
+    "hostnames": "ホスト名",
+    "updateReverseDns": "逆引きDNSを更新"
+  },
+  "bandwidthGraph": {
+    "title": "帯域幅グラフ",
+    "graphTitle": "帯域幅グラフ"
+  },
+  "ipmiLive": {
+    "title": "IPMI IP",
+    "whatThisDoes": "これは何をしますか？",
+    "description": "あなたのIPに制限され、24時間の使用に限定されたライブIPをIPMIコントローラーに提供します。",
+    "emailIpmiCredentials": "IPMI認証情報をメール送信",
+    "assetId": "アセットID",
+    "serverId": "サーバーID",
+    "hostname": "ホスト名",
+    "serverIp": "サーバーIP",
+    "serverIpmi": "サーバーIPMI",
+    "yourIpAddress": "あなたのIPアドレス"
   }
 }

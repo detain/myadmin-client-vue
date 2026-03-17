@@ -44,6 +44,14 @@
     "disableInvoiceReminders": "Nonaktipkeun Notifikasi Email Pengingat Invoice.",
     "alternateEmailInvoices": "Email Alternatip pikeun Invoice",
     "alternateEmailAbuse": "Email Alternatip pikeun Laporan Penyalahgunaan",
-    "updateInfo": "Apdet Inpo"
+    "updateInfo": "Apdet Inpo",
+    "namePlaceholder": "Joe Cool",
+    "gstinTaxId": "GSTIN ID Pajak",
+    "gstinPlaceholder": "Nomor Identifikasi Wajib Pajak Barang sareng Jasa",
+    "cityState": "Kota, Propinsi",
+    "phoneNo": "No. Telepon",
+    "disableServerInvoiceReminders": "Nonaktifkeun Notifikasi Email Pamingetan Invoice Server.",
+    "disableReinstall": "Nonaktifkeun Reinstall.",
+    "alternateEmailInvoicesPlaceholder": "Email alternatif pikeun ngirim invoice"
   }
 }

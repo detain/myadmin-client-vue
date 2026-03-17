@@ -1,1 +1,65 @@
-{ "list": { "title": "Purigaj IP-oj Servoj Listo", "orderTitle": "Mendi Purigajn IP-ojn" }, "view": { "title": "Vidi Purigajn IP-ojn", "currentIp": "Nuna IP", "ipAddress": "IP-Adreso", "ipFromService": "IP de Servo" }, "filters": { "title": "Filtriloj", "createNew": "Krei Novan", "createNewFilter": "Krei Novan Filtrilon", "filterType": "Filtrila Tipo", "ipAddress": "IP-Adreso", "portNo": "Havena Numero", "filter": "Filtrilo", "destinationIp": "Cela IP", "destinationPort": "Cela Haveno", "noFiltersFound": "Neniuj filtriloj trovitaj!", "deleteFilterConfirm": "Ĉu vi certas ke vi volas forigi ĉi tiun filtrilon?" }, "firewallRules": { "title": "Fajromura Reguloj", "createNewFirewall": "Krei Novan Fajmuran Regulon", "protocol": "Protokolo", "destinationIp": "Cela IP", "sourceIp": "Fonta IP", "block": "Bloki", "whitelist": "Blanklisto", "noRulesFound": "Neniuj reguloj trovitaj!", "deleteRuleConfirm": "Ĉu vi certas ke vi volas forigi ĉi tiun regulon?" }, "geoFirewallRules": { "title": "Geo Fajromura Reguloj", "createNewGeoRule": "Krei Novan Geo Fajmuran Regulon", "destinationIp": "Cela IP", "sourceCountry": "Fonta Lando", "sourceAsn": "Fonta ASN", "selectCountry": "Elekti Landon", "block": "Bloki", "whitelist": "Blanklisto", "noRulesFound": "Neniuj reguloj trovitaj!", "deleteGeoRuleConfirm": "Ĉu vi certas ke vi volas forigi ĉi tiun geo-regulon?" } }
+{
+  "list": {
+    "title": "Purigaj IP-oj Servoj Listo",
+    "orderTitle": "Mendi Purigajn IP-ojn"
+  },
+  "view": {
+    "title": "Vidi Purigajn IP-ojn",
+    "currentIp": "Nuna IP",
+    "ipAddress": "IP-Adreso",
+    "ipFromService": "IP de Servo"
+  },
+  "filters": {
+    "title": "Filtriloj",
+    "createNew": "Krei Novan",
+    "createNewFilter": "Krei Novan Filtrilon",
+    "filterType": "Filtrila Tipo",
+    "ipAddress": "IP-Adreso",
+    "portNo": "Havena Numero",
+    "filter": "Filtrilo",
+    "destinationIp": "Cela IP",
+    "destinationPort": "Cela Haveno",
+    "noFiltersFound": "Neniuj filtriloj trovitaj!",
+    "deleteFilterConfirm": "Ĉu vi certas ke vi volas forigi ĉi tiun filtrilon?",
+    "selectFilterType": "Elekti Filtrotipo",
+    "unableToCreateFilter": "Ne eblas krei filtron en ĉi tiu momento.",
+    "unableToDeleteFilter": "Ne eblas forigi filtron en ĉi tiu momento."
+  },
+  "firewallRules": {
+    "title": "Fajromura Reguloj",
+    "createNewFirewall": "Krei Novan Fajmuran Regulon",
+    "protocol": "Protokolo",
+    "destinationIp": "Cela IP",
+    "sourceIp": "Fonta IP",
+    "block": "Bloki",
+    "whitelist": "Blanklisto",
+    "noRulesFound": "Neniuj reguloj trovitaj!",
+    "deleteRuleConfirm": "Ĉu vi certas ke vi volas forigi ĉi tiun regulon?",
+    "createNew": "Krei Novan",
+    "destinationPort": "Celpordo",
+    "sourcePort": "Fontpordo",
+    "xdpAction": "XDP-Ago",
+    "ipRequired": "IP-adreso estas postulata.",
+    "unableToCreateRule": "Ne eblas krei fajroŝirmilan regulon en ĉi tiu momento.",
+    "unableToDeleteRule": "Ne eblas forigi fajroŝirmilan regulon en ĉi tiu momento."
+  },
+  "geoFirewallRules": {
+    "title": "Geo Fajromura Reguloj",
+    "createNewGeoRule": "Krei Novan Geo Fajmuran Regulon",
+    "destinationIp": "Cela IP",
+    "sourceCountry": "Fonta Lando",
+    "sourceAsn": "Fonta ASN",
+    "selectCountry": "Elekti Landon",
+    "block": "Bloki",
+    "whitelist": "Blanklisto",
+    "noRulesFound": "Neniuj reguloj trovitaj!",
+    "deleteGeoRuleConfirm": "Ĉu vi certas ke vi volas forigi ĉi tiun geo-regulon?",
+    "createNew": "Krei Novan",
+    "destinationPort": "Celpordo",
+    "xdpAction": "XDP-Ago",
+    "portNo": "Pordnumero",
+    "asn": "ASN",
+    "unableToCreateRule": "Ne eblas krei fajroŝirmilan regulon en ĉi tiu momento.",
+    "unableToDeleteRule": "Ne eblas forigi geografian fajroŝirmilan regulon en ĉi tiu momento."
+  }
+}

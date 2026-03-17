@@ -1,1 +1,57 @@
-{ "settings": { "title": "Teeb Mam Account" }, "changePassword": { "title": "Hloov Tus Lej Nkag", "cardTitle": "Hloov Tshiab Tus Lej Nkag", "currentPassword": "Tus Lej Nkag Tam Sim No", "newPassword": "Tus Lej Nkag Tshiab", "confirmPassword": "Paub Meej Tus Lej Nkag", "updatePassword": "Hloov Tshiab Tus Lej Nkag" }, "changeUsername": { "title": "Hloov Npe Neeg Siv", "disabled": "Kev Hloov Npe Neeg Siv Tau Kaw Ib Ntus.", "currentUsername": "Npe Neeg Siv Tam Sim No", "newDesiredUsername": "Npe Neeg Siv Tshiab Xav Tau", "confirmationCode": "Tus Lej Paub Meej", "pleaseWait": "Thov tos!", "gotError": "Muaj yuam kev {error}" }, "contactInfo": { "title": "Ntaub Ntawv Sib Txuas Lus", "cardTitle": "Hloov Tshiab Ntaub Ntawv Sib Txuas Lus", "headsUp": "Ceev Faj!", "headsUpMessage": "Txawm tias cov ntaub ntawv no xaiv tau, muab cov ntaub ntawv raug yuav pab txo koj % Nqi Kev Pheej Hmoo.", "riskScore": "% Nqi Kev Pheej Hmoo", "personalInformation": "Ntaub Ntawv Tus Kheej", "name": "Npe", "company": "Tuam Txhab", "addressLine1": "Kab Chaw Nyob 1", "addressLine2": "Kab Chaw Nyob 2", "city": "Nroog", "state": "Xeev", "country": "Teb Chaws", "zipcode": "Zip Code", "phoneNumber": "Tus Lej Xov Tooj", "language": "Lus", "auto": "Tsis Tau Teeb", "currency": "Nyiaj", "timeZone": "Lub Sij Hawm Qhov", "otherSettings": "Lwm Cov Teeb Mam", "disablePasswordResets": "Kaw (Tus Lej Nkag Ploj) Tso Rov Qab Tus Lej Nkag.", "disableInvoiceReminders": "Kaw Cov Email Nco Nqi.", "alternateEmailInvoices": "Email Lwm Yam rau Nqi", "alternateEmailAbuse": "Email Lwm Yam rau Cov Lus Tshaj Tawm Kev Nyiam", "updateInfo": "Hloov Tshiab Ntaub Ntawv" } }
+{
+  "settings": {
+    "title": "Teeb Mam Account"
+  },
+  "changePassword": {
+    "title": "Hloov Tus Lej Nkag",
+    "cardTitle": "Hloov Tshiab Tus Lej Nkag",
+    "currentPassword": "Tus Lej Nkag Tam Sim No",
+    "newPassword": "Tus Lej Nkag Tshiab",
+    "confirmPassword": "Paub Meej Tus Lej Nkag",
+    "updatePassword": "Hloov Tshiab Tus Lej Nkag"
+  },
+  "changeUsername": {
+    "title": "Hloov Npe Neeg Siv",
+    "disabled": "Kev Hloov Npe Neeg Siv Tau Kaw Ib Ntus.",
+    "currentUsername": "Npe Neeg Siv Tam Sim No",
+    "newDesiredUsername": "Npe Neeg Siv Tshiab Xav Tau",
+    "confirmationCode": "Tus Lej Paub Meej",
+    "pleaseWait": "Thov tos!",
+    "gotError": "Muaj yuam kev {error}"
+  },
+  "contactInfo": {
+    "title": "Ntaub Ntawv Sib Txuas Lus",
+    "cardTitle": "Hloov Tshiab Ntaub Ntawv Sib Txuas Lus",
+    "headsUp": "Ceev Faj!",
+    "headsUpMessage": "Txawm tias cov ntaub ntawv no xaiv tau, muab cov ntaub ntawv raug yuav pab txo koj % Nqi Kev Pheej Hmoo.",
+    "riskScore": "% Nqi Kev Pheej Hmoo",
+    "personalInformation": "Ntaub Ntawv Tus Kheej",
+    "name": "Npe",
+    "company": "Tuam Txhab",
+    "addressLine1": "Kab Chaw Nyob 1",
+    "addressLine2": "Kab Chaw Nyob 2",
+    "city": "Nroog",
+    "state": "Xeev",
+    "country": "Teb Chaws",
+    "zipcode": "Zip Code",
+    "phoneNumber": "Tus Lej Xov Tooj",
+    "language": "Lus",
+    "auto": "Tsis Tau Teeb",
+    "currency": "Nyiaj",
+    "timeZone": "Lub Sij Hawm Qhov",
+    "otherSettings": "Lwm Cov Teeb Mam",
+    "disablePasswordResets": "Kaw (Tus Lej Nkag Ploj) Tso Rov Qab Tus Lej Nkag.",
+    "disableInvoiceReminders": "Kaw Cov Email Nco Nqi.",
+    "alternateEmailInvoices": "Email Lwm Yam rau Nqi",
+    "alternateEmailAbuse": "Email Lwm Yam rau Cov Lus Tshaj Tawm Kev Nyiam",
+    "updateInfo": "Hloov Tshiab Ntaub Ntawv",
+    "namePlaceholder": "Joe Cool",
+    "gstinTaxId": "GSTIN Tax ID",
+    "gstinPlaceholder": "Tus Lej Qhia Txog Cov Khoom thiab Kev Pab Cuam Them Se",
+    "cityState": "Nroog, Xeev",
+    "phoneNo": "Tus Lej Xov Tooj",
+    "disableServerInvoiceReminders": "Tua Kev Ceeb Toom Email Hais Txog Nqi Them Rau Server.",
+    "disableReinstall": "Tua Kev Teeb Tsa Dua.",
+    "alternateEmailInvoicesPlaceholder": "Email lwm qhov rau kev xa cov nqi them"
+  }
+}

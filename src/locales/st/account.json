@@ -44,6 +44,14 @@
     "disableInvoiceReminders": "Thibela Liitsiso tsa Imeile ea Invoice.",
     "alternateEmailInvoices": "Imeile e Nngwe bakeng sa Liinvoisi",
     "alternateEmailAbuse": "Imeile e Nngwe bakeng sa Lipuisano tsa Koluoa",
-    "updateInfo": "Ntlafatsa Lintlha"
+    "updateInfo": "Ntlafatsa Lintlha",
+    "namePlaceholder": "Joe Cool",
+    "gstinTaxId": "GSTIN Tax ID",
+    "gstinPlaceholder": "Nomoro ya Boitsebiso ba Mokheli oa Lekhetho la Thepa le Ditshebeletso",
+    "cityState": "Toropo, Provense",
+    "phoneNo": "No. ea Mohala",
+    "disableServerInvoiceReminders": "Khutlisa Tsebiso tsa Imeile tsa Ho Hopola Invoise ea Seva.",
+    "disableReinstall": "Khutlisa Ho Nkela Sebaka.",
+    "alternateEmailInvoicesPlaceholder": "Imeile e 'ngoe ho romela liinvoise"
   }
 }

@@ -1,49 +1,57 @@
 {
-    "settings": {
-        "title": "Fa'atulagaga Tala'aga"
-    },
-    "changePassword": {
-        "title": "Suia Upu Fa'aoga",
-        "cardTitle": "Fa'afouina Upu Fa'aoga",
-        "currentPassword": "Upu Fa'aoga Nei",
-        "newPassword": "Upu Fa'aoga Fou",
-        "confirmPassword": "Fa'amaonia Upu Fa'aoga",
-        "updatePassword": "Fa'afouina Upu Fa'aoga"
-    },
-    "changeUsername": {
-        "title": "Suia Igoa Fa'aoga",
-        "disabled": "Ua fa'ate'a le sui o le igoa fa'aoga mo sina taimi.",
-        "currentUsername": "Igoa Fa'aoga Nei",
-        "newDesiredUsername": "Igoa Fa'aoga Fou Manaomia",
-        "confirmationCode": "Code Fa'amaoniga",
-        "pleaseWait": "Fa'amolemole fa'atali!",
-        "gotError": "Mea sese {error}"
-    },
-    "contactInfo": {
-        "title": "Fa'amatalaga Feso'ota'iga",
-        "cardTitle": "Fa'afouina Fa'amatalaga Feso'ota'iga",
-        "headsUp": "Silafia!",
-        "headsUpMessage": "E ui lava e fa'aopoopo lenei fa'amatalaga, o le tu'uina atu o fa'amatalaga sa'o o le a fesoasoani e fa'aitiitia lou % Mata'upu Lamatiaga.",
-        "riskScore": "% Mata'upu Lamatiaga",
-        "personalInformation": "Fa'amatalaga Patino",
-        "name": "Igoa",
-        "company": "Kamupani",
-        "addressLine1": "Tuatusi Laina 1",
-        "addressLine2": "Tuatusi Laina 2",
-        "city": "Aai",
-        "state": "Setete",
-        "country": "Atunuu",
-        "zipcode": "Numera Meli",
-        "phoneNumber": "Numera Telefoni",
-        "language": "Gagana",
-        "auto": "Otometi",
-        "currency": "Tupe",
-        "timeZone": "Taimi Itulagi",
-        "otherSettings": "Isi Fa'atulagaga",
-        "disablePasswordResets": "Fa'asaga (Ua Galo le Upu Fa'aoga) Toe Fa'atuina Upu Fa'aoga.",
-        "disableInvoiceReminders": "Fa'asaga Fa'amanatu Imeli Pili.",
-        "alternateEmailInvoices": "Isi Imeli mo Pili",
-        "alternateEmailAbuse": "Isi Imeli mo Lipoti Soona Fa'aogaina",
-        "updateInfo": "Fa'afouina Fa'amatalaga"
-    }
+  "settings": {
+    "title": "Fa'atulagaga Tala'aga"
+  },
+  "changePassword": {
+    "title": "Suia Upu Fa'aoga",
+    "cardTitle": "Fa'afouina Upu Fa'aoga",
+    "currentPassword": "Upu Fa'aoga Nei",
+    "newPassword": "Upu Fa'aoga Fou",
+    "confirmPassword": "Fa'amaonia Upu Fa'aoga",
+    "updatePassword": "Fa'afouina Upu Fa'aoga"
+  },
+  "changeUsername": {
+    "title": "Suia Igoa Fa'aoga",
+    "disabled": "Ua fa'ate'a le sui o le igoa fa'aoga mo sina taimi.",
+    "currentUsername": "Igoa Fa'aoga Nei",
+    "newDesiredUsername": "Igoa Fa'aoga Fou Manaomia",
+    "confirmationCode": "Code Fa'amaoniga",
+    "pleaseWait": "Fa'amolemole fa'atali!",
+    "gotError": "Mea sese {error}"
+  },
+  "contactInfo": {
+    "title": "Fa'amatalaga Feso'ota'iga",
+    "cardTitle": "Fa'afouina Fa'amatalaga Feso'ota'iga",
+    "headsUp": "Silafia!",
+    "headsUpMessage": "E ui lava e fa'aopoopo lenei fa'amatalaga, o le tu'uina atu o fa'amatalaga sa'o o le a fesoasoani e fa'aitiitia lou % Mata'upu Lamatiaga.",
+    "riskScore": "% Mata'upu Lamatiaga",
+    "personalInformation": "Fa'amatalaga Patino",
+    "name": "Igoa",
+    "company": "Kamupani",
+    "addressLine1": "Tuatusi Laina 1",
+    "addressLine2": "Tuatusi Laina 2",
+    "city": "Aai",
+    "state": "Setete",
+    "country": "Atunuu",
+    "zipcode": "Numera Meli",
+    "phoneNumber": "Numera Telefoni",
+    "language": "Gagana",
+    "auto": "Otometi",
+    "currency": "Tupe",
+    "timeZone": "Taimi Itulagi",
+    "otherSettings": "Isi Fa'atulagaga",
+    "disablePasswordResets": "Fa'asaga (Ua Galo le Upu Fa'aoga) Toe Fa'atuina Upu Fa'aoga.",
+    "disableInvoiceReminders": "Fa'asaga Fa'amanatu Imeli Pili.",
+    "alternateEmailInvoices": "Isi Imeli mo Pili",
+    "alternateEmailAbuse": "Isi Imeli mo Lipoti Soona Fa'aogaina",
+    "updateInfo": "Fa'afouina Fa'amatalaga",
+    "namePlaceholder": "Joe Cool",
+    "gstinTaxId": "GSTIN Tax ID",
+    "gstinPlaceholder": "Numera o le Tau Tupe o Oloa ma Auaunaga",
+    "cityState": "Aai, Setete",
+    "phoneNo": "Numera Telefoni",
+    "disableServerInvoiceReminders": "Taofi Faasilasilaga Imeli mo Fatu-Tupe a le Sava.",
+    "disableReinstall": "Taofi le Toe Faaofi.",
+    "alternateEmailInvoicesPlaceholder": "Imeli ese mo le auina atu o fatu-tupe"
+  }
 }

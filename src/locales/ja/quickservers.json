@@ -24,7 +24,18 @@
     "updateComment": "コメントを更新",
     "saveChanges": "変更を保存",
     "emailSent": "メール送信済み",
-    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。"
+    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。",
+    "hostServer": "ホストサーバー:",
+    "ipIs": "IPアドレス:",
+    "vzid": "Vzid:",
+    "comment": "コメント:",
+    "none": "なし",
+    "connections": "接続",
+    "vncInfo": "VNC情報",
+    "spiceInfo": "Spice情報",
+    "noDataToShow": "表示するデータがありません",
+    "ipInformation": "IP情報",
+    "welcomeEmailConfirm": "ウェルカムメールを再送してもよろしいですか？"
   },
   "order": {
     "title": "ラピッドデプロイサーバーを注文",
@@ -38,6 +49,19 @@
     "operatingSystem": "オペレーティングシステム",
     "agreeToTerms": "オファー条件に同意",
     "iAgreeToTerms": "上記の条件を読み、同意します。",
-    "placeOrder": "注文を確定"
+    "placeOrder": "注文を確定",
+    "qsNo": "QS番号",
+    "quickserver": "QUICKSERVER",
+    "ram": "RAM",
+    "hdd": "HDD",
+    "cores": "コア数",
+    "passwordRequirement": "注意：パスワードには少なくとも8文字、小文字1文字、大文字1文字、数字1文字、特殊文字1文字が必要です。",
+    "rapidDeployServer": "即時展開サーバー",
+    "oneMonth": "1ヶ月",
+    "packageCost": "パッケージ料金",
+    "currentlySoldOut": "現在売り切れです！",
+    "contactSales": "営業部門にお問い合わせください。",
+    "editDetails": "詳細を編集",
+    "quickServerId": "QuickServer ID"
   }
 }

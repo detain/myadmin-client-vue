@@ -36,7 +36,23 @@
     "postedOn": "Pubblicato il:",
     "closeConfirmButton": "Sì, chiudilo!",
     "ticketClosed2": "Ticket Chiuso",
-    "replyPosted": "Risposta Pubblicata"
+    "replyPosted": "Risposta Pubblicata",
+    "titleSuffix": "Visualizza ticket",
+    "emailDisabled": "La tua email ({email}) è stata disabilitata. Contatta",
+    "support": "SUPPORTO",
+    "ipHelpText": "Se la connessione proviene da un indirizzo IP diverso. Modificalo.",
+    "rootPasswordPlaceholder": "VPS / Server dedicato",
+    "passwordEncrypted": "Le password sono memorizzate in un database crittografato separato.",
+    "ticketClosed": "Questo ticket è chiuso, le risposte sono disabilitate. Se hai ancora bisogno di assistenza, apri un nuovo ticket.",
+    "replyPlaceholder": "Post dettagliato sul problema",
+    "replyHint": "Creare ticket separati per nuovi problemi aiuta il nostro team a dare priorità e risolvere più velocemente.",
+    "participant": "Partecipante",
+    "userLikedReply": "L'utente ha apprezzato la tua risposta",
+    "userDislikedReply": "L'utente non ha apprezzato la tua risposta",
+    "email": "Email:",
+    "closeConfirmTitle": "Sei sicuro?",
+    "closeConfirmText": "Vuoi chiudere questo ticket?",
+    "ticketSettingsUpdated": "Impostazioni ticket aggiornate"
   },
   "new": {
     "title": "Nuovo Ticket",
@@ -52,6 +68,13 @@
     "sudoUser": "Utente Sudo",
     "sudoPassword": "Password Sudo",
     "sshPort": "Porta SSH",
-    "termsOfUse": "Termini di utilizzo"
+    "termsOfUse": "Termini di utilizzo",
+    "subjectPlaceholder": "Oggetto",
+    "subjectValidation": "Inserisci una breve descrizione del problema.",
+    "descriptionPlaceholder": "Grazie per aiutarci a mantenere un sistema di supporto efficiente inviando una richiesta per ticket.",
+    "descriptionValidation": "Inserisci una descrizione dettagliata del problema.",
+    "fileNote": "Nota: sono consentiti solo file immagine di tipo gif/jpeg/png.",
+    "allowAccessLabel": "Consento a InterServer di accedere al mio server ed eseguire modifiche",
+    "accessNote": "Nota: aprendo una richiesta di supporto, InterServer potrebbe dover accedere, eseguire debug o modificare file nel tuo account. Continua solo se sei d'accordo."
   }
 }

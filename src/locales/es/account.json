@@ -44,6 +44,14 @@
     "disableInvoiceReminders": "Deshabilitar Notificaciones de Recordatorio de Facturas por Correo Electrónico.",
     "alternateEmailInvoices": "Correo Electrónico Alternativo para Facturas",
     "alternateEmailAbuse": "Correo Electrónico Alternativo para Reportes de Abuso",
-    "updateInfo": "Actualizar Información"
+    "updateInfo": "Actualizar Información",
+    "namePlaceholder": "Joe Cool",
+    "gstinTaxId": "ID Fiscal GSTIN",
+    "gstinPlaceholder": "Número de Identificación del Contribuyente de Bienes y Servicios",
+    "cityState": "Ciudad, Estado",
+    "phoneNo": "Número de Teléfono",
+    "disableServerInvoiceReminders": "Desactivar notificaciones de recordatorio de factura del servidor por correo electrónico.",
+    "disableReinstall": "Desactivar reinstalación.",
+    "alternateEmailInvoicesPlaceholder": "Correo electrónico alternativo para enviar facturas"
   }
 }

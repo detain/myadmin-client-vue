@@ -44,6 +44,14 @@
     "disableInvoiceReminders": "請求書リマインダーメール通知を無効化。",
     "alternateEmailInvoices": "請求書の代替メール",
     "alternateEmailAbuse": "不正使用報告の代替メール",
-    "updateInfo": "情報を更新"
+    "updateInfo": "情報を更新",
+    "namePlaceholder": "山田太郎",
+    "gstinTaxId": "GSTIN税ID",
+    "gstinPlaceholder": "物品・サービス税納税者識別番号",
+    "cityState": "市区町村、都道府県",
+    "phoneNo": "電話番号",
+    "disableServerInvoiceReminders": "サーバー請求書リマインダーメール通知を無効にする。",
+    "disableReinstall": "再インストールを無効にする。",
+    "alternateEmailInvoicesPlaceholder": "請求書送付用の代替メールアドレス"
   }
 }

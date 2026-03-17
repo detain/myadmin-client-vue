@@ -13,7 +13,8 @@
     "hostServer": "ホストサーバー",
     "links": "リンク",
     "emailSent": "メール送信済み",
-    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。"
+    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。",
+    "welcomeEmailConfirm": "ウェルカムメールを再送してもよろしいですか？"
   },
   "order": {
     "title": "ストレージを注文"

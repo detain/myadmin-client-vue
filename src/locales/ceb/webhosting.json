@@ -1,6 +1,82 @@
 {
-    "list": { "title": "Listahan sa Web Hosting", "orderTitle": "Mag-order og Website Registrations" },
-    "view": { "title": "Tan-awa ang Website {id}", "package": "Package", "nextInvoiceDate": "Petsa sa Sunod nga Invoice:", "billing": "Billing", "billed": "na-bill", "billingStatusIs": "Ang Status sa Billing mao:", "login": "Login", "links": "Mga Link", "emailSent": "Email Gipadala", "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox." },
-    "order": { "title": "Mag-order og Website" },
-    "migration": { "title": "I-migrate ang Imong Website", "password": "Password", "importantNotes": "Importanteng mga Tala" }
+  "list": {
+    "title": "Listahan sa Web Hosting",
+    "orderTitle": "Mag-order og Website Registrations"
+  },
+  "view": {
+    "title": "Tan-awa ang Website {id}",
+    "package": "Package",
+    "nextInvoiceDate": "Petsa sa Sunod nga Invoice:",
+    "billing": "Billing",
+    "billed": "na-bill",
+    "billingStatusIs": "Ang Status sa Billing mao:",
+    "login": "Login",
+    "links": "Mga Link",
+    "emailSent": "Email Gipadala",
+    "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox.",
+    "hostInfo": "Impormasyon ng Host",
+    "username": "Username:",
+    "ip": "IP:",
+    "server": "Server:",
+    "notSetYet": "Hindi pa naitakda",
+    "types": "Mga Uri:",
+    "linksLabel": "Mga Link:",
+    "manualLogin": "Manual na Login",
+    "automaticLogin": "Awtomatikong Login",
+    "clickHere": "I-klik Dito",
+    "defaultNameservers": "Default na Nameserver",
+    "nameservers": "Mga Nameserver:",
+    "externalLinks": "Mga External na Link",
+    "names": "Mga Pangalan:",
+    "websitePreview": "Preview ng Website",
+    "welcomeEmailConfirm": "Sigurado ka ba na gusto mong mupadala pag-usab sa welcome email?"
+  },
+  "order": {
+    "title": "Mag-order og Website"
+  },
+  "migration": {
+    "title": "I-migrate ang Imong Website",
+    "password": "Password",
+    "importantNotes": "Importanteng mga Tala",
+    "currentWebHostInfo": "Impormasyon ng Kasalukuyang Web Host",
+    "customerPortalUrl": "Customer Portal URL",
+    "portalExample": "Halimbawa: sso.godaddy.com",
+    "registeredUsername": "Nakarehistrong Username / Email / ID",
+    "controlPanelUrl": "Control Panel URL",
+    "controlPanelExample": "Halimbawa: yourdomain.com/cpanel",
+    "ftpUsername": "FTP / Control Panel Username",
+    "ftpPassword": "FTP / Control Panel Password",
+    "holdingPageQuestion": "Kung ang site ay live/abalang site na may mataas na traffic, maaari ba naming maglagay ng holding page sa panahon ng migration?",
+    "specialRequirementsQuestion": "Mayroon bang espesyal na kinakailangan ang site na ito tulad ng PHP Version / Mga Module?",
+    "domainRegistryInfo": "Impormasyon ng Domain Registry",
+    "transferDomainQuestion": "Gusto mo ba naming tulungan kang i-transfer ang pagpaparehistro ng domain name?",
+    "updateNameserversQuestion": "Gusto mo ba naming i-update ang mga name server sa sandaling matapos namin ang data migration?",
+    "domainRegistryPortal": "Domain Registry Customer Portal",
+    "note1": "Ang pagpuno ng form na ito ay magbubukas ng bagong ticket para sa aming departamento ng suporta upang simulan ang iyong migration.",
+    "note2": "Pakiusap maging kumpletong-kumpleto at tumpak hangga't maaari upang maiwasan ang anumang mga pagkaantala.",
+    "note3": "Ang karaniwang migration ay nakumpleto sa loob ng 48 hanggang 72 oras. Minsan mas matagal kung malaki ang dami ng data na kokopyahin.",
+    "note4": "Ang lumang hosting account ay kailangang online at naa-access habang ginagawa namin ang migration, kung hindi ay maaari kaming makaranas ng kahirapan.",
+    "note5": "Pakiusap huwag gumawa ng anumang mga update sa iyong site habang ginagawa namin ang migration, kung hindi ang mga data na iyon ay maaaring hindi makopya sa bagong hosting."
+  },
+  "buyIp": {
+    "title": "Bumili ng Karagdagang IP Addon",
+    "existingAddonIps": "Mga Kasalukuyang Addon IP",
+    "additionalIp": "Karagdagang IP",
+    "monthlyCost": "Buwanang Halaga ({symbol})",
+    "costDescription": "Halaga ({symbol}) bawat buwan habang nini-invoice ang iyong website",
+    "confirmPurchase": "Kumpirmahin ang Pagbili",
+    "confirmMessage": "Halaga ng karagdagang IP: {symbol}{cost}/buwan. Sigurado ka ba na gusto mong mag-order ng karagdagang IP?",
+    "placeOrder": "Ilagay ang Order",
+    "orderPlaced": "Nailagay ang Order"
+  },
+  "reverseDns": {
+    "title": "Reverse DNS",
+    "updateReverseDns": "I-update ang Reverse DNS"
+  },
+  "downloadBackups": {
+    "title": "I-download ang mga Backup",
+    "backup": "Backup",
+    "size": "Laki",
+    "options": "Mga Opsyon"
+  }
 }

@@ -21,7 +21,17 @@
     "softReboot": "Qala Hape ka Bobebe",
     "paymentStatus": "Boemo ba Tefo:",
     "emailSent": "Imeile e Romelitsoe",
-    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau.",
+    "unBilled": "Ha e a lefuoa",
+    "orderedOn": "Ho order'a ka:",
+    "moreInfo": "Tlhahisoleseding e Fetelletseng",
+    "cycle": "Mokhahlelo",
+    "reset": "Qalisa Hape",
+    "on": "Ho kenngoa",
+    "off": "Ho ntshoa",
+    "unknown": "Ha e tsejoe",
+    "noLease": "Ha ho Lekhoala",
+    "welcomeEmailConfirm": "Na u u-bua nnete ha u batla ho romela hape imeile ea amohela?"
   },
   "order": {
     "title": "Oda Haolo",
@@ -43,6 +53,58 @@
     "buyNow": "Reka Joale",
     "monthly": "Kgwedi le kgwedi",
     "perMonth": "/kgwedi",
-    "confirmOrder": "Tiisa Oda"
+    "confirmOrder": "Tiisa Oda",
+    "orderDedicated": "Reka Seva e Ikhetholeng",
+    "customizeOrder": "Lokisa Ota",
+    "hostnameExample": "Mohlala: server.hostname.com",
+    "hostnameHelp": "Sebelisa lebitso la moamoheli ho tseba seva. Domain ha e hlokahaleng ho ba e nepahetseng kapa e ngolisitsoe. Ntlha e le 'ngoe e hlokeha lebitso la moamoheli. Mehlala e meng: database.local, web.server kapa lebitso la hao.",
+    "passwordRequirement": "Tlhokomeliso: Password e tlameha ho ba le bonyane litlhaku tse 8, setlhaku se le seng se potlakileng, setlhaku se le seng se phahameng, nomoro e le 'ngoe le senatagare.",
+    "comments": "Lipale",
+    "addToCart": "Kenya mokotleng",
+    "monthlyTotal": "Kakaretso ea Khoeli",
+    "serverRegion": "Sebaka sa Seva",
+    "enterServerDetails": "Kenya Tlhahisoleseding ea Seva",
+    "currentlySoldOut": "Hona joale ho rekisitsoe!",
+    "contactSales": "Kopa u ikopanye le lefapha la rona la thekiso.",
+    "autoRenewNotice": "Khopolo e tla iphetola hape khoeli le khoeli ka {cost} ho fihlela e a hlakolloa.",
+    "tosAcknowledgement": "Ka ho shaya lebokose lena, u lumela hore u reka sehlahisoa sa khopolo se iphetolang ka bo-eona (Ho ea ka Mantsoe a Bolelitseng Holimo) mme se lefuoe ho khathe ea hao ea kiriti. Haeba u batla ho hlakola khopolo ea hao, u ka kenella portaleng ea bareki, khetha tshebeletso e teng mme u tobetse sekhokaho sa Hlakola kapa u romele imeile ho: billing{'@'}interserver.net.",
+    "continue": "Tsoela pele",
+    "selectCpu": "Khetha CPU",
+    "selectDrives": "Khetha Lidraivi",
+    "selectedDrives": "Lidraivi tse Khethiloeng",
+    "noDrivesSelected": "Ha ho draivi e khethiloeng",
+    "totalDrives": "Kakaretso ea Lidraivi",
+    "selectBandwidth": "Khetha Bandwidth",
+    "selectIps": "Khetha Liaterese tsa IP",
+    "selectControlPanel": "Khetha Panel ea Taolo",
+    "selectRaid": "Khetha Raid",
+    "setupTime": "Nako ea Ho Beha",
+    "showMore": "Bontsâ ho Feta",
+    "showLess": "Bontsâ ke Nyenyane",
+    "editDetails": "Hlophisa tlhahisoleseding",
+    "backToOptions": "Khutlela ho Likhetho"
+  },
+  "reverseDns": {
+    "title": "Lipeakanyo tsa DNS ea Morao",
+    "changeWarning": "Liphetoho ho DNS ea morao li nka ho fihlela hora e le 'ngoe ho hlaha.",
+    "ipAddresses": "Liaterese tsa IP",
+    "hostnames": "Mabizo a Ho Amohela",
+    "updateReverseDns": "Ntlafatsa DNS ea Morao"
+  },
+  "bandwidthGraph": {
+    "title": "Ligrafu tsa Bandwidth",
+    "graphTitle": "Grafu ea Bandwidth"
+  },
+  "ipmiLive": {
+    "title": "IPMI IP",
+    "whatThisDoes": "Sena se etsa eng?",
+    "description": "Fa IP e phelang ho IPMI controller e thibetsoe ho IP ea hao le ho laoloa ho hora tse 24.",
+    "emailIpmiCredentials": "Romela Litlhahisoleseding tsa IPMI ka Imeile",
+    "assetId": "ID ea Thepa",
+    "serverId": "ID ea Seva",
+    "hostname": "Lebitso la Moamoheli",
+    "serverIp": "IP ea Seva",
+    "serverIpmi": "IPMI ea Seva",
+    "yourIpAddress": "Aterese ea hao ea IP"
   }
 }
