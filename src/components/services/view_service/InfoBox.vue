@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
-import { parseFaIcon } from '@/helpers/parseFaIcon';
-
 const { t } = useI18n();
 defineProps<{
     heading: string;
@@ -23,8 +21,7 @@ defineProps<{
                 <p class="my-3 py-3">{{ key1 }}: {{ val1 }}</p>
             </div>
             <div class="icon">
-                <font-awesome-icon v-if="parseFaIcon(iconClass)" :icon="parseFaIcon(iconClass)!" />
-                <i v-else :class="[iconClass]">{{ iconName }}</i>
+                <i :class="[iconClass]">{{ iconName }}</i>
             </div>
             <span class="small-box-footer"> {{ footerKey }}: {{ footerVal }} </span>
         </div>

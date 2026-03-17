@@ -96,7 +96,7 @@ const resetForm = () => {
                                     <div class="form-group input-group col-md-7">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <font-awesome-icon :icon="['fas', 'at']" />
+                                                <i class="fas fa-at"></i>
                                             </div>
                                         </div>
                                         <input type="text" class="form-control" disabled :value="oldUsername" />
@@ -109,7 +109,7 @@ const resetForm = () => {
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <font-awesome-icon :icon="['fas', 'at']" />
+                                                    <i class="fas fa-at"></i>
                                                 </div>
                                             </div>
                                             <input v-model="newUsername" type="text" class="form-control" readonly />
@@ -121,7 +121,7 @@ const resetForm = () => {
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <font-awesome-icon :icon="['fas', 'key']" />
+                                                    <i class="fas fa-key"></i>
                                                 </div>
                                             </div>
                                             <input v-model="emailConfirmation" type="text" class="form-control" required />
@@ -136,7 +136,7 @@ const resetForm = () => {
                                         <div class="form-group input-group col-md-7">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <font-awesome-icon :icon="['fas', 'at']" />
+                                                    <i class="fas fa-at"></i>
                                                 </div>
                                             </div>
                                             <input v-model="newUsername" type="text" class="form-control" required />

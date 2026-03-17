@@ -67,9 +67,9 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reverse_dns
             <div class="card b-radius my-3 shadow-none">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'atlas']" />&nbsp;{{ t('vps.reverseDns.title') }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-atlas"></i>&nbsp;{{ t('vps.reverseDns.title') }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"> <font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp; </router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"> <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp; </router-link>
                         </div>
                     </div>
                 </div>

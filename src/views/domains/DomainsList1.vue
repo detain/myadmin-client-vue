@@ -68,13 +68,13 @@ function setStatusLimit(event: Event) {
                     <div class="row float-right">
                         <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
                             <div class="btn-group">
-                                <a class="btn btn-primary btn-sm printer-hidden" href="domains/order" :title="t('domains.list.orderTitle')"><font-awesome-icon :icon="['fas', 'shopping-cart']" /> {{ t('common.buttons.order') }}</a>
+                                <a class="btn btn-primary btn-sm printer-hidden" href="domains/order" :title="t('domains.list.orderTitle')"><i class="fas fa-shopping-cart"></i> {{ t('common.buttons.order') }}</a>
                             </div>
                         </div>
                         <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-secondary" type="button" :title="t('common.buttons.print')" @click="crud_print()"><font-awesome-icon :icon="['fas', 'print']" class="crud-icon" />{{ t('common.buttons.print') }}</button>
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" :title="t('domains.list.exportData')" data-toggle="dropdown" aria-expanded="false"><font-awesome-icon :icon="['fas', 'download']" class="crud-icon" />{{ t('common.export.order') }} <span class="caret"></span><span class="sr-only">{{ t('domains.list.toggleDropdown') }}</span></button>
+                                <button class="btn btn-sm btn-secondary" type="button" :title="t('common.buttons.print')" @click="crud_print()"><i class="fas fa-print crud-icon"></i>{{ t('common.buttons.print') }}</button>
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" :title="t('domains.list.exportData')" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-download crud-icon"></i>{{ t('common.export.order') }} <span class="caret"></span><span class="sr-only">{{ t('domains.list.toggleDropdown') }}</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation" data-type="xlsx">
                                         <a href="#" data-container="body" :title="t('common.export.xlsx')" @click.prevent="crud_export('xlsx')"><img src="../../assets/images/crud/xlsx.png" alt="" /> {{ t('common.export.xlsxShort') }}</a>
@@ -129,7 +129,7 @@ function setStatusLimit(event: Event) {
                             <div class="col-md-12">
                                 <DataTable id="crud-table" ref="table" :options="options" :columns="columns" :data="filteredData" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" width="100%">
                                     <template #link="{ value }">
-                                        <router-link :to="'view_domain?id=' + value" class="btn btn-primary btn-xs printer-hidden"><font-awesome-icon :icon="['fas', 'cog']" fixed-width /></router-link>
+                                        <router-link :to="'view_domain?id=' + value" class="btn btn-primary btn-xs printer-hidden"><i class="fas fa-fw fa-cog"></i></router-link>
                                     </template>
                                     <thead>
                                         <tr>
@@ -151,7 +151,7 @@ function setStatusLimit(event: Event) {
                                             <td>{{ row.cost }}</td>
                                             <td>{{ row.domain_status }}</td>
                                             <td>
-                                                <router-link :to="'/' + moduleLink(module) + '/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><font-awesome-icon :icon="['fas', 'cog']" fixed-width /></router-link>
+                                                <router-link :to="'/' + moduleLink(module) + '/' + row.domain_id" class="btn btn-primary btn-xs printer-hidden"><i class="fas fa-fw fa-cog"></i></router-link>
                                             </td>
                                         </tr>
                                     </tbody>

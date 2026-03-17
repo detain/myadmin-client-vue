@@ -52,7 +52,7 @@ function submitForm() {
                     <div class="p-1">
                         <h3 class="card-title d-flex py-2"><i class="material-icons">password&nbsp;</i> {{ t('vps.resetPassword.title') }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><font-awesome-icon :icon="['fas', 'arrow-left']" /> {{ t('common.buttons.back') }}</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><i class="fas fa-arrow-left"></i> {{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                 </div>

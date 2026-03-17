@@ -77,7 +77,7 @@ loadBackupsList();
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="callout callout-info">
-                    <h5 class="text-red"><font-awesome-icon :icon="['fas', 'exclamation']" /> {{ t('vps.restore.importantNote') }}</h5>
+                    <h5 class="text-red"><i class="fas fa-exclamation"></i> {{ t('vps.restore.importantNote') }}</h5>
                     <p class="text-md">{{ t('vps.restore.offlineNote') }}</p>
                 </div>
             </div>
@@ -88,7 +88,7 @@ loadBackupsList();
                     <div class="card-header">
                         <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.restore.backupTitle', { name: module_name }) }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">

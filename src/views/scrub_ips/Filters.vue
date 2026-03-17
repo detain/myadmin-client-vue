@@ -1,9 +1,9 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'link']" />{{ t('scrub_ips.filters.title') }}</h3>
+            <h3 class="card-title"><i class="fas fa-link" aria-hidden="true"></i>{{ t('scrub_ips.filters.title') }}</h3>
             <div class="card-tools">
-                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> {{ t('scrub_ips.filters.createNew') }}</button>
+                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true"></i> {{ t('scrub_ips.filters.createNew') }}</button>
             </div>
         </div>
         <div class="card-body pt-5">
@@ -27,7 +27,7 @@
                                 <input v-model="filter.filter_name" type="hidden" name="filter_type" />
                                 <input v-model="filter.dest" type="hidden" name="port" />
                                 <button type="submit" class="border-0" data-toggle="tooltip" :title="t('common.buttons.delete')">
-                                    <font-awesome-icon :icon="['fas', 'trash']" />
+                                    <i class="fas fa-trash" aria-hidden="true"></i>
                                 </button>
                             </form>
                         </td>

@@ -55,11 +55,11 @@ function submitForm() {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2">
-                            <font-awesome-icon :icon="['fas', 'compact-disc']" />&nbsp;
+                            <i class="fas fa-compact-disc"></i>&nbsp;
                             {{ action === 'enable_cd' ? t('vps.insertCd.enableCdrom') : t('vps.insertCd.insertIso') }}
                         </h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>

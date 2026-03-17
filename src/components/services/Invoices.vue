@@ -485,9 +485,9 @@ loadInvoices();
         <div class="col-md-12">
             <div class="card shadow-none">
                 <div class="card-header">
-                    <h3 class="card-title"><font-awesome-icon :icon="['fas', 'file-invoice-dollar']" />&nbsp;{{ t('common.labels.invoices') }}</h3>
+                    <h3 class="card-title"><i class="fas fa-file-invoice-dollar"></i>&nbsp;{{ t('common.labels.invoices') }}</h3>
                     <div class="card-tools">
-                        <button class="btn-custom text-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')" @click="previous"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</button>
+                        <button class="btn-custom text-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')" @click="previous"><i class="fas fa-arrow-left"></i>&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</button>
                     </div>
                 </div>
                 <div class="card-body justify-content-center">
@@ -542,7 +542,7 @@ loadInvoices();
                             <template v-for="row in pagedRows" :key="row.invoices_id">
                                 <tr>
                                     <td>
-                                        <a @click.prevent="toggleDetails(row.invoices_id)"><font-awesome-icon :icon="['fas', (typeof showDetails[row.invoices_id] == 'undefined' || !showDetails[row.invoices_id]) ? 'plus' : 'minus']" /></a>
+                                        <a @click.prevent="toggleDetails(row.invoices_id)"><i class="fas" :class="{ 'fa-plus': typeof showDetails[row.invoices_id] == 'undefined' || !showDetails[row.invoices_id], 'fa-minus': showDetails[row.invoices_id] }"></i></a>
                                     </td>
                                     <td>
                                         <a :href="`pdf.php?choice=view_invoice&module=${module}&id=${row.invoices_id}`">{{ row.invoices_id }}</a>

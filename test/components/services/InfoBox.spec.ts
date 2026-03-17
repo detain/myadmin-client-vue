@@ -35,6 +35,13 @@ describe('InfoBox.vue', () => {
         expect(wrapper.find('.small-box').classes()).toContain('bg-info');
     });
 
+    it('applies icon class', () => {
+        const wrapper = mount(InfoBox, { props: defaultProps });
+        const icon = wrapper.find('i');
+        expect(icon.classes()).toContain('fas');
+        expect(icon.classes()).toContain('fa-server');
+    });
+
     it('renders with different bg class', () => {
         const wrapper = mount(InfoBox, { props: { ...defaultProps, bgClass: 'bg-success' } });
         expect(wrapper.find('.small-box').classes()).toContain('bg-success');
