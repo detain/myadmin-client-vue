@@ -434,9 +434,9 @@ onMounted(() => {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;{{ t('domains.order.contactInformation') }}</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-address-card"></i>&nbsp;{{ t('domains.order.contactInformation') }}</h3>
                             <div class="card-tools float-right">
-                                <router-link :to="'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -481,7 +481,7 @@ onMounted(() => {
                                     </select>
                                     <div v-if="domainField.tip" class="input-group-append">
                                         <span style="cursor: pointer" class="input-group-text" data-toggle="popover" data-container="body" :data-html="true" :data-content="'<p style=\'text-align: left;\'>' + domainField.tip + '</p>'" :title="'<div style=\'text-align: left; font-weight: bold;\'>' + 'Tip for ' + domainField.label + '</div>'">
-                                            <font-awesome-icon :icon="['fas', 'question']" class="text-info" />
+                                            <i class="fa text-info fa-question"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -499,9 +499,9 @@ onMounted(() => {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;{{ t('domains.order.orderSummary') }}</h4>
+                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart"></i>&nbsp;{{ t('domains.order.orderSummary') }}</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
@@ -536,9 +536,9 @@ onMounted(() => {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;{{ t('domains.order.orderSummary') }}</h4>
+                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>&nbsp;{{ t('domains.order.orderSummary') }}</h4>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
@@ -600,7 +600,7 @@ onMounted(() => {
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
-                                    <button type="button" class="btn btn-custom btn-sm mr-3 py-2" name="update_values" @click="goDetails"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;{{ t('domains.order.goBack') }}</button>
+                                    <button type="button" class="btn btn-custom btn-sm mr-3 py-2" name="update_values" @click="goDetails"><i class="fas fa-arrow-left"></i>&nbsp;{{ t('domains.order.goBack') }}</button>
                                     <button :disabled="!termsAgreed" class="btn btn-sm btn-green px-3 py-2" @click.prevent="placeOrder">{{ t('domains.order.placeOrder') }}</button>
                                 </div>
                             </div>

@@ -70,7 +70,7 @@ accountStore.loadOnce();
                 <div class="card-header">
                     <h4 class="float-left">{{ t('affiliate.viewBanner.bannerImage') }}</h4>
                     <div class="card-tools float-right">
-                        <router-link to="/affiliate/banners" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <router-link to="/affiliate/banners" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                     </div>
                 </div>
                 <table class="table table-sm">

@@ -152,17 +152,17 @@ useDarkMode();
             <ul class="navbar-nav menu-collapse">
                 <!-- Left navbar links -->
                 <li class="nav-item">
-                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button" @click.prevent="collapseMenu"><font-awesome-icon :icon="['fas', 'bars']" /></a>
+                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button" @click.prevent="collapseMenu"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
             <Searchbox />
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">
-                    <router-link to="/cart" class="nav-link" :title="t('common.menu.cart')"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></router-link>
+                    <router-link to="/cart" class="nav-link" :title="t('common.menu.cart')"><i class="fas fa-shopping-cart"></i></router-link>
                 </li>
                 <li class="nav-item dropdown">
-                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><font-awesome-icon :icon="['fas', 'power-off']" /></button>
+                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fas fa-power-off"></i></button>
                 </li>
             </ul>
         </nav>
@@ -180,7 +180,7 @@ useDarkMode();
                     <!-- Sidebar user panel (optional) -->
                     <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px" :alt="t('common.profile.profileImage')" />
                     <div class="info hide-on-collapse brand-text" style="padding: 0px">
-                        <router-link to="/account/info" :title="t('common.profile.editPersonalInfo')" class="d-block">{{ user?.name }}&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-bold text-xs" /></router-link>
+                        <router-link to="/account/info" :title="t('common.profile.editPersonalInfo')" class="d-block">{{ user?.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user?.account_lid }}</b>
                         </span>
@@ -239,7 +239,8 @@ useDarkMode();
 </template>
 
 <style>
-/* fontawesome-free CSS removed — using @fortawesome/fontawesome-svg-core + dom.watch() instead */
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+/* @import 'font-awesome/css/font-awesome.min.css'; */
 @import './assets/css/misha-theme/jquery-ui.css';
 @import './assets/css/jquery.custom.css';
 @import 'bootstrap/dist/css/bootstrap.min.css';

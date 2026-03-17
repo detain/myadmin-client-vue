@@ -62,15 +62,15 @@ loadTransfer();
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'exchange-alt']" />&nbsp;{{ t('domains.transfer.title') }}</h3>
+                    <h3 class="card-title text-lg"><i class="fas fa-exchange-alt"></i>&nbsp;{{ t('domains.transfer.title') }}</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;{{ t('common.buttons.back') }}</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
                     </div>
                 </div>
                 <div class="card-body">
                     <template v-if="loadingDone && !isTransfer">
                         <div class="alert alert-info">
-                            <font-awesome-icon :icon="['fas', 'info-circle']" />&nbsp; {{ errorMsg || t('domains.transfer.notATransfer') }}
+                            <i class="fas fa-info-circle"></i>&nbsp; {{ errorMsg || t('domains.transfer.notATransfer') }}
                         </div>
                     </template>
                     <template v-else-if="loadingDone && isTransfer">

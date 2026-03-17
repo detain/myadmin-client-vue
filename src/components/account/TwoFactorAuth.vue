@@ -70,7 +70,7 @@ export default {
             <div class="p-1">
                 <h3 id="2fa" class="card-title py-2" :title="t('common.account.twoFactorAuthDescription')">{{ t('common.account.twoFactorAuth') }}</h3>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" aria-hidden="true" /></button>
+                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>
@@ -85,13 +85,13 @@ export default {
                 <hr />
                 <div v-if="data['2fa_google_enabled']">
                     <p class="text-success mt-4 text-center">
-                        <strong><font-awesome-icon :icon="['far', 'check-square']" />&nbsp;{{ t('common.account.twoFactorEnabled') }}</strong>
+                        <strong><i class="far fa-check-square" style=""></i>&nbsp;{{ t('common.account.twoFactorEnabled') }}</strong>
                     </p>
                 </div>
                 <div v-else id="2fa_google" class="row">
                     <blockquote class="mx-0 mb-2 mt-0 px-3 py-2" style="background: lightcyan">
                         <p>
-                            Install and Register the <a target="_blank" class="link" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"><font-awesome-icon :icon="['fas', 'cloud-download-alt']" /> {{ t('common.account.googleAuthenticator') }}</a> by entering the code below or scanning the QR image
+                            Install and Register the <a target="_blank" class="link" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"><i class="far fa-cloud-download-alt"></i> {{ t('common.account.googleAuthenticator') }}</a> by entering the code below or scanning the QR image
                         </p>
                     </blockquote>
                     <div class="col-md-8 mt-3">
@@ -99,7 +99,7 @@ export default {
                             <span class="badge badge-primary">{{ data['2fa_google_split'] }}</span>
                         </h3>
                         <div class="alert alert-warning mt-2" role="alert">
-                            <font-awesome-icon :icon="['fas', 'file-export']" />&nbsp;
+                            <i class="fa fas fa-file-export"></i>&nbsp;
                             {{ t('common.account.backupCode') }}
                         </div>
                         <input v-if="!data['2fa_google_enabled']" id="2fa_google_code" v-model="googleCode" type="text" class="form-control mt-4" name="2fa_google_code" :placeholder="t('common.account.enterAuthCode')" />

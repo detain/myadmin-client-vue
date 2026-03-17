@@ -179,10 +179,10 @@ onMounted(() => {
         <div class="col">
             <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid red; display: block ruby">
                 <p class="text-md m-0">
-                    <font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red">Attention:</b>&nbsp;{{ t('affiliate.attention', { faqLink: '' }) }}<router-link class="link" :to="'/affiliate/faq'">{{ t('affiliate.faqLinkText') }}</router-link>
+                    <i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">Attention:</b>&nbsp;{{ t('affiliate.attention', { faqLink: '' }) }}<router-link class="link" :to="'/affiliate/faq'">{{ t('affiliate.faqLinkText') }}</router-link>
                 </p>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
                 </div>
                 <p></p>
             </div>
@@ -191,9 +191,9 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'money-bill']" />&nbsp; {{ t('affiliate.earnPerSale', { amount: '$' + affiliate_amount }) }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-money-bill" aria-hidden="true"></i>&nbsp; {{ t('affiliate.earnPerSale', { amount: '$' + affiliate_amount }) }}</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -208,9 +208,9 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'external-link-alt']" />&nbsp;{{ t('affiliate.affiliateUrl') }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-external-link-alt" aria-hidden="true"></i>&nbsp;{{ t('affiliate.affiliateUrl') }}</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -231,23 +231,23 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;{{ t('affiliate.links') }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-link" aria-hidden="true"></i>&nbsp;{{ t('affiliate.links') }}</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/sales_graph'" :title="t('affiliate.salesGraph')"><font-awesome-icon :icon="['fas', 'chart-line']" />{{ t('affiliate.salesGraph') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" :title="t('affiliate.webTrafficGraph')"><font-awesome-icon :icon="['fas', 'chart-line']" />{{ t('affiliate.webTrafficGraph') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" :title="t('affiliate.viewBannersLinks')"><font-awesome-icon :icon="['fas', 'image']" />{{ t('affiliate.viewBannersLinks') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" :title="t('affiliate.setupLandingPage')"><font-awesome-icon :icon="['fas', 'ticket-alt']" />{{ t('affiliate.setupLandingPage') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" :title="t('affiliate.setupPaymentMethod')"><font-awesome-icon :icon="['fas', 'money-bill']" />{{ t('affiliate.setupPaymentMethod') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" :title="t('affiliate.richReport')"><font-awesome-icon :icon="['fas', 'file-alt']" />{{ t('affiliate.richReport') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" :title="t('affiliate.latestWebTraffic')"><font-awesome-icon :icon="['fas', 'globe']" />{{ t('affiliate.latestWebTraffic') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" :title="t('affiliate.statusLegend')"><font-awesome-icon :icon="['fas', 'closed-captioning']" />{{ t('affiliate.statusLegend') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/faq'" :title="t('affiliate.frequentlyAskedQuestions')"><font-awesome-icon :icon="['fas', 'question']" />{{ t('affiliate.frequentlyAskedQuestions') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" :title="t('affiliate.termsOfService')"><font-awesome-icon :icon="['fas', 'file-alt']" />{{ t('affiliate.termsOfService') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/sales_graph'" :title="t('affiliate.salesGraph')"><i class="fas fa-chart-line" aria-hidden="true"></i>{{ t('affiliate.salesGraph') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/traffic_graph'" :title="t('affiliate.webTrafficGraph')"><i class="fas fa-chart-line" aria-hidden="true"></i>{{ t('affiliate.webTrafficGraph') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" :title="t('affiliate.viewBannersLinks')"><i class="fas fa-image" aria-hidden="true"></i>{{ t('affiliate.viewBannersLinks') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" :title="t('affiliate.setupLandingPage')"><i class="fas fa-ticket-alt" aria-hidden="true"></i>{{ t('affiliate.setupLandingPage') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" :title="t('affiliate.setupPaymentMethod')"><i class="fas fa-money-bill" aria-hidden="true"></i>{{ t('affiliate.setupPaymentMethod') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" :title="t('affiliate.richReport')"><i class="fas fa-file-text-o" aria-hidden="true"></i>{{ t('affiliate.richReport') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" :title="t('affiliate.latestWebTraffic')"><i class="fas fa-globe" aria-hidden="true"></i>{{ t('affiliate.latestWebTraffic') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" :title="t('affiliate.statusLegend')"><i class="fas fa-closed-captioning" aria-hidden="true"></i>{{ t('affiliate.statusLegend') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/faq'" :title="t('affiliate.frequentlyAskedQuestions')"><i class="fas fa-question" aria-hidden="true"></i>{{ t('affiliate.frequentlyAskedQuestions') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" :title="t('affiliate.termsOfService')"><i class="fas fa-file-text" aria-hidden="true"></i>{{ t('affiliate.termsOfService') }}</router-link>
                         </div>
                     </div>
                 </div>
@@ -258,9 +258,9 @@ onMounted(() => {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'user-plus']" />&nbsp;{{ t('affiliate.signups.title') }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-user-plus" aria-hidden="true"></i>&nbsp;{{ t('affiliate.signups.title') }}</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>

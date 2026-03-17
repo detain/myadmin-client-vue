@@ -25,16 +25,16 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
             <ul class="navbar-nav menu-collapse">
                 <!-- Left navbar links -->
                 <li class="nav-item">
-                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button"><font-awesome-icon :icon="['fas', 'bars']" /></a>
+                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <!-- Right navbar links -->
                 <li class="nav-item dropdown">
-                    <router-link to="cart" :title="t('login.home.cart')" class="nav-link"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></router-link>
+                    <router-link to="cart" :title="t('login.home.cart')" class="nav-link"><i class="fas fa-shopping-cart"></i></router-link>
                 </li>
                 <li class="nav-item dropdown">
-                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><font-awesome-icon :icon="['fas', 'power-off']" /></button>
+                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fas fa-power-off"></i></button>
                     <!-- <a class="nav-link" href="index.php?choice=none.logout" title="Logout"><i class="fas fa-power-off"></i></a> -->
                 </li>
             </ul>
@@ -53,7 +53,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                     <!-- Sidebar user panel (optional) -->
                     <div class="image"><img :src="user.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
-                        <router-link to="/account/info" :title="t('login.home.editPersonalInfo')" class="d-block">{{ user.name }}&nbsp;<font-awesome-icon :icon="['fas', 'pencil-alt']" class="text-bold text-xs" /></router-link>
+                        <router-link to="/account/info" :title="t('login.home.editPersonalInfo')" class="d-block">{{ user.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user.account_lid }}</b></span
                         >

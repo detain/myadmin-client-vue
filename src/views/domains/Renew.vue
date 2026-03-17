@@ -134,26 +134,26 @@ loadRenew();
         <div class="col-md-12">
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                 <div class="text-md m-0">
-                    <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp;<b>Tip #1:</b>&nbsp;{{ t('domains.renew.tip1') }}
+                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #1:</b>&nbsp;{{ t('domains.renew.tip1') }}
                     <div class="card-tools float-right">
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                     </div>
                 </div>
             </div>
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                 <div class="text-md m-0">
-                    <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp;<b>Tip #2:</b>&nbsp;{{ t('domains.renew.tip2') }}
+                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #2:</b>&nbsp;{{ t('domains.renew.tip2') }}
                     <div class="card-tools float-right">
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                     </div>
                 </div>
             </div>
             <template v-if="whoisAvailable">
                 <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                     <div class="text-md m-0">
-                        <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp;<b>Tip #3:</b>&nbsp;{{ t('domains.renew.tip3') }}
+                        <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #3:</b>&nbsp;{{ t('domains.renew.tip3') }}
                         <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                         </div>
                     </div>
                 </div>
@@ -164,20 +164,20 @@ loadRenew();
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;{{ t('domains.renew.title') }}</h3>
+                    <h3 class="card-title text-lg"><i class="fas fa-address-card"></i>&nbsp;{{ t('domains.renew.title') }}</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;{{ t('common.buttons.back') }}</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
                     </div>
                 </div>
                 <div class="card-body">
                     <template v-if="alreadyInvoiced && invoicePaid">
                         <div class="alert alert-warning">
-                            <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp; {{ t('domains.renew.alreadyRenewed') }}
+                            <i class="fas fa-exclamation-triangle"></i>&nbsp; {{ t('domains.renew.alreadyRenewed') }}
                         </div>
                     </template>
                     <template v-else-if="alreadyInvoiced && !invoicePaid">
                         <div class="alert alert-info">
-                            <font-awesome-icon :icon="['fas', 'info-circle']" />&nbsp; {{ t('domains.renew.payExistingInvoice') }}
+                            <i class="fas fa-info-circle"></i>&nbsp; {{ t('domains.renew.payExistingInvoice') }}
                         </div>
                     </template>
                     <form v-else @submit.prevent="placeOrder">

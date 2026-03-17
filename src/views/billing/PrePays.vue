@@ -149,7 +149,7 @@ function submitNewPrepay() {
     <div class="row justify-content-center">
         <div class="col-md-12 text-md">
             <div class="text-center mb-5">
-                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><font-awesome-icon :icon="['fas', 'plus']" /> {{ t('billing.prepays.addNewPrepay') }}</button>
+                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fas fa-plus" /> {{ t('billing.prepays.addNewPrepay') }}</button>
             </div>
             <div v-if="loading" class="text-center">{{ t('common.labels.loading') }}</div>
             <template v-if="Object.keys(prepays).length">
@@ -182,7 +182,7 @@ function submitNewPrepay() {
                                             <h3 class="card-title">{{ t('billing.prepays.historyLog') }}</h3>
                                             <div class="card-tools">
                                                 <button class="btn btn-tool" data-card-widget="collapse" @click="toggleHistory(p.prepay.prepay_id)">
-                                                    <font-awesome-icon :icon="['fas', 'plus']" />
+                                                    <i class="fas fa-plus" />
                                                 </button>
                                             </div>
                                         </div>

@@ -304,7 +304,7 @@ watch(
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;Order Website</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-globe" aria-hidden="true"></i>&nbsp;Order Website</h3>
                             </div>
                         </div>
                         <div class="card-body">
@@ -353,7 +353,7 @@ watch(
                                                             </div>
                                                             <div class="float-right">
                                                                 <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info">
-                                                                    <font-awesome-icon :icon="['fas', 'external-link-alt']" />
+                                                                    <i class="far fa-external-link-alt"></i>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -401,7 +401,7 @@ watch(
                                                         </div>
                                                         <div class="float-right">
                                                             <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info">
-                                                                <font-awesome-icon :icon="['fas', 'external-link-alt']" />
+                                                                <i class="far fa-external-link-alt"></i>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -448,7 +448,7 @@ watch(
                                                     Starting From: <b>{{ currencySymbol }}{{ serviceData.services_cost }}</b>
                                                 </div>
                                                 <div class="float-right">
-                                                    <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info"><font-awesome-icon :icon="['fas', 'external-link-alt']" /></a>
+                                                    <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info"><i class="far fa-external-link-alt"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -462,7 +462,7 @@ watch(
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;Order Summary</h4>
+                                <h4 class="card-title py-2"><i class="fas fa-shopping-cart"></i>&nbsp;Order Summary</h4>
                             </div>
                         </div>
                         <div class="card-body text-md">
@@ -500,7 +500,7 @@ watch(
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;Select Domain & Billing Cycle</h4>
+                                <h4 class="card-title py-2"><i class="fas fa-globe"></i>&nbsp;Select Domain & Billing Cycle</h4>
                             </div>
                         </div>
                         <div class="card-body text-md">
@@ -577,7 +577,7 @@ watch(
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h4 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />&nbsp;Order Summary</h4>
+                            <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>&nbsp;Order Summary</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -588,7 +588,7 @@ watch(
                                         <th>
                                             <button type="button" style="" name="update_values" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details" @click="step = 'order_form'">
                                                 <div style="display: inline" class="text-md float-left">{{ formData.hostname }}</div>
-                                                <font-awesome-icon :icon="['fas', 'pencil-alt']" class="float-right" style="padding-top: 4px; padding-left: 4px" />
+                                                <i style="padding-top: 4px; padding-left: 4px" aria-hidden="true" class="fas fa-pencil-alt float-right"></i>
                                             </button>
                                         </th>
                                         <th>
@@ -688,7 +688,7 @@ watch(
                             </div>
                             <div class="form-group row">
                                 <div class="controls col-md-12" style="text-align: center">
-                                    <button class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style="" type="button" @click.prevent="goBack"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;Go Back&nbsp;&nbsp;</button>
+                                    <button class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style="" type="button" @click.prevent="goBack"><i class="fas fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</button>
                                     <input type="submit" name="Submit" value="Place Order" class="btn btn-green px-3 py-2 text-sm" :disabled="tos == false" />
                                 </div>
                             </div>

@@ -104,7 +104,7 @@ accountStore.loadOnce();
     <div class="row justify-content-center">
         <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid #17a2b8; display: block ruby">
             <p class="text-md m-0">
-                <font-awesome-icon :icon="['fas', 'info-circle']" class="text-info" />
+                <i class="fas fa-info-circle text-info" aria-hidden="true"></i>
                 <b class="text-info">{{ t('servers.ipmiLive.whatThisDoes') }}</b>
                 {{ t('servers.ipmiLive.description') }}
             </p>
@@ -113,10 +113,10 @@ accountStore.loadOnce();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fab', 'connectdevelop']" />{{ t('servers.ipmiLive.title') }}</h3>
+                        <h3 class="card-title py-2"><i class="fab fa-connectdevelop"></i>{{ t('servers.ipmiLive.title') }}</h3>
                         <div class="card-tools float-right">
-                            <a class="btn btn-custom mr-3" @click.prevent="emailIpmiLink"><font-awesome-icon :icon="['far', 'paper-plane']" />{{ t('servers.ipmiLive.emailIpmiCredentials') }}</a>
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <a class="btn btn-custom mr-3" @click.prevent="emailIpmiLink"><i class="far fa-paper-plane" aria-hidden="true"></i>{{ t('servers.ipmiLive.emailIpmiCredentials') }}</a>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
