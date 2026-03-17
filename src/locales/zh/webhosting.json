@@ -1,6 +1,82 @@
 {
-    "list": { "title": "虚拟主机列表", "orderTitle": "订购网站注册" },
-    "view": { "title": "查看网站 {id}", "package": "套餐", "nextInvoiceDate": "下次发票日期：", "billing": "账单", "billed": "已计费", "billingStatusIs": "账单状态：", "login": "登录", "links": "链接", "emailSent": "邮件已发送", "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。" },
-    "order": { "title": "订购网站" },
-    "migration": { "title": "迁移您的网站", "password": "密码", "importantNotes": "重要说明" }
+  "list": {
+    "title": "虚拟主机列表",
+    "orderTitle": "订购网站注册"
+  },
+  "view": {
+    "title": "查看网站 {id}",
+    "package": "套餐",
+    "nextInvoiceDate": "下次发票日期：",
+    "billing": "账单",
+    "billed": "已计费",
+    "billingStatusIs": "账单状态：",
+    "login": "登录",
+    "links": "链接",
+    "emailSent": "邮件已发送",
+    "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。",
+    "hostInfo": "主机信息",
+    "username": "用户名：",
+    "ip": "IP：",
+    "server": "服务器：",
+    "notSetYet": "尚未设置",
+    "types": "类型：",
+    "linksLabel": "链接：",
+    "manualLogin": "手动登录",
+    "automaticLogin": "自动登录",
+    "clickHere": "点击此处",
+    "defaultNameservers": "默认域名服务器",
+    "nameservers": "域名服务器：",
+    "externalLinks": "外部链接",
+    "names": "名称：",
+    "websitePreview": "网站预览",
+    "welcomeEmailConfirm": "您确定要重新发送欢迎邮件吗？"
+  },
+  "order": {
+    "title": "订购网站"
+  },
+  "migration": {
+    "title": "迁移您的网站",
+    "password": "密码",
+    "importantNotes": "重要说明",
+    "currentWebHostInfo": "当前网络主机信息",
+    "customerPortalUrl": "客户门户 URL",
+    "portalExample": "例如：sso.godaddy.com",
+    "registeredUsername": "注册用户名 / 电子邮件 / ID",
+    "controlPanelUrl": "控制面板 URL",
+    "controlPanelExample": "例如：yourdomain.com/cpanel",
+    "ftpUsername": "FTP / 控制面板用户名",
+    "ftpPassword": "FTP / 控制面板密码",
+    "holdingPageQuestion": "如果网站是流量较高的在线运营网站，我们是否可以在迁移期间设置一个临时占位页面？",
+    "specialRequirementsQuestion": "此网站是否有特殊要求，例如 PHP 版本 / 模块？",
+    "domainRegistryInfo": "域名注册信息",
+    "transferDomainQuestion": "您是否还需要我们协助转移域名注册？",
+    "updateNameserversQuestion": "您是否希望我们在完成数据迁移后立即更新域名服务器？",
+    "domainRegistryPortal": "域名注册机构客户门户",
+    "note1": "填写此表单将为我们的支持部门开启一个新工单，以开始您的迁移。",
+    "note2": "请尽量完整准确地填写，以避免任何延误。",
+    "note3": "典型的迁移在 48 至 72 小时内完成。如果需要复制的数据量很大，可能需要更长时间。",
+    "note4": "在我们执行迁移时，旧的托管账户需要保持在线且可访问，否则我们可能会遇到困难。",
+    "note5": "在我们执行迁移时，请不要对您的网站进行任何更新，否则这些数据可能无法复制到新托管账户。"
+  },
+  "buyIp": {
+    "title": "购买额外 IP 附加服务",
+    "existingAddonIps": "现有附加 IP",
+    "additionalIp": "额外 IP",
+    "monthlyCost": "月费（{symbol}）",
+    "costDescription": "网站计费时每月收取 {symbol} 费用",
+    "confirmPurchase": "确认购买",
+    "confirmMessage": "额外 IP 费用：{symbol}{cost}/月。您确定要订购额外 IP 吗？",
+    "placeOrder": "下单",
+    "orderPlaced": "订单已下"
+  },
+  "reverseDns": {
+    "title": "反向 DNS",
+    "updateReverseDns": "更新反向 DNS"
+  },
+  "downloadBackups": {
+    "title": "下载备份",
+    "backup": "备份",
+    "size": "大小",
+    "options": "选项"
+  }
 }

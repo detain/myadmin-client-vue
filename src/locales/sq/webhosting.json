@@ -1,27 +1,82 @@
 {
-    "list": {
-        "title": "Lista e Hostimit Web",
-        "orderTitle": "Porosit Regjistrimet e Faqes së Internetit"
-    },
-    "view": {
-        "title": "Shiko Faqen e Internetit {id}",
-        "package": "Paketa",
-        "nextInvoiceDate": "Data e Faturës së Ardhshme:",
-        "billing": "Faturimi",
-        "billed": "faturuar",
-        "billingStatusIs": "Statusi i Faturimit është:",
-        "login": "Hyrje",
-        "links": "Lidhjet",
-        "welcomeEmailConfirm": "A jeni i sigurt që dëshironi të ridërgoni emailin e mirëseardhjes?",
-        "emailSent": "Email i Dërguar",
-        "emailSentMessage": "Emaili i mirëseardhjes është ridërguar. Kontrolloni kutinë tuaj hyrëse."
-    },
-    "order": {
-        "title": "Porosit Faqen e Internetit"
-    },
-    "migration": {
-        "title": "Migro Faqen Tuaj të Internetit",
-        "password": "Fjalëkalimi",
-        "importantNotes": "Shënime të Rëndësishme"
-    }
+  "list": {
+    "title": "Lista e Hostimit Web",
+    "orderTitle": "Porosit Regjistrimet e Faqes së Internetit"
+  },
+  "view": {
+    "title": "Shiko Faqen e Internetit {id}",
+    "package": "Paketa",
+    "nextInvoiceDate": "Data e Faturës së Ardhshme:",
+    "billing": "Faturimi",
+    "billed": "faturuar",
+    "billingStatusIs": "Statusi i Faturimit është:",
+    "login": "Hyrje",
+    "links": "Lidhjet",
+    "welcomeEmailConfirm": "A jeni i sigurt që dëshironi të ridërgoni emailin e mirëseardhjes?",
+    "emailSent": "Email i Dërguar",
+    "emailSentMessage": "Emaili i mirëseardhjes është ridërguar. Kontrolloni kutinë tuaj hyrëse.",
+    "hostInfo": "Informacioni i Hostit",
+    "username": "Emër përdoruesi:",
+    "ip": "IP:",
+    "server": "Serveri:",
+    "notSetYet": "Nuk është vendosur akoma",
+    "types": "Llojet:",
+    "linksLabel": "Lidhjet:",
+    "manualLogin": "Hyrje Manuale",
+    "automaticLogin": "Hyrje Automatike",
+    "clickHere": "Klikoni Këtu",
+    "defaultNameservers": "Shërbyes Emrash Parazgjedhur",
+    "nameservers": "Shërbyes Emrash:",
+    "externalLinks": "Lidhje të Jashtme",
+    "names": "Emrat:",
+    "websitePreview": "Pamja paraprake e faqes"
+  },
+  "order": {
+    "title": "Porosit Faqen e Internetit"
+  },
+  "migration": {
+    "title": "Migro Faqen Tuaj të Internetit",
+    "password": "Fjalëkalimi",
+    "importantNotes": "Shënime të Rëndësishme",
+    "currentWebHostInfo": "Informacioni i Hostit Aktual të Uebit",
+    "customerPortalUrl": "URL e Portalit të Klientit",
+    "portalExample": "Për Shembull: sso.godaddy.com",
+    "registeredUsername": "Emër përdoruesi / Email / ID i Regjistruar",
+    "controlPanelUrl": "URL e Panelit të Kontrollit",
+    "controlPanelExample": "Për Shembull: yourdomain.com/cpanel",
+    "ftpUsername": "Emër përdoruesi FTP / Panelit të Kontrollit",
+    "ftpPassword": "Fjalëkalimi FTP / Panelit të Kontrollit",
+    "holdingPageQuestion": "Nëse faqja është e gjallë/e zënë me trafik të lartë, mund të vendosim një faqe mbajtëse gjatë migrimit?",
+    "specialRequirementsQuestion": "A ka këy faqe kërkesat e posaçme si Versioni i PHP / Modulet?",
+    "domainRegistryInfo": "Informacioni i Regjistrit të Domenit",
+    "transferDomainQuestion": "Dëshironi gjithashtu që ne të ndihmojmë në transferimin e regjistrimit të emrit të domenit?",
+    "updateNameserversQuestion": "Dëshironi që ne të përditësojmë shërbeyesët e emrit sapo të përfundojmë migrimin e të dhënave?",
+    "domainRegistryPortal": "Portali i Klientit të Regjistrit të Domenit",
+    "note1": "Plotësimi i këtij formulari do të hapë një biletë të re për departamentin tonë të mbështetjes për të filluar migrimin tuaj.",
+    "note2": "Ju lutem jini sa më të plotë dhe të saktë për të shmangur çdo vonesë.",
+    "note3": "Një migrim tipik përfundohet brenda 48 deri 72 orëve. Nganjeherë më gjatë nëse sasia e të dhënave që duhen kopjuar është e madhe.",
+    "note4": "Llogaria e vjetër e hostimit duhet të jetë online dhe e aksesueshme ndërsa ne po kryejmë migrimin.",
+    "note5": "Ju lutem mos bëni asnjë përditësim në faqen tuaj ndërsa ne kryejmë migrimin."
+  },
+  "buyIp": {
+    "title": "Blej Shtesë IP Shtesë",
+    "existingAddonIps": "IP-të Ekzistuese Shtesë",
+    "additionalIp": "IP Shtesë",
+    "monthlyCost": "Kosto Mujore ({symbol})",
+    "costDescription": "Kosto ({symbol}) çdo muaj si fatura e faqes suaj",
+    "confirmPurchase": "Konfirmo Blerjen",
+    "confirmMessage": "Kosto e IP shtesë: {symbol}{cost}/muaj. Jeni i sigurt se dëshironi të porosisni një IP shtesë?",
+    "placeOrder": "Vendos Porosinë",
+    "orderPlaced": "Porosia u Vendos"
+  },
+  "reverseDns": {
+    "title": "DNS e Anasjelltë",
+    "updateReverseDns": "Përditëso DNS të Anasjelltë"
+  },
+  "downloadBackups": {
+    "title": "Shkarko Rezervimet",
+    "backup": "Rezervimi",
+    "size": "Madhësia",
+    "options": "Opsionet"
+  }
 }

@@ -1,1 +1,82 @@
-{ "list": { "title": "Liste d'hébergement web", "orderTitle": "Commander des enregistrements de site web" }, "view": { "title": "Voir le site web {id}", "package": "Forfait", "nextInvoiceDate": "Date de la prochaine facture :", "billing": "Facturation", "billed": "facturé", "billingStatusIs": "Le statut de facturation est :", "login": "Connexion", "links": "Liens", "emailSent": "E-mail envoyé", "emailSentMessage": "L'e-mail de bienvenue a été renvoyé. Vérifiez votre boîte de réception." }, "order": { "title": "Commander un site web" }, "migration": { "title": "Migrer votre site web", "password": "Mot de passe", "importantNotes": "Notes importantes" } }
+{
+  "list": {
+    "title": "Liste d'hébergement web",
+    "orderTitle": "Commander des enregistrements de site web"
+  },
+  "view": {
+    "title": "Voir le site web {id}",
+    "package": "Forfait",
+    "nextInvoiceDate": "Date de la prochaine facture :",
+    "billing": "Facturation",
+    "billed": "facturé",
+    "billingStatusIs": "Le statut de facturation est :",
+    "login": "Connexion",
+    "links": "Liens",
+    "emailSent": "E-mail envoyé",
+    "emailSentMessage": "L'e-mail de bienvenue a été renvoyé. Vérifiez votre boîte de réception.",
+    "hostInfo": "Informations sur l'hôte",
+    "username": "Nom d'utilisateur :",
+    "ip": "IP :",
+    "server": "Serveur :",
+    "notSetYet": "Pas encore défini",
+    "types": "Types :",
+    "linksLabel": "Liens :",
+    "manualLogin": "Connexion manuelle",
+    "automaticLogin": "Connexion automatique",
+    "clickHere": "Cliquez ici",
+    "defaultNameservers": "Serveurs de noms par défaut",
+    "nameservers": "Serveurs de noms :",
+    "externalLinks": "Liens externes",
+    "names": "Noms :",
+    "websitePreview": "Aperçu du site web",
+    "welcomeEmailConfirm": "Êtes-vous sûr de vouloir renvoyer l'e-mail de bienvenue ?"
+  },
+  "order": {
+    "title": "Commander un site web"
+  },
+  "migration": {
+    "title": "Migrer votre site web",
+    "password": "Mot de passe",
+    "importantNotes": "Notes importantes",
+    "currentWebHostInfo": "Informations sur l'hébergeur actuel",
+    "customerPortalUrl": "URL du portail client",
+    "portalExample": "Par exemple : sso.godaddy.com",
+    "registeredUsername": "Nom d'utilisateur / e-mail / ID enregistré",
+    "controlPanelUrl": "URL du panneau de contrôle",
+    "controlPanelExample": "Par exemple : yourdomain.com/cpanel",
+    "ftpUsername": "Nom d'utilisateur FTP / panneau de contrôle",
+    "ftpPassword": "Mot de passe FTP / panneau de contrôle",
+    "holdingPageQuestion": "Si le site est en ligne/très fréquenté avec beaucoup de trafic, pouvons-nous mettre en place une page d'attente pendant la migration ?",
+    "specialRequirementsQuestion": "Ce site a-t-il des exigences particulières comme la version PHP / modules ?",
+    "domainRegistryInfo": "Informations sur le registre de domaine",
+    "transferDomainQuestion": "Souhaitez-vous également que nous vous aidions à transférer l'enregistrement du nom de domaine ?",
+    "updateNameserversQuestion": "Souhaitez-vous que nous mettions à jour les serveurs de noms dès que nous aurons terminé la migration des données ?",
+    "domainRegistryPortal": "Portail client du registre de domaine",
+    "note1": "Remplir ce formulaire ouvrira un nouveau ticket pour que notre département d'assistance commence votre migration.",
+    "note2": "Soyez aussi complet et précis que possible pour éviter tout retard.",
+    "note3": "Une migration typique est terminée en 48 à 72 heures. Parfois plus longtemps si la quantité de données à copier est importante.",
+    "note4": "L'ancien compte d'hébergement doit être en ligne et accessible pendant que nous effectuons la migration, sinon nous pourrions rencontrer des difficultés.",
+    "note5": "Veuillez ne pas effectuer de mises à jour sur votre site pendant que nous effectuons la migration, sinon ces données pourraient ne pas être copiées vers le nouvel hébergement."
+  },
+  "buyIp": {
+    "title": "Acheter un module IP supplémentaire",
+    "existingAddonIps": "IP supplémentaires existantes",
+    "additionalIp": "IP supplémentaire",
+    "monthlyCost": "Coût mensuel ({symbol})",
+    "costDescription": "Coût ({symbol}) chaque mois lors de la facturation de votre site web",
+    "confirmPurchase": "Confirmer l'achat",
+    "confirmMessage": "Coût IP supplémentaire : {symbol}{cost}/mois. Êtes-vous sûr de vouloir commander une IP supplémentaire ?",
+    "placeOrder": "Passer la commande",
+    "orderPlaced": "Commande passée"
+  },
+  "reverseDns": {
+    "title": "DNS inverse",
+    "updateReverseDns": "Mettre à jour le DNS inverse"
+  },
+  "downloadBackups": {
+    "title": "Télécharger les sauvegardes",
+    "backup": "Sauvegarde",
+    "size": "Taille",
+    "options": "Options"
+  }
+}

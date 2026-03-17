@@ -1,1 +1,57 @@
-{ "settings": { "title": "Kontoagordoj" }, "changePassword": { "title": "Ŝanĝi Pasvorton", "cardTitle": "Ĝisdatigi Pasvorton", "currentPassword": "Nuna Pasvorto", "newPassword": "Nova Pasvorto", "confirmPassword": "Konfirmi Pasvorton", "updatePassword": "Ĝisdatigi Pasvorton" }, "changeUsername": { "title": "Ŝanĝi Uzantnomon", "disabled": "Uzantnomaj ŝanĝoj estis provizore malaktivigitaj.", "currentUsername": "Nuna Uzantnomo", "newDesiredUsername": "Nova Dezirata Uzantnomo", "confirmationCode": "Konfirma Kodo", "pleaseWait": "Bonvolu atendi!", "gotError": "Eraro ricevita {error}" }, "contactInfo": { "title": "Kontakta Informo", "cardTitle": "Ĝisdatigi Kontaktan Informon", "headsUp": "Atentu!", "headsUpMessage": "Kvankam ĉi tiu informo estas nedeviga, provizi (precizajn) informojn helpos kaj riĉigi niajn interagadojn kaj malaltigi vian Riskan % Poentaron.", "riskScore": "Riska % Poentaro", "personalInformation": "Personaj Informoj", "name": "Nomo", "company": "Kompanio", "addressLine1": "Adresa Linio 1", "addressLine2": "Adresa Linio 2", "city": "Urbo", "state": "Ŝtato", "country": "Lando", "zipcode": "Poŝtkodo", "phoneNumber": "Telefona Numero", "language": "Lingvo", "auto": "Aŭtomate", "currency": "Valuto", "timeZone": "Horzono", "otherSettings": "Aliaj Agordoj", "disablePasswordResets": "Malaktivigi (Forgesita Pasvorto) Pasvorto-Restarigojn.", "disableInvoiceReminders": "Malaktivigi Fakturan Memoriga Retpoŝtan Sciigojn.", "alternateEmailInvoices": "Alternativa Retpoŝto por Fakturoj", "alternateEmailAbuse": "Alternativa Retpoŝto por Misuzaj Raportoj", "updateInfo": "Ĝisdatigi Informon" } }
+{
+  "settings": {
+    "title": "Kontoagordoj"
+  },
+  "changePassword": {
+    "title": "Ŝanĝi Pasvorton",
+    "cardTitle": "Ĝisdatigi Pasvorton",
+    "currentPassword": "Nuna Pasvorto",
+    "newPassword": "Nova Pasvorto",
+    "confirmPassword": "Konfirmi Pasvorton",
+    "updatePassword": "Ĝisdatigi Pasvorton"
+  },
+  "changeUsername": {
+    "title": "Ŝanĝi Uzantnomon",
+    "disabled": "Uzantnomaj ŝanĝoj estis provizore malaktivigitaj.",
+    "currentUsername": "Nuna Uzantnomo",
+    "newDesiredUsername": "Nova Dezirata Uzantnomo",
+    "confirmationCode": "Konfirma Kodo",
+    "pleaseWait": "Bonvolu atendi!",
+    "gotError": "Eraro ricevita {error}"
+  },
+  "contactInfo": {
+    "title": "Kontakta Informo",
+    "cardTitle": "Ĝisdatigi Kontaktan Informon",
+    "headsUp": "Atentu!",
+    "headsUpMessage": "Kvankam ĉi tiu informo estas nedeviga, provizi (precizajn) informojn helpos kaj riĉigi niajn interagadojn kaj malaltigi vian Riskan % Poentaron.",
+    "riskScore": "Riska % Poentaro",
+    "personalInformation": "Personaj Informoj",
+    "name": "Nomo",
+    "company": "Kompanio",
+    "addressLine1": "Adresa Linio 1",
+    "addressLine2": "Adresa Linio 2",
+    "city": "Urbo",
+    "state": "Ŝtato",
+    "country": "Lando",
+    "zipcode": "Poŝtkodo",
+    "phoneNumber": "Telefona Numero",
+    "language": "Lingvo",
+    "auto": "Aŭtomate",
+    "currency": "Valuto",
+    "timeZone": "Horzono",
+    "otherSettings": "Aliaj Agordoj",
+    "disablePasswordResets": "Malaktivigi (Forgesita Pasvorto) Pasvorto-Restarigojn.",
+    "disableInvoiceReminders": "Malaktivigi Fakturan Memoriga Retpoŝtan Sciigojn.",
+    "alternateEmailInvoices": "Alternativa Retpoŝto por Fakturoj",
+    "alternateEmailAbuse": "Alternativa Retpoŝto por Misuzaj Raportoj",
+    "updateInfo": "Ĝisdatigi Informon",
+    "namePlaceholder": "Joe Cool",
+    "gstinTaxId": "GSTIN-imposta Identigilo",
+    "gstinPlaceholder": "Varoj kaj Servoj Imposta Identigilo de Kontribuanto",
+    "cityState": "Urbo, Ŝtato",
+    "phoneNo": "Telefona Numero",
+    "disableServerInvoiceReminders": "Malaktivigi Rememornotifojn pri Servilaj Fakturoj.",
+    "disableReinstall": "Malaktivigi Reinstaladon.",
+    "alternateEmailInvoicesPlaceholder": "Alternativa retpoŝto por sendi fakturojn"
+  }
+}

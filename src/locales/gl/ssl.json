@@ -1,1 +1,27 @@
-{ "list": { "title": "Lista de certificados SSL", "orderTitle": "Pedir rexistros SSL" }, "view": { "title": "Ver SSL {id}", "package": "Paquete", "nextInvoiceDate": "Data da próxima factura:", "billing": "Facturación", "billed": "facturado:", "statusIs": "O estado é:", "orderInfo": "Información do pedido", "certificateInfo": "Información do certificado", "links": "Ligazóns", "emailSent": "Correo enviado", "emailSentMessage": "O correo de benvida foi reenviado. Comprobe a súa caixa de entrada." }, "order": { "title": "Pedir SSL" }, "changeApproverEmail": { "title": "Cambiar correo do aprobador", "selectApproverEmail": "Seleccionar correo do aprobador" } }
+{
+  "list": {
+    "title": "Lista de certificados SSL",
+    "orderTitle": "Pedir rexistros SSL"
+  },
+  "view": {
+    "title": "Ver SSL {id}",
+    "package": "Paquete",
+    "nextInvoiceDate": "Data da próxima factura:",
+    "billing": "Facturación",
+    "billed": "facturado:",
+    "statusIs": "O estado é:",
+    "orderInfo": "Información do pedido",
+    "certificateInfo": "Información do certificado",
+    "links": "Ligazóns",
+    "emailSent": "Correo enviado",
+    "emailSentMessage": "O correo de benvida foi reenviado. Comprobe a súa caixa de entrada.",
+    "welcomeEmailConfirm": "¿Está seguro de que quere reenviar o correo de benvida?"
+  },
+  "order": {
+    "title": "Pedir SSL"
+  },
+  "changeApproverEmail": {
+    "title": "Cambiar correo do aprobador",
+    "selectApproverEmail": "Seleccionar correo do aprobador"
+  }
+}

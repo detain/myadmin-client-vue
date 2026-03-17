@@ -36,7 +36,23 @@
     "postedOn": "E Kentsoeng Ka:",
     "closeConfirmButton": "Ee, e koale!",
     "ticketClosed2": "Tikiti e Koaliloe",
-    "replyPosted": "Karabo e Kentsoeng"
+    "replyPosted": "Karabo e Kentsoeng",
+    "titleSuffix": "Sheba Tikete",
+    "emailDisabled": "Imeile ea hao ({email}) e khutlisitsoe. Kopa u ikopanye le",
+    "support": "TSHEHELETSO",
+    "ipHelpText": "Haeba khokahano e tlâ ho tsoa atereseng e 'ngoe ea IP. Kopa u e fetohe.",
+    "rootPasswordPlaceholder": "VPS / Seva e Ikhetholeng",
+    "passwordEncrypted": "Dipasewete di bolokoa databankeng e arohaneng e khomaretsoeng.",
+    "ticketClosed": "Tikete ena e koaliloe, kahoo likarabo ha li lumelloe. Haeba u ntse u hloka thuso, u kanna oa bula tikete e ncha mme re tla thaba ho u thusa.",
+    "replyPlaceholder": "Tlhaloso e pharalletseng ea bothata",
+    "replyHint": "Ho bula litikata tse arohaneng bakeng sa mathata a masha ho thusa sehlopha sa rona ho fana ka bohlokoa le ho rarolla ka potlako.",
+    "participant": "Mokopi",
+    "userLikedReply": "Mosebedisi o ratile karabo ea hao",
+    "userDislikedReply": "Mosebedisi ha a ra karabo ea hao",
+    "email": "Imeile:",
+    "closeConfirmTitle": "Na u u-bua nnete?",
+    "closeConfirmText": "Na u batla ho koala tikete ena?",
+    "ticketSettingsUpdated": "Lipeakanyo tsa Tikete li Ntlafaditsoeng"
   },
   "new": {
     "title": "Tikiti e Ncha",
@@ -52,6 +68,13 @@
     "sudoUser": "Mosebedisi oa Sudo",
     "sudoPassword": "Password ea Sudo",
     "sshPort": "Molapo oa SSH",
-    "termsOfUse": "Maemo a Tšebeliso"
+    "termsOfUse": "Maemo a Tšebeliso",
+    "subjectPlaceholder": "Sehlooho",
+    "subjectValidation": "Kopa u kenye tlhaloso e khutshoane mabapi le bothata.",
+    "descriptionPlaceholder": "Ke leboha ho u thusa ho boloka tsamaiso ea tsheheletso e ratoang ka ho romela kopo e le 'ngoe ka tiketeng.",
+    "descriptionValidation": "Kopa u kenye tlhaloso e pharalletseng mabapi le bothata.",
+    "fileNote": "Tlhokomeliso: Difaele tsa difoto feela di dumelletsoeng - mefuta ea gif/jpeg/png.",
+    "allowAccessLabel": "Ke lumela InterServer ho fihlella seva ea ka le ho etsa liphetoho",
+    "accessNote": "Hlokomela: Ka ho bula kopo ea tsheheletso InterServer e ka hloka ho fihlella, ho lhokofatsa, kapa ho fetola difaele tolong ea hao. Sena se hlokeha ho nehelana ka tsheheletso ea theknoloji. Kopa u tsoele pele feela haeba u lumela."
   }
 }

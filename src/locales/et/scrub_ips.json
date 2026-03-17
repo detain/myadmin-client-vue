@@ -1,1 +1,65 @@
-{ "list": { "title": "Puhastus-IP-de teenuste loend", "orderTitle": "Telli puhastus-IP-d" }, "view": { "title": "Vaata puhastus-IP-sid", "currentIp": "Praegune IP", "ipAddress": "IP-aadress", "ipFromService": "IP teenusest" }, "filters": { "title": "Filtrid", "createNew": "Loo uus", "createNewFilter": "Loo uus filter", "filterType": "Filtri tüüp", "ipAddress": "IP-aadress", "portNo": "Pordi number", "filter": "Filter", "destinationIp": "Siht-IP", "destinationPort": "Sihtport", "noFiltersFound": "Filtreid ei leitud!", "deleteFilterConfirm": "Kas olete kindel, et soovite selle filtri kustutada?" }, "firewallRules": { "title": "Tulemüüri reeglid", "createNewFirewall": "Loo uus tulemüüri reegel", "protocol": "Protokoll", "destinationIp": "Siht-IP", "sourceIp": "Lätte-IP", "block": "Blokeeri", "whitelist": "Valge nimekiri", "noRulesFound": "Reegleid ei leitud!", "deleteRuleConfirm": "Kas olete kindel, et soovite selle reegli kustutada?" }, "geoFirewallRules": { "title": "Geo tulemüüri reeglid", "createNewGeoRule": "Loo uus geo tulemüüri reegel", "destinationIp": "Siht-IP", "sourceCountry": "Lähteriik", "sourceAsn": "Lätte ASN", "selectCountry": "Vali riik", "block": "Blokeeri", "whitelist": "Valge nimekiri", "noRulesFound": "Reegleid ei leitud!", "deleteGeoRuleConfirm": "Kas olete kindel, et soovite selle geo-reegli kustutada?" } }
+{
+  "list": {
+    "title": "Puhastus-IP-de teenuste loend",
+    "orderTitle": "Telli puhastus-IP-d"
+  },
+  "view": {
+    "title": "Vaata puhastus-IP-sid",
+    "currentIp": "Praegune IP",
+    "ipAddress": "IP-aadress",
+    "ipFromService": "IP teenusest"
+  },
+  "filters": {
+    "title": "Filtrid",
+    "createNew": "Loo uus",
+    "createNewFilter": "Loo uus filter",
+    "filterType": "Filtri tüüp",
+    "ipAddress": "IP-aadress",
+    "portNo": "Pordi number",
+    "filter": "Filter",
+    "destinationIp": "Siht-IP",
+    "destinationPort": "Sihtport",
+    "noFiltersFound": "Filtreid ei leitud!",
+    "deleteFilterConfirm": "Kas olete kindel, et soovite selle filtri kustutada?",
+    "selectFilterType": "Vali filtri tüüp",
+    "unableToCreateFilter": "Filtri loomine pole praegu võimalik.",
+    "unableToDeleteFilter": "Filtri kustutamine pole praegu võimalik."
+  },
+  "firewallRules": {
+    "title": "Tulemüüri reeglid",
+    "createNewFirewall": "Loo uus tulemüüri reegel",
+    "protocol": "Protokoll",
+    "destinationIp": "Siht-IP",
+    "sourceIp": "Lätte-IP",
+    "block": "Blokeeri",
+    "whitelist": "Valge nimekiri",
+    "noRulesFound": "Reegleid ei leitud!",
+    "deleteRuleConfirm": "Kas olete kindel, et soovite selle reegli kustutada?",
+    "createNew": "Loo uus",
+    "destinationPort": "Sihtport",
+    "sourcePort": "Lähtteport",
+    "xdpAction": "XDP toiming",
+    "ipRequired": "IP-aadress on nõutav",
+    "unableToCreateRule": "Tulemüüri reegli loomine pole praegu võimalik.",
+    "unableToDeleteRule": "Tulemüüri reegli kustutamine pole praegu võimalik."
+  },
+  "geoFirewallRules": {
+    "title": "Geo tulemüüri reeglid",
+    "createNewGeoRule": "Loo uus geo tulemüüri reegel",
+    "destinationIp": "Siht-IP",
+    "sourceCountry": "Lähteriik",
+    "sourceAsn": "Lätte ASN",
+    "selectCountry": "Vali riik",
+    "block": "Blokeeri",
+    "whitelist": "Valge nimekiri",
+    "noRulesFound": "Reegleid ei leitud!",
+    "deleteGeoRuleConfirm": "Kas olete kindel, et soovite selle geo-reegli kustutada?",
+    "createNew": "Loo uus",
+    "destinationPort": "Sihtport",
+    "xdpAction": "XDP toiming",
+    "portNo": "Pordi nr",
+    "asn": "ASN",
+    "unableToCreateRule": "Tulemüüri reegli loomine pole praegu võimalik.",
+    "unableToDeleteRule": "Geo tulemüüri reegli kustutamine pole praegu võimalik."
+  }
+}

@@ -20,7 +20,10 @@
     "destinationIp": "Zil-IP",
     "destinationPort": "Zil-Port",
     "noFiltersFound": "Keng Filter fonnt!",
-    "deleteFilterConfirm": "Sidd Dir sécher, datt Dir dëse Filter wëllt läschen?"
+    "deleteFilterConfirm": "Sidd Dir sécher, datt Dir dëse Filter wëllt läschen?",
+    "selectFilterType": "Filtertyp auswählen",
+    "unableToCreateFilter": "De Filter kann momentan net erstellt ginn.",
+    "unableToDeleteFilter": "De Filter kann momentan net geläscht ginn."
   },
   "firewallRules": {
     "title": "Firewall-Regelen",
@@ -31,7 +34,14 @@
     "block": "Blockéieren",
     "whitelist": "Wäisslëscht",
     "noRulesFound": "Keng Regelen fonnt!",
-    "deleteRuleConfirm": "Sidd Dir sécher, datt Dir dës Regel wëllt läschen?"
+    "deleteRuleConfirm": "Sidd Dir sécher, datt Dir dës Regel wëllt läschen?",
+    "createNew": "Nei erstellen",
+    "destinationPort": "Zielport",
+    "sourcePort": "Quellport",
+    "xdpAction": "XDP Aktioun",
+    "ipRequired": "IP-Adress ass erfuerderlech",
+    "unableToCreateRule": "D'Firewallregel kann momentan net erstellt ginn.",
+    "unableToDeleteRule": "D'Firewallregel kann momentan net geläscht ginn."
   },
   "geoFirewallRules": {
     "title": "Geo-Firewall-Regelen",
@@ -43,6 +53,13 @@
     "block": "Blockéieren",
     "whitelist": "Wäisslëscht",
     "noRulesFound": "Keng Regelen fonnt!",
-    "deleteGeoRuleConfirm": "Sidd Dir sécher, datt Dir dës Geo-Regel wëllt läschen?"
+    "deleteGeoRuleConfirm": "Sidd Dir sécher, datt Dir dës Geo-Regel wëllt läschen?",
+    "createNew": "Nei erstellen",
+    "destinationPort": "Zielport",
+    "xdpAction": "XDP Aktioun",
+    "portNo": "Port Nr.",
+    "asn": "ASN",
+    "unableToCreateRule": "D'Firewallregel kann momentan net erstellt ginn.",
+    "unableToDeleteRule": "D'Geo-Firewallregel kann momentan net geläscht ginn."
   }
 }

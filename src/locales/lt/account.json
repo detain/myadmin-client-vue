@@ -44,6 +44,14 @@
     "disableInvoiceReminders": "Išjungti sąskaitų priminimų el. pašto pranešimus.",
     "alternateEmailInvoices": "Alternatyvus el. paštas sąskaitoms",
     "alternateEmailAbuse": "Alternatyvus el. paštas piktnaudžiavimo ataskaitoms",
-    "updateInfo": "Atnaujinti informaciją"
+    "updateInfo": "Atnaujinti informaciją",
+    "namePlaceholder": "Jonas Jonaitis",
+    "gstinTaxId": "GSTIN mokesčių ID",
+    "gstinPlaceholder": "Prekių ir paslaugų mokesčių mokėtojo identifikavimo numeris",
+    "cityState": "Miestas, Regionas",
+    "phoneNo": "Telefono numeris",
+    "disableServerInvoiceReminders": "Išjungti serverio sąskaitos priminimo el. pašto pranešimus.",
+    "disableReinstall": "Išjungti pakartotinį diegimą.",
+    "alternateEmailInvoicesPlaceholder": "Alternatyvus el. paštas sąskaitoms siųsti"
   }
 }

@@ -1,22 +1,65 @@
 {
-  "list": { "title": "Scrub IPs қызметтері тізімі", "orderTitle": "Scrub IPs тапсырыс беру" },
-  "view": { "title": "Scrub IPs қарау", "currentIp": "Ағымдағы IP", "ipAddress": "IP мекенжайы", "ipFromService": "Қызметтен IP" },
+  "list": {
+    "title": "Scrub IPs қызметтері тізімі",
+    "orderTitle": "Scrub IPs тапсырыс беру"
+  },
+  "view": {
+    "title": "Scrub IPs қарау",
+    "currentIp": "Ағымдағы IP",
+    "ipAddress": "IP мекенжайы",
+    "ipFromService": "Қызметтен IP"
+  },
   "filters": {
-    "title": "Сүзгілер", "createNew": "Жаңа жасау", "createNewFilter": "Жаңа сүзгі жасау",
-    "filterType": "Сүзгі түрі", "ipAddress": "IP мекенжайы", "portNo": "Порт нөмірі",
-    "filter": "Сүзгі", "destinationIp": "Мақсатты IP", "destinationPort": "Мақсатты порт",
-    "noFiltersFound": "Сүзгілер табылмады!", "deleteFilterConfirm": "Бұл сүзгіні жойғыңыз келе ме?"
+    "title": "Сүзгілер",
+    "createNew": "Жаңа жасау",
+    "createNewFilter": "Жаңа сүзгі жасау",
+    "filterType": "Сүзгі түрі",
+    "ipAddress": "IP мекенжайы",
+    "portNo": "Порт нөмірі",
+    "filter": "Сүзгі",
+    "destinationIp": "Мақсатты IP",
+    "destinationPort": "Мақсатты порт",
+    "noFiltersFound": "Сүзгілер табылмады!",
+    "deleteFilterConfirm": "Бұл сүзгіні жойғыңыз келе ме?",
+    "selectFilterType": "Сүзгі түрін таңдаңыз",
+    "unableToCreateFilter": "Қазіргі уақытта сүзгі жасау мүмкін емес.",
+    "unableToDeleteFilter": "Қазіргі уақытта сүзгіні жою мүмкін емес."
   },
   "firewallRules": {
-    "title": "Брандмауэр ережелері", "createNewFirewall": "Жаңа брандмауэр ережесін жасау",
-    "protocol": "Протокол", "destinationIp": "Мақсатты IP", "sourceIp": "Бастапқы IP",
-    "block": "Блоктау", "whitelist": "Ақ тізім", "noRulesFound": "Ережелер табылмады!",
-    "deleteRuleConfirm": "Бұл ережені жойғыңыз келе ме?"
+    "title": "Брандмауэр ережелері",
+    "createNewFirewall": "Жаңа брандмауэр ережесін жасау",
+    "protocol": "Протокол",
+    "destinationIp": "Мақсатты IP",
+    "sourceIp": "Бастапқы IP",
+    "block": "Блоктау",
+    "whitelist": "Ақ тізім",
+    "noRulesFound": "Ережелер табылмады!",
+    "deleteRuleConfirm": "Бұл ережені жойғыңыз келе ме?",
+    "createNew": "Жаңа жасау",
+    "destinationPort": "Мақсатты порт",
+    "sourcePort": "Бастапқы порт",
+    "xdpAction": "XDP іс-әрекеті",
+    "ipRequired": "IP мекенжайы қажет",
+    "unableToCreateRule": "Қазіргі уақытта брандмауэр ережесін жасау мүмкін емес.",
+    "unableToDeleteRule": "Қазіргі уақытта брандмауэр ережесін жою мүмкін емес."
   },
   "geoFirewallRules": {
-    "title": "Гео брандмауэр ережелері", "createNewGeoRule": "Жаңа гео брандмауэр ережесін жасау",
-    "destinationIp": "Мақсатты IP", "sourceCountry": "Бастапқы ел", "sourceAsn": "Бастапқы ASN",
-    "selectCountry": "Елді таңдау", "block": "Блоктау", "whitelist": "Ақ тізім",
-    "noRulesFound": "Ережелер табылмады!", "deleteGeoRuleConfirm": "Бұл гео ережені жойғыңыз келе ме?"
+    "title": "Гео брандмауэр ережелері",
+    "createNewGeoRule": "Жаңа гео брандмауэр ережесін жасау",
+    "destinationIp": "Мақсатты IP",
+    "sourceCountry": "Бастапқы ел",
+    "sourceAsn": "Бастапқы ASN",
+    "selectCountry": "Елді таңдау",
+    "block": "Блоктау",
+    "whitelist": "Ақ тізім",
+    "noRulesFound": "Ережелер табылмады!",
+    "deleteGeoRuleConfirm": "Бұл гео ережені жойғыңыз келе ме?",
+    "createNew": "Жаңа жасау",
+    "destinationPort": "Мақсатты порт",
+    "xdpAction": "XDP іс-әрекеті",
+    "portNo": "Порт нөмірі",
+    "asn": "ASN",
+    "unableToCreateRule": "Қазіргі уақытта брандмауэр ережесін жасау мүмкін емес.",
+    "unableToDeleteRule": "Қазіргі уақытта гео брандмауэр ережесін жою мүмкін емес."
   }
 }

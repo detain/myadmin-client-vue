@@ -1,12 +1,30 @@
 {
-  "list": { "title": "ಪರವಾನಗಿ ಪಟ್ಟಿ", "orderTitle": "ಪರವಾನಗಿ ನೋಂದಣಿ ಆದೇಶಿಸಿ" },
-  "view": {
-    "title": "ಪರವಾನಗಿ {id} ವೀಕ್ಷಿಸಿ", "package": "ಪ್ಯಾಕೇಜ್", "nextInvoiceDate": "ಮುಂದಿನ ಇನ್‌ವಾಯ್ಸ್ ದಿನಾಂಕ:",
-    "billing": "ಬಿಲ್ಲಿಂಗ್", "billed": "ಬಿಲ್ ಮಾಡಲಾಗಿದೆ:", "statusIs": "ಸ್ಥಿತಿ:",
-    "licenseInfo": "ಪರವಾನಗಿ ಮಾಹಿತಿ", "cpanelInfo": "cPanel ಮಾಹಿತಿ", "links": "ಲಿಂಕ್‌ಗಳು",
-    "emailSent": "ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ", "emailSentMessage": "ಸ್ವಾಗತ ಇಮೇಲ್ ಮರುಕಳುಹಿಸಲಾಗಿದೆ. ನಿಮ್ಮ ಇನ್‌ಬಾಕ್ಸ್ ಪರಿಶೀಲಿಸಿ."
+  "list": {
+    "title": "ಪರವಾನಗಿ ಪಟ್ಟಿ",
+    "orderTitle": "ಪರವಾನಗಿ ನೋಂದಣಿ ಆದೇಶಿಸಿ"
   },
-  "order": { "title": "ಪರವಾನಗಿ ಆದೇಶಿಸಿ" },
-  "changeIp": { "title": "IP ಬದಲಿಸಿ" },
-  "changeOs": { "title": "OS ಬದಲಿಸಿ", "selectLicenseOs": "ಪರವಾನಗಿ OS ಆಯ್ಕೆಮಾಡಿ" }
+  "view": {
+    "title": "ಪರವಾನಗಿ {id} ವೀಕ್ಷಿಸಿ",
+    "package": "ಪ್ಯಾಕೇಜ್",
+    "nextInvoiceDate": "ಮುಂದಿನ ಇನ್‌ವಾಯ್ಸ್ ದಿನಾಂಕ:",
+    "billing": "ಬಿಲ್ಲಿಂಗ್",
+    "billed": "ಬಿಲ್ ಮಾಡಲಾಗಿದೆ:",
+    "statusIs": "ಸ್ಥಿತಿ:",
+    "licenseInfo": "ಪರವಾನಗಿ ಮಾಹಿತಿ",
+    "cpanelInfo": "cPanel ಮಾಹಿತಿ",
+    "links": "ಲಿಂಕ್‌ಗಳು",
+    "emailSent": "ಇಮೇಲ್ ಕಳುಹಿಸಲಾಗಿದೆ",
+    "emailSentMessage": "ಸ್ವಾಗತ ಇಮೇಲ್ ಮರುಕಳುಹಿಸಲಾಗಿದೆ. ನಿಮ್ಮ ಇನ್‌ಬಾಕ್ಸ್ ಪರಿಶೀಲಿಸಿ.",
+    "welcomeEmailConfirm": "ಸ್ವಾಗತ ಇಮೇಲ್ ಮರಳಿ ಕಳುಹಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ?"
+  },
+  "order": {
+    "title": "ಪರವಾನಗಿ ಆದೇಶಿಸಿ"
+  },
+  "changeIp": {
+    "title": "IP ಬದಲಿಸಿ"
+  },
+  "changeOs": {
+    "title": "OS ಬದಲಿಸಿ",
+    "selectLicenseOs": "ಪರವಾನಗಿ OS ಆಯ್ಕೆಮಾಡಿ"
+  }
 }

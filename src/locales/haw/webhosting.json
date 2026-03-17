@@ -1,1 +1,82 @@
-{ "list": { "title": "Papa Hoʻokipa Pūnaewele", "orderTitle": "Kauoha Mau Inoa Pūnaewele" }, "view": { "title": "Nānā Pūnaewele {id}", "package": "ʻAha Hana", "nextInvoiceDate": "Lā Bila Aʻe:", "billing": "Uku Kālā", "billed": "ua uku ʻia", "billingStatusIs": "ʻO ke kūlana uku:", "login": "Komo", "links": "Mau Pili", "emailSent": "Ua Hoʻouna ʻia ka Leka", "emailSentMessage": "Ua hoʻouna hou ʻia ka leka aloha. E nānā i kāu waihona leka." }, "order": { "title": "Kauoha Pūnaewele" }, "migration": { "title": "Neʻe i Kāu Pūnaewele", "password": "ʻŌlelo Hūnā", "importantNotes": "Mau ʻŌlelo Aʻo Nui" } }
+{
+  "list": {
+    "title": "Papa Hoʻokipa Pūnaewele",
+    "orderTitle": "Kauoha Mau Inoa Pūnaewele"
+  },
+  "view": {
+    "title": "Nānā Pūnaewele {id}",
+    "package": "ʻAha Hana",
+    "nextInvoiceDate": "Lā Bila Aʻe:",
+    "billing": "Uku Kālā",
+    "billed": "ua uku ʻia",
+    "billingStatusIs": "ʻO ke kūlana uku:",
+    "login": "Komo",
+    "links": "Mau Pili",
+    "emailSent": "Ua Hoʻouna ʻia ka Leka",
+    "emailSentMessage": "Ua hoʻouna hou ʻia ka leka aloha. E nānā i kāu waihona leka.",
+    "hostInfo": "ʻIkepili Mea Hoʻokipa",
+    "username": "Inoa Mea Hoʻohana:",
+    "ip": "IP:",
+    "server": "Kikowaena:",
+    "notSetYet": "ʻAʻole i hoʻonohonoho ʻia",
+    "types": "Nā ʻAno:",
+    "linksLabel": "Nā Loulou:",
+    "manualLogin": "Komo Lima",
+    "automaticLogin": "Komo Maʻoli",
+    "clickHere": "E kaomi ʻo ʻia nō",
+    "defaultNameservers": "Nā Kikowaena Inoa Maʻamau",
+    "nameservers": "Nā Kikowaena Inoa:",
+    "externalLinks": "Nā Loulou Waho",
+    "names": "Nā Inoa:",
+    "websitePreview": "Nānā Pūnaewele",
+    "welcomeEmailConfirm": "Ua hōʻoia ʻoe e hoʻouna hou i ka leka uila welina?"
+  },
+  "order": {
+    "title": "Kauoha Pūnaewele"
+  },
+  "migration": {
+    "title": "Neʻe i Kāu Pūnaewele",
+    "password": "ʻŌlelo Hūnā",
+    "importantNotes": "Mau ʻŌlelo Aʻo Nui",
+    "currentWebHostInfo": "ʻIkepili Mea Hoʻokipa Pūnaewele o Kēia Manawa",
+    "customerPortalUrl": "URL Pahu Mea Kūʻai",
+    "portalExample": "No ka laʻana: sso.godaddy.com",
+    "registeredUsername": "Inoa Mea Hoʻohana i Hoʻopaʻa ʻia / Leka Uila / ID",
+    "controlPanelUrl": "URL Papa Hoʻomalu",
+    "controlPanelExample": "No ka laʻana: yourdomain.com/cpanel",
+    "ftpUsername": "Inoa Mea Hoʻohana FTP / Papa Hoʻomalu",
+    "ftpPassword": "ʻŌlelo Huna FTP / Papa Hoʻomalu",
+    "holdingPageQuestion": "Ke ola nei ka pūnaewele a he nui ka promelo, hiki iā mākou ke hoʻonohonoho i kahi ʻaoʻao kali i ka wā o ka neʻe?",
+    "specialRequirementsQuestion": "Loaʻa paha i kēia pūnaewele nā koi kūikawā e like me ka Mana PHP / Nā Module?",
+    "domainRegistryInfo": "ʻIkepili Kāpaia Inoa Kūlana",
+    "transferDomainQuestion": "Makemake ʻoe e kōkua mākou iā ʻoe e hoʻoneʻe i ka hoʻopaʻa inoa kūlana?",
+    "updateNameserversQuestion": "Makemake ʻoe e hoʻohou mākou i nā kikowaena inoa i ka pau ʻana o ka neʻe ʻikepili?",
+    "domainRegistryPortal": "Pahu Mea Kūʻai Kāpaia Inoa Kūlana",
+    "note1": "E hoʻopiha i kēia palapala e wehe ai i kahi tikeke hou no kā mākou keʻena kākoʻo e hoʻomaka ai i kāu neʻe.",
+    "note2": "E ʻoluʻolu e piha loa a pololei i hiki i ka pale ʻana i nā lohi.",
+    "note3": "Ua hoʻopau ʻia ka neʻe maʻamau i loko o 48 a 72 mau hola. I kekahi manawa lōʻihi aku ke nui o ka ʻikepili e kope ʻia.",
+    "note4": "Pono e mau ana ka moʻokāki hoʻokipa kahiko a e hiki ʻia ke komo i ka wā e hana ana mākou i ka neʻe, i ʻole e loaʻa pilikia.",
+    "note5": "E ʻoluʻolu mai hoʻololi i kāu pūnaewele i ka wā e hana ana mākou i ka neʻe, i ʻole ʻaʻole e kope ʻia kēlā ʻikepili i ka hoʻokipa hou."
+  },
+  "buyIp": {
+    "title": "Kūʻai Hou IP Hou",
+    "existingAddonIps": "Nā IP Hou e mau ana",
+    "additionalIp": "IP Hou",
+    "monthlyCost": "Kumu kūʻai o kēlā me kēia mahina ({symbol})",
+    "costDescription": "Kumu kūʻai ({symbol}) i kēlā me kēia mahina i ka bila ʻia o kāu pūnaewele",
+    "confirmPurchase": "Hōʻoia Kūʻai",
+    "confirmMessage": "Kumu kūʻai IP hou: {symbol}{cost}/mahina. Ua hōʻoia ʻoe e kauoha i kahi IP hou?",
+    "placeOrder": "Waiho Kauoha",
+    "orderPlaced": "Ua Waiho ʻia ka Kauoha"
+  },
+  "reverseDns": {
+    "title": "DNS Hoʻihoʻi",
+    "updateReverseDns": "Hoʻohou DNS Hoʻihoʻi"
+  },
+  "downloadBackups": {
+    "title": "Hoʻoiho i Nā Kope Pale",
+    "backup": "Kope Pale",
+    "size": "Nui",
+    "options": "Nā Koho"
+  }
+}

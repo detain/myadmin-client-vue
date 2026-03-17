@@ -13,7 +13,8 @@
     "hostServer": "Servidor Anfitrión",
     "links": "Enlaces",
     "emailSent": "Correo Enviado",
-    "emailSentMessage": "El correo de bienvenida ha sido reenviado. Revise su bandeja de entrada."
+    "emailSentMessage": "El correo de bienvenida ha sido reenviado. Revise su bandeja de entrada.",
+    "welcomeEmailConfirm": "¿Está seguro de que desea reenviar el correo de bienvenida?"
   },
   "order": {
     "title": "Ordenar Almacenamiento"

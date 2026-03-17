@@ -1,5 +1,22 @@
 {
-    "list": { "title": "Listahan sa Storage / Backup", "orderTitle": "Mag-order og Backup Registrations" },
-    "view": { "title": "Tan-awa ang Backup {id}", "package": "Package", "nextInvoiceDate": "Petsa sa Sunod nga Invoice:", "billing": "Billing", "billed": "na-bill:", "statusIs": "Ang Status mao:", "hostServer": "Host Server", "links": "Mga Link", "emailSent": "Email Gipadala", "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox." },
-    "order": { "title": "Mag-order og Storage" }
+  "list": {
+    "title": "Listahan sa Storage / Backup",
+    "orderTitle": "Mag-order og Backup Registrations"
+  },
+  "view": {
+    "title": "Tan-awa ang Backup {id}",
+    "package": "Package",
+    "nextInvoiceDate": "Petsa sa Sunod nga Invoice:",
+    "billing": "Billing",
+    "billed": "na-bill:",
+    "statusIs": "Ang Status mao:",
+    "hostServer": "Host Server",
+    "links": "Mga Link",
+    "emailSent": "Email Gipadala",
+    "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox.",
+    "welcomeEmailConfirm": "Sigurado ka ba nga gusto mong ipadala pag-usab ang welcome email?"
+  },
+  "order": {
+    "title": "Mag-order og Storage"
+  }
 }

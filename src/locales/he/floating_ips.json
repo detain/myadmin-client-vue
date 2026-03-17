@@ -1,1 +1,25 @@
-{ "list": { "title": "רשימת שירותי Floating IPs", "orderTitle": "הזמן רישומי Floating IP" }, "view": { "title": "הצג Floating IP {id}", "package": "חבילה", "nextInvoiceDate": "תאריך חשבונית הבא:", "billing": "חיוב", "billed": "חויב:", "statusIs": "הסטטוס הוא:", "floatingIp": "Floating IP", "links": "קישורים", "emailSent": "הדואר האלקטרוני נשלח", "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך." }, "order": { "title": "הזמן Floating IP" }, "changeIp": { "title": "שנה IP יעד" } }
+{
+  "list": {
+    "title": "רשימת שירותי Floating IPs",
+    "orderTitle": "הזמן רישומי Floating IP"
+  },
+  "view": {
+    "title": "הצג Floating IP {id}",
+    "package": "חבילה",
+    "nextInvoiceDate": "תאריך חשבונית הבא:",
+    "billing": "חיוב",
+    "billed": "חויב:",
+    "statusIs": "הסטטוס הוא:",
+    "floatingIp": "Floating IP",
+    "links": "קישורים",
+    "emailSent": "הדואר האלקטרוני נשלח",
+    "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך.",
+    "welcomeEmailConfirm": "האם אתה בטוח שברצונך לשלוח מחדש את הדוא\"ל ברוך הבא?"
+  },
+  "order": {
+    "title": "הזמן Floating IP"
+  },
+  "changeIp": {
+    "title": "שנה IP יעד"
+  }
+}

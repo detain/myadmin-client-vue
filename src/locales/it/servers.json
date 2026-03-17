@@ -21,7 +21,17 @@
     "softReboot": "Riavvio Soft",
     "paymentStatus": "Stato Pagamento:",
     "emailSent": "Email Inviata",
-    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta."
+    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta.",
+    "unBilled": "Non fatturato",
+    "orderedOn": "Ordinato il:",
+    "moreInfo": "Ulteriori informazioni",
+    "cycle": "Ciclo",
+    "reset": "Reimposta",
+    "on": "Attivo",
+    "off": "Spento",
+    "unknown": "Sconosciuto",
+    "noLease": "Nessun contratto",
+    "welcomeEmailConfirm": "Sei sicuro di voler reinviare l'email di benvenuto?"
   },
   "order": {
     "title": "Ordina Server",
@@ -43,6 +53,58 @@
     "buyNow": "Acquista Ora",
     "monthly": "Mensile",
     "perMonth": "/mese",
-    "confirmOrder": "Conferma Ordine"
+    "confirmOrder": "Conferma Ordine",
+    "orderDedicated": "Ordina dedicato",
+    "customizeOrder": "Personalizza ordine",
+    "hostnameExample": "Esempio: server.hostname.com",
+    "hostnameHelp": "Usa l'hostname per identificare il server. Il dominio non deve essere valido o registrato. È richiesto un punto nell'hostname.",
+    "passwordRequirement": "Nota: la password deve contenere almeno 8 caratteri, una lettera minuscola, una maiuscola, un numero e un carattere speciale.",
+    "comments": "Commenti",
+    "addToCart": "Aggiungi al carrello",
+    "monthlyTotal": "Totale mensile",
+    "serverRegion": "Regione server",
+    "enterServerDetails": "Inserisci dettagli server",
+    "currentlySoldOut": "Attualmente esaurito!",
+    "contactSales": "Contatta il nostro reparto vendite.",
+    "autoRenewNotice": "L'abbonamento si rinnoverà automaticamente ogni mese a {cost} fino alla cancellazione.",
+    "tosAcknowledgement": "Selezionando questa casella, riconosci di acquistare un prodotto in abbonamento che si rinnova automaticamente e viene addebitato sulla carta di credito fornita oggi. Per annullare il rinnovo automatico, invia email a: billing{'@'}interserver.net. Selezionando la casella e cliccando su Effettua ordine, riconosci di aver letto e accettato i Termini e condizioni e la Privacy Policy.",
+    "continue": "Continua",
+    "selectCpu": "Seleziona CPU",
+    "selectDrives": "Seleziona dischi",
+    "selectedDrives": "Dischi selezionati",
+    "noDrivesSelected": "Nessun disco selezionato",
+    "totalDrives": "Dischi totali",
+    "selectBandwidth": "Seleziona larghezza di banda",
+    "selectIps": "Seleziona IP",
+    "selectControlPanel": "Seleziona pannello di controllo",
+    "selectRaid": "Seleziona RAID",
+    "setupTime": "Tempo di configurazione",
+    "showMore": "Mostra altro",
+    "showLess": "Mostra meno",
+    "editDetails": "Modifica dettagli",
+    "backToOptions": "Torna alle opzioni"
+  },
+  "reverseDns": {
+    "title": "Impostazioni DNS inverso",
+    "changeWarning": "Le modifiche al DNS inverso richiedono fino a un'ora per essere visualizzate.",
+    "ipAddresses": "Indirizzi IP",
+    "hostnames": "Hostname",
+    "updateReverseDns": "Aggiorna DNS inverso"
+  },
+  "bandwidthGraph": {
+    "title": "Grafici larghezza di banda",
+    "graphTitle": "Grafico larghezza di banda"
+  },
+  "ipmiLive": {
+    "title": "IP IPMI",
+    "whatThisDoes": "Cosa fa questo?",
+    "description": "Fornisce un IP attivo al controller IPMI limitato al tuo IP e con utilizzo massimo di 24 ore.",
+    "emailIpmiCredentials": "Invia credenziali IPMI via email",
+    "assetId": "ID asset",
+    "serverId": "ID server",
+    "hostname": "Hostname",
+    "serverIp": "IP server",
+    "serverIpmi": "IPMI server",
+    "yourIpAddress": "Il tuo indirizzo IP"
   }
 }

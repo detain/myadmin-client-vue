@@ -1,6 +1,27 @@
 {
-    "list": { "title": "SSL 证书列表", "orderTitle": "订购 SSL 注册" },
-    "view": { "title": "查看 SSL {id}", "package": "套餐", "nextInvoiceDate": "下次发票日期：", "billing": "账单", "billed": "已计费：", "statusIs": "状态：", "orderInfo": "订单信息", "certificateInfo": "证书信息", "links": "链接", "emailSent": "邮件已发送", "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。" },
-    "order": { "title": "订购 SSL" },
-    "changeApproverEmail": { "title": "修改审批人电子邮件", "selectApproverEmail": "选择审批人电子邮件" }
+  "list": {
+    "title": "SSL 证书列表",
+    "orderTitle": "订购 SSL 注册"
+  },
+  "view": {
+    "title": "查看 SSL {id}",
+    "package": "套餐",
+    "nextInvoiceDate": "下次发票日期：",
+    "billing": "账单",
+    "billed": "已计费：",
+    "statusIs": "状态：",
+    "orderInfo": "订单信息",
+    "certificateInfo": "证书信息",
+    "links": "链接",
+    "emailSent": "邮件已发送",
+    "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。",
+    "welcomeEmailConfirm": "您确定要重新发送欢迎邮件吗？"
+  },
+  "order": {
+    "title": "订购 SSL"
+  },
+  "changeApproverEmail": {
+    "title": "修改审批人电子邮件",
+    "selectApproverEmail": "选择审批人电子邮件"
+  }
 }

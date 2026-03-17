@@ -1,5 +1,22 @@
 {
-    "list": { "title": "Llista d'emmagatzematge / còpies de seguretat", "orderTitle": "Comandar registres de còpia de seguretat" },
-    "view": { "title": "Veure còpia de seguretat {id}", "package": "Paquet", "nextInvoiceDate": "Data de la pròxima factura:", "billing": "Facturació", "billed": "facturat:", "statusIs": "L'estat és:", "hostServer": "Servidor amfitrió", "links": "Enllaços", "emailSent": "Correu electrònic enviat", "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada." },
-    "order": { "title": "Comandar emmagatzematge" }
+  "list": {
+    "title": "Llista d'emmagatzematge / còpies de seguretat",
+    "orderTitle": "Comandar registres de còpia de seguretat"
+  },
+  "view": {
+    "title": "Veure còpia de seguretat {id}",
+    "package": "Paquet",
+    "nextInvoiceDate": "Data de la pròxima factura:",
+    "billing": "Facturació",
+    "billed": "facturat:",
+    "statusIs": "L'estat és:",
+    "hostServer": "Servidor amfitrió",
+    "links": "Enllaços",
+    "emailSent": "Correu electrònic enviat",
+    "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada.",
+    "welcomeEmailConfirm": "Esteu segur que voleu tornar a enviar el correu electrònic de benvinguda?"
+  },
+  "order": {
+    "title": "Comandar emmagatzematge"
+  }
 }

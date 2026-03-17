@@ -1,7 +1,30 @@
 {
-    "list": { "title": "Lista di licenze", "orderTitle": "Ordinate registrazioni di licenza" },
-    "view": { "title": "Vede licenza {id}", "package": "Pacchettu", "nextInvoiceDate": "Data di a prossima fattura:", "billing": "Fatturazione", "billed": "fatturatu:", "statusIs": "U statu hè:", "licenseInfo": "Infurmazioni di licenza", "cpanelInfo": "Infurmazioni cPanel", "links": "Ligami", "emailSent": "Email mandata", "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella." },
-    "order": { "title": "Ordinate licenza" },
-    "changeIp": { "title": "Cambià l'IP" },
-    "changeOs": { "title": "Cambià l'OS", "selectLicenseOs": "Sceglite l'OS di licenza" }
+  "list": {
+    "title": "Lista di licenze",
+    "orderTitle": "Ordinate registrazioni di licenza"
+  },
+  "view": {
+    "title": "Vede licenza {id}",
+    "package": "Pacchettu",
+    "nextInvoiceDate": "Data di a prossima fattura:",
+    "billing": "Fatturazione",
+    "billed": "fatturatu:",
+    "statusIs": "U statu hè:",
+    "licenseInfo": "Infurmazioni di licenza",
+    "cpanelInfo": "Infurmazioni cPanel",
+    "links": "Ligami",
+    "emailSent": "Email mandata",
+    "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella.",
+    "welcomeEmailConfirm": "Siete sicuru di vulè rimandà l'email di benvenuta?"
+  },
+  "order": {
+    "title": "Ordinate licenza"
+  },
+  "changeIp": {
+    "title": "Cambià l'IP"
+  },
+  "changeOs": {
+    "title": "Cambià l'OS",
+    "selectLicenseOs": "Sceglite l'OS di licenza"
+  }
 }

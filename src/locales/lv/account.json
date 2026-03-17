@@ -44,6 +44,14 @@
     "disableInvoiceReminders": "Atspējot rēķinu atgādinājumu e-pasta paziņojumus.",
     "alternateEmailInvoices": "Alternatīvais e-pasts rēķiniem",
     "alternateEmailAbuse": "Alternatīvais e-pasts ļaunprātīgas izmantošanas ziņojumiem",
-    "updateInfo": "Atjaunināt informāciju"
+    "updateInfo": "Atjaunināt informāciju",
+    "namePlaceholder": "Jānis Bērziņš",
+    "gstinTaxId": "GSTIN nodokļu ID",
+    "gstinPlaceholder": "Preču un pakalpojumu nodokļu maksātāja identifikācijas numurs",
+    "cityState": "Pilsēta, Reģions",
+    "phoneNo": "Tālruņa numurs",
+    "disableServerInvoiceReminders": "Atspējot servera rēķinu atgādinājumu e-pasta paziņojumus.",
+    "disableReinstall": "Atspējot atkārtotu instalēšanu.",
+    "alternateEmailInvoicesPlaceholder": "Alternatīvs e-pasts rēķinu sūtīšanai"
   }
 }

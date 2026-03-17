@@ -36,7 +36,23 @@
     "postedOn": "Diposting dina:",
     "closeConfirmButton": "Enya, tutup!",
     "ticketClosed2": "Tiket Ditutup",
-    "replyPosted": "Balesan Diposting"
+    "replyPosted": "Balesan Diposting",
+    "titleSuffix": "Tingali Tiket",
+    "emailDisabled": "Email anjeun ({email}) parantos dinonaktipkeun. Punten hubungi",
+    "support": "DUKUNGAN",
+    "ipHelpText": "Upami koneksi asalna tina alamat IP anu béda. Punten robih.",
+    "rootPasswordPlaceholder": "VPS / Server Dedicated",
+    "passwordEncrypted": "Sandi disimpen dina pangkalan data énkripsi anu terpisah.",
+    "ticketClosed": "Tiket ieu parantos ditutup, janten balesan dinonaktipkeun. Upami anjeun masih peryogi bantuan, punten buka tiket anyar sareng kami bakal suka ngabantosan.",
+    "replyPlaceholder": "Tulisan anu rinci ngeunaan masalah",
+    "replyHint": "Nyieun tiket anu terpisah pikeun masalah anyar ngabantosan tim kami pikeun prioritas sareng ngabéréskeun langkung gancang.",
+    "participant": "Pamilon",
+    "userLikedReply": "Pangguna nyukaian jawaban anjeun",
+    "userDislikedReply": "Pangguna henteu nyukaian jawaban anjeun",
+    "email": "Email:",
+    "closeConfirmTitle": "Naha anjeun yakin?",
+    "closeConfirmText": "Naha anjeun hoyong nutup tiket ieu?",
+    "ticketSettingsUpdated": "Setelan Tiket Diperbarui"
   },
   "new": {
     "title": "Tiket Anyar",
@@ -52,6 +68,13 @@
     "sudoUser": "Pamaké Sudo",
     "sudoPassword": "Kecap Akses Sudo",
     "sshPort": "Port SSH",
-    "termsOfUse": "Syarat Panggunaan"
+    "termsOfUse": "Syarat Panggunaan",
+    "subjectPlaceholder": "Subjek",
+    "subjectValidation": "Punten lebetkeun katerangan singkat ngeunaan masalah.",
+    "descriptionPlaceholder": "Hatur nuhun parantos ngabantosan kami ngajaga sistem dukungan anu éféktip ku cara ngirimkeun hiji permintaan per tiket.",
+    "descriptionValidation": "Punten lebetkeun katerangan anu rinci ngeunaan masalah.",
+    "fileNote": "Catetan: Ngan file gambar - jenis gif/jpeg/png anu diijinkeun.",
+    "allowAccessLabel": "Kuring ngijinkeun InterServer pikeun ngaksés server kuring sareng ngalakukeun modifikasi",
+    "accessNote": "Punten dicatet: Ku cara muka pamenta dukungan, InterServer tiasa kedah ngaksés, nge-debug, atanapi ngarobih file dina akun anjeun. Punten lanjutkeun ngan upami anjeun satuju."
   }
 }

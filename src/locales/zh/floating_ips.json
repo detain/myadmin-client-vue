@@ -1,6 +1,25 @@
 {
-    "list": { "title": "浮动 IP 服务列表", "orderTitle": "订购浮动 IP 注册" },
-    "view": { "title": "查看浮动 IP {id}", "package": "套餐", "nextInvoiceDate": "下次发票日期：", "billing": "账单", "billed": "已计费：", "statusIs": "状态：", "floatingIp": "浮动 IP", "links": "链接", "emailSent": "邮件已发送", "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。" },
-    "order": { "title": "订购浮动 IP" },
-    "changeIp": { "title": "修改目标 IP" }
+  "list": {
+    "title": "浮动 IP 服务列表",
+    "orderTitle": "订购浮动 IP 注册"
+  },
+  "view": {
+    "title": "查看浮动 IP {id}",
+    "package": "套餐",
+    "nextInvoiceDate": "下次发票日期：",
+    "billing": "账单",
+    "billed": "已计费：",
+    "statusIs": "状态：",
+    "floatingIp": "浮动 IP",
+    "links": "链接",
+    "emailSent": "邮件已发送",
+    "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。",
+    "welcomeEmailConfirm": "您确定要重新发送欢迎邮件吗？"
+  },
+  "order": {
+    "title": "订购浮动 IP"
+  },
+  "changeIp": {
+    "title": "修改目标 IP"
+  }
 }

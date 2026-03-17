@@ -1,6 +1,82 @@
 {
-    "list": { "title": "ဝဘ်ဟိုစ်တင် စာရင်း", "orderTitle": "ဝဘ်ဆိုက် မှတ်ပုံတင်မှုများ မှာယူရန်" },
-    "view": { "title": "ဝဘ်ဆိုက် {id} ကြည့်ရန်", "package": "ပက်ကေ့ဂျ်", "nextInvoiceDate": "နောက်ငွေတောင်းခံလွှာ ရက်စွဲ:", "billing": "ငွေတောင်းခံမှု", "billed": "ငွေတောင်းခံပြီး", "billingStatusIs": "ငွေတောင်းခံမှု အဆင့်အတန်း:", "login": "လော့ဂ်အင်", "links": "လင့်ခ်များ", "emailSent": "အီးမေးလ် ပေးပို့ပြီး", "emailSentMessage": "ကြိုဆိုသော အီးမေးလ်ကို ထပ်မံ ပေးပို့ပြီးသည်။ သင်၏ ဝင်ပုံး စစ်ဆေးပါ။" },
-    "order": { "title": "ဝဘ်ဆိုက် မှာယူရန်" },
-    "migration": { "title": "သင်၏ ဝဘ်ဆိုက် ရွှေ့ပြောင်းရန်", "password": "စကားဝှက်", "importantNotes": "အရေးကြီးသော မှတ်ချက်များ" }
+  "list": {
+    "title": "ဝဘ်ဟိုစ်တင် စာရင်း",
+    "orderTitle": "ဝဘ်ဆိုက် မှတ်ပုံတင်မှုများ မှာယူရန်"
+  },
+  "view": {
+    "title": "ဝဘ်ဆိုက် {id} ကြည့်ရန်",
+    "package": "ပက်ကေ့ဂျ်",
+    "nextInvoiceDate": "နောက်ငွေတောင်းခံလွှာ ရက်စွဲ:",
+    "billing": "ငွေတောင်းခံမှု",
+    "billed": "ငွေတောင်းခံပြီး",
+    "billingStatusIs": "ငွေတောင်းခံမှု အဆင့်အတန်း:",
+    "login": "လော့ဂ်အင်",
+    "links": "လင့်ခ်များ",
+    "emailSent": "အီးမေးလ် ပေးပို့ပြီး",
+    "emailSentMessage": "ကြိုဆိုသော အီးမေးလ်ကို ထပ်မံ ပေးပို့ပြီးသည်။ သင်၏ ဝင်ပုံး စစ်ဆေးပါ။",
+    "hostInfo": "Host အချက်အလက်",
+    "username": "အသုံးပြုသူနာမည်:",
+    "ip": "IP:",
+    "server": "ဆာဗာ:",
+    "notSetYet": "မသတ်မှတ်ရသေး",
+    "types": "အမျိုးအစားများ:",
+    "linksLabel": "လင့်များ:",
+    "manualLogin": "ကိုယ်တိုင်ဝင်ရောက်",
+    "automaticLogin": "အလိုအလျောက်ဝင်ရောက်",
+    "clickHere": "ဤနေရာနှိပ်",
+    "defaultNameservers": "မူရင်း Nameserver များ",
+    "nameservers": "Nameserver များ:",
+    "externalLinks": "ပြင်ပလင့်များ",
+    "names": "နာမည်များ:",
+    "websitePreview": "ဝက်ဘ်ဆိုက် ကြိုတင်ကြည့်",
+    "welcomeEmailConfirm": "ကြိုဆိုစာ ပြန်လည်ပို့ရန် သေချာပါသလား?"
+  },
+  "order": {
+    "title": "ဝဘ်ဆိုက် မှာယူရန်"
+  },
+  "migration": {
+    "title": "သင်၏ ဝဘ်ဆိုက် ရွှေ့ပြောင်းရန်",
+    "password": "စကားဝှက်",
+    "importantNotes": "အရေးကြီးသော မှတ်ချက်များ",
+    "currentWebHostInfo": "လက်ရှိ Web Host အချက်အလက်",
+    "customerPortalUrl": "Customer Portal URL",
+    "portalExample": "ဥပမာ: sso.godaddy.com",
+    "registeredUsername": "မှတ်ပုံတင်ထားသော အသုံးပြုသူနာမည် / အီးမေးလ် / ID",
+    "controlPanelUrl": "Control Panel URL",
+    "controlPanelExample": "ဥပမာ: yourdomain.com/cpanel",
+    "ftpUsername": "FTP / Control Panel အသုံးပြုသူနာမည်",
+    "ftpPassword": "FTP / Control Panel စကားဝှက်",
+    "holdingPageQuestion": "ဆိုက်သည် live ဖြစ်ပြီး traffic များပါက migration အတွင်း ယာယီ holding page တင်နိုင်ပါသလား?",
+    "specialRequirementsQuestion": "ဤဆိုက်တွင် PHP Version / Module ကဲ့သို့ အထူးလိုအပ်ချက်ရှိပါသလား?",
+    "domainRegistryInfo": "Domain Registry အချက်အလက်",
+    "transferDomainQuestion": "Domain မှတ်ပုံတင်ခြင်း ရွှေ့ပြောင်းရာတွင် ကူညီပေးရာပါသလား?",
+    "updateNameserversQuestion": "Data migration ပြီးဆုံးသည်နှင့် Nameserver များ အပ်ဒိတ်လုပ်ပေးရာပါသလား?",
+    "domainRegistryPortal": "Domain Registry Customer Portal",
+    "note1": "ဤပုံစံဖြည့်ခြင်းသည် ကျွန်ုပ်တို့ Support ဌာနအတွက် migration စတင်ရန် ticket အသစ်ဖွင့်မည်။",
+    "note2": "နှောင်းနောင်တ မဖြစ်ရန် တတ်နိုင်သမျှ ပြည့်စုံပြီး တိကျစွာ ဖြည့်ပါ။",
+    "note3": "ပုံမှန်မွေ့ ၄၈ မှ ၇၂ နာရီအတွင်း ပြီးဆုံးသည်။ ကူးယူရမည့် data ပမာဏများပါက ပိုကြာနိုင်သည်။",
+    "note4": "Migration လုပ်နေစဉ် ဟောင်းသောဆာဗာ online ဖြစ်ပြီး ဝင်ရောက်နိုင်ရမည်၊ မဟုတ်ပါက အခက်အခဲဖြစ်နိုင်သည်။",
+    "note5": "Migration လုပ်နေစဉ် ဆိုက်ကို မပြင်ဆင်ပါနှင့်၊ မဟုတ်ပါက ဒေတာများ ကူးမပေါ်နိုင်ပါ။"
+  },
+  "buyIp": {
+    "title": "ထပ်ဆောင်း IP Addon ဝယ်",
+    "existingAddonIps": "ရှိပြီးသော Addon IP များ",
+    "additionalIp": "ထပ်ဆောင်း IP",
+    "monthlyCost": "လစဉ်ကုန်ကျစရိတ် ({symbol})",
+    "costDescription": "သင်၏ website ငွေကောက်သောအခါ တစ်လလျှင် ({symbol}) ကုန်ကျမည်",
+    "confirmPurchase": "ဝယ်ယူမှု အတည်ပြု",
+    "confirmMessage": "ထပ်ဆောင်း IP ကုန်ကျစရိတ်: {symbol}{cost}/လ။ ထပ်ဆောင်း IP မှာယူရန် သေချာပါသလား?",
+    "placeOrder": "မှာယူ",
+    "orderPlaced": "မှာယူမှု တင်ပြီး"
+  },
+  "reverseDns": {
+    "title": "Reverse DNS",
+    "updateReverseDns": "Reverse DNS အပ်ဒိတ်လုပ်"
+  },
+  "downloadBackups": {
+    "title": "Backup များ ဒေါင်းလုပ်",
+    "backup": "Backup",
+    "size": "အရွယ်အစား",
+    "options": "ရွေးချယ်မှုများ"
+  }
 }

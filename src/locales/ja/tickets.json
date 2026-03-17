@@ -36,7 +36,23 @@
     "postedOn": "投稿日:",
     "closeConfirmButton": "はい、閉じます!",
     "ticketClosed2": "チケット終了",
-    "replyPosted": "返信が投稿されました"
+    "replyPosted": "返信が投稿されました",
+    "titleSuffix": "チケットを表示",
+    "emailDisabled": "あなたのメール（{email}）は無効化されています。お問い合わせください",
+    "support": "サポート",
+    "ipHelpText": "別のIPアドレスから接続している場合は変更してください。",
+    "rootPasswordPlaceholder": "VPS / 専用サーバー",
+    "passwordEncrypted": "パスワードは別の暗号化されたデータベースに保存されています。",
+    "ticketClosed": "このチケットはクローズされているため、返信は無効です。引き続きサポートが必要な場合は、新しいチケットを開いてください。喜んでお手伝いします。",
+    "replyPlaceholder": "問題についての詳細な投稿",
+    "replyHint": "新しい問題に対して別々のチケットを作成することで、チームが優先順位をつけて迅速に解決できます。",
+    "participant": "参加者",
+    "userLikedReply": "ユーザーがあなたの返信を高評価しました",
+    "userDislikedReply": "ユーザーがあなたの返信を低評価しました",
+    "email": "メール:",
+    "closeConfirmTitle": "よろしいですか？",
+    "closeConfirmText": "このチケットをクローズしますか？",
+    "ticketSettingsUpdated": "チケット設定が更新されました"
   },
   "new": {
     "title": "新しいチケット",
@@ -52,6 +68,13 @@
     "sudoUser": "sudo ユーザー",
     "sudoPassword": "sudo パスワード",
     "sshPort": "SSH ポート",
-    "termsOfUse": "利用規約"
+    "termsOfUse": "利用規約",
+    "subjectPlaceholder": "件名",
+    "subjectValidation": "問題についての短い説明を入力してください。",
+    "descriptionPlaceholder": "1チケット1リクエストを維持することでサポートシステムを効率化するご協力ありがとうございます。",
+    "descriptionValidation": "問題についての詳細な説明を入力してください。",
+    "fileNote": "注意：画像ファイル（gif/jpeg/png形式）のみ許可されています。",
+    "allowAccessLabel": "InterServerが私のサーバーにアクセスして変更を行うことを許可します",
+    "accessNote": "ご注意：サポートリクエストを開くことで、InterServerがあなたのアカウントのファイルにアクセス、デバッグ、または変更する必要がある場合があります。この要件は技術サポートを提供するために必要です。同意する場合のみ続行してください。"
   }
 }

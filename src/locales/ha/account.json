@@ -1,1 +1,57 @@
-{ "settings": { "title": "Saitun Asusu" }, "changePassword": { "title": "Canza Kalmar Sirri", "cardTitle": "Sabunta Kalmar Sirri", "currentPassword": "Kalmar Sirri ta Yanzu", "newPassword": "Sabuwar Kalmar Sirri", "confirmPassword": "Tabbatar da Kalmar Sirri", "updatePassword": "Sabunta Kalmar Sirri" }, "changeUsername": { "title": "Canza Sunan Mai Amfani", "disabled": "An dakatar da canza sunan mai amfani na wani lokaci.", "currentUsername": "Sunan Mai Amfani na Yanzu", "newDesiredUsername": "Sabon Sunan Mai Amfani da ake So", "confirmationCode": "Lambar Tabbatarwa", "pleaseWait": "Don Allah jira!", "gotError": "An sami kuskure {error}" }, "contactInfo": { "title": "Bayanan Hulɗa", "cardTitle": "Sabunta Bayanan Hulɗa", "headsUp": "Lura!", "headsUpMessage": "Ko da yake wannan bayanin na zaɓi ne, bayar da bayanan daidai zai taimaka rage % Makin Haɗari.", "riskScore": "% Makin Haɗari", "personalInformation": "Bayanan Kai", "name": "Suna", "company": "Kamfani", "addressLine1": "Layin Adireshi 1", "addressLine2": "Layin Adireshi 2", "city": "Gari", "state": "Jiha", "country": "Ƙasa", "zipcode": "Lambar Gunduma", "phoneNumber": "Lambar Waya", "language": "Harshe", "auto": "Atomatik", "currency": "Kuɗi", "timeZone": "Yankin Lokaci", "otherSettings": "Sauran Saituna", "disablePasswordResets": "Kashe (Manta Kalmar Sirri) Sake Saita Kalmar Sirri.", "disableInvoiceReminders": "Kashe Sanarwar Imel na Takardar Biyan Kuɗi.", "alternateEmailInvoices": "Madadin Imel don Takardar Biyan Kuɗi", "alternateEmailAbuse": "Madadin Imel don Rahotannin Cin Zarafi", "updateInfo": "Sabunta Bayani" } }
+{
+  "settings": {
+    "title": "Saitun Asusu"
+  },
+  "changePassword": {
+    "title": "Canza Kalmar Sirri",
+    "cardTitle": "Sabunta Kalmar Sirri",
+    "currentPassword": "Kalmar Sirri ta Yanzu",
+    "newPassword": "Sabuwar Kalmar Sirri",
+    "confirmPassword": "Tabbatar da Kalmar Sirri",
+    "updatePassword": "Sabunta Kalmar Sirri"
+  },
+  "changeUsername": {
+    "title": "Canza Sunan Mai Amfani",
+    "disabled": "An dakatar da canza sunan mai amfani na wani lokaci.",
+    "currentUsername": "Sunan Mai Amfani na Yanzu",
+    "newDesiredUsername": "Sabon Sunan Mai Amfani da ake So",
+    "confirmationCode": "Lambar Tabbatarwa",
+    "pleaseWait": "Don Allah jira!",
+    "gotError": "An sami kuskure {error}"
+  },
+  "contactInfo": {
+    "title": "Bayanan Hulɗa",
+    "cardTitle": "Sabunta Bayanan Hulɗa",
+    "headsUp": "Lura!",
+    "headsUpMessage": "Ko da yake wannan bayanin na zaɓi ne, bayar da bayanan daidai zai taimaka rage % Makin Haɗari.",
+    "riskScore": "% Makin Haɗari",
+    "personalInformation": "Bayanan Kai",
+    "name": "Suna",
+    "company": "Kamfani",
+    "addressLine1": "Layin Adireshi 1",
+    "addressLine2": "Layin Adireshi 2",
+    "city": "Gari",
+    "state": "Jiha",
+    "country": "Ƙasa",
+    "zipcode": "Lambar Gunduma",
+    "phoneNumber": "Lambar Waya",
+    "language": "Harshe",
+    "auto": "Atomatik",
+    "currency": "Kuɗi",
+    "timeZone": "Yankin Lokaci",
+    "otherSettings": "Sauran Saituna",
+    "disablePasswordResets": "Kashe (Manta Kalmar Sirri) Sake Saita Kalmar Sirri.",
+    "disableInvoiceReminders": "Kashe Sanarwar Imel na Takardar Biyan Kuɗi.",
+    "alternateEmailInvoices": "Madadin Imel don Takardar Biyan Kuɗi",
+    "alternateEmailAbuse": "Madadin Imel don Rahotannin Cin Zarafi",
+    "updateInfo": "Sabunta Bayani",
+    "namePlaceholder": "Joe Cool",
+    "gstinTaxId": "GSTIN ID na haraji",
+    "gstinPlaceholder": "Lambar ganowa mai biyan haraji kan kaya da ayyuka",
+    "cityState": "Birni, Jiha",
+    "phoneNo": "Lambar waya",
+    "disableServerInvoiceReminders": "Kashe sanarwar aika tunatarwa ta lissafin sabar.",
+    "disableReinstall": "Kashe sake shigarwa.",
+    "alternateEmailInvoicesPlaceholder": "Wata imel don aika lissafi"
+  }
+}

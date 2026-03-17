@@ -1,27 +1,82 @@
 {
-    "list": {
-        "title": "Webgasvrye Lys",
-        "orderTitle": "Bestel Webwerf Registrasies"
-    },
-    "view": {
-        "title": "Bekyk Webwerf {id}",
-        "package": "Pakket",
-        "nextInvoiceDate": "Volgende Faktuurdatum:",
-        "billing": "Fakturering",
-        "billed": "gefaktureer",
-        "billingStatusIs": "Faktureringsstatus is:",
-        "login": "Aanmelding",
-        "links": "Skakels",
-        "welcomeEmailConfirm": "Is jy seker jy wil die welkome-e-pos herversend?",
-        "emailSent": "E-pos Gestuur",
-        "emailSentMessage": "Die welkome-e-pos is herversend. Kyk jou inkassie."
-    },
-    "order": {
-        "title": "Bestel Webwerf"
-    },
-    "migration": {
-        "title": "Migreer Jou Webwerf",
-        "password": "Wagwoord",
-        "importantNotes": "Belangrike Notas"
-    }
+  "list": {
+    "title": "Webgasvrye Lys",
+    "orderTitle": "Bestel Webwerf Registrasies"
+  },
+  "view": {
+    "title": "Bekyk Webwerf {id}",
+    "package": "Pakket",
+    "nextInvoiceDate": "Volgende Faktuurdatum:",
+    "billing": "Fakturering",
+    "billed": "gefaktureer",
+    "billingStatusIs": "Faktureringsstatus is:",
+    "login": "Aanmelding",
+    "links": "Skakels",
+    "welcomeEmailConfirm": "Is jy seker jy wil die welkome-e-pos herversend?",
+    "emailSent": "E-pos Gestuur",
+    "emailSentMessage": "Die welkome-e-pos is herversend. Kyk jou inkassie.",
+    "hostInfo": "Gasheer Inligting",
+    "username": "Gebruikernaam:",
+    "ip": "IP:",
+    "server": "Bediener:",
+    "notSetYet": "Nog nie ingestel nie",
+    "types": "Tipes:",
+    "linksLabel": "Skakels:",
+    "manualLogin": "Handmatige Aanmelding",
+    "automaticLogin": "Outomatiese Aanmelding",
+    "clickHere": "Klik Hier",
+    "defaultNameservers": "Verstek Naamsbedieners",
+    "nameservers": "Naamsbedieners:",
+    "externalLinks": "Eksterne Skakels",
+    "names": "Name:",
+    "websitePreview": "Webwerf Voorskou"
+  },
+  "order": {
+    "title": "Bestel Webwerf"
+  },
+  "migration": {
+    "title": "Migreer Jou Webwerf",
+    "password": "Wagwoord",
+    "importantNotes": "Belangrike Notas",
+    "currentWebHostInfo": "Huidige Webgasheer Inligting",
+    "customerPortalUrl": "Klienteportaal URL",
+    "portalExample": "Byvoorbeeld: sso.godaddy.com",
+    "registeredUsername": "Geregistreerde Gebruikernaam / E-pos / ID",
+    "controlPanelUrl": "Beheerpaneel URL",
+    "controlPanelExample": "Byvoorbeeld: yourdomain.com/cpanel",
+    "ftpUsername": "FTP / Beheerpaneel Gebruikernaam",
+    "ftpPassword": "FTP / Beheerpaneel Wagwoord",
+    "holdingPageQuestion": "As die webwerf 'n lewendige/besige webwerf is met hoe verkeer, kan ons 'n houdbladsy tydens migrering instel?",
+    "specialRequirementsQuestion": "Het hierdie webwerf spesiale vereistes soos PHP Weergawe / Modules?",
+    "domainRegistryInfo": "Domeinregister Inligting",
+    "transferDomainQuestion": "Wil u ook he dat ons u help om die domeinnaamregistrasie oor te dra?",
+    "updateNameserversQuestion": "Wil u he dat ons die naamsbedieners opdateer sodra ons die datamigrering voltooi?",
+    "domainRegistryPortal": "Domeinregister Klienteportaal",
+    "note1": "Die invul van hierdie vorm sal 'n nuwe kaartjie vir ons ondersteuningsafdeling oopmaak om u migrering te begin.",
+    "note2": "Wees asseblief so volledig en akkuraat as moontlik om enige vertragings te vermy.",
+    "note3": "'n Tipiese migrering word binne 48 tot 72 uur voltooi. Soms langer as die hoeveelheid data om te kopieer groot is.",
+    "note4": "Die ou gasheerrekening moet aanlyn en toeganklik wees terwyl ons die migrering uitvoer, anders kan ons moontlik probleme ondervind.",
+    "note5": "Maak asseblief geen opdaterings op u webwerf terwyl ons die migrering uitvoer nie, anders kan daardie data moontlik nie na die nuwe gasheer gekopieer word nie."
+  },
+  "buyIp": {
+    "title": "Koop Addisionele IP-aanhangsel",
+    "existingAddonIps": "Bestaande Aanhangsel IP's",
+    "additionalIp": "Addisionele IP",
+    "monthlyCost": "Maandelikse Koste ({symbol})",
+    "costDescription": "Koste ({symbol}) elke maand soos u webwerf gefaktureer word",
+    "confirmPurchase": "Bevestig Aankoop",
+    "confirmMessage": "Addisionele IP koste: {symbol}{cost}/maand. Is u seker dat u 'n addisionele IP wil bestel?",
+    "placeOrder": "Plaas Bestelling",
+    "orderPlaced": "Bestelling Geplaas"
+  },
+  "reverseDns": {
+    "title": "Omgekeerde DNS",
+    "updateReverseDns": "Opdateer Omgekeerde DNS"
+  },
+  "downloadBackups": {
+    "title": "Laai Rugsteune Af",
+    "backup": "Rugsteun",
+    "size": "Grootte",
+    "options": "Opsies"
+  }
 }

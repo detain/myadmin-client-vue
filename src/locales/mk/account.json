@@ -44,6 +44,14 @@
     "disableInvoiceReminders": "Оневозможи е-пошта известувања за потсетници за фактури.",
     "alternateEmailInvoices": "Алтернативна е-пошта за фактури",
     "alternateEmailAbuse": "Алтернативна е-пошта за извештаи за злоупотреба",
-    "updateInfo": "Ажурирај информации"
+    "updateInfo": "Ажурирај информации",
+    "namePlaceholder": "Марко Марковски",
+    "gstinTaxId": "GSTIN даночен ID",
+    "gstinPlaceholder": "Идентификациски број на обврзник за данок на стоки и услуги",
+    "cityState": "Град, Регион",
+    "phoneNo": "Телефонски број",
+    "disableServerInvoiceReminders": "Оневозможи потсетници за фактури за сервер по е-пошта.",
+    "disableReinstall": "Оневозможи повторна инсталација.",
+    "alternateEmailInvoicesPlaceholder": "Алтернативна е-пошта за испраќање фактури"
   }
 }
