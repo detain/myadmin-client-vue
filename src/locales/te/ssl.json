@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL సర్టిఫికెట్ల జాబితా",
+        "orderTitle": "SSL నమోదులను ఆర్డర్ చేయండి"
+    },
+    "view": {
+        "title": "SSL {id} చూడండి",
+        "package": "ప్యాకేజీ",
+        "nextInvoiceDate": "తదుపరి ఇన్వాయిస్ తేదీ:",
+        "billing": "బిల్లింగ్",
+        "billed": "బిల్లు చేయబడింది:",
+        "statusIs": "స్థితి:",
+        "orderInfo": "ఆర్డర్ సమాచారం",
+        "certificateInfo": "సర్టిఫికెట్ సమాచారం",
+        "links": "లింకులు",
+        "welcomeEmailConfirm": "స్వాగత ఇమెయిల్ మళ్ళీ పంపాలా?",
+        "emailSent": "ఇమెయిల్ పంపబడింది",
+        "emailSentMessage": "స్వాగత ఇమెయిల్ మళ్ళీ పంపబడింది. మీ ఇన్‌బాక్స్ తనిఖీ చేయండి."
+    },
+    "order": {
+        "title": "SSL ఆర్డర్ చేయండి"
+    },
+    "changeApproverEmail": {
+        "title": "అనుమతిదారు ఇమెయిల్ మార్చండి",
+        "selectApproverEmail": "అనుమతిదారు ఇమెయిల్ ఎంచుకోండి"
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Ustawienia konta"
+    },
+    "changePassword": {
+        "title": "Zmień hasło",
+        "cardTitle": "Zaktualizuj hasło",
+        "currentPassword": "Aktualne hasło",
+        "newPassword": "Nowe hasło",
+        "confirmPassword": "Potwierdź hasło",
+        "updatePassword": "Zaktualizuj hasło"
+    },
+    "changeUsername": {
+        "title": "Zmień nazwę użytkownika",
+        "disabled": "Zmiana nazwy użytkownika została tymczasowo wyłączona.",
+        "currentUsername": "Aktualna nazwa użytkownika",
+        "newDesiredUsername": "Nowa żądana nazwa użytkownika",
+        "confirmationCode": "Kod potwierdzający",
+        "pleaseWait": "Proszę czekać!",
+        "gotError": "Wystąpił błąd {error}"
+    },
+    "contactInfo": {
+        "title": "Dane kontaktowe",
+        "cardTitle": "Zaktualizuj dane kontaktowe",
+        "headsUp": "Uwaga!",
+        "headsUpMessage": "Chociaż te informacje są opcjonalne, podanie (dokładnych) danych pomoże wzbogacić nasze interakcje i obniżyć Twój wynik ryzyka %, dając Ci szybszy i wygodniejszy dostęp do części witryny (np. brak konieczności uwierzytelniania karty kredytowej).",
+        "riskScore": "Wynik ryzyka %",
+        "personalInformation": "Dane osobowe",
+        "name": "Imię i nazwisko",
+        "namePlaceholder": "Jan Kowalski",
+        "company": "Firma",
+        "gstinTaxId": "NIP / GSTIN",
+        "gstinPlaceholder": "Numer identyfikacji podatkowej towarów i usług",
+        "addressLine1": "Adres – wiersz 1",
+        "addressLine2": "Adres – wiersz 2",
+        "cityState": "Miasto, stan/województwo",
+        "city": "Miasto",
+        "state": "Stan/Województwo",
+        "country": "Kraj",
+        "zipcode": "Kod pocztowy",
+        "phoneNo": "Nr telefonu",
+        "phoneNumber": "Numer telefonu",
+        "language": "Język",
+        "auto": "Automatycznie",
+        "currency": "Waluta",
+        "timeZone": "Strefa czasowa",
+        "otherSettings": "Inne ustawienia",
+        "disablePasswordResets": "Wyłącz resetowanie hasła (Nie pamiętam hasła).",
+        "disableInvoiceReminders": "Wyłącz powiadomienia e-mail z przypomnieniami o fakturach.",
+        "disableServerInvoiceReminders": "Wyłącz powiadomienia e-mail z przypomnieniami o fakturach serwera.",
+        "disableReinstall": "Wyłącz ponowną instalację.",
+        "alternateEmailInvoices": "Alternatywny adres e-mail do faktur",
+        "alternateEmailInvoicesPlaceholder": "Alternatywny adres e-mail do wysyłania faktur",
+        "alternateEmailAbuse": "Alternatywny adres e-mail do zgłoszeń nadużyć",
+        "updateInfo": "Zaktualizuj dane"
+    }
+}

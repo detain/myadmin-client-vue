@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL Sertifikaten List",
+        "orderTitle": "SSL Registraasjes Bestelle"
+    },
+    "view": {
+        "title": "SSL {id} Besjen",
+        "package": "Pakket",
+        "nextInvoiceDate": "Folgjende Faktuerdatum:",
+        "billing": "Fakturearring",
+        "billed": "faktureare:",
+        "statusIs": "Status is:",
+        "orderInfo": "Bestelling Ynfo",
+        "certificateInfo": "Sertifikaat Ynfo",
+        "links": "Keppelingen",
+        "welcomeEmailConfirm": "Binne jo wis dat jo de wolkom-e-post opnij ferstjoere wolle?",
+        "emailSent": "E-post Ferstjoerd",
+        "emailSentMessage": "De wolkom-e-post is opnij ferstjoerd. Kontrolearje jo postfek."
+    },
+    "order": {
+        "title": "SSL Bestelle"
+    },
+    "changeApproverEmail": {
+        "title": "Goedkarder E-post Wizigje",
+        "selectApproverEmail": "Goedkarder E-post Selektearje"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Vashandisi",
+    "addUser": "Wedzera Mushandisi",
+    "editUser": "Shandura Mushandisi",
+    "firstName": "Zita Rokutanga",
+    "lastName": "Zita Rokupedzisira",
+    "username": "Zita reshandisi",
+    "password": "Password",
+    "keepSamePassword": "Siya pasina kuchinja password yakare",
+    "errorLoading": "Zvikanganiso pakutakura vashandisi:",
+    "errorLoadingUser": "Zvikanganiso pakutakura mushandisi:"
+}

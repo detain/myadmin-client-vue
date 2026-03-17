@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Makhalidwe a Akaunti"
+    },
+    "changePassword": {
+        "title": "Sinthani Chinsinsi",
+        "cardTitle": "Yenjezerani Chinsinsi",
+        "currentPassword": "Chinsinsi Chamakono",
+        "newPassword": "Chinsinsi Chatsopano",
+        "confirmPassword": "Tsimikizani Chinsinsi",
+        "updatePassword": "Yenjezerani Chinsinsi"
+    },
+    "changeUsername": {
+        "title": "Sinthani Dzina la Wogwiritsa",
+        "disabled": "Kusintha dzina la wogwiritsa kwachokelatu kwa nthawi.",
+        "currentUsername": "Dzina la Wogwiritsa Lamakono",
+        "newDesiredUsername": "Dzina Latsopano Lomwe Mukufuna",
+        "confirmationCode": "Khodi Yotsimikizira",
+        "pleaseWait": "Chonde dikireni!",
+        "gotError": "Pali cholakwika {error}"
+    },
+    "contactInfo": {
+        "title": "Zambiri za Kupezeka",
+        "cardTitle": "Yenjezerani Zambiri za Kupezeka",
+        "headsUp": "Chenjezo!",
+        "headsUpMessage": "Ngakhale kuti izi ndi zachisankho, kupereka (zoona) zambiri kudzathandiza kulimbitsa ubale wathu komanso kuchepetsa chigawo chanu cha Ngozi % ndikupatsani mwachangu ndiponso mwankhwani kufika ku magawo a tsamba (monga kusapereka chitsimikiziro cha khadi la krediti).",
+        "riskScore": "Ngozi % Mwina",
+        "personalInformation": "Zambiri Zanu",
+        "name": "Dzina",
+        "namePlaceholder": "Joe Cool",
+        "company": "Kampani",
+        "gstinTaxId": "GSTIN Nambala ya Msonkho",
+        "gstinPlaceholder": "Nambala Yozindikiritsa Amisonkho a Zinthu ndi Utumiki",
+        "addressLine1": "Msewu 1",
+        "addressLine2": "Msewu 2",
+        "cityState": "Mzinda, Boma",
+        "city": "Mzinda",
+        "state": "Boma",
+        "country": "Dziko",
+        "zipcode": "Kodi ya Positi",
+        "phoneNo": "Nambala ya Foni",
+        "phoneNumber": "Nambala ya Foni",
+        "language": "Chinenero",
+        "auto": "Yokha",
+        "currency": "Ndalama",
+        "timeZone": "Zon'ya Nthawi",
+        "otherSettings": "Makhalidwe Ena",
+        "disablePasswordResets": "Letsani (Mwayiwala Chinsinsi chanu) Kukhazikitsanso Chinsinsi.",
+        "disableInvoiceReminders": "Letsani Zodziwitsa za Imelo ya Zimbuyo za Fatura.",
+        "disableServerInvoiceReminders": "Letsani Zodziwitsa za Imelo ya Zimbuyo za Fatura ya Seva.",
+        "disableReinstall": "Letsani Kukhazikitsanso.",
+        "alternateEmailInvoices": "Imelo Yina ya Mafatura",
+        "alternateEmailInvoicesPlaceholder": "Imelo ina yotumizira mafatura",
+        "alternateEmailAbuse": "Imelo Yina ya Malipoti a Kuphwanya",
+        "updateInfo": "Yenjezerani Zambiri"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "title": "Dashboerd",
+    "welcome": "Wolkom, {name}",
+    "lastLogin": "Lêste Oanmelding",
+    "lastLoginIp": "Lêste Oanmelding IP",
+    "prepay": {
+        "title": "Foarútbetelling Saldo",
+        "remainingBalance": "Restearjend Foarútbetelling Saldo",
+        "manageAccount": "Akkount Beheare",
+        "manageTooltip": "Jo Foarútbetelling Akkount Beheare"
+    },
+    "invoices": {
+        "title": "Ûnbetelle Fakturen",
+        "totalUnpaid": "Totaal Ûnbetelde Fakturen",
+        "totalAmount": "Totaal Bedrach te Beteljen",
+        "payTotalTooltip": "Totaal Bedrach Betelje"
+    },
+    "callInPin": "Telefoan PIN",
+    "recentTickets": "Resinte Tickets",
+    "viewAllTickets": "Alle Tickets Besjen",
+    "editTicket": "Ticket Bewurkje",
+    "serviceCount": "Gjin aktive tsjinsten | {count} aktive tsjinst | {count} aktive tsjinsten",
+    "affiliate": {
+        "earnPerSale": "Fertsjinje {amount} per Ferkeap",
+        "urlPlaceholder": "Affiliate URL",
+        "shareWith": "Diele mei"
+    }
+}

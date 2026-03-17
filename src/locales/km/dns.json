@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "អ្នកគ្រប់គ្រង DNS",
+        "addDomain": "បន្ថែមដែន",
+        "deleteDomain": "លុបដែន",
+        "domainName": "ឈ្មោះដែន",
+        "dnsServers": "ម៉ាស៊ីនមេ DNS",
+        "confirmDelete": "តើអ្នកប្រាកដថាចង់លុបដែននេះទេ?",
+        "noDomains": "រកមិនឃើញដែន"
+    },
+    "editor": {
+        "title": "កម្មវិធីកែ DNS",
+        "addRecord": "បន្ថែមកំណត់ត្រា",
+        "deleteRecord": "លុបកំណត់ត្រា",
+        "editRecord": "កែសម្រួលកំណត់ត្រា",
+        "recordType": "ប្រភេទកំណត់ត្រា",
+        "hostname": "ឈ្មោះម៉ាស៊ីន",
+        "address": "អាសយដ្ឋាន",
+        "distance": "ចម្ងាយ",
+        "weight": "ទម្ងន់",
+        "port": "ច្រក",
+        "ttl": "TTL",
+        "actions": "សកម្មភាព",
+        "confirmDelete": "តើអ្នកប្រាកដថាចង់លុបកំណត់ត្រានេះទេ?"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Rheolwr DNS",
+        "addDomain": "Ychwanegu Parth",
+        "deleteDomain": "Dileu Parth",
+        "domainName": "Enw Parth",
+        "dnsServers": "Gweinyddion DNS",
+        "confirmDelete": "Ydych chi'n siŵr eich bod am ddileu'r parth hwn?",
+        "noDomains": "Ni chanfuwyd parthau"
+    },
+    "editor": {
+        "title": "Golygydd DNS",
+        "addRecord": "Ychwanegu Cofnod",
+        "deleteRecord": "Dileu Cofnod",
+        "editRecord": "Golygu Cofnod",
+        "recordType": "Math o Gofnod",
+        "hostname": "Enw'r Gwesteiwr",
+        "address": "Cyfeiriad",
+        "distance": "Pellter",
+        "weight": "Pwysau",
+        "port": "Porth",
+        "ttl": "TTL",
+        "actions": "Camau Gweithredu",
+        "confirmDelete": "Ydych chi'n siŵr eich bod am ddileu'r cofnod hwn?"
+    }
+}

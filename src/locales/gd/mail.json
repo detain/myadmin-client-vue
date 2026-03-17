@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Liosta sheirbheisean puist",
+        "orderTitle": "Òrdaich clàrachaidhean puist"
+    },
+    "view": {
+        "title": "Seall post {id}",
+        "package": "Pasgan",
+        "nextInvoiceDate": "Ceann-latha an ath-chunntas:",
+        "billing": "Cunntas",
+        "billed": "air a chunntas:",
+        "statusIs": "An staid a th' ann:",
+        "mailApi": "API puist",
+        "usageCount": "Cunntas cleachdaidh:",
+        "links": "Ceanglaichean",
+        "connectionInfo": "Fiosrachadh ceangail",
+        "welcomeEmailConfirm": "A bheil thu cinnteach gu bheil thu airson am post-d fàilteachaidh a chur a-rithist?",
+        "emailSent": "Chaidh post-d a chur",
+        "emailSentMessage": "Chaidh am post-d fàilteachaidh a chur a-rithist. Thoir sùil air a' bhogsa a-steach agad."
+    },
+    "order": {
+        "title": "Òrdaich post"
+    },
+    "alerts": {
+        "title": "Rabhaidhean",
+        "addAlert": "Cuir rabhadh ris",
+        "editAlert": "Deasaich rabhadh",
+        "noAlerts": "Cha deach rabhaidhean a lorg"
+    },
+    "delist": {
+        "title": "Thoir den liosta",
+        "blockedEmails": "Puist-d glasta"
+    },
+    "denyRules": {
+        "title": "Riaghailtean diùltaidh",
+        "addRule": "Cuir riaghailt ris",
+        "noRules": "Cha deach riaghailtean diùltaidh a lorg"
+    },
+    "logs": {
+        "title": "Logaichean",
+        "searchLogs": "Lorg logaichean"
+    },
+    "stats": {
+        "title": "Staitistigean"
+    },
+    "deliverability": {
+        "title": "Coileanadh lìbhrigidh"
+    }
+}

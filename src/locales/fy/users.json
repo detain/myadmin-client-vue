@@ -1,0 +1,12 @@
+{
+    "title": "Brûkers",
+    "addUser": "Brûker Tafoegje",
+    "editUser": "Brûker Bewurkje",
+    "firstName": "Foarnamme",
+    "lastName": "Efternamme",
+    "username": "Brûkersnamme",
+    "password": "Wachtwurd",
+    "keepSamePassword": "Leech litte om itselde wachtwurd te hâlden",
+    "errorLoading": "Flater by it lade fan brûkers:",
+    "errorLoadingUser": "Flater by it lade fan brûker:"
+}

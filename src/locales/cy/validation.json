@@ -1,0 +1,12 @@
+{
+    "required": "Mae {field} yn ofynnol",
+    "email": "Rhaid bod yn gyfeiriad e-bost dilys",
+    "minLength": "Rhaid bod o leiaf {min} nod",
+    "maxLength": "Rhaid peidio â bod yn fwy na {max} nod",
+    "passwordMatch": "Rhaid i gyfrineiriau gyfateb",
+    "invalidFormat": "Fformat annilys",
+    "numeric": "Rhaid bod yn rif",
+    "url": "Rhaid bod yn URL dilys",
+    "ipAddress": "Rhaid bod yn gyfeiriad IP dilys",
+    "hostname": "Rhaid bod yn enw gwesteiwr dilys"
+}

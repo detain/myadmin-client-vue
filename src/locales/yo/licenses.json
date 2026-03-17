@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Atokọ Awọn Iwe-aṣẹ",
+        "orderTitle": "Paṣẹ Awọn Iforukọsilẹ Iwe-aṣẹ"
+    },
+    "view": {
+        "title": "Wo Iwe-aṣẹ {id}",
+        "package": "Idii",
+        "nextInvoiceDate": "Ọjọ Iwe Isan Atẹle:",
+        "billing": "Isan",
+        "billed": "ti isan:",
+        "statusIs": "Ipo ni:",
+        "licenseInfo": "Alaye Iwe-aṣẹ",
+        "cpanelInfo": "Alaye cPanel",
+        "links": "Awọn Ọna Asopọ",
+        "welcomeEmailConfirm": "Ṣe o da ọ loju pe o fẹ tun fi imeeli kaabọ ranṣẹ?",
+        "emailSent": "Imeeli Ti Ranṣẹ",
+        "emailSentMessage": "Imeeli kaabọ ti tun ranṣẹ. Ṣayẹwo apamọwọ rẹ."
+    },
+    "order": {
+        "title": "Paṣẹ Iwe-aṣẹ"
+    },
+    "changeIp": {
+        "title": "Yipada IP"
+    },
+    "changeOs": {
+        "title": "Yipada OS",
+        "selectLicenseOs": "Yan OS Iwe-aṣẹ"
+    }
+}

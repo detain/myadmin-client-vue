@@ -1,0 +1,28 @@
+{
+    "title": "උපකරණ පුවරුව",
+    "welcome": "සාදරයෙන් පිළිගනිමු, {name}",
+    "lastLogin": "අවසාන පිවිසුම",
+    "lastLoginIp": "අවසාන පිවිසුම් IP",
+    "prepay": {
+        "title": "පෙරගෙවීම් ශේෂය",
+        "remainingBalance": "ඉතිරි පෙරගෙවීම් ශේෂය",
+        "manageAccount": "ගිණුම කළමනාකරණය",
+        "manageTooltip": "ඔබේ පෙරගෙවීම් ගිණුම කළමනාකරණය කරන්න"
+    },
+    "invoices": {
+        "title": "නොගෙවූ ඉන්වොයිස්",
+        "totalUnpaid": "මුළු නොගෙවූ ඉන්වොයිස්",
+        "totalAmount": "ගෙවිය යුතු මුළු ප්‍රමාණය",
+        "payTotalTooltip": "මුළු ප්‍රමාණය ගෙවන්න"
+    },
+    "callInPin": "ඇමතුම් PIN",
+    "recentTickets": "මෑත ටිකට්",
+    "viewAllTickets": "සියලු ටිකට් බලන්න",
+    "editTicket": "ටිකට් සංස්කරණය",
+    "serviceCount": "සක්‍රිය සේවා නැත | {count} සක්‍රිය සේවාවක් | {count} සක්‍රිය සේවා",
+    "affiliate": {
+        "earnPerSale": "විකිණීමකට {amount} උපයන්න",
+        "urlPlaceholder": "අනුබද්ධ URL",
+        "shareWith": "බෙදාගන්න"
+    }
+}

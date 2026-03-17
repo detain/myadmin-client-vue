@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Webhosting List",
+        "orderTitle": "Website Registraasjes Bestelle"
+    },
+    "view": {
+        "title": "Website {id} Besjen",
+        "package": "Pakket",
+        "nextInvoiceDate": "Folgjende Faktuerdatum:",
+        "billing": "Fakturearring",
+        "billed": "faktureare",
+        "billingStatusIs": "Faktuerstatus is:",
+        "hostInfo": "Host Ynfo",
+        "username": "Brûkersnamme:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Noch net ynsteld",
+        "login": "Oanmelde",
+        "types": "Typen:",
+        "linksLabel": "Keppelingen:",
+        "manualLogin": "Manuele Oanmelding",
+        "automaticLogin": "Automatyske Oanmelding",
+        "clickHere": "Klik Hjir",
+        "defaultNameservers": "Standert Nammeservers",
+        "nameservers": "Nammeservers:",
+        "externalLinks": "Eksterne Keppelingen",
+        "names": "Nammen:",
+        "websitePreview": "Website Foarbyld",
+        "links": "Keppelingen",
+        "welcomeEmailConfirm": "Binne jo wis dat jo de wolkom-e-post opnij ferstjoere wolle?",
+        "emailSent": "E-post Ferstjoerd",
+        "emailSentMessage": "De wolkom-e-post is opnij ferstjoerd. Kontrolearje jo postfek."
+    },
+    "buyIp": {
+        "title": "Oanfoljend IP Addon Keapje",
+        "existingAddonIps": "Besteande Addon IP's",
+        "additionalIp": "Oanfoljend IP",
+        "monthlyCost": "Moanlikse Kosten ({symbol})",
+        "costDescription": "Kosten ({symbol}) elke moanne as jo website faktureare wurdt",
+        "confirmPurchase": "Oankeap Befêstigje",
+        "confirmMessage": "Oanfoljend IP kosten: {symbol}{cost}/moanne. Binne jo wis dat jo in oanfoljend IP bestelle wolle?",
+        "placeOrder": "Bestelling Pleatse",
+        "orderPlaced": "Bestelling Pleatst"
+    },
+    "reverseDns": {
+        "title": "Reverse DNS",
+        "updateReverseDns": "Reverse DNS Bywurkje"
+    },
+    "downloadBackups": {
+        "title": "Reservekopyen Downloade",
+        "backup": "Reservekopy",
+        "size": "Grutte",
+        "options": "Opsjes"
+    },
+    "migration": {
+        "title": "Jo Website Migrearje",
+        "currentWebHostInfo": "Huidig Web Host Ynfo",
+        "customerPortalUrl": "Klant Portaal URL",
+        "portalExample": "Foarbyld: sso.godaddy.com",
+        "registeredUsername": "Registrearre Brûkersnamme / E-post / ID",
+        "password": "Wachtwurd",
+        "controlPanelUrl": "Kontrôlepaniel URL",
+        "controlPanelExample": "Foarbyld: jodomein.com/cpanel",
+        "ftpUsername": "FTP / Kontrôlepaniel Brûkersnamme",
+        "ftpPassword": "FTP / Kontrôlepaniel Wachtwurd",
+        "holdingPageQuestion": "As de side live/drok is mei heech ferkear, kinne wy in tydlike side ynstelle tidens de migraasje?",
+        "specialRequirementsQuestion": "Hat dizze side spesjale easken lykas PHP Ferzje / Modules?",
+        "domainRegistryInfo": "Domein Registry Ynformaasje",
+        "transferDomainQuestion": "Wolle jo ek dat wy helpe mei it oerdragen fan de domeinnamme registraasje?",
+        "updateNameserversQuestion": "Wolle jo dat wy de nammeservers bywurkje sa gau as wy de gegevens migraasje foltôge hawwe?",
+        "domainRegistryPortal": "Domein Registry Klant Portaal",
+        "importantNotes": "Wichtige Opmerkingen",
+        "note1": "It ynfoljen fan dit formulier sil in nij ticket iepenje foar ús stipeafdeling om jo migraasje te begjinnen.",
+        "note2": "Wês sa folslein en krekt mooglik om fertragingen te foarkommen.",
+        "note3": "In typyske migraasje wurdt binnen 48 oant 72 oeren foltôge. Soms langer as de hoeveelheid te kopiearjen gegevens grut is.",
+        "note4": "It âlde hostingakkount moat online en tagonklik wêze wylst wy de migraasje útfiere, oars kinne wy muoite hawwe.",
+        "note5": "Meitsje asjebleaft gjin updates op jo side wylst wy de migraasje útfiere, oars kinne dy gegevens miskien net nei de nije hosting kopieare wurde."
+    },
+    "order": {
+        "title": "Website Bestelle"
+    }
+}

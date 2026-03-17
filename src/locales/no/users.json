@@ -1,0 +1,12 @@
+{
+    "title": "Brukere",
+    "addUser": "Legg til bruker",
+    "editUser": "Rediger bruker",
+    "firstName": "Fornavn",
+    "lastName": "Etternavn",
+    "username": "Brukernavn",
+    "password": "Passord",
+    "keepSamePassword": "La stå tomt for å beholde samme passord",
+    "errorLoading": "Feil ved lasting av brukere:",
+    "errorLoadingUser": "Feil ved lasting av bruker:"
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Utilizatori",
+    "addUser": "Adaugă Utilizator",
+    "editUser": "Editare Utilizator",
+    "firstName": "Prenume",
+    "lastName": "Nume de Familie",
+    "username": "Nume Utilizator",
+    "password": "Parolă",
+    "keepSamePassword": "Lăsați gol pentru a păstra aceeași parolă",
+    "errorLoading": "Eroare la încărcarea utilizatorilor:",
+    "errorLoadingUser": "Eroare la încărcarea utilizatorului:"
+}

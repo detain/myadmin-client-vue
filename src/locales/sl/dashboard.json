@@ -1,0 +1,28 @@
+{
+    "title": "Nadzorna plošča",
+    "welcome": "Dobrodošli, {name}",
+    "lastLogin": "Zadnja prijava",
+    "lastLoginIp": "IP zadnje prijave",
+    "prepay": {
+        "title": "Stanje predplačila",
+        "remainingBalance": "Preostalo stanje predplačila",
+        "manageAccount": "Upravljaj račun",
+        "manageTooltip": "Upravljajte svoj račun predplačila"
+    },
+    "invoices": {
+        "title": "Neplačani računi",
+        "totalUnpaid": "Skupaj neplačanih računov",
+        "totalAmount": "Skupni znesek za plačilo",
+        "payTotalTooltip": "Plačaj skupni znesek"
+    },
+    "callInPin": "PIN za telefonski klic",
+    "recentTickets": "Nedavni zahtevki",
+    "viewAllTickets": "Ogled vseh zahtevkov",
+    "editTicket": "Uredi zahtevek",
+    "serviceCount": "Ni aktivnih storitev | {count} aktivna storitev | {count} aktivne storitve",
+    "affiliate": {
+        "earnPerSale": "Zaslužite {amount} na prodajo",
+        "urlPlaceholder": "Pridružitveni URL",
+        "shareWith": "Delite z"
+    }
+}

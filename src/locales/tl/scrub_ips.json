@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Listahan ng mga Serbisyo ng Scrub IP",
+        "orderTitle": "Mag-order ng Scrub IPs"
+    },
+    "view": {
+        "title": "Tingnan ang Scrub IPs",
+        "currentIp": "Kasalukuyang IP",
+        "ipAddress": "IP Address",
+        "ipFromService": "IP mula sa serbisyo"
+    },
+    "filters": {
+        "title": "Mga Filter",
+        "createNew": "Lumikha ng Bago",
+        "createNewFilter": "Lumikha ng Bagong Filter",
+        "filterType": "Uri ng Filter",
+        "selectFilterType": "Piliin ang Uri ng Filter",
+        "ipAddress": "IP Address",
+        "portNo": "Numero ng Port",
+        "filter": "Filter",
+        "destinationIp": "IP ng Destinasyon",
+        "destinationPort": "Port ng Destinasyon",
+        "noFiltersFound": "Walang nahanap na mga filter!",
+        "deleteFilterConfirm": "Sigurado ba kayong nais ninyong burahin ang filter na ito?",
+        "unableToCreateFilter": "Hindi malikha ang filter sa ngayon.",
+        "unableToDeleteFilter": "Hindi mabura ang filter sa ngayon."
+    },
+    "firewallRules": {
+        "title": "Mga Patakaran ng Firewall",
+        "createNew": "Lumikha ng Bago",
+        "createNewFirewall": "Lumikha ng Bagong Patakaran ng Firewall",
+        "protocol": "Protocol",
+        "destinationIp": "IP ng Destinasyon",
+        "destinationPort": "Port ng Destinasyon",
+        "sourceIp": "IP ng Pinagmulan",
+        "sourcePort": "Port ng Pinagmulan",
+        "xdpAction": "Aksyon ng XDP",
+        "ipRequired": "Kinakailangan ang IP address",
+        "block": "I-block",
+        "whitelist": "Whitelist",
+        "noRulesFound": "Walang nahanap na mga patakaran!",
+        "deleteRuleConfirm": "Sigurado ba kayong nais ninyong burahin ang patakarang ito?",
+        "unableToCreateRule": "Hindi malikha ang patakaran ng firewall sa ngayon.",
+        "unableToDeleteRule": "Hindi mabura ang patakaran ng firewall sa ngayon."
+    },
+    "geoFirewallRules": {
+        "title": "Mga Patakaran ng Geo Firewall",
+        "createNew": "Lumikha ng Bago",
+        "createNewGeoRule": "Lumikha ng Bagong Patakaran ng Geo Firewall",
+        "destinationIp": "IP ng Destinasyon",
+        "destinationPort": "Port ng Destinasyon",
+        "sourceCountry": "Bansang Pinagmulan",
+        "sourceAsn": "ASN ng Pinagmulan",
+        "xdpAction": "Aksyon ng XDP",
+        "portNo": "Numero ng Port",
+        "selectCountry": "Piliin ang Bansa",
+        "asn": "ASN",
+        "block": "I-block",
+        "whitelist": "Whitelist",
+        "noRulesFound": "Walang nahanap na mga patakaran!",
+        "deleteGeoRuleConfirm": "Sigurado ba kayong nais ninyong burahin ang geo patakarang ito?",
+        "unableToCreateRule": "Hindi malikha ang patakaran ng firewall sa ngayon.",
+        "unableToDeleteRule": "Hindi mabura ang patakaran ng geo firewall sa ngayon."
+    }
+}

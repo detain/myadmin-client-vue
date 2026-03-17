@@ -1,0 +1,12 @@
+{
+    "title": "Defnyddwyr",
+    "addUser": "Ychwanegu Defnyddiwr",
+    "editUser": "Golygu Defnyddiwr",
+    "firstName": "Enw Cyntaf",
+    "lastName": "Cyfenw",
+    "username": "Enw Defnyddiwr",
+    "password": "Cyfrinair",
+    "keepSamePassword": "Gadewch yn wag i gadw'r un cyfrinair",
+    "errorLoading": "Gwall wrth lwytho defnyddwyr:",
+    "errorLoadingUser": "Gwall wrth lwytho defnyddiwr:"
+}

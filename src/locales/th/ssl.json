@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "รายการใบรับรอง SSL",
+        "orderTitle": "สั่งซื้อการลงทะเบียน SSL"
+    },
+    "view": {
+        "title": "ดู SSL {id}",
+        "package": "แพ็คเกจ",
+        "nextInvoiceDate": "วันที่ออกใบแจ้งหนี้ถัดไป:",
+        "billing": "การเรียกเก็บเงิน",
+        "billed": "เรียกเก็บเงิน:",
+        "statusIs": "สถานะ:",
+        "orderInfo": "ข้อมูลการสั่งซื้อ",
+        "certificateInfo": "ข้อมูลใบรับรอง",
+        "links": "ลิงก์",
+        "welcomeEmailConfirm": "คุณแน่ใจหรือไม่ว่าต้องการส่งอีเมลต้อนรับอีกครั้ง?",
+        "emailSent": "ส่งอีเมลแล้ว",
+        "emailSentMessage": "ส่งอีเมลต้อนรับอีกครั้งแล้ว กรุณาตรวจสอบกล่องจดหมาย"
+    },
+    "order": {
+        "title": "สั่งซื้อ SSL"
+    },
+    "changeApproverEmail": {
+        "title": "เปลี่ยนอีเมลผู้อนุมัติ",
+        "selectApproverEmail": "เลือกอีเมลผู้อนุมัติ"
+    }
+}

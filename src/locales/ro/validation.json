@@ -1,0 +1,12 @@
+{
+    "required": "{field} este obligatoriu",
+    "email": "Trebuie să fie o adresă de e-mail validă",
+    "minLength": "Trebuie să aibă cel puțin {min} caractere",
+    "maxLength": "Nu trebuie să depășească {max} caractere",
+    "passwordMatch": "Parolele trebuie să coincidă",
+    "invalidFormat": "Format invalid",
+    "numeric": "Trebuie să fie un număr",
+    "url": "Trebuie să fie un URL valid",
+    "ipAddress": "Trebuie să fie o adresă IP validă",
+    "hostname": "Trebuie să fie un nume de gazdă valid"
+}

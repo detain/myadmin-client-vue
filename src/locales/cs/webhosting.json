@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Seznam webhostingu",
+        "orderTitle": "Objednat registrace webů"
+    },
+    "view": {
+        "title": "Zobrazit web {id}",
+        "package": "Balíček",
+        "nextInvoiceDate": "Datum příští faktury:",
+        "billing": "Fakturace",
+        "billed": "účtováno",
+        "billingStatusIs": "Stav fakturace je:",
+        "hostInfo": "Informace o hostiteli",
+        "username": "Uživatelské jméno:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Zatím nenastaveno",
+        "login": "Přihlásit se",
+        "types": "Typy:",
+        "linksLabel": "Odkazy:",
+        "manualLogin": "Ruční přihlášení",
+        "automaticLogin": "Automatické přihlášení",
+        "clickHere": "Klikněte zde",
+        "defaultNameservers": "Výchozí jmenné servery",
+        "nameservers": "Jmenné servery:",
+        "externalLinks": "Externí odkazy",
+        "names": "Jména:",
+        "websitePreview": "Náhled webu",
+        "links": "Odkazy",
+        "welcomeEmailConfirm": "Opravdu chcete znovu odeslat uvítací e-mail?",
+        "emailSent": "E-mail odeslán",
+        "emailSentMessage": "Uvítací e-mail byl znovu odeslán. Zkontrolujte svou schránku."
+    },
+    "buyIp": {
+        "title": "Koupit doplněk přídavné IP",
+        "existingAddonIps": "Stávající doplňkové IP",
+        "additionalIp": "Přídavná IP",
+        "monthlyCost": "Měsíční cena ({symbol})",
+        "costDescription": "Cena ({symbol}) každý měsíc, jak je váš web fakturován",
+        "confirmPurchase": "Potvrdit nákup",
+        "confirmMessage": "Cena přídavné IP: {symbol}{cost}/měsíc. Opravdu chcete objednat přídavnou IP?",
+        "placeOrder": "Zadat objednávku",
+        "orderPlaced": "Objednávka zadána"
+    },
+    "reverseDns": {
+        "title": "Reverzní DNS",
+        "updateReverseDns": "Aktualizovat reverzní DNS"
+    },
+    "downloadBackups": {
+        "title": "Stáhnout zálohy",
+        "backup": "Záloha",
+        "size": "Velikost",
+        "options": "Možnosti"
+    },
+    "migration": {
+        "title": "Migrovat váš web",
+        "currentWebHostInfo": "Informace o aktuálním webhostingu",
+        "customerPortalUrl": "URL zákaznického portálu",
+        "portalExample": "Příklad: sso.godaddy.com",
+        "registeredUsername": "Registrované uživatelské jméno / E-mail / ID",
+        "password": "Heslo",
+        "controlPanelUrl": "URL ovládacího panelu",
+        "controlPanelExample": "Příklad: vasadomena.com/cpanel",
+        "ftpUsername": "FTP / Uživatelské jméno ovládacího panelu",
+        "ftpPassword": "FTP / Heslo ovládacího panelu",
+        "holdingPageQuestion": "Pokud je web živý/vytížený s vysokou návštěvností, můžeme během migrace nastavit záchytnou stránku?",
+        "specialRequirementsQuestion": "Má tento web speciální požadavky jako verze PHP / moduly?",
+        "domainRegistryInfo": "Informace o registru domény",
+        "transferDomainQuestion": "Chcete, abychom vám také pomohli s převodem registrace domény?",
+        "updateNameserversQuestion": "Chcete, abychom aktualizovali jmenné servery ihned po dokončení migrace dat?",
+        "domainRegistryPortal": "Zákaznický portál registru domény",
+        "importantNotes": "Důležité poznámky",
+        "note1": "Vyplnění tohoto formuláře otevře nový lístek pro naše oddělení podpory zahájí migraci.",
+        "note2": "Buďte prosím co nejúplnější a nejpřesnější, abyste se vyhnuli jakýmkoliv zpožděním.",
+        "note3": "Typická migrace je dokončena během 48 až 72 hodin. Někdy déle, pokud je množství dat k kopírování velké.",
+        "note4": "Starý hostingový účet musí být online a dostupný, zatímco provádíme migraci, jinak můžeme narazit na potíže.",
+        "note5": "Prosíme, neprovádějte žádné aktualizace na vašem webu, zatímco provádíme migraci, jinak tato data nemusí být zkopírována na nový hosting."
+    },
+    "order": {
+        "title": "Objednat web"
+    }
+}

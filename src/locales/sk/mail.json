@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Zoznam poštových služieb",
+        "orderTitle": "Objednať registrácie pošty"
+    },
+    "view": {
+        "title": "Zobraziť poštu {id}",
+        "package": "Balík",
+        "nextInvoiceDate": "Dátum ďalšej faktúry:",
+        "billing": "Fakturácia",
+        "billed": "fakturované:",
+        "statusIs": "Stav je:",
+        "mailApi": "Poštové API",
+        "usageCount": "Počet použití:",
+        "links": "Odkazy",
+        "connectionInfo": "Informácie o pripojení",
+        "welcomeEmailConfirm": "Ste si istý, že chcete znova odoslať uvítací e-mail?",
+        "emailSent": "E-mail odoslaný",
+        "emailSentMessage": "Uvítací e-mail bol znova odoslaný. Skontrolujte svoju doručenú poštu."
+    },
+    "order": {
+        "title": "Objednať poštu"
+    },
+    "alerts": {
+        "title": "Upozornenia",
+        "addAlert": "Pridať upozornenie",
+        "editAlert": "Upraviť upozornenie",
+        "noAlerts": "Nenašli sa žiadne upozornenia"
+    },
+    "delist": {
+        "title": "Zrušiť zaradenie do zoznamu",
+        "blockedEmails": "Blokované e-maily"
+    },
+    "denyRules": {
+        "title": "Pravidlá odmietnutia",
+        "addRule": "Pridať pravidlo",
+        "noRules": "Nenašli sa žiadne pravidlá odmietnutia"
+    },
+    "logs": {
+        "title": "Záznamy",
+        "searchLogs": "Prehľadávať záznamy"
+    },
+    "stats": {
+        "title": "Štatistiky"
+    },
+    "deliverability": {
+        "title": "Doručiteľnosť"
+    }
+}

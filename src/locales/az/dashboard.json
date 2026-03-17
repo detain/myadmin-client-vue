@@ -1,0 +1,28 @@
+{
+    "title": "İdarə Paneli",
+    "welcome": "Xoş gəldiniz, {name}",
+    "lastLogin": "Son Giriş",
+    "lastLoginIp": "Son Giriş IP",
+    "prepay": {
+        "title": "Əvvəlcədən Ödəmə Balansı",
+        "remainingBalance": "Əvvəlcədən Ödəmə Qalan Balansı",
+        "manageAccount": "Hesabı İdarə Et",
+        "manageTooltip": "Əvvəlcədən Ödəmə Hesabınızı İdarə Edin"
+    },
+    "invoices": {
+        "title": "Ödənilməmiş Fakturalar",
+        "totalUnpaid": "Ümumi Ödənilməmiş Fakturalar",
+        "totalAmount": "Ödəniləcək Ümumi Məbləğ",
+        "payTotalTooltip": "Ümumi Məbləği Ödə"
+    },
+    "callInPin": "Telefon Zəngi PIN",
+    "recentTickets": "Son Biletlər",
+    "viewAllTickets": "Bütün Biletlərə Bax",
+    "editTicket": "Bileti Redaktə Et",
+    "serviceCount": "Aktiv xidmət yoxdur | {count} aktiv xidmət | {count} aktiv xidmət",
+    "affiliate": {
+        "earnPerSale": "Hər Satışdan {amount} Qazanın",
+        "urlPlaceholder": "Tərəfdaş URL",
+        "shareWith": "Paylaş"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "ตัวจัดการ DNS",
+        "addDomain": "เพิ่มโดเมน",
+        "deleteDomain": "ลบโดเมน",
+        "domainName": "ชื่อโดเมน",
+        "dnsServers": "เซิร์ฟเวอร์ DNS",
+        "confirmDelete": "คุณแน่ใจหรือไม่ว่าต้องการลบโดเมนนี้?",
+        "noDomains": "ไม่พบโดเมน"
+    },
+    "editor": {
+        "title": "ตัวแก้ไข DNS",
+        "addRecord": "เพิ่มระเบียน",
+        "deleteRecord": "ลบระเบียน",
+        "editRecord": "แก้ไขระเบียน",
+        "recordType": "ประเภทระเบียน",
+        "hostname": "ชื่อโฮสต์",
+        "address": "ที่อยู่",
+        "distance": "ระยะทาง",
+        "weight": "น้ำหนัก",
+        "port": "พอร์ต",
+        "ttl": "TTL",
+        "actions": "การดำเนินการ",
+        "confirmDelete": "คุณแน่ใจหรือไม่ว่าต้องการลบระเบียนนี้?"
+    }
+}

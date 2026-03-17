@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "סקראב IPs דינסטן רשימה",
+        "orderTitle": "באשטעלן סקראב IPs"
+    },
+    "view": {
+        "title": "קוקן סקראב IPs",
+        "currentIp": "אקטואלע IP",
+        "ipAddress": "IP אדרעס",
+        "ipFromService": "IP פון דינסט"
+    },
+    "filters": {
+        "title": "פילטערס",
+        "createNew": "שאפן נייעס",
+        "createNewFilter": "שאפן נייעם פילטער",
+        "filterType": "פילטער טיפ",
+        "selectFilterType": "אויסוועלן פילטער טיפ",
+        "ipAddress": "IP אדרעס",
+        "portNo": "פארט נומער",
+        "filter": "פילטער",
+        "destinationIp": "ציל IP",
+        "destinationPort": "ציל פארט",
+        "noFiltersFound": "קיין פילטערס נישט געפונען!",
+        "deleteFilterConfirm": "זייט איר זיכער אז איר ווילט אפמעקן דעם פילטער?",
+        "unableToCreateFilter": "נישט מעגלעך צו שאפן פילטער אין דעם מאמענט.",
+        "unableToDeleteFilter": "נישט מעגלעך צו אפמעקן פילטער אין דעם מאמענט."
+    },
+    "firewallRules": {
+        "title": "פייערוואנט רעגלען",
+        "createNew": "שאפן נייעס",
+        "createNewFirewall": "שאפן נייע פייערוואנט רעגל",
+        "protocol": "פראטאקאל",
+        "destinationIp": "ציל IP",
+        "destinationPort": "ציל פארט",
+        "sourceIp": "מקור IP",
+        "sourcePort": "מקור פארט",
+        "xdpAction": "XDP אקציע",
+        "ipRequired": "IP אדרעס איז פארלאנגט",
+        "block": "בלאקירן",
+        "whitelist": "ווייסע רשימה",
+        "noRulesFound": "קיין רעגלען נישט געפונען!",
+        "deleteRuleConfirm": "זייט איר זיכער אז איר ווילט אפמעקן דעם רעגל?",
+        "unableToCreateRule": "נישט מעגלעך צו שאפן פייערוואנט רעגל אין דעם מאמענט.",
+        "unableToDeleteRule": "נישט מעגלעך צו אפמעקן פייערוואנט רעגל אין דעם מאמענט."
+    },
+    "geoFirewallRules": {
+        "title": "גיאא פייערוואנט רעגלען",
+        "createNew": "שאפן נייעס",
+        "createNewGeoRule": "שאפן נייע גיאא פייערוואנט רעגל",
+        "destinationIp": "ציל IP",
+        "destinationPort": "ציל פארט",
+        "sourceCountry": "מקור לאנד",
+        "sourceAsn": "מקור ASN",
+        "xdpAction": "XDP אקציע",
+        "portNo": "פארט נומער",
+        "selectCountry": "אויסוועלן לאנד",
+        "asn": "ASN",
+        "block": "בלאקירן",
+        "whitelist": "ווייסע רשימה",
+        "noRulesFound": "קיין רעגלען נישט געפונען!",
+        "deleteGeoRuleConfirm": "זייט איר זיכער אז איר ווילט אפמעקן דעם גיאא רעגל?",
+        "unableToCreateRule": "נישט מעגלעך צו שאפן פייערוואנט רעגל אין דעם מאמענט.",
+        "unableToDeleteRule": "נישט מעגלעך צו אפמעקן גיאא פייערוואנט רעגל אין דעם מאמענט."
+    }
+}

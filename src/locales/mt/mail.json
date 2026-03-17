@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Lista tas-Servizzi tal-Posta",
+        "orderTitle": "Ordna Reġistrazzjonijiet tal-Posta"
+    },
+    "view": {
+        "title": "Ara l-Posta {id}",
+        "package": "Pakkett",
+        "nextInvoiceDate": "Data tal-Fattura li Jmiss:",
+        "billing": "Fatturazzjoni",
+        "billed": "fatturata:",
+        "statusIs": "L-istat huwa:",
+        "mailApi": "API tal-Posta",
+        "usageCount": "Għadd tal-Użu:",
+        "links": "Links",
+        "connectionInfo": "Informazzjoni tal-Konnessjoni",
+        "welcomeEmailConfirm": "Ċert li trid tibgħat mill-ġdid l-email ta' merħba?",
+        "emailSent": "Email Mibgħut",
+        "emailSentMessage": "L-email ta' merħba ntbagħtet mill-ġdid. Iċċekkja l-inbox tiegħek."
+    },
+    "order": {
+        "title": "Ordna Posta"
+    },
+    "alerts": {
+        "title": "Allerts",
+        "addAlert": "Żid Allert",
+        "editAlert": "Editja Allert",
+        "noAlerts": "Ma nstabu l-ebda allerts"
+    },
+    "delist": {
+        "title": "Neħħi mil-Lista",
+        "blockedEmails": "Emails Mblukati"
+    },
+    "denyRules": {
+        "title": "Regoli ta' Ċaħda",
+        "addRule": "Żid Regola",
+        "noRules": "Ma nstabu l-ebda regoli ta' ċaħda"
+    },
+    "logs": {
+        "title": "Logs",
+        "searchLogs": "Fittex fil-Logs"
+    },
+    "stats": {
+        "title": "Statistiċi"
+    },
+    "deliverability": {
+        "title": "Kapaċità ta' Konsenja"
+    }
+}

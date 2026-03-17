@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Zvigadziriro zveAkaundi"
+    },
+    "changePassword": {
+        "title": "Shandura Password",
+        "cardTitle": "Shandura Password",
+        "currentPassword": "Password yezvino",
+        "newPassword": "Password Itsva",
+        "confirmPassword": "Simbisa Password",
+        "updatePassword": "Shandura Password"
+    },
+    "changeUsername": {
+        "title": "Shandura Zita reMushandisi",
+        "disabled": "Kushandura zita remushandisi kwamiswa kwenguva.",
+        "currentUsername": "Zita reMushandisi rezvino",
+        "newDesiredUsername": "Zita Itsva reMushandisi Rinodikanwa",
+        "confirmationCode": "Kodhi yeSimbiso",
+        "pleaseWait": "Ndokumbira mirira!",
+        "gotError": "Pane kukanganisa {error}"
+    },
+    "contactInfo": {
+        "title": "Ruzivo rwekubata",
+        "cardTitle": "Shandura Ruzivo rwekubata",
+        "headsUp": "Chenjerai!",
+        "headsUpMessage": "Kunyange ruzivo urwu rwusiri rwekumanikidzwa, kupa ruzivo (rwakakwana) kuchatsigira kubatana kwetsu uye kuderedzа Musiyano wako we%, kukupa nzira yakapfupi uye yakareruka yekupinda kuzvikamu zvezvibereko.",
+        "riskScore": "Musiyano we%",
+        "personalInformation": "Ruzivo rwemunhu",
+        "name": "Zita",
+        "namePlaceholder": "Tinashe Moyo",
+        "company": "Kambani",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Nhamba yekuzivisa mutero wezvigadzirwa nemasevhisi",
+        "addressLine1": "Kero Mutsetse 1",
+        "addressLine2": "Kero Mutsetse 2",
+        "cityState": "Guta, Nyika",
+        "city": "Guta",
+        "state": "Nyika/Dunhu",
+        "country": "Nyika",
+        "zipcode": "Zipcode",
+        "phoneNo": "Nhamba yeFoni",
+        "phoneNumber": "Nhamba yeFoni",
+        "language": "Mutauro",
+        "auto": "Otomatiki",
+        "currency": "Mari",
+        "timeZone": "Nguva yeDunhu",
+        "otherSettings": "Zvimwe Zvigadziriro",
+        "disablePasswordResets": "Dzima Kudzosazve Password (Wakanganwa Password yako).",
+        "disableInvoiceReminders": "Dzima Maziviso eEmail eYemuchiremba Yeinvoice.",
+        "disableServerInvoiceReminders": "Dzima Maziviso eEmail eYemuchiremba yeinvoice yeseva.",
+        "disableReinstall": "Dzima Kuisazve.",
+        "alternateEmailInvoices": "Email imwe yeinvoices",
+        "alternateEmailInvoicesPlaceholder": "Email imwe yekutumira invoices",
+        "alternateEmailAbuse": "Email imwe yeKucherekedza Kubata",
+        "updateInfo": "Shandura Ruzivo"
+    }
+}

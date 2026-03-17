@@ -1,0 +1,12 @@
+{
+    "required": "{field} huwa meħtieġ",
+    "email": "Irid ikun indirizz email validu",
+    "minLength": "Irid ikun mill-inqas {min} karattri",
+    "maxLength": "M'għandux ikun aktar minn {max} karattri",
+    "passwordMatch": "Il-passwords iridu jkunu l-istess",
+    "invalidFormat": "Format invalidu",
+    "numeric": "Irid ikun numru",
+    "url": "Irid ikun URL validu",
+    "ipAddress": "Irid ikun indirizz IP validu",
+    "hostname": "Irid ikun hostname validu"
+}

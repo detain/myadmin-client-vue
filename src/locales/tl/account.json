@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Mga Setting ng Account"
+    },
+    "changePassword": {
+        "title": "Baguhin ang Password",
+        "cardTitle": "I-update ang Password",
+        "currentPassword": "Kasalukuyang Password",
+        "newPassword": "Bagong Password",
+        "confirmPassword": "Kumpirmahin ang Password",
+        "updatePassword": "I-update ang Password"
+    },
+    "changeUsername": {
+        "title": "Baguhin ang Username",
+        "disabled": "Pansamantalang hindi pinapayagan ang pagbabago ng username.",
+        "currentUsername": "Kasalukuyang Username",
+        "newDesiredUsername": "Bagong Gusto na Username",
+        "confirmationCode": "Code ng Kumpirmasyon",
+        "pleaseWait": "Mangyaring maghintay!",
+        "gotError": "May naganap na error {error}"
+    },
+    "contactInfo": {
+        "title": "Impormasyon ng Pakikipag-ugnayan",
+        "cardTitle": "I-update ang Impormasyon ng Pakikipag-ugnayan",
+        "headsUp": "Paunawa!",
+        "headsUpMessage": "Kahit opsyonal ang impormasyong ito, ang pagbibigay ng (tamang) impormasyon ay makakatulong sa aming mga pakikipag-ugnayan at magpababa ng inyong Risk % Score na nagbibigay sa inyo ng mas mabilis at mas maginhawang access sa ilang bahagi ng site (tulad ng hindi na kailangang i-authenticate ang credit card).",
+        "riskScore": "Risk % Score",
+        "personalInformation": "Personal na Impormasyon",
+        "name": "Pangalan",
+        "namePlaceholder": "Juan dela Cruz",
+        "company": "Kumpanya",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Linya ng Address 1",
+        "addressLine2": "Linya ng Address 2",
+        "cityState": "Lungsod, Estado",
+        "city": "Lungsod",
+        "state": "Estado",
+        "country": "Bansa",
+        "zipcode": "Zip Code",
+        "phoneNo": "Numero ng Telepono",
+        "phoneNumber": "Numero ng Telepono",
+        "language": "Wika",
+        "auto": "Awtomatiko",
+        "currency": "Pera",
+        "timeZone": "Time Zone",
+        "otherSettings": "Iba pang Mga Setting",
+        "disablePasswordResets": "I-disable ang (Nakalimutan ang Password) na Pag-reset ng Password.",
+        "disableInvoiceReminders": "I-disable ang mga Paalala sa Email para sa Invoice.",
+        "disableServerInvoiceReminders": "I-disable ang mga Paalala sa Email para sa Invoice ng Server.",
+        "disableReinstall": "I-disable ang Muling Pag-install.",
+        "alternateEmailInvoices": "Alternatibong Email para sa mga Invoice",
+        "alternateEmailInvoicesPlaceholder": "Alternatibong email para sa pagpapadala ng mga invoice",
+        "alternateEmailAbuse": "Alternatibong Email para sa mga Ulat ng Pag-abuso",
+        "updateInfo": "I-update ang Impormasyon"
+    }
+}

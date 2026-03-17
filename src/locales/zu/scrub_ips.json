@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Uhlu Lwezinsizakalo Ze-Scrub IPs",
+        "orderTitle": "Oda Scrub IPs"
+    },
+    "view": {
+        "title": "Buka Scrub IPs",
+        "currentIp": "I-IP Yamanje",
+        "ipAddress": "Ikheli le-IP",
+        "ipFromService": "I-IP Evela Ensizakalweni"
+    },
+    "filters": {
+        "title": "Izihluzi",
+        "createNew": "Dala Entsha",
+        "createNewFilter": "Dala Isihlunzi Esisha",
+        "filterType": "Uhlobo Lwesihlunzi",
+        "selectFilterType": "Khetha Uhlobo Lwesihlunzi",
+        "ipAddress": "Ikheli le-IP",
+        "portNo": "Inombolo Yephoyinti",
+        "filter": "Isihlunzi",
+        "destinationIp": "I-IP Yendawo Okuya Kuyona",
+        "destinationPort": "Iphoyinti Lendawo Okuya Kuyona",
+        "noFiltersFound": "Azikho izihluzi ezitholiwe!",
+        "deleteFilterConfirm": "Uqinisekile ukuthi ufuna ukususa lesi sihlunzi?",
+        "unableToCreateFilter": "Akukwazeki ukudala isihlunzi ngalesi sikhathi.",
+        "unableToDeleteFilter": "Akukwazeki ukususa isihlunzi ngalesi sikhathi."
+    },
+    "firewallRules": {
+        "title": "Imithetho Ye-Firewall",
+        "createNew": "Dala Entsha",
+        "createNewFirewall": "Dala Umthetho Omsha We-Firewall",
+        "protocol": "Iprotokholi",
+        "destinationIp": "I-IP Yendawo Okuya Kuyona",
+        "destinationPort": "Iphoyinti Lendawo Okuya Kuyona",
+        "sourceIp": "I-IP Yomthombo",
+        "sourcePort": "Iphoyinti Lomthombo",
+        "xdpAction": "Isenzo se-XDP",
+        "ipRequired": "Ikheli le-IP liyafuneka",
+        "block": "Vimbela",
+        "whitelist": "Uhlu Olumhlophe",
+        "noRulesFound": "Awukho imithetho etholiwe!",
+        "deleteRuleConfirm": "Uqinisekile ukuthi ufuna ukususa lo mthetho?",
+        "unableToCreateRule": "Akukwazeki ukudala umthetho we-firewall ngalesi sikhathi.",
+        "unableToDeleteRule": "Akukwazeki ukususa umthetho we-firewall ngalesi sikhathi."
+    },
+    "geoFirewallRules": {
+        "title": "Imithetho Ye-Geo Firewall",
+        "createNew": "Dala Entsha",
+        "createNewGeoRule": "Dala Umthetho Omsha We-Geo Firewall",
+        "destinationIp": "I-IP Yendawo Okuya Kuyona",
+        "destinationPort": "Iphoyinti Lendawo Okuya Kuyona",
+        "sourceCountry": "Izwe Lomthombo",
+        "sourceAsn": "I-ASN Yomthombo",
+        "xdpAction": "Isenzo se-XDP",
+        "portNo": "Inombolo Yephoyinti",
+        "selectCountry": "Khetha Izwe",
+        "asn": "I-ASN",
+        "block": "Vimbela",
+        "whitelist": "Uhlu Olumhlophe",
+        "noRulesFound": "Awukho imithetho etholiwe!",
+        "deleteGeoRuleConfirm": "Uqinisekile ukuthi ufuna ukususa lo mthetho we-geo?",
+        "unableToCreateRule": "Akukwazeki ukudala umthetho we-firewall ngalesi sikhathi.",
+        "unableToDeleteRule": "Akukwazeki ukususa umthetho we-geo firewall ngalesi sikhathi."
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Uporabniki",
+    "addUser": "Dodaj uporabnika",
+    "editUser": "Uredi uporabnika",
+    "firstName": "Ime",
+    "lastName": "Priimek",
+    "username": "Uporabniško ime",
+    "password": "Geslo",
+    "keepSamePassword": "Pustite prazno za ohranitev istega gesla",
+    "errorLoading": "Napaka pri nalaganju uporabnikov:",
+    "errorLoadingUser": "Napaka pri nalaganju uporabnika:"
+}

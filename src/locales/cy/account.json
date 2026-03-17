@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Gosodiadau Cyfrif"
+    },
+    "changePassword": {
+        "title": "Newid Cyfrinair",
+        "cardTitle": "Diweddaru Cyfrinair",
+        "currentPassword": "Cyfrinair Cyfredol",
+        "newPassword": "Cyfrinair Newydd",
+        "confirmPassword": "Cadarnhau Cyfrinair",
+        "updatePassword": "Diweddaru Cyfrinair"
+    },
+    "changeUsername": {
+        "title": "Newid Enw Defnyddiwr",
+        "disabled": "Mae newidiadau i enwau defnyddwyr wedi'u hanalluogi dros dro.",
+        "currentUsername": "Enw Defnyddiwr Cyfredol",
+        "newDesiredUsername": "Enw Defnyddiwr Newydd Dymunol",
+        "confirmationCode": "Cod Cadarnhad",
+        "pleaseWait": "Arhoswch!",
+        "gotError": "Cafwyd gwall {error}"
+    },
+    "contactInfo": {
+        "title": "Gwybodaeth Gyswllt",
+        "cardTitle": "Diweddaru Gwybodaeth Gyswllt",
+        "headsUp": "Nodyn!",
+        "headsUpMessage": "Er ei fod yn ddewisol, bydd darparu gwybodaeth (gywir) yn helpu i gyfoethogi ein rhyngweithiadau ac yn gostwng eich Sgôr Risg %, gan roi mynediad cyflymach a mwy cyfleus i rannau o'r wefan (fel peidio â gorfod dilysu cerdyn credyd).",
+        "riskScore": "Sgôr Risg %",
+        "personalInformation": "Gwybodaeth Bersonol",
+        "name": "Enw",
+        "namePlaceholder": "Ioan Jones",
+        "company": "Cwmni",
+        "gstinTaxId": "Rhif Treth GSTIN",
+        "gstinPlaceholder": "Rhif Adnabod Trethdalwr Nwyddau a Gwasanaethau",
+        "addressLine1": "Llinell Cyfeiriad 1",
+        "addressLine2": "Llinell Cyfeiriad 2",
+        "cityState": "Dinas, Talaith",
+        "city": "Dinas",
+        "state": "Talaith",
+        "country": "Gwlad",
+        "zipcode": "Cod Post",
+        "phoneNo": "Rhif Ffôn",
+        "phoneNumber": "Rhif Ffôn",
+        "language": "Iaith",
+        "auto": "Awtomatig",
+        "currency": "Arian Cyfred",
+        "timeZone": "Cylchfa Amser",
+        "otherSettings": "Gosodiadau Eraill",
+        "disablePasswordResets": "Analluogi Ailosod Cyfrinair (Wedi Anghofio eich Cyfrinair).",
+        "disableInvoiceReminders": "Analluogi Hysbysiadau E-bost Atgoffa Anfoneb.",
+        "disableServerInvoiceReminders": "Analluogi Hysbysiadau E-bost Atgoffa Anfoneb Gweinydd.",
+        "disableReinstall": "Analluogi Ailsefydlu.",
+        "alternateEmailInvoices": "E-bost Arall ar gyfer Anfonebau",
+        "alternateEmailInvoicesPlaceholder": "E-bost arall ar gyfer anfon anfonebau",
+        "alternateEmailAbuse": "E-bost Arall ar gyfer Adroddiadau Camddefnydd",
+        "updateInfo": "Diweddaru Gwybodaeth"
+    }
+}

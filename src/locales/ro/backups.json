@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Listă Stocare / Backup",
+        "orderTitle": "Comandă Înregistrări Backup"
+    },
+    "view": {
+        "title": "Vizualizare Backup {id}",
+        "package": "Pachet",
+        "nextInvoiceDate": "Data Următoarei Facturi:",
+        "billing": "Facturare",
+        "billed": "facturat:",
+        "statusIs": "Starea este:",
+        "hostServer": "Server Gazdă",
+        "links": "Linkuri",
+        "welcomeEmailConfirm": "Sigur doriți să retrimiteți e-mailul de bun venit?",
+        "emailSent": "E-mail Trimis",
+        "emailSentMessage": "E-mailul de bun venit a fost retrimis. Verificați căsuța de intrare."
+    },
+    "order": {
+        "title": "Comandă Stocare"
+    }
+}

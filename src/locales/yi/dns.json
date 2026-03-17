@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS מאַנאַדזשער",
+        "addDomain": "צוגעבן דאָמיין",
+        "deleteDomain": "אויסמעקן דאָמיין",
+        "domainName": "דאָמיין נאָמען",
+        "dnsServers": "DNS סערווערס",
+        "confirmDelete": "זענט איר זיכער אַז איר ווילט אויסמעקן דעם דאָמיין?",
+        "noDomains": "קיין דאָמיינס ניט געפֿונען"
+    },
+    "editor": {
+        "title": "DNS רעדאַקטאָר",
+        "addRecord": "צוגעבן רעקאָרד",
+        "deleteRecord": "אויסמעקן רעקאָרד",
+        "editRecord": "רעדאַגירן רעקאָרד",
+        "recordType": "רעקאָרד טיפּ",
+        "hostname": "האָסטנאָמען",
+        "address": "אַדרעס",
+        "distance": "ווייטקייט",
+        "weight": "וואָג",
+        "port": "פּאָרט",
+        "ttl": "TTL",
+        "actions": "אַקציעס",
+        "confirmDelete": "זענט איר זיכער אַז איר ווילט אויסמעקן דעם רעקאָרד?"
+    }
+}

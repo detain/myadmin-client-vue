@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Scrub IP Кызматтарынын Тизмеси",
+        "orderTitle": "Scrub IP Заказы"
+    },
+    "view": {
+        "title": "Scrub IP Көрүү",
+        "currentIp": "Учурдагы IP",
+        "ipAddress": "IP Дареги",
+        "ipFromService": "Кызматтан IP"
+    },
+    "filters": {
+        "title": "Чыпкалар",
+        "createNew": "Жаңы Түзүү",
+        "createNewFilter": "Жаңы Чыпка Түзүү",
+        "filterType": "Чыпка Түрү",
+        "selectFilterType": "Чыпка Түрүн Тандоо",
+        "ipAddress": "IP Дареги",
+        "portNo": "Порт Номери",
+        "filter": "Чыпка",
+        "destinationIp": "Максаттуу IP",
+        "destinationPort": "Максаттуу Порт",
+        "noFiltersFound": "Чыпкалар табылган жок!",
+        "deleteFilterConfirm": "Бул чыпканы жок кылгыңыз келгенине ишенесизби?",
+        "unableToCreateFilter": "Учурда чыпка түзүү мүмкүн эмес.",
+        "unableToDeleteFilter": "Учурда чыпканы жок кылуу мүмкүн эмес."
+    },
+    "firewallRules": {
+        "title": "Брандмауэр Эрежелери",
+        "createNew": "Жаңы Түзүү",
+        "createNewFirewall": "Жаңы Брандмауэр Эрежесин Түзүү",
+        "protocol": "Протокол",
+        "destinationIp": "Максаттуу IP",
+        "destinationPort": "Максаттуу Порт",
+        "sourceIp": "Булак IP",
+        "sourcePort": "Булак Порт",
+        "xdpAction": "XDP Аракет",
+        "ipRequired": "IP дареги талап кылынат",
+        "block": "Бөгөттөө",
+        "whitelist": "Ак Тизме",
+        "noRulesFound": "Эрежелер табылган жок!",
+        "deleteRuleConfirm": "Бул эрежени жок кылгыңыз келгенине ишенесизби?",
+        "unableToCreateRule": "Учурда брандмауэр эрежесин түзүү мүмкүн эмес.",
+        "unableToDeleteRule": "Учурда брандмауэр эрежесин жок кылуу мүмкүн эмес."
+    },
+    "geoFirewallRules": {
+        "title": "Гео Брандмауэр Эрежелери",
+        "createNew": "Жаңы Түзүү",
+        "createNewGeoRule": "Жаңы Гео Брандмауэр Эрежесин Түзүү",
+        "destinationIp": "Максаттуу IP",
+        "destinationPort": "Максаттуу Порт",
+        "sourceCountry": "Булак Өлкөсү",
+        "sourceAsn": "Булак ASN",
+        "xdpAction": "XDP Аракет",
+        "portNo": "Порт Номери",
+        "selectCountry": "Өлкө Тандоо",
+        "asn": "ASN",
+        "block": "Бөгөттөө",
+        "whitelist": "Ак Тизме",
+        "noRulesFound": "Эрежелер табылган жок!",
+        "deleteGeoRuleConfirm": "Бул гео эрежени жок кылгыңыз келгенине ишенесизби?",
+        "unableToCreateRule": "Учурда брандмауэр эрежесин түзүү мүмкүн эмес.",
+        "unableToDeleteRule": "Учурда гео брандмауэр эрежесин жок кылуу мүмкүн эмес."
+    }
+}

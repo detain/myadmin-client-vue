@@ -1,0 +1,28 @@
+{
+    "title": "Башкы Панел",
+    "welcome": "Кош Келиңиз, {name}",
+    "lastLogin": "Акыркы Кирүү",
+    "lastLoginIp": "Акыркы Кирүү IP",
+    "prepay": {
+        "title": "Алдын Ала Төлөм Балансы",
+        "remainingBalance": "Алдын Ала Төлөмдүн Калган Балансы",
+        "manageAccount": "Аккаунтту Башкаруу",
+        "manageTooltip": "Алдын Ала Төлөм Аккаунтуңузду Башкаруу"
+    },
+    "invoices": {
+        "title": "Төлөнбөгөн Эсеп-фактуралар",
+        "totalUnpaid": "Жалпы Төлөнбөгөн Эсеп-фактуралар",
+        "totalAmount": "Төлөнүүчү Жалпы Сумма",
+        "payTotalTooltip": "Жалпы Сумманы Төлөө"
+    },
+    "callInPin": "Чалуу PIN коду",
+    "recentTickets": "Акыркы Билеттер",
+    "viewAllTickets": "Бардык Билеттерди Көрүү",
+    "editTicket": "Билетти Өзгөртүү",
+    "serviceCount": "Активдүү кызматтар жок | {count} активдүү кызмат | {count} активдүү кызмат",
+    "affiliate": {
+        "earnPerSale": "Ар бир сатуудан {amount} иштеп тапыңыз",
+        "urlPlaceholder": "Аффилиат URL",
+        "shareWith": "Бөлүшүү"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "title": "Mga Gumagamit",
+    "addUser": "Magdagdag ng Gumagamit",
+    "editUser": "Baguhin ang Gumagamit",
+    "firstName": "Unang Pangalan",
+    "lastName": "Apelyido",
+    "username": "Username",
+    "password": "Password",
+    "keepSamePassword": "Iwanang blangko para mapanatili ang parehong password",
+    "errorLoading": "Error sa pag-load ng mga gumagamit:",
+    "errorLoadingUser": "Error sa pag-load ng gumagamit:"
+}

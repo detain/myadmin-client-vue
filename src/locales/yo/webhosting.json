@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Atokọ Gbalejo Wẹẹbu",
+        "orderTitle": "Paṣẹ Awọn Iforukọsilẹ Oju Opo Wẹẹbu"
+    },
+    "view": {
+        "title": "Wo Oju Opo Wẹẹbu {id}",
+        "package": "Idii",
+        "nextInvoiceDate": "Ọjọ Iwe Isan Atẹle:",
+        "billing": "Isan",
+        "billed": "ti isan",
+        "billingStatusIs": "Ipo Isan ni:",
+        "hostInfo": "Alaye Ogun",
+        "username": "Orukọ Olumulo:",
+        "ip": "IP:",
+        "server": "Sarvari:",
+        "notSetYet": "Ko tii ṣeto",
+        "login": "Wiwọle",
+        "types": "Awọn Iru:",
+        "linksLabel": "Awọn Ọna Asopọ:",
+        "manualLogin": "Wiwọle Ọwọ",
+        "automaticLogin": "Wiwọle Laifọwọyi",
+        "clickHere": "Tẹ Nibi",
+        "defaultNameservers": "Awọn Sarvari Orukọ Aiyipada",
+        "nameservers": "Awọn Sarvari Orukọ:",
+        "externalLinks": "Awọn Ọna Asopọ Ita",
+        "names": "Awọn Orukọ:",
+        "websitePreview": "Awọn iṣaaju Oju Opo Wẹẹbu",
+        "links": "Awọn Ọna Asopọ",
+        "welcomeEmailConfirm": "Ṣe o da ọ loju pe o fẹ tun fi imeeli kaabọ ranṣẹ?",
+        "emailSent": "Imeeli Ti Ranṣẹ",
+        "emailSentMessage": "Imeeli kaabọ ti tun ranṣẹ. Ṣayẹwo apamọwọ rẹ."
+    },
+    "buyIp": {
+        "title": "Ra Afikun IP Afikun",
+        "existingAddonIps": "Awọn IP Afikun Ti o wa Tẹlẹ",
+        "additionalIp": "IP Afikun",
+        "monthlyCost": "Idiyele Oṣooṣu ({symbol})",
+        "costDescription": "Idiyele ({symbol}) gbogbo oṣu bi oju opo wẹẹbu rẹ ti isan",
+        "confirmPurchase": "Jẹrisi Rira",
+        "confirmMessage": "Idiyele IP Afikun: {symbol}{cost}/oṣu. Ṣe o da ọ loju pe o fẹ paṣẹ IP afikun?",
+        "placeOrder": "Gbe Aṣẹ",
+        "orderPlaced": "Aṣẹ Ti Gbe"
+    },
+    "reverseDns": {
+        "title": "DNS Yiyipada",
+        "updateReverseDns": "Ṣe Imudojuiwọn DNS Yiyipada"
+    },
+    "downloadBackups": {
+        "title": "Gba Awọn Afẹyinti",
+        "backup": "Afẹyinti",
+        "size": "Iwọn",
+        "options": "Awọn Aṣayan"
+    },
+    "migration": {
+        "title": "Gbe Oju Opo Wẹẹbu Rẹ",
+        "currentWebHostInfo": "Alaye Gbalejo Wẹẹbu Lọwọlọwọ",
+        "customerPortalUrl": "URL Ẹnu-ọna Alabara",
+        "portalExample": "Fun Apẹẹrẹ: sso.godaddy.com",
+        "registeredUsername": "Orukọ Olumulo / Imeeli / ID Ti Forukọsilẹ",
+        "password": "Ọrọ Aṣina",
+        "controlPanelUrl": "URL Pánẹ́ẹ̀lì Iṣakoso",
+        "controlPanelExample": "Fun Apẹẹrẹ: yourdomain.com/cpanel",
+        "ftpUsername": "Orukọ Olumulo FTP / Pánẹ́ẹ̀lì Iṣakoso",
+        "ftpPassword": "Ọrọ Aṣina FTP / Pánẹ́ẹ̀lì Iṣakoso",
+        "holdingPageQuestion": "Ti aaye naa ba jẹ aaye laaye/ti o ni ijabọ giga, ṣe a le ṣeto oju-iwe idaduro lakoko gbigbe?",
+        "specialRequirementsQuestion": "Ṣe aaye yii ni awọn ibeere pataki bii Ẹya PHP / Awọn Modulu?",
+        "domainRegistryInfo": "Alaye Iforukọsilẹ Orukọ Agbegbe",
+        "transferDomainQuestion": "Ṣe o fẹ ki a tun ṣe iranlọwọ gbigbe iforukọsilẹ orukọ agbegbe?",
+        "updateNameserversQuestion": "Ṣe o fẹ ki a ṣe imudojuiwọn awọn sarvari orukọ ni kete ti a ba pari gbigbe data?",
+        "domainRegistryPortal": "Ẹnu-ọna Alabara Iforukọsilẹ Orukọ Agbegbe",
+        "importantNotes": "Awọn Akiyesi Pataki",
+        "note1": "Kikun fọọmu yii yoo ṣii tikiti tuntun fun ẹka atilẹyin wa lati bẹrẹ gbigbe rẹ.",
+        "note2": "Jọwọ jẹ pipe ati deede bi o ti ṣee ṣe lati yago fun awọn idaduro.",
+        "note3": "Gbigbe aṣoju kan pari laarin wakati 48 si 72. Nigba miiran gun sii ti iye data lati daakọ ba tobi.",
+        "note4": "Akọọlẹ gbalejo atijọ nilo lati wa lori ayelujara ati ki o wọle lakoko ti a n ṣe gbigbe, bibẹẹkọ a le dojukọ iṣoro.",
+        "note5": "Jọwọ maṣe ṣe awọn imudojuiwọn lori aaye rẹ lakoko ti a n ṣe gbigbe, bibẹẹkọ awọn data wọnyi le ma daakọ si gbalejo tuntun."
+    },
+    "order": {
+        "title": "Paṣẹ Oju Opo Wẹẹbu"
+    }
+}

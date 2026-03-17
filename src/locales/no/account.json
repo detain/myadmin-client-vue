@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Kontoinnstillinger"
+    },
+    "changePassword": {
+        "title": "Endre passord",
+        "cardTitle": "Oppdater passord",
+        "currentPassword": "Nåværende passord",
+        "newPassword": "Nytt passord",
+        "confirmPassword": "Bekreft passord",
+        "updatePassword": "Oppdater passord"
+    },
+    "changeUsername": {
+        "title": "Endre brukernavn",
+        "disabled": "Endring av brukernavn er midlertidig deaktivert.",
+        "currentUsername": "Nåværende brukernavn",
+        "newDesiredUsername": "Ønsket nytt brukernavn",
+        "confirmationCode": "Bekreftelseskode",
+        "pleaseWait": "Vennligst vent!",
+        "gotError": "Fikk feil {error}"
+    },
+    "contactInfo": {
+        "title": "Kontaktinformasjon",
+        "cardTitle": "Oppdater kontaktinformasjon",
+        "headsUp": "OBS!",
+        "headsUpMessage": "Selv om denne informasjonen er valgfri, vil det å oppgi (nøyaktig) informasjon hjelpe til med å berike våre interaksjoner og senke din risikoprosent, noe som gir deg raskere og mer praktisk tilgang til deler av nettstedet (som å slippe å autentisere et kredittkort).",
+        "riskScore": "Risiko % poengsum",
+        "personalInformation": "Personlig informasjon",
+        "name": "Navn",
+        "namePlaceholder": "Joe Cool",
+        "company": "Selskap",
+        "gstinTaxId": "GSTIN skattenummer",
+        "gstinPlaceholder": "Identifikasjonsnummer for varer og tjenester",
+        "addressLine1": "Adresselinje 1",
+        "addressLine2": "Adresselinje 2",
+        "cityState": "By, stat",
+        "city": "By",
+        "state": "Stat",
+        "country": "Land",
+        "zipcode": "Postnummer",
+        "phoneNo": "Telefonnummer",
+        "phoneNumber": "Telefonnummer",
+        "language": "Språk",
+        "auto": "Automatisk",
+        "currency": "Valuta",
+        "timeZone": "Tidssone",
+        "otherSettings": "Andre innstillinger",
+        "disablePasswordResets": "Deaktiver (Glemt passord) tilbakestilling av passord.",
+        "disableInvoiceReminders": "Deaktiver e-postvarsler for fakturapåminnelse.",
+        "disableServerInvoiceReminders": "Deaktiver e-postvarsler for serverfaktura.",
+        "disableReinstall": "Deaktiver reinstallering.",
+        "alternateEmailInvoices": "Alternativ e-post for fakturaer",
+        "alternateEmailInvoicesPlaceholder": "Alternativ e-post for sending av fakturaer",
+        "alternateEmailAbuse": "Alternativ e-post for misbruksrapporter",
+        "updateInfo": "Oppdater informasjon"
+    }
+}

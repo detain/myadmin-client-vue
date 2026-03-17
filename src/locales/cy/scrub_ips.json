@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Rhestr Gwasanaethau Scrub IPs",
+        "orderTitle": "Archebu Scrub IPs"
+    },
+    "view": {
+        "title": "Gweld Scrub IPs",
+        "currentIp": "IP Cyfredol",
+        "ipAddress": "Cyfeiriad IP",
+        "ipFromService": "IP o'r gwasanaeth"
+    },
+    "filters": {
+        "title": "Hidlwyr",
+        "createNew": "Creu Newydd",
+        "createNewFilter": "Creu Hidlwr Newydd",
+        "filterType": "Math Hidlwr",
+        "selectFilterType": "Dewis Math Hidlwr",
+        "ipAddress": "Cyfeiriad IP",
+        "portNo": "Rhif Porth",
+        "filter": "Hidlwr",
+        "destinationIp": "IP Cyrchfan",
+        "destinationPort": "Porth Cyrchfan",
+        "noFiltersFound": "Ni chanfuwyd hidlwyr!",
+        "deleteFilterConfirm": "Ydych chi'n siŵr eich bod am ddileu'r hidlwr hwn?",
+        "unableToCreateFilter": "Methu creu hidlwr ar hyn o bryd.",
+        "unableToDeleteFilter": "Methu dileu hidlwr ar hyn o bryd."
+    },
+    "firewallRules": {
+        "title": "Rheolau Mur Tân",
+        "createNew": "Creu Newydd",
+        "createNewFirewall": "Creu Rheol Mur Tân Newydd",
+        "protocol": "Protocol",
+        "destinationIp": "IP Cyrchfan",
+        "destinationPort": "Porth Cyrchfan",
+        "sourceIp": "IP Ffynhonnell",
+        "sourcePort": "Porth Ffynhonnell",
+        "xdpAction": "Gweithred XDP",
+        "ipRequired": "Mae cyfeiriad IP yn ofynnol",
+        "block": "Rhwystro",
+        "whitelist": "Rhestr Wyn",
+        "noRulesFound": "Ni chanfuwyd rheolau!",
+        "deleteRuleConfirm": "Ydych chi'n siŵr eich bod am ddileu'r rheol hon?",
+        "unableToCreateRule": "Methu creu rheol mur tân ar hyn o bryd.",
+        "unableToDeleteRule": "Methu dileu rheol mur tân ar hyn o bryd."
+    },
+    "geoFirewallRules": {
+        "title": "Rheolau Mur Tân Geo",
+        "createNew": "Creu Newydd",
+        "createNewGeoRule": "Creu Rheol Mur Tân Geo Newydd",
+        "destinationIp": "IP Cyrchfan",
+        "destinationPort": "Porth Cyrchfan",
+        "sourceCountry": "Gwlad Ffynhonnell",
+        "sourceAsn": "ASN Ffynhonnell",
+        "xdpAction": "Gweithred XDP",
+        "portNo": "Rhif Porth",
+        "selectCountry": "Dewis Gwlad",
+        "asn": "ASN",
+        "block": "Rhwystro",
+        "whitelist": "Rhestr Wyn",
+        "noRulesFound": "Ni chanfuwyd rheolau!",
+        "deleteGeoRuleConfirm": "Ydych chi'n siŵr eich bod am ddileu'r rheol geo hon?",
+        "unableToCreateRule": "Methu creu rheol mur tân ar hyn o bryd.",
+        "unableToDeleteRule": "Methu dileu rheol mur tân geo ar hyn o bryd."
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Floating IPs Tsjinsten List",
+        "orderTitle": "Floating IP Registraasjes Bestelle"
+    },
+    "view": {
+        "title": "Floating IP {id} Besjen",
+        "package": "Pakket",
+        "nextInvoiceDate": "Folgjende Faktuerdatum:",
+        "billing": "Fakturearring",
+        "billed": "faktureare:",
+        "statusIs": "Status is:",
+        "floatingIp": "Floating IP",
+        "links": "Keppelingen",
+        "welcomeEmailConfirm": "Binne jo wis dat jo de wolkom-e-post opnij ferstjoere wolle?",
+        "emailSent": "E-post Ferstjoerd",
+        "emailSentMessage": "De wolkom-e-post is opnij ferstjoerd. Kontrolearje jo postfek."
+    },
+    "order": {
+        "title": "Floating IP Bestelle"
+    },
+    "changeIp": {
+        "title": "Doel IP Wizigje"
+    }
+}

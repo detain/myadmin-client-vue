@@ -1,0 +1,12 @@
+{
+    "title": "Utenti",
+    "addUser": "Żid Utent",
+    "editUser": "Editja Utent",
+    "firstName": "Isem",
+    "lastName": "Kunjom",
+    "username": "Username",
+    "password": "Password",
+    "keepSamePassword": "Ħalli vojt biex iżżomm l-istess password",
+    "errorLoading": "Żball fit-tagħbija tal-utenti:",
+    "errorLoadingUser": "Żball fit-tagħbija tal-utent:"
+}

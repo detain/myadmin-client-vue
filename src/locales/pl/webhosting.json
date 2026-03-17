@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Lista hostingu",
+        "orderTitle": "Zamów rejestracje stron"
+    },
+    "view": {
+        "title": "Wyświetl stronę {id}",
+        "package": "Pakiet",
+        "nextInvoiceDate": "Data następnej faktury:",
+        "billing": "Rozliczenie",
+        "billed": "rozliczane",
+        "billingStatusIs": "Status rozliczenia:",
+        "hostInfo": "Informacje o hostie",
+        "username": "Nazwa użytkownika:",
+        "ip": "IP:",
+        "server": "Serwer:",
+        "notSetYet": "Jeszcze nie ustawiono",
+        "login": "Zaloguj",
+        "types": "Typy:",
+        "linksLabel": "Linki:",
+        "manualLogin": "Ręczne logowanie",
+        "automaticLogin": "Automatyczne logowanie",
+        "clickHere": "Kliknij tutaj",
+        "defaultNameservers": "Domyślne serwery nazw",
+        "nameservers": "Serwery nazw:",
+        "externalLinks": "Linki zewnętrzne",
+        "names": "Nazwy:",
+        "websitePreview": "Podgląd strony",
+        "links": "Linki",
+        "welcomeEmailConfirm": "Czy na pewno chcesz ponownie wysłać e-mail powitalny?",
+        "emailSent": "E-mail wysłany",
+        "emailSentMessage": "E-mail powitalny został ponownie wysłany. Sprawdź swoją skrzynkę odbiorczą."
+    },
+    "buyIp": {
+        "title": "Kup dodatkowy dodatek IP",
+        "existingAddonIps": "Istniejące dodatki IP",
+        "additionalIp": "Dodatkowe IP",
+        "monthlyCost": "Miesięczny koszt ({symbol})",
+        "costDescription": "Koszt ({symbol}) co miesiąc zgodnie z fakturowaniem strony",
+        "confirmPurchase": "Potwierdź zakup",
+        "confirmMessage": "Koszt dodatkowego IP: {symbol}{cost}/miesiąc. Czy na pewno chcesz zamówić dodatkowe IP?",
+        "placeOrder": "Złóż zamówienie",
+        "orderPlaced": "Zamówienie złożone"
+    },
+    "reverseDns": {
+        "title": "Odwrotny DNS",
+        "updateReverseDns": "Zaktualizuj odwrotny DNS"
+    },
+    "downloadBackups": {
+        "title": "Pobierz kopie zapasowe",
+        "backup": "Kopia zapasowa",
+        "size": "Rozmiar",
+        "options": "Opcje"
+    },
+    "migration": {
+        "title": "Migruj swoją stronę",
+        "currentWebHostInfo": "Informacje o aktualnym hoście",
+        "customerPortalUrl": "URL portalu klienta",
+        "portalExample": "Na przykład: sso.godaddy.com",
+        "registeredUsername": "Zarejestrowana nazwa użytkownika / e-mail / ID",
+        "password": "Hasło",
+        "controlPanelUrl": "URL panelu sterowania",
+        "controlPanelExample": "Na przykład: twojastrona.com/cpanel",
+        "ftpUsername": "Nazwa użytkownika FTP / panelu sterowania",
+        "ftpPassword": "Hasło FTP / panelu sterowania",
+        "holdingPageQuestion": "Jeśli strona jest aktywna/ruchliwa z dużym ruchem, czy możemy ustawić stronę zastępczą podczas migracji?",
+        "specialRequirementsQuestion": "Czy ta strona ma specjalne wymagania, takie jak wersja PHP / moduły?",
+        "domainRegistryInfo": "Informacje o rejestracji domeny",
+        "transferDomainQuestion": "Czy chcesz, abyśmy pomogli Ci przenieść rejestrację domeny?",
+        "updateNameserversQuestion": "Czy chcesz, abyśmy zaktualizowali serwery nazw po zakończeniu migracji danych?",
+        "domainRegistryPortal": "Portal klienta rejestru domeny",
+        "importantNotes": "Ważne uwagi",
+        "note1": "Wypełnienie tego formularza otworzy nowe zgłoszenie dla naszego działu wsparcia, aby rozpocząć migrację.",
+        "note2": "Prosimy być jak najbardziej kompletnym i dokładnym, aby uniknąć opóźnień.",
+        "note3": "Typowa migracja jest zakończona w ciągu 48 do 72 godzin. Czasami dłużej, jeśli ilość danych do skopiowania jest duża.",
+        "note4": "Stare konto hostingowe musi być online i dostępne podczas migracji, w przeciwnym razie możemy napotkać trudności.",
+        "note5": "Prosimy nie wprowadzać żadnych aktualizacji na stronie podczas migracji, ponieważ te dane mogą nie zostać skopiowane do nowego hostingu."
+    },
+    "order": {
+        "title": "Zamów hosting"
+    }
+}

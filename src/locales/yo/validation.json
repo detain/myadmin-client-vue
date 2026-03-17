@@ -1,0 +1,12 @@
+{
+    "required": "{field} jẹ dandan",
+    "email": "Gbọdọ jẹ adirẹsi imeeli to dara",
+    "minLength": "Gbọdọ ni o kere ju {min} awọn ohun kikọ",
+    "maxLength": "Gbọdọ ma jẹ ju {max} awọn ohun kikọ lọ",
+    "passwordMatch": "Awọn ọrọ aṣina gbọdọ baramu",
+    "invalidFormat": "Ọna kika ti ko tọ",
+    "numeric": "Gbọdọ jẹ nọmba",
+    "url": "Gbọdọ jẹ URL to dara",
+    "ipAddress": "Gbọdọ jẹ adirẹsi IP to dara",
+    "hostname": "Gbọdọ jẹ orukọ ogun to dara"
+}

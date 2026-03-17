@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Veb Hosting Siyahısı",
+        "orderTitle": "Vebsayt Qeydiyyatı Sifariş Et"
+    },
+    "view": {
+        "title": "Vebsayt {id}-ə Bax",
+        "package": "Paket",
+        "nextInvoiceDate": "Növbəti Faktura Tarixi:",
+        "billing": "Ödəniş",
+        "billed": "ödənildi",
+        "billingStatusIs": "Ödəniş Statusu:",
+        "hostInfo": "Host Məlumatı",
+        "username": "İstifadəçi Adı:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Hələ təyin edilməyib",
+        "login": "Giriş",
+        "types": "Növlər:",
+        "linksLabel": "Keçidlər:",
+        "manualLogin": "Manual Giriş",
+        "automaticLogin": "Avtomatik Giriş",
+        "clickHere": "Buraya Klikləyin",
+        "defaultNameservers": "Standart Ad Serverləri",
+        "nameservers": "Ad Serverləri:",
+        "externalLinks": "Xarici Keçidlər",
+        "names": "Adlar:",
+        "websitePreview": "Vebsayt Önizləməsi",
+        "links": "Keçidlər",
+        "welcomeEmailConfirm": "Xoş gəlmisiniz e-poçtunu yenidən göndərmək istədiyinizə əminsiniz?",
+        "emailSent": "E-poçt Göndərildi",
+        "emailSentMessage": "Xoş gəlmisiniz e-poçtu yenidən göndərildi. Gələn qutunuzu yoxlayın."
+    },
+    "buyIp": {
+        "title": "Əlavə IP Əlavəsi Al",
+        "existingAddonIps": "Mövcud Əlavə IP-lər",
+        "additionalIp": "Əlavə IP",
+        "monthlyCost": "Aylıq Xərc ({symbol})",
+        "costDescription": "Vebsaytınız fakturalanan hər ay ({symbol}) xərci",
+        "confirmPurchase": "Alışı Təsdiqlə",
+        "confirmMessage": "Əlavə IP xərci: {symbol}{cost}/ay. Əlavə IP sifariş etmək istədiyinizə əminsiniz?",
+        "placeOrder": "Sifariş Ver",
+        "orderPlaced": "Sifariş Verildi"
+    },
+    "reverseDns": {
+        "title": "Əks DNS",
+        "updateReverseDns": "Əks DNS-i Yenilə"
+    },
+    "downloadBackups": {
+        "title": "Ehtiyat Nüsxələri Yüklə",
+        "backup": "Ehtiyat Nüsxə",
+        "size": "Ölçü",
+        "options": "Seçimlər"
+    },
+    "migration": {
+        "title": "Vebsaytınızı Köçürün",
+        "currentWebHostInfo": "Cari Veb Host Məlumatı",
+        "customerPortalUrl": "Müştəri Portalı URL",
+        "portalExample": "Nümunə üçün: sso.godaddy.com",
+        "registeredUsername": "Qeydiyyatdan Keçmiş İstifadəçi Adı / E-poçt / ID",
+        "password": "Şifrə",
+        "controlPanelUrl": "Nəzarət Paneli URL",
+        "controlPanelExample": "Nümunə üçün: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Nəzarət Paneli İstifadəçi Adı",
+        "ftpPassword": "FTP / Nəzarət Paneli Şifrəsi",
+        "holdingPageQuestion": "Sayt canlı/yüklü saytdırsa yüksək trafiklə, köçürmə zamanı gözləmə səhifəsi qoya bilərikmi?",
+        "specialRequirementsQuestion": "Bu saytın PHP Versiyası / Modulları kimi xüsusi tələbləri var mı?",
+        "domainRegistryInfo": "Domen Reyestr Məlumatı",
+        "transferDomainQuestion": "Domen adı qeydiyyatını köçürməyə kömək etmənizi istəyirsiniz?",
+        "updateNameserversQuestion": "Məlumatların köçürülməsini tamamladıqdan sonra ad serverlərini yeniləyəkmi?",
+        "domainRegistryPortal": "Domen Reyestri Müştəri Portalı",
+        "importantNotes": "Vacib Qeydlər",
+        "note1": "Bu formu doldurmaq köçürməyə başlamaq üçün dəstək departamentimiz üçün yeni bilet açacaq.",
+        "note2": "Gecikməmək üçün zəhmət olmasa mümkün qədər tam və dəqiq olun.",
+        "note3": "Tipik köçürmə 48-72 saat ərzində tamamlanır. Köçürüləcək məlumat miqdarı böyükdürsə daha uzun çəkə bilər.",
+        "note4": "Köçürmə zamanı köhnə hosting hesabının onlayn və əlçatan olması lazımdır, əks halda çətinliklərlə üzləşə bilərik.",
+        "note5": "Köçürmə zamanı saytınızda heç bir yeniləmə etməyin, əks halda həmin məlumatlar yeni hostinge köçürülməyə bilər."
+    },
+    "order": {
+        "title": "Vebsayt Sifariş Et"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Rondedzero yemasevhisi eFloating IPs",
+        "orderTitle": "Oda Magwaro eFloating IP"
+    },
+    "view": {
+        "title": "Ona Floating IP {id}",
+        "package": "Paketi",
+        "nextInvoiceDate": "Zuva Reimboti Rinouya:",
+        "billing": "Kubhadharisa",
+        "billed": "kubhadhariswa:",
+        "statusIs": "Mamiriro:",
+        "floatingIp": "Floating IP",
+        "links": "Misungo",
+        "welcomeEmailConfirm": "Unoda kutumira zvakare email yemutsauko here?",
+        "emailSent": "Email Yatumirwa",
+        "emailSentMessage": "Email yemutsauko yatumirwa zvakare. Tarisa inbox yako."
+    },
+    "order": {
+        "title": "Oda Floating IP"
+    },
+    "changeIp": {
+        "title": "Shandura IP Yakavamidzwa"
+    }
+}

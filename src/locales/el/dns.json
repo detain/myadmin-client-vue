@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Διαχείριση DNS",
+        "addDomain": "Προσθήκη Domain",
+        "deleteDomain": "Διαγραφή Domain",
+        "domainName": "Όνομα Domain",
+        "dnsServers": "Διακομιστές DNS",
+        "confirmDelete": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το domain;",
+        "noDomains": "Δεν βρέθηκαν domains"
+    },
+    "editor": {
+        "title": "Επεξεργαστής DNS",
+        "addRecord": "Προσθήκη Εγγραφής",
+        "deleteRecord": "Διαγραφή Εγγραφής",
+        "editRecord": "Επεξεργασία Εγγραφής",
+        "recordType": "Τύπος Εγγραφής",
+        "hostname": "Hostname",
+        "address": "Διεύθυνση",
+        "distance": "Απόσταση",
+        "weight": "Βάρος",
+        "port": "Θύρα",
+        "ttl": "TTL",
+        "actions": "Ενέργειες",
+        "confirmDelete": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την εγγραφή;"
+    }
+}

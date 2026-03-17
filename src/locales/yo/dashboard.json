@@ -1,0 +1,28 @@
+{
+    "title": "Daaṣiboodu",
+    "welcome": "Kaabọ, {name}",
+    "lastLogin": "Wiwọle Kẹhin",
+    "lastLoginIp": "IP Wiwọle Kẹhin",
+    "prepay": {
+        "title": "Iyokuro Isanpada-tele",
+        "remainingBalance": "Iyokuro Isanpada-tele Ti o Ku",
+        "manageAccount": "Ṣakoso Akọọlẹ",
+        "manageTooltip": "Ṣakoso Akọọlẹ Isanpada-tele Rẹ"
+    },
+    "invoices": {
+        "title": "Awọn Iwe Isan Ti A Ko San",
+        "totalUnpaid": "Apapọ Awọn Iwe Isan Ti A Ko San",
+        "totalAmount": "Apapọ Iye Ti O Gbọdọ San",
+        "payTotalTooltip": "San Apapọ Iye"
+    },
+    "callInPin": "PIN Ipe-si",
+    "recentTickets": "Awọn Tikiti Aipẹ",
+    "viewAllTickets": "Wo Gbogbo Awọn Tikiti",
+    "editTicket": "Ṣatunkọ Tikiti",
+    "serviceCount": "Ko si awọn iṣẹ ṣiṣẹ | {count} iṣẹ ṣiṣẹ | {count} awọn iṣẹ ṣiṣẹ",
+    "affiliate": {
+        "earnPerSale": "Gba {amount} Fun Titaja Kọọkan",
+        "urlPlaceholder": "URL Aṣojú",
+        "shareWith": "Pin pẹlu"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Maniġer DNS",
+        "addDomain": "Żid Dominju",
+        "deleteDomain": "Ħassar Dominju",
+        "domainName": "Isem tad-Dominju",
+        "dnsServers": "Servers DNS",
+        "confirmDelete": "Ċert li trid tħassar dan id-dominju?",
+        "noDomains": "L-ebda dominji ma nstabu"
+    },
+    "editor": {
+        "title": "Editur DNS",
+        "addRecord": "Żid Rekord",
+        "deleteRecord": "Ħassar Rekord",
+        "editRecord": "Editja Rekord",
+        "recordType": "Tip ta' Rekord",
+        "hostname": "Hostname",
+        "address": "Indirizz",
+        "distance": "Distanza",
+        "weight": "Piż",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Azzjonijiet",
+        "confirmDelete": "Ċert li trid tħassar dan ir-rekord?"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Atokọ Awọn Iṣẹ Imeeli",
+        "orderTitle": "Paṣẹ Awọn Iforukọsilẹ Imeeli"
+    },
+    "view": {
+        "title": "Wo Imeeli {id}",
+        "package": "Idii",
+        "nextInvoiceDate": "Ọjọ Iwe Isan Atẹle:",
+        "billing": "Isan",
+        "billed": "ti isan:",
+        "statusIs": "Ipo ni:",
+        "mailApi": "API Imeeli",
+        "usageCount": "Iye Lilo:",
+        "links": "Awọn Ọna Asopọ",
+        "connectionInfo": "Alaye Asopọ",
+        "welcomeEmailConfirm": "Ṣe o da ọ loju pe o fẹ tun fi imeeli kaabọ ranṣẹ?",
+        "emailSent": "Imeeli Ti Ranṣẹ",
+        "emailSentMessage": "Imeeli kaabọ ti tun ranṣẹ. Ṣayẹwo apamọwọ rẹ."
+    },
+    "order": {
+        "title": "Paṣẹ Imeeli"
+    },
+    "alerts": {
+        "title": "Awọn Ikilọ",
+        "addAlert": "Fi Ikilọ Kun",
+        "editAlert": "Ṣatunkọ Ikilọ",
+        "noAlerts": "Ko si awọn ikilọ ti a ri"
+    },
+    "delist": {
+        "title": "Yọ kuro ninu Atokọ",
+        "blockedEmails": "Awọn Imeeli Ti Dina"
+    },
+    "denyRules": {
+        "title": "Awọn Ofin Kiko",
+        "addRule": "Fi Ofin Kun",
+        "noRules": "Ko si awọn ofin kiko ti a ri"
+    },
+    "logs": {
+        "title": "Awọn Iwe Itan",
+        "searchLogs": "Wa Awọn Iwe Itan"
+    },
+    "stats": {
+        "title": "Awọn Iṣiro"
+    },
+    "deliverability": {
+        "title": "Agbara Jiṣẹ"
+    }
+}

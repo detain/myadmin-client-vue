@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "รายการบริการ Scrub IPs",
+        "orderTitle": "สั่งซื้อ Scrub IPs"
+    },
+    "view": {
+        "title": "ดู Scrub IPs",
+        "currentIp": "IP ปัจจุบัน",
+        "ipAddress": "ที่อยู่ IP",
+        "ipFromService": "IP จากบริการ"
+    },
+    "filters": {
+        "title": "ตัวกรอง",
+        "createNew": "สร้างใหม่",
+        "createNewFilter": "สร้างตัวกรองใหม่",
+        "filterType": "ประเภทตัวกรอง",
+        "selectFilterType": "เลือกประเภทตัวกรอง",
+        "ipAddress": "ที่อยู่ IP",
+        "portNo": "หมายเลขพอร์ต",
+        "filter": "ตัวกรอง",
+        "destinationIp": "IP ปลายทาง",
+        "destinationPort": "พอร์ตปลายทาง",
+        "noFiltersFound": "ไม่พบตัวกรอง!",
+        "deleteFilterConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบตัวกรองนี้?",
+        "unableToCreateFilter": "ไม่สามารถสร้างตัวกรองได้ในขณะนี้",
+        "unableToDeleteFilter": "ไม่สามารถลบตัวกรองได้ในขณะนี้"
+    },
+    "firewallRules": {
+        "title": "กฎไฟร์วอลล์",
+        "createNew": "สร้างใหม่",
+        "createNewFirewall": "สร้างกฎไฟร์วอลล์ใหม่",
+        "protocol": "โปรโตคอล",
+        "destinationIp": "IP ปลายทาง",
+        "destinationPort": "พอร์ตปลายทาง",
+        "sourceIp": "IP ต้นทาง",
+        "sourcePort": "พอร์ตต้นทาง",
+        "xdpAction": "การดำเนินการ XDP",
+        "ipRequired": "จำเป็นต้องระบุที่อยู่ IP",
+        "block": "บล็อก",
+        "whitelist": "รายการที่อนุญาต",
+        "noRulesFound": "ไม่พบกฎ!",
+        "deleteRuleConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบกฎนี้?",
+        "unableToCreateRule": "ไม่สามารถสร้างกฎไฟร์วอลล์ได้ในขณะนี้",
+        "unableToDeleteRule": "ไม่สามารถลบกฎไฟร์วอลล์ได้ในขณะนี้"
+    },
+    "geoFirewallRules": {
+        "title": "กฎไฟร์วอลล์ตามพื้นที่",
+        "createNew": "สร้างใหม่",
+        "createNewGeoRule": "สร้างกฎไฟร์วอลล์ตามพื้นที่ใหม่",
+        "destinationIp": "IP ปลายทาง",
+        "destinationPort": "พอร์ตปลายทาง",
+        "sourceCountry": "ประเทศต้นทาง",
+        "sourceAsn": "ASN ต้นทาง",
+        "xdpAction": "การดำเนินการ XDP",
+        "portNo": "หมายเลขพอร์ต",
+        "selectCountry": "เลือกประเทศ",
+        "asn": "ASN",
+        "block": "บล็อก",
+        "whitelist": "รายการที่อนุญาต",
+        "noRulesFound": "ไม่พบกฎ!",
+        "deleteGeoRuleConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบกฎตามพื้นที่นี้?",
+        "unableToCreateRule": "ไม่สามารถสร้างกฎไฟร์วอลล์ได้ในขณะนี้",
+        "unableToDeleteRule": "ไม่สามารถลบกฎไฟร์วอลล์ตามพื้นที่ได้ในขณะนี้"
+    }
+}

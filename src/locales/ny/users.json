@@ -1,0 +1,12 @@
+{
+    "title": "Ogwiritsa",
+    "addUser": "Wonjezani Wogwiritsa",
+    "editUser": "Sinthani Wogwiritsa",
+    "firstName": "Dzina Loyamba",
+    "lastName": "Dzina la Mbuye",
+    "username": "Dzina la Wogwiritsa",
+    "password": "Chinsinsi",
+    "keepSamePassword": "Siyani posauzidwa kusungira chinsinsi chimomwecho",
+    "errorLoading": "Cholakwika potsitsa ogwiritsa:",
+    "errorLoadingUser": "Cholakwika potsitsa wogwiritsa:"
+}

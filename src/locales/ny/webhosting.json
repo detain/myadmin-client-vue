@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Mndandanda wa Webhoteli",
+        "orderTitle": "Ika Dongosolo la Kulemba Tsamba"
+    },
+    "view": {
+        "title": "Onani Tsamba {id}",
+        "package": "Phukusi",
+        "nextInvoiceDate": "Tsiku Lotsatira la Fatura:",
+        "billing": "Kulipira",
+        "billed": "walipira",
+        "billingStatusIs": "Mkhalidwe wa Kulipira ndi:",
+        "hostInfo": "Zambiri za Wosunga",
+        "username": "Dzina la Wogwiritsa:",
+        "ip": "IP:",
+        "server": "Seva:",
+        "notSetYet": "Sikhazikitsidwa",
+        "login": "Lowani",
+        "types": "Mitundu:",
+        "linksLabel": "Maulalo:",
+        "manualLogin": "Kulowa Mwamanja",
+        "automaticLogin": "Kulowa Mwachiyambi",
+        "clickHere": "Dinani Apa",
+        "defaultNameservers": "Maseva a Mayina Awamba",
+        "nameservers": "Maseva a Mayina:",
+        "externalLinks": "Maulalo Akutali",
+        "names": "Mayina:",
+        "websitePreview": "Kusanthula Tsamba",
+        "links": "Maulalo",
+        "welcomeEmailConfirm": "Muli ndi chitsimikiziro chokutumizira imelo yoyambirira?",
+        "emailSent": "Imelo Yatumizidwa",
+        "emailSentMessage": "Imelo yoyambirira yatumizidwanso. Onani inbox yanu."
+    },
+    "buyIp": {
+        "title": "Gulani Wowonjezera wa IP Wowonjezera",
+        "existingAddonIps": "IP za Wowonjezera Zakaleneza",
+        "additionalIp": "IP Yowonjezera",
+        "monthlyCost": "Mtengo wa Mwezi ({symbol})",
+        "costDescription": "Mtengo ({symbol}) mwezi uliwonse tsamba lanu likafaturidwa",
+        "confirmPurchase": "Tsimikizani Kugula",
+        "confirmMessage": "Mtengo wa IP yowonjezera: {symbol}{cost}/mwezi. Muli ndi chitsimikiziro choika dongosolo la IP yowonjezera?",
+        "placeOrder": "Ika Dongosolo",
+        "orderPlaced": "Dongosolo Yaikidwa"
+    },
+    "reverseDns": {
+        "title": "DNS Woyamba",
+        "updateReverseDns": "Yenjezerani DNS Woyamba"
+    },
+    "downloadBackups": {
+        "title": "Tsitsani Zakochera",
+        "backup": "Kochera",
+        "size": "Kukula",
+        "options": "Zisankho"
+    },
+    "migration": {
+        "title": "Yendetsa Tsamba Lanu",
+        "currentWebHostInfo": "Zambiri za Wosunga wa Intaneti Wamakono",
+        "customerPortalUrl": "URL ya Portalo ya Kasitomala",
+        "portalExample": "Mwachitsanzo: sso.godaddy.com",
+        "registeredUsername": "Dzina la Wogwiritsa Wolemba / Imelo / ID",
+        "password": "Chinsinsi",
+        "controlPanelUrl": "URL ya Bwalo la Kuwongolera",
+        "controlPanelExample": "Mwachitsanzo: yourdomain.com/cpanel",
+        "ftpUsername": "Dzina la Wogwiritsa wa FTP / Bwalo la Kuwongolera",
+        "ftpPassword": "Chinsinsi cha FTP / Bwalo la Kuwongolera",
+        "holdingPageQuestion": "Ngati tsamba ndi loyenda/lobvuta ndi kusamuka kwakukulu, tingakhazikitse tsamba lochezeranso pa nthawi ya kuyendetsa?",
+        "specialRequirementsQuestion": "Kodi tsamba ili lili ndi zofunikira zapadera monga Mtundu wa PHP / Mawodulo?",
+        "domainRegistryInfo": "Zambiri za Kulemba Domeni",
+        "transferDomainQuestion": "Mukufunanso kuti tikuthandize kuyendetsa kulemba kwa dzina la domeni?",
+        "updateNameserversQuestion": "Mukufuna kuti tiyenjezereko maseva a mayina mwachangu tikamalize kuyendetsa deta?",
+        "domainRegistryPortal": "Portalo ya Kasitomala ya Domain Registry",
+        "importantNotes": "Mfundo Zalikulu",
+        "note1": "Kuzaza fomu iyi kudzatsegula tikiti latsopano la dipatimenti yathu ya thandizo kuyamba kuyendetsa kwanu.",
+        "note2": "Chonde khalani okwanira ndi oona mwathunthu kupewei kuchedwetsa.",
+        "note3": "Kuyendetsa kwamba kukwanirizidwa mkati mwa maola 48 mpaka 72. Nthawi zambiri kwanalo ngati kuchuluka kwa deta yoyendetsa ndi kwakukulu.",
+        "note4": "Akaunti yakale ya kusunga iyenera kukhala pa intaneti ndikupezeka tikukuchita kuyendetsa, mukanena kukhala ndi vuto.",
+        "note5": "Chonde musachite zosintha pa tsamba lanu tikukuchita kuyendetsa, mukanena deta izo sizingakopidwe ku webhoteli yatsopano."
+    },
+    "order": {
+        "title": "Ika Dongosolo la Tsamba"
+    }
+}

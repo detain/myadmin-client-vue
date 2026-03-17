@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS කළමනාකරු",
+        "addDomain": "වසම් නාමය එකතු කරන්න",
+        "deleteDomain": "වසම් නාමය මකන්න",
+        "domainName": "වසම් නාමය",
+        "dnsServers": "DNS සේවාදායකයන්",
+        "confirmDelete": "ඔබට මෙම වසම් නාමය මකා දැමීමට අවශ්‍ය ද?",
+        "noDomains": "වසම් නාම හමු නොවීය"
+    },
+    "editor": {
+        "title": "DNS සංස්කාරකය",
+        "addRecord": "වාර්තාව එකතු කරන්න",
+        "deleteRecord": "වාර්තාව මකන්න",
+        "editRecord": "වාර්තාව සංස්කරණය කරන්න",
+        "recordType": "වාර්තා වර්ගය",
+        "hostname": "සත්කාරක නාමය",
+        "address": "ලිපිනය",
+        "distance": "දුර",
+        "weight": "බර",
+        "port": "port",
+        "ttl": "TTL",
+        "actions": "ක්‍රියා",
+        "confirmDelete": "ඔබට මෙම වාර්තාව මකා දැමීමට අවශ්‍ය ද?"
+    }
+}

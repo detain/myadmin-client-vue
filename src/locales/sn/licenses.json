@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Rondedzero yeRaizeni",
+        "orderTitle": "Oda Magwaro eRaizeni"
+    },
+    "view": {
+        "title": "Ona Raizeni {id}",
+        "package": "Paketi",
+        "nextInvoiceDate": "Zuva Reimboti Rinouya:",
+        "billing": "Kubhadharisa",
+        "billed": "kubhadhariswa:",
+        "statusIs": "Mamiriro:",
+        "licenseInfo": "Ruzivo rweRaizeni",
+        "cpanelInfo": "Ruzivo rwecPanel",
+        "links": "Misungo",
+        "welcomeEmailConfirm": "Unoda kutumira zvakare email yemutsauko here?",
+        "emailSent": "Email Yatumirwa",
+        "emailSentMessage": "Email yemutsauko yatumirwa zvakare. Tarisa inbox yako."
+    },
+    "order": {
+        "title": "Oda Raizeni"
+    },
+    "changeIp": {
+        "title": "Shandura IP"
+    },
+    "changeOs": {
+        "title": "Shandura OS",
+        "selectLicenseOs": "Sarudza OS yeRaizeni"
+    }
+}

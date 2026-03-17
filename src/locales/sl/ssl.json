@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Seznam SSL certifikatov",
+        "orderTitle": "Naroči registracije SSL"
+    },
+    "view": {
+        "title": "Ogled SSL {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Datum naslednjega računa:",
+        "billing": "Zaračunavanje",
+        "billed": "zaračunano:",
+        "statusIs": "Status je:",
+        "orderInfo": "Informacije naročila",
+        "certificateInfo": "Informacije certifikata",
+        "links": "Povezave",
+        "welcomeEmailConfirm": "Ali ste prepričani, da želite znova poslati pozdravno e-pošto?",
+        "emailSent": "E-pošta poslana",
+        "emailSentMessage": "Pozdravna e-pošta je bila znova poslana. Preverite svojo nabiralo."
+    },
+    "order": {
+        "title": "Naroči SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Spremeni e-pošto potrjevalca",
+        "selectApproverEmail": "Izberi e-pošto potrjevalca"
+    }
+}

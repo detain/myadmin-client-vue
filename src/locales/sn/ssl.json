@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Rondedzero yeZvitonhorera zveSSL",
+        "orderTitle": "Oda Magwaro eSSL"
+    },
+    "view": {
+        "title": "Ona SSL {id}",
+        "package": "Paketi",
+        "nextInvoiceDate": "Zuva Reimboti Rinouya:",
+        "billing": "Kubhadharisa",
+        "billed": "kubhadhariswa:",
+        "statusIs": "Mamiriro:",
+        "orderInfo": "Ruzivo rweOda",
+        "certificateInfo": "Ruzivo rweChitonhorera",
+        "links": "Misungo",
+        "welcomeEmailConfirm": "Unoda kutumira zvakare email yemutsauko here?",
+        "emailSent": "Email Yatumirwa",
+        "emailSentMessage": "Email yemutsauko yatumirwa zvakare. Tarisa inbox yako."
+    },
+    "order": {
+        "title": "Oda SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Shandura Email yeAnobvumira",
+        "selectApproverEmail": "Sarudza Email yeAnobvumira"
+    }
+}

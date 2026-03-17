@@ -1,0 +1,12 @@
+{
+    "title": "Používatelia",
+    "addUser": "Pridať používateľa",
+    "editUser": "Upraviť používateľa",
+    "firstName": "Meno",
+    "lastName": "Priezvisko",
+    "username": "Používateľské meno",
+    "password": "Heslo",
+    "keepSamePassword": "Ponechajte prázdne, aby ste zachovali rovnaké heslo",
+    "errorLoading": "Chyba pri načítavaní používateľov:",
+    "errorLoadingUser": "Chyba pri načítavaní používateľa:"
+}

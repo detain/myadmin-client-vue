@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Atokọ Awọn Iṣẹ Sọ IP Di Mimọ",
+        "orderTitle": "Paṣẹ Awọn IP Sọ Di Mimọ"
+    },
+    "view": {
+        "title": "Wo Awọn IP Sọ Di Mimọ",
+        "currentIp": "IP Lọwọlọwọ",
+        "ipAddress": "Adirẹsi IP",
+        "ipFromService": "IP lati iṣẹ"
+    },
+    "filters": {
+        "title": "Awọn Àlẹmọ",
+        "createNew": "Ṣẹda Tuntun",
+        "createNewFilter": "Ṣẹda Àlẹmọ Tuntun",
+        "filterType": "Iru Àlẹmọ",
+        "selectFilterType": "Yan Iru Àlẹmọ",
+        "ipAddress": "Adirẹsi IP",
+        "portNo": "Nọ Ẹnu-ọna",
+        "filter": "Àlẹmọ",
+        "destinationIp": "IP Ibi-afẹde",
+        "destinationPort": "Ẹnu-ọna Ibi-afẹde",
+        "noFiltersFound": "Ko si awọn àlẹmọ ti a ri!",
+        "deleteFilterConfirm": "Ṣe o da ọ loju pe o fẹ pa àlẹmọ yii?",
+        "unableToCreateFilter": "Ko ni anfani lati ṣẹda àlẹmọ ni akoko yii.",
+        "unableToDeleteFilter": "Ko ni anfani lati pa àlẹmọ ni akoko yii."
+    },
+    "firewallRules": {
+        "title": "Awọn Ofin Odi Ina",
+        "createNew": "Ṣẹda Tuntun",
+        "createNewFirewall": "Ṣẹda Ofin Odi Ina Tuntun",
+        "protocol": "Ilana",
+        "destinationIp": "IP Ibi-afẹde",
+        "destinationPort": "Ẹnu-ọna Ibi-afẹde",
+        "sourceIp": "IP Orisun",
+        "sourcePort": "Ẹnu-ọna Orisun",
+        "xdpAction": "Iṣe XDP",
+        "ipRequired": "Adirẹsi IP jẹ dandan",
+        "block": "Dina",
+        "whitelist": "Atokọ Funfun",
+        "noRulesFound": "Ko si awọn ofin ti a ri!",
+        "deleteRuleConfirm": "Ṣe o da ọ loju pe o fẹ pa ofin yii?",
+        "unableToCreateRule": "Ko ni anfani lati ṣẹda ofin odi ina ni akoko yii.",
+        "unableToDeleteRule": "Ko ni anfani lati pa ofin odi ina ni akoko yii."
+    },
+    "geoFirewallRules": {
+        "title": "Awọn Ofin Odi Ina Agbaye",
+        "createNew": "Ṣẹda Tuntun",
+        "createNewGeoRule": "Ṣẹda Ofin Odi Ina Agbaye Tuntun",
+        "destinationIp": "IP Ibi-afẹde",
+        "destinationPort": "Ẹnu-ọna Ibi-afẹde",
+        "sourceCountry": "Orilẹ-ede Orisun",
+        "sourceAsn": "ASN Orisun",
+        "xdpAction": "Iṣe XDP",
+        "portNo": "Nọ Ẹnu-ọna",
+        "selectCountry": "Yan Orilẹ-ede",
+        "asn": "ASN",
+        "block": "Dina",
+        "whitelist": "Atokọ Funfun",
+        "noRulesFound": "Ko si awọn ofin ti a ri!",
+        "deleteGeoRuleConfirm": "Ṣe o da ọ loju pe o fẹ pa ofin agbaye yii?",
+        "unableToCreateRule": "Ko ni anfani lati ṣẹda ofin odi ina ni akoko yii.",
+        "unableToDeleteRule": "Ko ni anfani lati pa ofin odi ina agbaye ni akoko yii."
+    }
+}

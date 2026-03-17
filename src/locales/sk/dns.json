@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Pridať doménu",
+        "deleteDomain": "Odstrániť doménu",
+        "domainName": "Názov domény",
+        "dnsServers": "DNS servery",
+        "confirmDelete": "Ste si istý, že chcete odstrániť túto doménu?",
+        "noDomains": "Nenašli sa žiadne domény"
+    },
+    "editor": {
+        "title": "DNS Editor",
+        "addRecord": "Pridať záznam",
+        "deleteRecord": "Odstrániť záznam",
+        "editRecord": "Upraviť záznam",
+        "recordType": "Typ záznamu",
+        "hostname": "Názov hostiteľa",
+        "address": "Adresa",
+        "distance": "Vzdialenosť",
+        "weight": "Váha",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Akcie",
+        "confirmDelete": "Ste si istý, že chcete odstrániť tento záznam?"
+    }
+}

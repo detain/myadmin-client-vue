@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "SSL סערטיפיקאטן רשימה",
+        "orderTitle": "באשטעלן SSL רעגיסטראציעס"
+    },
+    "view": {
+        "title": "קוקן SSL {id}",
+        "package": "פאקעט",
+        "nextInvoiceDate": "נעקסטע חשבון דאטום:",
+        "billing": "רעכענונג",
+        "billed": "רעכנט:",
+        "statusIs": "סטאטוס איז:",
+        "orderInfo": "באשטעלונג אינפארמאציע",
+        "certificateInfo": "סערטיפיקאט אינפארמאציע",
+        "links": "לינקס",
+        "welcomeEmailConfirm": "זייט איר זיכער אז איר ווילט צוריקשיקן דעם באגריסונגס-בריוו?",
+        "emailSent": "בריוו אריבערגעשיקט",
+        "emailSentMessage": "דער באגריסונגס-בריוו איז צוריקגעשיקט. קוקט אין אייער אריינגעקומענע פאסט."
+    },
+    "order": {
+        "title": "באשטעלן SSL"
+    },
+    "changeApproverEmail": {
+        "title": "ענדערן באשטעטיגערס בריוו",
+        "selectApproverEmail": "אויסוועלן באשטעטיגערס בריוו"
+    }
+}

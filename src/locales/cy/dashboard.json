@@ -1,0 +1,28 @@
+{
+    "title": "Dangosfwrdd",
+    "welcome": "Croeso, {name}",
+    "lastLogin": "Mewngofnod Diwethaf",
+    "lastLoginIp": "IP Mewngofnod Diwethaf",
+    "prepay": {
+        "title": "Balans Rhag-daliad",
+        "remainingBalance": "Balans Sy'n Weddill ar Rhag-daliad",
+        "manageAccount": "Rheoli Cyfrif",
+        "manageTooltip": "Rheoli Eich Cyfrif Rhag-daliad"
+    },
+    "invoices": {
+        "title": "Anfonebau Heb eu Talu",
+        "totalUnpaid": "Cyfanswm Anfonebau Heb eu Talu",
+        "totalAmount": "Cyfanswm Swm i'w Dalu",
+        "payTotalTooltip": "Talu Cyfanswm"
+    },
+    "callInPin": "PIN Galw i Mewn",
+    "recentTickets": "Tocynnau Diweddar",
+    "viewAllTickets": "Gweld Pob Tocyn",
+    "editTicket": "Golygu Tocyn",
+    "serviceCount": "Dim gwasanaethau actif | {count} gwasanaeth actif | {count} gwasanaeth actif",
+    "affiliate": {
+        "earnPerSale": "Enillwch {amount} Am Bob Gwerthiant",
+        "urlPlaceholder": "URL Cysylltiedig",
+        "shareWith": "Rhannu gyda"
+    }
+}

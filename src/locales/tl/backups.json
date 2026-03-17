@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Listahan ng Storage / Backup",
+        "orderTitle": "Mag-order ng mga Backup na Rehistrasyon"
+    },
+    "view": {
+        "title": "Tingnan ang Backup {id}",
+        "package": "Pakete",
+        "nextInvoiceDate": "Susunod na Petsa ng Invoice:",
+        "billing": "Pagsingil",
+        "billed": "sinisingil:",
+        "statusIs": "Status ay:",
+        "hostServer": "Host Server",
+        "links": "Mga Link",
+        "welcomeEmailConfirm": "Sigurado ba kayong nais ninyong muling ipadala ang welcome email?",
+        "emailSent": "Naipadala ang Email",
+        "emailSentMessage": "Muling naipadala ang welcome email. Suriin ang inyong inbox."
+    },
+    "order": {
+        "title": "Mag-order ng Storage"
+    }
+}

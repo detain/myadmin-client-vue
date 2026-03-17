@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Webhotell-liste",
+        "orderTitle": "Bestill nettstedsregistreringer"
+    },
+    "view": {
+        "title": "Vis nettsted {id}",
+        "package": "Pakke",
+        "nextInvoiceDate": "Neste fakturadato:",
+        "billing": "Fakturering",
+        "billed": "fakturert",
+        "billingStatusIs": "Faktureringsstatus er:",
+        "hostInfo": "Vertsinformasjon",
+        "username": "Brukernavn:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Ikke angitt ennå",
+        "login": "Logg inn",
+        "types": "Typer:",
+        "linksLabel": "Lenker:",
+        "manualLogin": "Manuell innlogging",
+        "automaticLogin": "Automatisk innlogging",
+        "clickHere": "Klikk her",
+        "defaultNameservers": "Standard navneservere",
+        "nameservers": "Navneservere:",
+        "externalLinks": "Eksterne lenker",
+        "names": "Navn:",
+        "websitePreview": "Nettstedsforhåndsvisning",
+        "links": "Lenker",
+        "welcomeEmailConfirm": "Er du sikker på at du vil sende velkomst-e-posten på nytt?",
+        "emailSent": "E-post sendt",
+        "emailSentMessage": "Velkomst-e-posten har blitt sendt på nytt. Sjekk innboksen din."
+    },
+    "buyIp": {
+        "title": "Kjøp ekstra IP-tillegg",
+        "existingAddonIps": "Eksisterende tilleggs-IP-er",
+        "additionalIp": "Ekstra IP",
+        "monthlyCost": "Månedlig kostnad ({symbol})",
+        "costDescription": "Kostnad ({symbol}) hver måned når nettstedet ditt faktureres",
+        "confirmPurchase": "Bekreft kjøp",
+        "confirmMessage": "Ekstra IP-kostnad: {symbol}{cost}/måned. Er du sikker på at du vil bestille en ekstra IP?",
+        "placeOrder": "Legg inn bestilling",
+        "orderPlaced": "Bestilling lagt inn"
+    },
+    "reverseDns": {
+        "title": "Omvendt DNS",
+        "updateReverseDns": "Oppdater omvendt DNS"
+    },
+    "downloadBackups": {
+        "title": "Last ned sikkerhetskopier",
+        "backup": "Sikkerhetskopiering",
+        "size": "Størrelse",
+        "options": "Alternativer"
+    },
+    "migration": {
+        "title": "Migrer nettstedet ditt",
+        "currentWebHostInfo": "Gjeldende webvertsinformasjon",
+        "customerPortalUrl": "Kundeportal-URL",
+        "portalExample": "For eksempel: sso.godaddy.com",
+        "registeredUsername": "Registrert brukernavn / E-post / ID",
+        "password": "Passord",
+        "controlPanelUrl": "Kontrollpanel-URL",
+        "controlPanelExample": "For eksempel: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Kontrollpanel-brukernavn",
+        "ftpPassword": "FTP / Kontrollpanel-passord",
+        "holdingPageQuestion": "Hvis nettstedet er live/travelt med høy trafikk, kan vi sette opp en ventenettside under migreringen?",
+        "specialRequirementsQuestion": "Har dette nettstedet spesielle krav som PHP-versjon / Moduler?",
+        "domainRegistryInfo": "Domeneregistreringsinformasjon",
+        "transferDomainQuestion": "Vil du at vi også skal hjelpe deg med å overføre domenenavnregistreringen?",
+        "updateNameserversQuestion": "Vil du at vi skal oppdatere navneserverne så snart vi er ferdig med datamigreringen?",
+        "domainRegistryPortal": "Domeneregistry kundeportal",
+        "importantNotes": "Viktige merknader",
+        "note1": "Å fylle ut dette skjemaet vil åpne en ny sak for støtteavdelingen vår for å starte migreringen din.",
+        "note2": "Vær så komplett og nøyaktig som mulig for å unngå forsinkelser.",
+        "note3": "En typisk migrering fullføres innen 48 til 72 timer. Noen ganger lengre hvis mengden data som skal kopieres er stor.",
+        "note4": "Den gamle vertskontoen må være online og tilgjengelig mens vi utfører migreringen, ellers kan vi møte problemer.",
+        "note5": "Ikke gjør noen oppdateringer på nettstedet ditt mens vi utfører migreringen, ellers kan disse dataene ikke kopieres til det nye webhotellet."
+    },
+    "order": {
+        "title": "Bestill nettsted"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Mndandanda wa Kusungira / Kochera",
+        "orderTitle": "Ika Dongosolo la Kulemba kwa Kochera"
+    },
+    "view": {
+        "title": "Onani Kochera {id}",
+        "package": "Phukusi",
+        "nextInvoiceDate": "Tsiku Lotsatira la Fatura:",
+        "billing": "Kulipira",
+        "billed": "walipira:",
+        "statusIs": "Mkhalidwe ndi:",
+        "hostServer": "Seva Yosunga",
+        "links": "Maulalo",
+        "welcomeEmailConfirm": "Muli ndi chitsimikiziro chokutumizira imelo yoyambirira?",
+        "emailSent": "Imelo Yatumizidwa",
+        "emailSentMessage": "Imelo yoyambirira yatumizidwanso. Onani inbox yanu."
+    },
+    "order": {
+        "title": "Ika Dongosolo la Kusungira"
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Izilungiselelo Ze-akhawunti"
+    },
+    "changePassword": {
+        "title": "Shintsha Iphasiwedi",
+        "cardTitle": "Buyekeza Iphasiwedi",
+        "currentPassword": "Iphasiwedi Yamanje",
+        "newPassword": "Iphasiwedi Entsha",
+        "confirmPassword": "Qinisekisa Iphasiwedi",
+        "updatePassword": "Buyekeza Iphasiwedi"
+    },
+    "changeUsername": {
+        "title": "Shintsha Igama Lomsebenzisi",
+        "disabled": "Ukushintsha kwegama lomsebenzisi kukhubazwe okwesikhashana.",
+        "currentUsername": "Igama Lomsebenzisi Lamanje",
+        "newDesiredUsername": "Igama Lomsebenzisi Elisha Ofuna Lona",
+        "confirmationCode": "Ikhodi Yokuqinisekisa",
+        "pleaseWait": "Sicela ulinde!",
+        "gotError": "Kukhona iphutha {error}"
+    },
+    "contactInfo": {
+        "title": "Ulwazi Lokuxhumana",
+        "cardTitle": "Buyekeza Ulwazi Lokuxhumana",
+        "headsUp": "Qaphela!",
+        "headsUpMessage": "Nakuba lolu lwazi lungokuzithandela, ukunikeza ulwazi (olunembile) kuzosiza ukuqinisa ukuxhumana kwethu futhi kwehlise Amapointi Ezikhundla % Yakho ekukunika ukufinyelela okukhawulayo nokusetshenziswana ngokuqhubekile ezingxenyeni zesiza (njengokungadingekile ukuqinisekisa ikhadi lekhredithi).",
+        "riskScore": "Amapointi Ezikhundla %",
+        "personalInformation": "Ulwazi Lomuntu Ngamunye",
+        "name": "Igama",
+        "namePlaceholder": "Sipho Dlamini",
+        "company": "Inkampani",
+        "gstinTaxId": "I-ID Yentela ye-GSTIN",
+        "gstinPlaceholder": "Inombolo Yokuhlonza Umkhokhi Wentela Yezimpahla Nezinsizakalo",
+        "addressLine1": "Umugqa Wezindawo 1",
+        "addressLine2": "Umugqa Wezindawo 2",
+        "cityState": "Idolobha, Isifunda",
+        "city": "Idolobha",
+        "state": "Isifunda",
+        "country": "Izwe",
+        "zipcode": "Ikhodi Yeposi",
+        "phoneNo": "Inombolo Yocingo",
+        "phoneNumber": "Inombolo Yocingo",
+        "language": "Ulimi",
+        "auto": "Ngokuzenzakalelayo",
+        "currency": "Imali",
+        "timeZone": "Izinga Lesikhathi",
+        "otherSettings": "Ezinye Izilungiselelo",
+        "disablePasswordResets": "Khubaza (Ukudinwa kwephasiwedi) Ukusetha Kabusha Kwephasiwedi.",
+        "disableInvoiceReminders": "Khubaza Izaziso Ze-imeyili Zesikhumbuzo Serisidi.",
+        "disableServerInvoiceReminders": "Khubaza Izaziso Ze-imeyili Zesikhumbuzo Serisidi Leseva.",
+        "disableReinstall": "Khubaza Ukufaka Kabusha.",
+        "alternateEmailInvoices": "I-imeyili Enye Yamarisidi",
+        "alternateEmailInvoicesPlaceholder": "I-imeyili enye yokuthumela amarisidi",
+        "alternateEmailAbuse": "I-imeyili Enye Yemibiko Yokuhlukumeza",
+        "updateInfo": "Buyekeza Ulwazi"
+    }
+}
