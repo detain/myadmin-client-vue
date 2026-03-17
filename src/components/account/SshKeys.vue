@@ -50,7 +50,7 @@ export default {
             <div class="p-1">
                 <h3 class="card-title py-2" :title="t('common.account.sshKeysDescription')">{{ t('common.account.sshKeys') }}</h3>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" aria-hidden="true" /></button>
+                    <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>

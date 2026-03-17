@@ -1,9 +1,9 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><font-awesome-icon :icon="['fas', 'shield-alt']" />{{ t('scrub_ips.firewallRules.title') }}</h3>
+            <h3 class="card-title"><i class="fas fa-shield-alt"></i>{{ t('scrub_ips.firewallRules.title') }}</h3>
             <div class="card-tools">
-                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><font-awesome-icon :icon="['fas', 'plus']" /> {{ t('scrub_ips.firewallRules.createNew') }}</button>
+                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true"></i> {{ t('scrub_ips.firewallRules.createNew') }}</button>
             </div>
         </div>
         <div class="card-body pt-5">
@@ -32,7 +32,7 @@
                             <form :ref="(el) => setFormRef(el, index)" method="POST" @submit.prevent="handleDelete(index)">
                                 <input v-model="rule.id" type="hidden" name="rule_id" />
                                 <button type="submit" class="border-0" data-toggle="tooltip" :title="t('common.buttons.delete')">
-                                    <font-awesome-icon :icon="['fas', 'trash']" />
+                                    <i class="fas fa-trash" aria-hidden="true"></i>
                                 </button>
                             </form>
                         </td>

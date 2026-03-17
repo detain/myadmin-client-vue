@@ -140,9 +140,9 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />Order Rapid Deploy Server</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true"></i>Order Rapid Deploy Server</h3>
                             <div class="card-tools float-right">
-                                <router-link to="/qs" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                                <router-link to="/qs" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
@@ -219,9 +219,9 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>Order Summary</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
@@ -251,9 +251,9 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'shopping-cart']" />Order Summary</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>Order Summary</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
@@ -264,7 +264,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                                     <tr>
                                         <th>
                                             <div class="text-bold float-left" style="position: relative; top: 5px">Server Name</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="step = 'orderform'"><font-awesome-icon :icon="['fas', 'pencil-alt']" />&nbsp;Edit</button>
+                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="step = 'orderform'"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold">{{ serverDetails[qsId].cpu }}</div>

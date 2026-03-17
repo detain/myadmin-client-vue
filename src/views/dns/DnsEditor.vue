@@ -190,9 +190,9 @@ loadDns();
     <div id="records" class="card">
         <div class="card-header">
             <div class="p-1">
-                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'table']" />&nbsp;DNS Records</h3>
+                <h3 class="card-title py-2"><i class="fas fa-table"></i>&nbsp;DNS Records</h3>
                 <div class="card-tools float-right">
-                    <button type="button" class="btn btn-primary btn-sm" title="Add Record" @click="showAddDnsRecord"><font-awesome-icon :icon="['fas', 'plus-circle']" />&nbsp;&nbsp;Add Record&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-primary btn-sm" title="Add Record" @click="showAddDnsRecord"><i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Add Record&nbsp;&nbsp;</button>
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@ loadDns();
                         <td><input id="addTtl" v-model="ttl" type="text" class="form-control form-control-sm" placeholder="86400" size="3" data-regex="^[0-9]*$" /></td>
                         <td colspan="3" class="text-center">
                             <button class="btn btn-success btn-sm" @click.prevent="addDnsRecord">&nbsp;Add&nbsp;</button>
-                            <button class="btn btn-danger btn-xs printer-hidden" title="Cancel Add" @click.prevent="cancelAddRecord"><font-awesome-icon :icon="['fas', 'times']" fixed-width /></button>
+                            <button class="btn btn-danger btn-xs printer-hidden" title="Cancel Add" @click.prevent="cancelAddRecord"><i class="far fa-fw fa-times"></i></button>
                         </td>
                     </tr>
                     <tr v-for="(row, rowIndex) in data" :key="rowIndex">
@@ -269,8 +269,8 @@ loadDns();
                             <td><input v-model="row.prio" type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" /></td>
                             <td><input v-model="row.ttl" type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" /></td>
                             <td>
-                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record" @click.prevent="editDnsRecord"><font-awesome-icon :icon="['fas', 'check']" fixed-width :data-id="row.id" /></a>
-                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit" @click.prevent="cancelEditRecord"><font-awesome-icon :icon="['fas', 'times']" fixed-width :data-id="row.id" /></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record" @click.prevent="editDnsRecord"><i class="far fa-fw fa-check" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit" @click.prevent="cancelEditRecord"><i class="far fa-fw fa-times" :data-id="row.id"></i></a>
                             </td>
                         </template>
                         <template v-else>
@@ -281,8 +281,8 @@ loadDns();
                             <td>{{ row.prio }}</td>
                             <td>{{ row.ttl }}</td>
                             <td>
-                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain" @click.prevent="showEditRecord"><font-awesome-icon :icon="['fas', 'cog']" fixed-width :data-id="row.id" /></a>
-                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS" @click.prevent="deleteRecord"><font-awesome-icon :icon="['far', 'trash-alt']" fixed-width :data-id="row.id" /></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Edit DNS Records for this Domain" @click.prevent="showEditRecord"><i class="fas fa-fw fa-cog" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Delete this Domain and its Records from DNS" @click.prevent="deleteRecord"><i class="far fa-fw fa-trash" :data-id="row.id"></i></a>
                             </td>
                         </template>
                     </tr>

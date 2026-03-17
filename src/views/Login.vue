@@ -635,7 +635,7 @@ authStore.load();
                             <div class="login-box m-auto" style="width: 400px">
                                 <div class="card card-outline card-primary">
                                     <div class="card-header text-center" style="display: flex">
-                                        <font-awesome-icon :icon="['far', 'user-circle']" class="text-orange-500" style="font-size: 35px" />
+                                        <i class="far fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
                                         <h3 class="card-title text-bold ml-3 mt-2">{{ t('login.signIn') }}</h3>
                                     </div>
                                     <div class="card-body">
@@ -643,14 +643,14 @@ authStore.load();
                                             <div class="input-group mb-3">
                                                 <input id="loginname" v-model="login" type="email" class="login_info form-control" :placeholder="t('login.emailAddress')" required autofocus autocomplete="off" />
                                                 <div class="input-group-append">
-                                                    <div class="input-group-text"><font-awesome-icon :icon="['fas', 'envelope']" /></div>
+                                                    <div class="input-group-text"><span class="fas fa-envelope" aria-hidden="true"></span></div>
                                                 </div>
                                             </div>
                                             <div class="input-group mb-3">
                                                 <input id="loginpassword" v-model="password" :type="passwordType" class="login_info form-control" :placeholder="t('login.password')" autocomplete="off" required />
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
-                                                        <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><font-awesome-icon :icon="['fas', isPasswordVisible ? 'eye-slash' : 'eye']" /></button>
+                                                        <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -671,10 +671,10 @@ authStore.load();
                                             <div class="poppup login_email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                    <font-awesome-icon :icon="['fas', 'times']" class="close float-right cursor-pointer px-4 text-lg" @click="closePopup" />
+                                                    <i class="close far fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
                                                     <div class="p-6">
-                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'envelope']" class="mr-2" />{{ t('login.emailVerification') }}</h2>
-                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'key']" class="mr-2" />{{ t('login.emailVerificationInstructions') }}</p>
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>{{ t('login.emailVerification') }}</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>{{ t('login.emailVerificationInstructions') }}</p>
                                                         <form>
                                                             <div class="mb-4">
                                                                 <input id="email_confirmation" v-model="emailCode" type="text" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" name="email_confirmation" :placeholder="t('login.securityCode')" autocomplete="off" required />
@@ -687,10 +687,10 @@ authStore.load();
                                                             </div>
                                                             <div class="mb-4">
                                                                 <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
-                                                                    <font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="mr-2" />
+                                                                    <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                     <strong class="font-bold">{{ t('login.error') }}</strong>
                                                                     <span id="error-message" class="block sm:inline"></span>
-                                                                    <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'"><font-awesome-icon :icon="['fas', 'times']" /></span>
+                                                                    <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'"><i class="fas fa-times" aria-hidden="true"></i></span>
                                                                 </div>
                                                             </div>
                                                             <div class="text-center">
@@ -703,21 +703,21 @@ authStore.load();
                                             <div v-if="opts.tfa" class="poppup popup fixed inset-0 z-10 flex items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                    <font-awesome-icon :icon="['fas', 'times']" class="close float-right cursor-pointer px-4 text-lg" @click="closePopup" />
+                                                    <i class="close far fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
                                                     <div class="p-6">
-                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'shield-alt']" class="mr-2" />{{ t('login.twoFactorTitle') }}</h2>
-                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'info-circle']" class="mr-2" />{{ t('login.twoFactorInstructions') }}</p>
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-shield-alt mr-2" aria-hidden="true"></i>{{ t('login.twoFactorTitle') }}</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><i class="fas fa-info-circle mr-2" aria-hidden="true"></i>{{ t('login.twoFactorInstructions') }}</p>
                                                         <form>
                                                             <div class="signup_toggle twofactorauth mb-4">
                                                                 <input v-model="twoFactorAuthCode" type="text" :placeholder="t('login.enterCodeFromAuthenticator')" class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                             </div>
                                                             <div class="mb-4">
                                                                 <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
-                                                                    <font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="mr-2" />
+                                                                    <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                     <strong class="font-bold">{{ t('login.error') }}</strong>
                                                                     <span id="2fa-error-message" class="block sm:inline"></span>
                                                                     <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
-                                                                        <font-awesome-icon :icon="['fas', 'times']" />
+                                                                        <i class="fas fa-times" aria-hidden="true"></i>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -738,16 +738,16 @@ authStore.load();
                                         <div class="social-auth-links mb-3 mt-2 text-center">
                                             <h3 class="text-bold text-center text-lg">{{ t('login.signInUsing') }}</h3>
                                             <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Facebook' })" @click.prevent="oAuthLogin('Facebook')">
-                                                <font-awesome-icon :icon="['fab', 'facebook']" />
+                                                <i class="fab fa-facebook" aria-hidden="true"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Google+' })" @click.prevent="oAuthLogin('Google')">
-                                                <font-awesome-icon :icon="['fab', 'google-plus']" />
+                                                <i class="fab fa-google-plus" aria-hidden="true"></i>
                                             </a>
                                             <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'GitHub' })" @click.prevent="oAuthLogin('GitHub')">
-                                                <font-awesome-icon :icon="['fab', 'github']" />
+                                                <i class="fab fa-github"></i>
                                             </a>
                                             <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Twitter' })" @click.prevent="oAuthLogin('Twitter')">
-                                                <font-awesome-icon :icon="['fab', 'twitter']" />
+                                                <i class="fab fa-twitter"></i>
                                             </a>
                                         </div>
                                         <div v-if="oauthNeeds2FA || oauthLinkRequired" class="mt-3 rounded border border-gray-300 bg-gray-50 p-3 text-left">
@@ -800,7 +800,7 @@ authStore.load();
                                             <input v-model="login" type="email" class="login_info form-control" :placeholder="t('login.emailAddress')" required autofocus autocomplete="off" />
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
-                                                    <font-awesome-icon :icon="['fas', 'envelope']" />
+                                                    <span class="fas fa-envelope" aria-hidden="true"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -818,13 +818,13 @@ authStore.load();
                                                 <div class="flex">
                                                     <img :src="captcha" style="max-width: 75%" alt="" />
                                                     <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" :title="t('login.reloadCaptcha')" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
-                                                        <font-awesome-icon :icon="['fas', 'sync']" fixed-width />
+                                                        <span class="far fa-sync fa-fw"></span>
                                                     </button>
                                                 </div>
                                                 <div class="input-group my-3">
                                                     <input v-model="captchaCode" type="text" class="form-control" :placeholder="t('login.captcha')" autofocus autocomplete="off" />
                                                     <div class="input-group-append">
-                                                        <div class="input-group-text"><font-awesome-icon :icon="['fas', 'robot']" /></div>
+                                                        <div class="input-group-text"><span class="fas fa-robot" aria-hidden="true"></span></div>
                                                     </div>
                                                 </div>
                                                 <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">{{ t('login.primaryCaptchaMethod') }}</a>
@@ -849,7 +849,7 @@ authStore.load();
                             <div class="login-box m-auto" style="width: 400px">
                                 <div class="card card-outline card-primary">
                                     <div class="card-header text-center" style="display: flex">
-                                        <font-awesome-icon :icon="['far', 'user-circle']" class="text-orange-500" style="font-size: 35px" />
+                                        <i class="far fa-user-circle text-orange-500" style="font-size: 35px" aria-hidden="true"></i>
                                         <h3 class="card-title text-bold ml-3 mt-2">{{ t('login.createYourAccount') }}</h3>
                                     </div>
                                     <div class="card-body">
@@ -858,7 +858,7 @@ authStore.load();
                                                 <input v-model="login" type="email" class="login_info form-control" :placeholder="t('login.emailAddress')" required autofocus autocomplete="off" />
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
-                                                        <font-awesome-icon :icon="['fas', 'envelope']" />
+                                                        <span class="fas fa-envelope" aria-hidden="true"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -866,17 +866,17 @@ authStore.load();
                                                 <input id="signuppassword" v-model="password" :type="passwordType" class="form-control" :placeholder="t('login.password')" autocomplete="off" required @focus="showPasswordInfo = true" @blur="showPasswordInfo = false" />
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
-                                                        <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><font-awesome-icon :icon="['fas', isPasswordVisible ? 'eye-slash' : 'eye']" /></button>
+                                                        <button type="button" aria-hidden="true" @click.prevent="isPasswordVisible = !isPasswordVisible"><i class="fa" :class="{ 'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible }"></i></button>
                                                     </div>
                                                 </div>
                                                 <div v-show="showPasswordInfo" id="pswd_info">
                                                     <p class="pp"><b>{{ t('login.passwordMustHave') }}</b></p>
                                                     <ul>
-                                                        <li id="length" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.length ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.length ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast8Chars') }}</li>
-                                                        <li id="capital" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.letter ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.letter ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast1Uppercase') }}</li>
-                                                        <li id="letter" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.capital ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.capital ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast1Lowercase') }}</li>
-                                                        <li id="number" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.number ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.number ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast1Number') }}</li>
-                                                        <li id="special" class="pass_checks"><font-awesome-icon :icon="['far', passwordRules.special ? 'check' : 'close']" :class="['b-radius', 'mr-2', 'text-white', passwordRules.special ? 'bg-green p-1' : 'bg-red px-2 py-1']" />{{ t('login.atLeast1SpecialChar') }}</li>
+                                                        <li id="length" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.length ? validClass : invalidClass"></i>{{ t('login.atLeast8Chars') }}</li>
+                                                        <li id="capital" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.letter ? validClass : invalidClass"></i>{{ t('login.atLeast1Uppercase') }}</li>
+                                                        <li id="letter" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.capital ? validClass : invalidClass"></i>{{ t('login.atLeast1Lowercase') }}</li>
+                                                        <li id="number" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.number ? validClass : invalidClass"></i>{{ t('login.atLeast1Number') }}</li>
+                                                        <li id="special" class="pass_checks"><i aria-hidden="true" class="far b-radius mr-2 text-white" :class="passwordRules.special ? validClass : invalidClass"></i>{{ t('login.atLeast1SpecialChar') }}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -886,7 +886,7 @@ authStore.load();
                                                         <div class="input-group my-3">
                                                             <input id="signup_2fa_code" v-model="twoFactorAuthCode" type="text" class="form-control" name="2fa_code" :placeholder="t('login.enterCodeFromAuthenticator')" autocomplete="off" />
                                                             <div class="input-group-append">
-                                                                <div class="input-group-text"><font-awesome-icon :icon="['fas', 'lock']" /></div>
+                                                                <div class="input-group-text"><span class="fas fa-lock" aria-hidden="true"></span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -903,13 +903,13 @@ authStore.load();
                                                             <div class="flex">
                                                                 <img :src="captcha" style="max-width: 75%" alt="" />
                                                                 <button class="focus:shadow-outline btn-captcha-reload ml-4 block rounded bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-500 focus:outline-none" type="button" :title="t('login.reloadCaptcha')" tabindex="-1" aria-pressed="false" @click="reloadCaptcha">
-                                                                    <font-awesome-icon :icon="['fas', 'sync']" fixed-width />
+                                                                    <span class="far fa-sync fa-fw"></span>
                                                                 </button>
                                                             </div>
                                                             <div class="input-group my-3">
                                                                 <input v-model="captchaCode" type="text" class="form-control" :placeholder="t('login.captcha')" autofocus autocomplete="off" />
                                                                 <div class="input-group-append">
-                                                                    <div class="input-group-text"><font-awesome-icon :icon="['fas', 'robot']" /></div>
+                                                                    <div class="input-group-text"><span class="fas fa-robot" aria-hidden="true"></span></div>
                                                                 </div>
                                                             </div>
                                                             <a class="text-sm font-bold text-blue-500 underline hover:text-blue-800" href="#" @click.prevent="toggleCaptchaMethod">{{ t('login.primaryCaptchaMethod') }}</a>
@@ -934,21 +934,21 @@ authStore.load();
                                             <div v-show="!isLogin && opts.verify" class="poppup email_popup fixed inset-0 z-10 flex items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
-                                                    <font-awesome-icon :icon="['fas', 'times']" class="close float-right cursor-pointer px-4 text-lg" @click="closePopup" />
+                                                    <i class="close far fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>
                                                     <div class="p-6">
-                                                        <h2 class="mb-4 text-center text-2xl font-bold"><font-awesome-icon :icon="['fas', 'envelope']" class="mr-2" />{{ t('login.emailVerification') }}</h2>
-                                                        <p class="mb-8 text-center text-gray-600"><font-awesome-icon :icon="['fas', 'key']" class="mr-2" />{{ t('login.emailVerificationInstructions') }}</p>
+                                                        <h2 class="mb-4 text-center text-2xl font-bold"><i class="fas fa-envelope mr-2" aria-hidden="true"></i>{{ t('login.emailVerification') }}</h2>
+                                                        <p class="mb-8 text-center text-gray-600"><i class="fas fa-key mr-2" aria-hidden="true"></i>{{ t('login.emailVerificationInstructions') }}</p>
                                                         <form @submit.prevent="onSignupSubmit">
                                                             <div class="mb-4">
                                                                 <input id="signup_email_confirmation" v-model="emailCode" type="text" name="email_confirmation" :placeholder="t('login.securityCode')" autocomplete="off" required class="block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-gray-800 focus:ring focus:ring-gray-800 focus:ring-opacity-50" />
                                                             </div>
                                                             <div class="mb-4">
                                                                 <div class="error-box relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert" style="display: none">
-                                                                    <font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="mr-2" />
+                                                                    <i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>
                                                                     <strong class="font-bold">{{ t('login.error') }}</strong>
                                                                     <span id="signup-error-message" class="block sm:inline"></span>
                                                                     <span class="absolute bottom-0 right-0 top-0 cursor-pointer px-4 py-3" onclick="document.querySelector('.error-box').style.display = 'none'">
-                                                                        <font-awesome-icon :icon="['fas', 'times']" />
+                                                                        <i class="fas fa-times" aria-hidden="true"></i>
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -963,16 +963,16 @@ authStore.load();
                                         <div class="social-auth-links mb-3 mt-2 text-center">
                                             <h3 class="text-bold text-center text-lg">{{ t('login.signUpUsing') }}</h3>
                                             <a href="#" class="btn btn-primary btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Facebook' })" @click.prevent="oAuthLogin('Facebook')">
-                                                <font-awesome-icon :icon="['fab', 'facebook']" />
+                                                <i class="fab fa-facebook" aria-hidden="true"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Google+' })" @click.prevent="oAuthLogin('Google')">
-                                                <font-awesome-icon :icon="['fab', 'google-plus']" />
+                                                <i class="fab fa-google-plus" aria-hidden="true"></i>
                                             </a>
                                             <a href="#" class="btn btn-secondary btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'GitHub' })" @click.prevent="oAuthLogin('GitHub')">
-                                                <font-awesome-icon :icon="['fab', 'github']" />
+                                                <i class="fab fa-github"></i>
                                             </a>
                                             <a href="#" class="btn btn-info btn-lg" data-toggle="tooltip" :title="t('login.signInWith', { provider: 'Twitter' })" @click.prevent="oAuthLogin('Twitter')">
-                                                <font-awesome-icon :icon="['fab', 'twitter']" />
+                                                <i class="fab fa-twitter"></i>
                                             </a>
                                         </div>
                                         <div v-if="oauthNeeds2FA || oauthLinkRequired" class="mt-3 rounded border border-gray-300 bg-gray-50 p-3 text-left">
@@ -1020,7 +1020,8 @@ authStore.load();
 /*@tailwind base;
 @tailwind components;
 @tailwind utilities;*/
-/* fontawesome-free CSS removed — using @fortawesome/fontawesome-svg-core + dom.watch() instead */
+/* @import '../assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css'; */
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 @import 'https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap';
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import '../assets/css/tailwind.min.css';

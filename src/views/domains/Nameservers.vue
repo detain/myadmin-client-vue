@@ -176,7 +176,7 @@ loadNameservers();
                 >{{ t('domains.nameservers.title') }}
             </h3>
             <div class="card-tools mr-4 mt-2">
-                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">
@@ -256,7 +256,7 @@ loadNameservers();
                                         <span :class="ns.can_delete == '1' ? 'text-green' : 'text-red'">{{ ns.can_delete == '1' ? t('domains.nameservers.yes') : t('domains.nameservers.no') }}</span>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0)" :title="t('common.buttons.delete')" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><font-awesome-icon :icon="['fas', 'trash']" /></a>
+                                        <a href="javascript:void(0)" :title="t('common.buttons.delete')" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><i class="fas fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

@@ -119,7 +119,7 @@ loadLink(route.params.link as string);
                     </p>
                 </div>
                 <div class="icon">
-                    <font-awesome-icon :icon="['fas', 'briefcase']" />
+                    <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer text-bold">{{ serviceInfo.website_hostname }}</span>
             </div>
@@ -141,7 +141,7 @@ loadLink(route.params.link as string);
                     </p>
                 </div>
                 <div class="icon">
-                    <font-awesome-icon :icon="['fas', 'dollar-sign']" />
+                    <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer">
                     {{ t('webhosting.view.billingStatusIs') }}
@@ -169,7 +169,7 @@ loadLink(route.params.link as string);
                     </p>
                 </div>
                 <div class="icon">
-                    <font-awesome-icon :icon="['fas', 'info-circle']" />
+                    <i class="fas fa-info-circle"></i>
                 </div>
                 <span class="small-box-footer">
                     Server:
@@ -207,9 +207,9 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'sign-in-alt']" />&nbsp;{{ pkg }} Login</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>&nbsp;{{ pkg }} Login</h3>
                         <div class="card-tools float-right">
-                            <button class="btn btn-tool mt-0" type="button" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                            <button class="btn btn-tool mt-0" type="button" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
@@ -245,10 +245,10 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'globe']" />&nbsp;{{ t('webhosting.view.defaultNameservers') }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-globe"></i>&nbsp;{{ t('webhosting.view.defaultNameservers') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                <font-awesome-icon :icon="['fas', 'minus']" />
+                                <i class="fas fa-minus" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -275,10 +275,10 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;{{ t('webhosting.view.externalLinks') }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-link" aria-hidden="true"></i>&nbsp;{{ t('webhosting.view.externalLinks') }}</h3>
                         <div class="card-tools float-right">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                <font-awesome-icon :icon="['fas', 'minus']" />
+                                <i class="fas fa-minus" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -313,15 +313,15 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" />&nbsp;{{ t('common.labels.links') }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-link"></i>&nbsp;{{ t('common.labels.links') }}</h3>
                         <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                            <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="card-body text-center">
                     <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                        <font-awesome-icon :icon="[clientLink.icon.split(' ')[0], clientLink.icon.split(' ').slice(1).join(' ').replace('fa-', '')]" />{{ clientLink.icon_text }}{{ clientLink.label }}
+                        <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>
             </div>
@@ -330,9 +330,9 @@ loadLink(route.params.link as string);
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'plus']" />&nbsp;{{ extraInfoTables.addons.title }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-plus"></i>&nbsp;{{ extraInfoTables.addons.title }}</h3>
                         <div class="card-tools float-right">
-                            <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                            <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
                 </div>

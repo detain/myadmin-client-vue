@@ -63,7 +63,7 @@ export default {
                 <h3 class="card-title py-2" :title="t('common.account.linkedAccountsDescription')">{{ t('common.account.linkedAccounts') }}</h3>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                        <font-awesome-icon :icon="['fas', 'minus']" aria-hidden="true" />
+                        <i class="fa fas fa-minus" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>

@@ -157,16 +157,16 @@ try {
         <div class="row mt-2">
             <div class="col-md-12">
                 <div class="card w-100 mb-2 bg-white p-2 shadow-none" style="border-left: 4px solid red; display: block ruby">
-                    <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red"> {{ t('vps.common.importantNoteLabel', { number: 1 }) }}</b>&nbsp;{{ t('vps.reinstallOs.importantNote1') }}</p>
+                    <p class="text-md m-0"><i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red"> {{ t('vps.common.importantNoteLabel', { number: 1 }) }}</b>&nbsp;{{ t('vps.reinstallOs.importantNote1') }}</p>
                     <div class="card-tools float-right">
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
                     </div>
                     <p></p>
                 </div>
                 <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid red; display: block ruby">
-                    <p class="text-md m-0"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" style="color: red" />&nbsp;<b class="text-red"> {{ t('vps.common.importantNoteLabel', { number: 2 }) }}</b>&nbsp;{{ t('vps.reinstallOs.importantNote2') }}</p>
+                    <p class="text-md m-0"><i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red"> {{ t('vps.common.importantNoteLabel', { number: 2 }) }}</b>&nbsp;{{ t('vps.reinstallOs.importantNote2') }}</p>
                     <div class="card-tools float-right">
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><font-awesome-icon :icon="['fas', 'times']" /></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
                     </div>
                     <p></p>
                 </div>
@@ -178,9 +178,9 @@ try {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fab', 'linux']" />&nbsp;{{ t('vps.reinstallOs.title') }}</h3>
+                            <h3 class="card-title py-2"><i class="fab fa-linux"></i>&nbsp;{{ t('vps.reinstallOs.title') }}</h3>
                             <div class="card-tools text-right">
-                                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>

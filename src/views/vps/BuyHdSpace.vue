@@ -78,9 +78,9 @@ loadData();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;{{ t('vps.buyHdSpace.title') }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-server"></i>&nbsp;{{ t('vps.buyHdSpace.title') }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.buyHdSpace.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" /> {{ t('common.buttons.back') }}</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.buyHdSpace.goBack')"><i class="fas fa-arrow-left"></i> {{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                 </div>

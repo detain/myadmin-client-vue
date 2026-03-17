@@ -72,7 +72,7 @@ loadBackupsList();
 <template>
     <div>
         <div class="callout callout-info">
-            <h5 class="text-red"><font-awesome-icon :icon="['fas', 'exclamation']" /> {{ t('vps.backup.importantNote') }}</h5>
+            <h5 class="text-red"><i class="fas fa-exclamation"></i> {{ t('vps.backup.importantNote') }}</h5>
             <p class="text-md">{{ t('vps.backup.backupsPartitionNote') }}</p>
         </div>
         <div class="row justify-content-center">
@@ -81,7 +81,7 @@ loadBackupsList();
                     <div class="card-header">
                         <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.backup.backupTitle', { name: module_name }) }}</h3>
                         <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" />&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">
@@ -122,7 +122,7 @@ loadBackupsList();
                             <h3 class="card-title py-2"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.backup.currentBackups') }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
-                                    <font-awesome-icon :icon="['fas', 'minus']" />
+                                    <i class="fas fa-minus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>

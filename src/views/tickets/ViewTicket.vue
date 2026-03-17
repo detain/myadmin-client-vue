@@ -337,7 +337,7 @@ onMounted(loadTicket);
         <div class="col-md-2 pr-1">
             <div class="info-box p-0">
                 <span class="info-box-icon border-rad-zero" :class="statusClass(ticket.ticketstatustitle)">
-                    <font-awesome-icon :icon="statusIcon(ticket.ticketstatustitle).icon" class="text-white" :class="statusIcon(ticket.ticketstatustitle).class" />
+                    <i class="text-white" :class="statusIcon(ticket.ticketstatustitle)" />
                 </span>
                 <div class="info-box-content">
                     <span class="info-box-number">
@@ -350,7 +350,7 @@ onMounted(loadTicket);
         </div>
         <div class="col-md-10">
             <div class="callout callout-info py-3">
-                <h5><font-awesome-icon :icon="['fas', 'align-left']" /> Subject</h5>
+                <h5><i class="fas fa-align-left"></i> Subject</h5>
                 <p>{{ ticket.subject }}</p>
             </div>
         </div>
@@ -366,7 +366,7 @@ onMounted(loadTicket);
                     <div class="input-group input-group-sm">
                         <input v-model="searchBox" class="form-control" placeholder="Search by TicketID / Subject" />
                         <button class="btn btn-primary">
-                            <font-awesome-icon :icon="['fas', 'search']" />
+                            <i class="fas fa-search" />
                         </button>
                     </div>
                 </form>
@@ -393,14 +393,14 @@ onMounted(loadTicket);
                 </div>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <RouterLink to="/tickets/new" class="nav-link"> <font-awesome-icon :icon="['fas', 'plus-circle']" class="text-info" /> New Ticket </RouterLink>
+                        <RouterLink to="/tickets/new" class="nav-link"> <i class="fas fa-plus-circle text-info" /> New Ticket </RouterLink>
                     </li>
                     <li class="nav-item">
-                        <RouterLink to="/tickets" class="nav-link"> <font-awesome-icon :icon="['fas', 'inbox']" class="text-primary" />&nbsp;ALL </RouterLink>
+                        <RouterLink to="/tickets" class="nav-link"> <i class="fas fa-inbox text-primary"></i>&nbsp;ALL </RouterLink>
                     </li>
                     <li v-for="s in statusCounts" :key="s.ticketstatustitle" class="nav-item">
                         <RouterLink :to="`/tickets?view=${s.ticketstatustitle}`" class="nav-link">
-                            <font-awesome-icon :icon="statusIcon(s.ticketstatustitle).icon" :class="statusIcon(s.ticketstatustitle).class" />
+                            <i :class="statusIcon(s.ticketstatustitle)" />
                             {{ s.ticketstatustitle }}
                             <span class="badge float-right" :class="statusClass(s.ticketstatustitle)">
                                 {{ s.st_count }}
@@ -540,8 +540,8 @@ onMounted(loadTicket);
                                 <!-- LIKE / DISLIKE -->
                                 <template v-if="post.liked !== undefined">
                                     <hr class="my-1" />
-                                    <div v-if="post.liked === 1" class="text-success mb-2 ml-2"><font-awesome-icon :icon="['fas', 'thumbs-up']" class="mr-1" /> User liked your reply</div>
-                                    <div v-else class="text-danger mb-2 ml-2"><font-awesome-icon :icon="['fas', 'thumbs-down']" class="mr-1" /> User disliked your reply</div>
+                                    <div v-if="post.liked === 1" class="text-success mb-2 ml-2"><i class="fas fa-thumbs-up mr-1"></i> User liked your reply</div>
+                                    <div v-else class="text-danger mb-2 ml-2"><i class="fas fa-thumbs-down mr-1"></i> User disliked your reply</div>
                                 </template>
                                 <!-- ATTACHMENTS -->
                                 <template v-if="post.attachments">
@@ -550,8 +550,8 @@ onMounted(loadTicket);
                                             <img class="img-attachment" :src="attachmentSrc(file.attachmentid)" :alt="file.filename" />
                                             <div class="img-preview-overlay">
                                                 <div class="buttons">
-                                                    <button class="btn btn-dark" data-toggle="modal" data-target="`#image-${file.attachmentid}`"><font-awesome-icon :icon="['fas', 'search-plus']" /></button>
-                                                    <a :href="attachmentSrc(file.attachmentid)" :download="file.filename" class="btn btn-dark"><font-awesome-icon :icon="['fas', 'download']" /></a>
+                                                    <button class="btn btn-dark" data-toggle="modal" data-target="`#image-${file.attachmentid}`"><i class="fas fa-search-plus"></i></button>
+                                                    <a :href="attachmentSrc(file.attachmentid)" :download="file.filename" class="btn btn-dark"><i class="fas fa-download"></i></a>
                                                 </div>
                                             </div>
                                         </div>

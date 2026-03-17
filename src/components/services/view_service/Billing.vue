@@ -7,7 +7,7 @@
                     <b>{{ currencySymbol }}{{ cost }}</b> {{ t('common.labels.billed') }} <b>{{ frequency }}</b>
                 </p>
             </div>
-            <div class="icon"><font-awesome-icon :icon="['fas', 'dollar-sign']" /></div>
+            <div class="icon"><i class="fas fa-dollar-sign"></i></div>
             <span class="small-box-footer"
                 >{{ t('common.labels.statusIs') }} <b>{{ ucwords(serviceStatus) }}</b></span
             >

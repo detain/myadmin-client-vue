@@ -3,7 +3,6 @@ import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { ucwords } from '@/helpers/ucwords';
 import { moduleLink } from '@/helpers/moduleLink';
-import { parseFaIcon } from '@/helpers/parseFaIcon';
 
 import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { ref, computed, watch } from 'vue';
@@ -221,7 +220,7 @@ function toggleFunc(cp: string) {
                     </template>
                 </div>
                 <div class="icon">
-                    <font-awesome-icon :icon="['fas', 'briefcase']" />
+                    <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer text-bold">{{ serviceInfo.vps_hostname }}</span>
             </div>
@@ -244,7 +243,7 @@ function toggleFunc(cp: string) {
                     </p>
                 </div>
                 <div class="icon">
-                    <font-awesome-icon :icon="['fas', 'dollar-sign']" />
+                    <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer">
                     {{ t('vps.view.vpsStatus') }} <b>{{ serviceInfo.vps_status }}</b>
@@ -262,7 +261,7 @@ function toggleFunc(cp: string) {
                     </p>
                 </div>
                 <div class="icon">
-                    <font-awesome-icon :icon="['fas', 'info-circle']" />
+                    <i class="fas fa-info-circle"></i>
                 </div>
                 <span class="small-box-footer">
                     {{ t('vps.view.vzid') }} <b>{{ serviceInfo.vps_vzid }}</b>
@@ -336,9 +335,9 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'server']" />&nbsp;&nbsp;{{ t('vps.view.vpsInformation') }}</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-server"></i>&nbsp;&nbsp;{{ t('vps.view.vpsInformation') }}</h3>
                             <div class="card-tools float-right pl-3 pt-1">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
@@ -396,7 +395,7 @@ function toggleFunc(cp: string) {
                                 <span class="info-box-text">
                                     <hr />
                                     <h5 class="mt-5 text-center">
-                                        {{ t('vps.view.comment') }} {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : t('vps.view.commentNone') }} <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm()"><font-awesome-icon :icon="['fas', 'pencil-alt']" class="my-2 text-sm" /></span>
+                                        {{ t('vps.view.comment') }} {{ serviceInfo.vps_comment ? serviceInfo.vps_comment : t('vps.view.commentNone') }} <span title="Edit Comment" style="cursor: pointer" @click="openCommentForm()"><i class="fas fa-pencil-alt my-2 text-sm"></i></span>
                                     </h5>
                                 </span>
                             </div>
@@ -408,10 +407,10 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'hdd']" />&nbsp;&nbsp;{{ t('vps.view.disk') }}</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-hdd"></i>&nbsp;&nbsp;{{ t('vps.view.disk') }}</h3>
                             <div class="card-tools float-right pl-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <font-awesome-icon :icon="['fas', 'minus']" />
+                                    <i class="fas fa-minus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -452,10 +451,10 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'microchip']" />&nbsp;&nbsp;{{ t('vps.view.systemInformation') }}</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-microchip"></i>&nbsp;&nbsp;{{ t('vps.view.systemInformation') }}</h3>
                             <div class="card-tools float-right pl-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <font-awesome-icon :icon="['fas', 'minus']" />
+                                    <i class="fas fa-minus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -492,10 +491,10 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'link']" /> {{ t('vps.view.links') }}</h3>
+                            <h3 class="card-title py-2"><i class="fas fa-link"></i> {{ t('vps.view.links') }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <font-awesome-icon :icon="['fas', 'minus']" />
+                                    <i class="fas fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -504,8 +503,7 @@ function toggleFunc(cp: string) {
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
                                 <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                                    <font-awesome-icon v-if="parseFaIcon(clientLink.icon)" :icon="parseFaIcon(clientLink.icon)!" aria-hidden="true" />
-                                    <i v-else :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </router-link>
                             </template>
@@ -513,8 +511,7 @@ function toggleFunc(cp: string) {
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label == 'View Desktop'">
                                 <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" @click="openPopUp">
-                                    <font-awesome-icon v-if="parseFaIcon(clientLink.icon)" :icon="parseFaIcon(clientLink.icon)!" aria-hidden="true" />
-                                    <i v-else :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </button>
                             </template>
@@ -528,9 +525,9 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'tachometer-alt']" /> &nbsp;{{ t('vps.view.controlPanelAddon') }}</h3>
+                            <h3 class="card-title py-2"><i class="far fa-tachometer-alt"></i> &nbsp;{{ t('vps.view.controlPanelAddon') }}</h3>
                             <div class="card-tools float-right">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -734,10 +731,10 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><font-awesome-icon :icon="['far', 'chart-bar']" />&nbsp;{{ t('vps.view.cpuUsage') }}</h3>
+                            <h3 class="card-title py-2"><i class="far fa-chart-bar"></i>&nbsp;{{ t('vps.view.cpuUsage') }}</h3>
                             <div class="card-tools float-right">
                                 <button type="button" class="btn btn-tool" @click="collapsed = !collapsed">
-                                    <font-awesome-icon :icon="['fas', 'minus']" />
+                                    <i class="fas fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -753,7 +750,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <h3 v-if="extraInfoTables.cp.rows[0].value === 'cPanel Autoscale Cloud (Internal)'" class="card-title py-1">
-                            <font-awesome-icon :icon="['fab', 'cpanel']" class="text-orange pl-2 text-xl" style="border-radius: 50%; border: 2px solid #ccc" />&nbsp;
+                            <i class="fab fa-cpanel text-orange pl-2 text-xl" style="border-radius: 50%; border: 2px solid #ccc"></i>&nbsp;
                             <span style="position: relative; top: -5px">&nbsp;{{ extraInfoTables.cp.title }}</span>
                         </h3>
                         <h3 v-else-if="extraInfoTables.cp.rows[0].value === 'Free DirectAdmin for CentOS 8 64-bit VPS' || extraInfoTables.cp.rows[0].value === 'DirectAdmin for Debian 8.0 64-bit'" class="card-title mt-1 py-2">
@@ -770,7 +767,7 @@ function toggleFunc(cp: string) {
                         </h3>
                         <div class="card-tools float-right pl-3 pt-1">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <font-awesome-icon :icon="['fas', 'minus']" />
+                                <i class="fas fa-minus" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -791,9 +788,9 @@ function toggleFunc(cp: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'tachometer-alt']" />&nbsp;&nbsp;{{ extraInfoTables.webuzo.title }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-tachometer-alt"></i>&nbsp;&nbsp;{{ extraInfoTables.webuzo.title }}</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -815,9 +812,9 @@ function toggleFunc(cp: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'plus']" />&nbsp;{{ extraInfoTables.addons.title }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-plus"></i>&nbsp;{{ extraInfoTables.addons.title }}</h3>
                                 <div class="card-tools float-right">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -845,9 +842,9 @@ function toggleFunc(cp: string) {
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title py-2"><font-awesome-icon :icon="['fas', 'info-circle']" class="text-red" />&nbsp;{{ t('vps.view.attention') }}</h3>
+                                <h3 class="card-title py-2"><i class="fas fa-info-circle text-red"></i>&nbsp;{{ t('vps.view.attention') }}</h3>
                                 <div class="card-tools float-right pl-3 pt-1">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>

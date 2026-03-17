@@ -66,6 +66,13 @@ describe('MainMenu.vue', () => {
         }
     });
 
+    it('renders icons for menu items', () => {
+        const wrapper = mount(MainMenu, mountOptions);
+        expect(wrapper.find('.fas.fa-tachometer-alt').exists()).toBe(true);
+        expect(wrapper.find('.fas.fa-globe').exists()).toBe(true);
+        expect(wrapper.find('.fas.fa-ticket-alt').exists()).toBe(true);
+    });
+
     it('has nav-item class on list items', () => {
         const wrapper = mount(MainMenu, mountOptions);
         const items = wrapper.findAll('li.nav-item');

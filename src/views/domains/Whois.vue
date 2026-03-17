@@ -175,7 +175,7 @@ loadWhois();
         <div class="col-md-12">
             <div class="w-100 b-radius mb-4 bg-white p-3" :style="{ 'border-left': '4px solid greenyellow' }">
                 <p class="text-md m-0">
-                    <font-awesome-icon :icon="['fas', 'lightbulb']" style="color: greenyellow" />&nbsp; <b>Note:</b> &nbsp;{{ t('domains.whois.renewalNote', { cost: `<b>${currencySymbol}${whoisCost.toFixed(2)}</b>` }) }}
+                    <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp; <b>Note:</b> &nbsp;{{ t('domains.whois.renewalNote', { cost: `<b>${currencySymbol}${whoisCost.toFixed(2)}</b>` }) }}
                 </p>
             </div>
         </div>
@@ -184,7 +184,7 @@ loadWhois();
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="alert alert-warning">
-                    <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />&nbsp; {{ t('domains.whois.notAvailable') }}
+                    <i class="fas fa-exclamation-triangle"></i>&nbsp; {{ t('domains.whois.notAvailable') }}
                 </div>
             </div>
         </div>
@@ -194,17 +194,17 @@ loadWhois();
             <div class="col-md-6">
                 <div class="card b-radius">
                     <div class="card-header">
-                        <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'user-secret']" />&nbsp;{{ t('domains.whois.title') }}</h3>
+                        <h3 class="card-title text-lg"><i class="fas fa-user-secret"></i>&nbsp;{{ t('domains.whois.title') }}</h3>
                         <div class="card-tools m-0">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;{{ t('common.buttons.back') }}</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                     <div class="card-body text-center">
                         <div class="alert alert-success">
-                            <font-awesome-icon :icon="['fas', 'check-circle']" />&nbsp; {{ t('domains.whois.currentlyEnabled', { hostname }) }}
+                            <i class="fas fa-check-circle"></i>&nbsp; {{ t('domains.whois.currentlyEnabled', { hostname }) }}
                         </div>
                         <button class="btn btn-danger mt-3" @click="disableWhois">
-                            <font-awesome-icon :icon="['fas', 'times-circle']" />&nbsp; {{ t('domains.whois.disableAndCancel') }}
+                            <i class="fas fa-times-circle"></i>&nbsp; {{ t('domains.whois.disableAndCancel') }}
                         </button>
                     </div>
                 </div>
@@ -216,9 +216,9 @@ loadWhois();
             <div class="col-md-6">
                 <div class="card b-radius">
                     <div class="card-header">
-                        <h3 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'address-card']" />&nbsp;{{ t('domains.whois.title') }}</h3>
+                        <h3 class="card-title text-lg"><i class="fas fa-address-card"></i>&nbsp;{{ t('domains.whois.title') }}</h3>
                         <div class="card-tools m-0">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><font-awesome-icon :icon="['fas', 'arrow-left']" class="text-sm" />&nbsp;{{ t('common.buttons.back') }}</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                     <div class="card-body">
@@ -249,9 +249,9 @@ loadWhois();
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title text-lg"><font-awesome-icon :icon="['fas', 'user-secret']" />&nbsp;{{ t('domains.whois.contactPrivacy') }}</h4>
+                        <h4 class="card-title text-lg"><i class="fas fa-user-secret"></i>&nbsp;{{ t('domains.whois.contactPrivacy') }}</h4>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><font-awesome-icon :icon="['fas', 'minus']" /></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
                     <div class="card-body">

@@ -71,14 +71,13 @@ const periodLabel = computed(() => {
     return map[selectedPeriod.value as string];
 });
 
-function statusIcon(status: string): { icon: [string, string]; class: string } {
-    const map: Record<string, { icon: [string, string]; class: string }> = {
-        Open: { icon: ['far', 'envelope-open'], class: 'text-success' },
-        'On Hold': { icon: ['fas', 'pause'], class: 'text-warning' },
-        Closed: { icon: ['far', 'envelope'], class: 'text-danger' },
-        'In Progress': { icon: ['fas', 'hourglass-half'], class: 'text-secondary' },
-    };
-    return map[status] || { icon: ['fas', 'ticket-alt'], class: '' };
+function statusIcon(status: string) {
+    return {
+        Open: 'far fa-envelope-open text-success',
+        'On Hold': 'fas fa-pause text-warning',
+        Closed: 'far fa-envelope text-danger',
+        'In Progress': 'fas fa-hourglass-half text-secondary',
+    }[status];
 }
 
 function statusBadge(status: string) {
@@ -118,7 +117,7 @@ function timeAgo(input: string | number) {
                 <form @submit.prevent="submitSearch">
                     <div class="input-group input-group-sm">
                         <input v-model="searchBox" class="form-control" :placeholder="t('tickets.list.searchPlaceholder')" />
-                        <button class="btn btn-primary" :disabled="searching"><font-awesome-icon :icon="['fas', 'search']" /></button>
+                        <button class="btn btn-primary" :disabled="searching"><i class="fas fa-search" /></button>
                     </div>
                 </form>
                 <div v-if="showResults" class="results p-2">
@@ -156,7 +155,7 @@ function timeAgo(input: string | number) {
                 <div class="card-body p-0">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <RouterLink to="/tickets/new" class="nav-link"> <font-awesome-icon :icon="['fas', 'plus-circle']" class="text-info" /> {{ t('tickets.list.newTicket') }} </RouterLink>
+                            <RouterLink to="/tickets/new" class="nav-link"> <i class="fas fa-plus-circle text-info" /> {{ t('tickets.list.newTicket') }} </RouterLink>
                         </li>
                         <li v-for="status in st_count" :key="status.ticketstatustitle" class="nav-item">
                             <RouterLink
@@ -168,7 +167,7 @@ function timeAgo(input: string | number) {
                                         period: selectedPeriod !== '30' ? selectedPeriod : undefined,
                                     },
                                 }">
-                                <font-awesome-icon :icon="statusIcon(status.ticketstatustitle).icon" :class="statusIcon(status.ticketstatustitle).class" /> {{ status.ticketstatustitle }}
+                                <i :class="statusIcon(status.ticketstatustitle)" /> {{ status.ticketstatustitle }}
                                 <span :class="statusBadge(status.ticketstatustitle)">{{ status.st_count }}</span>
                             </RouterLink>
                         </li>
@@ -195,8 +194,8 @@ function timeAgo(input: string | number) {
                         </thead>
                         <tbody>
                             <tr v-for="ticket in tickets" :key="ticket.ticketmaskid">
-                                <td><font-awesome-icon :icon="statusIcon(ticket.ticketstatustitle).icon" :class="statusIcon(ticket.ticketstatustitle).class" /></td>
-                                <td><font-awesome-icon v-if="Number(ticket.hasattachments)" :icon="['fas', 'paperclip']" /></td>
+                                <td><i :class="statusIcon(ticket.ticketstatustitle)" /></td>
+                                <td><i v-if="Number(ticket.hasattachments)" class="fas fa-paperclip" /></td>
                                 <td class="text-left">
                                     <RouterLink :to="`/tickets/${ticket.ticketmaskid}`"
                                         ><b>{{ ticket.ticketmaskid }}</b> – {{ ticket.subject }}</RouterLink
