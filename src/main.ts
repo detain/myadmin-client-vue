@@ -7,7 +7,7 @@ import i18n, { loadCommonMessages, resolveAppLocale, setAppLocale } from './i18n
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 const addIcons = (...icons: any[]) => icons.forEach((i) => library.add(i));
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -108,7 +108,7 @@ import 'admin-lte/dist/js/adminlte.js';
 import './assets/css/admin_darkmode.css';
 
 const app = createApp(App);
-app.component('font-awesome-icon', FontAwesomeIcon);
+app.component('FontAwesomeIcon', FontAwesomeIcon);
 const pinia = createPinia();
 const head = createHead();
 app.use(pinia);
