@@ -9,6 +9,7 @@ import Searchbox from '@/components/Searchbox.vue';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import { useDarkMode } from '@/helpers/useDarkMode';
+import { useElectronTray } from '@/helpers/useElectronTray';
 import { warmFrequentlyUsedRoutes, warmRouteByLocation } from '@/router';
 
 const { t } = useI18n();
@@ -141,6 +142,7 @@ watch(
 );
 
 useDarkMode();
+useElectronTray();
 </script>
 
 <template>
