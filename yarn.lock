@@ -1793,9 +1793,9 @@
   integrity sha512-urJWrkyM6SGki7VmagwErtOe0UeTqIE8m9WTkS7n54IYCrYTSMg9N5PSZf0i91sAozn5ypc9DzMiguRmIFU7cg==
 
 "@types/debug@^4.1.6":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.12.tgz#a155f21690871953410df4b6b6f53187f0500917"
-  integrity sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==
+  version "4.1.13"
+  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.13.tgz#22d1cc9d542d3593caea764f974306ab36286ee7"
+  integrity sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==
   dependencies:
     "@types/ms" "*"
 
@@ -4191,9 +4191,9 @@ electron-vite@^5.0.0:
     picocolors "^1.1.1"
 
 electron@^39.2.6:
-  version "39.8.2"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-39.8.2.tgz#022dfe4bbb695e3232c6aeabe1dd0af71e4e7249"
-  integrity sha512-uwNJHeqm8pzQEZf/KX4XM1fJctZpHcA0Za/MlP9mOg0FAWHbKo6yRC33QbdfLX7PeNjYZC3I3nnVhE5L2CLqxw==
+  version "39.8.3"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-39.8.3.tgz#60ed01d2281b9a4782e4498c54c4d86f19452eab"
+  integrity sha512-ZhetvWz2qbI2WbBHdK/utR8I5bi1pYWJdit9tP0sGzs42CpsAFyu/FirXE88NWSh+3U8X6Wuf9jjDEYvAyrxNw==
   dependencies:
     "@electron/get" "^2.0.0"
     "@types/node" "^22.7.7"
