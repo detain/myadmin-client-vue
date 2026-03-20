@@ -70,7 +70,6 @@ describe('Login.vue', () => {
             plugins: [
                 createTestingPinia({
                     createSpy: vi.fn,
-                    stubActions: true,
                     stubActions: false,
                     initialState: {
                         auth: {
@@ -99,6 +98,8 @@ describe('Login.vue', () => {
 
     beforeEach(() => {
         vi.clearAllMocks();
+        // Ensure turnstile mock is always available for onMounted
+        (window as any).turnstile = mockTurnstile;
     });
 
     it('renders component', () => {
@@ -982,15 +983,20 @@ describe('Login.vue', () => {
         });
 
         it('loads script when turnstile is not available', async () => {
+            // Mount first while turnstile exists (so onMounted succeeds)
+            const wrapper = mount(Login, createMountOptions());
+            const vm = wrapper.vm as any;
+            await flushPromises();
+
+            // Now delete turnstile and mock appendChild to simulate loading
             const originalTurnstile = (window as any).turnstile;
             delete (window as any).turnstile;
             const appendChildSpy = vi.spyOn(document.head, 'appendChild').mockImplementation((node: any) => {
-                // Simulate script load
+                // Simulate script load - restore turnstile before onload
+                (window as any).turnstile = originalTurnstile;
                 if (node.onload) node.onload();
                 return node;
             });
-            const wrapper = mount(Login, createMountOptions());
-            const vm = wrapper.vm as any;
             await vm.loadTurnstileScript();
             expect(appendChildSpy).toHaveBeenCalled();
             appendChildSpy.mockRestore();
@@ -998,14 +1004,18 @@ describe('Login.vue', () => {
         });
 
         it('rejects when script fails to load', async () => {
+            // Mount first while turnstile exists (so onMounted succeeds)
+            const wrapper = mount(Login, createMountOptions());
+            const vm = wrapper.vm as any;
+            await flushPromises();
+
+            // Now delete turnstile and mock appendChild to simulate failure
             const originalTurnstile = (window as any).turnstile;
             delete (window as any).turnstile;
             const appendChildSpy = vi.spyOn(document.head, 'appendChild').mockImplementation((node: any) => {
                 if (node.onerror) node.onerror(new Error('load failed'));
                 return node;
             });
-            const wrapper = mount(Login, createMountOptions());
-            const vm = wrapper.vm as any;
             await expect(vm.loadTurnstileScript()).rejects.toBeTruthy();
             appendChildSpy.mockRestore();
             (window as any).turnstile = originalTurnstile;
