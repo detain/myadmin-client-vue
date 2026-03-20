@@ -265,5 +265,169 @@ describe('Searchbox', () => {
             expect(consoleSpy).toHaveBeenCalled();
             consoleSpy.mockRestore();
         });
+
+        it('handles updateSearchResults error', async () => {
+            vi.mocked(fetchWrapper.get)
+                .mockResolvedValueOnce(JSON.parse(JSON.stringify(mockSearchData)))
+                .mockRejectedValueOnce(new Error('Search update error'));
+            const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            const input = wrapper.find('input.new-search');
+            await input.setValue('123456789012345678'); // exactly 18 chars
+            await flushPromises();
+            expect(consoleSpy).toHaveBeenCalled();
+            consoleSpy.mockRestore();
+        });
+    });
+
+    describe('getServiceId with extra fields', () => {
+        it('returns correct service id when table has extra fields', async () => {
+            const dataWithExtras = {
+                results: [
+                    [3, 'extra_val', '500', 'hostname.test.com'],
+                ],
+                tables: {
+                    ...mockSearchData.tables,
+                    3: { id: 'svc_id', table: 'services', link: '/services/', search: ['svc_id', 'svc_hostname'], extra: ['svc_type'], prefix: 'svc' },
+                } as Record<number, any>,
+            };
+            vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(dataWithExtras)));
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            const vm = wrapper.vm as any;
+            const row = vm.searchResults.results[0];
+            const serviceId = vm.getServiceId(row);
+            expect(serviceId).toBe('500');
+        });
+    });
+
+    describe('buildDisplayFields with extra fields and edge cases', () => {
+        it('builds display fields including extra fields', async () => {
+            const dataWithExtras = {
+                results: [
+                    [3, 'linux', '500', 'hostname.test.com'],
+                ],
+                tables: {
+                    3: { id: 'svc_id', table: 'services', link: '/services/', search: ['svc_id', 'svc_hostname'], extra: ['svc_type'], prefix: 'svc' },
+                } as Record<number, any>,
+            };
+            vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(dataWithExtras)));
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            const vm = wrapper.vm as any;
+            const row = vm.searchResults.results[0];
+            const fields = vm.buildDisplayFields(row);
+            // Should include both regular and extra fields
+            expect(fields.length).toBeGreaterThan(0);
+            // Check extra field is present
+            const extraField = fields.find((f: any) => f.value === 'linux');
+            expect(extraField).toBeDefined();
+        });
+
+        it('handles field with no label', async () => {
+            const dataNoLabel = {
+                results: [
+                    [4, '600', 'hostname.test.com', 'extra-value'],
+                ],
+                tables: {
+                    4: { id: 'item_id', table: 'items', link: '/items/', search: ['item_id', 'item_hostname'] },
+                } as Record<number, any>,
+            };
+            vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(dataNoLabel)));
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            const vm = wrapper.vm as any;
+            const row = vm.searchResults.results[0];
+            const fields = vm.buildDisplayFields(row);
+            // extra-value has no corresponding search field label
+            const noLabelField = fields.find((f: any) => f.value === 'extra-value');
+            expect(noLabelField).toBeDefined();
+            expect(noLabelField!.label).toBeUndefined();
+        });
+
+        it('returns empty array when searchResults is null', async () => {
+            vi.mocked(fetchWrapper.get).mockResolvedValue({ results: [], tables: {} });
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            const vm = wrapper.vm as any;
+            vm.searchResults = null;
+            const fields = vm.buildDisplayFields([1, '100', 'test']);
+            expect(fields).toEqual([]);
+        });
+    });
+
+    describe('onBeforeUnmount cleanup', () => {
+        it('removes click event listener on unmount', async () => {
+            const removeListenerSpy = vi.spyOn(document, 'removeEventListener');
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            wrapper.unmount();
+            expect(removeListenerSpy).toHaveBeenCalledWith('click', expect.any(Function));
+            removeListenerSpy.mockRestore();
+        });
+    });
+
+    describe('keyboard navigation edge cases', () => {
+        it('ArrowDown does not exceed results length', async () => {
+            vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(mockSearchData)));
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            await wrapper.find('.search-icon').trigger('click');
+            const input = wrapper.find('input.new-search');
+            const vm = wrapper.vm as any;
+            // Press down many times to try to exceed length
+            for (let i = 0; i < 10; i++) {
+                await input.trigger('keydown', { key: 'ArrowDown' });
+            }
+            expect(vm.highlightIndex).toBeLessThan(vm.filteredResults.length);
+        });
+
+        it('ArrowUp does not go below 0', async () => {
+            vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(mockSearchData)));
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            await wrapper.find('.search-icon').trigger('click');
+            const input = wrapper.find('input.new-search');
+            const vm = wrapper.vm as any;
+            // Press up without moving down first
+            await input.trigger('keydown', { key: 'ArrowUp' });
+            expect(vm.highlightIndex).toBeGreaterThanOrEqual(0);
+        });
+
+        it('Enter with highlightIndex -1 does not navigate', async () => {
+            vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(mockSearchData)));
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            const input = wrapper.find('input.new-search');
+            await input.setValue('vps');
+            await flushPromises();
+            const vm = wrapper.vm as any;
+            vm.highlightIndex = -1;
+            await input.trigger('keydown', { key: 'Enter' });
+            expect(mockPush).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('updateSearchResults deduplication', () => {
+        it('does not fetch again for the same search string', async () => {
+            vi.mocked(fetchWrapper.get)
+                .mockResolvedValueOnce(JSON.parse(JSON.stringify(mockSearchData)))
+                .mockResolvedValueOnce({ results: [[1, '999', 'new.com', '10.0.0.99']] });
+            const wrapper = mount(Searchbox, mountOptions);
+            await flushPromises();
+            const input = wrapper.find('input.new-search');
+            const searchStr = '123456789012345678';
+            await input.setValue(searchStr);
+            await flushPromises();
+            const callCount = vi.mocked(fetchWrapper.get).mock.calls.length;
+            // Set the same value again - should not trigger additional fetch
+            await input.setValue('short');
+            await flushPromises();
+            await input.setValue(searchStr);
+            await flushPromises();
+            // Should not have made another search call for same string
+            expect(vi.mocked(fetchWrapper.get).mock.calls.length).toBe(callCount);
+        });
     });
 });

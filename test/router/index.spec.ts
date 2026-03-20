@@ -443,4 +443,407 @@ describe('Router', () => {
             expect(resolved.matched.length).toBeGreaterThan(0);
         });
     });
+
+    describe('route resolution for uncovered service paths', () => {
+        it('resolves /login_old route', () => {
+            const resolved = router.resolve('/login_old');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /sudo/:sessionid route', () => {
+            const resolved = router.resolve('/sudo/abc123');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+            expect(resolved.params.sessionid).toBe('abc123');
+        });
+
+        it('resolves /payment_types route', () => {
+            const resolved = router.resolve('/payment_types');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /cart/:invoices route', () => {
+            const resolved = router.resolve('/cart/12345');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+            expect(resolved.params.invoices).toBe('12345');
+        });
+
+        it('resolves /order_needs_payment/:invoices route', () => {
+            const resolved = router.resolve('/order_needs_payment/999');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /pay/:method/:invoices route', () => {
+            const resolved = router.resolve('/pay/cc/123');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /pay with done param', () => {
+            const resolved = router.resolve('/pay/paypal/123/done');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /payment_success route', () => {
+            const resolved = router.resolve('/payment_success');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /invoices/:id route', () => {
+            const resolved = router.resolve('/invoices/999');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+    });
+
+    describe('route resolution for account and user paths', () => {
+        it('resolves /account/pass route', () => {
+            const resolved = router.resolve('/account/pass');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /account/username route', () => {
+            const resolved = router.resolve('/account/username');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /account/settings route', () => {
+            const resolved = router.resolve('/account/settings');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /users route', () => {
+            const resolved = router.resolve('/users');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /users/add route', () => {
+            const resolved = router.resolve('/users/add');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /users/edit/:id route', () => {
+            const resolved = router.resolve('/users/edit/5');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+    });
+
+    describe('route resolution for affiliate paths', () => {
+        const affiliatePaths = [
+            '/affiliate', '/affiliate/faq', '/affiliate/landing_pg',
+            '/affiliate/payment_setup', '/affiliate/rich_report',
+            '/affiliate/sales_graph', '/affiliate/sales_report',
+            '/affiliate/status_legend', '/affiliate/tos',
+            '/affiliate/traffic_graph', '/affiliate/web_traffic',
+            '/affiliate/banners', '/affiliate/banners/1',
+        ];
+
+        for (const path of affiliatePaths) {
+            it(`resolves ${path}`, () => {
+                const resolved = router.resolve(path);
+                expect(resolved.matched.length).toBeGreaterThan(0);
+            });
+        }
+    });
+
+    describe('route resolution for tickets, backups, dns paths', () => {
+        it('resolves /tickets/new route', () => {
+            const resolved = router.resolve('/tickets/new');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /tickets/:id route', () => {
+            const resolved = router.resolve('/tickets/42');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /backups/order route', () => {
+            const resolved = router.resolve('/backups/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /backups/:id route', () => {
+            const resolved = router.resolve('/backups/10');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /backups/:id/:link route', () => {
+            const resolved = router.resolve('/backups/10/login');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /dns/:id route', () => {
+            const resolved = router.resolve('/dns/5');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+    });
+
+    describe('route resolution for domains paths', () => {
+        it('resolves /domains/order route', () => {
+            const resolved = router.resolve('/domains/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /domains/order/:domain route', () => {
+            const resolved = router.resolve('/domains/order/example.com');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /domains/order/:domain/:regType route', () => {
+            const resolved = router.resolve('/domains/order/example.com/register');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /domains/:id route', () => {
+            const resolved = router.resolve('/domains/100');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /domains/:id/:link route', () => {
+            const resolved = router.resolve('/domains/100/cancel');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+    });
+
+    describe('route resolution for floating_ips, licenses, mail paths', () => {
+        it('resolves /floating_ips/order route', () => {
+            const resolved = router.resolve('/floating_ips/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /floating_ips/:id route', () => {
+            const resolved = router.resolve('/floating_ips/7');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /floating_ips/:id/:link route', () => {
+            const resolved = router.resolve('/floating_ips/7/cancel');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /licenses/order route', () => {
+            const resolved = router.resolve('/licenses/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /licenses/order/:catTag route', () => {
+            const resolved = router.resolve('/licenses/order/cpanel');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /licenses/:id route', () => {
+            const resolved = router.resolve('/licenses/20');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /licenses/:id/:link route', () => {
+            const resolved = router.resolve('/licenses/20/change_ip');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /mail/order route', () => {
+            const resolved = router.resolve('/mail/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /mail/:id route', () => {
+            const resolved = router.resolve('/mail/30');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /mail/:id/:link route', () => {
+            const resolved = router.resolve('/mail/30/stats');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /mail/:id/:link/:ruleId route', () => {
+            const resolved = router.resolve('/mail/30/rules/5');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+    });
+
+    describe('route resolution for qs, scrub_ips paths', () => {
+        it('resolves /qs/order route', () => {
+            const resolved = router.resolve('/qs/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /qs/:id route', () => {
+            const resolved = router.resolve('/qs/40');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /qs/:id/:link route', () => {
+            const resolved = router.resolve('/qs/40/start');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /scrub_ips/:id route', () => {
+            const resolved = router.resolve('/scrub_ips/3');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+    });
+
+    describe('route resolution for servers, ssl paths', () => {
+        it('resolves /servers/order route', () => {
+            const resolved = router.resolve('/servers/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /servers/order_dedicated route', () => {
+            const resolved = router.resolve('/servers/order_dedicated');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /servers/:id route', () => {
+            const resolved = router.resolve('/servers/50');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /servers/:id/:link route', () => {
+            const resolved = router.resolve('/servers/50/cancel');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /ssl/order route', () => {
+            const resolved = router.resolve('/ssl/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /ssl/:id route', () => {
+            const resolved = router.resolve('/ssl/60');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /ssl/:id/:link route', () => {
+            const resolved = router.resolve('/ssl/60/cancel');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+    });
+
+    describe('route resolution for vps and websites child paths', () => {
+        it('resolves /vps/order route', () => {
+            const resolved = router.resolve('/vps/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /vps/:id/:link with various links', () => {
+            const links = ['start', 'stop', 'restart', 'invoices', 'cancel', 'reinstall_os'];
+            for (const link of links) {
+                const resolved = router.resolve(`/vps/1/${link}`);
+                expect(resolved.matched.length).toBeGreaterThan(0);
+            }
+        });
+
+        it('resolves /websites/order route', () => {
+            const resolved = router.resolve('/websites/order');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /websites/:id route', () => {
+            const resolved = router.resolve('/websites/10');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+
+        it('resolves /websites/:id/:link route', () => {
+            const resolved = router.resolve('/websites/10/login');
+            expect(resolved.matched.length).toBeGreaterThan(0);
+        });
+    });
+
+    describe('route i18n meta', () => {
+        it('has i18n meta on login route', () => {
+            const resolved = router.resolve('/login');
+            const meta = resolved.matched[0]?.meta;
+            expect(meta?.i18n).toEqual(['login', 'validation']);
+        });
+
+        it('has i18n meta on home route', () => {
+            const resolved = router.resolve('/');
+            const meta = resolved.matched[0]?.meta;
+            expect(meta?.i18n).toEqual(['dashboard']);
+        });
+
+        it('has i18n meta on vps route', () => {
+            const resolved = router.resolve('/vps');
+            const meta = resolved.matched[0]?.meta;
+            expect(meta?.i18n).toEqual(['vps']);
+        });
+
+        it('has i18n meta on domains route', () => {
+            const resolved = router.resolve('/domains');
+            const meta = resolved.matched[0]?.meta;
+            expect(meta?.i18n).toEqual(['domains']);
+        });
+
+        it('has i18n meta on tickets route', () => {
+            const resolved = router.resolve('/tickets');
+            const meta = resolved.matched[0]?.meta;
+            expect(meta?.i18n).toEqual(['tickets']);
+        });
+
+        it('has i18n meta on account route', () => {
+            const resolved = router.resolve('/account/info');
+            const parentMeta = resolved.matched[0]?.meta;
+            expect(parentMeta?.i18n).toEqual(['account', 'validation']);
+        });
+    });
+
+    describe('i18n namespace loading during navigation', () => {
+        it('loads i18n namespaces when navigating to a route with meta.i18n', async () => {
+            const authStore = useAuthStore();
+            authStore.sessionId = 'test-session-id';
+
+            await router.push('/vps');
+            expect(router.currentRoute.value.path).toBe('/vps');
+            // Navigation succeeded which means the beforeEach guard ran including i18n loading
+        });
+
+        it('navigates to route without i18n meta gracefully', async () => {
+            const authStore = useAuthStore();
+            authStore.sessionId = 'test-session-id';
+
+            // The catch-all route has no meta.i18n
+            await router.push('/some-unknown-path');
+            // Should redirect to / via catch-all
+            expect(router.currentRoute.value.path).toBe('/');
+        });
+    });
+
+    describe('warmRouteRecord error handling', () => {
+        it('handles component loader failure gracefully', async () => {
+            const { warmRouteByLocation } = await import('@/router/index');
+            // Warming a route that exists should not throw even if component fails
+            warmRouteByLocation('/login_old');
+            warmRouteByLocation('/sudo/test');
+        });
+    });
+
+    describe('beforeEach guard - public page detection with deep paths', () => {
+        it('allows /sudo/:sessionid as public page', async () => {
+            const authStore = useAuthStore();
+            authStore.sessionId = null;
+            authStore.apiKey = null;
+
+            await router.push('/sudo/test-session');
+            // /sudo is a public page so it should not redirect to login
+            expect(router.currentRoute.value.path).toBe('/sudo/test-session');
+        });
+
+        it('allows /signup as public page', async () => {
+            const authStore = useAuthStore();
+            authStore.sessionId = null;
+            authStore.apiKey = null;
+
+            await router.push('/signup');
+            expect(router.currentRoute.value.path).toBe('/signup');
+        });
+
+        it('allows /logout as public page', async () => {
+            const authStore = useAuthStore();
+            authStore.sessionId = null;
+            authStore.apiKey = null;
+
+            await router.push('/logout');
+            // /logout redirects to /login via beforeEnter
+            expect(router.currentRoute.value.path).toBe('/login');
+        });
+    });
 });

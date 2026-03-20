@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount, flushPromises } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import Cancel from '@/components/services/Cancel.vue';
 
@@ -71,5 +71,62 @@ describe('Cancel.vue', () => {
     it('has submit button', () => {
         const wrapper = mountCancel();
         expect(wrapper.find('button[type="submit"]').exists()).toBe(true);
+    });
+
+    describe('onSubmit()', () => {
+        it('calls Swal.fire when form is submitted', async () => {
+            const Swal = (await import('sweetalert2')).default;
+            const wrapper = mountCancel();
+            const form = wrapper.find('form#cancelForm');
+            await form.trigger('submit.prevent');
+            expect(Swal.fire).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    icon: 'error',
+                    showCancelButton: true,
+                    showLoaderOnConfirm: true,
+                })
+            );
+        });
+
+        it('preConfirm calls fetchWrapper.get for cancel endpoint', async () => {
+            const { fetchWrapper } = await import('@/helpers/fetchWrapper');
+            const Swal = (await import('sweetalert2')).default;
+            vi.mocked(fetchWrapper.get).mockResolvedValue({ success: true });
+            vi.mocked(Swal.fire).mockImplementation(async (options: any) => {
+                if (options.preConfirm) {
+                    options.preConfirm();
+                }
+                return { isConfirmed: true } as any;
+            });
+
+            const wrapper = mountCancel();
+            const form = wrapper.find('form#cancelForm');
+            await form.trigger('submit.prevent');
+            await flushPromises();
+
+            expect(fetchWrapper.get).toHaveBeenCalledWith(expect.stringContaining('/vps/101/cancel'));
+        });
+
+        it('preConfirm catches synchronous errors', async () => {
+            const { fetchWrapper } = await import('@/helpers/fetchWrapper');
+            const Swal = (await import('sweetalert2')).default;
+            const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+            // Make fetchWrapper.get throw synchronously to trigger the catch block
+            vi.mocked(fetchWrapper.get).mockImplementation(() => { throw new Error('sync cancel fail'); });
+            vi.mocked(Swal.fire).mockImplementation(async (options: any) => {
+                if (options.preConfirm) {
+                    options.preConfirm();
+                }
+                return { isConfirmed: true } as any;
+            });
+
+            const wrapper = mountCancel();
+            const form = wrapper.find('form#cancelForm');
+            await form.trigger('submit.prevent');
+            await flushPromises();
+
+            expect(consoleSpy).toHaveBeenCalled();
+            consoleSpy.mockRestore();
+        });
     });
 });

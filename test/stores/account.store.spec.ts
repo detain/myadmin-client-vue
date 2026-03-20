@@ -215,6 +215,40 @@ describe('account.store', () => {
         });
     });
 
+    describe('update() with logged-in user', () => {
+        it('updates auth store user when updating own record', async () => {
+            vi.mocked(fetchWrapper.put).mockResolvedValue({});
+
+            // We need to set up auth store with matching account_id
+            const { useAuthStore } = await import('@/stores/auth.store');
+            const authStore = useAuthStore();
+            authStore.user = { account_id: 42, name: 'Old Name', account_lid: 'user@test.com' } as any;
+
+            const store = useAccountStore();
+            await store.update(42, { name: 'New Name' });
+
+            expect(fetchWrapper.put).toHaveBeenCalledWith(
+                expect.stringContaining('/42'),
+                { name: 'New Name' }
+            );
+            expect(authStore.user.name).toBe('New Name');
+            expect(JSON.parse(localStorage.getItem('user') || '{}')).toMatchObject({ name: 'New Name' });
+        });
+
+        it('does not update auth store when updating different user', async () => {
+            vi.mocked(fetchWrapper.put).mockResolvedValue({});
+
+            const { useAuthStore } = await import('@/stores/auth.store');
+            const authStore = useAuthStore();
+            authStore.user = { account_id: 42, name: 'My Name', account_lid: 'user@test.com' } as any;
+
+            const store = useAccountStore();
+            await store.update(999, { name: 'Other Name' });
+
+            expect(authStore.user.name).toBe('My Name');
+        });
+    });
+
     describe('delete()', () => {
         it('removes account from list after deletion', async () => {
             vi.mocked(fetchWrapper.delete).mockResolvedValue({});
