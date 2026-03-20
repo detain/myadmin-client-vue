@@ -89,4 +89,42 @@ describe('ChangePass.vue', () => {
         await form.trigger('submit.prevent');
         await flushPromises();
     });
+
+    describe('password field v-model bindings', () => {
+        it('binds currentPassword input via v-model', async () => {
+            const wrapper = mount(ChangePass, mountOptions);
+            const input = wrapper.find('#currentpassword');
+            await input.setValue('myOldPassword');
+            expect((input.element as HTMLInputElement).value).toBe('myOldPassword');
+        });
+
+        it('binds newPassword input via v-model', async () => {
+            const wrapper = mount(ChangePass, mountOptions);
+            const input = wrapper.find('#password');
+            await input.setValue('myNewPassword123');
+            expect((input.element as HTMLInputElement).value).toBe('myNewPassword123');
+        });
+
+        it('binds confirm password input via v-model', async () => {
+            const wrapper = mount(ChangePass, mountOptions);
+            const inputs = wrapper.findAll('input[type="password"]');
+            const confirmInput = inputs[2]; // third password input is confirm
+            await confirmInput.setValue('myNewPassword123');
+            expect((confirmInput.element as HTMLInputElement).value).toBe('myNewPassword123');
+        });
+
+        it('submits form with filled password value', async () => {
+            vi.mocked(fetchWrapper.post).mockResolvedValue({});
+            const wrapper = mount(ChangePass, mountOptions);
+            const inputs = wrapper.findAll('input[type="password"]');
+            await inputs[2].setValue('secretPass');
+            const form = wrapper.find('form');
+            await form.trigger('submit.prevent');
+            await flushPromises();
+            expect(fetchWrapper.post).toHaveBeenCalledWith(
+                expect.stringContaining('/account/password'),
+                expect.objectContaining({ password: 'secretPass' })
+            );
+        });
+    });
 });

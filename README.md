@@ -6,8 +6,9 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/detain/myadmin-client-vue)](https://github.com/detain/myadmin-client-vue/commits/master)
 [![GitHub issues](https://img.shields.io/github/issues/detain/myadmin-client-vue)](https://github.com/detain/myadmin-client-vue/issues)
 [![License](https://img.shields.io/github/license/detain/myadmin-client-vue)](https://github.com/detain/myadmin-client-vue/blob/master/LICENSE)
+![Coverage](coverage/badge.svg)
 
-Check out the [WIKI](wiki) for documentation.
+Check out the [Wiki](https://github.com/detain/myadmin-client-vue/wiki) for documentation.
 
 ## Build Artifacts
 
@@ -32,6 +33,20 @@ Latest build artifacts are available from the [CI/CD workflow](https://github.co
 | Playwright E2E Tests | `yarn test:e2e` | [![Playwright E2E Tests](https://github.com/detain/myadmin-client-vue/actions/workflows/playwright.yml/badge.svg)](https://github.com/detain/myadmin-client-vue/actions/workflows/playwright.yml) |
 
 Test results, coverage reports, and Playwright HTML reports are uploaded as artifacts on each CI run. View them in the [Actions tab](https://github.com/detain/myadmin-client-vue/actions).
+
+### Coverage Summary
+
+| Category | % Stmts | % Branch | % Funcs | % Lines |
+|----------|---------|----------|---------|---------|
+| **All files** | 89.49 | 88.09 | 74.22 | 89.68 |
+| Components | 93.39 | 83.33 | 88.52 | 95.16 |
+| Helpers | 98.96 | 93.47 | 100 | 98.93 |
+| Stores | 99.72 | 86.20 | 98.64 | 99.71 |
+| Views | 87.69 | 83.36 | 91.37 | 88.26 |
+| Router | 44.85 | 97.29 | 30.55 | 43.60 |
+| i18n | 95.65 | 100 | 92.30 | 100 |
+
+Run `yarn test:coverage` to generate a detailed HTML report in `coverage/`.
 
 ## FAQ
 

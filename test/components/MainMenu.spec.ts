@@ -78,4 +78,107 @@ describe('MainMenu.vue', () => {
         const items = wrapper.findAll('li.nav-item');
         expect(items.length).toBeGreaterThan(0);
     });
+
+    describe('isActive detection', () => {
+        it('marks billing submenu as active when on /cart path', () => {
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/cart' },
+                writable: true,
+                configurable: true,
+            });
+            const wrapper = mount(MainMenu, mountOptions);
+            // The billing menu item should have active class on its nav-link
+            const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
+            expect(billingLink).toBeDefined();
+            expect(billingLink!.classes()).toContain('active');
+        });
+
+        it('does not mark settings as active on /account/settings since isActive uses first path segment only', () => {
+            // isActive checks key.includes(pathname.split('/')[1])
+            // pathname.split('/')[1] = 'account', but activecheck has 'account/settings' (not 'account')
+            // Array.includes does exact match, so 'account' !== 'account/settings'
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/account/settings' },
+                writable: true,
+                configurable: true,
+            });
+            const wrapper = mount(MainMenu, mountOptions);
+            const settingsLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Settings'));
+            expect(settingsLink).toBeDefined();
+            expect(settingsLink!.classes()).not.toContain('active');
+        });
+
+        it('does not mark billing as active when on non-billing path', () => {
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/vps' },
+                writable: true,
+                configurable: true,
+            });
+            const wrapper = mount(MainMenu, mountOptions);
+            const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
+            expect(billingLink).toBeDefined();
+            expect(billingLink!.classes()).not.toContain('active');
+        });
+
+        it('does not mark settings as active when on /domains path', () => {
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/domains' },
+                writable: true,
+                configurable: true,
+            });
+            const wrapper = mount(MainMenu, mountOptions);
+            const settingsLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Settings'));
+            expect(settingsLink).toBeDefined();
+            expect(settingsLink!.classes()).not.toContain('active');
+        });
+
+        it('marks billing as active when on /invoices path', () => {
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/invoices' },
+                writable: true,
+                configurable: true,
+            });
+            const wrapper = mount(MainMenu, mountOptions);
+            const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
+            expect(billingLink).toBeDefined();
+            expect(billingLink!.classes()).toContain('active');
+        });
+
+        it('marks billing as active when on /prepays path', () => {
+            Object.defineProperty(window, 'location', {
+                value: { pathname: '/prepays' },
+                writable: true,
+                configurable: true,
+            });
+            const wrapper = mount(MainMenu, mountOptions);
+            const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
+            expect(billingLink).toBeDefined();
+            expect(billingLink!.classes()).toContain('active');
+        });
+    });
+
+    describe('submenu treeview structure', () => {
+        it('billing menu item has has-treeview class', () => {
+            const wrapper = mount(MainMenu, mountOptions);
+            // Find li elements that have has-treeview class
+            const treeviewItems = wrapper.findAll('li.has-treeview');
+            expect(treeviewItems.length).toBeGreaterThanOrEqual(2); // billing and settings
+        });
+
+        it('renders billing submenu with nav-treeview class', () => {
+            const wrapper = mount(MainMenu, mountOptions);
+            const subMenus = wrapper.findAll('ul.nav-treeview');
+            expect(subMenus.length).toBeGreaterThanOrEqual(2);
+        });
+
+        it('billing submenu contains Cart, View Invoices, Credit Cards, Pre-Paid Funds', () => {
+            const wrapper = mount(MainMenu, mountOptions);
+            const subMenus = wrapper.findAll('ul.nav-treeview');
+            const billingSubmenu = subMenus.find((sm) => sm.text().includes('Cart'));
+            expect(billingSubmenu).toBeDefined();
+            expect(billingSubmenu!.text()).toContain('View Invoices');
+            expect(billingSubmenu!.text()).toContain('Credit Cards');
+            expect(billingSubmenu!.text()).toContain('Pre-Paid Funds');
+        });
+    });
 });
