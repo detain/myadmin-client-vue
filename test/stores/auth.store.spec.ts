@@ -301,6 +301,46 @@ describe('auth.store', () => {
             expect(localStorage.getItem('sessionId')).toBe('sudo-session-123');
             expect(store.user.account_id).toBe(5);
         });
+
+        it('initializes user to empty object when user is falsy', async () => {
+            const store = useAuthStore();
+            // Set user to a falsy value to trigger the !this.user branch (line 89-90)
+            store.$patch({ user: null as any });
+            vi.mocked(fetchWrapper.get).mockResolvedValue({
+                data: {
+                    account_id: 7,
+                    account_lid: 'sudo@test.com',
+                    name: 'Sudo User',
+                },
+                gravatar: 'https://gravatar.com/sudo',
+                custid: 7,
+                ima: 'client',
+            });
+            await store.sudo('sudo-session-456');
+            await new Promise((r) => setTimeout(r, 50));
+            expect(store.sessionId).toBe('sudo-session-456');
+            expect(store.user).toBeTruthy();
+            expect(store.user.account_id).toBe(7);
+        });
+
+        it('handles sudo when user has no properties', async () => {
+            const store = useAuthStore();
+            vi.mocked(fetchWrapper.get).mockResolvedValue({
+                data: {
+                    account_id: 8,
+                    account_lid: 'sudo2@test.com',
+                    name: 'Sudo User 2',
+                },
+                gravatar: 'https://gravatar.com/sudo2',
+                custid: 8,
+                ima: 'client',
+            });
+            // user starts as {} (truthy), sudo should still set sessionId on it
+            await store.sudo('sudo-session-789');
+            await new Promise((r) => setTimeout(r, 50));
+            expect(store.sessionId).toBe('sudo-session-789');
+            expect(store.user.sessionId).toBe('sudo-session-789');
+        });
     });
 
     describe('load() error handling', () => {

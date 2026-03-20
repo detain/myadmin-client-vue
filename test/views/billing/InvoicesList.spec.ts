@@ -156,4 +156,107 @@ describe('InvoicesList.vue', () => {
         const images = wrapper.findAll('img');
         expect(images.length).toBeGreaterThan(0);
     });
+
+    describe('year filtering', () => {
+        it('filters rows by selected year', async () => {
+            const wrapper = mount(InvoicesList, mountOptions);
+            const yearSelects = wrapper.findAll('select');
+            // Year select is the second select
+            const yearSelect = yearSelects[1];
+            await yearSelect.setValue('2024');
+            await flushPromises();
+            // Should only show 2024 rows
+            expect(wrapper.text()).toContain('Jun 15, 2024');
+            expect(wrapper.text()).not.toContain('Jan 10, 2023');
+        });
+    });
+
+    describe('month filtering', () => {
+        it('filters rows by selected month', async () => {
+            const wrapper = mount(InvoicesList, mountOptions);
+            const monthSelect = wrapper.findAll('select')[0];
+            await monthSelect.setValue('6');
+            await flushPromises();
+            expect(wrapper.text()).toContain('Jun 15, 2024');
+            expect(wrapper.text()).not.toContain('Jan 10, 2023');
+        });
+    });
+
+    describe('search text filtering', () => {
+        it('filters rows by search text matching description', async () => {
+            const wrapper = mount(InvoicesList, mountOptions);
+            const searchInput = wrapper.find('input[type="text"]');
+            await searchInput.setValue('Domain');
+            await flushPromises();
+            expect(wrapper.text()).toContain('Domain renewal');
+            expect(wrapper.text()).not.toContain('Monthly VPS');
+        });
+
+        it('shows no rows when search does not match', async () => {
+            const wrapper = mount(InvoicesList, mountOptions);
+            const searchInput = wrapper.find('input[type="text"]');
+            await searchInput.setValue('NONEXISTENT');
+            await flushPromises();
+            expect(wrapper.text()).not.toContain('Monthly VPS');
+            expect(wrapper.text()).not.toContain('Domain renewal');
+        });
+    });
+
+    describe('invoice detail view', () => {
+        it('renders back button when viewing an invoice by id', async () => {
+            const { useRoute } = await import('vue-router');
+            vi.mocked(useRoute).mockReturnValue({
+                params: { id: '100' },
+                query: {},
+            } as any);
+
+            const wrapper = mount(InvoicesList, mountOptions);
+            await flushPromises();
+            expect(wrapper.text()).toContain('Back');
+        });
+
+        it('renders invoice detail back button', async () => {
+            const { useRoute } = await import('vue-router');
+            vi.mocked(useRoute).mockReturnValue({
+                params: { id: '100' },
+                query: {},
+            } as any);
+
+            const wrapper = mount(InvoicesList, mountOptions);
+            await flushPromises();
+            // The back button should be present in detail view
+            const backLink = wrapper.find('.card-tools');
+            expect(backLink.exists()).toBe(true);
+            expect(wrapper.text()).toContain('Back');
+        });
+    });
+
+    describe('pagination controls', () => {
+        beforeEach(async () => {
+            // Ensure route has no id param so list mode is rendered
+            const { useRoute } = await import('vue-router');
+            vi.mocked(useRoute).mockReturnValue({
+                params: {},
+                query: {},
+            } as any);
+        });
+
+        it('disables prev button on first page', () => {
+            const wrapper = mount(InvoicesList, mountOptions);
+            const buttons = wrapper.findAll('button');
+            const prevBtn = buttons.find((b) => b.text().includes('Prev'));
+            expect(prevBtn).toBeDefined();
+            expect(prevBtn!.attributes('disabled')).toBeDefined();
+        });
+
+        it('changes page size resets current page', async () => {
+            const wrapper = mount(InvoicesList, mountOptions);
+            const selects = wrapper.findAll('select');
+            // Page size select is the 3rd select (month, year, page size)
+            const pageSizeSelect = selects[2];
+            await pageSizeSelect.setValue('10');
+            await flushPromises();
+            expect(wrapper.text()).toContain('Page 1');
+        });
+    });
 });

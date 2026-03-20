@@ -173,3 +173,36 @@ describe('fetchWrapper', () => {
         expect(callArgs.body).toBeUndefined();
     });
 });
+
+describe('fetchWrapper authHeader apiKey branch', () => {
+    it('sends X-API-KEY header when apiKey is set and sessionId is not', async () => {
+        const { useAuthStore } = await import('@/stores/auth.store');
+        vi.mocked(useAuthStore).mockReturnValue({
+            sessionId: null,
+            apiKey: 'my-api-key-123',
+            user: {},
+            logout: vi.fn(),
+        } as any);
+
+        global.fetch = mockFetchResponse({ success: true });
+
+        await fetchWrapper.get('https://example.com/apiv2/test');
+
+        const callArgs = (global.fetch as any).mock.calls[0][1];
+        expect(callArgs.headers['X-API-KEY']).toBe('my-api-key-123');
+        expect(callArgs.headers.sessionid).toBeUndefined();
+    });
+});
+
+describe('fetchWrapper non-JSON response in getNoLogout', () => {
+    it('returns null for non-JSON successful response via getNoLogout', async () => {
+        global.fetch = mockFetchResponse(null, { contentType: 'text/plain' });
+        const result = await fetchWrapper.getNoLogout('https://example.com/apiv2/test');
+        expect(result).toBeNull();
+    });
+
+    it('returns null for non-JSON error response via getNoLogout', async () => {
+        global.fetch = mockFetchResponse(null, { ok: false, status: 500, contentType: 'text/plain' });
+        await expect(fetchWrapper.getNoLogout('https://example.com/apiv2/test')).rejects.toBeNull();
+    });
+});

@@ -165,6 +165,37 @@ describe('vps.store', () => {
         });
     });
 
+    describe('register()', () => {
+        it('posts registration data', async () => {
+            vi.mocked(fetchWrapper.post).mockResolvedValue({});
+
+            const store = useVpsStore();
+            await store.register({ email: 'new@example.com', password: 'pass123' });
+
+            expect(fetchWrapper.post).toHaveBeenCalledWith(
+                expect.stringContaining('/register'),
+                { email: 'new@example.com', password: 'pass123' }
+            );
+        });
+    });
+
+    describe('getById() error handling', () => {
+        it('handles API failure gracefully', async () => {
+            const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+            vi.mocked(fetchWrapper.get).mockRejectedValue(new Error('API down'));
+
+            const store = useVpsStore();
+            await store.getById(999);
+
+            // Verify console.log was called (may have debug prefix args)
+            expect(consoleSpy).toHaveBeenCalled();
+            const calls = consoleSpy.mock.calls;
+            const hasApiFailedCall = calls.some((args) => args.some((a) => a === 'api failed'));
+            expect(hasApiFailedCall).toBe(true);
+            consoleSpy.mockRestore();
+        });
+    });
+
     describe('delete()', () => {
         it('removes VPS from list after deletion', async () => {
             vi.mocked(fetchWrapper.delete).mockResolvedValue({});

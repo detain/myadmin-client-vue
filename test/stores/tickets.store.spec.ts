@@ -258,4 +258,37 @@ describe('tickets.store', () => {
             expect(fetchWrapper.get).not.toHaveBeenCalled();
         });
     });
+
+    describe('searchTickets()', () => {
+        it('posts search keyword and returns results', async () => {
+            const mockResults = [
+                { ticketid: '10', subject: 'Test search result' },
+                { ticketid: '11', subject: 'Another result' },
+            ];
+            vi.mocked(fetchWrapper.post).mockResolvedValue(mockResults);
+
+            const store = useTicketsStore();
+            const results = await store.searchTickets('test');
+
+            expect(fetchWrapper.post).toHaveBeenCalledWith(
+                expect.stringContaining('/tickets'),
+                { search: 'test' }
+            );
+            expect(results).toEqual(mockResults);
+        });
+
+        it('returns empty array on search failure', async () => {
+            const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+            vi.mocked(fetchWrapper.post).mockRejectedValue(new Error('Search failed'));
+
+            const store = useTicketsStore();
+            const results = await store.searchTickets('failing-search');
+
+            expect(results).toEqual([]);
+            expect(consoleSpy).toHaveBeenCalled();
+            const hasSearchFailedCall = consoleSpy.mock.calls.some((args) => args.some((a) => a === 'Search failed'));
+            expect(hasSearchFailedCall).toBe(true);
+            consoleSpy.mockRestore();
+        });
+    });
 });
