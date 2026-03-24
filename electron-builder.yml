@@ -12,6 +12,10 @@ files:
     - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,CHANGELOG.md,README.md}'
     - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
     - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+    - '!node_modules/electron'
+    - '!node_modules/electron/**/*'
+    - '!node_modules/electron-builder'
+    - '!node_modules/electron-builder/**/*'
 
 asarUnpack:
     - resources/**
@@ -71,4 +75,4 @@ publish:
     url: https://example.com/auto-updates
 
 electronDownload:
-    mirror: https://npmmirror.com/mirrors/electron/
+    mirror: https://github.com/electron/electron/releases/download/v

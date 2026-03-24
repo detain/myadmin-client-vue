@@ -11,6 +11,7 @@ export default defineConfig({
     main: {
         build: {
             rolldownOptions: {
+                external: ['electron'],
                 input: {
                     index: resolve(__dirname, 'electron/main/index.ts'),
                 },
@@ -20,6 +21,7 @@ export default defineConfig({
     preload: {
         build: {
             rolldownOptions: {
+                external: ['electron'],
                 input: {
                     index: resolve(__dirname, 'electron/preload/index.ts'),
                 },

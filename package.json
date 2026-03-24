@@ -40,7 +40,7 @@
     "dependencies": {
         "@electron-toolkit/preload": "*",
         "@electron-toolkit/utils": "*",
-        "electron-updater": "^4.0.0"
+        "electron-updater": ">=6.8.3"
     },
     "devDependencies": {
         "@commitlint/cli": "*",
@@ -168,7 +168,6 @@
         "yup": "*"
     },
     "suggest": {
-        "vite-plugin-pwa": "*",
         "@tanstack/vue-query": "*",
         "@vitejs/plugin-legacy": "*",
         "vite-plugin-vue-devtools": "*",
