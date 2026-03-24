@@ -577,6 +577,11 @@ function selectPaymentMethod(method: string) {
     });
 }
 
+function paymentBtnClass(methodKey: string): string {
+    const isSelected = paymentMethod.value === methodKey;
+    return `btn btn-sm mx-1 payment-method-btn ${isSelected ? 'btn-outline-custom' : 'btn-custom'}`;
+}
+
 function checkStatus(status: string, field: 'invoices_module' | 'days_old' | 'service_status' | 'prepay_invoice', value: string | number, check: Operator = '==', toggleOther = false) {
     const isActive = toggleStatus.value[status] ?? false;
     const operatorFn = operators[check];
@@ -1006,11 +1011,11 @@ pageInit();
                                 <tr>
                                     <td>{{ t('billing.cart.filter') }}</td>
                                     <td colspan="7">
-                                        <button type="button" class="btn bg-teal btn-sm" @click="checkAll">{{ t('billing.cart.all') }}</button>
-                                        <button type="button" class="btn bg-teal btn-sm" @click="uncheckAll">{{ t('billing.cart.none') }}</button>
-                                        <button type="button" class="btn bg-teal btn-sm" @click="checkRecent">{{ t('billing.cart.pastMonth') }}</button>
-                                        <button type="button" class="btn bg-teal btn-sm" @click="checkActive">{{ t('billing.cart.active') }}</button>
-                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal" @click="checkClass(String(module))">
+                                        <button type="button" class="btn bg-teal btn-sm mr-2 mb-1" @click="checkAll">{{ t('billing.cart.all') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm mr-2 mb-1" @click="uncheckAll">{{ t('billing.cart.none') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm mr-2 mb-1" @click="checkRecent">{{ t('billing.cart.pastMonth') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm mr-2 mb-1" @click="checkActive">{{ t('billing.cart.active') }}</button>
+                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal mr-2 mb-1" @click="checkClass(String(module))">
                                             {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
                                         </button>
                                     </td>
@@ -1027,15 +1032,15 @@ pageInit();
                                 <h5 class="text-bold text-md text-capitalize">{{ t('billing.cart.howToPay') }}</h5>
                                 <span v-show="showMethods" id="payments-section">
                                     <template v-for="(methodData, methodId) in filteredPaymentMethods" :key="methodId">
-                                        <a v-if="String(methodId) === 'cc' || methodData.text === 'Select Credit Card' || methodData.text === 'Credit Card'" :class="methodData.link_class" :style="methodData.link_style" @click.prevent="selectPaymentMethod('cc')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                        <a v-if="String(methodId) === 'cc' || methodData.text === 'Select Credit Card' || methodData.text === 'Credit Card'" :class="paymentBtnClass('cc')" :style="methodData.link_style" @click.prevent="selectPaymentMethod('cc')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
                                         <template v-else-if="methodData.text == 'PayPal'">
-                                            <a :class="methodData.link_class" :style="methodData.link_style" @click.prevent="selectPaymentMethod('paypal')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
-                                            <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">
+                                            <a :class="paymentBtnClass('paypal')" :style="methodData.link_style" @click.prevent="selectPaymentMethod('paypal')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                            <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" class="btn btn-custom btn-sm mx-1 payment-method-btn" :style="methodData.link_style">
                                                 <div style="float: right">{{ methodData.text }}<br />(old)</div>
                                                 <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" />
                                             </router-link>
                                         </template>
-                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="methodData.link_class" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
+                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="paymentBtnClass(String(methodId))" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
                                     </template>
                                     <router-link v-if="showPrepay" :to="'/pay/prepay/' + invoices.join(',')" class="btn btn-custom btn-sm mx-1">
                                         PrePay ({{ formattedCost(prepayAvailable) }})
@@ -1546,6 +1551,18 @@ pageInit();
 </template>
 
 <style scoped>
+.payment-method-btn {
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    font-weight: 800 !important;
+    margin-right: 0.75rem !important;
+    margin-bottom: 0.5rem;
+}
+
 .cart-sidebar {
     position: fixed;
     top: 30%;
