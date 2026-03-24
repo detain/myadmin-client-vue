@@ -62,12 +62,12 @@ export default defineConfig({
             cache: true
         }),
         splitVendorChunkPlugin(),
-        VitePWA({
+        /* VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
                 enabled: true,
             },
-        }),
+        }), */
         legacy({ targets: ["defaults", "not IE 11"] }),  */
         // Dev-only plugins: inspector, inspect, turbo-console
         ...(!isProd ? [Inspect(), Inspector(), TurboConsole()] : []),
