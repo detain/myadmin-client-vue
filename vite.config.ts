@@ -44,9 +44,6 @@ export default defineConfig({
         // }),
         // dts generates .d.ts type declarations - only needed for library development
         ...(!isProd ? [dts({ insertTypesEntry: true })] : []),
-        /*
-        // https://github.com/feat-agency/vite-plugin-webfont-dl#options
-        webfontDownload(),
         checker({
             vueTsc: true,
             typescript: false,
@@ -62,13 +59,14 @@ export default defineConfig({
             cache: true
         }),
         splitVendorChunkPlugin(),
-        /* VitePWA({
+        /*
+        VitePWA({
             registerType: 'autoUpdate',
             devOptions: {
                 enabled: true,
             },
         }), */
-        legacy({ targets: ["defaults", "not IE 11"] }),  */
+        legacy({ targets: ["defaults", "not IE 11"] }),
         // Dev-only plugins: inspector, inspect, turbo-console
         ...(!isProd ? [Inspect(), Inspector(), TurboConsole()] : []),
     ],
