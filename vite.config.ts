@@ -7,13 +7,12 @@ import { dirname, resolve } from 'node:path';
 import Inspect from 'vite-plugin-inspect';
 // VueI18nPlugin removed - no <i18n> SFC blocks are used, locales are lazy-loaded via dynamic import()
 // import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
-/* import AutoImport from "unplugin-auto-import/vite";
-import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
 import * as path from 'path';
 import fs from 'fs';
-import legacy from '@vitejs/plugin-legacy'
-import vueDevTools from 'vite-plugin-vue-devtools'; */
+/* 
+import vueDevTools from 'vite-plugin-vue-devtools'; 
+*/
 import Inspector from 'vite-plugin-vue-inspector';
 import TurboConsole from 'unplugin-turbo-console/vite';
 
@@ -43,25 +42,10 @@ export default defineConfig({
         // }),
         // dts generates .d.ts type declarations - only needed for library development
         ...(!isProd ? [dts({ insertTypesEntry: true })] : []),
-        /*
-        // https://github.com/feat-agency/vite-plugin-webfont-dl#options
-        webfontDownload(),
         checker({
             vueTsc: true,
             typescript: false,
         }),
-        i18nResources({
-            path: resolve(__dirname, "src/locales"),
-        }),
-        AutoImport({
-            imports: ["vue", "@vueuse/core"],
-            resolvers: [],
-            dirs: ["./composables/" + "**", "./views/" + "**"],
-            vueTemplate: true,
-            cache: true
-        }),
-        splitVendorChunkPlugin(),
-        legacy({ targets: ["defaults", "not IE 11"] }), */
         // Dev-only plugins: inspector, inspect, turbo-console
         ...(!isProd ? [Inspect(), Inspector(), TurboConsole()] : []),
     ],
