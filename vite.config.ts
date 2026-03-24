@@ -5,7 +5,8 @@ import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import Inspect from 'vite-plugin-inspect';
-import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
+// VueI18nPlugin removed - no <i18n> SFC blocks are used, locales are lazy-loaded via dynamic import()
+// import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 /* import AutoImport from "unplugin-auto-import/vite";
 import i18nResources from "vite-plugin-i18n-resources"
 import checker from 'vite-plugin-checker';
@@ -15,6 +16,8 @@ import legacy from '@vitejs/plugin-legacy'
 import vueDevTools from 'vite-plugin-vue-devtools'; */
 import Inspector from 'vite-plugin-vue-inspector';
 import TurboConsole from 'unplugin-turbo-console/vite';
+
+const isProd = process.env.NODE_ENV === 'production';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
@@ -34,12 +37,12 @@ export default defineConfig({
                 defineModel: true,
             },
         }),
-        VueI18nPlugin({
-            include: [resolve(dirname(fileURLToPath(import.meta.url)), './src/locales/**')],
-        }),
-        dts({
-            insertTypesEntry: true,
-        }),
+        // VueI18nPlugin - no <i18n> SFC blocks are used, locales are lazy-loaded via dynamic import()
+        // VueI18nPlugin({
+        //     include: [resolve(dirname(fileURLToPath(import.meta.url)), './src/locales/**')],
+        // }),
+        // dts generates .d.ts type declarations - only needed for library development
+        ...(!isProd ? [dts({ insertTypesEntry: true })] : []),
         /*
         // https://github.com/feat-agency/vite-plugin-webfont-dl#options
         webfontDownload(),
@@ -47,7 +50,6 @@ export default defineConfig({
             vueTsc: true,
             typescript: false,
         }),
-        TurboConsole(),
         i18nResources({
             path: resolve(__dirname, "src/locales"),
         }),
@@ -60,10 +62,8 @@ export default defineConfig({
         }),
         splitVendorChunkPlugin(),
         legacy({ targets: ["defaults", "not IE 11"] }), */
-        Inspect(),
-        Inspector(),
-        //vueDevTools(),
-        TurboConsole(),
+        // Dev-only plugins: inspector, inspect, turbo-console
+        ...(!isProd ? [Inspect(), Inspector(), TurboConsole()] : []),
     ],
     optimizeDeps: {
         include: ['jquery', 'select2'],
