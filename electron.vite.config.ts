@@ -39,26 +39,6 @@ export default defineConfig({
                 },
             }),
             ...(!isProd ? [dts({ insertTypesEntry: true })] : []),
-            /*
-            // https://github.com/feat-agency/vite-plugin-webfont-dl#options
-            webfontDownload(),
-            checker({
-                vueTsc: true,
-                typescript: false,
-            }),
-            TurboConsole(),
-            i18nResources({
-                path: resolve(__dirname, "src/locales"),
-            }),
-            AutoImport({
-                imports: ["vue", "@vueuse/core"],
-                resolvers: [],
-                dirs: ["./composables/" + "**", "./views/" + "**"],
-                vueTemplate: true,
-                cache: true
-            }),
-            splitVendorChunkPlugin(),
-            legacy({ targets: ["defaults", "not IE 11"] }),  */
             // Dev-only plugins: inspector, inspect, turbo-console
             ...(!isProd ? [Inspect(), Inspector(), TurboConsole()] : []),
         ],
