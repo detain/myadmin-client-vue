@@ -85,13 +85,13 @@ export default {
                 <hr />
                 <div v-if="data['2fa_google_enabled']">
                     <p class="text-success mt-4 text-center">
-                        <strong><i class="far fa-check-square" style=""></i>&nbsp;{{ t('common.account.twoFactorEnabled') }}</strong>
+                        <strong><i class="fas fa-check-square" style=""></i>&nbsp;{{ t('common.account.twoFactorEnabled') }}</strong>
                     </p>
                 </div>
                 <div v-else id="2fa_google" class="row">
                     <blockquote class="mx-0 mb-2 mt-0 px-3 py-2" style="background: lightcyan">
                         <p>
-                            Install and Register the <a target="_blank" class="link" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"><i class="far fa-cloud-download-alt"></i> {{ t('common.account.googleAuthenticator') }}</a> by entering the code below or scanning the QR image
+                            Install and Register the <a target="_blank" class="link" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"><i class="fas fa-cloud-download-alt"></i> {{ t('common.account.googleAuthenticator') }}</a> by entering the code below or scanning the QR image
                         </p>
                     </blockquote>
                     <div class="col-md-8 mt-3">

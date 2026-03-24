@@ -248,7 +248,7 @@ loadDns();
                         <td><input id="addTtl" v-model="ttl" type="text" class="form-control form-control-sm" placeholder="86400" size="3" data-regex="^[0-9]*$" /></td>
                         <td colspan="3" class="text-center">
                             <button class="btn btn-success btn-sm" @click.prevent="addDnsRecord">&nbsp;Add&nbsp;</button>
-                            <button class="btn btn-danger btn-xs printer-hidden" title="Cancel Add" @click.prevent="cancelAddRecord"><i class="far fa-fw fa-times"></i></button>
+                            <button class="btn btn-danger btn-xs printer-hidden" title="Cancel Add" @click.prevent="cancelAddRecord"><i class="fas fa-fw fa-times"></i></button>
                         </td>
                     </tr>
                     <tr v-for="(row, rowIndex) in data" :key="rowIndex">
@@ -269,8 +269,8 @@ loadDns();
                             <td><input v-model="row.prio" type="text" class="form-control form-control-sm" size="1" data-regex="^[0-9]+$" /></td>
                             <td><input v-model="row.ttl" type="text" class="form-control form-control-sm" size="3" data-regex="^[0-9]+$" /></td>
                             <td>
-                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record" @click.prevent="editDnsRecord"><i class="far fa-fw fa-check" :data-id="row.id"></i></a>
-                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit" @click.prevent="cancelEditRecord"><i class="far fa-fw fa-times" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Update Record" @click.prevent="editDnsRecord"><i class="fas fa-fw fa-check" :data-id="row.id"></i></a>
+                                <a href="#" :data-id="row.id" class="btn btn-primary btn-xs printer-hidden" title="Cancel Edit" @click.prevent="cancelEditRecord"><i class="fas fa-fw fa-times" :data-id="row.id"></i></a>
                             </td>
                         </template>
                         <template v-else>
