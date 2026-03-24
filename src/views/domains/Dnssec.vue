@@ -174,7 +174,7 @@ loadDnsSec();
                     <h3 class="card-title mt-1 ml-2"><i class="fas fa-lock"></i>&nbsp;{{ t('domains.dnssec.title') }}</h3>
                     <div class="card-tools m-0">
                         <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><i class="fas fa-plus-circle"></i>&nbsp;{{ t('domains.dnssec.addNewRecord') }}</button>
-                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><i class="far fa-times-circle"></i>&nbsp;{{ t('domains.dnssec.removeAllRecords') }}</button>
+                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><i class="fas fa-times-circle"></i>&nbsp;{{ t('domains.dnssec.removeAllRecords') }}</button>
                     </div>
                 </div>
                 <div class="card-body row justify-content-center">
