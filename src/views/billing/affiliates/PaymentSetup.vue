@@ -66,7 +66,7 @@ accountStore.loadOnce();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title" style="position: relative; top: 5px"><i class="far fa-money-bill"></i>&nbsp;{{ t('affiliate.paymentSetup.choosePayment') }}</h3>
+                        <h3 class="card-title" style="position: relative; top: 5px"><i class="fas fa-money-bill"></i>&nbsp;{{ t('affiliate.paymentSetup.choosePayment') }}</h3>
                         <div class="card-tools float-right">
                             <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>

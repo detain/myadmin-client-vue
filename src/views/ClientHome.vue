@@ -159,7 +159,7 @@ accountStore.load();
                             <i class="fas fa-file-invoice"></i>
                         </div>
                         <div class="small-box-footer">
-                            <router-link to="/cart?invoice_days=-1" class="text-bold text-white" :title="t('dashboard.invoices.payTotalTooltip')"> <i class="far fa-money-bill text-sm"></i>&nbsp;{{ t('common.buttons.payNow') }} </router-link>
+                            <router-link to="/cart?invoice_days=-1" class="text-bold text-white" :title="t('dashboard.invoices.payTotalTooltip')"> <i class="fas fa-money-bill text-sm"></i>&nbsp;{{ t('common.buttons.payNow') }} </router-link>
                         </div>
                     </div>
                 </div>

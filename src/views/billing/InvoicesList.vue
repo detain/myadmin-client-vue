@@ -186,7 +186,7 @@ function exportExcel() {}
 <template>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><i class="far fa-money-bill"></i>{{ t('billing.invoices.invoicesList') }}</h3>
+            <h3 class="card-title"><i class="fas fa-money-bill"></i>{{ t('billing.invoices.invoicesList') }}</h3>
             <div v-if="id" class="card-tools mr-4 mt-2">
                 <router-link to="/invoices" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('billing.invoices.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
             </div>
