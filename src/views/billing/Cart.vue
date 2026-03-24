@@ -882,7 +882,7 @@ pageInit();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><i class="far fa-money-bill"></i>&nbsp;{{ t('billing.cart.payBalance') }}</h3>
+                        <h3 class="card-title float-left py-2"><i class="fas fa-money-bill"></i>&nbsp;{{ t('billing.cart.payBalance') }}</h3>
                     </div>
                 </div>
                 <div class="card-body">
