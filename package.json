@@ -38,16 +38,16 @@
         "build:linux": "npm run build && electron-builder --linux"
     },
     "dependencies": {
-        "@electron-toolkit/preload": "^3.0.2",
-        "@electron-toolkit/utils": "^4.0.0",
-        "electron-updater": "^6.3.9"
+        "@electron-toolkit/preload": "*",
+        "@electron-toolkit/utils": "*",
+        "electron-updater": "^4.0.0"
     },
     "devDependencies": {
         "@commitlint/cli": "*",
         "@commitlint/config-conventional": "*",
-        "@electron-toolkit/eslint-config-prettier": "3.0.0",
-        "@electron-toolkit/eslint-config-ts": "^3.1.0",
-        "@electron-toolkit/tsconfig": "^2.0.0",
+        "@electron-toolkit/eslint-config-prettier": "*",
+        "@electron-toolkit/eslint-config-ts": "*",
+        "@electron-toolkit/tsconfig": "*",
         "@eslint/js": "^9.39.2",
         "@fortawesome/fontawesome": "*",
         "@fortawesome/fontawesome-free": "^5.15",
@@ -103,9 +103,9 @@
         "cross-env": "*",
         "date-fns": "^4.1.0",
         "dotenv": "*",
-        "electron": "^39.2.6",
-        "electron-builder": "^26.0.12",
-        "electron-vite": "^5.0.0",
+        "electron": "*",
+        "electron-builder": "*",
+        "electron-vite": "*",
         "eslint": "^9.39.1",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-vue": "^10.6.2",
