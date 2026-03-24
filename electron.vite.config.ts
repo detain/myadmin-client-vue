@@ -7,6 +7,8 @@ import Inspect from 'vite-plugin-inspect';
 import Inspector from 'vite-plugin-vue-inspector';
 import TurboConsole from 'unplugin-turbo-console/vite';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 export default defineConfig({
     main: {
         build: {
@@ -36,9 +38,7 @@ export default defineConfig({
                     defineModel: true,
                 },
             }),
-            dts({
-                insertTypesEntry: true,
-            }),
+            ...(!isProd ? [dts({ insertTypesEntry: true })] : []),
             /*
             // https://github.com/feat-agency/vite-plugin-webfont-dl#options
             webfontDownload(),
@@ -58,11 +58,9 @@ export default defineConfig({
                 cache: true
             }),
             splitVendorChunkPlugin(),
-            legacy({ targets: ["defaults", "not IE 11"] }), */
-            Inspect(),
-            Inspector(),
-            //vueDevTools(),
-            TurboConsole(),
+            legacy({ targets: ["defaults", "not IE 11"] }),  */
+            // Dev-only plugins: inspector, inspect, turbo-console
+            ...(!isProd ? [Inspect(), Inspector(), TurboConsole()] : []),
         ],
         optimizeDeps: {
             include: ['jquery', 'select2'],
@@ -84,7 +82,7 @@ export default defineConfig({
                     },
                     manualChunks(id) {
                         if (id.includes('node_modules')) {
-                            if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router')) {
+                            if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router' || id.includes('vue-i18n'))) {
                                 return 'framework';
                             }
                             if (id.includes('admin-lte') || id.includes('jquery') || id.includes('bootstrap') || id.includes('select2')) {
