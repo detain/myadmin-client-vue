@@ -5,7 +5,7 @@
     "author": "detain",
     "homepage": "https://interserver.net",
     "license": "LGPL-2.1-only",
-    "version": "0.99.1",
+    "version": "0.99.2",
     "private": true,
     "keywords": [
         "rolldown",
