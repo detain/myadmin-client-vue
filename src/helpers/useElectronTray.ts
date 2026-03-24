@@ -1,6 +1,7 @@
-import { watch, onMounted, onBeforeUnmount } from 'vue';
+import { watch, onMounted, onBeforeUnmount, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useVpsStore } from '@/stores/vps.store';
+import { useAuthStore } from '@/stores/auth.store';
 import { storeToRefs } from 'pinia';
 
 function isElectron(): boolean {
@@ -12,9 +13,12 @@ export function useElectronTray(): void {
 
     const router = useRouter();
     const vpsStore = useVpsStore();
+    const authStore = useAuthStore();
     const { vpsList } = storeToRefs(vpsStore);
+    const loggedIn = computed(() => !!authStore.loggedIn);
 
     let cleanupNavigate: (() => void) | null = null;
+    let cleanupRefresh: (() => void) | null = null;
 
     function sendVpsListToMain(): void {
         const list = vpsList.value.map((vps) => ({
@@ -28,7 +32,27 @@ export function useElectronTray(): void {
         window.api.updateVpsList(list);
     }
 
+    async function fetchVpsList(): Promise<void> {
+        window.api.updateVpsLoadingState(true);
+        try {
+            await vpsStore.getAll();
+            sendVpsListToMain();
+        } catch {
+            // Fetch failed - loading state will be cleared by vps-list-update or next attempt
+            window.api.updateVpsLoadingState(false);
+        }
+    }
+
+    // Sync VPS list changes to main process
     watch(vpsList, sendVpsListToMain, { deep: true });
+
+    // Watch login state and notify main process
+    watch(loggedIn, async (isLoggedIn) => {
+        window.api.updateAuthStatus(isLoggedIn);
+        if (isLoggedIn) {
+            await fetchVpsList();
+        }
+    });
 
     onMounted(async () => {
         // Listen for tray navigation events
@@ -36,16 +60,22 @@ export function useElectronTray(): void {
             router.push(route);
         });
 
-        // Fetch VPS list and send to tray
-        try {
-            await vpsStore.getAll();
-            sendVpsListToMain();
-        } catch {
-            // User may not be logged in yet
+        // Listen for refresh request from tray menu
+        cleanupRefresh = window.api.onRefreshVpsList(() => {
+            fetchVpsList();
+        });
+
+        // Send initial auth status
+        window.api.updateAuthStatus(loggedIn.value);
+
+        // Fetch VPS list if already logged in
+        if (loggedIn.value) {
+            await fetchVpsList();
         }
     });
 
     onBeforeUnmount(() => {
         if (cleanupNavigate) cleanupNavigate();
+        if (cleanupRefresh) cleanupRefresh();
     });
 }

@@ -8,11 +8,28 @@ const api = {
         ipcRenderer.send('vps-list-update', vpsList);
     },
 
+    // Send auth status to main process
+    updateAuthStatus: (loggedIn: boolean): void => {
+        ipcRenderer.send('auth-status-change', loggedIn);
+    },
+
+    // Send VPS loading state to main process
+    updateVpsLoadingState: (loading: boolean): void => {
+        ipcRenderer.send('vps-loading-state', loading);
+    },
+
     // Navigation from tray menu
     onNavigate: (callback: (route: string) => void): (() => void) => {
         const handler = (_event: any, route: string): void => callback(route);
         ipcRenderer.on('navigate', handler);
         return () => ipcRenderer.removeListener('navigate', handler);
+    },
+
+    // Listen for refresh VPS list request from tray menu
+    onRefreshVpsList: (callback: () => void): (() => void) => {
+        const handler = (): void => callback();
+        ipcRenderer.on('refresh-vps-list', handler);
+        return () => ipcRenderer.removeListener('refresh-vps-list', handler);
     },
 
     // Auto-updater

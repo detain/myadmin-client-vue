@@ -17,6 +17,8 @@ let mainWindow: BrowserWindow | null = null;
 let tray: Tray | null = null;
 let vpsList: VpsEntry[] = [];
 let isQuitting = false;
+let isLoggedIn = false;
+let isLoadingVps = false;
 
 function createWindow(): void {
     const { workAreaSize } = screen.getPrimaryDisplay();
@@ -68,46 +70,7 @@ function createWindow(): void {
 }
 
 function buildTrayMenu(): Menu {
-    const vpsSubmenuItems: MenuItemConstructorOptions[] = vpsList.length > 0
-        ? vpsList.map((vps) => ({
-            label: `${vps.vps_hostname || `VPS #${vps.vps_id}`} (${vps.vps_ip})`,
-            submenu: [
-                {
-                    label: 'View Info',
-                    click: (): void => {
-                        showWindowAndNavigate(`/vps/${vps.vps_id}`);
-                    },
-                },
-                {
-                    label: 'Open VNC',
-                    click: (): void => {
-                        showWindowAndNavigate(`/vps/${vps.vps_id}/view_desktop`);
-                    },
-                },
-                {
-                    label: 'Open SSH Connection',
-                    click: (): void => {
-                        const sshUrl = `ssh://root@${vps.vps_ip}`;
-                        shell.openExternal(sshUrl);
-                    },
-                },
-                {
-                    label: 'Reboot Server',
-                    click: (): void => {
-                        showWindowAndNavigate(`/vps/${vps.vps_id}/restart`);
-                    },
-                },
-                {
-                    label: 'Create Support Ticket',
-                    click: (): void => {
-                        showWindowAndNavigate('/tickets/new');
-                    },
-                },
-            ] as MenuItemConstructorOptions[],
-        }))
-        : [{ label: 'No active VPS', enabled: false }];
-
-    const contextMenu = Menu.buildFromTemplate([
+    const menuItems: MenuItemConstructorOptions[] = [
         {
             label: 'Show App',
             click: (): void => {
@@ -118,11 +81,76 @@ function buildTrayMenu(): Menu {
             },
         },
         { type: 'separator' },
-        {
-            label: 'VPS Servers',
-            submenu: vpsSubmenuItems,
-        },
-        { type: 'separator' },
+    ];
+
+    if (isLoggedIn) {
+        let vpsSubmenuItems: MenuItemConstructorOptions[];
+
+        if (isLoadingVps) {
+            vpsSubmenuItems = [{ label: 'Loading...', enabled: false }];
+        } else if (vpsList.length > 0) {
+            vpsSubmenuItems = vpsList.map((vps) => ({
+                label: `${vps.vps_hostname || `VPS #${vps.vps_id}`} (${vps.vps_ip})`,
+                submenu: [
+                    {
+                        label: 'View Info',
+                        click: (): void => {
+                            showWindowAndNavigate(`/vps/${vps.vps_id}`);
+                        },
+                    },
+                    {
+                        label: 'Open VNC',
+                        click: (): void => {
+                            showWindowAndNavigate(`/vps/${vps.vps_id}/view_desktop`);
+                        },
+                    },
+                    {
+                        label: 'Open SSH Connection',
+                        click: (): void => {
+                            const sshUrl = `ssh://root@${vps.vps_ip}`;
+                            shell.openExternal(sshUrl);
+                        },
+                    },
+                    {
+                        label: 'Reboot Server',
+                        click: (): void => {
+                            showWindowAndNavigate(`/vps/${vps.vps_id}/restart`);
+                        },
+                    },
+                    {
+                        label: 'Create Support Ticket',
+                        click: (): void => {
+                            showWindowAndNavigate('/tickets/new');
+                        },
+                    },
+                ] as MenuItemConstructorOptions[],
+            }));
+        } else {
+            vpsSubmenuItems = [{ label: 'No active VPS', enabled: false }];
+        }
+
+        vpsSubmenuItems.push(
+            { type: 'separator' },
+            {
+                label: 'Refresh',
+                click: (): void => {
+                    if (mainWindow) {
+                        mainWindow.webContents.send('refresh-vps-list');
+                    }
+                },
+            },
+        );
+
+        menuItems.push(
+            {
+                label: 'VPS Servers',
+                submenu: vpsSubmenuItems,
+            },
+            { type: 'separator' },
+        );
+    }
+
+    menuItems.push(
         {
             label: 'Check for Updates',
             click: (): void => {
@@ -137,9 +165,9 @@ function buildTrayMenu(): Menu {
                 app.quit();
             },
         },
-    ]);
+    );
 
-    return contextMenu;
+    return Menu.buildFromTemplate(menuItems);
 }
 
 function showWindowAndNavigate(route: string): void {
@@ -226,6 +254,23 @@ function setupIpcHandlers(): void {
     // Receive VPS list from renderer to build tray menu
     ipcMain.on('vps-list-update', (_event, list: VpsEntry[]) => {
         vpsList = list.filter((v) => v.vps_status === 'active');
+        isLoadingVps = false;
+        updateTrayMenu();
+    });
+
+    // Auth status from renderer
+    ipcMain.on('auth-status-change', (_event, loggedIn: boolean) => {
+        isLoggedIn = loggedIn;
+        if (!loggedIn) {
+            vpsList = [];
+            isLoadingVps = false;
+        }
+        updateTrayMenu();
+    });
+
+    // VPS loading state from renderer
+    ipcMain.on('vps-loading-state', (_event, loading: boolean) => {
+        isLoadingVps = loading;
         updateTrayMenu();
     });
 

@@ -2,7 +2,10 @@ import { ElectronAPI } from '@electron-toolkit/preload';
 
 interface AppApi {
     updateVpsList: (vpsList: any[]) => void;
+    updateAuthStatus: (loggedIn: boolean) => void;
+    updateVpsLoadingState: (loading: boolean) => void;
     onNavigate: (callback: (route: string) => void) => () => void;
+    onRefreshVpsList: (callback: () => void) => () => void;
     checkForUpdates: () => void;
     installUpdate: () => void;
     onUpdateStatus: (callback: (status: { status: string; info?: string; progress?: number }) => void) => () => void;
