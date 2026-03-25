@@ -293,6 +293,16 @@ a.blog-link:hover {
     min-height: 120px;
 }
 
+/* BS5: colored small-boxes need explicit white text */
+.small-box[class*="bg-"] {
+    color: #fff;
+}
+
+.small-box[class*="bg-"] a,
+.small-box[class*="bg-"] .small-box-footer {
+    color: rgba(255, 255, 255, 0.85);
+}
+
 .info-box {
     box-shadow: none;
 }
