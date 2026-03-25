@@ -283,6 +283,11 @@ a.blog-link:hover {
     color: #4f5962;
 }
 
+/* Uniform height for small-box info cards on view service pages */
+.small-box .inner {
+    min-height: 120px;
+}
+
 .info-box {
     box-shadow: none;
 }
