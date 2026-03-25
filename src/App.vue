@@ -341,6 +341,10 @@ useDarkMode();
 }
 
 /* Sidebar user panel link color */
+.app-sidebar .user-panel {
+    border-bottom: 1px solid #4f5b62;
+}
+
 .app-sidebar .user-panel a {
     color: #c2c7d0;
     text-decoration: none;
