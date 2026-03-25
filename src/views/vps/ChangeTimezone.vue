@@ -105,7 +105,7 @@ try {
                             <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label text-end" for="os">{{ t('vps.changeTimezone.selectTimezone') }}</label>
                                 <div class="col-sm-9 input-group">
-                                    <select v-model="timezone" name="timezone" class="form-control select2">
+                                    <select v-model="timezone" name="timezone" class="form-select select2">
                                         <option v-for="(zone, index) in zones" :key="index" :value="zone">{{ zone }}</option>
                                     </select>
                                 </div>

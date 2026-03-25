@@ -934,7 +934,7 @@ try {
                             <input id="period" type="hidden" name="period" :value="period" />
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.vpsDetails') }}</label>
-                                <div class="col-sm-9 form-control bg-gradient-gray b-radius text-center">
+                                <div class="col-sm-9 form-control bg-secondary bg-gradient text-white b-radius text-center">
                                     <div class="d-inline pe-3">
                                         <span>{{ t('vps.order.storage') }} </span> <span id="storage" class="text-bold">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span>
                                     </div>
@@ -950,7 +950,7 @@ try {
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.platform') }} <span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select v-model="vpsPlatform" class="form-control select2">
+                                    <select v-model="vpsPlatform" class="form-select select2">
                                         <option v-for="(platformName, platformId, index) in platformNames" :key="index" :value="platformId">{{ platformName }}</option>
                                     </select>
                                     <small id="slicecost" class="form-text text-muted"></small>
@@ -959,7 +959,7 @@ try {
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.location') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
-                                    <select v-model="location" class="form-control select2">
+                                    <select v-model="location" class="form-select select2">
                                         <option v-for="(locationName, locationId, index) in locationNames" :key="index" :value="locationId">{{ locationName }}</option>
                                     </select>
                                 </div>
@@ -967,7 +967,7 @@ try {
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.slices') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select v-model="slices" class="form-control select2">
+                                    <select v-model="slices" class="form-select select2">
                                         <option v-for="slice in slicesRange" :key="slice" :value="slice">{{ slice }}</option>
                                     </select>
                                 </div>
@@ -975,7 +975,7 @@ try {
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.osDistribution') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select v-model="osDistro" class="form-control select2">
+                                    <select v-model="osDistro" class="form-select select2">
                                         <option v-for="(templateDistro, templateDistroId, index) in osTemplates[vpsPlatform]" :key="index" :value="templateDistroId">{{ osNames[templateDistroId] }}</option>
                                         <option v-if="vpsPlatform != 'hyperv'" disabled>{{ t('vps.order.windowsOnlyHyperV') }}</option>
                                     </select>
@@ -984,7 +984,7 @@ try {
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.osVersion') }}<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select v-model="osVersion" class="form-control select2">
+                                    <select v-model="osVersion" class="form-select select2">
                                         <option v-for="(templateVersion, templateName, index) in osVersionSelect" :key="index" :value="templateName">{{ templateVersion }}</option>
                                     </select>
                                 </div>

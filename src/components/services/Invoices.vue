@@ -499,7 +499,7 @@ loadInvoices();
                         </div>
                         <div class="col-md-2">
                             <label class="form-label">{{ t('common.labels.pageSize') }}</label>
-                            <select v-model.number="pageSize" class="form-control form-control-sm">
+                            <select v-model.number="pageSize" class="form-select form-select-sm">
                                 <option :value="10">10</option>
                                 <option :value="25">25</option>
                                 <option :value="50">50</option>

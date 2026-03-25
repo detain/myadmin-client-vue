@@ -88,7 +88,7 @@ function onSubmit() {
                                 <label class="col-sm-5 col-form-label" for="confirm">{{ t('common.confirm.areYouSureCancelQuestion') }}</label>
                                 <div class="col-sm-7" style="text-align: left">
                                     <div class="ui-select">
-                                        <select id="confirm" name="confirm" class="form-control">
+                                        <select id="confirm" name="confirm" class="form-select">
                                             <option value="no">{{ t('common.confirm.no') }}</option>
                                             <option value="yes">{{ t('common.confirm.yesCancelOrder', { tableName: settings?.TBLNAME }) }}</option>
                                         </select>

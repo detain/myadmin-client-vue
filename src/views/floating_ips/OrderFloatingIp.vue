@@ -188,7 +188,7 @@ try {
                                     <span class="text-danger"> *</span>
                                 </label>
                                 <div class="col-sm-9">
-                                    <select v-model="pkg" class="form-control form-control-sm select2 valid">
+                                    <select v-model="pkg" class="form-select form-select-sm select2 valid">
                                         <option v-for="serviceType in buyableServiceTypes" :key="serviceType.services_id" :value="serviceType.services_id">{{ serviceType.services_name }}</option>
                                     </select>
                                 </div>

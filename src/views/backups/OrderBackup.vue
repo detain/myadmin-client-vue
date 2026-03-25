@@ -191,7 +191,7 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Package&nbsp;<span class="text-danger">*</span></label>
                                 <div class="col-sm-10 input-group">
-                                    <select v-model="pkg" class="form-control form-control-sm select2">
+                                    <select v-model="pkg" class="form-select form-select-sm select2">
                                         <template v-for="(row, index) in serviceTypes">
                                             <option v-if="row.services_buyable == 1" :key="index" :value="index">{{ row.services_name }}</option>
                                         </template>
@@ -201,7 +201,7 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                             <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label">Billing Cycle&nbsp;<span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <select v-model="period" class="form-control form-control-sm select2" @change="updatePrice">
+                                    <select v-model="period" class="form-select form-select-sm select2" @change="updatePrice">
                                         <option v-for="row in periods" :key="row.value" :value="row.value">{{ row.label }}</option>
                                     </select>
                                 </div>

@@ -201,7 +201,7 @@ try {
                                 <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="vps_distro">{{ t('vps.reinstallOs.osDistribution') }}</label>
                                     <div class="col-sm-9 input-group">
-                                        <select id="vps_distro" v-model="osDistro" name="vps_distro" class="form-control form-control-sm select2">
+                                        <select id="vps_distro" v-model="osDistro" name="vps_distro" class="form-select form-select-sm select2">
                                             <option v-for="(distro, ky, index) in osDistroSelect" :key="index" :value="ky">{{ distro }}</option>
                                         </select>
                                     </div>
@@ -209,7 +209,7 @@ try {
                                 <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="template">{{ t('vps.reinstallOs.version') }}</label>
                                     <div class="col-sm-9 input-group">
-                                        <select id="template" v-model="osVersion" name="template" class="form-control form-control-sm select2">
+                                        <select id="template" v-model="osVersion" name="template" class="form-select form-select-sm select2">
                                             <option v-for="(template, ky, index) in osVersionSelect" :key="index" :value="ky">{{ template }}</option>
                                         </select>
                                     </div>

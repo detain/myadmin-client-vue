@@ -140,7 +140,7 @@ function timeAgo(input: string | number) {
             <div class="card mb-3">
                 <div class="card-header"><h3 class="card-title">{{ t('tickets.list.filterByAge') }}</h3></div>
                 <div class="card-body p-2">
-                    <select v-model="selectedPeriod" class="form-control form-control-sm">
+                    <select v-model="selectedPeriod" class="form-select form-select-sm">
                         <option value="30">{{ t('tickets.list.last30Days') }}</option>
                         <option value="90">{{ t('tickets.list.last90Days') }}</option>
                         <option value="365">{{ t('tickets.list.last1Year') }}</option>

@@ -397,7 +397,7 @@ onMounted(() => {
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right">
+                                    <select v-model="contFields.country" name="country" class="form-select" style="padding-right: 5px; vertical-align: middle; float: right">
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="form-label text-md">Country</label>
@@ -488,7 +488,7 @@ onMounted(() => {
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
+                                    <select v-model="contFields.country" name="country" class="form-select" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="form-label text-md">Country</label>

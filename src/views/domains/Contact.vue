@@ -98,7 +98,7 @@ loadContact();
                                     <input v-model="domainFields[String(fieldName)].value" type="text" :name="String(fieldName)" class="form-control form-control-sm" :tabindex="fieldIndex + 1" />
                                 </template>
                                 <template v-else-if="fieldData.input && fieldData.input[0] === 'select'">
-                                    <select v-model="domainFields[String(fieldName)].value" :name="String(fieldName)" class="form-control form-control-sm select2" :tabindex="fieldIndex + 1">
+                                    <select v-model="domainFields[String(fieldName)].value" :name="String(fieldName)" class="form-select form-select-sm select2" :tabindex="fieldIndex + 1">
                                         <option v-for="(displayName, val, index) in fieldData.input[1]" :key="index" :value="val">{{ displayName }}</option>
                                     </select>
                                 </template>

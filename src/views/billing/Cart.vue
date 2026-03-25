@@ -940,7 +940,7 @@ pageInit();
                             <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
                                 <div class="mb-3 row">
                                     <label for="invoice_days" class="col-md-4 col-form-label">{{ t('billing.cart.filter') }}</label>
-                                    <select id="invoice_days" v-model="invoiceDays" class="col-md-8 select2 form-control text-start" name="invoice_days" @change="submitForm">
+                                    <select id="invoice_days" v-model="invoiceDays" class="col-md-8 select2 form-select text-start" name="invoice_days" @change="submitForm">
                                         <option value="-1">{{ t('billing.cart.allDays') }}</option>
                                         <option value="30">{{ t('billing.cart.thirtyDays') }}</option>
                                         <option value="60">{{ t('billing.cart.sixtyDays') }}</option>
@@ -954,7 +954,7 @@ pageInit();
                             <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
                                 <div class="mb-3 row">
                                     <label for="currency_select" class="col-md-6 col-form-label">{{ t('billing.cart.currency') }}</label>
-                                    <select id="currency_select" v-model="currency" class="col-md-6 select2 form-control text-start" name="currency" @change="submitForm">
+                                    <select id="currency_select" v-model="currency" class="col-md-6 select2 form-select text-start" name="currency" @change="submitForm">
                                         <option v-for="(value, name, index) in currencyArr" :key="index" :value="value">{{ name }}</option>
                                     </select>
                                 </div>
@@ -1261,7 +1261,7 @@ pageInit();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
+                                    <select v-model="contFields.country" name="country" class="form-select" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="form-label text-md">Country</label>
@@ -1352,7 +1352,7 @@ pageInit();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right">
+                                    <select v-model="contFields.country" name="country" class="form-select" style="padding-right: 5px; vertical-align: middle; float: right">
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="form-label text-md">Country</label>
@@ -1443,7 +1443,7 @@ pageInit();
                         <div class="row justify-content-center">
                             <div class="col-6">
                                 <div class="input-group">
-                                    <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
+                                    <select v-model="contFields.country" name="country" class="form-select" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
                                     <label class="form-label text-md">Country</label>

@@ -191,7 +191,7 @@ loadLocales();
                                 <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="country">{{ t('account.contactInfo.country') }}</label>
                                     <div class="col-md-6">
-                                        <select id="country" v-model="data.country" name="country" class="form-control select2 form-control-sm">
+                                        <select id="country" v-model="data.country" name="country" class="form-select select2 form-select-sm">
                                             <option v-for="(country_name, country_code) in countries" :key="country_code" :value="country_code" :selected="data.country === country_code">
                                                 {{ country_name }}
                                             </option>
@@ -213,7 +213,7 @@ loadLocales();
                                 <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="locale">{{ t('account.contactInfo.language') }}</label>
                                     <div class="col-md-6">
-                                        <select id="locale" v-model="data.locale" name="locale" class="form-control select2 form-control-sm">
+                                        <select id="locale" v-model="data.locale" name="locale" class="form-select select2 form-select-sm">
                                             <option value="auto">{{ t('account.contactInfo.auto') }}</option>
                                             <option v-for="(localeData, code, index) in locales" :key="index" :value="code">{{ code }} - {{ localeData.name }} ({{ localeData.local_name }})</option>
                                         </select>
@@ -223,7 +223,7 @@ loadLocales();
                                 <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="currency">{{ t('account.contactInfo.currency') }}</label>
                                     <div class="col-md-6">
-                                        <select id="currency" v-model="data.currency" name="currency" class="form-control select2 form-control-sm">
+                                        <select id="currency" v-model="data.currency" name="currency" class="form-select select2 form-select-sm">
                                             <option v-for="(currency, index) in currencies" :key="index" :value="currency">{{ currency }}</option>
                                         </select>
                                     </div>
@@ -232,7 +232,7 @@ loadLocales();
                                 <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="timezone">{{ t('account.contactInfo.timeZone') }}</label>
                                     <div class="col-md-6">
-                                        <select id="timezone" v-model="data.timezone" name="timezone" class="form-control select2 form-control-sm">
+                                        <select id="timezone" v-model="data.timezone" name="timezone" class="form-select select2 form-select-sm">
                                             <option v-for="(zone, index) in timezones" :key="index" :value="zone">{{ zone }}</option>
                                         </select>
                                     </div>

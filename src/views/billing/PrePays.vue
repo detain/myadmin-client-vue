@@ -263,7 +263,7 @@ function submitNewPrepay() {
                         <div class="mb-3 row">
                             <label class="col-md-6 col-form-label"> {{ t('billing.prepays.selectModule') }} </label>
                             <div class="col-sm-6">
-                                <select v-model="newPrepay.module" class="form-control" @change="updateModuleOptions">
+                                <select v-model="newPrepay.module" class="form-select" @change="updateModuleOptions">
                                     <option v-for="(name, key) in modules" :key="key" :value="key">
                                         {{ name }}
                                     </option>

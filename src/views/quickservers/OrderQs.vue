@@ -187,7 +187,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">OS Distribution<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
-                                    <select v-model="osDistro" class="form-control select2">
+                                    <select v-model="osDistro" class="form-select select2">
                                         <option v-for="(templateData, templateDistro, index) in osTemplates" :key="index" :value="templateDistro">{{ templateDistro }}</option>
                                     </select>
                                 </div>
@@ -195,7 +195,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">OS Version<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
-                                    <select v-model="osVersion" class="form-control select2">
+                                    <select v-model="osVersion" class="form-select select2">
                                         <option v-for="([label, value], index) in osVersionSelect" :key="index" :value="value">
                                             {{ label }}
                                         </option>

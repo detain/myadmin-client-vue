@@ -161,7 +161,7 @@ const toggleFilter = () => {
         <div class="card-body">
             <!-- Page Size -->
             <div class="mb-2">
-                <select v-model="pageSize" class="form-control form-control-sm w-auto d-inline">
+                <select v-model="pageSize" class="form-select form-select-sm w-auto d-inline">
                     <option :value="50">50</option>
                     <option :value="100">100</option>
                     <option :value="200">200</option>

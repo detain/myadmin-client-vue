@@ -127,7 +127,7 @@ const submitForm = () => {
                                 <div class="mb-3 row">
                                     <label class="form-label col-md-6 mt-1 pe-3 text-end" for="site_busy_mig">If the site is live/busy site having high traffic, can we set a holding page during migration?</label>
                                     <div class="col-md-6 input-group">
-                                        <select v-model="siteBusyMig" name="site_busy_mig" class="form-control form-control-sm">
+                                        <select v-model="siteBusyMig" name="site_busy_mig" class="form-select form-select-sm">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -136,7 +136,7 @@ const submitForm = () => {
                                 <div class="mb-3 row">
                                     <label class="form-label col-md-6 mt-1 pe-3 text-end" for="spl_req_mig">Does this site have special requirements like PHP Version / Modules?</label>
                                     <div class="col-md-6 input-group">
-                                        <select v-model="splReqMig" name="spl_req_mig" class="form-control form-control-sm">
+                                        <select v-model="splReqMig" name="spl_req_mig" class="form-select form-select-sm">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -154,7 +154,7 @@ const submitForm = () => {
                                 <div class="mb-3 row">
                                     <label class="form-label col-md-6 mt-1 pe-3 text-end" for="domain_reg">Do you also want us to help you transfer the domain name registration?</label>
                                     <div class="col-md-6 input-group">
-                                        <select v-model="domainReg" name="domain_reg" class="form-control form-control-sm">
+                                        <select v-model="domainReg" name="domain_reg" class="form-select form-select-sm">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
@@ -163,7 +163,7 @@ const submitForm = () => {
                                 <div class="mb-3 row">
                                     <label class="form-label col-md-6 mt-1 pe-3 text-end" for="data_mig">Do you want us to update the name servers as soon as we finish the data migration?</label>
                                     <div class="col-md-6 input-group">
-                                        <select v-model="dataMig" name="data_mig" class="form-control form-control-sm">
+                                        <select v-model="dataMig" name="data_mig" class="form-select form-select-sm">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>

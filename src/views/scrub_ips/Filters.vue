@@ -50,7 +50,7 @@
                                 <div class="mb-3 row">
                                     <label for="filter_type" class="col-sm-4 col-form-label">{{ t('scrub_ips.filters.filterType') }}</label>
                                     <div class="col-sm-8">
-                                        <select id="filter_type" name="filter_type" class="form-control form-control-sm select2" style="width: 100% !important" required>
+                                        <select id="filter_type" name="filter_type" class="form-select form-select-sm select2" style="width: 100% !important" required>
                                             <option value="">{{ t('scrub_ips.filters.selectFilterType') }}</option>
                                             <option v-for="(type, key) in filter_types" :key="type.value" :value="key">{{ type.name }}</option>
                                         </select>

@@ -99,7 +99,7 @@ onMounted(() => {
                         <div class="mb-3 row justify-content-center mb-4">
                             <label class="col-sm-2 col-form-label text-end">{{ t('affiliate.salesGraphPage.select') }}<span class="text-danger"> *</span></label>
                             <div class="col-sm-7 input-group">
-                                <select v-model="selectedPeriod" class="form-control form-control-sm select2" @change="updatePeriod()">
+                                <select v-model="selectedPeriod" class="form-select form-select-sm select2" @change="updatePeriod()">
                                     <option value="30">{{ t('affiliate.salesGraphPage.last30Days') }}</option>
                                     <option value="90">{{ t('affiliate.salesGraphPage.last3Months') }}</option>
                                     <option value="180">{{ t('affiliate.salesGraphPage.last6Months') }}</option>

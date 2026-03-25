@@ -202,7 +202,7 @@ watch(
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">Delivered</label>
                     <div class="col-sm-4">
-                        <select v-model="filters.delivered" class="form-control">
+                        <select v-model="filters.delivered" class="form-select">
                             <option value="">Any</option>
                             <option value="1">Delivered</option>
                             <option value="0">Failed</option>

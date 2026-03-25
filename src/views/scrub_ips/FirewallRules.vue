@@ -68,7 +68,7 @@
                                 <div class="mb-3 row">
                                     <label for="protocol" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.protocol') }}</label>
                                     <div class="col-sm-9">
-                                        <select id="protocol" name="protocol_id" class="form-control select2" style="width: 100% !important">
+                                        <select id="protocol" name="protocol_id" class="form-select select2" style="width: 100% !important">
                                             <option value="1">TCP</option>
                                             <option value="2">UDP</option>
                                         </select>
@@ -89,7 +89,7 @@
                                 <div class="mb-3 row">
                                     <label for="action" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.xdpAction') }}</label>
                                     <div class="col-sm-9">
-                                        <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important" onchange="xdp_update()">
+                                        <select id="xdp_action" name="xdp_action" class="form-select select2" style="width: 100% !important" onchange="xdp_update()">
                                             <option value="1">{{ t('scrub_ips.firewallRules.block') }}</option>
                                             <option value="0">{{ t('scrub_ips.firewallRules.whitelist') }}</option>
                                         </select>

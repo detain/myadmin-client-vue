@@ -223,7 +223,7 @@ loadDnsSec();
                                     <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.digestType', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
-                                            <select v-model="record.digestType" class="form-control" :required="index === 0">
+                                            <select v-model="record.digestType" class="form-select" :required="index === 0">
                                                 <option value="">{{ t('domains.dnssec.select') }}</option>
                                                 <option value="1">SHA-1</option>
                                                 <option value="2">SHA-256</option>
@@ -235,7 +235,7 @@ loadDnsSec();
                                     <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.algorithm', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
-                                            <select v-model="record.algorithm" class="form-control" :required="index === 0">
+                                            <select v-model="record.algorithm" class="form-select" :required="index === 0">
                                                 <option value="">{{ t('domains.dnssec.select') }}</option>
                                                 <option value="8">RSA/SHA-256</option>
                                                 <option value="13">ECDSA P-256</option>

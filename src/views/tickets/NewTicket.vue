@@ -142,7 +142,7 @@ accountStore.loadOnce();
                         <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Product</label>
                             <div class="col-sm-9">
-                                <select v-model="form.product" class="form-control form-control-sm">
+                                <select v-model="form.product" class="form-select form-select-sm">
                                     <option value="">Select Product</option>
                                     <optgroup v-for="(group, label) in products" :key="label" :label="label">
                                         <option v-for="(prodLabel, value) in group" :key="value" :value="value">

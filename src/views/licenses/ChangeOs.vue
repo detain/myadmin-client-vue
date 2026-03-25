@@ -48,7 +48,7 @@ function submitForm() {
                         <div class="mb-3 row">
                             <label class="form-label col-md-3" for="os">{{ t('licenses.changeOs.selectLicenseOs') }}</label>
                             <div class="col-sm-9 input-group">
-                                <select v-model="selectedOS" name="os" class="form-control form-control-sm select2">
+                                <select v-model="selectedOS" name="os" class="form-select form-select-sm select2">
                                     <option v-for="(os, value) in osList" :key="value" :value="value" :selected="existingOS === value">{{ os }}</option>
                                 </select>
                             </div>

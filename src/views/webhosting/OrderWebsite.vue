@@ -533,7 +533,7 @@ watch(
                             <div class="mb-3 row">
                                 <label class="form-label col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
                                 <div class="col-sm-12">
-                                    <select id="period" v-model="period" name="period" class="form-control form-control-sm select2">
+                                    <select id="period" v-model="period" name="period" class="form-select form-select-sm select2">
                                         <template v-if="serviceOffers[formData.packageId]">
                                             <option v-for="offer in serviceOffers[formData.packageId]" :key="offer.service_offer_id" :value="offer.service_offer_id">{{ currencySymbol }}{{ offer.intro_cost }} for {{ offer.intro_frequency }} Month(s). Renews at {{ currencySymbol }}{{ offer.renewal_cost }} for {{ offer.renewal_frequency }} Month(s)</option>
                                         </template>

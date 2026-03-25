@@ -69,7 +69,7 @@
                                 <div class="mb-3 row">
                                     <label for="filter_type" class="col-sm-4 col-form-label">{{ t('scrub_ips.geoFirewallRules.selectCountry') }}</label>
                                     <div class="col-sm-8">
-                                        <select id="countries" name="country_code" class="form-control select2" style="width: 100% !important" required>
+                                        <select id="countries" name="country_code" class="form-select select2" style="width: 100% !important" required>
                                             <option value="">{{ t('scrub_ips.geoFirewallRules.selectCountry') }}</option>
                                             <option v-for="(numcode, key) in countries" :key="key" :value="key">{{ numcode }}</option>
                                         </select>
@@ -84,7 +84,7 @@
                                 <div class="mb-3 row">
                                     <label for="xdp_action" class="col-sm-4 col-form-label">{{ t('scrub_ips.geoFirewallRules.xdpAction') }}</label>
                                     <div class="col-sm-8">
-                                        <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important" required>
+                                        <select id="xdp_action" name="xdp_action" class="form-select select2" style="width: 100% !important" required>
                                             <option value="1">{{ t('scrub_ips.geoFirewallRules.block') }}</option>
                                             <option value="0">{{ t('scrub_ips.geoFirewallRules.whitelist') }}</option>
                                         </select>

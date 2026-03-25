@@ -197,7 +197,7 @@ loadRenew();
                             <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="whois_privacy">{{ t('domains.view.whoisPrivacy') }}</label>
                                 <div class="col-sm-9 input-group">
-                                    <select id="whois_privacy" v-model="selectedWhoisPrivacy" name="whois_privacy" class="form-control form-control-sm select2bs4" dir="rtl">
+                                    <select id="whois_privacy" v-model="selectedWhoisPrivacy" name="whois_privacy" class="form-select form-select-sm select2bs4" dir="rtl">
                                         <option value="enable">{{ t('common.buttons.enable') }}</option>
                                         <option value="disable">{{ t('common.buttons.disable') }}</option>
                                     </select>

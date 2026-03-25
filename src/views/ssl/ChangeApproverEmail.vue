@@ -111,7 +111,7 @@ function submitForm() {
                         <div class="mb-3 row">
                             <label class="col-md-4 col-form-label text-end" for="approver_email">{{ t('ssl.changeApproverEmail.selectApproverEmail') }}</label>
                             <div class="col-sm-8">
-                                <select v-model="selectedApproverEmail" name="approver_email" class="form-control form-control-sm select2">
+                                <select v-model="selectedApproverEmail" name="approver_email" class="form-select form-select-sm select2">
                                     <option v-for="approverEmail in approver_select" :key="approverEmail" :value="approverEmail" :selected="service_info.ssl_approver_email === approverEmail">{{ approverEmail }}</option>
                                 </select>
                             </div>

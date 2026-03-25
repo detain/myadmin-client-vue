@@ -81,7 +81,7 @@ function submitForm() {
                                 <label for="image" class="col-form-label">{{ t('vps.insertCd.chooseImage') }}</label>
                             </div>
                             <div class="col-sm-9 input-group">
-                                <select id="image" name="image" class="form-control form-control-sm select2">
+                                <select id="image" name="image" class="form-select form-select-sm select2">
                                     <option v-for="(link, index) in links" :key="index" :value="link">{{ link }}</option>
                                 </select>
                             </div>

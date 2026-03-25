@@ -203,7 +203,7 @@ function exportExcel() {}
                 <div class="row mb-3 align-items-end">
                     <div class="col-md-2">
                         <label class="form-label">{{ t('billing.invoices.month') }}</label>
-                        <select v-model="selectedMonth" class="form-control form-control-sm">
+                        <select v-model="selectedMonth" class="form-select form-select-sm">
                             <option value="">{{ t('billing.invoices.all') }}</option>
                             <option v-for="(text, val) in months_arr" :key="val" :value="val">
                                 {{ text }}
@@ -212,7 +212,7 @@ function exportExcel() {}
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">{{ t('billing.invoices.year') }}</label>
-                        <select v-model="selectedYear" class="form-control form-control-sm">
+                        <select v-model="selectedYear" class="form-select form-select-sm">
                             <option value="">{{ t('billing.invoices.all') }}</option>
                             <option v-for="(text, val) in years_arr" :key="val" :value="val">
                                 {{ text }}
@@ -225,7 +225,7 @@ function exportExcel() {}
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">{{ t('billing.invoices.pageSize') }}</label>
-                        <select v-model.number="pageSize" class="form-control form-control-sm">
+                        <select v-model.number="pageSize" class="form-select form-select-sm">
                             <option :value="10">10</option>
                             <option :value="25">25</option>
                             <option :value="50">50</option>

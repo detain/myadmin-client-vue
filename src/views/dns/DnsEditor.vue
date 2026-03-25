@@ -239,7 +239,7 @@ loadDns();
                             </div>
                         </td>
                         <td>
-                            <select id="addType" v-model="type" class="form-control">
+                            <select id="addType" v-model="type" class="form-select">
                                 <option v-for="(recordType, index) in recordTypes" :key="index" :value="recordType">{{ recordType }}</option>
                             </select>
                         </td>
@@ -261,7 +261,7 @@ loadDns();
                                 </div>
                             </td>
                             <td>
-                                <select v-model="row.type" class="form-control" style="width: 100% !important">
+                                <select v-model="row.type" class="form-select" style="width: 100% !important">
                                     <option v-for="(recordType, typeIndex) in recordTypes" :key="typeIndex" :value="recordType">{{ recordType }}</option>
                                 </select>
                             </td>

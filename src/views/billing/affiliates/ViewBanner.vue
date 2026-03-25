@@ -91,7 +91,7 @@ accountStore.loadOnce();
                     <tr>
                         <td>{{ t('affiliate.viewBanner.landingPageUrl') }}</td>
                         <td>
-                            <select v-model="landing" class="form-control">
+                            <select v-model="landing" class="form-select">
                                 <option value="">{{ t('affiliate.viewBanner.select') }}</option>
                                 <option value="home">{{ t('affiliate.viewBanner.homePage') }}</option>
                                 <option value="vps">{{ t('affiliate.viewBanner.vpsPage') }}</option>
