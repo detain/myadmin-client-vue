@@ -283,6 +283,13 @@ a.blog-link:hover {
     color: #4f5962;
 }
 
+/* Keep sort icons on same line as header text */
+th.sortable,
+th .sort-arrow {
+    white-space: nowrap;
+    display: inline;
+}
+
 /* Spacing between icon and text in card titles */
 .card-title > i {
     margin-right: 0.35rem;

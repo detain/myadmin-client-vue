@@ -155,7 +155,7 @@ function crud_export(exportType: string): void {
                                 <table id="crud-table" class="display nowrap crud-table table-bordred table-striped table-hover table-sm table" style="width: 100%">
                                     <thead>
                                         <tr>
-                                            <th v-for="col in columns" :key="col.key" :class="{ sortable: col.sortable !== false }" style="cursor: pointer; user-select: none;" @click="toggleSort(col)">
+                                            <th v-for="col in columns" :key="col.key" :class="{ sortable: col.sortable !== false }" style="cursor: pointer; user-select: none; white-space: nowrap;" @click="toggleSort(col)">
                                                 {{ col.label }}
                                                 <i v-if="col.sortable !== false && sortField === col.key" class="fa" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" style="margin-left: 4px;"></i>
                                                 <i v-else-if="col.sortable !== false" class="fas fa-sort" style="margin-left: 4px; opacity: 0.3;"></i>
