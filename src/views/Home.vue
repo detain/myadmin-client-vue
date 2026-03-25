@@ -20,7 +20,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 
 <template>
     <div v-if="user">
-        <nav class="app-header navbar navbar-expand navbar-dark bg-dark">
+        <nav class="app-header navbar navbar-expand bg-dark" data-bs-theme="dark">
             <!-- Navbar -->
             <div class="container-fluid">
                 <ul class="navbar-nav menu-collapse">

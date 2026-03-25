@@ -156,7 +156,7 @@ useDarkMode();
     <Alert />
     <div v-if="!!authStore.sessionId || !!authStore.apiKey" class="app-wrapper">
         <!-- <Nav /> -->
-        <nav class="app-header navbar navbar-expand navbar-dark bg-dark">
+        <nav class="app-header navbar navbar-expand bg-dark" data-bs-theme="dark">
             <!-- Navbar -->
             <div class="container-fluid">
                 <ul class="navbar-nav menu-collapse">
@@ -274,5 +274,11 @@ useDarkMode();
 .app-header {
     position: relative;
     z-index: 1050;
+}
+
+.app-header.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 0;
 }
 </style>
