@@ -276,8 +276,8 @@ loadLicenseData();
 
 <template>
     <template v-if="!step || step == 'license_types'">
-        <div class="card-columns">
-            <div v-for="(details, key) in getLicenses" :key="key" class="card">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            <div v-for="(details, key) in getLicenses" :key="key" class="col"><div class="card h-100">
                 <div class="card-header">
                     <div class="p-1">
                         <img class="card-title card-img-top" :src="details.image" alt="Card image cap" style="border-bottom: 0.1em solid #c6cbd1; width: 40% !important; height: 50px" />
@@ -300,7 +300,7 @@ loadLicenseData();
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
     </template>
     <template v-else-if="step == 'order_form'">
