@@ -337,7 +337,7 @@ onMounted(loadTicket);
         <div class="col-md-2 pe-1">
             <div class="info-box p-0">
                 <span class="info-box-icon border-rad-zero" :class="statusClass(ticket.ticketstatustitle)">
-                    <i class="text-white" :class="statusIcon(ticket.ticketstatustitle)" />
+                    <i class="text-white" :class="[statusIcon(ticket.ticketstatustitle).icon[0], 'fa-' + statusIcon(ticket.ticketstatustitle).icon[1]]" />
                 </span>
                 <div class="info-box-content">
                     <span class="info-box-number">
@@ -400,7 +400,7 @@ onMounted(loadTicket);
                     </li>
                     <li v-for="s in statusCounts" :key="s.ticketstatustitle" class="nav-item">
                         <RouterLink :to="`/tickets?view=${s.ticketstatustitle}`" class="nav-link">
-                            <i :class="statusIcon(s.ticketstatustitle)" />
+                            <i :class="[statusIcon(s.ticketstatustitle).icon[0], 'fa-' + statusIcon(s.ticketstatustitle).icon[1], statusIcon(s.ticketstatustitle).class]" />
                             {{ s.ticketstatustitle }}
                             <span class="badge float-end" :class="statusClass(s.ticketstatustitle)">
                                 {{ s.st_count }}
@@ -419,7 +419,7 @@ onMounted(loadTicket);
                     <div class="mb-3 col-md-6 mb-0 ps-0">
                         <div class="form-check">
                             <input id="server_access_checkbox" v-model="allowServerAccess" type="checkbox" class="form-check-input" />
-                            <label class="form-check-label" for="server_access_checkbox">Allow InterServer to modify server:</label>
+                            <label class="form-check-label fw-bold" for="server_access_checkbox">Allow InterServer to modify server:</label>
                         </div>
                         <input type="hidden" name="server_access" :value="allowServerAccess ? 'y' : 'n'" />
                     </div>
@@ -462,7 +462,7 @@ onMounted(loadTicket);
                             </div>
                         </div>
                     </div>
-                    <hr />
+                    <hr class="mb-3" />
                     <div class="text-center">
                         <button type="submit" class="btn btn-md btn-outline-primary">Update</button>
                     </div>
@@ -477,7 +477,7 @@ onMounted(loadTicket);
                 </div>
                 <div class="card-body">
                     <template v-if="isClosed">
-                        <span class="text-bold">This ticket is closed, so replies are disabled. If you still need assistance, feel free to open a new ticket and we’ll be happy to help.</span>
+                        <span class="fw-bold">This ticket is closed, so replies are disabled. If you still need assistance, feel free to open a new ticket and we’ll be happy to help.</span>
                     </template>
                     <template v-else>
                         <form id="replyForm" method="post" role="form" class="needs-validation" enctype="multipart/form-data" novalidate>
@@ -520,7 +520,7 @@ onMounted(loadTicket);
                         <!-- LEFT USER COLUMN -->
                         <div class="col-md-2 username d-flex pt-4 px-3" :class="post.creator === '1' ? 'staff' : 'user'" :style="{ background: post.creator === '1' ? 'rgba(0,0,0,.03)' : '#fff', borderRight: '2px solid #ccc' }">
                             <div class="text-center mt-3 w-100">
-                                <h3 class="mb-2" style="line-break: anywhere; font-size: 1.2rem">{{ post.fullname }}</h3>
+                                <h3 class="mb-2" style="line-break: anywhere; font-size: 0.95rem">{{ post.fullname }}</h3>
                                 <span class="py-1 px-2 text-sm d-block mt-1" :class="post.creator === '1' ? 'bg-green' : 'bg-secondary text-white'" style="font-weight: normal; letter-spacing: 0.6px; border-radius: 4px">
                                     {{ post.creator === '1' ? 'Staff' : post.creator === '2' ? 'User' : 'Participant' }}
                                 </span>
