@@ -364,7 +364,7 @@ onMounted(loadTicket);
             <div class="card mb-3">
                 <form @submit.prevent="submitSearch">
                     <div class="input-group input-group-sm">
-                        <input v-model="searchBox" class="form-control" placeholder="Search by TicketID / Subject" />
+                        <input v-model="searchBox" class="form-control form-control-sm" placeholder="Search by TicketID / Subject" style="font-size: 0.75rem; padding: 0.2rem 0.4rem;" />
                         <button class="btn btn-primary">
                             <i class="fas fa-search" />
                         </button>
