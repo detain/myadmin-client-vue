@@ -176,7 +176,7 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title float-start py-2"><i class="far fa-ticket-alt"></i>{{ t('dashboard.recentTickets') }}</h3>
+                                <h3 class="card-title float-start py-2"><i class="fas fa-ticket-alt"></i>{{ t('dashboard.recentTickets') }}</h3>
                                 <div class="card-tools float-end">
                                     <router-link to="/tickets" class="btn btn-custom btn-sm" :title="t('dashboard.viewAllTickets')"> <i class="far fa-eye"></i>&nbsp;&nbsp;{{ t('common.buttons.viewAll') }}&nbsp;&nbsp; </router-link>
                                 </div>

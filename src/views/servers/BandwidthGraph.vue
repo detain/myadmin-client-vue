@@ -28,7 +28,7 @@ const ranges = ref([0, '1d', '1w', '31d', '365d', 'all']);
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title py-2"><i class="far fa-chart-line"></i>{{ t('servers.bandwidthGraph.title') }}</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-chart-line"></i>{{ t('servers.bandwidthGraph.title') }}</h3>
                         <div class="card-tools float-end">
                             <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm mt-0" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
@@ -37,7 +37,7 @@ const ranges = ref([0, '1d', '1w', '31d', '365d', 'all']);
                         <div v-for="(period, name) in graphs" :key="name">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title py-2"><i class="far fa-chart-line"></i>{{ name }} {{ graphTitle }}</h3>
+                                    <h3 class="card-title py-2"><i class="fas fa-chart-line"></i>{{ name }} {{ graphTitle }}</h3>
                                     <div class="card-tools float-end">
                                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                     </div>

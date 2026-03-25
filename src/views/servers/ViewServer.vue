@@ -318,7 +318,7 @@ serverStore.getById(id);
                                     <td>{{ vlans[vlan_id].primary ? 'Yes' : 'No' }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/bandwidth_graph?port=' + switchport_id" class="btn link mx-3" title="View Bandwidth Graphs" data-bs-toggle="tooltip"><i class="far fa-chart-line"></i></router-link>
+                                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/bandwidth_graph?port=' + switchport_id" class="btn link mx-3" title="View Bandwidth Graphs" data-bs-toggle="tooltip"><i class="fas fa-chart-line"></i></router-link>
                                         </div>
                                     </td>
                                 </tr>

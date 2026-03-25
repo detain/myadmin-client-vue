@@ -90,7 +90,7 @@ accountStore.loadOnce();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title py-2"><i class="far fa-ticket-alt"></i>&nbsp;Affiliate Landing Page Setup (<a :href="`https://www.interserver.net/dock/vps-${user.account_id}.html`" class="link mt-0" target="_blank">View Landing Page</a>)</h3>
+                        <h3 class="card-title py-2"><i class="fas fa-ticket-alt"></i>&nbsp;Affiliate Landing Page Setup (<a :href="`https://www.interserver.net/dock/vps-${user.account_id}.html`" class="link mt-0" target="_blank">View Landing Page</a>)</h3>
                         <div class="card-tools float-end">
                             <router-link to="/affiliate" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>

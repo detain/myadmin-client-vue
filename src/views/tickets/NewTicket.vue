@@ -131,7 +131,7 @@ accountStore.loadOnce();
                 <div class="card">
                     <!-- Header -->
                     <div class="card-header justify-content-between align-items-center">
-                        <h3 class="card-title pt-2"><i class="far fa-ticket-alt"></i>&nbsp;New Ticket</h3>
+                        <h3 class="card-title pt-2"><i class="fas fa-ticket-alt"></i>&nbsp;New Ticket</h3>
                         <div class="card-tools">
                             <button type="button" class="btn bg-teal btn-sm bg-gradient-gray" @click="showTerms = true">Terms of use</button>
                         </div>

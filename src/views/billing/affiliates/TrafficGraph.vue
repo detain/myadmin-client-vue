@@ -76,7 +76,7 @@ onMounted(() => {
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title"><i class="far fa-chart-line" aria-hidden="true"></i>&nbsp;{{ t('affiliate.trafficGraphPage.webTrafficGraph') }}</h3>
+                        <h3 class="card-title"><i class="fas fa-chart-line" aria-hidden="true"></i>&nbsp;{{ t('affiliate.trafficGraphPage.webTrafficGraph') }}</h3>
                         <div class="card-tools float-end">
                             <router-link to="/affiliate" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>

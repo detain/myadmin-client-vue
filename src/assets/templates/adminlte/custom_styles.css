@@ -283,6 +283,11 @@ a.blog-link:hover {
     color: #4f5962;
 }
 
+/* Spacing between icon and text in card titles */
+.card-title > i {
+    margin-right: 0.35rem;
+}
+
 /* Uniform height for small-box info cards on view service pages */
 .small-box .inner {
     min-height: 120px;
