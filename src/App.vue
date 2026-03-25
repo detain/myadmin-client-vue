@@ -62,6 +62,37 @@ onMounted(function () {
         });
     });
     document.addEventListener('click', closeMobileSidebarOnOutsideClick);
+    // AdminLTE 4 treeview: bind click handlers for sidebar submenu toggle
+    // (AdminLTE's DOMContentLoaded handler runs before Vue renders)
+    document.querySelectorAll('[data-lte-toggle="treeview"]').forEach((treeviewEl) => {
+        treeviewEl.addEventListener('click', (event: Event) => {
+            const target = event.target as HTMLElement;
+            const navItem = target.closest('.nav-item');
+            const navLink = target.closest('.nav-link');
+            const treeviewMenu = navItem?.querySelector<HTMLElement>('.nav-treeview');
+            if (!treeviewMenu || !navItem) return;
+            if (target.getAttribute('href') === '#' || navLink?.getAttribute('href') === '#') {
+                event.preventDefault();
+            }
+            const isOpen = navItem.classList.contains('menu-open');
+            // Accordion: close siblings
+            const parent = navItem.parentElement;
+            parent?.querySelectorAll(':scope > .nav-item.menu-open').forEach((sibling) => {
+                if (sibling !== navItem) {
+                    sibling.classList.remove('menu-open');
+                    const sub = sibling.querySelector<HTMLElement>('.nav-treeview');
+                    if (sub) sub.style.display = 'none';
+                }
+            });
+            if (isOpen) {
+                navItem.classList.remove('menu-open');
+                treeviewMenu.style.display = 'none';
+            } else {
+                navItem.classList.add('menu-open');
+                treeviewMenu.style.display = 'block';
+            }
+        });
+    });
     const idleWarmup = () => {
         warmFrequentlyUsedRoutes();
     };
@@ -302,5 +333,21 @@ useDarkMode();
 
 .app-sidebar .sidebar-menu .nav-link .nav-icon {
     color: var(--lte-sidebar-color);
+}
+
+/* Sidebar user panel link color */
+.app-sidebar .user-panel a {
+    color: #c2c7d0;
+}
+
+.app-sidebar .user-panel a:hover {
+    color: #fff;
+}
+
+/* Search input in dark navbar: white bg, black text */
+.app-header .new-search {
+    background-color: #fff;
+    color: #212529;
+    border: 1px solid #ced4da;
 }
 </style>
