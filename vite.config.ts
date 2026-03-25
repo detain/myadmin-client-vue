@@ -3,14 +3,14 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import { fileURLToPath, URL } from 'node:url';
-import { dirname, resolve } from 'node:path';
+//import { dirname, resolve } from 'node:path';
 import Inspect from 'vite-plugin-inspect';
 // VueI18nPlugin removed - no <i18n> SFC blocks are used, locales are lazy-loaded via dynamic import()
 // import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 //import { VitePWA } from 'vite-plugin-pwa';
 import checker from 'vite-plugin-checker';
-import * as path from 'path';
-import fs from 'fs';
+//import * as path from 'path';
+//import fs from 'fs';
 /* 
 import vueDevTools from 'vite-plugin-vue-devtools'; 
 */
