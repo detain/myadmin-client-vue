@@ -220,7 +220,7 @@ function toggleFunc(cp: string) {
                         </p>
                     </template>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer text-bold">{{ serviceInfo.vps_hostname }}</span>
@@ -243,7 +243,7 @@ function toggleFunc(cp: string) {
                         <br />
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer">
@@ -252,7 +252,7 @@ function toggleFunc(cp: string) {
             </div>
         </div>
         <div class="col-md-4">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner px-3 pb-2 pt-3">
                     <h3>
                         {{ t('vps.view.hostServer') }} <b>{{ serviceMaster.vps_name }}</b>
@@ -261,7 +261,7 @@ function toggleFunc(cp: string) {
                         {{ t('vps.view.ipIs') }} <b>{{ serviceInfo.vps_ip }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-info-circle"></i>
                 </div>
                 <span class="small-box-footer">

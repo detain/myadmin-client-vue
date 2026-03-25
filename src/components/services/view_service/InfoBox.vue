@@ -20,7 +20,7 @@ defineProps<{
                 <h3>{{ heading }}</h3>
                 <p class="my-3 py-3">{{ key1 }}: {{ val1 }}</p>
             </div>
-            <div class="icon">
+            <div class="small-box-icon">
                 <i :class="[iconClass]">{{ iconName }}</i>
             </div>
             <span class="small-box-footer"> {{ footerKey }}: {{ footerVal }} </span>

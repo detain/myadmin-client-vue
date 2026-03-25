@@ -20,7 +20,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 
 <template>
     <div v-if="user">
-        <nav class="app-header navbar navbar-expand bg-body">
+        <nav class="app-header navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar -->
             <div class="container-fluid">
                 <ul class="navbar-nav menu-collapse">
@@ -52,10 +52,10 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
             </div>
             <div class="sidebar-wrapper">
                 <!-- Sidebar -->
-                <div class="user-panel d-flex mb-3 mt-3 pb-3">
+                <div class="user-panel d-flex align-items-center mb-3 mt-3 pb-3" style="overflow: hidden">
                     <!-- Sidebar user panel (optional) -->
-                    <div class="image"><img :src="user.gravatar" class="rounded-circle shadow-sm" style="width: 3rem" alt="DP" /></div>
-                    <div class="info">
+                    <img :src="user.gravatar" class="rounded-circle shadow-sm" style="width: 2rem; height: 2rem; margin-left: 0.6rem; flex-shrink: 0" alt="DP" />
+                    <div class="info brand-text" style="margin-left: 0.5rem">
                         <router-link to="/account/info" :title="t('login.home.editPersonalInfo')" class="d-block">{{ user.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user.account_lid }}</b></span

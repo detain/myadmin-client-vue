@@ -166,7 +166,7 @@ mailStore.getById(id);
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer text-bold">{{ serviceInfo.mail_username }}</span>
@@ -181,7 +181,7 @@ mailStore.getById(id);
                         billed: <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer"
@@ -195,7 +195,7 @@ mailStore.getById(id);
                     <h3>Mail API</h3>
                     <p class="my-3 py-3">For API Documentation: <a href="https://www.mail.baby/apidoc.html" target="__blank" class="text-bold text-white">Click Here</a></p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="material-icons">api</i>
                 </div>
                 <span class="small-box-footer"> For API Key: <router-link to="/account/settings" class="text-bold text-white">Account Settings</router-link> </span>

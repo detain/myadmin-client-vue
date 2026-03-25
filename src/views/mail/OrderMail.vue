@@ -351,8 +351,6 @@ try {
 </template>
 
 <style scoped>
-@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
-
 .outgoing_mail_msg {
     animation: fadeIn 1s ease-in-out;
 }

@@ -118,7 +118,7 @@ loadLink(route.params.link as string);
                         {{ t('webhosting.view.nextInvoiceDate') }} <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer text-bold">{{ serviceInfo.website_hostname }}</span>
@@ -140,7 +140,7 @@ loadLink(route.params.link as string);
                         {{ t('webhosting.view.billed') }} <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer">
@@ -150,7 +150,7 @@ loadLink(route.params.link as string);
             </div>
         </div>
         <div class="col-md-4">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>{{ t('webhosting.view.hostInfo') }}</h3>
                     <p class="m-0 py-2">
@@ -168,7 +168,7 @@ loadLink(route.params.link as string);
                         </b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-info-circle"></i>
                 </div>
                 <span class="small-box-footer">

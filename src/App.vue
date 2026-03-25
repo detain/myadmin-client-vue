@@ -106,12 +106,20 @@ const AdminLTESidebarTweak = {
     } as SidebarTweakOptions,
 };
 
-// Remember toggle state
+// Toggle sidebar collapse and remember state
 function collapseMenu() {
-    if (!AdminLTESidebarTweak.options.EnableRemember) return;
     const body = document.body;
-    const toggleState = body.classList.contains('sidebar-collapse') ? 'opened' : 'closed';
-    document.cookie = `toggleState=${toggleState}; path=/`;
+    const isMobile = window.innerWidth <= 992;
+    if (isMobile) {
+        body.classList.toggle('sidebar-open');
+        body.classList.remove('sidebar-collapse');
+    } else {
+        body.classList.toggle('sidebar-collapse');
+    }
+    if (AdminLTESidebarTweak.options.EnableRemember) {
+        const toggleState = body.classList.contains('sidebar-collapse') ? 'closed' : 'opened';
+        document.cookie = `toggleState=${toggleState}; path=/`;
+    }
 }
 
 function restoreSidebarState() {
@@ -148,7 +156,7 @@ useDarkMode();
     <Alert />
     <div v-if="!!authStore.sessionId || !!authStore.apiKey" class="app-wrapper">
         <!-- <Nav /> -->
-        <nav class="app-header navbar navbar-expand bg-body">
+        <nav class="app-header navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar -->
             <div class="container-fluid">
                 <ul class="navbar-nav menu-collapse">
@@ -181,10 +189,10 @@ useDarkMode();
             </div>
             <div class="sidebar-wrapper">
                 <!-- Sidebar -->
-                <div class="user-panel d-flex mb-3 mt-3 pb-3" style="font-size: 1em">
+                <div class="user-panel d-flex align-items-center mb-3 mt-3 pb-3" style="font-size: 1em; overflow: hidden">
                     <!-- Sidebar user panel (optional) -->
-                    <img :src="user?.gravatar" class="brand-image rounded-circle shadow-sm" style="width: 3rem; margin-left: 0px" :alt="t('common.profile.profileImage')" />
-                    <div class="info hide-on-collapse brand-text" style="padding: 0px">
+                    <img :src="user?.gravatar" class="rounded-circle shadow-sm" style="width: 2rem; height: 2rem; margin-left: 0.6rem; flex-shrink: 0" :alt="t('common.profile.profileImage')" />
+                    <div class="info brand-text" style="padding: 0px; margin-left: 0.5rem">
                         <router-link to="/account/info" :title="t('common.profile.editPersonalInfo')" class="d-block">{{ user?.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
                             <b>{{ user?.account_lid }}</b>

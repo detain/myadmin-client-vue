@@ -135,7 +135,7 @@ function loadLink(newLink: string) {
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">
@@ -161,7 +161,7 @@ function loadLink(newLink: string) {
                         Payment Status: <b>{{ billingDetails.service_payment_status }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">
@@ -170,7 +170,7 @@ function loadLink(newLink: string) {
             </div>
         </div>
         <div class="col-md-4">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>
                         Host Server: <b>{{ serviceMaster.qs_name }}</b>
@@ -179,7 +179,7 @@ function loadLink(newLink: string) {
                         IP is: <b>{{ serviceInfo.qs_ip }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">

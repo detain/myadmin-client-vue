@@ -138,7 +138,7 @@ serverStore.getById(id);
                         {{ t('servers.view.nextInvoiceDate') }} <b>{{ billingDetails.service_next_invoice_date || t('servers.view.unBilled') }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
+                <div class="small-box-icon"><i class="fas fa-briefcase"></i></div>
                 <div class="small-box-footer text-bold">{{ serviceInfo.server_hostname }}</div>
             </div>
         </div>
@@ -150,21 +150,21 @@ serverStore.getById(id);
                         <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b> {{ t('common.labels.billed') }} <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
+                <div class="small-box-icon"><i class="fas fa-briefcase"></i></div>
                 <span class="small-box-footer"
                     >{{ t('common.labels.statusIs') }} <b>{{ serviceInfo.server_status }}</b></span
                 >
             </div>
         </div>
         <div class="col-md-4">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>{{ t('servers.view.orderInfo') }}</h3>
                     <p class="my-2 py-3">
                         {{ t('servers.view.orderId') }} <b>{{ serviceInfo.server_id }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
+                <div class="small-box-icon"><i class="fas fa-briefcase"></i></div>
                 <div class="small-box-footer">
                     {{ t('servers.view.orderedOn') }} <b>{{ orderedOn }}</b>
                 </div>

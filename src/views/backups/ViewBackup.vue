@@ -129,7 +129,7 @@ loadLink(route.params.link as string);
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer text-bold">
@@ -146,7 +146,7 @@ loadLink(route.params.link as string);
                         billed <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer">
@@ -156,7 +156,7 @@ loadLink(route.params.link as string);
             </div>
         </div>
         <div class="col-md-4">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner px-3 pb-2 pt-3">
                     <h3>Host Server</h3>
                     <p class="my-3 py-3">
@@ -165,7 +165,7 @@ loadLink(route.params.link as string);
                         <b v-else>Not set yet</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer">

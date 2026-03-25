@@ -121,26 +121,26 @@ accountStore.load();
         <div class="col-md-12 mb-2">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="small-box bg-yellow">
-                        <div class="inner px-3 pb-2 pt-3 text-white">
+                    <div class="small-box bg-warning text-white">
+                        <div class="inner px-3 pb-2 pt-3">
                             <h3>{{ t('dashboard.welcome', { name: full_name }) }}</h3>
                             <p class="mb-2 mt-3 py-3"><b>{{ t('dashboard.lastLogin') }}: </b>{{ last_login && !isNaN(new Date(last_login.replace(' ', 'T')).getTime()) ? d(new Date(last_login.replace(' ', 'T')), 'long') : last_login }}</p>
                         </div>
-                        <div class="icon">
+                        <div class="small-box-icon">
                             <i class="far fa-id-card"></i>
                         </div>
                         <div class="small-box-footer"><b>{{ t('dashboard.lastLoginIp') }}: </b>{{ last_login_ip }}</div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-success text-white">
                         <div class="inner px-3 pb-2 pt-3">
                             <h3>{{ t('dashboard.prepay.title') }}</h3>
                             <p class="mb-2 mt-3 py-3" style="min-height: 3.5em">
                                 <template v-if="balance && !isNaN(parseFloat(balance))"> <b>{{ t('dashboard.prepay.remainingBalance') }}:</b> {{ n(parseFloat(balance), 'currency') }} </template>
                             </p>
                         </div>
-                        <div class="icon">
+                        <div class="small-box-icon">
                             <i class="fas fa-dollar-sign"></i>
                         </div>
                         <div class="small-box-footer">
@@ -149,13 +149,13 @@ accountStore.load();
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="small-box bg-info">
+                    <div class="small-box bg-info text-white">
                         <div class="inner px-3 pb-2 pt-3">
                             <h3>{{ t('dashboard.invoices.title') }}</h3>
                             <div class="pt-2"><b>{{ t('dashboard.invoices.totalUnpaid') }}: </b>{{ invoice_list }}</div>
                             <div class="mb-2 mt-2"><b>{{ t('dashboard.invoices.totalAmount') }}: </b>{{ amount && !isNaN(parseFloat(amount)) ? n(parseFloat(amount), 'currency') : '' }}</div>
                         </div>
-                        <div class="icon">
+                        <div class="small-box-icon">
                             <i class="fas fa-file-invoice"></i>
                         </div>
                         <div class="small-box-footer">
@@ -219,7 +219,7 @@ accountStore.load();
                             </h2>
                             <div class="card-tools float-end">
                                 <span class="card-subtitle text-muted float-end mb-2 mt-2">
-                                    <router-link class="badge bg-success float-end" :title="t('common.buttons.viewAll')" :to="'/' + moduleLink(module)">{{ value.count }}</router-link>
+                                    <router-link class="badge bg-success text-white float-end" :title="t('common.buttons.viewAll')" :to="'/' + moduleLink(module)">{{ value.count }}</router-link>
                                 </span>
                             </div>
                         </div>

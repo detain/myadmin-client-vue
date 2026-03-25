@@ -351,5 +351,4 @@ try {
 </template>
 
 <style scoped>
-@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 </style>

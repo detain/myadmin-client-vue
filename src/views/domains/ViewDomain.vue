@@ -109,7 +109,7 @@ loadLink(route.params.link as string);
 <template>
     <div class="row my-4">
         <div class="col-12 col-sm-6 col-md-4">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>{{ t('domains.view.package') }}</h3>
                     <p>{{ serviceType.services_name }}</p>
@@ -117,7 +117,7 @@ loadLink(route.params.link as string);
                         {{ t('domains.view.nextInvoiceDate', { date: '' }) }} <b>{{ formatDate(billingDetails.next_date) }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
+                <div class="small-box-icon"><i class="fas fa-briefcase"></i></div>
                 <span class="small-box-footer">{{ serviceInfo.domain_hostname }}</span>
             </div>
         </div>
@@ -133,21 +133,21 @@ loadLink(route.params.link as string);
                         {{ t('domains.view.expireDate', { date: '' }) }} <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? formatDate(allInfo.attributes.expiredate) : formatDate(serviceInfo.domain_expire_date) }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                <div class="small-box-icon"><i class="fas fa-dollar-sign"></i></div>
                 <span class="small-box-footer">
                     {{ t('domains.view.domainStatus', { status: serviceInfo.domain_status }) }}
                 </span>
             </div>
         </div>
         <div class="col-12 col-sm-6 col-md-4">
-            <div class="small-box bg-warning">
+            <div class="small-box bg-warning text-white">
                 <div class="inner mb-1 px-3 pb-2 text-white">
                     <h3>{{ t('domains.view.whoisPrivacy') }}</h3>
                     <p style="padding-top: 1.3rem; padding-bottom: 1rem">
                         {{ t('domains.view.whoisPrivacyIs', { status: '' }) }} <b class="text-md">{{ whoisPrivacy }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-user-secret"></i></div>
+                <div class="small-box-icon"><i class="fas fa-user-secret"></i></div>
                 <span class="small-box-footer">
                     {{ t('common.labels.status') }}: <b>{{ whoisPrivacy }}</b>
                     <router-link class="btn p-0 ps-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" :title="t('domains.view.editWhoisPrivacy')"><i class="fas fa-pencil-alt"></i></router-link>

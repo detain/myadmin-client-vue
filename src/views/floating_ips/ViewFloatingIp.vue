@@ -115,7 +115,7 @@ const statusClass = computed(() => {
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
+                <div class="small-box-icon"><i class="fas fa-briefcase"></i></div>
                 <span class="small-box-footer text-bold">{{ serviceInfo.floating_ip_ip }}</span>
             </div>
         </div>
@@ -127,21 +127,21 @@ const statusClass = computed(() => {
                         <b>{{ billingDetails.service_currency_symbol }}{{ billingDetails.service_cost_info }}</b> billed: <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
-                <div class="icon"><i class="fas fa-briefcase"></i></div>
+                <div class="small-box-icon"><i class="fas fa-briefcase"></i></div>
                 <span class="small-box-footer"
                     >Floating IPs Status is: <b>{{ status }}</b></span
                 >
             </div>
         </div>
         <div class="col-md-4">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner pt-3 pb-2 px-3">
                     <h3>Floating IP</h3>
                     <p class="py-3 my-3">
                         Floating IP is: <b>{{ serviceInfo.floating_ip_ip }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <span class="small-box-footer">

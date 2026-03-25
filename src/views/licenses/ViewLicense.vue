@@ -96,7 +96,7 @@ licenseStore.getById(id);
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">
@@ -113,7 +113,7 @@ licenseStore.getById(id);
                         billed: <b>{{ billingDetails.service_frequency }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">
@@ -122,7 +122,7 @@ licenseStore.getById(id);
             </div>
         </div>
         <div :class="`col-md-${serviceOverviewExtra ? '3' : '4'}`">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>License Info</h3>
                     <template v-if="serviceInfo.license_hostname">
@@ -137,7 +137,7 @@ licenseStore.getById(id);
                         </p>
                     </template>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">
@@ -156,7 +156,7 @@ licenseStore.getById(id);
                             </p>
                         </template>
                     </div>
-                    <div class="icon">
+                    <div class="small-box-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <div class="small-box-footer text-white">Status is: <b v-html="serviceOverviewExtra.cPanel_Status"></b></div>

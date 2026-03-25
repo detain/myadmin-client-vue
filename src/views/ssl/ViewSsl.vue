@@ -193,7 +193,7 @@ sslStore.getById(id);
                         Next Invoice Date: <b>{{ billingDetails.service_next_invoice_date }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <div class="small-box-footer">{{ serviceInfo.ssl_hostname }}</div>
@@ -213,7 +213,7 @@ sslStore.getById(id);
                         </b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <span class="small-box-footer"
@@ -222,14 +222,14 @@ sslStore.getById(id);
             </div>
         </div>
         <div class="col-md-3">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-white">
                 <div class="inner px-3 pb-1 pt-3">
                     <h3>Order Info</h3>
                     <p class="my-2 py-2">
                         Order ID: <b>{{ serviceInfo.ssl_order_id }}</b>
                     </p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="material-icons" style="user-select: none">policy</i>
                 </div>
                 <span class="small-box-footer"
@@ -243,7 +243,7 @@ sslStore.getById(id);
                     <h3>Cert Info</h3>
                     <p class="my-2 py-2">Cert ID:</p>
                 </div>
-                <div class="icon">
+                <div class="small-box-icon">
                     <i class="material-icons" style="user-select: none">admin_panel_settings</i>
                 </div>
                 <span class="small-box-footer"
