@@ -222,7 +222,7 @@ useDarkMode();
                 <!-- Sidebar -->
                 <div class="user-panel d-flex align-items-center mb-3 mt-3 pb-3" style="font-size: 1em; overflow: hidden">
                     <!-- Sidebar user panel (optional) -->
-                    <img :src="user?.gravatar" class="rounded-circle shadow-sm" style="width: 2rem; height: 2rem; margin-left: 0.6rem; flex-shrink: 0" :alt="t('common.profile.profileImage')" />
+                    <img :src="user?.gravatar" class="rounded-circle shadow-sm" style="width: 42px; height: 42px; margin-left: 0.6rem; flex-shrink: 0" :alt="t('common.profile.profileImage')" />
                     <div class="info brand-text" style="padding: 0px; margin-left: 0.5rem">
                         <router-link to="/account/info" :title="t('common.profile.editPersonalInfo')" class="d-block">{{ user?.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
