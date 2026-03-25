@@ -54,7 +54,7 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                 <!-- Sidebar -->
                 <div class="user-panel d-flex align-items-center mb-3 mt-3 pb-3" style="overflow: hidden">
                     <!-- Sidebar user panel (optional) -->
-                    <img :src="user.gravatar" class="rounded-circle shadow-sm" style="width: 42px; height: 42px; margin-left: 0.6rem; flex-shrink: 0" alt="DP" />
+                    <img :src="user.gravatar" class="rounded-circle shadow-sm" style="width: 42px; height: 42px; margin-left: 0.2rem; flex-shrink: 0" alt="DP" />
                     <div class="info brand-text" style="margin-left: 0.5rem">
                         <router-link to="/account/info" :title="t('login.home.editPersonalInfo')" class="d-block">{{ user.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
