@@ -358,6 +358,7 @@ useDarkMode();
 /* Sidebar brand: align logo left instead of AdminLTE 4 default center */
 .app-sidebar .sidebar-brand {
     justify-content: flex-start;
+    padding-left: 0.5rem;
 }
 
 /* Sidebar collapsed: reduce user panel spacing and hide text */
