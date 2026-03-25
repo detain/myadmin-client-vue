@@ -246,7 +246,7 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server"></i>&nbsp;QuickServer Information</h3>
-                            <div class="card-tools float-right pl-3 pt-1">
+                            <div class="card-tools float-end ps-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-briefcase"></i>
                                 </button>
@@ -269,7 +269,7 @@ function loadLink(newLink: string) {
                                     </span>
                                 </h5>
                             </div>
-                            <div class="col-md-12 mr-3 pr-4 pt-2 text-center">
+                            <div class="col-md-12 me-3 pe-4 pt-2 text-center">
                                 <div class="btn-group">
                                     <button
                                         type="button"
@@ -290,8 +290,8 @@ function loadLink(newLink: string) {
                                             'btn-info': !['running', 'Paused', 'suspended', 'stopped', 'deleted', 'shut'].includes(serviceInfo.qs_server_status),
                                         }"
                                         class="dropdown-toggle dropdown-hover dropdown-icon"
-                                        data-toggle="dropdown">
-                                        <span class="sr-only">Toggle Dropdown</span>
+                                        data-bs-toggle="dropdown">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
                                         <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.qs_id + '/start'" class="dropdown-item">Start</router-link>
@@ -322,7 +322,7 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server"></i>Disk</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed">
                                     <i class="fas fa-briefcase"></i>
                                 </button>
@@ -366,7 +366,7 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server"></i>Connections</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -381,7 +381,7 @@ function loadLink(newLink: string) {
                                             <b class="text-muted">{{ serviceOverviewExtra.vnc_information }}</b>
                                         </template>
                                         <template v-else>
-                                            <b class="text-muted font-italic">No data to show</b>
+                                            <b class="text-muted fst-italic">No data to show</b>
                                         </template>
                                     </td>
                                 </tr>
@@ -392,7 +392,7 @@ function loadLink(newLink: string) {
                                             <b class="text-muted">{{ serviceOverviewExtra.spice_information }}</b>
                                         </template>
                                         <template v-else>
-                                            <b class="text-muted font-italic">No data to show</b>
+                                            <b class="text-muted fst-italic">No data to show</b>
                                         </template>
                                     </td>
                                 </tr>
@@ -406,7 +406,7 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server"></i>System Information</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -430,7 +430,7 @@ function loadLink(newLink: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server"></i>Links</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                     <i class="fas fa-briefcase"></i>
                                 </button>
@@ -438,7 +438,7 @@ function loadLink(newLink: string) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>
@@ -453,7 +453,7 @@ function loadLink(newLink: string) {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-server"></i>IP Information</h3>
-                                <div class="card-tools float-right">
+                                <div class="card-tools float-end">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                         <i class="fas fa-briefcase"></i>
                                     </button>
@@ -483,7 +483,7 @@ function loadLink(newLink: string) {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-server"></i>{{ extraInfoTables.cp.title }}</h3>
-                                <div class="card-tools float-right">
+                                <div class="card-tools float-end">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                         <i class="fas fa-briefcase"></i>
                                     </button>
@@ -515,7 +515,7 @@ function loadLink(newLink: string) {
                                 <i class="fas fa-briefcase"></i>
                                 {{ extraInfoTables.addons.title }}
                             </h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                     <i class="fas fa-briefcase"></i>
                                 </button>
@@ -546,7 +546,7 @@ function loadLink(newLink: string) {
                                 <i class="fas fa-briefcase"></i>
                                 {{ extraInfoTables.note.title }}
                             </h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                     <i class="fas fa-briefcase"></i>
                                 </button>
@@ -572,21 +572,19 @@ function loadLink(newLink: string) {
                     <form class="inline" @submit.prevent="submitComment">
                         <div class="modal-header">
                             <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" name="id" :value="serviceInfo.qs_id" />
                             <input type="hidden" name="link" value="update_comment" />
                             <input type="hidden" name="edit_comment" value="2" />
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Comment:</label>
                                 <textarea id="message-text" v-model="serviceInfo.qs_comment" class="form-control" rows="5" name="comment"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </form>

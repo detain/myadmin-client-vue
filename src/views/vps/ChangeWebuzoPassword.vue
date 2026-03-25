@@ -62,26 +62,26 @@ function submitForm() {
                 <div class="card-body">
                     <form class="change_rootpass" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_webuzo_password" />
-                        <div class="form-group mb-0">
-                            <div class="form-group row">
+                        <div class="mb-3 mb-0">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="os">{{ t('vps.changeWebuzoPassword.hostname') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="curHostname" disabled />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="password">{{ t('vps.changeWebuzoPassword.newPassword') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="password" type="password" class="pr-password form-control form-control-sm" required />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="password2">{{ t('vps.changeWebuzoPassword.confirmPassword') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="password2" type="password" class="pr-password form-control form-control-sm" required />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="password2">{{ t('vps.changeWebuzoPassword.portalLoginPassword') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="login_password" type="password" class="pr-password form-control form-control-sm" required />

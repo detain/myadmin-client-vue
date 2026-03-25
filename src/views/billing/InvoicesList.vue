@@ -187,8 +187,8 @@ function exportExcel() {}
     <div class="card">
         <div class="card-header">
             <h3 class="card-title"><i class="fas fa-money-bill"></i>{{ t('billing.invoices.invoicesList') }}</h3>
-            <div v-if="id" class="card-tools mr-4 mt-2">
-                <router-link to="/invoices" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('billing.invoices.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+            <div v-if="id" class="card-tools me-4 mt-2">
+                <router-link to="/invoices" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('billing.invoices.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">
@@ -202,7 +202,7 @@ function exportExcel() {}
                 <!-- filters -->
                 <div class="row mb-3 align-items-end">
                     <div class="col-md-2">
-                        <label>{{ t('billing.invoices.month') }}</label>
+                        <label class="form-label">{{ t('billing.invoices.month') }}</label>
                         <select v-model="selectedMonth" class="form-control form-control-sm">
                             <option value="">{{ t('billing.invoices.all') }}</option>
                             <option v-for="(text, val) in months_arr" :key="val" :value="val">
@@ -211,7 +211,7 @@ function exportExcel() {}
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label>{{ t('billing.invoices.year') }}</label>
+                        <label class="form-label">{{ t('billing.invoices.year') }}</label>
                         <select v-model="selectedYear" class="form-control form-control-sm">
                             <option value="">{{ t('billing.invoices.all') }}</option>
                             <option v-for="(text, val) in years_arr" :key="val" :value="val">
@@ -220,11 +220,11 @@ function exportExcel() {}
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label>{{ t('common.buttons.search') }}</label>
+                        <label class="form-label">{{ t('common.buttons.search') }}</label>
                         <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
                     </div>
                     <div class="col-md-2">
-                        <label>{{ t('billing.invoices.pageSize') }}</label>
+                        <label class="form-label">{{ t('billing.invoices.pageSize') }}</label>
                         <select v-model.number="pageSize" class="form-control form-control-sm">
                             <option :value="10">10</option>
                             <option :value="25">25</option>

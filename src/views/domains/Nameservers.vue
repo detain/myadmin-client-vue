@@ -175,8 +175,8 @@ loadNameservers();
                     <svg><use :href="iconHref('dns')" /></svg></i
                 >{{ t('domains.nameservers.title') }}
             </h3>
-            <div class="card-tools mr-4 mt-2">
-                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+            <div class="card-tools me-4 mt-2">
+                <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
             </div>
         </div>
         <div class="card-body">
@@ -192,13 +192,13 @@ loadNameservers();
 
                     <div class="card-body">
                         <form @submit.prevent="submitNameservers">
-                            <div v-for="(ns, index) in nameserverInputs" :key="index" class="form-group row">
+                            <div v-for="(ns, index) in nameserverInputs" :key="index" class="mb-3 row">
                                 <label class="col-md-3 col-form-label"> {{ t('domains.nameservers.nameserverLabel', { number: index + 1 }) }} </label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="nameserverInputs[index]" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="col-sm-9 offset-md-3">
                                     <button type="submit" class="btn btn-custom btn-sm py-1 px-2">{{ t('common.buttons.update') }}</button>
                                 </div>
@@ -213,19 +213,19 @@ loadNameservers();
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="registerNameserver">
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label">{{ t('domains.nameservers.hostname') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="newNameserver.name" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label">{{ t('domains.nameservers.ipAddress') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input v-model="newNameserver.ipaddress" type="text" class="form-control form-control-sm" />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="col-sm-9 offset-md-3">
                                     <button type="submit" class="btn btn-outline-custom btn-sm py-1">{{ t('common.buttons.save') }}</button>
                                 </div>

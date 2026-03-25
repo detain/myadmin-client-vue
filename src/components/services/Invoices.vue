@@ -242,16 +242,16 @@ function format(d: any) {
 function get_links(row: string[]) {
     let out = '';
     if (Number(row[4]) >= 10) {
-        out = `${out}<a href="view_${prefixes.value[row[9]]}&id=${row[2]}&link=invoices&resend_payment_confirmation=${row[0]}" data-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>`;
+        out = `${out}<a href="view_${prefixes.value[row[9]]}&id=${row[2]}&link=invoices&resend_payment_confirmation=${row[0]}" data-bs-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>`;
     } else {
-        out = `${out}<a href="view_${prefixes.value[row[9]]}&id=${row[2]}&link=invoices&resend_invoice=${row[0]}" data-toggle="tooltip" title="E-Mail the Invoice"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>`;
+        out = `${out}<a href="view_${prefixes.value[row[9]]}&id=${row[2]}&link=invoices&resend_invoice=${row[0]}" data-bs-toggle="tooltip" title="E-Mail the Invoice"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>`;
     }
     if (row[4] == '1') {
         if (Number(row[6]) == 0) {
-            out = `${out}<a href="view_balance&module=${row[9]}&invoice=${row[0]}" data-toggle="tooltip" title="Pay Invoice"><i class="icon-cash-register"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-cash-register"></use></svg></i></a>`;
+            out = `${out}<a href="view_balance&module=${row[9]}&invoice=${row[0]}" data-bs-toggle="tooltip" title="Pay Invoice"><i class="icon-cash-register"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-cash-register"></use></svg></i></a>`;
         }
-        out = `${out}<a href="view_invoice&id=${row[0]}&module=${row[9]}" data-toggle="tooltip" title="View Invoice" title="View Invoice" ><i class="icon-analyze"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-analyze"></use></svg></i></a>`;
-        out = `${out}<a href="pdf.php?choice=view_invoice&id=${row[0]}&module=${row[9]}" data-toggle="tooltip" title="View Invoice as PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a>`;
+        out = `${out}<a href="view_invoice&id=${row[0]}&module=${row[9]}" data-bs-toggle="tooltip" title="View Invoice" title="View Invoice" ><i class="icon-analyze"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-analyze"></use></svg></i></a>`;
+        out = `${out}<a href="pdf.php?choice=view_invoice&id=${row[0]}&module=${row[9]}" data-bs-toggle="tooltip" title="View Invoice as PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a>`;
     }
     return out;
 }
@@ -408,16 +408,16 @@ function loadInvoices() {
                         "render": function(data: any, type: any, row: string[], meta: any) {
                             let out = '';
                             if (Number(row[4]) >= 10) {
-                                out = out+'<a href="view_'+prefixes.value[row[9]]+'&id='+row[2]+'&link=invoices&resend_payment_confirmation='+row[0]+'" data-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
+                                out = out+'<a href="view_'+prefixes.value[row[9]]+'&id='+row[2]+'&link=invoices&resend_payment_confirmation='+row[0]+'" data-bs-toggle="tooltip" title="E-Mail Payment Confirmation"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
                             } else {
-                                out = out+'<a href="view_'+prefixes.value[row[9]]+'&id='+row[2]+'&link=invoices&resend_invoice='+row[0]+'" data-toggle="tooltip" title="E-Mail the Invoice"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
+                                out = out+'<a href="view_'+prefixes.value[row[9]]+'&id='+row[2]+'&link=invoices&resend_invoice='+row[0]+'" data-bs-toggle="tooltip" title="E-Mail the Invoice"><i class="icon-new-message"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-new-message"></use></svg></i></a>';
                             }
                             if (row[4] == '1') {
                                 if (Number(row[6]) == 0) {
-                                    out = out+'<a href="view_balance&module='+row[9]+'&invoice='+row[0]+'" data-toggle="tooltip" title="Pay Invoice"><i class="icon-cash-register"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-cash-register"></use></svg></i></a>';
+                                    out = out+'<a href="view_balance&module='+row[9]+'&invoice='+row[0]+'" data-bs-toggle="tooltip" title="Pay Invoice"><i class="icon-cash-register"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-cash-register"></use></svg></i></a>';
                                 }
-                                out = out+'<a target="_blank"  href="view_invoice&id='+row[0]+'&module='+row[9]+'" data-toggle="tooltip" title="View Invoice" title="View Invoice" ><i class="icon-analyze"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-analyze"></use></svg></i></a>';
-                                out = out+'<a href="pdf.php?choice=view_invoice&id='+row[0]+'&module='+row[9]+'" data-toggle="tooltip" title="View Invoice as PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a>';
+                                out = out+'<a target="_blank"  href="view_invoice&id='+row[0]+'&module='+row[9]+'" data-bs-toggle="tooltip" title="View Invoice" title="View Invoice" ><i class="icon-analyze"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-analyze"></use></svg></i></a>';
+                                out = out+'<a href="pdf.php?choice=view_invoice&id='+row[0]+'&module='+row[9]+'" data-bs-toggle="tooltip" title="View Invoice as PDF"><i class="icon-pdf"><svg><use xlink:href="/images/myadmin/MyAdmin-Icons.min.svg#icon-pdf"></use></svg></i></a>';
                             }
                             return out;
                         }
@@ -487,18 +487,18 @@ loadInvoices();
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-file-invoice-dollar"></i>&nbsp;{{ t('common.labels.invoices') }}</h3>
                     <div class="card-tools">
-                        <button class="btn-custom text-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')" @click="previous"><i class="fas fa-arrow-left"></i>&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</button>
+                        <button class="btn-custom text-sm" data-bs-toggle="tooltip" :title="t('common.buttons.goBack')" @click="previous"><i class="fas fa-arrow-left"></i>&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</button>
                     </div>
                 </div>
                 <div class="card-body justify-content-center">
                     <!-- filters -->
                     <div class="row mb-3 align-items-end">
                         <div class="col-md-3">
-                            <label>{{ t('common.buttons.search') }}</label>
+                            <label class="form-label">{{ t('common.buttons.search') }}</label>
                             <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
                         </div>
                         <div class="col-md-2">
-                            <label>{{ t('common.labels.pageSize') }}</label>
+                            <label class="form-label">{{ t('common.labels.pageSize') }}</label>
                             <select v-model.number="pageSize" class="form-control form-control-sm">
                                 <option :value="10">10</option>
                                 <option :value="25">25</option>

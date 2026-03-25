@@ -181,7 +181,7 @@ onMounted(() => {
                 <p class="text-md m-0">
                     <i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">Attention:</b>&nbsp;{{ t('affiliate.attention', { faqLink: '' }) }}<router-link class="link" :to="'/affiliate/faq'">{{ t('affiliate.faqLinkText') }}</router-link>
                 </p>
-                <div class="card-tools float-right">
+                <div class="card-tools float-end">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
                 </div>
                 <p></p>
@@ -192,7 +192,7 @@ onMounted(() => {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-money-bill" aria-hidden="true"></i>&nbsp; {{ t('affiliate.earnPerSale', { amount: '$' + affiliate_amount }) }}</h3>
-                                <div class="card-tools float-right">
+                                <div class="card-tools float-end">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
@@ -209,14 +209,14 @@ onMounted(() => {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-external-link-alt" aria-hidden="true"></i>&nbsp;{{ t('affiliate.affiliateUrl') }}</h3>
-                                <div class="card-tools float-right">
+                                <div class="card-tools float-end">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body mb-2 pb-4 text-center">
-                            <form class="form-inline" @submit.prevent="copyUrl">
-                                <div class="form-group w-50 mr-2">
+                            <form class="row row-cols-auto g-3 align-items-center" @submit.prevent="copyUrl">
+                                <div class="mb-3 w-50 me-2">
                                     <input id="affiliateinput" type="text" class="form-control form-control-sm w-100" placeholder="Affiliate URL" :value="'https://www.interserver.net/r/' + custid" readonly />
                                     <span class="text-muted text-xs">{{ t('affiliate.shareUrl') }}</span>
                                 </div>
@@ -232,7 +232,7 @@ onMounted(() => {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-link" aria-hidden="true"></i>&nbsp;{{ t('affiliate.links') }}</h3>
-                                <div class="card-tools float-right">
+                                <div class="card-tools float-end">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
@@ -259,7 +259,7 @@ onMounted(() => {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-user-plus" aria-hidden="true"></i>&nbsp;{{ t('affiliate.signups.title') }}</h3>
-                                <div class="card-tools float-right">
+                                <div class="card-tools float-end">
                                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
@@ -283,7 +283,7 @@ onMounted(() => {
                                         <button :class="['btn btn-info btn-sm', { active: activeTab === 'failed' }]" @click="switchTab('failed')">{{ t('affiliate.signups.failed') }}</button>
                                     </div>
                                 </div>
-                                <div class="col-md-4 mb-3 text-right">
+                                <div class="col-md-4 mb-3 text-end">
                                     <span class="text-md">{{ t('affiliate.signups.exportOnStatus') }} </span>
                                     <button class="btn btn-sm btn-custom" title="Excel 2007+" @click="exportFile('xlsx', activeTab)">Xlsx</button>
                                     <button class="btn btn-sm btn-custom" title="Excel 2003/BIF" @click="exportFile('xls', activeTab)">Xls</button>
@@ -294,11 +294,11 @@ onMounted(() => {
                             <!-- Search & Page Size -->
                             <div class="row mb-3 align-items-end">
                                 <div class="col-md-3">
-                                    <label>{{ t('common.search.placeholder') }}</label>
+                                    <label class="form-label">{{ t('common.search.placeholder') }}</label>
                                     <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
                                 </div>
                                 <div class="col-md-2">
-                                    <label>{{ t('common.labels.pageSize') }}</label>
+                                    <label class="form-label">{{ t('common.labels.pageSize') }}</label>
                                     <select v-model.number="pageSize" class="form-control form-control-sm">
                                         <option :value="10">10</option>
                                         <option :value="25">25</option>

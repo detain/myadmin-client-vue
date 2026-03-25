@@ -68,8 +68,8 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reverse_dns
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-atlas"></i>&nbsp;{{ t('vps.reverseDns.title') }}</h3>
-                        <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"> <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp; </router-link>
+                        <div class="card-tools text-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('vps.common.goBack')"> <i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp; </router-link>
                         </div>
                     </div>
                 </div>
@@ -81,14 +81,14 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/reverse_dns
                     <form action="view_vps" method="POST" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="reverse_dns" />
                         <template v-for="(host, ip, index) in ips" :key="index">
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label">{{ ip }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input :id="ip" v-model="ips[ip]" type="text" class="form-control form-control-sm" :name="ip" />
                                 </div>
                             </div>
                         </template>
-                        <div class="form-group row justify-content-center m-0">
+                        <div class="mb-3 row justify-content-center m-0">
                             <div class="controls">
                                 <input type="submit" name="Submit" :value="t('vps.reverseDns.updateReverseDns')" class="btn btn-order px-3 py-2 text-sm" />
                             </div>

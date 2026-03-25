@@ -67,41 +67,41 @@ accountStore.loadOnce();
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title" style="position: relative; top: 5px"><i class="fas fa-money-bill"></i>&nbsp;{{ t('affiliate.paymentSetup.choosePayment') }}</h3>
-                        <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form id="" method="post" @submit.prevent="submitForm">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label text-right"> {{ t('affiliate.paymentSetup.selectPaymentMethod') }}<span class="text-danger"> *</span> </label>
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label text-end"> {{ t('affiliate.paymentSetup.selectPaymentMethod') }}<span class="text-danger"> *</span> </label>
                             <div class="col-sm-9 input-group">
-                                <div class="form-group w-100">
-                                    <div class="icheck-success d-inline">
+                                <div class="mb-3 w-100">
+                                    <div class="form-check d-inline">
                                         <input id="payment_method_paypal" v-model="payment_method" type="radio" class="form-check-input" name="affiliate_payment_method" value="paypal" />
-                                        <label class="more-info font-weight-normal" for="payment_method_paypal">{{ t('affiliate.paymentSetup.sendToPaypal') }}</label>
+                                        <label class="form-label form-check-label more-info fw-normal" for="payment_method_paypal">{{ t('affiliate.paymentSetup.sendToPaypal') }}</label>
                                     </div>
                                 </div>
-                                <div class="form-group w-100">
+                                <div class="mb-3 w-100">
                                     <div class="d-inline">
-                                        <label class="" for="paypal_email">{{ t('affiliate.paymentSetup.paypalEmail') }}</label>
+                                        <label class="form-label " for="paypal_email">{{ t('affiliate.paymentSetup.paypalEmail') }}</label>
                                         <input id="paypal_email" v-model="affiliate_paypal" type="text" class="form-control form-control-sm" name="affiliate_paypal" />
                                     </div>
                                 </div>
-                                <div class="form-group w-100">
-                                    <div class="icheck-success d-inline">
+                                <div class="mb-3 w-100">
+                                    <div class="form-check d-inline">
                                         <input id="payment_method_inv" v-model="payment_method" type="radio" class="form-check-input" name="affiliate_payment_method" value="prepay" />
-                                        <label class="more-info font-weight-normal" for="payment_method_inv">{{ t('affiliate.paymentSetup.createPrepay') }}</label>
+                                        <label class="form-label form-check-label more-info fw-normal" for="payment_method_inv">{{ t('affiliate.paymentSetup.createPrepay') }}</label>
                                     </div>
                                 </div>
-                                <div class="form-group w-100">
-                                    <div class="icheck-success d-inline">
+                                <div class="mb-3 w-100">
+                                    <div class="form-check d-inline">
                                         <input id="no_payment_method" v-model="payment_method" type="radio" class="form-check-input" name="affiliate_payment_method" value="not set" />
-                                        <label class="more-info font-weight-normal" for="no_payment_method">{{ t('affiliate.paymentSetup.notSet') }}</label>
+                                        <label class="form-label form-check-label more-info fw-normal" for="no_payment_method">{{ t('affiliate.paymentSetup.notSet') }}</label>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <div class="controls col-md-12 text-center">
                                         <input type="submit" name="Submit" :value="t('common.buttons.submit')" class="btn btn-order btn-sm px-3 py-2" />
                                     </div>

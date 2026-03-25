@@ -3,7 +3,7 @@
         <div class="card-header">
             <h3 class="card-title"><i class="fas fa-link" aria-hidden="true"></i>{{ t('scrub_ips.filters.title') }}</h3>
             <div class="card-tools">
-                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true"></i> {{ t('scrub_ips.filters.createNew') }}</button>
+                <button type="button" class="btn-custom text-sm me-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true"></i> {{ t('scrub_ips.filters.createNew') }}</button>
             </div>
         </div>
         <div class="card-body pt-5">
@@ -26,7 +26,7 @@
                             <form :ref="(el) => setFormRef(el, index)" method="POST" @submit.prevent="handleDelete(index)">
                                 <input v-model="filter.filter_name" type="hidden" name="filter_type" />
                                 <input v-model="filter.dest" type="hidden" name="port" />
-                                <button type="submit" class="border-0" data-toggle="tooltip" :title="t('common.buttons.delete')">
+                                <button type="submit" class="border-0" data-bs-toggle="tooltip" :title="t('common.buttons.delete')">
                                     <i class="fas fa-trash" aria-hidden="true"></i>
                                 </button>
                             </form>
@@ -43,13 +43,11 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 id="modal-label" class="modal-title">{{ t('scrub_ips.filters.createNewFilter') }}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeDialog"></button>
                         </div>
                         <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
                             <div class="modal-body">
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="filter_type" class="col-sm-4 col-form-label">{{ t('scrub_ips.filters.filterType') }}</label>
                                     <div class="col-sm-8">
                                         <select id="filter_type" name="filter_type" class="form-control form-control-sm select2" style="width: 100% !important" required>
@@ -58,13 +56,13 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="ip" class="col-sm-4 col-form-label">{{ t('scrub_ips.filters.ipAddress') }}</label>
                                     <div class="col-sm-8">
                                         <input id="ip" type="text" readonly class="form-control-plaintext" :value="ip" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="port" class="col-sm-4 col-form-label">{{ t('scrub_ips.filters.portNo') }}</label>
                                     <div class="col-sm-8">
                                         <input id="port" type="text" name="port" class="form-control" value="80" />
@@ -73,7 +71,7 @@
                             </div>
                             <div class="modal-footer justify-content-center">
                                 <button type="submit" class="btn btn-primary">{{ t('common.buttons.create') }}</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">{{ t('common.buttons.close') }}</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeDialog">{{ t('common.buttons.close') }}</button>
                             </div>
                         </form>
                     </div>

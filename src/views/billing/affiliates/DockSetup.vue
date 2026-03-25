@@ -91,21 +91,21 @@ accountStore.loadOnce();
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="far fa-ticket-alt"></i>&nbsp;Affiliate Landing Page Setup (<a :href="`https://www.interserver.net/dock/vps-${user.account_id}.html`" class="link mt-0" target="_blank">View Landing Page</a>)</h3>
-                        <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form id="dockform" method="post" enctype="multipart/form-data" @submit.prevent="onSubmit">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label text-right" for="referrer_coupon">Coupon Name<span class="text-danger"> *</span></label>
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label text-end" for="referrer_coupon">Coupon Name<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
-                                <input id="referrer_coupon" v-model="referrerCoupon" type="text" name="referrer_coupon" class="form-control form-control-sm" data-toggle="popover" data-content="When a new client uses this coupon it will tag them as being referred by you and will get listed as an affiliate sale." title="Note" required />
+                                <input id="referrer_coupon" v-model="referrerCoupon" type="text" name="referrer_coupon" class="form-control form-control-sm" data-bs-toggle="popover" data-content="When a new client uses this coupon it will tag them as being referred by you and will get listed as an affiliate sale." title="Note" required />
                             </div>
                         </div>
-                        <!-- <div class="form-group row">
-                        <label class="col-sm-3 col-form-label text-right" for="fileupload">Image
+                        <!-- <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label text-end" for="fileupload">Image
                             <span class="text-danger"> *</span>
                         </label>
                         <div class="col-sm-9 input-group">
@@ -113,14 +113,14 @@ accountStore.loadOnce();
                                 class="form-control form-control-sm input-file" required>
                         </div>
                     </div> -->
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label text-right" for="affiliate_dock_title">Title<span class="text-danger"> *</span></label>
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label text-end" for="affiliate_dock_title">Title<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
                                 <input id="affiliate_dock_title" v-model="affiliateDockTitle" type="text" name="affiliate_dock_title" class="form-control form-control-sm" required />
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label text-right" for="affiliate_dock_description">Description<span class="text-danger"> *</span></label>
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label text-end" for="affiliate_dock_description">Description<span class="text-danger"> *</span></label>
                             <div class="col-sm-9 input-group">
                                 <textarea id="affiliate_dock_description" v-model="affiliateDockDescription" class="form-control form-control-sm" name="affiliate_dock_description" rows="4" required placeholder="Use this coupon when placing an order to get the first month of hosting for only 1 penny."></textarea>
                             </div>

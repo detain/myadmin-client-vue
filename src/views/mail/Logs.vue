@@ -160,7 +160,7 @@ watch(
                 <input type="hidden" name="id" :value="id" />
 
                 <!-- To / From -->
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">To</label>
                     <div class="col-sm-4">
                         <input v-model="filters.to" class="form-control" />
@@ -173,7 +173,7 @@ watch(
                 </div>
 
                 <!-- Subject / Origin -->
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">Subject</label>
                     <div class="col-sm-4">
                         <input v-model="filters.subject" class="form-control" />
@@ -186,7 +186,7 @@ watch(
                 </div>
 
                 <!-- Date Range -->
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">Start</label>
                     <div class="col-sm-4">
                         <input v-model="filters.startDate" class="form-control" />
@@ -199,7 +199,7 @@ watch(
                 </div>
 
                 <!-- Delivered -->
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">Delivered</label>
                     <div class="col-sm-4">
                         <select v-model="filters.delivered" class="form-control">
@@ -212,7 +212,7 @@ watch(
 
                 <!-- Buttons -->
                 <div class="text-center">
-                    <button class="btn btn-secondary mr-2" type="button" @click="resetSearch">Reset</button>
+                    <button class="btn btn-secondary me-2" type="button" @click="resetSearch">Reset</button>
                     <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </form>

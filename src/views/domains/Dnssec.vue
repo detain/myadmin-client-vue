@@ -170,11 +170,11 @@ loadDnsSec();
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-0">
-                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" style="float: inline-start" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
-                    <h3 class="card-title mt-1 ml-2"><i class="fas fa-lock"></i>&nbsp;{{ t('domains.dnssec.title') }}</h3>
+                    <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" style="float: inline-start" data-bs-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
+                    <h3 class="card-title mt-1 ms-2"><i class="fas fa-lock"></i>&nbsp;{{ t('domains.dnssec.title') }}</h3>
                     <div class="card-tools m-0">
                         <button class="btn btn-custom py-2 text-sm px-3" @click="showForm = true"><i class="fas fa-plus-circle"></i>&nbsp;{{ t('domains.dnssec.addNewRecord') }}</button>
-                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ml-2" @click="confirmRemoveAll"><i class="fas fa-times-circle"></i>&nbsp;{{ t('domains.dnssec.removeAllRecords') }}</button>
+                        <button v-if="dnssecRecords.length" class="btn btn-sm bg-gradient-red text-white ms-2" @click="confirmRemoveAll"><i class="fas fa-times-circle"></i>&nbsp;{{ t('domains.dnssec.removeAllRecords') }}</button>
                     </div>
                 </div>
                 <div class="card-body row justify-content-center">
@@ -211,7 +211,7 @@ loadDnsSec();
                             <form @submit.prevent="submitForm">
                                 <div v-for="(record, index) in records" v-show="record.visible" :key="index">
                                     <!-- IMPORT DS RECORD -->
-                                    <div class="form-group row">
+                                    <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label">{{ t('domains.dnssec.importDs') }}</label>
                                         <div class="col-md-8">
                                             <input v-model="record.importText" type="text" class="form-control" :placeholder="t('domains.dnssec.importPlaceholder')" />
@@ -220,7 +220,7 @@ loadDnsSec();
                                             <button type="button" class="btn btn-primary w-100" @click="importDsRecord(record)">{{ t('domains.dnssec.import') }}</button>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.digestType', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
                                             <select v-model="record.digestType" class="form-control" :required="index === 0">
@@ -232,7 +232,7 @@ loadDnsSec();
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.algorithm', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
                                             <select v-model="record.algorithm" class="form-control" :required="index === 0">
@@ -243,22 +243,22 @@ loadDnsSec();
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.keyTag', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
                                             <input v-model.number="record.keyTag" type="number" class="form-control" :placeholder="t('domains.dnssec.enterKeyTag')" :required="index === 0" />
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="mb-3 row">
                                         <label class="col-md-2 col-form-label"> {{ t('domains.dnssec.digest', { number: index + 1 }) }} </label>
                                         <div class="col-md-10">
                                             <textarea v-model="record.digest" class="form-control" rows="5" :placeholder="t('domains.dnssec.enterDigest', { max: record.maxLength })" :maxlength="record.maxLength" :required="index === 0"></textarea>
-                                            <div class="text-right text-muted">
+                                            <div class="text-end text-muted">
                                                 {{ t('domains.dnssec.charactersLeft', { count: record.maxLength - record.digest.length }) }}
                                             </div>
                                         </div>
                                     </div>
-                                    <div v-if="index < 2" class="text-right mb-3">
+                                    <div v-if="index < 2" class="text-end mb-3">
                                         <button type="button" class="btn btn-sm btn-primary" @click="records[index + 1].visible = true"><i class="fas fa-plus"></i>&nbsp;{{ t('domains.dnssec.addMore') }}</button>
                                     </div>
                                 </div>

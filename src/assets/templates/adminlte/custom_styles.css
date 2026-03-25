@@ -5,7 +5,7 @@
 html {
     font-size: 14px;
 }
-#invoice_table_length .custom-select {
+#invoice_table_length .form-select {
     padding-right: 7.1rem !important;
 }
 
@@ -79,40 +79,14 @@ svg {
     background-color: #1c1b1b !important;
 }
 
-[class*='icheck-'] > input[type='checkbox']:first-child + label::before {
-    border-radius: 4px !important;
-    transition-duration: 0.4s;
-    width: 1.4rem !important;
-    height: 1.35rem !important;
-}
-
-[class*='icheck-'] > input[type='checkbox']:first-child:checked + label::after {
-    top: -0.14rem !important;
-    left: 0 !important;
-    width: 0.4rem !important;
-    height: 0.85rem !important;
-}
-
-.icheck-success > input:first-child:checked + label::before {
+/* BS5 form-check accent color to match old icheck-success blue */
+.form-check-input:checked {
     background-color: #136bdd !important;
     border-color: #136bdd !important;
 }
 
-.icheck-success > input:first-child:not(:checked):not(:disabled):hover + label::before {
+.form-check-input:not(:checked):not(:disabled):hover {
     border-color: #136bdd !important;
-}
-
-[class*='icheck-'] > input[type='radio']:first-child:checked + label::after {
-    top: 0.14rem;
-    left: -0.1rem;
-    width: 0.6rem;
-    height: 0.7rem;
-    border: 0.3rem solid #fff;
-    border-radius: 50%;
-}
-
-[class*='icheck-'] > label {
-    line-height: 1.4rem !important;
 }
 
 .link,
@@ -321,7 +295,7 @@ a.blog-link:hover {
     flex-wrap: wrap;
 }
 
-.input-group-sm > .input-group-prepend {
+.input-group-sm > .input-group-text {
     padding-bottom: 0.35rem;
 }
 
@@ -696,7 +670,7 @@ tr.shown td.details-control {
     transition-duration: 0.3s;
 }
 
-.main-footer {
+.app-footer {
     background-color: #f4f6f9 !important;
     border: none !important;
 }

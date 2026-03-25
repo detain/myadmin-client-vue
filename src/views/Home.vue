@@ -20,38 +20,41 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
 
 <template>
     <div v-if="user">
-        <nav class="main-header navbar navbar-expand navbar-dark">
+        <nav class="app-header navbar navbar-expand bg-body">
             <!-- Navbar -->
-            <ul class="navbar-nav menu-collapse">
-                <!-- Left navbar links -->
-                <li class="nav-item">
-                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <!-- Right navbar links -->
-                <li class="nav-item dropdown">
-                    <router-link to="cart" :title="t('login.home.cart')" class="nav-link"><i class="fas fa-shopping-cart"></i></router-link>
-                </li>
-                <li class="nav-item dropdown">
-                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fas fa-power-off"></i></button>
-                    <!-- <a class="nav-link" href="index.php?choice=none.logout" title="Logout"><i class="fas fa-power-off"></i></a> -->
-                </li>
-            </ul>
+            <div class="container-fluid">
+                <ul class="navbar-nav menu-collapse">
+                    <!-- Left navbar links -->
+                    <li class="nav-item">
+                        <a class="nav-link collapse_menu" data-lte-toggle="sidebar" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <!-- Right navbar links -->
+                    <li class="nav-item dropdown">
+                        <router-link to="cart" :title="t('login.home.cart')" class="nav-link"><i class="fas fa-shopping-cart"></i></router-link>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fas fa-power-off"></i></button>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <!-- /.navbar -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
             <!-- Main Sidebar Container -->
-            <a :href="typeof user.ima != 'undefined' && user.ima === 'client' ? '/' : '/admin'" class="brand-link">
-                <!-- Brand Logo -->
-                <img src="../assets/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: 0.8" />
-                <span class="brand-text font-weight-light">InterServer</span>
-            </a>
-            <div class="sidebar">
+            <div class="sidebar-brand">
+                <a :href="typeof user.ima != 'undefined' && user.ima === 'client' ? '/' : '/admin'" class="brand-link">
+                    <!-- Brand Logo -->
+                    <img src="../assets/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle opacity-75" />
+                    <span class="brand-text fw-light">InterServer</span>
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
                 <!-- Sidebar -->
                 <div class="user-panel d-flex mb-3 mt-3 pb-3">
                     <!-- Sidebar user panel (optional) -->
-                    <div class="image"><img :src="user.gravatar" class="rounded-circle elevation-2" style="width: 3rem" alt="DP" /></div>
+                    <div class="image"><img :src="user.gravatar" class="rounded-circle shadow-sm" style="width: 3rem" alt="DP" /></div>
                     <div class="info">
                         <router-link to="/account/info" :title="t('login.home.editPersonalInfo')" class="d-block">{{ user.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
@@ -66,13 +69,13 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
             <!-- /.sidebar -->
         </aside>
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <div class="content-header">
+        <main class="app-main">
+            <div class="app-content-header">
                 <!-- Content Header (Page header) -->
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                            <h1 class="text-dark m-0">{{ page_heading }}</h1>
+                            <h1 class="m-0">{{ page_heading }}</h1>
                         </div>
                         <div class="col-sm-12">
                             <ol class="breadcrumb">
@@ -94,8 +97,8 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
-        </div>
-        <footer class="main-footer text-center">
+        </main>
+        <footer class="app-footer text-center">
             <strong>{{ t('login.home.copyright', { year: new Date().getFullYear() }) }}</strong> {{ t('login.home.allRightsReserved') }}
         </footer>
     </div>

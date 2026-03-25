@@ -163,7 +163,7 @@ try {
         <div class="row justify-content-center mb-3">
             <div class="col-md-10 mt-2 mb-3 alert alert-info px-4 py-2 rounded-4 position-relative shadow-lg outgoing_mail_msg" role="alert" style="background: linear-gradient(135deg, #fbfafa, #cecece); border: 2px solid #b6b8b9; color: #00334e; border-radius: 8px">
                 <div class="d-flex align-items-center">
-                    <div class="mr-4">
+                    <div class="me-4">
                         <i class="fas fa-envelope fa-3x" style="color: #007bff"></i>
                     </div>
                     <div>
@@ -186,22 +186,22 @@ try {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="far fa-envelope-open" aria-hidden="true"></i>&nbsp;Order Mail</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <form id="mail_form" method="post" class="mail_form_init" action="/mail/order" @submit.prevent="onSubmit">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label text-right">Package<span class="text-danger"> *</span></label>
+                            <div class="mb-3 row">
+                                <label class="col-sm-3 col-form-label text-end">Package<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="pkg" class="form-control form-control-sm select2 valid">
                                         <option v-for="(serviceType, index) in serviceTypes" :key="index" :value="serviceType.services_id">{{ serviceType.services_name }}</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">Coupon Code</label>
                                 <div class="input-group col-md-9">
                                     <input id="coupon" v-model="coupon" type="text" class="w-100 form-control text-sm" name="coupon" placeholder="Coupon Code" @keyup="updateCoupon" @change="updateCoupon" />
@@ -231,7 +231,7 @@ try {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>&nbsp;Order Summary</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -239,22 +239,22 @@ try {
                     <div class="card-body">
                         <div class="row mb-3">
                             <div v-if="serviceTypes && serviceTypes[pkg]" id="package_name" class="col-md-8">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_name : '' }}</div>
-                            <div id="package_period" class="col text-bold text-right">1 Month(s)</div>
+                            <div id="package_period" class="col text-bold text-end">1 Month(s)</div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8">Package Cost</div>
-                            <div class="col text-bold package_cost text-right">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
+                            <div class="col text-bold package_cost text-end">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
                         </div>
                         <!--
                         <div id="couponpricerownew" class="row mb-3">
                             <div id="couponpricetextnew" class="col-md-8">Coupon Discount</div>
-                            <div id="couponprice" class="col text-bold text-right"></div>
+                            <div id="couponprice" class="col text-bold text-end"></div>
                         </div>
                         -->
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div id="totalcost" class="col text-bold total_cost text-right text-lg">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
+                            <div id="totalcost" class="col text-bold total_cost text-end text-lg">{{ serviceTypes[pkg] ? serviceTypes[pkg].services_cost : '' }}</div>
                         </div>
                     </div>
                 </div>
@@ -269,7 +269,7 @@ try {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>&nbsp;Order Summary</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -282,8 +282,8 @@ try {
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div class="text-md float-left" style="position: relative; top: 5px">{{ serviceTypes[pkg].services_name }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" title="Edit details" @click="editForm"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                            <div class="text-md float-start" style="position: relative; top: 5px">{{ serviceTypes[pkg].services_name }}</div>
+                                            <button type="button" class="btn btn-custom btn-sm float-end" name="update_values" data-bs-toggle="tooltip" title="Edit details" @click="editForm"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
                                         </th>
                                         <th>
                                             <div class="text-bold text-md package_cost">{{ validateResponse?.originalCost }}</div>
@@ -332,9 +332,9 @@ try {
                                     The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold">{{ packageCosts[pkg] }}</span> until canceled.
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
-                                <div class="icheck-success text-bold text-center">
-                                    <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
-                                    <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
+                                <div class="form-check text-bold text-center">
+                                    <input id="tos" v-model="tos" type="checkbox" class="form-check-input" name="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <label for="tos" class="d-inline text-center form-check-label">I have read the terms above and I agree.</label>
                                 </div>
                             </div>
                             <div class="row">

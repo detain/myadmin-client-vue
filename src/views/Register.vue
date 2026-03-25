@@ -39,32 +39,32 @@ async function onSubmit(values: any) {
                     <h4 class="card-header">{{ t('login.register') }}</h4>
                     <div class="card-body">
                         <Form v-slot="{ errors, isSubmitting }" :validation-schema="schema" @submit="onSubmit">
-                            <div class="form-group">
-                                <label>{{ t('login.firstName') }}</label>
+                            <div class="mb-3">
+                                <label class="form-label">{{ t('login.firstName') }}</label>
                                 <Field name="firstName" type="text" class="form-control" :class="{ 'is-invalid': errors.firstName }" />
                                 <div class="invalid-feedback">{{ errors.firstName }}</div>
                             </div>
-                            <div class="form-group">
-                                <label>{{ t('login.lastName') }}</label>
+                            <div class="mb-3">
+                                <label class="form-label">{{ t('login.lastName') }}</label>
                                 <Field name="lastName" type="text" class="form-control" :class="{ 'is-invalid': errors.lastName }" />
                                 <div class="invalid-feedback">{{ errors.lastName }}</div>
                             </div>
-                            <div class="form-group">
-                                <label>{{ t('login.username') }}</label>
+                            <div class="mb-3">
+                                <label class="form-label">{{ t('login.username') }}</label>
                                 <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
                                 <div class="invalid-feedback">{{ errors.username }}</div>
                             </div>
-                            <div class="form-group">
-                                <label>{{ t('login.password') }}</label>
+                            <div class="mb-3">
+                                <label class="form-label">{{ t('login.password') }}</label>
                                 <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
                                 <div class="invalid-feedback">{{ errors.password }}</div>
                             </div>
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <div class="g-recaptcha" data-sitekey="6LeYMVkUAAAAAOW7Nw0e9rhAxIfH5T9k-JN9pMr2"></div>
                             </div>
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <button class="btn btn-primary" :disabled="isSubmitting">
-                                    <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+                                    <span v-show="isSubmitting" class="spinner-border spinner-border-sm me-1"></span>
                                     {{ t('common.buttons.register') }}
                                 </button>
                                 <router-link to="login" class="btn btn-link">{{ t('common.buttons.cancel') }}</router-link>

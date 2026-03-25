@@ -308,7 +308,7 @@ watch(
                             </div>
                         </div>
                         <div class="card-body">
-                            <div v-if="!web" class="form-group row">
+                            <div v-if="!web" class="mb-3 row">
                                 <div class="col-md-12 input-group">
                                     <div class="card">
                                         <div class="card-header">
@@ -323,11 +323,11 @@ watch(
                                                         <div class="card-header">
                                                             <div class="p-1">
                                                                 <h3 class="card-title py-2">
-                                                                    <div class="icheck-success">
+                                                                    <div class="form-check">
                                                                         <input :id="serviceData.services_name" v-model="formData.packageId" type="radio" class="form-check-input websiteSelect" :name="serviceData.services_name" :value="serviceData.services_id" />
-                                                                        <label :for="serviceData.services_name">
+                                                                        <label :for="serviceData.services_name" class="form-check-label">
                                                                             {{ serviceData.services_name }}<br />
-                                                                            <div class="text-muted font-italic mt-1 text-sm">
+                                                                            <div class="text-muted fst-italic mt-1 text-sm">
                                                                                 <template v-if="serviceData.services_category == 200"> ( cPanel ) </template>
                                                                                 <template v-else-if="serviceData.services_category == 204"> ( DirectAdmin ) </template>
                                                                                 <template v-else-if="serviceData.services_category == 202"> ( Plesk ) </template>
@@ -348,11 +348,11 @@ watch(
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">
-                                                            <div class="service_cost float-left">
+                                                            <div class="service_cost float-start">
                                                                 Starting From: <b>{{ currencySymbol }}{{ serviceData.services_cost }}</b>
                                                             </div>
-                                                            <div class="float-right">
-                                                                <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info">
+                                                            <div class="float-end">
+                                                                <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-bs-toggle="tooltip" title="More Info">
                                                                     <i class="far fa-external-link-alt"></i>
                                                                 </a>
                                                             </div>
@@ -376,11 +376,11 @@ watch(
                                                     <div class="card-header">
                                                         <div class="p-1">
                                                             <h3 class="card-title py-2">
-                                                                <div class="icheck-success">
+                                                                <div class="form-check">
                                                                     <input :id="serviceData.services_name" v-model="formData.packageId" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" />
-                                                                    <label :for="serviceData.services_name">
+                                                                    <label :for="serviceData.services_name" class="form-check-label">
                                                                         {{ serviceData.services_name }}<br />
-                                                                        <div class="text-muted font-italic mt-1 text-sm">
+                                                                        <div class="text-muted fst-italic mt-1 text-sm">
                                                                             <span v-if="serviceData.services_category == 200">( cPanel )</span>
                                                                             <span v-else-if="serviceData.services_category == 204">( DirectAdmin )</span>
                                                                             <span v-else-if="serviceData.services_category == 202">( Plesk )</span>
@@ -396,11 +396,11 @@ watch(
                                                         </div>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <div class="service_cost float-left">
+                                                        <div class="service_cost float-start">
                                                             Starting From: <b>{{ currencySymbol }}{{ serviceData.services_cost }}</b>
                                                         </div>
-                                                        <div class="float-right">
-                                                            <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info">
+                                                        <div class="float-end">
+                                                            <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-bs-toggle="tooltip" title="More Info">
                                                                 <i class="far fa-external-link-alt"></i>
                                                             </a>
                                                         </div>
@@ -413,17 +413,17 @@ watch(
                             </div>
                             <template v-else>
                                 <template v-for="(serviceData, servicesId) in packages">
-                                    <div v-if="serviceData.services_id == formData.packageId" :key="servicesId" class="form-group row">
+                                    <div v-if="serviceData.services_id == formData.packageId" :key="servicesId" class="mb-3 row">
                                         <label class="col-sm-2 col-form-label px-0">Package<span class="text-danger">*</span></label>
                                         <div class="card col-md-10 p-0">
                                             <div class="card-header">
                                                 <div class="p-1">
                                                     <h3 class="card-title py-2">
-                                                        <div class="icheck-success">
+                                                        <div class="form-check">
                                                             <input :id="serviceData.services_name" type="radio" class="form-check-input websiteSelect" name="website" :value="serviceData.services_id" :checked="formData.packageId == serviceData.services_id" />
-                                                            <label :for="serviceData.services_name">
+                                                            <label :for="serviceData.services_name" class="form-check-label">
                                                                 {{ serviceData.services_name }}<br />
-                                                                <div class="text-muted font-italic mt-1 text-sm">
+                                                                <div class="text-muted fst-italic mt-1 text-sm">
                                                                     <template v-if="serviceData.services_category == 200">( cPanel )</template>
                                                                     <template v-else-if="serviceData.services_category == 204">( DirectAdmin )</template>
                                                                     <template v-else-if="serviceData.services_category == 202">( Plesk )</template>
@@ -444,11 +444,11 @@ watch(
                                                 </div>
                                             </div>
                                             <div class="card-footer">
-                                                <div class="service_cost float-left">
+                                                <div class="service_cost float-start">
                                                     Starting From: <b>{{ currencySymbol }}{{ serviceData.services_cost }}</b>
                                                 </div>
-                                                <div class="float-right">
-                                                    <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-toggle="tooltip" title="More Info"><i class="far fa-external-link-alt"></i></a>
+                                                <div class="float-end">
+                                                    <a :href="serviceData.services_moreinfo_url" target="_blank" style="font-size: 14px" data-bs-toggle="tooltip" title="More Info"><i class="far fa-external-link-alt"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -471,29 +471,29 @@ watch(
                                     <template v-if="serviceTypes[formData.packageId]">{{ serviceTypes[formData.packageId].services_name }}</template>
                                 </div>
                                 <template v-if="selectedOffer">
-                                    <div class="col-md-8 period text-right">{{ currencySymbol }}{{ selectedOffer.intro_cost }} for {{ selectedOffer.intro_frequency }} month(s). Renews at {{ currencySymbol }}{{ selectedOffer.renewal_cost }} for {{ selectedOffer.renewal_frequency }} month(s)</div>
+                                    <div class="col-md-8 period text-end">{{ currencySymbol }}{{ selectedOffer.intro_cost }} for {{ selectedOffer.intro_frequency }} month(s). Renews at {{ currencySymbol }}{{ selectedOffer.renewal_cost }} for {{ selectedOffer.renewal_frequency }} month(s)</div>
                                 </template>
                                 <template v-else>
-                                    <div class="col-md-8 period text-right">{{ period }} Month(s)</div>
+                                    <div class="col-md-8 period text-end">{{ period }} Month(s)</div>
                                 </template>
                             </div>
                             <div class="row mb-3">
                                 <div id="hostname_display" class="col-md-6">{{ formData.hostname }}</div>
                                 <template v-if="selectedOffer">
-                                    <div class="col package_cost text-right">{{ currencySymbol }}{{ selectedOffer.intro_cost }} / {{ selectedOffer.intro_frequency }} month(s)</div>
+                                    <div class="col package_cost text-end">{{ currencySymbol }}{{ selectedOffer.intro_cost }} / {{ selectedOffer.intro_frequency }} month(s)</div>
                                 </template>
                                 <template v-else-if="serviceTypes[formData.packageId]">
-                                    <div class="col package_cost text-right">{{ currencySymbol }}{{ serviceTypes[formData.packageId].services_cost }} / {{ period }} month(s)</div>
+                                    <div class="col package_cost text-end">{{ currencySymbol }}{{ serviceTypes[formData.packageId].services_cost }} / {{ period }} month(s)</div>
                                 </template>
                             </div>
                             <div id="couponpricerownew" class="row coupon-display d-none mb-3">
                                 <div id="couponpricetext" class="col-md-6"></div>
-                                <div id="couponprice" class="col text-right"></div>
+                                <div id="couponprice" class="col text-end"></div>
                             </div>
                             <hr />
                             <div class="row mb-3">
                                 <div class="col-md-8 text-lg">Total</div>
-                                <div class="col total_cost text-right text-lg">{{ currencySymbol }}{{ totalCost }}</div>
+                                <div class="col total_cost text-end text-lg">{{ currencySymbol }}{{ totalCost }}</div>
                             </div>
                         </div>
                     </div>
@@ -504,15 +504,15 @@ watch(
                             </div>
                         </div>
                         <div class="card-body text-md">
-                            <div class="form-group row">
-                                <label class="col-sm-12">Domain Name<span class="text-danger">*</span></label>
+                            <div class="mb-3 row">
+                                <label class="form-label col-sm-12">Domain Name<span class="text-danger">*</span></label>
                                 <div class="col-md-12">
                                     <input id="hostname" v-model="formData.hostname" type="text" placeholder="Enter a domain name" class="form-control form-control-sm" name="hostname" required @keyup="searchDomain" @change="searchDomain" />
                                     <small class="form-text text-muted">Website Domain Name (ie yoursite.com)</small>
                                 </div>
                             </div>
-                            <div v-if="domainStatusVisible" class="form-group row d-status mb-0">
-                                <label class="col-sm-12">Domain Status<span class="text-danger">*</span></label>
+                            <div v-if="domainStatusVisible" class="mb-3 row d-status mb-0">
+                                <label class="form-label col-sm-12">Domain Status<span class="text-danger">*</span></label>
                                 <template v-if="searchResults?.available === true">
                                     <div class="col-md-12">
                                         <small class="form-text text-warning mb-0 text-sm">
@@ -530,8 +530,8 @@ watch(
                                     </div>
                                 </template>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
+                            <div class="mb-3 row">
+                                <label class="form-label col-sm-12">Billing Cycle<span class="text-danger">*</span></label>
                                 <div class="col-sm-12">
                                     <select id="period" v-model="period" name="period" class="form-control form-control-sm select2">
                                         <template v-if="serviceOffers[formData.packageId]">
@@ -548,8 +548,8 @@ watch(
                                     </select>
                                 </div>
                             </div>
-                            <div id="coupon_row" class="form-group row">
-                                <label class="col-md-12">Coupon Code</label>
+                            <div id="coupon_row" class="mb-3 row">
+                                <label class="form-label col-md-12">Coupon Code</label>
                                 <div class="col-md-12"><input id="coupon" v-model="formData.coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon" /></div>
                                 <div class="col-md-12"></div>
                                 <div class="col-md-12">
@@ -557,10 +557,10 @@ watch(
                                     <span id="coupon_text" class="text-muted text-sm" style="position: relative; top: 2px"></span>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="controls col-md-12" style="text-align: center"><input type="submit" name="Submit" value="Continue" class="btn btn-sm btn-order px-3 py-2" :disabled="formData.hostname == ''" /></div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="controls col-md-12" style="text-align: left">
                                     <pre>{{ formData }}</pre>
                                 </div>
@@ -586,9 +586,9 @@ watch(
                                 <thead>
                                     <tr>
                                         <th>
-                                            <button type="button" style="" name="update_values" data-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details" @click="step = 'order_form'">
-                                                <div style="display: inline" class="text-md float-left">{{ formData.hostname }}</div>
-                                                <i style="padding-top: 4px; padding-left: 4px" aria-hidden="true" class="fas fa-pencil-alt float-right"></i>
+                                            <button type="button" style="" name="update_values" data-bs-toggle="tooltip" class="btn btn-sm text-bold" title="Edit details" @click="step = 'order_form'">
+                                                <div style="display: inline" class="text-md float-start">{{ formData.hostname }}</div>
+                                                <i style="padding-top: 4px; padding-left: 4px" aria-hidden="true" class="fas fa-pencil-alt float-end"></i>
                                             </button>
                                         </th>
                                         <th>
@@ -607,7 +607,7 @@ watch(
                                             <div class="col-md-8 text-md">Availiability:</div>
                                         </td>
                                         <td>
-                                            <div v-if="domainStatusVisible" class="form-group row d-status mb-0">
+                                            <div v-if="domainStatusVisible" class="mb-3 row d-status mb-0">
                                                 <template v-if="searchResults?.available === true">
                                                     <div class="col-md-12">
                                                         <small class="form-text text-warning mb-0 text-sm">
@@ -681,14 +681,14 @@ watch(
                                     The subscription will automatically renew every <b>{{ period }} month(s) at {{ currencySymbol + totalCost }}</b> until canceled.
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
-                                <p class="icheck-success text-bold text-center">
-                                    <input id="tos" v-model="tos" type="checkbox" name="tos" class="d-inline" style="margin: 0 5px" value="true" />
-                                    <label for="tos" style="display: inline; text-align: center">I have read the terms above and I agree.</label>
+                                <p class="form-check text-bold text-center">
+                                    <input id="tos" v-model="tos" type="checkbox" name="tos" class="d-inline form-check-input" style="margin: 0 5px" value="true" />
+                                    <label for="tos" class="form-check-label" style="display: inline; text-align: center">I have read the terms above and I agree.</label>
                                 </p>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="controls col-md-12" style="text-align: center">
-                                    <button class="btn btn-custom btn-sm px-3 py-2 mr-2" data-toggle="tooltip" title="Go Back" style="" type="button" @click.prevent="goBack"><i class="fas fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</button>
+                                    <button class="btn btn-custom btn-sm px-3 py-2 me-2" data-bs-toggle="tooltip" title="Go Back" style="" type="button" @click.prevent="goBack"><i class="fas fa-arrow-left"></i>&nbsp;Go Back&nbsp;&nbsp;</button>
                                     <input type="submit" name="Submit" value="Place Order" class="btn btn-green px-3 py-2 text-sm" :disabled="tos == false" />
                                 </div>
                             </div>

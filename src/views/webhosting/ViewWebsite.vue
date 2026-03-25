@@ -208,7 +208,7 @@ loadLink(route.params.link as string);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>&nbsp;{{ pkg }} Login</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button class="btn btn-tool mt-0" type="button" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                     </div>
@@ -246,7 +246,7 @@ loadLink(route.params.link as string);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-globe"></i>&nbsp;{{ t('webhosting.view.defaultNameservers') }}</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                 <i class="fas fa-minus" aria-hidden="true"></i>
                             </button>
@@ -276,7 +276,7 @@ loadLink(route.params.link as string);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-link" aria-hidden="true"></i>&nbsp;{{ t('webhosting.view.externalLinks') }}</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                 <i class="fas fa-minus" aria-hidden="true"></i>
                             </button>
@@ -314,13 +314,13 @@ loadLink(route.params.link as string);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-link"></i>&nbsp;{{ t('common.labels.links') }}</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + (clientLink.link != null ? clientLink.link : 'login')" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i>{{ clientLink.label }}
                     </router-link>
                 </div>
@@ -331,7 +331,7 @@ loadLink(route.params.link as string);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-plus"></i>&nbsp;{{ extraInfoTables.addons.title }}</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>

@@ -51,14 +51,14 @@ function submitForm() {
                 <div class="card-body">
                     <form class="change_hostname" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="changeHostname" />
-                        <div class="form-group mb-0">
-                            <div class="form-group row">
+                        <div class="mb-3 mb-0">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="old-hostname">{{ t('vps.changeHostname.existingHostname') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input id="old-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="hostname">{{ t('vps.changeHostname.newHostname') }}</label>
                                 <div class="col-sm-9">
                                     <input id="hostname" v-model="hostname" type="text" class="form-control form-control-sm" name="hostname" :placeholder="t('vps.changeHostname.placeholder')" />

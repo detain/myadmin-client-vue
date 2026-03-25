@@ -160,8 +160,8 @@ onBeforeUnmount(() => {
             <div class="p-1 d-flex justify-content-between align-items-center flex-wrap">
                 <div class="d-flex align-items-center">
                     <h3 class="card-title py-2 mb-0"><i class="fas fa-tachometer-alt"></i>&nbsp;{{ t('vps.trafficUsage.title') }}</h3>
-                    <div class="metric-toggle-container ml-4">
-                        <span class="toggle-label mr-2">{{ t('vps.trafficUsage.displayIn') }}</span>
+                    <div class="metric-toggle-container ms-4">
+                        <span class="toggle-label me-2">{{ t('vps.trafficUsage.displayIn') }}</span>
                         <div class="metric-toggle">
                             <input id="bits-metric" v-model="metric" type="radio" value="bits" />
                             <label for="bits-metric">{{ t('vps.trafficUsage.bits') }}</label>
@@ -171,7 +171,7 @@ onBeforeUnmount(() => {
                     </div>
                 </div>
                 <div class="card-tools">
-                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"> <i class="fas fa-arrow-left"></i>&nbsp;{{ t('common.buttons.back') }} </router-link>
+                    <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('vps.common.goBack')"> <i class="fas fa-arrow-left"></i>&nbsp;{{ t('common.buttons.back') }} </router-link>
                 </div>
             </div>
         </div>

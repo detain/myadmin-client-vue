@@ -71,8 +71,8 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).the
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-atlas"></i>&nbsp;Reverse DNS</h3>
-                        <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <div class="card-tools text-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -86,14 +86,14 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).the
                             <template v-if="field_details.help_text">
                                 <div class="alert alert-success">{{ field_details.help_text }}</div>
                             </template>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label">{{ field_name }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input :id="field_details.name" v-model="fields[field_name]" type="text" class="form-control form-control-sm" name="host_name" required />
                                 </div>
                             </div>
                         </template>
-                        <div class="form-group row justify-content-center m-0">
+                        <div class="mb-3 row justify-content-center m-0">
                             <div class="controls">
                                 <input type="submit" name="Submit" value="Update Reverse DNS" class="btn btn-order px-3 py-2 text-sm" />
                             </div>

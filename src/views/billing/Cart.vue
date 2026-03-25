@@ -7,6 +7,7 @@ import { useI18n } from 'vue-i18n';
 import { useAccountStore } from '@/stores/account.store';
 import { useSiteStore } from '@/stores/site.store';
 import type { SimpleStringObj, CartResponse, ModuleCounts, Modules, CurrencyArr, PaymentMethodsData, ModuleSettings, InvRow, HDRow, ServerRow } from '@/types/cart.ts';
+import * as bootstrap from 'bootstrap';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const { t } = useI18n();
@@ -459,7 +460,7 @@ function addCardSubmit() {
             .then((response) => {
                 console.log('add cc success', response);
                 accountStore.load();
-                $('#add-card').modal('hide');
+                bootstrap.Modal.getInstance(document.getElementById('add-card')!)?.hide();
             });
     } catch (error: any) {
         console.log('add cc failed', error);
@@ -475,7 +476,7 @@ async function editCardSubmit() {
             .then((response) => {
                 console.log('edit cc success', response);
                 accountStore.load();
-                $('#edit-card').modal('hide');
+                bootstrap.Modal.getInstance(document.getElementById('edit-card')!)?.hide();
             });
     } catch (error: any) {
         console.log('edit cc failed', error);
@@ -491,11 +492,11 @@ async function verifyCardSubmit() {
             .then((response) => {
                 console.log('verify cc success', response);
                 accountStore.load();
-                $('#verify-card-1').modal('hide');
+                bootstrap.Modal.getInstance(document.getElementById('verify-card-1')!)?.hide();
                 // After step 1, the card is now charged - open step 2 modal
                 if (data.value.ccs[modalCcIdx.value]) {
                     data.value.ccs[modalCcIdx.value].verify_charged = true;
-                    $('#verify-card').modal('show');
+                    bootstrap.Modal.getOrCreateInstance(document.getElementById('verify-card')!).show();
                 }
             });
     } catch (error: any) {
@@ -513,7 +514,7 @@ async function verifyAmountSubmit() {
             .then((response) => {
                 console.log('verify amounts success', response);
                 accountStore.load();
-                $('#verify-card').modal('hide');
+                bootstrap.Modal.getInstance(document.getElementById('verify-card')!)?.hide();
             });
     } catch (error: any) {
         console.log('verify amounts failed', error);
@@ -537,15 +538,15 @@ function editCardModal(cc_id = 0) {
             contFields[key] = '';
         }
     }
-    $('#edit-card').modal('show');
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('edit-card')!).show();
 }
 
 async function verifyCard(cc_id = 0) {
     modalCcIdx.value = cc_id;
     if (!data.value.ccs[cc_id].verify_charged) {
-        $('#verify-card-1').modal('show');
+        bootstrap.Modal.getOrCreateInstance(document.getElementById('verify-card-1')!).show();
     } else {
-        $('#verify-card').modal('show');
+        bootstrap.Modal.getOrCreateInstance(document.getElementById('verify-card')!).show();
     }
 }
 
@@ -676,7 +677,7 @@ async function updateInfoSubmit() {
         for (let key in contFields) {
             data.value[key] = contFields[key];
         }
-        $('#edit-info').modal('hide');
+        bootstrap.Modal.getInstance(document.getElementById('edit-info')!)?.hide();
     } catch (error: any) {
         console.log(error);
     }
@@ -882,21 +883,21 @@ pageInit();
             <div class="card">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><i class="fas fa-money-bill"></i>&nbsp;{{ t('billing.cart.payBalance') }}</h3>
+                        <h3 class="card-title float-start py-2"><i class="fas fa-money-bill"></i>&nbsp;{{ t('billing.cart.payBalance') }}</h3>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row my-2">
                         <div class="col-md-12">
-                            <span class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">1</span>
+                            <span class="text-bold me-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">1</span>
                             <b class="text-lg">{{ t('billing.cart.billingAddress') }}</b>
                         </div>
-                        <div v-if="data.address && data.address !== ' '" class="col-md-4 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)">
+                        <div v-if="data.address && data.address !== ' '" class="col-md-4 b-radius card ms-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)">
                             <div class="row">
                                 <div class="col-md-2 mb-3">
-                                    <div class="icheck-success">
+                                    <div class="form-check">
                                         <input id="contact_check" type="radio" class="form-check-input" checked />
-                                        <label for="contact_check"></label>
+                                        <label class="form-check-label" for="contact_check"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-10 mb-3">
@@ -913,12 +914,12 @@ pageInit();
                                         <span class="mt-2">{{ data.phone }}</span>
                                     </template>
                                 </div>
-                                <div class="col-md-12 pr-3 text-right">
-                                    <a href="javascript:void(0);" class="btn btn-custom btn-sm px-3 py-1" data-toggle="modal" data-target="#edit-info" :title="t('billing.cart.updateContactInfo')"> <i class="far fa-edit" aria-hidden="true"></i>&nbsp;{{ t('billing.cart.edit') }} </a>
+                                <div class="col-md-12 pe-3 text-end">
+                                    <a href="javascript:void(0);" class="btn btn-custom btn-sm px-3 py-1" data-bs-toggle="modal" data-bs-target="#edit-info" :title="t('billing.cart.updateContactInfo')"> <i class="far fa-edit" aria-hidden="true"></i>&nbsp;{{ t('billing.cart.edit') }} </a>
                                 </div>
                             </div>
                         </div>
-                        <div v-else class="card my-3 ml-5 px-4 py-3">
+                        <div v-else class="card my-3 ms-5 px-4 py-3">
                             <div class="card-header">
                                 <h5 class="card-title text-bold py-2">{{ t('billing.cart.addBillingAddressPrompt') }}</h5>
                             </div>
@@ -931,15 +932,15 @@ pageInit();
                     <div class="row mt-5">
                         <div class="col-md-5 p-0">
                             <div class="col-md-12">
-                                <span class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">2</span>
+                                <span class="text-bold me-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">2</span>
                                 <b class="text-lg">{{ t('billing.cart.numberOfProducts') }}</b>
                             </div>
                         </div>
                         <div class="col-md-3 text-center">
                             <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="invoice_days" class="col-md-4 col-form-label">{{ t('billing.cart.filter') }}</label>
-                                    <select id="invoice_days" v-model="invoiceDays" class="col-md-8 select2 form-control text-left" name="invoice_days" @change="submitForm">
+                                    <select id="invoice_days" v-model="invoiceDays" class="col-md-8 select2 form-control text-start" name="invoice_days" @change="submitForm">
                                         <option value="-1">{{ t('billing.cart.allDays') }}</option>
                                         <option value="30">{{ t('billing.cart.thirtyDays') }}</option>
                                         <option value="60">{{ t('billing.cart.sixtyDays') }}</option>
@@ -951,9 +952,9 @@ pageInit();
                         </div>
                         <div class="col-md-3 text-center">
                             <form @submit.prevent="submitForm('cart' + (st ? '?st=' + st : ''))">
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="currency_select" class="col-md-6 col-form-label">{{ t('billing.cart.currency') }}</label>
-                                    <select id="currency_select" v-model="currency" class="col-md-6 select2 form-control text-left" name="currency" @change="submitForm">
+                                    <select id="currency_select" v-model="currency" class="col-md-6 select2 form-control text-start" name="currency" @change="submitForm">
                                         <option v-for="(value, name, index) in currencyArr" :key="index" :value="value">{{ name }}</option>
                                     </select>
                                 </div>
@@ -965,9 +966,9 @@ pageInit();
                             <thead>
                                 <tr>
                                     <th style="width: 5%">
-                                        <div class="icheck-success d-inline">
-                                            <input id="checkboxtoggle" type="checkbox" name="uncheckAll" value="" checked @change="toggleCheckbox" />
-                                            <label for="checkboxtoggle"> </label>
+                                        <div class="form-check d-inline">
+                                            <input id="checkboxtoggle" type="checkbox" class="form-check-input" name="uncheckAll" value="" checked @change="toggleCheckbox" />
+                                            <label class="form-check-label" for="checkboxtoggle"> </label>
                                         </div>
                                     </th>
                                     <th>{{ t('billing.cart.service') }}</th>
@@ -975,15 +976,15 @@ pageInit();
                                     <th>{{ t('billing.cart.date') }}</th>
                                     <th>{{ t('billing.cart.serviceStatus') }}</th>
                                     <th>{{ t('billing.cart.actions') }}</th>
-                                    <th class="text-right">{{ t('billing.cart.amount') }}</th>
+                                    <th class="text-end">{{ t('billing.cart.amount') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
+                                <tr v-for="(invrow, key) in invrows" :key="key" :class="[invrow.invoices_module !== 'default' ? modules[invrow.invoices_module] : '', invrow.days_old <= 31 ? 'recentrow' : 'oldrow', `inv${invrow.invoices_module}${invrow.invoices_id}row`, invrow.invoices_service > 0 ? `service${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.collapse === 1 ? `collapse toggle${invrow.invoices_module}${invrow.invoices_service}` : '', invrow.service_line === 1 ? 'service_main collapsed' : '', invrow.prepay_invoice ? 'prepay_invoice_row' : '']" :data-bs-toggle="invrow.service_line === 1 ? 'collapse' : null" :data-bs-target="invrow.service_line === 1 ? `.toggle${invrow.invoices_module}${invrow.invoices_service}` : null">
                                     <td>
-                                        <div class="icheck-success d-inline">
-                                            <input :id="'check' + invrow.invoices_id" v-model="invoices" type="checkbox" name="invoices" :value="invrow.service_label" class="inv_checkbox" />
-                                            <label :for="'check' + invrow.invoices_id"> </label>
+                                        <div class="form-check d-inline">
+                                            <input :id="'check' + invrow.invoices_id" v-model="invoices" type="checkbox" name="invoices" :value="invrow.service_label" class="inv_checkbox form-check-input" />
+                                            <label class="form-check-label" :for="'check' + invrow.invoices_id"> </label>
                                         </div>
                                     </td>
                                     <td>
@@ -1003,7 +1004,7 @@ pageInit();
                                             <a href="javascript:void(0);" title="Delete Invoice" @click="delete_invoice(invrow.invoices_id)"><i class="far fa-trash-alt"></i></a>
                                         </template>
                                         <template v-else>
-                                            <span class="font-italic text-muted text-sm">{{ t('billing.cart.empty') }}</span>
+                                            <span class="fst-italic text-muted text-sm">{{ t('billing.cart.empty') }}</span>
                                         </template>
                                     </td>
                                     <td>{{ invrow.currency_display }}</td>
@@ -1011,12 +1012,12 @@ pageInit();
                                 <tr>
                                     <td>{{ t('billing.cart.filter') }}</td>
                                     <td colspan="7">
-                                        <button type="button" class="btn bg-teal btn-sm mr-2 mb-1" @click="checkAll">{{ t('billing.cart.all') }}</button>
-                                        <button type="button" class="btn bg-teal btn-sm mr-2 mb-1" @click="uncheckAll">{{ t('billing.cart.none') }}</button>
-                                        <button type="button" class="btn bg-teal btn-sm mr-2 mb-1" @click="checkRecent">{{ t('billing.cart.pastMonth') }}</button>
-                                        <button type="button" class="btn bg-teal btn-sm mr-2 mb-1" @click="checkActive">{{ t('billing.cart.active') }}</button>
-                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal mr-2 mb-1" @click="checkClass(String(module))">
-                                            {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge badge-light ml-1">{{ count }}</span>
+                                        <button type="button" class="btn bg-teal btn-sm me-2 mb-1" @click="checkAll">{{ t('billing.cart.all') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm me-2 mb-1" @click="uncheckAll">{{ t('billing.cart.none') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm me-2 mb-1" @click="checkRecent">{{ t('billing.cart.pastMonth') }}</button>
+                                        <button type="button" class="btn bg-teal btn-sm me-2 mb-1" @click="checkActive">{{ t('billing.cart.active') }}</button>
+                                        <button v-for="(count, module) in modulesCounts" :key="module" class="btn btn-sm bg-teal me-2 mb-1" @click="checkClass(String(module))">
+                                            {{ (module as string).charAt(0).toUpperCase() + (module as string).slice(1) }} <span class="badge text-bg-light ms-1">{{ count }}</span>
                                         </button>
                                     </td>
                                 </tr>
@@ -1025,7 +1026,7 @@ pageInit();
                         <hr />
                         <div class="row mt-4">
                             <div class="col-md-12">
-                                <span id="step_3" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">3</span>
+                                <span id="step_3" class="text-bold me-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">3</span>
                                 <b class="text-lg">{{ t('billing.cart.paymentOptions') }}</b>
                             </div>
                             <div class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
@@ -1052,7 +1053,7 @@ pageInit();
                         <div id="select_paypal" :style="paypalMethodStyle">
                             <div class="row my-2">
                                 <div class="col-md-12">
-                                    <span id="step_4" class="text-bold mr-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
+                                    <span id="step_4" class="text-bold me-1 steps" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
                                     <b class="text-lg">{{ t('billing.cart.selectPayPalType') }}</b>
                                 </div>
                                 <div class="col-md-12 d-flex mt-3">
@@ -1064,14 +1065,14 @@ pageInit();
                         <div v-show="paymentMethod == 'cc'" id="select_card">
                             <div class="row my-2">
                                 <div class="col-md-12">
-                                    <span id="step_4" class="text-bold mr-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
+                                    <span id="step_4" class="text-bold me-1" style="border: 1px solid black; border-radius: 50%; padding: 6px 12px; font-size: 18px">4</span>
                                     <b class="text-lg">{{ t('billing.cart.selectAddCreditCard') }}</b>
-                                    <a href="javascript:void(0);" class="btn btn-custom float-right" data-toggle="modal" data-target="#add-card" @click="addCardModal"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;{{ t('billing.cart.addNewCard') }}</a>
+                                    <a href="javascript:void(0);" class="btn btn-custom float-end" data-bs-toggle="modal" data-bs-target="#add-card" @click="addCardModal"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;{{ t('billing.cart.addNewCard') }}</a>
                                 </div>
                                 <div id="selectcardmsg" class="col-md-12 d-flex mt-3"></div>
 
                                 <template v-if="data.ccs">
-                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ml-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="primaryCc === Number(cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
+                                    <div v-for="(cc_detail, cc_id) in data.ccs" :key="cc_id" class="col-md-5 b-radius card ms-5 mt-4 p-4" style="border: 1px solid rgba(204, 204, 204, 0.397)" :style="primaryCc === Number(cc_id) ? 'background-color: rgba(204, 204, 204, 0.397);' : ''">
                                         <div v-if="primaryCc === Number(cc_id)" class="ribbon-wrapper">
                                             <div class="ribbon bg-success text-xs">{{ t('billing.cart.primary') }}</div>
                                         </div>
@@ -1080,11 +1081,11 @@ pageInit();
                                             <input type="hidden" name="balance" value="1" />
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
-                                                    <div class="icheck-success">
-                                                        <input :id="'cc-' + cc_id" v-model="selectedCc" :value="Number(cc_id)" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" @change="updatePaymentMethod('cc' + cc_id)" />
-                                                        <label :for="'cc-' + cc_id" class="pb-2 text-lg" style="letter-spacing: 4px">{{ cc_detail.cc }}</label>
+                                                    <div class="form-check">
+                                                        <input :id="'cc-' + cc_id" v-model="selectedCc" :value="Number(cc_id)" type="radio" class="form-check-input" :disabled="cc_detail.verified_cc === 'no'" :data-bs-toggle="cc_detail.verified_cc === 'no' ? 'tooltip' : null" :title="cc_detail.verified_cc === 'no' ? cc_detail.verified_text : ''" @change="updatePaymentMethod('cc' + cc_id)" />
+                                                        <label :for="'cc-' + cc_id" class="form-label form-check-label pb-2 text-lg" style="letter-spacing: 4px">{{ cc_detail.cc }}</label>
                                                     </div>
-                                                    <div class="ml-2 pl-4">
+                                                    <div class="ms-2 ps-4">
                                                         <div class="my-2 text-sm">
                                                             <b class="text-md">{{ cc_detail.name }}</b>
                                                         </div>
@@ -1097,12 +1098,12 @@ pageInit();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 pl-4">
-                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ml-2 px-3 py-1" href="javascript:void(0);" style="text-decoration: none" :title="cc_detail.unverified_text" @click.prevent="verifyCard(Number(cc_id))"> <i class="fas fa-exclamation-triangle"></i>&nbsp;Verify</a>
-                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ml-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-toggle="modal" data-target="#edit-card" @click="editCardModal(Number(cc_id))"> <i class="far fa-edit" aria-hidden="true"></i>&nbsp;Edit</a>
+                                                <div class="col-md-6 ps-4">
+                                                    <a v-if="cc_detail.verified_cc === 'no'" :id="'unver_' + cc_id" class="tn btn-outline-custom btn-xs ms-2 px-3 py-1" href="javascript:void(0);" style="text-decoration: none" :title="cc_detail.unverified_text" @click.prevent="verifyCard(Number(cc_id))"> <i class="fas fa-exclamation-triangle"></i>&nbsp;Verify</a>
+                                                    <a v-else-if="cc_detail.verified_cc !== 'no' && selectedCc !== Number(cc_id)" :id="'editcard-modal-' + cc_id" class="btn btn-custom btn-sm ms-2 px-3 py-1" href="javascript:void(0);" :title="cc_detail.edit_text" data-bs-toggle="modal" data-bs-target="#edit-card" @click="editCardModal(Number(cc_id))"> <i class="far fa-edit" aria-hidden="true"></i>&nbsp;Edit</a>
                                                     <div v-else-if="selectedCc === Number(cc_id)" class="text-success text-lg" name="totalccamount"></div>
                                                 </div>
-                                                <div class="col-md-6 text-right">
+                                                <div class="col-md-6 text-end">
                                                     <a v-if="(selectedCc !== Number(cc_id) || cc_detail.verified_cc === 'no') && paymentMethod === 'cc'" class="btn btn-outline-custom btn-xs px-3 py-1" href="javascript:void(0);" :title="cc_detail.delete_text" style="text-decoration: none" @click.prevent="deleteCardModal(Number(cc_id))"> <i class="fas fa-trash"></i>&nbsp;Delete</a>
                                                     <input v-else-if="selectedCc === Number(cc_id)" id="paynow" type="submit" class="btn btn-outline-custom btn-sm" style="border-radius: 5px" value="Pay Now" />
                                                 </div>
@@ -1117,9 +1118,9 @@ pageInit();
                                 <div class="col-md-12 mt-4">
                                     <div class="card shadow-hover shadow-sm">
                                         <div class="card-body">
-                                            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                                <input id="ccAutoToggle" :checked="ccAuto === 1" type="checkbox" class="custom-control-input" @change="updatePaymentMethod('', true)" />
-                                                <label class="custom-control-label" for="ccAutoToggle">{{ t('billing.cart.autoChargeCc') }}</label>
+                                            <div class="form-check form-switch custom-switch-off-danger custom-switch-on-success">
+                                                <input id="ccAutoToggle" :checked="ccAuto === 1" type="checkbox" class="form-check-input" @change="updatePaymentMethod('', true)" />
+                                                <label class="form-check-label" for="ccAutoToggle">{{ t('billing.cart.autoChargeCc') }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -1133,9 +1134,9 @@ pageInit();
                             <thead>
                                 <tr>
                                     <th style="width: 5%">
-                                        <div class="icheck-success d-inline">
-                                            <input id="checkboxtoggle" v-model="isChecked" type="checkbox" name="uncheckAll" value="" @change="toggleCheckbox" />
-                                            <label for="checkboxtoggle"> </label>
+                                        <div class="form-check d-inline">
+                                            <input id="checkboxtoggle" v-model="isChecked" type="checkbox" class="form-check-input" name="uncheckAll" value="" @change="toggleCheckbox" />
+                                            <label class="form-check-label" for="checkboxtoggle"> </label>
                                         </div>
                                     </th>
                                     <th>{{ t('billing.cart.service') }}</th>
@@ -1143,7 +1144,7 @@ pageInit();
                                     <th>{{ t('billing.cart.date') }}</th>
                                     <th>{{ t('billing.cart.serviceStatus') }}</th>
                                     <th>{{ t('billing.cart.actions') }}</th>
-                                    <th class="text-right">{{ t('billing.cart.amount') }}</th>
+                                    <th class="text-end">{{ t('billing.cart.amount') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1174,7 +1175,7 @@ pageInit();
             <div class="card cart-sidebar">
                 <div class="card-header">
                     <div class="p-1">
-                        <h3 class="card-title float-left py-2"><i class="fas fa-file-invoice"></i>&nbsp;{{ t('billing.cart.balanceInvoiceInfo') }}</h3>
+                        <h3 class="card-title float-start py-2"><i class="fas fa-file-invoice"></i>&nbsp;{{ t('billing.cart.balanceInvoiceInfo') }}</h3>
                     </div>
                 </div>
                 <div class="card-body">
@@ -1223,7 +1224,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="contFields.name" type="text" name="name" placeholder="You Name" />
-                                    <label class="text-md">Name</label>
+                                    <label class="form-label text-md">Name</label>
                                 </div>
                             </div>
                         </div>
@@ -1231,7 +1232,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="contFields.address" type="text" name="address" placeholder="Address line" />
-                                    <label class="text-md">Address</label>
+                                    <label class="form-label text-md">Address</label>
                                 </div>
                             </div>
                         </div>
@@ -1239,7 +1240,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="contFields.phone" type="text" name="phone" placeholder="Phone Number" required />
-                                    <label class="text-md">Phone</label>
+                                    <label class="form-label text-md">Phone</label>
                                 </div>
                             </div>
                         </div>
@@ -1247,13 +1248,13 @@ pageInit();
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.city" type="text" name="city" placeholder="City" />
-                                    <label class="text-md">City</label>
+                                    <label class="form-label text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.state" type="text" name="state" placeholder="State" />
-                                    <label class="text-md">State</label>
+                                    <label class="form-label text-md">State</label>
                                 </div>
                             </div>
                         </div>
@@ -1263,13 +1264,13 @@ pageInit();
                                     <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
-                                    <label class="text-md">Country</label>
+                                    <label class="form-label text-md">Country</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.zip" type="text" name="zip" placeholder="Zipcode" />
-                                    <label class="text-md">Zipcode</label>
+                                    <label class="form-label text-md">Zipcode</label>
                                 </div>
                             </div>
                         </div>
@@ -1296,7 +1297,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input id="cr_no" v-model="contFields.cc" type="text" name="cc" placeholder="0000-0000-0000-0000" minlength="19" maxlength="19" required oninvalid="this.setCustomValidity('Please Enter valid 16 digit credit-card number')" @input="onCardNumInput" />
-                                    <label class="text-md">Card Number</label>
+                                    <label class="form-label text-md">Card Number</label>
                                 </div>
                             </div>
                         </div>
@@ -1306,13 +1307,13 @@ pageInit();
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input id="exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" minlength="7" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" @input="onExpDateInput" />
-                                            <label class="text-md">Expiry Date</label>
+                                            <label class="form-label text-md">Expiry Date</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" required oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on credit-card number')" oninput="setCustomValidity('')" />
-                                            <label class="text-md">CVV</label>
+                                            <label class="form-label text-md">CVV</label>
                                         </div>
                                     </div>
                                 </div>
@@ -1322,7 +1323,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="contFields.name" type="text" name="name" placeholder="Name on card" required oninvalid="this.setCustomValidity('Please Enter full name on your card')" oninput="setCustomValidity('')" />
-                                    <label class="text-md">Name</label>
+                                    <label class="form-label text-md">Name</label>
                                 </div>
                             </div>
                         </div>
@@ -1330,7 +1331,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="contFields.address" type="text" name="address" placeholder="Address line" />
-                                    <label class="text-md">Address</label>
+                                    <label class="form-label text-md">Address</label>
                                 </div>
                             </div>
                         </div>
@@ -1338,13 +1339,13 @@ pageInit();
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.city" type="text" name="city" placeholder="City" />
-                                    <label class="text-md">City</label>
+                                    <label class="form-label text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.state" type="text" name="state" placeholder="State" />
-                                    <label class="text-md">State</label>
+                                    <label class="form-label text-md">State</label>
                                 </div>
                             </div>
                         </div>
@@ -1354,13 +1355,13 @@ pageInit();
                                     <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right">
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
-                                    <label class="text-md">Country</label>
+                                    <label class="form-label text-md">Country</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.zip" type="text" name="zip" placeholder="Zipcode" />
-                                    <label class="text-md">Zipcode</label>
+                                    <label class="form-label text-md">Zipcode</label>
                                 </div>
                             </div>
                         </div>
@@ -1387,7 +1388,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input id="e_cr_no" v-model="contFields.cc" type="text" name="cc" required readonly disabled />
-                                    <label class="text-md">Card Number</label>
+                                    <label class="form-label text-md">Card Number</label>
                                 </div>
                             </div>
                         </div>
@@ -1397,13 +1398,13 @@ pageInit();
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input id="e_exp" v-model="contFields.cc_exp" type="text" name="cc_exp" placeholder="MM/YYYY" maxlength="7" required oninvalid="this.setCustomValidity('Please Enter expiry date on your card')" @input="onExpDateInput" />
-                                            <label class="text-md">Expiry Date</label>
+                                            <label class="form-label text-md">Expiry Date</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input id="ccv2" type="password" name="cc_ccv2" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter 3 digit CVV number on credit-card number')" oninput="setCustomValidity('')" disabled />
-                                            <label class="text-md">CVV</label>
+                                            <label class="form-label text-md">CVV</label>
                                         </div>
                                     </div>
                                 </div>
@@ -1413,7 +1414,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="contFields.name" type="text" name="name" placeholder="Name on card" disabled />
-                                    <label class="text-md">Name</label>
+                                    <label class="form-label text-md">Name</label>
                                 </div>
                             </div>
                         </div>
@@ -1421,7 +1422,7 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="contFields.address" type="text" name="address" placeholder="Address line" disabled />
-                                    <label class="text-md">Address</label>
+                                    <label class="form-label text-md">Address</label>
                                 </div>
                             </div>
                         </div>
@@ -1429,13 +1430,13 @@ pageInit();
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.city" type="text" name="city" placeholder="City" disabled />
-                                    <label class="text-md">City</label>
+                                    <label class="form-label text-md">City</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.state" type="text" name="state" placeholder="State" disabled />
-                                    <label class="text-md">State</label>
+                                    <label class="form-label text-md">State</label>
                                 </div>
                             </div>
                         </div>
@@ -1445,13 +1446,13 @@ pageInit();
                                     <select v-model="contFields.country" name="country" class="form-control" style="padding-right: 5px; vertical-align: middle; float: right" disabled>
                                         <option v-for="(name, iso2, index) in countries" :key="index" :value="iso2">{{ name }}</option>
                                     </select>
-                                    <label class="text-md">Country</label>
+                                    <label class="form-label text-md">Country</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group">
                                     <input v-model="contFields.zip" type="text" name="zip" placeholder="Zipcode" disabled />
-                                    <label class="text-md">Zipcode</label>
+                                    <label class="form-label text-md">Zipcode</label>
                                 </div>
                             </div>
                         </div>
@@ -1484,14 +1485,14 @@ pageInit();
                             <div class="col-12">
                                 <div class="input-group">
                                     <input v-model="cc_ccv2" type="password" name="cc_ccv2" required minlength="3" maxlength="4" oninvalid="this.setCustomValidity('Please Enter three digit CVV / CSV number on your card')" oninput="setCustomValidity('')" />
-                                    <label class="text-md">{{ t('billing.creditCard.securityCode') }}</label>
+                                    <label class="form-label text-md">{{ t('billing.creditCard.securityCode') }}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12">
-                                <input id="tos_checkbox" name="terms" value="1" class="form-check-input ml-2" type="checkbox" style="width: auto" required />
-                                <label for="tos_checkbox" class="ml-4 pl-2"> {{ t('billing.creditCard.acceptTempCharges') }}</label>
+                                <input id="tos_checkbox" name="terms" value="1" class="form-check-input ms-2" type="checkbox" style="width: auto" required />
+                                <label for="tos_checkbox" class="ms-4 ps-2"> {{ t('billing.creditCard.acceptTempCharges') }}</label>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -1525,13 +1526,13 @@ pageInit();
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input v-model="cc_amount1" type="text" name="cc_amount1" />
-                                            <label class="text-md">{{ t('billing.creditCard.amount1') }}</label>
+                                            <label class="form-label text-md">{{ t('billing.creditCard.amount1') }}</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input v-model="cc_amount2" type="text" name="cc_amount2" />
-                                            <label class="text-md">{{ t('billing.creditCard.amount2') }}</label>
+                                            <label class="form-label text-md">{{ t('billing.creditCard.amount2') }}</label>
                                         </div>
                                     </div>
                                 </div>

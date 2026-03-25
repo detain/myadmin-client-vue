@@ -91,38 +91,32 @@ const resetForm = () => {
                         <div class="card-body">
                             <form id="changeusername_form" accept-charset="UTF-8" role="form" class="not-bold left-align-text" @submit.prevent="handleSubmit">
                                 <!-- Current Username -->
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label"> {{ t('account.changeUsername.currentUsername') }} </label>
-                                    <div class="form-group input-group col-md-7">
-                                        <div class="input-group-prepend">
+                                    <div class="mb-3 input-group col-md-7">
                                             <div class="input-group-text">
                                                 <i class="fas fa-at"></i>
-                                            </div>
                                         </div>
                                         <input type="text" class="form-control" disabled :value="oldUsername" />
                                     </div>
                                 </div>
                                 <!-- New Username (confirmation step) -->
                                 <template v-if="newUsername">
-                                    <div class="form-group row">
+                                    <div class="mb-3 row">
                                         <label class="col-md-3 col-form-label"> {{ t('account.changeUsername.newDesiredUsername') }} <span style="color: red">*</span> </label>
-                                        <div class="form-group input-group col-md-7">
-                                            <div class="input-group-prepend">
+                                        <div class="mb-3 input-group col-md-7">
                                                 <div class="input-group-text">
                                                     <i class="fas fa-at"></i>
-                                                </div>
                                             </div>
                                             <input v-model="newUsername" type="text" class="form-control" readonly />
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="mb-3 row">
                                         <label class="col-md-3 col-form-label"> {{ t('account.changeUsername.confirmationCode') }} <span style="color: red">*</span> </label>
-                                        <div class="form-group input-group col-md-7">
-                                            <div class="input-group-prepend">
+                                        <div class="mb-3 input-group col-md-7">
                                                 <div class="input-group-text">
                                                     <i class="fas fa-key"></i>
-                                                </div>
                                             </div>
                                             <input v-model="emailConfirmation" type="text" class="form-control" required />
                                         </div>
@@ -131,13 +125,11 @@ const resetForm = () => {
 
                                 <!-- New Username (initial step) -->
                                 <template v-else>
-                                    <div class="form-group row">
+                                    <div class="mb-3 row">
                                         <label class="col-md-3 col-form-label"> {{ t('account.changeUsername.newDesiredUsername') }} <span style="color: red">*</span> </label>
-                                        <div class="form-group input-group col-md-7">
-                                            <div class="input-group-prepend">
+                                        <div class="mb-3 input-group col-md-7">
                                                 <div class="input-group-text">
                                                     <i class="fas fa-at"></i>
-                                                </div>
                                             </div>
                                             <input v-model="newUsername" type="text" class="form-control" required />
                                         </div>
@@ -145,7 +137,7 @@ const resetForm = () => {
                                 </template>
 
                                 <!-- Actions -->
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <div class="controls col-md-12 text-center">
                                         <button type="submit" class="btn btn-primary" :disabled="submitting">{{ t('common.buttons.continue') }}</button>
                                         <button type="button" class="btn btn-danger" @click="resetForm">{{ t('common.buttons.reset') }}</button>

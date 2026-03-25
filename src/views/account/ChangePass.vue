@@ -56,26 +56,26 @@ function changePassword() {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="far fa-id-card-o"></i>&nbsp;{{ t('account.changePassword.cardTitle') }}</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="card-body" :class="{ collapse: isCollapsed }">
                     <form @submit.prevent="changePassword">
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="currentpassword">{{ t('account.changePassword.currentPassword') }}</label>
                             <div class="col-md-9">
                                 <input id="currentpassword" v-model="currentPassword" type="password" class="form-control form-control-sm" :placeholder="t('account.changePassword.currentPassword')" />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="password">{{ t('account.changePassword.newPassword') }}</label>
                             <div class="col-md-9">
                                 <input id="password" v-model="newPassword" type="password" class="form-control form-control-sm" :placeholder="t('account.changePassword.newPassword')" />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="phone">{{ t('account.changePassword.confirmPassword') }}</label>
                             <div class="col-md-9">
                                 <input v-model="password" type="password" class="form-control form-control-sm" :placeholder="t('account.changePassword.confirmPassword')" />

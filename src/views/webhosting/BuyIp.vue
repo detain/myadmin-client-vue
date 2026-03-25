@@ -136,8 +136,8 @@ loadBuyIp();
                             <i class="fas fa-map-marker-alt"></i>&nbsp;
                             Buy Additional IP Addon
                         </h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ loadBuyIp();
                     </template>
                     <template v-if="loadingDone">
                         <form method="POST" @submit.prevent="submitForm">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label class="col-form-label">Monthly Cost ({{ ipCurrencySymbol }})</label>

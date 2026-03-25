@@ -478,7 +478,7 @@ ul.share-buttons li {
     display: inline;
 }
 
-ul.share-buttons .sr-only {
+ul.share-buttons .visually-hidden {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
     padding: 0;

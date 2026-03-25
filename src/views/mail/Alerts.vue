@@ -141,7 +141,7 @@ loadAlerts();
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="far fa-bell"></i> Alerts</h3>
                     <div class="card-tools">
-                        <a href="javascript:void(0);" class="btn btn-custom" data-toggle="modal" data-target="#add-new" @click="editAlert('add', 0, '', '', defaultTo)"> <i class="fas fa-plus"></i> Add New</a>
+                        <a href="javascript:void(0);" class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#add-new" @click="editAlert('add', 0, '', '', defaultTo)"> <i class="fas fa-plus"></i> Add New</a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -175,7 +175,7 @@ loadAlerts();
                                     <td>{{ alert.alert_created }}</td>
                                     <td>{{ alert.alert_updated }}</td>
                                     <td style="max-width: 300px; overflow: hidden; white-space: nowrap">
-                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-new" @click="editAlert('edit', alert.alert_id, alert.alert_type, alert.alert_value, alert.alert_to, alert.alert_enabled)"> Edit </a>
+                                        <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#add-new" @click="editAlert('edit', alert.alert_id, alert.alert_type, alert.alert_value, alert.alert_to, alert.alert_enabled)"> Edit </a>
                                         <a :href="'view_mail?id=' + id + '&link=alerts&action=delete&alert_id=' + alert.alert_id" class="btn btn-sm btn-primary"> Delete </a>
                                     </td>
                                 </tr>
@@ -203,7 +203,7 @@ loadAlerts();
                     <form id="block-form" @submit.prevent="submitBlock">
                         <input id="action" type="hidden" name="action" :value="action" />
                         <input id="alert_id" v-model="alertId" type="hidden" name="alert_id" />
-                        <div class="form-group row mx-auto">
+                        <div class="mb-3 row mx-auto">
                             <label class="col-md-4 col-form-label px-0" for="notification_types"> Notification Type <span class="text-danger">*</span> </label>
                             <div class="col-sm-8">
                                 <select id="type" v-model="selectedType" name="type" class="select2 w-100">
@@ -212,31 +212,31 @@ loadAlerts();
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-sm-4 col-form-label px-0">Amount hits this value <span class="text-danger">*</span></label>
                             <div class="col-md-8">
                                 <input id="value" v-model="value" type="text" class="form-control form-control-sm" name="value" required />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-sm-4 col-form-label px-0">Where to send the notification to <span class="text-danger">*</span></label>
                             <div class="col-md-8">
                                 <input id="to" v-model="to" type="text" class="form-control form-control-sm" name="to" required />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-sm-4 col-form-label px-0">Enable Alert</label>
                             <div class="col-md-8">
-                                <div class="icheck-success d-inline">
-                                    <input id="enabled" v-model="enabled" type="checkbox" name="enabled" />
-                                    <label for="enabled"> </label>
+                                <div class="form-check d-inline">
+                                    <input id="enabled" v-model="enabled" type="checkbox" class="form-check-input" name="enabled" />
+                                    <label class="form-check-label" for="enabled"> </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="controls col-md-12" style="text-align: center">
                                 <input type="submit" name="Submit" value="Submit" class="btn btn-sm btn-order px-3 py-2" />
-                                <button type="button" class="btn btn-danger btn-sm px-3 py-2" data-dismiss="modal" aria-label="Close">Cancel</button>
+                                <button type="button" class="btn btn-danger btn-sm px-3 py-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                             </div>
                         </div>
                     </form>

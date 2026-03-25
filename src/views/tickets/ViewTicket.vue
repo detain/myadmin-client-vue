@@ -334,7 +334,7 @@ onMounted(loadTicket);
 
     <!-- HEADER -->
     <div v-if="ticket" class="row mb-4">
-        <div class="col-md-2 pr-1">
+        <div class="col-md-2 pe-1">
             <div class="info-box p-0">
                 <span class="info-box-icon border-rad-zero" :class="statusClass(ticket.ticketstatustitle)">
                     <i class="text-white" :class="statusIcon(ticket.ticketstatustitle)" />
@@ -378,7 +378,7 @@ onMounted(loadTicket);
                                 <span class="badge" :class="ticketStatusClass(Number(row.ticketstatusid))">{{ row.ticketmaskid }}</span>
                                 <span style="font-size: 95%">{{ row.subject }}</span>
                             </RouterLink>
-                            <div class="float-right" style="font-size: 80%">{{ row.lastactivity_time }}</div>
+                            <div class="float-end" style="font-size: 80%">{{ row.lastactivity_time }}</div>
                             <hr />
                         </div>
                     </template>
@@ -402,7 +402,7 @@ onMounted(loadTicket);
                         <RouterLink :to="`/tickets?view=${s.ticketstatustitle}`" class="nav-link">
                             <i :class="statusIcon(s.ticketstatustitle)" />
                             {{ s.ticketstatustitle }}
-                            <span class="badge float-right" :class="statusClass(s.ticketstatustitle)">
+                            <span class="badge float-end" :class="statusClass(s.ticketstatustitle)">
                                 {{ s.st_count }}
                             </span>
                         </RouterLink>
@@ -416,48 +416,48 @@ onMounted(loadTicket);
             <div class="card card-body">
                 <form method="post" role="form" @submit.prevent="submitUpdate">
                     <!-- SERVER ACCESS -->
-                    <div class="form-group col-md-6 mb-0 pl-0">
-                        <div class="custom-control custom-checkbox">
-                            <input id="server_access_checkbox" v-model="allowServerAccess" type="checkbox" class="custom-control-input" />
-                            <label class="custom-control-label" for="server_access_checkbox">Allow InterServer to modify server:</label>
+                    <div class="mb-3 col-md-6 mb-0 ps-0">
+                        <div class="form-check">
+                            <input id="server_access_checkbox" v-model="allowServerAccess" type="checkbox" class="form-check-input" />
+                            <label class="form-check-label" for="server_access_checkbox">Allow InterServer to modify server:</label>
                         </div>
                         <input type="hidden" name="server_access" :value="allowServerAccess ? 'y' : 'n'" />
                     </div>
                     <!-- TOGGLED SECTION -->
                     <div v-show="allowServerAccess" class="form-toggle">
                         <hr />
-                        <div class="form-row">
+                        <div class="row g-3">
                             <!-- IP -->
-                            <div class="form-group col-md-2">
-                                <label for="ip">Your IP Address</label>
+                            <div class="mb-3 col-md-2">
+                                <label class="form-label" for="ip">Your IP Address</label>
                                 <input id="ip" v-model="ipAddress" name="ip" type="text" class="form-control form-control-sm" placeholder="Your IP Address" />
                                 <span class="help-text text-danger text-sm"> If connection is coming from different IP address. Kindly change it. </span>
                             </div>
                             <!-- ROOT PASSWORD -->
-                            <div class="form-group col-md-2 pr-3" style="border-right: 1px solid #cccccc69">
-                                <label for="root_pass">Root Password</label>
+                            <div class="mb-3 col-md-2 pe-3" style="border-right: 1px solid #cccccc69">
+                                <label class="form-label" for="root_pass">Root Password</label>
                                 <input id="root_pass" v-model="rootPassword" name="root_pass" type="text" class="form-control form-control-sm" placeholder="VPS / Dedicated Server" />
                                 <span class="help-text text-danger text-sm">Passwords are stored in a separate encrypted database.</span>
                             </div>
                             <!-- ROOT RESTRICTED -->
-                            <div class="form-group col-md-2 pl-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input id="is_root_checkbox" v-model="isRootRestricted" type="checkbox" name="is_root" class="custom-control-input" />
-                                    <label class="custom-control-label" for="is_root_checkbox">Is SSH Root Restricted?</label>
+                            <div class="mb-3 col-md-2 ps-3">
+                                <div class="form-check">
+                                    <input id="is_root_checkbox" v-model="isRootRestricted" type="checkbox" name="is_root" class="form-check-input" />
+                                    <label class="form-check-label" for="is_root_checkbox">Is SSH Root Restricted?</label>
                                 </div>
                             </div>
                             <!-- SUDO FIELDS -->
-                            <div v-show="isRootRestricted" class="form-group col-md-2">
-                                <label for="sudo_user">Sudo Username</label>
+                            <div v-show="isRootRestricted" class="mb-3 col-md-2">
+                                <label class="form-label" for="sudo_user">Sudo Username</label>
                                 <input id="sudo_user" v-model="sudoUser" name="sudo_user" type="text" class="form-control form-control-sm" placeholder="Sudo Username" />
                             </div>
-                            <div v-show="isRootRestricted" class="form-group col-md-2">
-                                <label for="sudo_pass">Sudo Password</label>
+                            <div v-show="isRootRestricted" class="mb-3 col-md-2">
+                                <label class="form-label" for="sudo_pass">Sudo Password</label>
                                 <input id="sudo_pass" v-model="sudoPassword" name="sudo_pass" type="text" class="form-control form-control-sm" placeholder="Sudo user password" />
                                 <span class="help-text text-danger text-sm"> Passwords are stored in a separate encrypted database. </span>
                             </div>
-                            <div v-show="isRootRestricted" class="form-group col-md-2">
-                                <label for="ssh-port">SSH Port</label>
+                            <div v-show="isRootRestricted" class="mb-3 col-md-2">
+                                <label class="form-label" for="ssh-port">SSH Port</label>
                                 <input id="ssh-port" v-model="sshPort" name="port_no" type="text" class="form-control form-control-sm" placeholder="SSH Port Number" />
                             </div>
                         </div>
@@ -472,8 +472,8 @@ onMounted(loadTicket);
             <!-- REPLY -->
             <div class="card mt-3">
                 <div class="card-header" style="border-bottom: 3px solid #007bff">
-                    <h3 class="card-title mt-1 mr-2">Post Reply</h3>
-                    <a v-if="ticket?.ticketstatusid == '5'" class="btn btn-sm btn-danger ml-3" @click.prevent="closeTicket">Close Ticket</a>
+                    <h3 class="card-title mt-1 me-2">Post Reply</h3>
+                    <a v-if="ticket?.ticketstatusid == '5'" class="btn btn-sm btn-danger ms-3" @click.prevent="closeTicket">Close Ticket</a>
                 </div>
                 <div class="card-body">
                     <template v-if="isClosed">
@@ -481,16 +481,16 @@ onMounted(loadTicket);
                     </template>
                     <template v-else>
                         <form id="replyForm" method="post" role="form" class="needs-validation" enctype="multipart/form-data" novalidate>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label" for="ssh-button">Reply Content</label>
                                 <div class="col-sm-10">
                                     <textarea v-model="replyBody" class="form-control form-control-sm" placeholder="Detailed post about the issue" rows="7" required></textarea>
-                                    <div class="text-right text-muted" style="position: absolute; bottom: 22px; right: 25px; font-size: 12px">{{ wordCount }} / 500 words</div>
+                                    <div class="text-end text-muted" style="position: absolute; bottom: 22px; right: 25px; font-size: 12px">{{ wordCount }} / 500 words</div>
                                     <small class="text-muted">Creating separate tickets for new issues helps our team prioritize and resolve them faster.</small>
                                 </div>
                                 <div class="invalid-feedback">Please enter a detailed description about the issue.</div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label" for="file-upload">Attach Media</label>
                                 <div class="controls col-sm-10 input-group input-file w-75" name="file_attachment">
                                     <!-- Visible filename input -->
@@ -530,18 +530,18 @@ onMounted(loadTicket);
                         <div class="col-md-10 p-0">
                             <!-- HEADER / TIMESTAMP -->
                             <div class="card-footer py-2 px-0" :class="post.creator === '1' ? 'staff' : 'user'" :style="{ borderBottom: '1px solid #ccc', background: post.creator !== '1' ? '#fff' : undefined }">
-                                <span class="username ml-2 text-muted">
+                                <span class="username ms-2 text-muted">
                                     {{ formatDate(post.dateline) }}
                                 </span>
                             </div>
                             <!-- MESSAGE BODY -->
-                            <div class="comment-text ml-2">
+                            <div class="comment-text ms-2">
                                 <div class="inherit-class w-100 m-0 js-linkify" v-html="formatReply(post.contents)" />
                                 <!-- LIKE / DISLIKE -->
                                 <template v-if="post.liked !== undefined">
                                     <hr class="my-1" />
-                                    <div v-if="post.liked === 1" class="text-success mb-2 ml-2"><i class="fas fa-thumbs-up mr-1"></i> User liked your reply</div>
-                                    <div v-else class="text-danger mb-2 ml-2"><i class="fas fa-thumbs-down mr-1"></i> User disliked your reply</div>
+                                    <div v-if="post.liked === 1" class="text-success mb-2 ms-2"><i class="fas fa-thumbs-up me-1"></i> User liked your reply</div>
+                                    <div v-else class="text-danger mb-2 ms-2"><i class="fas fa-thumbs-down me-1"></i> User disliked your reply</div>
                                 </template>
                                 <!-- ATTACHMENTS -->
                                 <template v-if="post.attachments">
@@ -550,7 +550,7 @@ onMounted(loadTicket);
                                             <img class="img-attachment" :src="attachmentSrc(file.attachmentid)" :alt="file.filename" />
                                             <div class="img-preview-overlay">
                                                 <div class="buttons">
-                                                    <button class="btn btn-dark" data-toggle="modal" data-target="`#image-${file.attachmentid}`"><i class="fas fa-search-plus"></i></button>
+                                                    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="`#image-${file.attachmentid}`"><i class="fas fa-search-plus"></i></button>
                                                     <a :href="attachmentSrc(file.attachmentid)" :download="file.filename" class="btn btn-dark"><i class="fas fa-download"></i></a>
                                                 </div>
                                             </div>
@@ -567,7 +567,7 @@ onMounted(loadTicket);
                             </div>
                             <!-- EMAIL FOOTER (USER ONLY) -->
                             <div v-if="post.creator !== '1'" class="card-footer py-2 px-0 user" style="background: #fff">
-                                <span class="ml-2"
+                                <span class="ms-2"
                                     >Email: <b>{{ post.email }}</b></span
                                 >
                             </div>

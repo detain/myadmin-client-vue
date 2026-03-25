@@ -58,15 +58,15 @@ function submitForm() {
                             <i class="fas fa-compact-disc"></i>&nbsp;
                             {{ action === 'enable_cd' ? t('vps.insertCd.enableCdrom') : t('vps.insertCd.insertIso') }}
                         </h3>
-                        <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <div class="card-tools text-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="insert_cd" />
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-3">
                                     <label for="slices" class="col-form-label">{{ t('vps.insertCd.allowedProtocols') }}</label>
@@ -76,7 +76,7 @@ function submitForm() {
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="col-md-3">
                                 <label for="image" class="col-form-label">{{ t('vps.insertCd.chooseImage') }}</label>
                             </div>
@@ -89,7 +89,7 @@ function submitForm() {
                         <hr />
                         <h5 class="text-bold text-center text-sm">{{ t('vps.insertCd.or') }}</h5>
                         <hr />
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-3">
                                     <label for="slices" class="col-form-label">{{ t('vps.insertCd.enterUrl') }}</label>
@@ -99,12 +99,12 @@ function submitForm() {
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="input-group">
                                 <div class="col-md-3">&nbsp;</div>
-                                <div class="icheck-success col-md-9 text-bold mt-3 text-black">
-                                    <input id="confirmation" type="checkbox" name="confirm" value="yes" required />
-                                    <label for="confirmation">{{ t('vps.insertCd.areYouSure') }}</label>
+                                <div class="form-check col-md-9 text-bold mt-3 text-black">
+                                    <input id="confirmation" type="checkbox" class="form-check-input" name="confirm" value="yes" required />
+                                    <label class="form-check-label" for="confirmation">{{ t('vps.insertCd.areYouSure') }}</label>
                                 </div>
                             </div>
                         </div>

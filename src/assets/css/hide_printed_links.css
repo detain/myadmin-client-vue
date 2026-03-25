@@ -14,9 +14,9 @@
     }
 
     /* Hide chrome: sidebar, header, footer, breadcrumbs */
-    .main-header,
-    .main-sidebar,
-    .main-footer,
+    .app-header,
+    .app-sidebar,
+    .app-footer,
     .navbar,
     .printer-hidden,
     .no-print {
@@ -27,17 +27,17 @@
     }
 
     /* Reset wrapper from flex/fixed layout to normal flow */
-    .wrapper {
+    .app-wrapper {
         overflow: visible !important;
         display: block !important;
         height: auto !important;
     }
 
     /* Override all AdminLTE content-wrapper rules */
-    .content-wrapper,
-    .wrapper .content-wrapper,
-    .layout-fixed .content-wrapper,
-    .layout-navbar-fixed .wrapper .content-wrapper {
+    .app-main,
+    .app-wrapper .app-main,
+    .layout-fixed .app-main,
+    .layout-navbar-fixed .app-wrapper .app-main {
         margin: 0 !important;
         padding: 0 !important;
         min-height: 0 !important;

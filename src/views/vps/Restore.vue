@@ -86,21 +86,21 @@ loadBackupsList();
             <div class="col-10">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.restore.backupTitle', { name: module_name }) }}</h3>
-                        <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <h3 class="card-title"><i class="material-icons pe-2" style="vertical-align: middle">backup</i>{{ t('vps.restore.backupTitle', { name: module_name }) }}</h3>
+                        <div class="card-tools text-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">
                         <form @submit.prevent="submitForm">
-                            <div class="form-group mb-0">
-                                <div class="form-group row">
+                            <div class="mb-3 mb-0">
+                                <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="cur-hostname">{{ t('vps.restore.server') }}</label>
                                     <div class="col-sm-6 input-group">
                                         <input id="cur-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="backup">{{ t('vps.restore.restoreThisBackup') }}</label>
                                     <div class="col-sm-9 input-group">
                                         <select id="backup" v-model="backup">
@@ -109,14 +109,14 @@ loadBackupsList();
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="password">{{ t('vps.restore.loginPasswordLabel') }}</label>
                                     <div class="col-sm-9 input-group">
                                         <input id="password" v-model="password" type="text" class="form-control form-control-sm" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="more-info col-sm-3" for="confirm_yes">{{ t('vps.restore.confirmRestore') }}</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label more-info col-sm-3" for="confirm_yes">{{ t('vps.restore.confirmRestore') }}</label>
                                     <input id="confirm_yes" v-model="confirm" type="checkbox" class="form-check-input col-sm-9" name="confirm" value="yes" />
                                 </div>
                                 <hr />

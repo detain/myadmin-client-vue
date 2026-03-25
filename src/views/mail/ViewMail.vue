@@ -243,9 +243,9 @@ mailStore.getById(id);
                             0 0 1px rgb(0 0 0 / 13%),
                             0 1px 3px rgb(0 0 0 / 20%);
                     "
-                    class="mx-0 pl-4">
+                    class="mx-0 ps-4">
                     <p style="font-size: 20px; vertical-align: middle">
-                        <i class="fas fa-mail-bulk pr-2" aria-hidden="true"></i> Mail Usage Count: <strong>{{ usage_count }}</strong>
+                        <i class="fas fa-mail-bulk pe-2" aria-hidden="true"></i> Mail Usage Count: <strong>{{ usage_count }}</strong>
                     </p>
                 </blockquote>
             </div>
@@ -256,13 +256,13 @@ mailStore.getById(id);
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-link"></i>&nbsp;Links</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="card-body my-3 py-4">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>
@@ -274,7 +274,7 @@ mailStore.getById(id);
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-plug"></i>&nbsp;Connection Information</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
@@ -294,7 +294,7 @@ mailStore.getById(id);
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-video"></i>&nbsp;{{ extraInfoTables.tutorials.title }}</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
@@ -317,16 +317,16 @@ mailStore.getById(id);
                 <form class="inline" method="post">
                     <div class="modal-header">
                         <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="message-text" class="col-form-label">Comment:</label>
                             <textarea id="message-text" v-model="serviceInfo.mail_comment" class="form-control" rows="5" name="comment"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
                         <button type="submit" class="btn btn-primary" @click.prevent="submitForm">Save changes</button>
                     </div>
                 </form>

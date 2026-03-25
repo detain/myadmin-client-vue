@@ -64,7 +64,7 @@ loadTransfer();
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fas fa-exchange-alt"></i>&nbsp;{{ t('domains.transfer.title') }}</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-bs-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
                     </div>
                 </div>
                 <div class="card-body">
@@ -77,23 +77,23 @@ loadTransfer();
                         <table class="table table-bordered">
                             <tbody>
                                 <tr v-if="transferInfo.status">
-                                    <td class="font-weight-bold" style="width: 200px">{{ t('domains.transfer.statusLabel') }}</td>
+                                    <td class="fw-bold" style="width: 200px">{{ t('domains.transfer.statusLabel') }}</td>
                                     <td>{{ transferInfo.status }}</td>
                                 </tr>
                                 <tr v-if="transferInfo.statusText">
-                                    <td class="font-weight-bold">{{ t('domains.transfer.statusDetails') }}</td>
+                                    <td class="fw-bold">{{ t('domains.transfer.statusDetails') }}</td>
                                     <td><em>{{ transferInfo.statusText }}</em></td>
                                 </tr>
                                 <tr v-if="transferInfo.transferrable">
-                                    <td class="font-weight-bold">{{ t('domains.transfer.transferrable') }}</td>
+                                    <td class="fw-bold">{{ t('domains.transfer.transferrable') }}</td>
                                     <td>{{ transferInfo.transferrable }}</td>
                                 </tr>
                                 <tr v-if="transferInfo.transferType">
-                                    <td class="font-weight-bold">{{ t('domains.transfer.transferType') }}</td>
+                                    <td class="fw-bold">{{ t('domains.transfer.transferType') }}</td>
                                     <td>{{ transferInfo.transferType }}</td>
                                 </tr>
                                 <tr v-if="transferInfo.reason">
-                                    <td class="font-weight-bold">{{ t('domains.transfer.reason') }}</td>
+                                    <td class="fw-bold">{{ t('domains.transfer.reason') }}</td>
                                     <td>{{ transferInfo.reason }}</td>
                                 </tr>
                             </tbody>

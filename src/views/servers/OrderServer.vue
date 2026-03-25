@@ -308,14 +308,14 @@ updatePrice();
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true"></i>Order Dedicated Server</h3>
-                            <div class="card-tools float-right">
-                                <router-link to="/servers" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                            <div class="card-tools float-end">
+                                <router-link to="/servers" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <form method="post" class="dserver_form_init">
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="input-group col-md-12">
                                     <template v-for="(cpuDetails, coreKey) in cpuCores" :key="coreKey">
                                         <template v-for="cpuDetail in cpuDetails" :key="cpuDetail.id">
@@ -323,7 +323,7 @@ updatePrice();
                                                 <!-- CPU -->
                                                 <div class="col-4">
                                                     <img class="d-block" style="max-width: 75px" :src="imageUrl(cpuDetail.img)" alt="" />
-                                                    <span class="text-lg font-weight-light">{{ cpuDetail.short_desc }}</span>
+                                                    <span class="text-lg fw-light">{{ cpuDetail.short_desc }}</span>
                                                     <div>({{ cpuDetail.num_cpus }} cpu, {{ cpuDetail.num_cores }} cores)</div>
                                                 </div>
                                                 <!-- Memory -->
@@ -368,29 +368,27 @@ updatePrice();
                     <div class="card-header">
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="far fa-hand-point-right"></i>Recommendations</h4>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <template v-for="(cpu_det, core) in cpuCores" :key="core">
-                            <a :id="'core-' + core" href="javascript:void(0);" data-toggle="modal" :data-target="'#coreM-' + core" class="btn btn-sm btn-secondary m-2" style="min-width: 100px">{{ core }}-Cores</a>
+                            <a :id="'core-' + core" href="javascript:void(0);" data-bs-toggle="modal" :data-bs-target="'#coreM-' + core" class="btn btn-sm btn-secondary m-2" style="min-width: 100px">{{ core }}-Cores</a>
                             <div :id="'coreM-' + core" class="modal fade">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header border-0 p-4">
                                             <h4>{{ core }}-Cores Servers</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div v-for="cpu_details in cpu_det" :key="cpu_details.id">
                                                 <div class="row">
                                                     <div class="col"><img :src="imageUrl(cpu_details.img)" alt="" style="max-width: 100px" /></div>
                                                     <div class="col">
-                                                        <div class="font-weight-light text-lg">{{ cpu_details.short_desc }}</div>
+                                                        <div class="fw-light text-lg">{{ cpu_details.short_desc }}</div>
                                                         <div class="text-green text-sm">{{ cpu_details.monthly_price_display }}</div>
                                                     </div>
                                                     <div class="col">
@@ -408,7 +406,7 @@ updatePrice();
                                                         <div class="text-sm">Total Cost per month</div>
                                                     </div>
                                                     <div class="col">
-                                                        <button type="button" class="btn btn-green btn-sm mt-2 px-4 py-2" data-dismiss="modal" @click="onSubmitCpu(cpu_details.id, cpu_details.hd_det?.id)">Order</button>
+                                                        <button type="button" class="btn btn-green btn-sm mt-2 px-4 py-2" data-bs-dismiss="modal" @click="onSubmitCpu(cpu_details.id, cpu_details.hd_det?.id)">Order</button>
                                                     </div>
                                                 </div>
                                                 <hr class="w-100" />
@@ -429,7 +427,7 @@ updatePrice();
                                 <i class="far fa-thumbs-up"></i> Buy It Now Servers
                                 <div><sub>Pre-configured servers ready to use!</sub></div>
                             </h4>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -444,9 +442,9 @@ updatePrice();
                                     </div>
                                     <div class="card-body" v-html="server.description.replace(/\n/g, '<br>')" />
                                     <div class="card-footer text-center">
-                                        <div class="font-weight-bold">${{ server.amount }}</div>
+                                        <div class="fw-bold">${{ server.amount }}</div>
                                         <hr class="w-100 m-1" />
-                                        <a :href="`order_dedicated?c=${encodeURIComponent(server.name)}`" class="btn btn-sm btn-custom font-weight-bold" style="min-width: 100px">Order Now</a>
+                                        <a :href="`order_dedicated?c=${encodeURIComponent(server.name)}`" class="btn btn-sm btn-custom fw-bold" style="min-width: 100px">Order Now</a>
                                     </div>
                                 </div>
                             </template>
@@ -467,9 +465,9 @@ updatePrice();
                                         </template>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="font-weight-bold">${{ asset.price }}</div>
+                                        <div class="fw-bold">${{ asset.price }}</div>
                                         <hr class="w-100 m-1" />
-                                        <a :href="`order_dedicated?a=${asset.id}`" class="btn btn-sm btn-custom font-weight-bold" style="min-width: 100px">Order Now</a>
+                                        <a :href="`order_dedicated?a=${asset.id}`" class="btn btn-sm btn-custom fw-bold" style="min-width: 100px">Order Now</a>
                                     </div>
                                 </div>
                             </template>
@@ -491,8 +489,8 @@ updatePrice();
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true"></i>Order Dedicated Server</h3>
-                            <div class="card-tools float-right">
-                                <button type="button" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back" @click="onGoBack"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
+                            <div class="card-tools float-end">
+                                <button type="button" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back" @click="onGoBack"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -501,16 +499,16 @@ updatePrice();
                             <template v-for="(inputDetails, inputName) in configLi" :key="inputName">
                                 <template v-if="inputName !== 'cpu_li'">
                                     <template v-if="['memory_li', 'hd_li'].includes(inputName as string)">
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label text-right">
+                                        <div class="mb-3 row">
+                                            <label class="col-md-3 col-form-label text-end">
                                                 {{ fieldLabel[(inputName as string).replace('_li', '')].name }}
                                                 <span class="text-danger"> *</span>
                                             </label>
                                             <div class="input-group col-md-9">
                                                 <template v-for="(details, id) in inputDetails[cpu]" :key="id">
-                                                    <div class="icheck-success d-inline w-100">
+                                                    <div class="form-check d-inline w-100">
                                                         <input v-if="inputName === 'memory_li'" :id="`ds-memory-${id}`" v-model="formValues.memory" type="radio" class="form-check-input" name="memory" :value="id" />
-                                                        <label v-if="Object.keys(inputDetails[cpu])[0] === String(id) && inputName === 'hd_li'" class="font-weight-normal w-100">
+                                                        <label v-if="Object.keys(inputDetails[cpu])[0] === String(id) && inputName === 'hd_li'" class="fw-normal form-check-label w-100">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-12">
                                                                     <table class="table-sm table-bordered table">
@@ -534,10 +532,10 @@ updatePrice();
                                                                 </div>
                                                             </div>
                                                         </label>
-                                                        <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'font-weight-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
+                                                        <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" :class="'fw-normal w-100' + (inputName === 'hd_li' ? ' drive-row-' + details.drive_type : '')">
                                                             <div class="row mb-2">
                                                                 <div class="col-md-8">
-                                                                    <div class="text-md font-weight-light">
+                                                                    <div class="text-md fw-light">
                                                                         <template v-if="inputName === 'hd_li'">
                                                                             <button :id="'drive-remove-' + id" type="button" class="remove-button btn btn-xs pb-0" :class="canRemoveDrive(Number(id)) ? 'btn-success' : 'btn-secondary'" :disabled="!canRemoveDrive(Number(id))" @click="removeDrive(Number(id))">
                                                                                 <i class="fas fa-minus"></i>
@@ -547,14 +545,14 @@ updatePrice();
                                                                                 <i class="fas fa-plus"></i>
                                                                             </button>
                                                                         </template>
-                                                                        <span class="text-bold ml-2 text-sm">{{ details.short_desc }}</span>
+                                                                        <span class="text-bold ms-2 text-sm">{{ details.short_desc }}</span>
                                                                         <template v-if="inputName === 'hd_li'">
-                                                                            <span class="badge bg-info ml-2">{{ details.drive_type }}</span>
+                                                                            <span class="badge bg-info ms-2">{{ details.drive_type }}</span>
                                                                         </template>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-4 text-right">
-                                                                    <span class="text-md text-bold text-green pl-2">{{ details.monthly_price_display }}</span>
+                                                                <div class="col-md-4 text-end">
+                                                                    <span class="text-md text-bold text-green ps-2">{{ details.monthly_price_display }}</span>
                                                                 </div>
                                                             </div>
                                                         </label>
@@ -563,21 +561,21 @@ updatePrice();
                                             </div>
                                         </div>
                                     </template>
-                                    <div v-else-if="fieldLabel[(inputName as string).replace('_li', '')]" class="form-group row">
-                                        <label class="col-md-3 col-form-label text-right">
+                                    <div v-else-if="fieldLabel[(inputName as string).replace('_li', '')]" class="mb-3 row">
+                                        <label class="col-md-3 col-form-label text-end">
                                             {{ fieldLabel[(inputName as string).replace('_li', '')]?.name }}
                                             <span class="text-danger"> *</span>
                                         </label>
                                         <div class="input-group col-md-9" :class="inputName + '-row'">
-                                            <div v-for="(details, id) in inputDetails" :key="id" class="icheck-success d-inline w-100">
+                                            <div v-for="(details, id) in inputDetails" :key="id" class="form-check d-inline w-100">
                                                 <input :id="`ds-${(inputName as string).replace('_li', '')}-${id}`" v-model="formValues[(inputName as string).replace('_li', '')]" type="radio" class="form-check-input" :name="(inputName as string).replace('_li', '')" :value="id" />
-                                                <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="font-weight-normal w-100">
+                                                <label :for="'ds-' + (inputName as string).replace('_li', '') + '-' + id" class="fw-normal form-check-label w-100">
                                                     <div class="row mb-2">
                                                         <div class="col-md-8">
                                                             <div class="text-bold text-sm">{{ details.short_desc }}</div>
                                                         </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <span class="text-md text-bold text-green pl-2">{{ details.monthly_price_display }}</span>
+                                                        <div class="col-md-4 text-end">
+                                                            <span class="text-md text-bold text-green ps-2">{{ details.monthly_price_display }}</span>
                                                         </div>
                                                     </div>
                                                 </label>
@@ -586,24 +584,24 @@ updatePrice();
                                     </div>
                                 </template>
                             </template>
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right">Server Region <span class="text-danger"> *</span></label>
+                            <div class="mb-3 row">
+                                <label class="col-md-3 col-form-label text-end">Server Region <span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9 region-row">
-                                    <div v-for="(region, index) in regions" :key="region.region_id" class="icheck-success d-inline w-100">
+                                    <div v-for="(region, index) in regions" :key="region.region_id" class="form-check d-inline w-100">
                                         <input :id="`region-${index}`" v-model="formValues.region" type="radio" class="form-check-input" name="region" :value="region.region_id" />
-                                        <label class="font-weight-normal w-100" :for="`region-${index}`">
+                                        <label class="fw-normal form-check-label w-100" :for="`region-${index}`">
                                             <div class="row mb-2">
                                                 <div class="col-md-8">
                                                     <div class="text-sm text-bold">{{ region.region_name }} [Setup Time - {{ setupTime(region.region_id) }}]</div>
                                                 </div>
-                                                <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green"></span></div>
+                                                <div class="col-md-4 text-end"><span class="text-md text-bold ps-2 text-green"></span></div>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="controls col-md-12" style="text-align: center">
                                     <input type="button" name="Submit" value="Continue" class="btn btn-order btn-sm px-3 py-2" @click="onSubmitOptions" />
                                 </div>
@@ -618,7 +616,7 @@ updatePrice();
                     <div class="card-header">
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>Order Summary</h4>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -626,76 +624,76 @@ updatePrice();
                     <div class="card-body">
                         <div class="row mb-3">
                             <div id="package_name" class="col-md-8">Dedicated Server</div>
-                            <div id="package_period" class="col text-bold text-right">1 Month(s)</div>
+                            <div id="package_period" class="col text-bold text-end">1 Month(s)</div>
                         </div>
                         <div class="row cpu-row mb-3">
                             <div class="col-md-8">
                                 <span class="cpu_name">{{ configLi.cpu_li[Number(cpu)].short_desc }}</span>
-                                <span class="badge badge-pill badge-warning ml-2">CPU</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">CPU</span>
                             </div>
-                            <div class="col text-md text-bold cpu_cost text-right">{{ configLi.cpu_li[Number(cpu)].monthly_price_display }}</div>
+                            <div class="col text-md text-bold cpu_cost text-end">{{ configLi.cpu_li[Number(cpu)].monthly_price_display }}</div>
                         </div>
                         <div class="row memory-row mb-3">
                             <div class="col-md-8">
                                 <span class="memory_name">{{ configLi.memory_li[Number(cpu)][formValues.memory].short_desc }} RAM</span>
-                                <span class="badge badge-pill badge-warning ml-2">RAM</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">RAM</span>
                             </div>
-                            <div class="col text-md text-bold memory_cost text-right">{{ configLi.memory_li[Number(cpu)][formValues.memory].monthly_price_display }}</div>
+                            <div class="col text-md text-bold memory_cost text-end">{{ configLi.memory_li[Number(cpu)][formValues.memory].monthly_price_display }}</div>
                         </div>
                         <div v-for="hd in drives" :key="hd" class="row memory-row mb-3">
                             <div class="col-md-8">
                                 <span class="memory_name">{{ configLi.hd_li[Number(cpu)][hd].short_desc }}</span>
-                                <span class="badge badge-pill badge-warning ml-2">HDD</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">HDD</span>
                             </div>
-                            <div class="col text-md text-bold memory_cost text-right">{{ configLi.hd_li[cpu][hd].monthly_price_display }}</div>
+                            <div class="col text-md text-bold memory_cost text-end">{{ configLi.hd_li[cpu][hd].monthly_price_display }}</div>
                         </div>
                         <div id="hd-row" class="d-none"></div>
                         <div class="row bandwidth-row mb-3">
                             <div class="col-md-8">
                                 <span class="bandwidth_name">{{ configLi.bandwidth_li[formValues.bandwidth].short_desc }}</span>
-                                <span class="badge badge-pill badge-warning ml-2">Bandwidth</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">Bandwidth</span>
                             </div>
-                            <div class="col text-md text-bold bandwidth_cost text-right">{{ configLi.bandwidth_li[formValues.bandwidth].monthly_price_display }}</div>
+                            <div class="col text-md text-bold bandwidth_cost text-end">{{ configLi.bandwidth_li[formValues.bandwidth].monthly_price_display }}</div>
                         </div>
                         <div class="row ips-row mb-3">
                             <div class="col-md-8">
                                 <span class="ips_name">{{ configLi.ips_li[formValues.ips].short_desc }}</span>
-                                <span class="badge badge-pill badge-warning ml-2">IP</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">IP</span>
                             </div>
-                            <div class="col text-md text-bold ips_cost text-right">{{ configLi.ips_li[formValues.ips].monthly_price_display }}</div>
+                            <div class="col text-md text-bold ips_cost text-end">{{ configLi.ips_li[formValues.ips].monthly_price_display }}</div>
                         </div>
                         <div class="row os-row mb-3">
                             <div class="col-md-8">
                                 <span class="os_name">{{ configLi.os_li[formValues.os].short_desc }}</span>
-                                <span class="badge badge-pill badge-warning ml-2">OS</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">OS</span>
                             </div>
-                            <div class="col text-md text-bold os_cost text-right">{{ configLi.os_li[formValues.os].monthly_price_display }}</div>
+                            <div class="col text-md text-bold os_cost text-end">{{ configLi.os_li[formValues.os].monthly_price_display }}</div>
                         </div>
                         <div class="row cp-row mb-3">
                             <div class="col-md-8">
                                 <span class="cp_name">{{ configLi.cp_li[formValues.cp].short_desc }}</span>
-                                <span class="badge badge-pill badge-warning ml-2">Control Panel</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">Control Panel</span>
                             </div>
-                            <div class="col text-md text-bold cp_cost text-right">{{ configLi.cp_li[formValues.cp].monthly_price_display }}</div>
+                            <div class="col text-md text-bold cp_cost text-end">{{ configLi.cp_li[formValues.cp].monthly_price_display }}</div>
                         </div>
                         <div class="row raid-row mb-3">
                             <div class="col-md-8">
                                 <span class="raid_name">{{ configLi.raid_li[formValues.raid].short_desc }}</span>
-                                <span class="badge badge-pill badge-warning ml-2">RAID</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">RAID</span>
                             </div>
-                            <div class="col text-md text-bold raid_cost text-right">{{ configLi.raid_li[formValues.raid].monthly_price_display }}</div>
+                            <div class="col text-md text-bold raid_cost text-end">{{ configLi.raid_li[formValues.raid].monthly_price_display }}</div>
                         </div>
                         <div class="row region-row mb-3">
                             <div class="col-md-8">
                                 <span class="raid_name">{{ regionName }}</span>
-                                <span class="badge badge-pill badge-warning ml-2">Server Region</span>
+                                <span class="badge rounded-pill text-bg-warning ms-2">Server Region</span>
                             </div>
-                            <div class="col text-md text-bold raid_cost text-right"></div>
+                            <div class="col text-md text-bold raid_cost text-end"></div>
                         </div>
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">Total</div>
-                            <div class="col text-bold total_cost text-right text-lg">{{ money(totalCost) }}</div>
+                            <div class="col text-bold total_cost text-end text-lg">{{ money(totalCost) }}</div>
                         </div>
                     </div>
                 </div>
@@ -710,8 +708,8 @@ updatePrice();
                     <div class="card-header">
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>Order Summary</h4>
-                            <div class="card-tools float-right">
-                                <button type="button" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back" @click="onGoBackStep2"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
+                            <div class="card-tools float-end">
+                                <button type="button" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back" @click="onGoBackStep2"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -722,8 +720,8 @@ updatePrice();
                             </template>
                             <input v-for="(hd_val, index) in hdValues" :key="index" type="hidden" name="hd[]" :value="hd_val" />
                             <input id="step_n" type="hidden" name="step_n" value="confirm_order" />
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label text-right">Server Hostname<span class="text-danger"> *</span></label>
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label text-end">Server Hostname<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-8">
                                     <input v-model="servername" type="text" class="form-control form-control-sm" name="servername" placeholder="server.hostname.com" required />
                                     <small class="form-text text-muted">
@@ -732,16 +730,16 @@ updatePrice();
                                     </small>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label text-right">Root Password<span class="text-danger"> *</span></label>
-                                <div class="form-group input-group col-md-8">
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label text-end">Root Password<span class="text-danger"> *</span></label>
+                                <div class="mb-3 input-group col-md-8">
                                     <input v-model="rootpass" placeholder="Enter Password" class="form-control form-control-sm" required />
                                     <small class="form-text text-muted">Note: Password must contain at least 8 characters,one lowercase letter, one uppercase letter, one number, a special character.</small>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-4 col-form-label text-right">Comments</label>
-                                <div class="form-group input-group col-md-8">
+                            <div class="mb-3 row">
+                                <label class="col-md-4 col-form-label text-end">Comments</label>
+                                <div class="mb-3 input-group col-md-8">
                                     <textarea v-model="comment" placeholder="Enter Comment" rows="5" class="form-control form-control-sm"></textarea>
                                 </div>
                             </div>
@@ -750,7 +748,7 @@ updatePrice();
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div id="package_name" class="float-left" style="position: relative; top: 5px">Dedicated Server</div>
+                                            <div id="package_name" class="float-start" style="position: relative; top: 5px">Dedicated Server</div>
                                         </th>
                                         <th>
                                             <div id="package_period" class="text-bold">1 Month(s)</div>
@@ -761,7 +759,7 @@ updatePrice();
                                     <tr>
                                         <td>
                                             <span class="cpu_name">{{ configLi.cpu_li[cpu].short_desc }}</span>
-                                            <span class="badge badge-pill badge-warning ml-2">CPU</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">CPU</span>
                                         </td>
                                         <td>
                                             <div class="text-bold cpu_cost">{{ configLi.cpu_li[cpu].monthly_price_display }}</div>
@@ -770,7 +768,7 @@ updatePrice();
                                     <tr>
                                         <td>
                                             <span class="memory_name">{{ configLi.memory_li[cpu][formValues.memory].short_desc }} RAM</span>
-                                            <span class="badge badge-pill badge-warning ml-2">RAM</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">RAM</span>
                                         </td>
                                         <td>
                                             <div class="text-bold memory_cost">{{ configLi.memory_li[cpu][formValues.memory].monthly_price_display }}</div>
@@ -779,7 +777,7 @@ updatePrice();
                                     <tr v-for="hd in drives" :key="hd">
                                         <td>
                                             <span class="hd_name">{{ configLi['hd_li'][cpu][hd]['drive_type'].toUpperCase() }} - {{ configLi['hd_li'][cpu][hd]['short_desc'] }}</span>
-                                            <span class="badge badge-pill badge-warning ml-2">HDD</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">HDD</span>
                                         </td>
                                         <td>
                                             <div class="text-bold hd_cost">{{ configLi['hd_li'][cpu][hd]['monthly_price_display'] }}</div>
@@ -788,7 +786,7 @@ updatePrice();
                                     <tr>
                                         <td>
                                             <span class="bandwidth_name">{{ configLi.bandwidth_li[formValues.bandwidth].short_desc }}</span>
-                                            <span class="badge badge-pill badge-warning ml-2">Bandwidth</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">Bandwidth</span>
                                         </td>
                                         <td>
                                             <div class="text-bold bandwidth_cost">{{ configLi.bandwidth_li[formValues.bandwidth].monthly_price_display }}</div>
@@ -797,7 +795,7 @@ updatePrice();
                                     <tr>
                                         <td>
                                             <span class="ips_name">{{ configLi.ips_li[formValues.ips].short_desc }}</span>
-                                            <span class="badge badge-pill badge-warning ml-2">IP</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">IP</span>
                                         </td>
                                         <td>
                                             <div class="text-bold ips_cost">{{ configLi.ips_li[formValues.ips].monthly_price_display }}</div>
@@ -806,7 +804,7 @@ updatePrice();
                                     <tr>
                                         <td>
                                             <span class="os_name">{{ configLi.os_li[formValues.os].short_desc }}</span>
-                                            <span class="badge badge-pill badge-warning ml-2">OS</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">OS</span>
                                         </td>
                                         <td>
                                             <div class="text-bold os_cost">{{ configLi.os_li[formValues.os].monthly_price_display }}</div>
@@ -815,7 +813,7 @@ updatePrice();
                                     <tr>
                                         <td>
                                             <span class="cp_name">{{ configLi.cp_li[formValues.cp].short_desc }}</span>
-                                            <span class="badge badge-pill badge-warning ml-2">Control Panel</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">Control Panel</span>
                                         </td>
                                         <td>
                                             <div class="text-bold cp_cost">{{ configLi.cp_li[formValues.cp].monthly_price_display }}</div>
@@ -824,14 +822,14 @@ updatePrice();
                                     <tr class="raid-row">
                                         <td>
                                             <span class="raid_name">{{ configLi.raid_li[formValues.raid].short_desc }}</span>
-                                            <span class="badge badge-pill badge-warning ml-2">RAID</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">RAID</span>
                                         </td>
                                         <td class="text-bold raid_cost">{{ configLi.raid_li[formValues.raid].monthly_price_display }}</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <span>{{ regionName }}</span>
-                                            <span class="badge badge-pill badge-warning ml-2">Server Region</span>
+                                            <span class="badge rounded-pill text-bg-warning ms-2">Server Region</span>
                                         </td>
                                         <td class="text-bold"></td>
                                     </tr>
@@ -851,12 +849,12 @@ updatePrice();
                                 <h4 class="text-center"><u>Agree to the offer terms</u></h4>
                                 <p class="text-center text-sm">The subscription will automatically renew after <b>every month at</b> <span class="package_cost text-bold"></span> until canceled.</p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank">Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank">Privacy Policy</a>.</p>
-                                <p class="icheck-success text-bold text-center">
-                                    <input id="tos" v-model="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="true" />
-                                    <label for="tos" class="d-inline text-center">I have read the terms above and I agree.</label>
+                                <p class="form-check text-bold text-center">
+                                    <input id="tos" v-model="tos" type="checkbox" class="form-check-input" name="tos" style="margin: 0 5px; display: inline" value="true" />
+                                    <label for="tos" class="d-inline text-center form-check-label">I have read the terms above and I agree.</label>
                                 </p>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="controls col-md-12" style="text-align: center">
                                     <input type="button" value="Place Order" class="btn btn-sm btn-green px-3 py-2" :disabled="!tos" @click.prevent="onSubmitOrder" />
                                 </div>

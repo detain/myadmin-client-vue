@@ -135,7 +135,7 @@ loadRenew();
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                 <div class="text-md m-0">
                     <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #1:</b>&nbsp;{{ t('domains.renew.tip1') }}
-                    <div class="card-tools float-right">
+                    <div class="card-tools float-end">
                         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                     </div>
                 </div>
@@ -143,7 +143,7 @@ loadRenew();
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                 <div class="text-md m-0">
                     <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #2:</b>&nbsp;{{ t('domains.renew.tip2') }}
-                    <div class="card-tools float-right">
+                    <div class="card-tools float-end">
                         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ loadRenew();
                 <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid greenyellow', display: 'block ruby' }">
                     <div class="text-md m-0">
                         <i class="fas fa-lightbulb" style="color: greenyellow"></i>&nbsp;<b>Tip #3:</b>&nbsp;{{ t('domains.renew.tip3') }}
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                         </div>
                     </div>
@@ -166,7 +166,7 @@ loadRenew();
                 <div class="card-header">
                     <h3 class="card-title text-lg"><i class="fas fa-address-card"></i>&nbsp;{{ t('domains.renew.title') }}</h3>
                     <div class="card-tools m-0">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-bs-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
                     </div>
                 </div>
                 <div class="card-body">
@@ -181,20 +181,20 @@ loadRenew();
                         </div>
                     </template>
                     <form v-else @submit.prevent="placeOrder">
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="domain">{{ t('domains.renew.domain') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="hostname" type="text" class="form-control form-control-sm" name="domain" :value="serviceInfo.domain_hostname" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="expiry_date">{{ t('domains.renew.expiryDate') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="expiry_date" type="text" class="form-control form-control-sm" name="expiry_date" :value="expiryDate" disabled />
                             </div>
                         </div>
                         <template v-if="whoisAvailable">
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="whois_privacy">{{ t('domains.view.whoisPrivacy') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <select id="whois_privacy" v-model="selectedWhoisPrivacy" name="whois_privacy" class="form-control form-control-sm select2bs4" dir="rtl">
@@ -204,34 +204,28 @@ loadRenew();
                                 </div>
                             </div>
                         </template>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="renew_cost">{{ t('domains.renew.renewCost') }}</label>
                             <div class="col-sm-9 input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
-                                </div>
+                                    <span class="input-group-text fw-bold">{{ currencySymbol }}</span>
                                 <input id="renew_cost" type="text" class="form-control form-control-sm" name="renew_cost" :value="renewCostFormatted" disabled />
                             </div>
                         </div>
-                        <div v-if="whoisAvailable" id="whois_row" class="form-group row">
+                        <div v-if="whoisAvailable" id="whois_row" class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="whois_cost">{{ t('domains.renew.whoisCost') }}</label>
                             <div class="col-sm-9 input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
-                                </div>
+                                    <span class="input-group-text fw-bold">{{ currencySymbol }}</span>
                                 <input id="whois_cost" type="text" class="form-control form-control-sm" name="whois_cost" :value="selectedWhoisPrivacy === 'enable' ? whoisCostFormatted : '0.00'" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="total_cost">{{ t('domains.renew.totalCost') }}</label>
                             <div class="col-sm-9 input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
-                                </div>
+                                    <span class="input-group-text fw-bold">{{ currencySymbol }}</span>
                                 <input id="total_cost" type="text" class="form-control" name="total_cost" :value="totalCost" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label" for="submit"></label>
                             <div class="col-sm-9 input-group input-group-sm">
                                 <input type="submit" name="Submit" :value="t('domains.order.placeOrder')" class="btn btn-custom btn-sm py-2" />

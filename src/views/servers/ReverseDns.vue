@@ -63,28 +63,28 @@ fetchWrapper.get(`${baseUrl}/${moduleLink(module)}/${id.value}/reverse_dns`).the
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-atlas"></i>{{ t('servers.reverseDns.title') }}</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="alert alert-warning" role="alert">{{ t('servers.reverseDns.changeWarning') }}</div>
                     <form id="reverse_dns_form" accept-charset="UTF-8" role="form" method="POST" @submit.prevent="submitForm">
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-3 col-form-label">{{ t('servers.reverseDns.ipAddresses') }}</label>
                             <div class="col-sm-9 input-group">
                                 <label class="col-md-9 col-form-label">{{ t('servers.reverseDns.hostnames') }}</label>
                             </div>
                         </div>
-                        <div v-for="(v, k) in ips" :key="k" class="form-group row">
+                        <div v-for="(v, k) in ips" :key="k" class="mb-3 row">
                             <label class="col-md-3 col-form-label">{{ k }}</label>
                             <div class="col-sm-9 input-group">
                                 <input :id="k" v-model="ips[k]" :name="k" type="text" class="form-control form-control-sm" />
                             </div>
                         </div>
                         <hr />
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="controls col-md-12 text-center">
                                 <input type="submit" :value="t('servers.reverseDns.updateReverseDns')" class="btn btn-sm btn-order px-3 py-2" />
                             </div>

@@ -51,7 +51,7 @@ function submitForm() {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title d-flex py-2"><i class="material-icons">password&nbsp;</i> {{ t('vps.resetPassword.title') }}</h3>
-                        <div class="card-tools text-right">
+                        <div class="card-tools text-end">
                             <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><i class="fas fa-arrow-left"></i> {{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ function submitForm() {
                 <div class="card-body">
                     <form @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="reset_password" />
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-3 p-0">
                                     <label for="hostname" class="col-form-label">{{ t('vps.resetPassword.server') }}</label>
@@ -69,7 +69,7 @@ function submitForm() {
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-3 p-0">
                                     <label for="slices" class="col-form-label">{{ t('vps.resetPassword.importantNote') }}</label>
@@ -79,11 +79,11 @@ function submitForm() {
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="input-group">
-                                <div class="icheck-success col-md-12 text-bold mt-3 text-black">
-                                    <input id="confirmation" v-model="confirm" type="checkbox" name="confirm" value="yes" required />
-                                    <label for="confirmation">{{ t('vps.resetPassword.confirmReset') }}</label>
+                                <div class="form-check col-md-12 text-bold mt-3 text-black">
+                                    <input id="confirmation" v-model="confirm" type="checkbox" class="form-check-input" name="confirm" value="yes" required />
+                                    <label class="form-check-label" for="confirmation">{{ t('vps.resetPassword.confirmReset') }}</label>
                                 </div>
                             </div>
                         </div>

@@ -72,8 +72,8 @@ const submitForm = () => {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="material-icons">transfer_within_a_station&nbsp;</i>Migrate Your Website</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -86,46 +86,46 @@ const submitForm = () => {
                                 </div>
                             </div>
                             <div class="card-body pb-0">
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="cust_portal">Customer Portal URL</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="cust_portal">Customer Portal URL</label>
                                     <div class="col-md-6">
                                         <input id="cust_portal" v-model="custPortal" placeholder="Enter Customer Portal URL" type="text" class="form-control form-control-sm" />
                                         <small class="form-text text-muted">For Example: sso.godaddy.com</small>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pl-0 pr-3 text-right" for="reg_email">Registered Username / Email / ID</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 ps-0 pe-3 text-end" for="reg_email">Registered Username / Email / ID</label>
                                     <div class="col-md-6 input-group">
                                         <input id="reg_email" v-model="regEmail" placeholder="Enter Registered Username / E-mail / ID" type="text" class="form-control form-control-sm" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="pass">Password</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="pass">Password</label>
                                     <div class="col-md-6 input-group">
                                         <input id="pass" v-model="password" placeholder="Enter Password" type="password" class="form-control form-control-sm" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="ctrl_panel">Control Panel URL</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="ctrl_panel">Control Panel URL</label>
                                     <div class="col-md-6">
                                         <input id="ctrl_panel" v-model="ctrlPanel" placeholder="Enter Control Panel URL" type="text" class="form-control form-control-sm" />
                                         <small class="form-text text-muted">For Example: yourdomain.com/cpanel</small>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="ftp_usrname">FTP / Control Panel Username</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="ftp_usrname">FTP / Control Panel Username</label>
                                     <div class="col-md-6 input-group">
                                         <input id="ftp_usrname" v-model="ftpUsername" placeholder="Enter FTP / Control Panel Username" type="text" class="form-control form-control-sm" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="ftp_pass">FTP / Control Panel Password</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="ftp_pass">FTP / Control Panel Password</label>
                                     <div class="col-md-6 input-group">
                                         <input id="ftp_pass" v-model="ftpPassword" placeholder="Enter FTP / Control Panel Password" type="password" class="form-control form-control-sm" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="site_busy_mig">If the site is live/busy site having high traffic, can we set a holding page during migration?</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="site_busy_mig">If the site is live/busy site having high traffic, can we set a holding page during migration?</label>
                                     <div class="col-md-6 input-group">
                                         <select v-model="siteBusyMig" name="site_busy_mig" class="form-control form-control-sm">
                                             <option value="yes">Yes</option>
@@ -133,8 +133,8 @@ const submitForm = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="spl_req_mig">Does this site have special requirements like PHP Version / Modules?</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="spl_req_mig">Does this site have special requirements like PHP Version / Modules?</label>
                                     <div class="col-md-6 input-group">
                                         <select v-model="splReqMig" name="spl_req_mig" class="form-control form-control-sm">
                                             <option value="yes">Yes</option>
@@ -151,8 +151,8 @@ const submitForm = () => {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="domain_reg">Do you also want us to help you transfer the domain name registration?</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="domain_reg">Do you also want us to help you transfer the domain name registration?</label>
                                     <div class="col-md-6 input-group">
                                         <select v-model="domainReg" name="domain_reg" class="form-control form-control-sm">
                                             <option value="yes">Yes</option>
@@ -160,8 +160,8 @@ const submitForm = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="data_mig">Do you want us to update the name servers as soon as we finish the data migration?</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="data_mig">Do you want us to update the name servers as soon as we finish the data migration?</label>
                                     <div class="col-md-6 input-group">
                                         <select v-model="dataMig" name="data_mig" class="form-control form-control-sm">
                                             <option value="yes">Yes</option>
@@ -169,20 +169,20 @@ const submitForm = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="domain_reg_portal">Domain Registry Customer Portal</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="domain_reg_portal">Domain Registry Customer Portal</label>
                                     <div class="col-md-6 input-group">
                                         <input id="domain_reg_portal" v-model="domainRegPortal" placeholder="Domain Registry Customer Portal" type="text" class="form-control form-control-sm" name="domain_reg_portal" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="domain_reg_email">Registered Username / Email / ID</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="domain_reg_email">Registered Username / Email / ID</label>
                                     <div class="col-md-6 input-group">
                                         <input id="domain_reg_email" v-model="domainRegEmail" placeholder="Enter Registered Username / E-mail / ID" type="text" class="form-control form-control-sm" name="domain_reg_email" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-md-6 mt-1 pr-3 text-right" for="domain_reg_pass">Password</label>
+                                <div class="mb-3 row">
+                                    <label class="form-label col-md-6 mt-1 pe-3 text-end" for="domain_reg_pass">Password</label>
                                     <div class="col-md-6 input-group">
                                         <input id="domain_reg_pass" v-model="domainRegPassword" placeholder="Enter Password" type="password" class="form-control form-control-sm" name="domain_reg_pass" />
                                     </div>
@@ -203,7 +203,7 @@ const submitForm = () => {
                 <div class="card-header">
                     <div class="p-1">
                         <h4 class="card-title text-red py-2"><i class="fas fa-lightbulb"></i>&nbsp;Important Notes</h4>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>

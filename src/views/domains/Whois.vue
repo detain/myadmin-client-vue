@@ -196,7 +196,7 @@ loadWhois();
                     <div class="card-header">
                         <h3 class="card-title text-lg"><i class="fas fa-user-secret"></i>&nbsp;{{ t('domains.whois.title') }}</h3>
                         <div class="card-tools m-0">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-bs-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                     <div class="card-body text-center">
@@ -218,25 +218,23 @@ loadWhois();
                     <div class="card-header">
                         <h3 class="card-title text-lg"><i class="fas fa-address-card"></i>&nbsp;{{ t('domains.whois.title') }}</h3>
                         <div class="card-tools m-0">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn-outline-custom px-2 py-1" data-bs-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left text-sm"></i>&nbsp;{{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="placeOrder">
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-2 col-form-label" for="hostname">{{ t('domains.whois.domain') }}</label>
                                 <div class="col-sm-10 input-group"><input id="hostname" type="text" class="form-control form-control-sm" :value="hostname" disabled /></div>
                             </div>
-                            <div id="whois_row" class="form-group row">
+                            <div id="whois_row" class="mb-3 row">
                                 <label class="col-md-2 col-form-label" for="whois_cost">{{ t('domains.whois.whoisCost') }}</label>
                                 <div class="col-sm-10 input-group input-group-sm">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text font-weight-bold">{{ currencySymbol }}</span>
-                                    </div>
+                                        <span class="input-group-text fw-bold">{{ currencySymbol }}</span>
                                     <input id="whois_cost" type="text" class="form-control form-control-sm" :value="whoisCost.toFixed(2)" disabled />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-2 col-form-label" for="submit"></label>
                                 <div class="col-sm-10 input-group input-group-sm">
                                     <input id="button-id-signup" type="submit" name="Submit" :value="t('domains.order.placeOrder')" class="btn btn-custom btn-sm px-3 py-2 text-sm" />

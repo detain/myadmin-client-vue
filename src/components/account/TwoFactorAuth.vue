@@ -69,7 +69,7 @@ export default {
         <div class="card-header">
             <div class="p-1">
                 <h3 id="2fa" class="card-title py-2" :title="t('common.account.twoFactorAuthDescription')">{{ t('common.account.twoFactorAuth') }}</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools float-end">
                     <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fa fas fa-minus" aria-hidden="true"></i></button>
                 </div>
             </div>
@@ -77,9 +77,9 @@ export default {
         <div class="card-body">
             <form @submit.prevent="update2fa">
                 <div class="row justify-content-center">
-                    <div class="icheck-success d-inline">
-                        <input id="giChkSqr" v-model="data['2fa_google_enabled']" type="checkbox" value="1" name="2fa_google" />
-                        <label for="giChkSqr">{{ t('common.account.enableGoogle2fa') }}</label>
+                    <div class="form-check d-inline">
+                        <input id="giChkSqr" v-model="data['2fa_google_enabled']" type="checkbox" class="form-check-input" value="1" name="2fa_google" />
+                        <label class="form-check-label" for="giChkSqr">{{ t('common.account.enableGoogle2fa') }}</label>
                     </div>
                 </div>
                 <hr />
@@ -96,7 +96,7 @@ export default {
                     </blockquote>
                     <div class="col-md-8 mt-3">
                         <h3 class="py-3">
-                            <span class="badge badge-primary">{{ data['2fa_google_split'] }}</span>
+                            <span class="badge text-bg-primary">{{ data['2fa_google_split'] }}</span>
                         </h3>
                         <div class="alert alert-warning mt-2" role="alert">
                             <i class="fa fas fa-file-export"></i>&nbsp;

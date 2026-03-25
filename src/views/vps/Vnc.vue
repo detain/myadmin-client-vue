@@ -30,8 +30,8 @@ const novncLink = ref('');
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2">{{ t('vps.vnc.remoteDesktop') }}</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" data-toggle="tooltip" :title="t('vps.common.goBack')" class="btn btn-custom btn-sm"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" data-bs-toggle="tooltip" :title="t('vps.common.goBack')" class="btn btn-custom btn-sm"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -108,9 +108,9 @@ const novncLink = ref('');
                     <div style="width: 85%; border: 1px solid #dee2e6">
                         <div class="p-2" style="border: 1px solid #dee2e6">
                             {{ t('vps.vnc.connectHtml5') }}
-                            <a class="link text-bold ml-1" style="transition-duration: 0.3s" target="_blank" :href="novncLink">{{ t('vps.vnc.clickHere') }}</a>
+                            <a class="link text-bold ms-1" style="transition-duration: 0.3s" target="_blank" :href="novncLink">{{ t('vps.vnc.clickHere') }}</a>
                         </div>
-                        <div class="p-2" style="border: 1px solid #dee2e6">{{ t('vps.vnc.connectOldLayout') }} <a class="link text-bold ml-1" style="transition-duration: 0.3s" target="_blank" :href="`${novncLink}&mode=basic`">{{ t('vps.vnc.clickHere') }}</a></div>
+                        <div class="p-2" style="border: 1px solid #dee2e6">{{ t('vps.vnc.connectOldLayout') }} <a class="link text-bold ms-1" style="transition-duration: 0.3s" target="_blank" :href="`${novncLink}&mode=basic`">{{ t('vps.vnc.clickHere') }}</a></div>
                         <div class="p-2" style="border: 1px solid #dee2e6">{{ t('vps.vnc.html5Note') }}</div>
                     </div>
                 </div>

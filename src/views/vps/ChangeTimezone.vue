@@ -73,21 +73,21 @@ try {
                 <p class="text-md m-0">
                     <i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">{{ t('vps.common.importantNoteLabel', { number: 1 }) }}</b>&nbsp;{{ t('vps.changeTimezone.importantNote1', { module: module }) }}
                 </p>
-                <div class="card-tools float-right">
+                <div class="card-tools float-end">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
                 </div>
                 <p></p>
             </div>
             <div class="card w-100 mb-2 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid red', display: 'block ruby' }">
                 <p class="text-md m-0"><i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">{{ t('vps.common.importantNoteLabel', { number: 2 }) }}</b>&nbsp;{{ t('vps.changeTimezone.importantNote2') }}</p>
-                <div class="card-tools float-right">
+                <div class="card-tools float-end">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
                 </div>
                 <p></p>
             </div>
             <div class="card w-100 mb-4 bg-white p-2 shadow-none" :style="{ 'border-left': '4px solid red', display: 'block ruby' }">
                 <p class="text-md m-0"><i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">{{ t('vps.common.importantNoteLabel', { number: 3 }) }}</b>&nbsp;{{ t('vps.changeTimezone.importantNote3') }}</p>
-                <div class="card-tools float-right">
+                <div class="card-tools float-end">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
                 </div>
                 <p></p>
@@ -101,9 +101,9 @@ try {
                 <div class="card-body pb-0">
                     <form class="change_timezone" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_timezone" />
-                        <div class="form-group">
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label text-right" for="os">{{ t('vps.changeTimezone.selectTimezone') }}</label>
+                        <div class="mb-3">
+                            <div class="mb-3 row">
+                                <label class="col-md-3 col-form-label text-end" for="os">{{ t('vps.changeTimezone.selectTimezone') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <select v-model="timezone" name="timezone" class="form-control select2">
                                         <option v-for="(zone, index) in zones" :key="index" :value="zone">{{ zone }}</option>

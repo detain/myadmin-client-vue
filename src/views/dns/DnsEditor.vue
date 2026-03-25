@@ -191,7 +191,7 @@ loadDns();
         <div class="card-header">
             <div class="p-1">
                 <h3 class="card-title py-2"><i class="fas fa-table"></i>&nbsp;DNS Records</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools float-end">
                     <button type="button" class="btn btn-primary btn-sm" title="Add Record" @click="showAddDnsRecord"><i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Add Record&nbsp;&nbsp;</button>
                 </div>
             </div>
@@ -205,8 +205,8 @@ loadDns();
                     <tr>
                         <th>ID</th>
                         <th>
-                            <form class="form-inline">
-                                <div class="form-group name">
+                            <form class="row row-cols-auto g-3 align-items-center">
+                                <div class="mb-3 name">
                                     Name:&nbsp;&nbsp;
                                     <input id="searchName" type="text" class="form-control no-shadow" placeholder="Search" autocomplete="off" />
                                 </div>
@@ -214,8 +214,8 @@ loadDns();
                         </th>
                         <th>Type</th>
                         <th>
-                            <form class="form-inline">
-                                <div class="form-group content">
+                            <form class="row row-cols-auto g-3 align-items-center">
+                                <div class="mb-3 content">
                                     Content:&nbsp;&nbsp;
                                     <input id="searchContent" type="text" class="form-control no-shadow" placeholder="Search" autocomplete="off" />
                                 </div>

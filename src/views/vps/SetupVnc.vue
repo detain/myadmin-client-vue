@@ -89,34 +89,34 @@ accountStore.loadOnce();
             <div class="card">
                 <div class="card-header">
                     <div class="py-2">
-                        <h3 class="card-title"><i class="material-icons mb-1 pr-2" style="vertical-align: middle">alarm</i>{{ t('vps.setupVnc.title') }}</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <h3 class="card-title"><i class="material-icons mb-1 pe-2" style="vertical-align: middle">alarm</i>{{ t('vps.setupVnc.title') }}</h3>
+                        <div class="card-tools float-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body pb-0">
                     <form @submit.prevent="submitForm">
-                        <div class="form-group">
-                            <div class="form-group row">
+                        <div class="mb-3">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="vncname">{{ t('vps.setupVnc.vpsName') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input id="vncname" type="text" class="form-control form-control-sm" :value="hostname" disabled />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="vncserver">{{ t('vps.setupVnc.vpsIp') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input id="vncserver" type="text" class="form-control form-control-sm" :value="serviceIp" disabled />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="vncipport">{{ t('vps.setupVnc.vncIpPort') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input id="vncipport" type="text" class="form-control form-control-sm" :value="masterIp + ':' + vncPort" disabled />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="vncip">{{ t('vps.setupVnc.ipToGrant') }}</label>
                                 <div class="col-sm-9 input-group">
                                     <input id="vncip" v-model="myip" type="text" class="form-control form-control-sm" />

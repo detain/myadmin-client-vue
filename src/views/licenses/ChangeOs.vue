@@ -35,8 +35,8 @@ function submitForm() {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fab fa-linux"></i> {{ t('licenses.changeOs.title') }}</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i></router-link>
+                        <div class="card-tools float-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-bs-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i></router-link>
                         </div>
                     </div>
                 </div>
@@ -45,8 +45,8 @@ function submitForm() {
                         <input type="hidden" name="link" value="change_os" />
                         <input type="hidden" name="license_type" :value="licenseType" />
                         <input type="hidden" name="lid" :value="lid" />
-                        <div class="form-group row">
-                            <label class="col-md-3" for="os">{{ t('licenses.changeOs.selectLicenseOs') }}</label>
+                        <div class="mb-3 row">
+                            <label class="form-label col-md-3" for="os">{{ t('licenses.changeOs.selectLicenseOs') }}</label>
                             <div class="col-sm-9 input-group">
                                 <select v-model="selectedOS" name="os" class="form-control form-control-sm select2">
                                     <option v-for="(os, value) in osList" :key="value" :value="value" :selected="existingOS === value">{{ os }}</option>

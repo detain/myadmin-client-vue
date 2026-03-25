@@ -120,7 +120,7 @@ loadBuyIp();
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-map-marker-alt"></i> {{ t('vps.buyIp.title') }}</h3>
-                        <div class="card-tools text-right">
+                        <div class="card-tools text-end">
                             <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm"><i class="fas fa-arrow-left"></i> {{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ loadBuyIp();
                     <template v-if="buyForm">
                         <form @submit.prevent="submitForm">
                             <input type="hidden" name="link" value="buy_ip" />
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="amount" class="col-form-label">{{ t('vps.buyIp.immediateCost', { currency: ipCurrency }) }}</label>

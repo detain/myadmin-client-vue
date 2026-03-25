@@ -79,15 +79,15 @@ loadData();
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-server"></i>&nbsp;{{ t('vps.buyHdSpace.title') }}</h3>
-                        <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.buyHdSpace.goBack')"><i class="fas fa-arrow-left"></i> {{ t('common.buttons.back') }}</router-link>
+                        <div class="card-tools text-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('vps.buyHdSpace.goBack')"><i class="fas fa-arrow-left"></i> {{ t('common.buttons.back') }}</router-link>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-body">
                     <form method="POST">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-3 p-0">
                                     <label class="col-form-label">{{ t('vps.buyHdSpace.costPerMonth', { symbol: currencySymbol }) }}</label>
@@ -98,7 +98,7 @@ loadData();
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-3 p-0">
                                     <label class="col-form-label">{{ t('vps.buyHdSpace.additionalSpace') }}</label>
@@ -108,7 +108,7 @@ loadData();
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-3 p-0">
                                     <label class="col-form-label">{{ t('vps.buyHdSpace.selectSpace') }}</label>

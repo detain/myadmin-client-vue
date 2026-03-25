@@ -64,17 +64,17 @@ function setStatusLimit(event: Event) {
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-right">
-                    <div class="row float-right">
-                        <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
+                <div class="card-header text-end">
+                    <div class="row float-end">
+                        <div id="header_btns" class="col-md-auto printer-hidden ps-2 text-end">
                             <div class="btn-group">
                                 <a class="btn btn-primary btn-sm printer-hidden" href="domains/order" :title="t('domains.list.orderTitle')"><i class="fas fa-shopping-cart"></i> {{ t('common.buttons.order') }}</a>
                             </div>
                         </div>
-                        <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
+                        <div id="print_expo_btns" class="col-md-auto export printer-hidden float-end ps-2">
                             <div class="btn-group">
                                 <button class="btn btn-sm btn-secondary" type="button" :title="t('common.buttons.print')" @click="crud_print()"><i class="fas fa-print crud-icon"></i>{{ t('common.buttons.print') }}</button>
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" :title="t('domains.list.exportData')" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-download crud-icon"></i>{{ t('common.export.order') }} <span class="caret"></span><span class="sr-only">{{ t('domains.list.toggleDropdown') }}</span></button>
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" :title="t('domains.list.exportData')" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-download crud-icon"></i>{{ t('common.export.order') }} <span class="caret"></span><span class="visually-hidden">{{ t('domains.list.toggleDropdown') }}</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation" data-type="xlsx">
                                         <a href="#" data-container="body" :title="t('common.export.xlsx')" @click.prevent="crud_export('xlsx')"><img src="../../assets/images/crud/xlsx.png" alt="" /> {{ t('common.export.xlsxShort') }}</a>
@@ -112,7 +112,7 @@ function setStatusLimit(event: Event) {
                                 </ul>
                             </div>
                         </div>
-                        <div id="title_btns" class="col-md-auto printer-hidden pl-2">
+                        <div id="title_btns" class="col-md-auto printer-hidden ps-2">
                             <div id="limitStatusGroup" class="btn-group">
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'active' }" status="active" @click.prevent="setStatusLimit">{{ t('domains.list.active') }}</a>
                                 <a class="btn btn-info btn-sm" :class="{ active: limitStatus === 'pending' }" status="pending" @click.prevent="setStatusLimit">{{ t('domains.list.pending') }}</a>

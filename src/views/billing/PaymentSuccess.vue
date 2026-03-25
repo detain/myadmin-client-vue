@@ -28,7 +28,7 @@ watchEffect(() => {
                 <p class="text-md">{{ t('billing.paymentSuccess.thankYou') }}</p>
                 <p v-if="invoices" class="text-muted text-sm">{{ t('billing.paymentSuccess.invoiceLabel', { invoices }) }}</p>
                 <div class="mt-3">
-                    <router-link to="/cart" class="btn btn-custom mr-2"><i class="fas fa-shopping-cart"></i> {{ t('billing.paymentSuccess.backToCart') }}</router-link>
+                    <router-link to="/cart" class="btn btn-custom me-2"><i class="fas fa-shopping-cart"></i> {{ t('billing.paymentSuccess.backToCart') }}</router-link>
                     <router-link to="/home" class="btn btn-outline-custom"><i class="fas fa-home"></i> {{ t('billing.paymentSuccess.goToDashboard') }}</router-link>
                 </div>
             </div>

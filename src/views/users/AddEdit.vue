@@ -61,25 +61,25 @@ async function onSubmit(values: any) {
     <h1>{{ title }}</h1>
     <template v-if="!(user?.loading || user?.error)">
         <Form v-slot="{ errors, isSubmitting }" :validation-schema="schema" :initial-values="user" @submit="onSubmit">
-            <div class="form-row">
-                <div class="form-group col">
-                    <label>First Name</label>
+            <div class="row g-3">
+                <div class="mb-3 col">
+                    <label class="form-label">First Name</label>
                     <Field name="firstName" type="text" class="form-control" :class="{ 'is-invalid': errors.firstName }" />
                     <div class="invalid-feedback">{{ errors.firstName }}</div>
                 </div>
-                <div class="form-group col">
-                    <label>Last Name</label>
+                <div class="mb-3 col">
+                    <label class="form-label">Last Name</label>
                     <Field name="lastName" type="text" class="form-control" :class="{ 'is-invalid': errors.lastName }" />
                     <div class="invalid-feedback">{{ errors.lastName }}</div>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col">
-                    <label>Username</label>
+            <div class="row g-3">
+                <div class="mb-3 col">
+                    <label class="form-label">Username</label>
                     <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
                     <div class="invalid-feedback">{{ errors.username }}</div>
                 </div>
-                <div class="form-group col">
+                <div class="mb-3 col">
                     <label>
                         Password
                         <em v-if="user">(Leave blank to keep the same password)</em>
@@ -88,9 +88,9 @@ async function onSubmit(values: any) {
                     <div class="invalid-feedback">{{ errors.password }}</div>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <button class="btn btn-primary" :disabled="isSubmitting">
-                    <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+                    <span v-show="isSubmitting" class="spinner-border spinner-border-sm me-1"></span>
                     Save
                 </button>
                 <router-link to="/users" class="btn btn-link">Cancel</router-link>

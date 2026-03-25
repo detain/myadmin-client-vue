@@ -3,7 +3,7 @@
         <div class="card-header">
             <h3 class="card-title"><i class="fas fa-shield-alt"></i>{{ t('scrub_ips.firewallRules.title') }}</h3>
             <div class="card-tools">
-                <button type="button" class="btn-custom text-sm mr-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true"></i> {{ t('scrub_ips.firewallRules.createNew') }}</button>
+                <button type="button" class="btn-custom text-sm me-2" @click="showDialog"><i class="fas fa-plus" aria-hidden="true"></i> {{ t('scrub_ips.firewallRules.createNew') }}</button>
             </div>
         </div>
         <div class="card-body pt-5">
@@ -31,7 +31,7 @@
                         <td>
                             <form :ref="(el) => setFormRef(el, index)" method="POST" @submit.prevent="handleDelete(index)">
                                 <input v-model="rule.id" type="hidden" name="rule_id" />
-                                <button type="submit" class="border-0" data-toggle="tooltip" :title="t('common.buttons.delete')">
+                                <button type="submit" class="border-0" data-bs-toggle="tooltip" :title="t('common.buttons.delete')">
                                     <i class="fas fa-trash" aria-hidden="true"></i>
                                 </button>
                             </form>
@@ -48,26 +48,24 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 id="modal-label-firewall" class="modal-title">{{ t('scrub_ips.firewallRules.createNewFirewall') }}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeDialog">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeDialog"></button>
                         </div>
                         <form :ref="(el) => setFormRef(el, createFilterFormId)" method="POST" @submit.prevent="handleSubmit(createFilterFormId)">
                             <div class="modal-body">
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="destination" class="col-sm-3 col-form-label"> {{ t('scrub_ips.firewallRules.destinationIp') }}<span class="text-red">*</span> </label>
                                     <div class="col-sm-9">
                                         <input id="destination" type="text" class="form-control" name="destination_ip" :value="ip" readonly />
                                         <small id="type_help_destination">{{ t('scrub_ips.firewallRules.ipRequired') }}</small>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="source_ip" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.destinationPort') }}</label>
                                     <div class="col-sm-9">
                                         <input id="destination_port" name="destination_port" class="form-control" value="80" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="protocol" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.protocol') }}</label>
                                     <div class="col-sm-9">
                                         <select id="protocol" name="protocol_id" class="form-control select2" style="width: 100% !important">
@@ -76,19 +74,19 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="source_type" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.sourceIp') }}</label>
                                     <div class="col-sm-9">
                                         <input id="destination" type="text" class="form-control" name="source_ip" value="0" />
                                     </div>
                                 </div>
-                                <div id="s_network" class="form-group row">
+                                <div id="s_network" class="mb-3 row">
                                     <label for="source_ip" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.sourcePort') }}</label>
                                     <div class="col-sm-9">
                                         <input id="source_port" name="source_port" class="form-control" value="0" />
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="action" class="col-sm-3 col-form-label">{{ t('scrub_ips.firewallRules.xdpAction') }}</label>
                                     <div class="col-sm-9">
                                         <select id="xdp_action" name="xdp_action" class="form-control select2" style="width: 100% !important" onchange="xdp_update()">
@@ -100,7 +98,7 @@
                             </div>
                             <div class="modal-footer justify-content-center">
                                 <button type="submit" class="btn btn-primary">{{ t('common.buttons.create') }}</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeDialog">{{ t('common.buttons.close') }}</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeDialog">{{ t('common.buttons.close') }}</button>
                             </div>
                         </form>
                     </div>

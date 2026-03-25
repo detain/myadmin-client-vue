@@ -301,15 +301,15 @@ onMounted(async () => {
                             <tr v-for="opt in opts" :key="opt.id">
                                 <td colspan="6" style="text-align: left">
                                     <span>
-                                        <div class="icheck-success w-100" style="display: inline">
+                                        <div class="form-check w-100" style="display: inline">
                                             <input :id="`${key}${opt.id}`" v-model="selected[key]" type="radio" :name="key" :value="opt.id" class="form-check-input" />
-                                            <label class="font-weight-normal w-100" :for="`${key}${opt.id}`">
+                                            <label class="fw-normal form-check-label w-100" :for="`${key}${opt.id}`">
                                                 <div class="row mb-2">
                                                     <div class="col-md-8">
                                                         <div class="text-sm text-bold">{{ opt.short_desc }}</div>
                                                     </div>
-                                                    <div class="col-md-4 text-right">
-                                                        <span class="text-md text-bold pl-2 text-green">${{ Number(opt.monthly_price).toFixed(2) }}</span>
+                                                    <div class="col-md-4 text-end">
+                                                        <span class="text-md text-bold ps-2 text-green">${{ Number(opt.monthly_price).toFixed(2) }}</span>
                                                     </div>
                                                 </div>
                                             </label>
@@ -326,14 +326,14 @@ onMounted(async () => {
                         <tr v-for="region in regions" :key="region.region_id">
                             <td colspan="1" style="text-align: left">
                                 <span>
-                                    <div class="icheck-success w-100" style="display: inline">
+                                    <div class="form-check w-100" style="display: inline">
                                         <input :id="`region${region.region_id}`" v-model="selectedRegion" type="radio" class="form-check-input" name="region" :value="region.region_id" :disabled="selectedRegion != region.region_id && regionSelectDisabled" />
-                                        <label class="font-weight-normal w-100" :for="`region${region.region_id}`">
+                                        <label class="fw-normal form-check-label w-100" :for="`region${region.region_id}`">
                                             <div class="row mb-2">
                                                 <div class="col-md-8">
                                                     <div class="text-sm text-bold">{{ region.region_name }}</div>
                                                 </div>
-                                                <div class="col-md-4 text-right"><span class="text-md text-bold pl-2 text-green"></span></div>
+                                                <div class="col-md-4 text-end"><span class="text-md text-bold ps-2 text-green"></span></div>
                                             </div>
                                         </label>
                                     </div>
@@ -455,11 +455,11 @@ onMounted(async () => {
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: left">
-                                <span><div class="w-100 d-block pb-2 font-weight-bold">{{ t('servers.order.monthlyTotal') }}</div></span>
+                                <span><div class="w-100 d-block pb-2 fw-bold">{{ t('servers.order.monthlyTotal') }}</div></span>
                             </td>
                             <td colspan="1" style="text-align: right">
                                 <span>
-                                    <div id="total_price" class="w-100 d-block pb-2 font-weight-bold">${{ total.toFixed(2) }}</div>
+                                    <div id="total_price" class="w-100 d-block pb-2 fw-bold">${{ total.toFixed(2) }}</div>
                                 </span>
                             </td>
                         </tr>

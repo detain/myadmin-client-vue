@@ -297,14 +297,14 @@ onMounted(() => {
         <div class="col-md-10 text-center">
             <h3 class="text-capitalize pb-2">{{ t('domains.order.findDomain') }}</h3>
             <form class="search-domain" @submit.prevent="searchDomain">
-                <div class="form-group row justify-content-center">
+                <div class="mb-3 row justify-content-center">
                     <div class="col-md-5 input-group pb-2">
                         <input ref="domainInput" v-model="hostname" type="text" class="form-control" autofocus autocomplete="off" style="border-radius: 5px" @focus="clearInput" />
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <div class="controls col-md-12" style="text-align: center">
-                        <button type="submit" class="btn btn-custom mr-2 px-4 py-2 text-sm">{{ t('common.buttons.search') }}</button>
+                        <button type="submit" class="btn btn-custom me-2 px-4 py-2 text-sm">{{ t('common.buttons.search') }}</button>
                         <a target="_blank" href="https://interserver.net/domains" class="btn btn-order px-3 py-2 text-sm">{{ t('domains.order.checkPrices') }}</a>
                     </div>
                 </div>
@@ -314,14 +314,14 @@ onMounted(() => {
                     <template v-if="domainResult?.premium === 'yes'">
                         <template v-if="domainResult?.status === 'available'">
                             <div class="info-success-box b-radius mx-2">
-                                <div class="text-md ml-2" style="position: relative; top: 4px">
+                                <div class="text-md ms-2" style="position: relative; top: 4px">
                                     <span class="text-warning text-bold">{{ t('domains.order.premiumAvailable', { domain: domainResult?.domain, email: 'sales@interserver.net', cost: domainResult?.cost }) }}</span>
                                 </div>
                             </div>
                         </template>
                         <template v-else>
                             <div class="info-danger-box b-radius mx-2">
-                                <div class="text-md ml-2" style="position: relative; top: 4px">
+                                <div class="text-md ms-2" style="position: relative; top: 4px">
                                     <span class="text-red text-bold">{{ t('domains.order.premiumTaken', { domain: domainResult?.domain, email: 'sales@interserver.net', cost: domainResult?.cost }) }}</span>
                                 </div>
                             </div>
@@ -330,18 +330,18 @@ onMounted(() => {
                     <template v-else>
                         <template v-if="domainResult?.status === 'available'">
                             <div class="info-success-box b-radius mx-2">
-                                <div class="text-md ml-2" style="position: relative; top: 4px">
+                                <div class="text-md ms-2" style="position: relative; top: 4px">
                                     <span class="text-green text-bold">{{ t('domains.order.available', { domain: domainResult?.domain, cost: domainResult?.new, renewal: domainResult?.renewal }) }}</span>
                                 </div>
-                                <router-link :to="'/domains/order/' + domainResult?.domain + '/register'" class="btn btn-green ml-2 px-4 py-2 text-sm">{{ t('domains.order.register') }}</router-link>
+                                <router-link :to="'/domains/order/' + domainResult?.domain + '/register'" class="btn btn-green ms-2 px-4 py-2 text-sm">{{ t('domains.order.register') }}</router-link>
                             </div>
                         </template>
                         <template v-else-if="domainResult?.status === 'taken'">
                             <div class="info-danger-box b-radius mx-2">
-                                <div class="text-md ml-2" style="position: relative; top: 4px">
+                                <div class="text-md ms-2" style="position: relative; top: 4px">
                                     <span class="text-red text-bold">{{ t('domains.order.taken', { domain: domainResult?.domain, cost: domainResult?.transfer, renewal: domainResult?.renewal }) }}</span>
                                 </div>
-                                <router-link :to="'/domains/order/' + domainResult?.domain + '/transfer'" class="btn btn-yellow ml-2 px-4 py-2 text-sm">{{ t('domains.order.transfer') }}</router-link>
+                                <router-link :to="'/domains/order/' + domainResult?.domain + '/transfer'" class="btn btn-yellow ms-2 px-4 py-2 text-sm">{{ t('domains.order.transfer') }}</router-link>
                             </div>
                         </template>
                     </template>
@@ -435,18 +435,18 @@ onMounted(() => {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-address-card"></i>&nbsp;{{ t('domains.order.contactInformation') }}</h3>
-                            <div class="card-tools float-right">
-                                <router-link :to="'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                            <div class="card-tools float-end">
+                                <router-link :to="'/domains/order/' + hostname" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('domains.order.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <form method="POST" class="contact-form" @submit.prevent="goConfirm">
                             <template v-if="whoisPrivacyCost">
-                                <div class="form-group row">
+                                <div class="mb-3 row">
                                     <label for="create_as" class="col-sm-5 col-form-label"> {{ t('domains.order.whoisPrivacyLabel', { cost: whoisPrivacyCost }) }} </label>
                                     <div class="controls col-sm-7">
-                                        <div class="form-group clearfix">
+                                        <div class="mb-3 clearfix">
                                             <div class="d-inline">
                                                 <label><input v-model="whoisEnabled" type="radio" :value="true" /> {{ t('domains.order.enabled') }}</label>
                                             </div>
@@ -457,7 +457,7 @@ onMounted(() => {
                                             <div class="d-inline px-2">
                                                 <span
                                                     style="cursor: pointer; text-decoration: underline; text-decoration-style: dotted"
-                                                    data-toggle="popover"
+                                                    data-bs-toggle="popover"
                                                     data-container="body"
                                                     data-html="true"
                                                     data-content="<p>Whois Privacy hides the identity of a Registrant when a user does a WHOIS lookup on that Registrant's domain.</p>
@@ -472,18 +472,18 @@ onMounted(() => {
                                 </div>
                                 <hr />
                             </template>
-                            <div v-for="(domainField, fieldName) in domainFields" :key="fieldName" class="form-group row">
+                            <div v-for="(domainField, fieldName) in domainFields" :key="fieldName" class="mb-3 row">
                                 <label v-if="domainField.label" class="col-sm-3 col-form-label">{{ domainField.label }}<span v-if="domainField.required" class="text-danger">*</span> </label>
                                 <div class="col-sm-9 input-group">
                                     <input v-if="domainField.input === 'text'" v-model="domainField.value" type="text" :name="fieldName as string" class="form-control" />
                                     <select v-else-if="domainField.input && domainField.input[0] === 'select'" v-model="domainField.value" :name="fieldName as string" class="form-control select2">
                                         <option v-for="(displayName, val, index) in domainField.input[1]" :key="index" :value="val">{{ displayName }}</option>
                                     </select>
-                                    <div v-if="domainField.tip" class="input-group-append">
-                                        <span style="cursor: pointer" class="input-group-text" data-toggle="popover" data-container="body" :data-html="true" :data-content="'<p style=\'text-align: left;\'>' + domainField.tip + '</p>'" :title="'<div style=\'text-align: left; font-weight: bold;\'>' + 'Tip for ' + domainField.label + '</div>'">
+                                    <template v-if="domainField.tip">
+                                        <span style="cursor: pointer" class="input-group-text" data-bs-toggle="popover" data-container="body" :data-html="true" :data-content="'<p style=\'text-align: left;\'>' + domainField.tip + '</p>'" :title="'<div style=\'text-align: left; font-weight: bold;\'>' + 'Tip for ' + domainField.label + '</div>'">
                                             <i class="fa text-info fa-question"></i>
                                         </span>
-                                    </div>
+                                    </template>
                                 </div>
                             </div>
                             <div class="row">
@@ -500,7 +500,7 @@ onMounted(() => {
                     <div class="card-header">
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fas fa-shopping-cart"></i>&nbsp;{{ t('domains.order.orderSummary') }}</h4>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -508,22 +508,22 @@ onMounted(() => {
                     <div class="card-body text-md">
                         <div class="row mb-3">
                             <div class="col-md-8">{{ packageInfo?.services_name }}</div>
-                            <div class="col text-bold text-right">{{ t('domains.order.oneYear') }}</div>
+                            <div class="col text-bold text-end">{{ t('domains.order.oneYear') }}</div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-8">{{ domainResult?.domain }}</div>
-                            <div class="col text-bold text-right">
+                            <div class="col text-bold text-end">
                                 {{ formatCost(domainCost) }}
                             </div>
                         </div>
                         <div v-show="whoisEnabled" class="whois-row row mb-3">
                             <div class="col-md-8">{{ t('domains.view.whoisPrivacy') }}</div>
-                            <div class="col text-bold text-right">{{ formatCost(whoisPrivacyCost) }}</div>
+                            <div class="col text-bold text-end">{{ formatCost(whoisPrivacyCost) }}</div>
                         </div>
                         <hr />
                         <div class="row mb-3">
                             <div class="col-md-8 text-lg">{{ t('domains.order.total') }}</div>
-                            <div class="col text-bold total_cost text-right text-lg">{{ formatCost(totalCost) }}</div>
+                            <div class="col text-bold total_cost text-end text-lg">{{ formatCost(totalCost) }}</div>
                         </div>
                     </div>
                 </div>
@@ -537,7 +537,7 @@ onMounted(() => {
                     <div class="card-header">
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>&nbsp;{{ t('domains.order.orderSummary') }}</h4>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -548,7 +548,7 @@ onMounted(() => {
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div class="text-md float-left" style="position: relative; top: 5px">{{ packageInfo?.services_name }}</div>
+                                            <div class="text-md float-start" style="position: relative; top: 5px">{{ packageInfo?.services_name }}</div>
                                         </th>
                                         <th><div class="text-md text-bold">{{ t('domains.order.oneYear') }}</div></th>
                                     </tr>
@@ -593,14 +593,14 @@ onMounted(() => {
                                     {{ t('domains.order.subscriptionAutoRenew', { cost: domainCost }) }}
                                 </p>
                                 <p class="text-muted text-xs">By checking this box, you acknowledge that you are purchasing a subscription product that automatically renews <br /><b>( As Per The Terms Outlined Above )</b> and is billed to the credit card you provide today. If you wish to cancel your auto-renewal, you may access the customer portal <a href="https://my.interserver.net" target="__blank" class="link">(Here)</a> select the active service and click the <b>Cancel</b> link or email at: <a href="mailto:billing@interserver.net" class="link">billing@interserver.net</a> or use another method outlined in the <b>Terms and Conditions.</b> By checking the box and clicking Place My Order below, You also acknowledge you have read, understand, and agree to our <a class="link" href="https://www.interserver.net/terms-of-service.html" target="__blank"> Terms and Conditions</a> and <a class="link" href="https://www.interserver.net/privacy-policy.html" target="__blank"> Privacy Policy</a>.</p>
-                                <div class="icheck-success text-bold text-center">
-                                    <input id="tos" v-model="termsAgreed" type="checkbox" style="margin: 0 5px; display: inline" value="yes" />
-                                    <label for="tos" class="d-inline text-center"> {{ t('domains.order.agreeCheckbox') }} </label>
+                                <div class="form-check text-bold text-center">
+                                    <input id="tos" v-model="termsAgreed" type="checkbox" class="form-check-input" style="margin: 0 5px; display: inline" value="yes" />
+                                    <label for="tos" class="d-inline text-center form-check-label"> {{ t('domains.order.agreeCheckbox') }} </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="controls col-md-12 text-center">
-                                    <button type="button" class="btn btn-custom btn-sm mr-3 py-2" name="update_values" @click="goDetails"><i class="fas fa-arrow-left"></i>&nbsp;{{ t('domains.order.goBack') }}</button>
+                                    <button type="button" class="btn btn-custom btn-sm me-3 py-2" name="update_values" @click="goDetails"><i class="fas fa-arrow-left"></i>&nbsp;{{ t('domains.order.goBack') }}</button>
                                     <button :disabled="!termsAgreed" class="btn btn-sm btn-green px-3 py-2" @click.prevent="placeOrder">{{ t('domains.order.placeOrder') }}</button>
                                 </div>
                             </div>

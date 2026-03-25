@@ -197,7 +197,7 @@ onBeforeUnmount(() => {
                     <div class="card-header d-flex justify-content-between">
                         <span>Deliverability</span>
                         <div>
-                            <button v-for="(label, key) in times" :key="key" class="btn btn-sm btn-primary ml-1" :class="{ active: selectedTime === key }" @click="selectedTime = key">
+                            <button v-for="(label, key) in times" :key="key" class="btn btn-sm btn-primary ms-1" :class="{ active: selectedTime === key }" @click="selectedTime = key">
                                 {{ label }}
                             </button>
                         </div>

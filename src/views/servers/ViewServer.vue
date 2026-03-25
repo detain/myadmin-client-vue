@@ -195,13 +195,13 @@ serverStore.getById(id);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-link"></i>{{ t('common.labels.links') }}</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
@@ -213,7 +213,7 @@ serverStore.getById(id);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-link"></i>{{ t('servers.view.serverInformation') }}</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
@@ -247,7 +247,7 @@ serverStore.getById(id);
                                         <br />
                                         <div class="btn-group">
                                             <button type="button" :class="asset.lease.power ? 'btn-success' : 'btn-danger'">{{ t('servers.view.selectAction') }}</button>
-                                            <button type="button" class="btn dropdown-toggle dropdown-hover dropdown-icon" :class="asset.lease.power ? 'btn-success' : 'btn-danger'" data-toggle="dropdown"><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button type="button" class="btn dropdown-toggle dropdown-hover dropdown-icon" :class="asset.lease.power ? 'btn-success' : 'btn-danger'" data-bs-toggle="dropdown"><span class="visually-hidden">Toggle Dropdown</span></button>
                                             <div class="dropdown-menu" role="menu">
                                                 <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=cycle'">{{ t('servers.view.cycle') }}</a>
                                                 <a class="dropdown-item" :href="'view_server?id=' + serviceInfo.server_id + '&asset=' + asset_id + '&link=ipmi_power&action=reset'">{{ t('servers.view.reset') }}</a>
@@ -272,7 +272,7 @@ serverStore.getById(id);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-link"></i>{{ t('servers.view.networkInformation') }}</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         </div>
                     </div>
@@ -318,7 +318,7 @@ serverStore.getById(id);
                                     <td>{{ vlans[vlan_id].primary ? 'Yes' : 'No' }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/bandwidth_graph?port=' + switchport_id" class="btn link mx-3" title="View Bandwidth Graphs" data-toggle="tooltip"><i class="far fa-chart-line"></i></router-link>
+                                            <router-link :to="'/' + moduleLink(module) + '/' + id + '/bandwidth_graph?port=' + switchport_id" class="btn link mx-3" title="View Bandwidth Graphs" data-bs-toggle="tooltip"><i class="far fa-chart-line"></i></router-link>
                                         </div>
                                     </td>
                                 </tr>

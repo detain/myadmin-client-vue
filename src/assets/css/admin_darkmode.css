@@ -456,7 +456,7 @@ body.dark-mode.adminlte #print_expo_btns ul.dropdown-menu {
     background-color: #454d55;
 }
 
-body.dark-mode.adminlte .main-footer {
+body.dark-mode.adminlte .app-footer {
     background-color: #353535 !important;
     color: #b7b7b7 !important;
 }

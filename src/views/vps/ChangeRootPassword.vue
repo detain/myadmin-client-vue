@@ -61,20 +61,20 @@ function submitForm() {
                 <div class="card-body">
                     <form class="change_rootpass" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="changeRootPassword" />
-                        <div class="form-group mb-0">
-                            <div class="form-group row">
+                        <div class="mb-3 mb-0">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="os">{{ t('vps.changeRootPassword.server') }} </label>
                                 <div class="col-sm-9 input-group">
                                     <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="curHostname" disabled />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="password">{{ t('vps.changeRootPassword.newPassword') }} </label>
                                 <div class="col-sm-9 input-group">
                                     <input id="password" v-model="password" type="password" class="pr-password form-control form-control-sm" name="password" required />
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-md-3 col-form-label" for="password2">{{ t('vps.changeRootPassword.confirmPassword') }} </label>
                                 <div class="col-sm-9 input-group">
                                     <input id="password2" v-model="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />

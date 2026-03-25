@@ -191,11 +191,11 @@ const toggleFilter = () => {
 
             <!-- Pagination -->
             <div v-if="pageSize !== -1" class="mt-2">
-                <button class="btn btn-sm btn-secondary mr-1" :disabled="currentPage === 1" @click="currentPage--">Prev</button>
+                <button class="btn btn-sm btn-secondary me-1" :disabled="currentPage === 1" @click="currentPage--">Prev</button>
 
                 <span>Page {{ currentPage }} of {{ totalPages }}</span>
 
-                <button class="btn btn-sm btn-secondary ml-1" :disabled="currentPage === totalPages" @click="currentPage++">Next</button>
+                <button class="btn btn-sm btn-secondary ms-1" :disabled="currentPage === totalPages" @click="currentPage++">Next</button>
             </div>
         </div>
     </div>

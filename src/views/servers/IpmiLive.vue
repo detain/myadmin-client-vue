@@ -114,9 +114,9 @@ accountStore.loadOnce();
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fab fa-connectdevelop"></i>{{ t('servers.ipmiLive.title') }}</h3>
-                        <div class="card-tools float-right">
-                            <a class="btn btn-custom mr-3" @click.prevent="emailIpmiLink"><i class="far fa-paper-plane" aria-hidden="true"></i>{{ t('servers.ipmiLive.emailIpmiCredentials') }}</a>
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <a class="btn btn-custom me-3" @click.prevent="emailIpmiLink"><i class="far fa-paper-plane" aria-hidden="true"></i>{{ t('servers.ipmiLive.emailIpmiCredentials') }}</a>
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
@@ -133,38 +133,38 @@ accountStore.loadOnce();
                     <form v-if="!error" @submit.prevent="submitForm">
                         <input type="hidden" name="choice" value="none.view_dedicated_server" />
                         <input type="hidden" name="link" value="ipmi_live" />
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.assetId') }}</label>
+                        <div class="mb-3 row">
+                            <label class="col-md-3 col-form-label text-end">{{ t('servers.ipmiLive.assetId') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="asset_id" type="text" class="form-control form-control-sm" name="asset_id" :value="assetInfo.id" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.serverId') }}</label>
+                        <div class="mb-3 row">
+                            <label class="col-md-3 col-form-label text-end">{{ t('servers.ipmiLive.serverId') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="server_id" type="text" class="form-control form-control-sm" name="server_id" :value="assetInfo.order_id" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.hostname') }}</label>
+                        <div class="mb-3 row">
+                            <label class="col-md-3 col-form-label text-end">{{ t('servers.ipmiLive.hostname') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="assetInfo.hostname" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.serverIp') }}</label>
+                        <div class="mb-3 row">
+                            <label class="col-md-3 col-form-label text-end">{{ t('servers.ipmiLive.serverIp') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="primary_ipv4" type="text" class="form-control form-control-sm" name="primary_ipv4" :value="assetInfo.primary_ipv4" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.serverIpmi') }}</label>
+                        <div class="mb-3 row">
+                            <label class="col-md-3 col-form-label text-end">{{ t('servers.ipmiLive.serverIpmi') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="ipmi" type="text" class="form-control form-control-sm" name="ipmi" :value="assetInfo.ipmi_ip" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">{{ t('servers.ipmiLive.yourIpAddress') }}</label>
+                        <div class="mb-3 row">
+                            <label class="col-md-3 col-form-label text-end">{{ t('servers.ipmiLive.yourIpAddress') }}</label>
                             <div class="col-sm-9 input-group">
                                 <input id="ip" v-model="clientIp" type="text" class="form-control form-control-sm" placeholder="1.2.3.4" name="ip" />
                             </div>

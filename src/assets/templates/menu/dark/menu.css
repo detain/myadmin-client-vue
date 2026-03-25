@@ -179,12 +179,12 @@
         width: 100% !important;
     }
 
-    .admin-links #Fsearch2 .input-group-prepend {
+    .admin-links #Fsearch2 .input-group-text {
         width: 20% !important;
         font-size: 12px;
     }
 
-    .admin-links #Fsearch2 .input-group-prepend select {
+    .admin-links #Fsearch2 .input-group-text select {
         text-align: center;
     }
 

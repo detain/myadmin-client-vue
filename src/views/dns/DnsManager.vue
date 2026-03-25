@@ -142,15 +142,15 @@ loadDns();
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-right">
-                    <div class="row float-right">
-                        <div id="header_btns" class="col-md-auto printer-hidden pl-2 text-right">
+                <div class="card-header text-end">
+                    <div class="row float-end">
+                        <div id="header_btns" class="col-md-auto printer-hidden ps-2 text-end">
                             <div class="btn-group"></div>
                         </div>
-                        <div id="print_expo_btns" class="col-md-auto export printer-hidden float-right pl-2">
+                        <div id="print_expo_btns" class="col-md-auto export printer-hidden float-end ps-2">
                             <div class="btn-group">
                                 <button class="btn btn-sm btn-secondary" type="button" title="Print" @click="crud_print()"><i class="fas fa-print crud-icon"></i>Print</button>
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-download crud-icon"></i>Export <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" title="Export data" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-download crud-icon"></i>Export <span class="caret"></span><span class="visually-hidden">Toggle Dropdown</span></button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation" data-type="xlsx">
                                         <a href="#" data-container="body" title="Excel 2007+" @click.prevent="crud_export('xlsx')"><img src="../../assets/images/crud/xlsx.png" alt="" /> XLSX</a>
@@ -196,9 +196,9 @@ loadDns();
                         <form action="dns/new">
                             <input type="hidden" name="new" value="1" />
                             <div class="row mb-4">
-                                <div class="col-md-2 col-md-offset-2 text-right">
+                                <div class="col-md-2 col-md-offset-2 text-end">
                                     <div class="printer-hidden" style="vertical-align: middle">
-                                        <label style="margin-top: 5px">Add Domain to DNS</label>
+                                        <label class="form-label" style="margin-top: 5px">Add Domain to DNS</label>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -251,7 +251,7 @@ loadDns();
                             <div class="col-md-6">
                                 <form id="paginationForm" accept-charset="UTF-8" role="form" class="" action="ajax.php?choice=crud&crud=dns_manager&action=list" autocomplete="on" method="GET" style="display: inline-flex"></form>
                             </div>
-                            <div class="col-md-6 float-right"></div>
+                            <div class="col-md-6 float-end"></div>
                         </div>
                     </div>
                 </div>

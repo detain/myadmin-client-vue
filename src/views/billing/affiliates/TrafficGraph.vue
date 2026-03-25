@@ -77,15 +77,15 @@ onMounted(() => {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title"><i class="far fa-chart-line" aria-hidden="true"></i>&nbsp;{{ t('affiliate.trafficGraphPage.webTrafficGraph') }}</h3>
-                        <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form>
-                        <div class="form-group row justify-content-center mb-4">
-                            <label class="col-sm-2 col-form-label text-right">{{ t('affiliate.salesGraphPage.select') }}<span class="text-danger"> *</span></label>
+                        <div class="mb-3 row justify-content-center mb-4">
+                            <label class="col-sm-2 col-form-label text-end">{{ t('affiliate.salesGraphPage.select') }}<span class="text-danger"> *</span></label>
                             <div class="col-sm-7 input-group">
                                 <select id="graph_period" v-model="selectedPeriod" name="graph_period" class="form-control form-control-sm select2" @change="updatePeriod">
                                     <option value="30" :selected="selectedPeriod == 30">{{ t('affiliate.salesGraphPage.last30Days') }}</option>

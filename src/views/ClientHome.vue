@@ -79,7 +79,7 @@ onMounted(() => {
         if (!header) return;
         header.classList.add('ui-widget-header', 'ui-corner-all');
         const icon = document.createElement('span');
-        icon.className = 'float-right glyphicon glyphicon-minus';
+        icon.className = 'float-end glyphicon glyphicon-minus';
         icon.setAttribute('aria-hidden', 'true');
         header.prepend(icon);
     });
@@ -176,8 +176,8 @@ accountStore.load();
                     <div class="card">
                         <div class="card-header">
                             <div class="p-1">
-                                <h3 class="card-title float-left py-2"><i class="far fa-ticket-alt"></i>{{ t('dashboard.recentTickets') }}</h3>
-                                <div class="card-tools float-right">
+                                <h3 class="card-title float-start py-2"><i class="far fa-ticket-alt"></i>{{ t('dashboard.recentTickets') }}</h3>
+                                <div class="card-tools float-end">
                                     <router-link to="/tickets" class="btn btn-custom btn-sm" :title="t('dashboard.viewAllTickets')"> <i class="far fa-eye"></i>&nbsp;&nbsp;{{ t('common.buttons.viewAll') }}&nbsp;&nbsp; </router-link>
                                 </div>
                             </div>
@@ -217,9 +217,9 @@ accountStore.load();
                                 <i :class="'fas fa-' + details.modules[module].icon"></i>&nbsp;
                                 <span>{{ details.modules[module].heading }}</span>
                             </h2>
-                            <div class="card-tools float-right">
-                                <span class="card-subtitle text-muted float-right mb-2 mt-2">
-                                    <router-link class="badge bg-success float-right" :title="t('common.buttons.viewAll')" :to="'/' + moduleLink(module)">{{ value.count }}</router-link>
+                            <div class="card-tools float-end">
+                                <span class="card-subtitle text-muted float-end mb-2 mt-2">
+                                    <router-link class="badge bg-success float-end" :title="t('common.buttons.viewAll')" :to="'/' + moduleLink(module)">{{ value.count }}</router-link>
                                 </span>
                             </div>
                         </div>
@@ -231,7 +231,7 @@ accountStore.load();
                                 <template v-else>
                                     <li v-for="(serviceDesc, serviceId) in value.links" :key="serviceId" class="list-group-item" style="overflow: clip; white-space: nowrap">
                                         <router-link :to="'/' + moduleLink(module) + '/' + serviceId">{{ serviceDesc }}</router-link>
-                                        <router-link v-if="typeof value.ex_links != 'undefined' && value?.ex_links[serviceId]" class="btn btn-sm btn-primary float-right" :to="'/' + moduleLink(module) + '/' + serviceId + '/login'">{{ t('common.labels.controlPanel') }}</router-link>
+                                        <router-link v-if="typeof value.ex_links != 'undefined' && value?.ex_links[serviceId]" class="btn btn-sm btn-primary float-end" :to="'/' + moduleLink(module) + '/' + serviceId + '/login'">{{ t('common.labels.controlPanel') }}</router-link>
                                     </li>
                                 </template>
                                 <li class="order-button m-3 text-center" style="list-style-type: none">
@@ -250,7 +250,7 @@ accountStore.load();
                                 <div class="col-md-12">
                                     <div class="d-flex aff-main">
                                         <div class="text-md aff-heading my-2">{{ t('dashboard.affiliate.earnPerSale', { amount: `$${AFFILIATE_AMOUNT}` }) }}:</div>
-                                        <div class="form-group aff-body"><input id="affiliateinput" type="text" class="form-control" :placeholder="t('dashboard.affiliate.urlPlaceholder')" :value="affiliateUrl" /></div>
+                                        <div class="mb-3 aff-body"><input id="affiliateinput" type="text" class="form-control" :placeholder="t('dashboard.affiliate.urlPlaceholder')" :value="affiliateUrl" /></div>
                                         <button id="copy_url" type="submit" class="btn btn-primary aff-btn" @click="copyToClipboard()">{{ t('common.buttons.copyToClipboard') }}</button>
                                     </div>
                                     <div class="aff-share m-2">

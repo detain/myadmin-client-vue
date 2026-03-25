@@ -54,23 +54,23 @@ function handleSubmit() {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-map-marker-alt"></i>Change IP Address</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm mt-0" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form @submit.prevent="handleSubmit">
                         <input type="hidden" name="link" value="change_ip" />
-                        <div class="form-group">
-                            <div class="form-group row">
-                                <label class="col-md-2" for="os">Current IP</label>
+                        <div class="mb-3">
+                            <div class="mb-3 row">
+                                <label class="form-label col-md-2" for="os">Current IP</label>
                                 <div class="col-sm-10 input-group">
                                     <input name="old_ip" class="form-control form-control-sm" :value="curIp" disabled />
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-md-2" for="os">New IP</label>
+                            <div class="mb-3 row">
+                                <label class="form-label col-md-2" for="os">New IP</label>
                                 <div class="col-sm-10 input-group">
                                     <input v-model="newIp" name="new_ip" class="form-control form-control-sm" />
                                 </div>

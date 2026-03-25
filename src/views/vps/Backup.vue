@@ -79,9 +79,9 @@ loadBackupsList();
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.backup.backupTitle', { name: module_name }) }}</h3>
-                        <div class="card-tools text-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <h3 class="card-title"><i class="material-icons pe-2" style="vertical-align: middle">backup</i>{{ t('vps.backup.backupTitle', { name: module_name }) }}</h3>
+                        <div class="card-tools text-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                     <div class="card-body mb-0">
@@ -89,17 +89,17 @@ loadBackupsList();
                             <input type="hidden" name="link" value="queue" />
                             <input type="hidden" name="action" value="backup" />
                             <input type="hidden" name="backup" :value="backup" />
-                            <div class="form-group mb-0">
-                                <div class="form-group row">
+                            <div class="mb-3 mb-0">
+                                <div class="mb-3 row">
                                     <label class="col-md-3 col-form-label" for="cur-hostname">{{ t('vps.backup.server') }}</label>
                                     <div class="col-sm-6 input-group">
                                         <input id="cur-hostname" type="text" class="form-control form-control-sm" :value="curHostname" disabled />
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <div class="icheck-success d-inline">
+                                    <div class="form-check d-inline">
                                         <input id="confirm_yes" v-model="confirm" type="checkbox" class="form-check-input" name="confirm" value="yes" />
-                                        <label class="more-info" for="confirm_yes">{{ t('vps.backup.confirmBackup') }}</label>
+                                        <label class="more-info form-check-label" for="confirm_yes">{{ t('vps.backup.confirmBackup') }}</label>
                                     </div>
                                 </div>
                                 <hr />
@@ -119,8 +119,8 @@ loadBackupsList();
                 <div class="card">
                     <div class="card-header">
                         <div class="p-1">
-                            <h3 class="card-title py-2"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.backup.currentBackups') }}</h3>
-                            <div class="card-tools float-right">
+                            <h3 class="card-title py-2"><i class="material-icons pe-2" style="vertical-align: middle">backup</i>{{ t('vps.backup.currentBackups') }}</h3>
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse">
                                     <i class="fas fa-minus" aria-hidden="true"></i>
                                 </button>

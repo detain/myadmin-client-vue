@@ -171,13 +171,13 @@ const statusClass = computed(() => {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-link"></i>Links</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="card-body my-3 py-4">
-                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                        <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip">
                             <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                             >{{ clientLink.label }}
                         </router-link>
@@ -189,7 +189,7 @@ const statusClass = computed(() => {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-link"></i>Connection Information</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
@@ -209,7 +209,7 @@ const statusClass = computed(() => {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-link"></i>{{ extraInfoTables.tutorials.title }}</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
@@ -232,19 +232,19 @@ const statusClass = computed(() => {
                 <form class="inline" method="post" :action="`view_floating_ip?id=${serviceInfo.floating_ip_id}`">
                     <div class="modal-header">
                         <h5 id="exampleModalCenterTitle" class="modal-title">Update Comment</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="id" :value="serviceInfo.floating_ip_id" />
                         <input type="hidden" name="link" value="update_comment" />
                         <input type="hidden" name="edit_comment" value="2" />
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="message-text" class="col-form-label">Comment:</label>
                             <textarea id="message-text" v-model="serviceInfo.floating_ip_comment" class="form-control" rows="5" name="comment"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
                         <button type="submit" class="btn btn-primary" @click.prevent="submitForm">Save changes</button>
                     </div>
                 </form>

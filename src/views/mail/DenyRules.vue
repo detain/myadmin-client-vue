@@ -168,31 +168,31 @@ loadRules();
                 <div class="modal-content">
                     <div class="modal-header mx-4">
                         <h4 class="modal-title">{{ modalTitle }}</h4>
-                        <button type="button" class="btn-close" @click="closeModal">X</button>
+                        <button type="button" class="btn-close" @click="closeModal"></button>
                     </div>
                     <div class="modal-body mx-4">
                         <form id="block-form" method="post" @submit.prevent="submitForm">
                             <!-- Type -->
-                            <div class="form-group row mx-auto">
+                            <div class="mb-3 row mx-auto">
                                 <label class="col-md-2 col-form-label px-0"> Type <span class="text-danger">*</span> </label>
                                 <div class="col-sm-8">
-                                    <div v-for="option in typeOptions" :key="option.value" class="icheck-success d-inline me-3">
+                                    <div v-for="option in typeOptions" :key="option.value" class="form-check d-inline me-3">
                                         <input :id="option.value" v-model="form.type" class="form-check-input" type="radio" name="type" :value="option.value" />
-                                        <label :for="option.value" class="more-info">
+                                        <label :for="option.value" class="more-info form-check-label">
                                             <span class="fw-semibold ps-2">{{ option.label }}</span> - <span class="text-muted">{{ option.example }}</span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <!-- Data -->
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2 col-form-label px-0"> Data <span class="text-danger">*</span> </label>
                                 <div class="col-md-8">
                                     <input v-model="form.data" type="text" class="form-control form-control-sm" name="data" required />
                                 </div>
                             </div>
                             <!-- Actions -->
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="controls col-md-12 text-center">
                                     <input type="submit" value="Submit" class="btn btn-sm btn-order py-2 px-3" />
                                     <button type="button" class="btn btn-danger btn-sm py-2 px-3" @click="closeModal">Cancel</button>

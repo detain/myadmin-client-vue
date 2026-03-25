@@ -923,7 +923,7 @@ try {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server" aria-hidden="true"></i>&nbsp;{{ t('vps.order.title') }}</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -932,13 +932,13 @@ try {
                     <div class="card-body">
                         <form id="vps_form" class="vps_form_init" @submit.prevent="onSubmit">
                             <input id="period" type="hidden" name="period" :value="period" />
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.vpsDetails') }}</label>
                                 <div class="col-sm-9 form-control bg-gradient-gray b-radius text-center">
-                                    <div class="d-inline pr-3">
+                                    <div class="d-inline pe-3">
                                         <span>{{ t('vps.order.storage') }} </span> <span id="storage" class="text-bold">{{ vpsPlatform == 'kvmstorage' ? hdStorageSlice * slices : hdSlice * slices }} GB</span>
                                     </div>
-                                    <div class="d-inline pr-3">
+                                    <div class="d-inline pe-3">
                                         <span>{{ t('vps.order.memoryLabel') }} </span> <span id="memory_recommended" class="text-bold">{{ ramSlice * slices }} MB</span>
                                     </div>
                                     <div class="d-inline">
@@ -947,7 +947,7 @@ try {
                                 </div>
                             </div>
                             <hr />
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.platform') }} <span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="vpsPlatform" class="form-control select2">
@@ -956,7 +956,7 @@ try {
                                     <small id="slicecost" class="form-text text-muted"></small>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.location') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9 input-group">
                                     <select v-model="location" class="form-control select2">
@@ -964,7 +964,7 @@ try {
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.slices') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="slices" class="form-control select2">
@@ -972,7 +972,7 @@ try {
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.osDistribution') }}<span class="text-danger"> *</span></label>
                                 <div class="col-sm-9">
                                     <select v-model="osDistro" class="form-control select2">
@@ -981,7 +981,7 @@ try {
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.osVersion') }}<span class="text-danger"> *</span></label>
                                 <div class="input-group col-md-9">
                                     <select v-model="osVersion" class="form-control select2">
@@ -989,7 +989,7 @@ try {
                                     </select>
                                 </div>
                             </div>
-                            <div id="hostnamerownew" class="form-group row">
+                            <div id="hostnamerownew" class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.hostname') }}</label>
                                 <div class="col-md-9">
                                     <input id="hostname" v-model="hostname" type="text" name="hostname" class="form-control text-sm" placeholder="server.domain.com" @keyup="updateHostname" @change="updateHostname" />
@@ -997,12 +997,12 @@ try {
                             </div>
                             <div id="rootpassrownew" class="row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.rootPassword') }}<span class="text-danger"> *</span></label>
-                                <div class="form-group col-md-9">
+                                <div class="mb-3 col-md-9">
                                     <input v-model="rootpass" type="text" name="rootpass" class="form-control text-sm" />
                                     <small class="form-text text-muted">{{ t('vps.order.rootPasswordNote') }}</small>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.couponCode') }}</label>
                                 <div class="input-group col-md-9">
                                     <input id="coupon" v-model="coupon" type="text" class="w-100 form-control text-sm" name="coupon" :placeholder="t('vps.order.couponCodePlaceholder')" @keyup="updateCoupon" @change="updateCoupon" />
@@ -1026,7 +1026,7 @@ try {
                             <div class="card-header">
                                 <div class="p-1">
                                     <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>&nbsp;{{ t('vps.order.orderSummary') }}</h4>
-                                    <div class="card-tools float-right">
+                                    <div class="card-tools float-end">
                                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
@@ -1034,24 +1034,24 @@ try {
                             <div class="card-body pb-0">
                                 <div class="row mb-3">
                                     <div id="package_name" class="col-md-8 text-muted text-bold">{{ platformPackages[vpsPlatform] && serviceTypes && serviceTypes[platformPackages[vpsPlatform]] ? serviceTypes[platformPackages[vpsPlatform]].services_name : '' }}</div>
-                                    <div id="package_period" class="col text-right">{{ t('vps.order.months', { count: period }) }}</div>
+                                    <div id="package_period" class="col text-end">{{ t('vps.order.months', { count: period }) }}</div>
                                 </div>
                                 <div class="row mb-3">
                                     <div id="hostname_display" class="col-md-8 text-muted text-bold">{{ hostname }}</div>
-                                    <div class="col text-md totalcost_display text-right" v-html="sliceCostHtml" />
+                                    <div class="col text-md totalcost_display text-end" v-html="sliceCostHtml" />
                                 </div>
                                 <div v-show="period >= 6" id="cyclediscountrownew" class="row mb-3">
                                     <div class="col-md-8 text-muted text-bold">{{ t('vps.order.billingCycleDiscount') }}</div>
-                                    <div id="cyclediscount" class="col text-right">{{ cycleDiscountText }}</div>
+                                    <div id="cyclediscount" class="col text-end">{{ cycleDiscountText }}</div>
                                 </div>
                                 <div v-show="typeof couponInfo.applies != 'undefined'" id="couponpricerownew" class="row mb-3">
                                     <div id="couponpricetextnew" class="col-md-8 text-muted text-bold">{{ couponPriceLabel }}</div>
-                                    <div id="couponprice" class="col text-right">{{ couponPriceText }}</div>
+                                    <div id="couponprice" class="col text-end">{{ couponPriceText }}</div>
                                 </div>
                                 <hr />
                                 <div class="row mb-3">
                                     <div class="col-md-8 text-md text-bold text-muted">{{ t('vps.order.total') }}</div>
-                                    <div id="totalcost" class="col text-md total_cost text-right">{{ totalCostDisplay }}</div>
+                                    <div id="totalcost" class="col text-md total_cost text-end">{{ totalCostDisplay }}</div>
                                 </div>
                             </div>
                         </div>
@@ -1063,18 +1063,18 @@ try {
                             <div class="card-header">
                                 <div class="p-1">
                                     <h4 class="card-title py-2"><i class="far fa-thumbs-up"></i>&nbsp;{{ t('vps.order.recommendations') }}</h4>
-                                    <div class="card-tools float-right">
+                                    <div class="card-tools float-end">
                                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body py-2">
-                                <a id="rec_linux" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.linuxVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_linux"><i class="fab fa-linux"></i>&nbsp;Linux&nbsp;</a>
-                                <a id="rec_directadmin" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.directAdminVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1 px-3" @click.prevent="recomended_directadmin"><i class="far fa-user"></i>&nbsp;DirectAdmin&nbsp;</a>
-                                <a id="rec_windows" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.windowsVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1" @click.prevent="recomended_windows"><i class="fab fa-windows"></i>&nbsp;Windows&nbsp;</a>
-                                <a id="rec_cPanel" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.cpanelVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 11px 3px 11px" @click.prevent="recomended_cpanel"><i class="fas fa-server"></i>&nbsp;cPanel&nbsp;</a>
-                                <a id="rec_linux_desktop" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.linuxDesktopVps')" class="btn btn-sm btn-secondary b-radius my-2 mr-1" style="padding: 3px 10px 3px 10px" @click.prevent="recomended_linux_desktop"><i class="fas fa-desktop"></i>&nbsp;Linux Desktop&nbsp;</a>
-                                <a id="rec_webuzo" href="javascript:void(0);" data-toggle="tooltip" :title="t('vps.order.webuzoVps')" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px" @click.prevent="recomended_webuzo"><i class="fas fa-laptop"></i>&nbsp;Webuzo&nbsp;</a>
+                                <a id="rec_linux" href="javascript:void(0);" data-bs-toggle="tooltip" :title="t('vps.order.linuxVps')" class="btn btn-sm btn-secondary b-radius my-2 me-1 px-3" @click.prevent="recomended_linux"><i class="fab fa-linux"></i>&nbsp;Linux&nbsp;</a>
+                                <a id="rec_directadmin" href="javascript:void(0);" data-bs-toggle="tooltip" :title="t('vps.order.directAdminVps')" class="btn btn-sm btn-secondary b-radius my-2 me-1 px-3" @click.prevent="recomended_directadmin"><i class="far fa-user"></i>&nbsp;DirectAdmin&nbsp;</a>
+                                <a id="rec_windows" href="javascript:void(0);" data-bs-toggle="tooltip" :title="t('vps.order.windowsVps')" class="btn btn-sm btn-secondary b-radius my-2 me-1" @click.prevent="recomended_windows"><i class="fab fa-windows"></i>&nbsp;Windows&nbsp;</a>
+                                <a id="rec_cPanel" href="javascript:void(0);" data-bs-toggle="tooltip" :title="t('vps.order.cpanelVps')" class="btn btn-sm btn-secondary b-radius my-2 me-1" style="padding: 3px 11px 3px 11px" @click.prevent="recomended_cpanel"><i class="fas fa-server"></i>&nbsp;cPanel&nbsp;</a>
+                                <a id="rec_linux_desktop" href="javascript:void(0);" data-bs-toggle="tooltip" :title="t('vps.order.linuxDesktopVps')" class="btn btn-sm btn-secondary b-radius my-2 me-1" style="padding: 3px 10px 3px 10px" @click.prevent="recomended_linux_desktop"><i class="fas fa-desktop"></i>&nbsp;Linux Desktop&nbsp;</a>
+                                <a id="rec_webuzo" href="javascript:void(0);" data-bs-toggle="tooltip" :title="t('vps.order.webuzoVps')" class="btn btn-sm btn-secondary b-radius my-2" style="padding: 3px 8px 3px 8px" @click.prevent="recomended_webuzo"><i class="fas fa-laptop"></i>&nbsp;Webuzo&nbsp;</a>
                             </div>
                         </div>
                     </div>
@@ -1085,7 +1085,7 @@ try {
                             <div class="card-header">
                                 <div class="p-1">
                                     <h4 class="card-title py-2"><i class="fas fa-map-pin"></i>&nbsp;{{ t('vps.order.locationAvailability') }}</h4>
-                                    <div class="card-tools float-right">
+                                    <div class="card-tools float-end">
                                         <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
@@ -1131,7 +1131,7 @@ try {
                     <div class="card-header">
                         <div class="p-1">
                             <h4 class="card-title py-2"><i class="fas fa-shopping-cart" aria-hidden="true"></i>&nbsp;{{ t('vps.order.orderSummary') }}</h4>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool mt-0" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -1142,8 +1142,8 @@ try {
                                 <thead>
                                     <tr>
                                         <th>
-                                            <div class="text-md float-left" style="position: relative; top: 5px">{{ hostname }}</div>
-                                            <button type="button" class="btn btn-custom btn-sm float-right" name="update_values" data-toggle="tooltip" :title="t('vps.order.editDetails')" @click.prevent="step = 'orderform'"><i class="fas fa-pencil-alt"></i>&nbsp;{{ t('common.buttons.edit') }}</button>
+                                            <div class="text-md float-start" style="position: relative; top: 5px">{{ hostname }}</div>
+                                            <button type="button" class="btn btn-custom btn-sm float-end" name="update_values" data-bs-toggle="tooltip" :title="t('vps.order.editDetails')" @click.prevent="step = 'orderform'"><i class="fas fa-pencil-alt"></i>&nbsp;{{ t('common.buttons.edit') }}</button>
                                         </th>
                                         <th>
                                             <div class="text-md text-bold">{{ t('vps.order.months', { count: period }) }}</div>
@@ -1247,12 +1247,12 @@ try {
                                     {{ t('vps.order.subscriptionRenewal', { period: 'every month at', cost: '$' + serviceCost }) }}
                                 </p>
                                 <p class="text-muted text-xs">{{ t('vps.order.tosAcknowledgment') }}</p>
-                                <div class="icheck-success text-bold text-center">
-                                    <input id="tos" type="checkbox" name="tos" style="margin: 0 5px; display: inline" value="yes" />
-                                    <label for="tos" class="d-inline text-center">{{ t('vps.order.tosAgree') }}</label>
+                                <div class="form-check text-bold text-center">
+                                    <input id="tos" type="checkbox" class="form-check-input" name="tos" style="margin: 0 5px; display: inline" value="yes" />
+                                    <label for="tos" class="d-inline text-center form-check-label">{{ t('vps.order.tosAgree') }}</label>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <div class="controls col-md-12" style="text-align: center">
                                     <input type="submit" name="Submit" :value="t('vps.order.placeOrder')" class="btn btn-green btn-sm px-3 py-2" />
                                 </div>

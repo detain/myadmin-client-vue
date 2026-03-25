@@ -94,22 +94,22 @@ function submitForm() {
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="far fa-envelope"></i>&nbsp;{{ t('ssl.changeApproverEmail.title') }}</h3>
-                        <div class="card-tools float-right">
-                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('common.buttons.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form method="POST" @submit.prevent="submitForm">
                         <input type="hidden" name="link" value="change_approver_email" />
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-right" for="hostname">{{ t('common.labels.hostname') }}</label>
+                        <div class="mb-3 row">
+                            <label class="col-md-4 col-form-label text-end" for="hostname">{{ t('common.labels.hostname') }}</label>
                             <div class="col-sm-8">
                                 <input id="hostname" type="text" class="form-control form-control-sm" name="hostname" :value="service_info.ssl_hostname" disabled />
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-right" for="approver_email">{{ t('ssl.changeApproverEmail.selectApproverEmail') }}</label>
+                        <div class="mb-3 row">
+                            <label class="col-md-4 col-form-label text-end" for="approver_email">{{ t('ssl.changeApproverEmail.selectApproverEmail') }}</label>
                             <div class="col-sm-8">
                                 <select v-model="selectedApproverEmail" name="approver_email" class="form-control form-control-sm select2">
                                     <option v-for="approverEmail in approver_select" :key="approverEmail" :value="approverEmail" :selected="service_info.ssl_approver_email === approverEmail">{{ approverEmail }}</option>

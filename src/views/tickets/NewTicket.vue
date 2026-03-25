@@ -139,7 +139,7 @@ accountStore.loadOnce();
                     <!-- Body -->
                     <div class="card-body">
                         <!-- Product -->
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Product</label>
                             <div class="col-sm-9">
                                 <select v-model="form.product" class="form-control form-control-sm">
@@ -153,7 +153,7 @@ accountStore.loadOnce();
                             </div>
                         </div>
                         <!-- Subject -->
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Subject</label>
                             <div class="col-sm-9">
                                 <input v-model="form.subject" type="text" class="form-control form-control-sm" placeholder="Subject" required />
@@ -161,7 +161,7 @@ accountStore.loadOnce();
                             </div>
                         </div>
                         <!-- Description -->
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Description</label>
                             <div class="col-sm-9">
                                 <textarea v-model="form.content" class="form-control form-control-sm" placeholder="Thank you for helping us maintain a streamlined support system by submitting one request per ticket." rows="10" required />
@@ -169,7 +169,7 @@ accountStore.loadOnce();
                             </div>
                         </div>
                         <!-- File Upload -->
-                        <div class="form-group row mb-0">
+                        <div class="mb-3 row mb-0">
                             <label for="file_upload" class="col-sm-3 col-form-label requiredField">File Upload</label>
                             <div class="controls col-sm-9 input-group input-file" name="file_attachment">
                                 <!-- Visible filename input -->
@@ -180,14 +180,14 @@ accountStore.loadOnce();
                                 <input ref="fileInput" type="file" class="input-ghost" name="attachments" accept="image/png,image/jpeg,image/gif" style="visibility: hidden; height: 0" @change="onFileChange" />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <div class="col-sm-9 offset-sm-3">
                                 <span class="help-text text-gray"> Note: Only image files - gif/jpeg/png types are allowed. </span>
                             </div>
                         </div>
                         <hr />
                         <!-- Server Access -->
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-sm-3 col-form-label">Server Access</label>
                             <div class="col-sm-9">
                                 <input id="allow-access" v-model="form.allowAccess" type="checkbox" style="margin-right: 5px" />
@@ -196,44 +196,44 @@ accountStore.loadOnce();
                             </div>
                         </div>
                         <!-- Root / IP -->
-                        <div v-if="form.allowAccess" class="form-row">
-                            <div class="form-group col-md-4 offset-md-3">
-                                <label>Root Password</label>
+                        <div v-if="form.allowAccess" class="row g-3">
+                            <div class="mb-3 col-md-4 offset-md-3">
+                                <label class="form-label">Root Password</label>
                                 <input v-model="form.rootPassword" class="form-control form-control-sm" placeholder="VPS / Dedicated Server" />
                                 <span class="help-text text-gray text-sm">Passwords are stored in a separate encrypted database.</span>
                                 <div class="invalid-feedback">Server Root Password is required.</div>
                             </div>
 
-                            <div class="form-group col-md-5">
-                                <label>Your IP Address</label>
+                            <div class="mb-3 col-md-5">
+                                <label class="form-label">Your IP Address</label>
                                 <input v-model="form.clientIp" class="form-control form-control-sm" placeholder="Your IP Address" />
                                 <span class="help-text text-gray text-sm">If connection is coming from different IP address. Kindly change it.</span>
                             </div>
                         </div>
                         <!-- SSH Restricted -->
-                        <div v-if="form.allowAccess" class="form-group row">
+                        <div v-if="form.allowAccess" class="mb-3 row">
                             <label class="col-sm-3 col-form-label"> Is SSH root restricted? </label>
                             <div class="col-sm-9 my-auto">
-                                <label class="mr-3"><input v-model="form.sshRestricted" type="radio" value="1" /> Yes</label>
+                                <label class="me-3"><input v-model="form.sshRestricted" type="radio" value="1" /> Yes</label>
                                 <label><input v-model="form.sshRestricted" type="radio" value="0" /> No</label>
                             </div>
                         </div>
                         <!-- SSH Fields -->
-                        <div v-if="form.allowAccess && form.sshRestricted === '1'" class="form-row">
-                            <div class="form-group col-md-4 offset-md-3">
-                                <label>Sudo User</label>
+                        <div v-if="form.allowAccess && form.sshRestricted === '1'" class="row g-3">
+                            <div class="mb-3 col-md-4 offset-md-3">
+                                <label class="form-label">Sudo User</label>
                                 <input v-model="form.sudoUser" class="form-control form-control-sm" />
                                 <div class="invalid-feedback">Sudo username is required.</div>
                             </div>
 
-                            <div class="form-group col-md-4">
-                                <label>Sudo Password</label>
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label">Sudo Password</label>
                                 <input v-model="form.sudoPassword" class="form-control form-control-sm" />
                                 <span class="help-text text-gray text-sm">Passwords are stored in a separate encrypted database.</span>
                                 <div class="invalid-feedback">Sudo password is required.</div>
                             </div>
-                            <div class="form-group col-md-1">
-                                <label>SSH Port</label>
+                            <div class="mb-3 col-md-1">
+                                <label class="form-label">SSH Port</label>
                                 <input v-model.number="form.sshPort" type="number" class="form-control form-control-sm" />
                                 <div class="invalid-feedback">Valid SSH Port number is required.</div>
                             </div>
@@ -254,7 +254,7 @@ accountStore.loadOnce();
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Terms of use</h5>
-                    <button class="close" @click="showTerms = false">×</button>
+                    <button class="btn-close" @click="showTerms = false"></button>
                 </div>
                 <div class="modal-body p-4 mx-4">
                     <p>Before opening a ticket please ensure that your account or service has a recent backup. Some services like webhosting may receive complimentary backups if those sites fit into the backup policies. Backups are included for sites under 11GB in size and under 250,000 inodes. Sites over this amount will not be included in weekly backups. VPS services like KVM and openvz can take on demand backups in my.interserver.net - however there are no included automatic backups that run. InterServer may at its own discretion backup vps hostnodes however there is no guarantee of automatic backups. Dedicated servers will not auto backup unless backups have been configured previously. cPanel/WHM servers must enable automatic backups with in Webhost Manager under the backup section. By opening a ticket you are agreeing that you have local backups of the site in question, or waiving any need for a backup. In all cases, any changes requested with in the support ticket may be irreversible.</p>

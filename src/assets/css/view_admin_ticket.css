@@ -291,11 +291,11 @@ span#display_desc a:hover {
     padding: 1.25rem;
 }
 
-.form-group {
+.mb-3 {
     margin-bottom: 1rem;
 }
 
-label:not(.form-check-label):not(.custom-file-label) {
+label:not(.form-check-label) {
     font-weight: 700;
 }
 
@@ -590,11 +590,11 @@ div.inherit-class {
     max-height: 400px;
 }
 
-.input-group .input-group-append .btn {
+.input-group .btn {
     height: 100%;
 }
 
-.input-group .input-group-append .btn i {
+.input-group .btn i {
     font-size: 15px;
 }
 

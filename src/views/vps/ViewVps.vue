@@ -30,6 +30,7 @@ import TrafficUsage from '@/views/vps/TrafficUsage.vue';
 import SetupVnc from '@/views/vps/SetupVnc.vue';
 import Vnc from '@/views/vps/Vnc.vue';
 
+import * as bootstrap from 'bootstrap';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 const { t } = useI18n();
@@ -136,7 +137,7 @@ loadLink(route.params.link as string);
 vpsStore.getById(id);
 
 function openCommentForm() {
-    $('#commentForm').modal('show');
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('commentForm')!).show();
 }
 
 function numberFormat(value: string, decimals = 2, separator = '.') {
@@ -169,7 +170,7 @@ function isEmpty(table: any) {
 }
 
 function docReady() {
-    $('[data-toggle="tooltip"]').tooltip();
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => new bootstrap.Tooltip(el));
     const service_id = serviceInfo.value.vps_id;
     $('.img-a').on('click', function () {
         const cp = $(this).attr('data-cp');
@@ -336,7 +337,7 @@ function toggleFunc(cp: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-server"></i>&nbsp;&nbsp;{{ t('vps.view.vpsInformation') }}</h3>
-                            <div class="card-tools float-right pl-3 pt-1">
+                            <div class="card-tools float-end ps-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -357,7 +358,7 @@ function toggleFunc(cp: string) {
                                     >
                                 </h5>
                             </div>
-                            <div class="col-md-12 mr-3 pr-4 pt-2 text-center">
+                            <div class="col-md-12 me-3 pe-4 pt-2 text-center">
                                 <div class="btn-group">
                                     <button
                                         type="button"
@@ -378,9 +379,9 @@ function toggleFunc(cp: string) {
                                             'btn-info': !(serviceInfo.vps_server_status === 'running' || serviceInfo.vps_server_status === 'Paused' || serviceInfo.vps_server_status === 'suspended' || serviceInfo.vps_server_status === 'stopped' || serviceInfo.vps_server_status === 'deleted' || serviceInfo.vps_server_status === 'shut'),
                                         }"
                                         class="dropdown-toggle dropdown-hover dropdown-icon"
-                                        data-toggle="dropdown"
+                                        data-bs-toggle="dropdown"
                                         aria-expanded="false">
-                                        <span class="sr-only">Toggle Dropdown</span>
+                                        <span class="visually-hidden">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
                                         <router-link :to="'/' + moduleLink(module) + '/' + serviceInfo.vps_id + '/start'" class="dropdown-item">{{ t('common.buttons.start') }}</router-link>
@@ -408,7 +409,7 @@ function toggleFunc(cp: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-hdd"></i>&nbsp;&nbsp;{{ t('vps.view.disk') }}</h3>
-                            <div class="card-tools float-right pl-3 pt-1">
+                            <div class="card-tools float-end ps-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus" aria-hidden="true"></i>
                                 </button>
@@ -452,7 +453,7 @@ function toggleFunc(cp: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-microchip"></i>&nbsp;&nbsp;{{ t('vps.view.systemInformation') }}</h3>
-                            <div class="card-tools float-right pl-3 pt-1">
+                            <div class="card-tools float-end ps-3 pt-1">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus" aria-hidden="true"></i>
                                 </button>
@@ -492,7 +493,7 @@ function toggleFunc(cp: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="fas fa-link"></i> {{ t('vps.view.links') }}</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -502,7 +503,7 @@ function toggleFunc(cp: string) {
                     <div class="card-body">
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
-                                <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                                <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip">
                                     <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </router-link>
@@ -510,7 +511,7 @@ function toggleFunc(cp: string) {
                         </template>
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label == 'View Desktop'">
-                                <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" @click="openPopUp">
+                                <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip" @click="openPopUp">
                                     <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </button>
@@ -526,7 +527,7 @@ function toggleFunc(cp: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="far fa-tachometer-alt"></i> &nbsp;{{ t('vps.view.controlPanelAddon') }}</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                             </div>
                         </div>
@@ -543,7 +544,7 @@ function toggleFunc(cp: string) {
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col mr-1">
+                            <div class="col me-1">
                                 <a v-if="cpLink" class="img-a" href="javascript:void(0);" @click="showCPModal">
                                     <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                         <div class="col-md-12 mb-1 py-3">
@@ -571,14 +572,14 @@ function toggleFunc(cp: string) {
                                 </a>
                             </div>
                             <template v-if="daLink">
-                                <div v-for="(daDetails, index) in daData" :key="index" class="col mr-1">
-                                    <a class="img-a" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal" @click="openModal('da', daDetails.cost, daDetails.name, index)">
+                                <div v-for="(daDetails, index) in daData" :key="index" class="col me-1">
+                                    <a class="img-a" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#cpModal" @click="openModal('da', daDetails.cost, daDetails.name, index)">
                                         <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                             <div class="col-md-12 pb-2 pt-2">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
                                                     <p class="my-1 text-sm">
-                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span
+                                                        ( <span class="fst-italic text-center">{{ daDetails.sub_name }}</span
                                                         >)
                                                     </p>
                                                     <span class="text-sm"
@@ -591,14 +592,14 @@ function toggleFunc(cp: string) {
                                 </div>
                             </template>
                             <template v-else>
-                                <div v-for="(daDetails, index) in daData" :key="index" class="col mr-1">
+                                <div v-for="(daDetails, index) in daData" :key="index" class="col me-1">
                                     <a class="img-a toggleClass" href="javascript:void(0);" @click="toggleFunc('da')">
                                         <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                             <div class="col-md-12 pt-1">
                                                 <span class="text-center">
                                                     <h5 aria-hidden="true" class="text-bold m-0">DirectAdmin</h5>
                                                     <p class="m-0 text-sm">
-                                                        ( <span class="font-italic text-center">{{ daDetails.sub_name }}</span
+                                                        ( <span class="fst-italic text-center">{{ daDetails.sub_name }}</span
                                                         >)
                                                     </p>
                                                     <span class="text-sm"
@@ -613,8 +614,8 @@ function toggleFunc(cp: string) {
                             </template>
                             <template v-if="srData">
                                 <template v-if="srLink">
-                                    <div v-for="(rs_details, index) in srData" :key="index" class="col mr-1">
-                                        <a class="img-a" data-cp="rs" :data-cur-sym="custCurrencySymbol" :data-cost="rs_details.cost" :data-name="rs_details.name" :data-ser="index" href="javascript:void(0);" data-toggle="modal" data-target="#cpModal">
+                                    <div v-for="(rs_details, index) in srData" :key="index" class="col me-1">
+                                        <a class="img-a" data-cp="rs" :data-cur-sym="custCurrencySymbol" :data-cost="rs_details.cost" :data-name="rs_details.name" :data-ser="index" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#cpModal">
                                             <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                                 <div class="col-md-12 mb-1 py-3">
                                                     <span class="text-center">
@@ -629,7 +630,7 @@ function toggleFunc(cp: string) {
                                     </div>
                                 </template>
                                 <template v-else>
-                                    <div v-for="(rs_details, index) in srData" :key="index" class="col mr-1">
+                                    <div v-for="(rs_details, index) in srData" :key="index" class="col me-1">
                                         <a class="img-a toggleClass" href="javascript:void(0);" @click="toggleFunc('sr')">
                                             <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                                 <div class="col-md-12 py-2">
@@ -647,7 +648,7 @@ function toggleFunc(cp: string) {
                                 </template>
                             </template>
                             <template v-if="ppLink">
-                                <div v-for="(details, type) in plesk12Data" :key="type" class="col mr-1">
+                                <div v-for="(details, type) in plesk12Data" :key="type" class="col me-1">
                                     <a class="img-a" href="javascript:void(0);" @click="showModal('pp', custCurrencySymbol, details.cost, details.name, details.id)">
                                         <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                             <div class="col-md-12 mb-1 py-3">
@@ -663,7 +664,7 @@ function toggleFunc(cp: string) {
                                 </div>
                             </template>
                             <template v-else>
-                                <div v-for="(details, type) in plesk12Data" :key="type" class="col mr-1">
+                                <div v-for="(details, type) in plesk12Data" :key="type" class="col me-1">
                                     <a class="img-a toggleClass" href="javascript:void(0);" @click="toggleFunc('pp')">
                                         <div class="row b-radius cp_bg justify-content-center py-1" style="border: 1px solid #ccc">
                                             <div class="col-md-12 py-2">
@@ -688,26 +689,24 @@ function toggleFunc(cp: string) {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">{{ t('vps.view.orderConfirmation') }}</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="hideModal"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-offset-2 col-md-4 text-right">
+                                <div class="col-md-offset-2 col-md-4 text-end">
                                     <h5>{{ t('vps.view.package') }}</h5>
                                 </div>
-                                <div class="col text-left">
+                                <div class="col text-start">
                                     <strong>
                                         <h4 id="cp-name">cPanel Autoscale (Internal)</h4>
                                     </strong>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-offset-2 col-md-4 text-right">
+                                <div class="col-md-offset-2 col-md-4 text-end">
                                     <h5>{{ t('common.labels.cost') }}</h5>
                                 </div>
-                                <div class="col text-left">
+                                <div class="col text-start">
                                     <strong>
                                         <h4 id="cp-cost">{{ custCurrencySymbol }}{{ cpData.cost }}/mo</h4>
                                     </strong>
@@ -732,7 +731,7 @@ function toggleFunc(cp: string) {
                     <div class="card-header">
                         <div class="p-1">
                             <h3 class="card-title py-2"><i class="far fa-chart-bar"></i>&nbsp;{{ t('vps.view.cpuUsage') }}</h3>
-                            <div class="card-tools float-right">
+                            <div class="card-tools float-end">
                                 <button type="button" class="btn btn-tool" @click="collapsed = !collapsed">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -750,7 +749,7 @@ function toggleFunc(cp: string) {
                 <div class="card">
                     <div class="card-header">
                         <h3 v-if="extraInfoTables.cp.rows[0].value === 'cPanel Autoscale Cloud (Internal)'" class="card-title py-1">
-                            <i class="fab fa-cpanel text-orange pl-2 text-xl" style="border-radius: 50%; border: 2px solid #ccc"></i>&nbsp;
+                            <i class="fab fa-cpanel text-orange ps-2 text-xl" style="border-radius: 50%; border: 2px solid #ccc"></i>&nbsp;
                             <span style="position: relative; top: -5px">&nbsp;{{ extraInfoTables.cp.title }}</span>
                         </h3>
                         <h3 v-else-if="extraInfoTables.cp.rows[0].value === 'Free DirectAdmin for CentOS 8 64-bit VPS' || extraInfoTables.cp.rows[0].value === 'DirectAdmin for Debian 8.0 64-bit'" class="card-title mt-1 py-2">
@@ -758,14 +757,14 @@ function toggleFunc(cp: string) {
                             <span>&nbsp;{{ extraInfoTables.cp.title }}</span>
                         </h3>
                         <h3 v-else-if="extraInfoTables.cp.rows[0].value === 'Softaculous Remote'" class="card-title mt-1 py-2">
-                            <b class="text-blue text-md font-italic px-3 py-1" style="border-radius: 50%; border: 1px solid #ccc">Soft</b>
+                            <b class="text-blue text-md fst-italic px-3 py-1" style="border-radius: 50%; border: 1px solid #ccc">Soft</b>
                             <span>&nbsp;{{ extraInfoTables.cp.title }}</span>
                         </h3>
                         <h3 v-else class="card-title mt-1 py-2">
-                            <b class="text-dark text-md font-italic px-3 py-1" style="border-radius: 50%; border: 1px solid #ccc">Plesk</b>
+                            <b class="text-dark text-md fst-italic px-3 py-1" style="border-radius: 50%; border: 1px solid #ccc">Plesk</b>
                             <span>&nbsp;{{ extraInfoTables.cp.title }}</span>
                         </h3>
-                        <div class="card-tools float-right pl-3 pt-1">
+                        <div class="card-tools float-end ps-3 pt-1">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus" aria-hidden="true"></i>
                             </button>
@@ -789,7 +788,7 @@ function toggleFunc(cp: string) {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-tachometer-alt"></i>&nbsp;&nbsp;{{ extraInfoTables.webuzo.title }}</h3>
-                                <div class="card-tools float-right">
+                                <div class="card-tools float-end">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                 </div>
                             </div>
@@ -813,7 +812,7 @@ function toggleFunc(cp: string) {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-plus"></i>&nbsp;{{ extraInfoTables.addons.title }}</h3>
-                                <div class="card-tools float-right">
+                                <div class="card-tools float-end">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                 </div>
                             </div>
@@ -843,7 +842,7 @@ function toggleFunc(cp: string) {
                         <div class="card-header">
                             <div class="p-1">
                                 <h3 class="card-title py-2"><i class="fas fa-info-circle text-red"></i>&nbsp;{{ t('vps.view.attention') }}</h3>
-                                <div class="card-tools float-right pl-3 pt-1">
+                                <div class="card-tools float-end ps-3 pt-1">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
@@ -867,19 +866,19 @@ function toggleFunc(cp: string) {
                     <form class="inline" method="post" action="#" @submit.prevent="onSubmit">
                         <div class="modal-header">
                             <h5 id="exampleModalCenterTitle" class="modal-title">{{ t('vps.view.updateComment') }}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="hideModal"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="hideModal"></button>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" name="id" :value="serviceInfo.vps_id" />
                             <input type="hidden" name="link" value="update_comment" />
                             <input type="hidden" name="edit_comment" value="2" />
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="message-text" class="col-form-label">{{ t('vps.view.comment') }}</label>
                                 <textarea id="message-text" v-model="serviceInfo.vps_comment" class="form-control" rows="5" name="vps_comment"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="hideModal">{{ t('common.buttons.close') }}</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="hideModal">{{ t('common.buttons.close') }}</button>
                             <button type="submit" class="btn btn-primary">{{ t('vps.view.saveChanges') }}</button>
                         </div>
                     </form>

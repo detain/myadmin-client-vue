@@ -127,7 +127,7 @@ function timeAgo(input: string | number) {
                                 <span class="badge" :class="ticketStatusClass(Number(row.ticketstatusid))">{{ row.ticketmaskid }}</span>
                                 <span style="font-size: 95%">{{ row.subject }}</span>
                             </RouterLink>
-                            <div class="float-right" style="font-size: 80%">{{ row.lastactivity_time }}</div>
+                            <div class="float-end" style="font-size: 80%">{{ row.lastactivity_time }}</div>
                             <hr />
                         </div>
                     </template>
@@ -187,22 +187,22 @@ function timeAgo(input: string | number) {
                             <tr>
                                 <th></th>
                                 <th></th>
-                                <th class="text-left">{{ t('common.table.subject') }}</th>
-                                <th class="text-left">{{ t('common.table.lastReplier') }}</th>
-                                <th class="text-left">{{ t('common.labels.date') }}</th>
+                                <th class="text-start">{{ t('common.table.subject') }}</th>
+                                <th class="text-start">{{ t('common.table.lastReplier') }}</th>
+                                <th class="text-start">{{ t('common.labels.date') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="ticket in tickets" :key="ticket.ticketmaskid">
                                 <td><i :class="statusIcon(ticket.ticketstatustitle)" /></td>
                                 <td><i v-if="Number(ticket.hasattachments)" class="fas fa-paperclip" /></td>
-                                <td class="text-left">
+                                <td class="text-start">
                                     <RouterLink :to="`/tickets/${ticket.ticketmaskid}`"
                                         ><b>{{ ticket.ticketmaskid }}</b> – {{ ticket.subject }}</RouterLink
                                     >
                                 </td>
-                                <td class="text-left">{{ ticket.lastreplier }}</td>
-                                <td class="text-left">{{ timeAgo(Number(ticket.lastactivity)) }}</td>
+                                <td class="text-start">{{ ticket.lastreplier }}</td>
+                                <td class="text-start">{{ timeAgo(Number(ticket.lastactivity)) }}</td>
                             </tr>
                         </tbody>
                     </table>

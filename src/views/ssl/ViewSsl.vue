@@ -270,7 +270,7 @@ sslStore.getById(id);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-link"></i>&nbsp;Links</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed">
                                 <i :class="isCollapsed ? 'fas fa-plus' : 'fas fa-minus'"></i>
                             </button>
@@ -278,7 +278,7 @@ sslStore.getById(id);
                     </div>
                 </div>
                 <div v-show="!isCollapsed" class="card-body">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
@@ -290,7 +290,7 @@ sslStore.getById(id);
                 <div class="card-header card-primary-outline">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="fas fa-certificate"></i>&nbsp;SSL Certificates</h3>
-                        <div class="card-tools float-right">
+                        <div class="card-tools float-end">
                             <button type="button" class="btn btn-tool mt-0" @click="isCollapsed = !isCollapsed">
                                 <i :class="isCollapsed ? 'fas fa-plus' : 'fas fa-minus'"></i>
                             </button>

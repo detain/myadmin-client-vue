@@ -23,14 +23,14 @@ onMounted(() => {});
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title py-2"><i class="far fa-file-text" aria-hidden="true"></i>&nbsp;Welcome to InterServer Affiliate Program</h3>
-                        <div class="card-tools float-right">
-                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
+                        <div class="card-tools float-end">
+                            <router-link to="/affiliate" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" title="Go Back"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back&nbsp;&nbsp;</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="text-left" style="padding-left: 5px">
-                        <p class="text-left">Please read this page before promoting our service.</p>
+                    <div class="text-start" style="padding-left: 5px">
+                        <p class="text-start">Please read this page before promoting our service.</p>
                         <h4>Basics</h4>
                         <ul class="padd-left">
                             <li>Payments are made between 1st and 5th day of every month.</li>
@@ -62,7 +62,7 @@ onMounted(() => {});
                     </div>
                     <br />
                     <h4>InterServer Publisher Service Agreement</h4>
-                    <p class="main-agree text-left"></p>
+                    <p class="main-agree text-start"></p>
                     <h4>Introduction</h4>
                     <p>This Publisher Service Agreement ("Agreement") is made by and agreed to between InterServer, Inc., a Delaware corporation, located at 110 Meadowlands PKWY; Suite 100; Secaucus, NJ 07094, USA ("INTERSERVER"), and you ("You"). As an application service provider, INTERSERVER facilitates "Performance Marketing Programs" by providing services ("Network Service") via the Internet. A "Performance Marketing Program" ("Program") is where a person, entity, affiliate or its agent, operating "Web site(s)" (internet domain, or a portion of a domain) and/or other promotional methods to drive traffic to another's Web site or Web site content ("Publisher") may earn financial compensation ("Payouts") for "Transactions" (actions by Visitors as defined by the Advertiser) referred by such Publisher via an action made by a "Visitor" (any person or entity that is not the Publisher or the Publisher's agent) through an Internet connection ("Link") to a Website or Web site content operated by another person or entity ("Advertiser") from an Advertiser authorized promotional method used by such Publisher. The Advertiser compensates the Publisher, in accordance with this Agreement and the Program Payout specifications.</p>
                     <br />
@@ -283,7 +283,7 @@ onMounted(() => {});
                 </div>
                 <br />
                 <h3>ValueClick International Limited Publisher Service Agreement</h3>
-                <div class="main-agree text-left">
+                <div class="main-agree text-start">
                     <h4>Introduction</h4>
                     <p>his Publisher Service Agreement ("Agreement") is made by and agreed to between ValueClick International Limited trading as "InterServer", with registered office at Penthouse Floor, Apex Building, Blackthorn Road, Sandyford, Dublin 18, Ireland ("INTERSERVER"), and you ("You"). For purposes of this Agreement, any references to "INTERSERVER Companies" shall refer to INTERSERVER, its parent and any divisions, subsidiaries and affiliates of INTERSERVER. INTERSERVER has created, developed and installed a system by which it has developed a suite of services which enables Advertisers to launch and manage Affiliate Marketing Programs or Campaigns on the internet via the InterServer Platform ("Network Service"). A "Performance Marketing Program" ("Program") is where a person, entity, affiliate or its agent, operating "Website(s)" (internet domain, or a portion of a domain) and/or other promotional methods to drive traffic to another's Website or Website content ("Publisher") may earn financial compensation ("Payouts") for "Transactions" (actions by Visitors as defined by the Advertiser) referred by such Publisher via an action made by a "Visitor" (any person or entity that is not the Publisher or the Publisher's agent) through an Internet connection ("Link") to a Website or Website content operated by another person or entity ("Advertiser") from an Advertiser authorised promotional method used by such Publisher. The Advertiser compensates the Publisher, in accordance with this Agreement and the Program Payout specifications.</p>
                     <p>For the purposes of this Agreement, all references to "business days" shall be references to a day (other than a Saturday or a Sunday or public holiday in Ireland) on which clearing banks are open for business in Ireland.</p>
@@ -501,7 +501,7 @@ onMounted(() => {});
                     <p>IF YOU ARE AN INDIVIDUAL, YOU REPRESENT AND WARRANT THAT YOU WERE AT LEAST 18 YEARS OF AGE ON THE EFFECTIVE DATE OF THIS AGREEMENT.</p>
                 </div>
                 <h3>InterServer Publisher Service Agreement</h3>
-                <div class="text-left">
+                <div class="text-start">
                     <h4>Introduction</h4>
                     <p>This Publisher Service Agreement ("Agreement") is made by and agreed to between InterServer., with registered office at 110 Meadowlands PKWY Secaucus, NJ 07094 (.INTERSERVER.), and you ("You"). INTERSERVER has created, developed and installed a system by which it has developed a suite of services which enables Advertisers to launch and manage Affiliate Marketing Programs or Campaigns on the internet via the InterServer Platform ("Network Service"). A "Performance Marketing Program" ("Program") is where a person, entity, affiliate or its agent, operating "Website(s)" (internet domain, or a portion of a domain) and/or other promotional methods to drive traffic to another's Website or Website content ("Publisher" or .You.) may earn financial compensation ("Payouts") for "Transactions" (actions by Visitors as defined as defined by the Advertiser) referred by such Publisher via an action made by a "Visitor" (any person or entity that is not the Publisher or the Publisher's agent) through an Internet connection ("Link") to a Website or Website content operated by another person or entity ("Advertiser") from an Advertiser authorised promotional method used by such Publisher. The Advertiser compensates the Publisher, in accordance with this Agreement and the Program Payout specifications.</p>
                     <p>For the purposes of this Agreement, all references to "business days" shall be references to a day (other than a Saturday or a Sunday or public holiday in the United States) on which clearing banks are open for business in the United States (.UNITED STATES.).</p>
@@ -730,7 +730,7 @@ onMounted(() => {});
                     </div>
                     <br />
                     <h3>ValueClick International Limited Publisher Service Agreement</h3>
-                    <div class="text-left">
+                    <div class="text-start">
                         <p><b>Introduction</b></p>
                         <div class="txt-ind">
                             <p>This Publisher Service Agreement ("Agreement") is made by and agreed to between ValueClick International Limited, with registered office at Unit 101, Q House, Furze Road, Sandyford, Dublin 18, Ireland (.INTERSERVER.), and you ("You"). INTERSERVER has created, developed and installed a system by which it has developed a suite of services which enables Advertisers to launch and manage Affiliate Marketing Programs or Campaigns on the internet via the InterServer Platform ("Network Service"). A "Performance Marketing Program" ("Program") is where a person, entity, affiliate or its agent, operating "Website(s)" (internet domain, or a portion of a domain) and/or other promotional methods to drive traffic to another's Website or Website content ("Publisher" or .You.) may earn financial compensation ("Payouts") for "Transactions" (actions by Visitors as defined by the Advertiser) referred by such Publisher via an action made by a "Visitor" (any person or entity that is not the Publisher or the Publisher's agent) through an Internet connection ("Link") to a Website or Website content operated by another person or entity ("Advertiser") from an Advertiser authorised promotional method used by such Publisher. The Advertiser compensates the Publisher, in accordance with this Agreement and the Program Payout specifications.</p>

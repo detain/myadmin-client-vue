@@ -150,7 +150,7 @@ loadLink(route.params.link as string);
                 <div class="icon"><i class="fas fa-user-secret"></i></div>
                 <span class="small-box-footer">
                     {{ t('common.labels.status') }}: <b>{{ whoisPrivacy }}</b>
-                    <router-link class="btn p-0 pl-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" :title="t('domains.view.editWhoisPrivacy')"><i class="fas fa-pencil-alt"></i></router-link>
+                    <router-link class="btn p-0 ps-1 text-sm text-white" :to="'/' + moduleLink(module) + '/' + id + '/whois'" :title="t('domains.view.editWhoisPrivacy')"><i class="fas fa-pencil-alt"></i></router-link>
                 </span>
             </div>
         </div>
@@ -192,7 +192,7 @@ loadLink(route.params.link as string);
                     </div>
                 </div>
                 <div class="card-body my-4 py-5 text-center" style="height: auto">
-                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
+                    <router-link v-for="(clientLink, index) in clientLinks" :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-bs-toggle="tooltip">
                         <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
                         >{{ clientLink.label }}
                     </router-link>
@@ -204,10 +204,10 @@ loadLink(route.params.link as string);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title pt-2"><i class="fas fa-globe"></i>&nbsp;{{ t('domains.view.nameservers') }}</h3>
-                        <div class="card-tools float-right pl-3 pt-1">
+                        <div class="card-tools float-end ps-3 pt-1">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
-                        <div class="btn-group float-right">
+                        <div class="btn-group float-end">
                             <router-link :to="'/' + moduleLink(module) + '/' + id + '/nameservers'" class="btn btn-custom btn-sm" :title="t('domains.view.editNameservers')"> <i class="fas fa-pencil-alt" aria-hidden="true"></i>{{ t('common.buttons.edit') }} </router-link>
                         </div>
                     </div>
@@ -235,10 +235,10 @@ loadLink(route.params.link as string);
                 <div class="card-header">
                     <div class="p-1">
                         <h3 class="card-title pt-2"><i class="fas fa-id-card"></i>&nbsp;{{ t('domains.view.contactInformation') }}</h3>
-                        <div class="card-tools float-right pl-3 pt-1">
+                        <div class="card-tools float-end ps-3 pt-1">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus" aria-hidden="true"></i></button>
                         </div>
-                        <div class="btn-group float-right">
+                        <div class="btn-group float-end">
                             <router-link :to="'/' + moduleLink(module) + '/' + id + '/contact'" class="btn btn-custom btn-sm" :title="t('domains.view.editContactInformation')"> <i class="fas fa-pencil-alt" aria-hidden="true"></i>{{ t('common.buttons.edit') }} </router-link>
                         </div>
                     </div>

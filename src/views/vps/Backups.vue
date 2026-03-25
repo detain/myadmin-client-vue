@@ -46,9 +46,9 @@ loadBackupsList();
         <div class="col-10">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="material-icons pr-2" style="vertical-align: middle">backup</i>{{ t('vps.backups.title') }}</h3>
-                    <div class="card-tools text-right">
-                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
+                    <h3 class="card-title"><i class="material-icons pe-2" style="vertical-align: middle">backup</i>{{ t('vps.backups.title') }}</h3>
+                    <div class="card-tools text-end">
+                        <router-link :to="'/' + moduleLink(module) + '/' + props.id" class="btn btn-custom btn-sm" data-bs-toggle="tooltip" :title="t('vps.common.goBack')"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;{{ t('common.buttons.back') }}&nbsp;&nbsp;</router-link>
                     </div>
                 </div>
                 <div class="card-body mb-0">

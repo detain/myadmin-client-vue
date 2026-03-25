@@ -149,7 +149,7 @@ function submitNewPrepay() {
     <div class="row justify-content-center">
         <div class="col-md-12 text-md">
             <div class="text-center mb-5">
-                <button class="btn btn-custom" data-toggle="modal" data-target="#add-prepay"><i class="fas fa-plus" /> {{ t('billing.prepays.addNewPrepay') }}</button>
+                <button class="btn btn-custom" data-bs-toggle="modal" data-bs-target="#add-prepay"><i class="fas fa-plus" /> {{ t('billing.prepays.addNewPrepay') }}</button>
             </div>
             <div v-if="loading" class="text-center">{{ t('common.labels.loading') }}</div>
             <template v-if="Object.keys(prepays).length">
@@ -215,8 +215,8 @@ function submitNewPrepay() {
 
                 <!-- PAGINATION -->
                 <div class="row py-3">
-                    <div class="col text-left">
-                        <h6 class="pl-3">
+                    <div class="col text-start">
+                        <h6 class="ps-3">
                             <small> {{ t('billing.prepays.showingPage', { page, totalPages: total_pages, records: curr_page_records, totalRecords: total_records }) }} </small>
                         </h6>
                     </div>
@@ -260,7 +260,7 @@ function submitNewPrepay() {
 
                 <div class="modal-body">
                     <form @submit.prevent="submitNewPrepay">
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-6 col-form-label"> {{ t('billing.prepays.selectModule') }} </label>
                             <div class="col-sm-6">
                                 <select v-model="newPrepay.module" class="form-control" @change="updateModuleOptions">
@@ -271,14 +271,14 @@ function submitNewPrepay() {
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-6 col-form-label"> {{ t('billing.prepays.amountInUsd') }} </label>
                             <div class="col-sm-6">
                                 <input v-model.number="newPrepay.amount" type="number" class="form-control form-control-sm" />
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label class="col-md-6 col-form-label"> {{ t('billing.prepays.autoUseNewInvoices') }} </label>
                             <div class="col-sm-6">
                                 <label>
@@ -294,7 +294,7 @@ function submitNewPrepay() {
 
                         <div class="text-center">
                             <button class="btn btn-primary btn-sm me-2">{{ t('common.buttons.submit') }}</button>
-                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">{{ t('common.buttons.cancel') }}</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">{{ t('common.buttons.cancel') }}</button>
                         </div>
                     </form>
                 </div>

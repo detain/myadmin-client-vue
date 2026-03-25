@@ -64,27 +64,27 @@ function onSubmit() {
             <div class="offset-lg-2 col-lg-8 col-md-12 col-sm-12 my-5">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title m-0 text-left">{{ t('common.services.cancelService', { title: settings?.TITLE }) }}</h4>
+                        <h4 class="card-title m-0 text-start">{{ t('common.services.cancelService', { title: settings?.TITLE }) }}</h4>
                     </div>
                     <div class="card-body">
-                        <form id="cancelForm" class="form-horizontal text-left" role="form" method="POST" @submit.prevent="onSubmit">
-                            <div class="form-group row">
+                        <form id="cancelForm" class="form-horizontal text-start" role="form" method="POST" @submit.prevent="onSubmit">
+                            <div class="mb-3 row">
                                 <label class="col-sm-5 col-form-label">{{ t('common.services.idLabel', { tableName: settings?.TBLNAME }) }}</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ id }}</div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-5 col-form-label">{{ t('common.labels.type') }}:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ pkg }}</div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-5 col-form-label">{{ t('common.labels.hostname') }}:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ titleField }}</div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-5 col-form-label">{{ t('common.labels.username') }}:</label>
                                 <div class="col-sm-7 col-form-label" style="text-align: left">{{ titleField2 }}</div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-5 col-form-label" for="confirm">{{ t('common.confirm.areYouSureCancelQuestion') }}</label>
                                 <div class="col-sm-7" style="text-align: left">
                                     <div class="ui-select">
@@ -95,14 +95,14 @@ function onSubmit() {
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label class="col-sm-5 col-form-label" for="comment" style="font-weight: normal">{{ t('common.services.reasonForCancellation') }}</label>
                                 <div class="col-sm-7" style="text-align: left">
                                     <textarea id="comment" class="form-control" rows="2"></textarea>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <div class="form-group row m-0">
+                                <div class="mb-3 row m-0">
                                     <div class="col-sm-12 text-center">
                                         <button class="btn btn-md btn-success" type="submit">{{ t('common.buttons.continue') }}</button>
                                     </div>

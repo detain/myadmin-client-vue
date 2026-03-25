@@ -3,6 +3,7 @@ import { watch, onMounted, onBeforeUnmount } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n';
+import * as bootstrap from 'bootstrap';
 import MainMenu from '@/components/MainMenu.vue';
 import Alert from '@/components/Alert.vue';
 import Searchbox from '@/components/Searchbox.vue';
@@ -30,7 +31,7 @@ function closeMobileSidebarOnOutsideClick(event: MouseEvent) {
     if (!isMobileViewport || !body.classList.contains('sidebar-open') || !target) {
         return;
     }
-    if (target.closest('.main-sidebar, [data-widget="pushmenu"]')) {
+    if (target.closest('.app-sidebar, [data-lte-toggle="sidebar"]')) {
         return;
     }
     body.classList.remove('sidebar-open');
@@ -38,17 +39,17 @@ function closeMobileSidebarOnOutsideClick(event: MouseEvent) {
 }
 
 onMounted(function () {
-    document.body.classList.add('hold-transition', 'sidebar-mini', 'layout-fixed');
+    document.body.classList.add('hold-transition', 'sidebar-mini', 'layout-fixed', 'sidebar-expand-lg', 'bg-body-tertiary');
     restoreSidebarState();
     $('.pr-password').passwordRequirements({});
     /* $('.select2').select2();
     //Initialize Select2 Elements
     $('.select2bs4').select2({
-        theme: 'bootstrap4',
+        theme: 'bootstrap-5',
         closeOnSelect: true,
     }); */
-    $('[data-toggle="popover"]').popover();
-    $('[data-toggle="tooltip"]').tooltip();
+    document.querySelectorAll('[data-bs-toggle="popover"]').forEach((el) => new bootstrap.Popover(el));
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => new bootstrap.Tooltip(el));
     document.querySelectorAll<HTMLElement>('.shadow-hover').forEach((el) => {
         el.addEventListener('mouseenter', () => {
             el.classList.remove('shadow-sm');
@@ -70,7 +71,7 @@ onMounted(function () {
     } else {
         window.setTimeout(idleWarmup, 400);
     }
-    const sidebar = document.querySelector('.main-sidebar');
+    const sidebar = document.querySelector('.app-sidebar');
     // eslint-disable-next-line no-undef
     sidebar?.addEventListener('mouseover', warmSidebarRouteFromEvent as EventListener);
     // eslint-disable-next-line no-undef
@@ -79,7 +80,7 @@ onMounted(function () {
 
 onBeforeUnmount(() => {
     document.removeEventListener('click', closeMobileSidebarOnOutsideClick);
-    const sidebar = document.querySelector('.main-sidebar');
+    const sidebar = document.querySelector('.app-sidebar');
     // eslint-disable-next-line no-undef
     sidebar?.removeEventListener('mouseover', warmSidebarRouteFromEvent as EventListener);
     // eslint-disable-next-line no-undef
@@ -145,40 +146,44 @@ useDarkMode();
 
 <template>
     <Alert />
-    <div v-if="!!authStore.sessionId || !!authStore.apiKey" class="wrapper bg-light">
+    <div v-if="!!authStore.sessionId || !!authStore.apiKey" class="app-wrapper">
         <!-- <Nav /> -->
-        <nav class="main-header navbar navbar-expand navbar-dark">
+        <nav class="app-header navbar navbar-expand bg-body">
             <!-- Navbar -->
-            <ul class="navbar-nav menu-collapse">
-                <!-- Left navbar links -->
-                <li class="nav-item">
-                    <a class="nav-link collapse_menu" data-widget="pushmenu" href="#" role="button" @click.prevent="collapseMenu"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-            <Searchbox />
-            <ul class="navbar-nav ml-auto">
-                <!-- Right navbar links -->
-                <li class="nav-item dropdown">
-                    <router-link to="/cart" class="nav-link" :title="t('common.menu.cart')"><i class="fas fa-shopping-cart"></i></router-link>
-                </li>
-                <li class="nav-item dropdown">
-                    <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fas fa-power-off"></i></button>
-                </li>
-            </ul>
+            <div class="container-fluid">
+                <ul class="navbar-nav menu-collapse">
+                    <!-- Left navbar links -->
+                    <li class="nav-item">
+                        <a class="nav-link collapse_menu" data-lte-toggle="sidebar" href="#" role="button" @click.prevent="collapseMenu"><i class="fas fa-bars"></i></a>
+                    </li>
+                </ul>
+                <Searchbox />
+                <ul class="navbar-nav ms-auto">
+                    <!-- Right navbar links -->
+                    <li class="nav-item dropdown">
+                        <router-link to="/cart" class="nav-link" :title="t('common.menu.cart')"><i class="fas fa-shopping-cart"></i></router-link>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-link nav-item nav-link" @click="authStore.logout()"><i class="fas fa-power-off"></i></button>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <!-- /.navbar -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
             <!-- Main Sidebar Container -->
-            <router-link to="/" class="brand-link">
-                <!-- Brand Logo -->
-                <img src="./assets/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle" style="opacity: 0.8" />
-                <span class="brand-text font-weight-light">InterServer</span>
-            </router-link>
-            <div class="sidebar">
+            <div class="sidebar-brand">
+                <router-link to="/" class="brand-link">
+                    <!-- Brand Logo -->
+                    <img src="./assets/images/logos/interserver_short.png" alt="Logo" class="brand-image rounded-circle opacity-75" />
+                    <span class="brand-text fw-light">InterServer</span>
+                </router-link>
+            </div>
+            <div class="sidebar-wrapper">
                 <!-- Sidebar -->
-                <div class="brand-link user-panel d-flex mb-3 mt-3 pb-3" style="font-size: 1em">
+                <div class="user-panel d-flex mb-3 mt-3 pb-3" style="font-size: 1em">
                     <!-- Sidebar user panel (optional) -->
-                    <img :src="user?.gravatar" class="brand-image rounded-circle elevation-2" style="width: 3rem; margin-left: 0px" :alt="t('common.profile.profileImage')" />
+                    <img :src="user?.gravatar" class="brand-image rounded-circle shadow-sm" style="width: 3rem; margin-left: 0px" :alt="t('common.profile.profileImage')" />
                     <div class="info hide-on-collapse brand-text" style="padding: 0px">
                         <router-link to="/account/info" :title="t('common.profile.editPersonalInfo')" class="d-block">{{ user?.name }}&nbsp;<i class="fas fa-pencil-alt text-bold text-xs"></i></router-link>
                         <span style="color: #c2c7d0">
@@ -193,13 +198,13 @@ useDarkMode();
             <!-- /.sidebar -->
         </aside>
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <div class="content-header">
+        <main class="app-main">
+            <div class="app-content-header">
                 <!-- Content Header (Page header) -->
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                            <h1 class="text-dark m-0">{{ page_heading }}</h1>
+                            <h1 class="m-0">{{ page_heading }}</h1>
                         </div>
                         <div class="col-sm-12">
                             <ol class="breadcrumb">
@@ -216,7 +221,7 @@ useDarkMode();
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
-            <section class="content">
+            <div class="app-content">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12">
@@ -225,9 +230,9 @@ useDarkMode();
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-            </section>
-        </div>
-        <footer class="main-footer text-center">
+            </div>
+        </main>
+        <footer class="app-footer text-center">
             <strong>{{ t('common.footer.copyright', { year: new Date().getFullYear() }) }}</strong> {{ t('common.footer.allRightsReserved') }}
         </footer>
     </div>
@@ -247,12 +252,10 @@ useDarkMode();
 @import './assets/templates/menu/dark/menu.css';
 @import './assets/css/hide_printed_links.css';
 @import './assets/images/myadmin/css/styles.css';
-@import 'icheck-bootstrap/icheck-bootstrap.min.css';
 @import 'select2/dist/css/select2.min.css';
-@import 'select2-bootstrap-theme/dist/select2-bootstrap.min.css';
+@import 'select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css';
 @import 'jqvmap-novulnerability/dist/jqvmap.min.css';
 @import 'overlayscrollbars/css/OverlayScrollbars.min.css';
-@import '@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css';
 @import './assets/templates/adminlte/jquery.passwordRequirements.css';
 @import 'admin-lte/dist/css/adminlte.min.css';
 @import './assets/templates/my/style.css';
@@ -260,7 +263,7 @@ useDarkMode();
 @import '@material-design-icons/font/filled.css';
 @import './assets/templates/adminlte/custom_styles.css';
 
-.main-header {
+.app-header {
     position: relative;
     z-index: 1050;
 }
