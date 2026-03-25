@@ -1,6 +1,6 @@
 # Bootstrap 4 / AdminLTE 3 → Bootstrap 5 / AdminLTE 4 Migration Guide
 
-This document details every change made during the BS4→BS5 and AdminLTE 3→4 migration of this Vue 3 + TypeScript SPA. Use it as a checklist when applying the same upgrade to a similar codebase.
+This document details every change made during the BS4→BS5 and AdminLTE 3→4 migration of this Vue 3 + TypeScript SPA (126 files changed, ~8,900 insertions / ~8,500 deletions across 28 commits). Use it as a checklist when applying the same upgrade to a similar codebase.
 
 ---
 
@@ -20,7 +20,10 @@ This document details every change made during the BS4→BS5 and AdminLTE 3→4 
 12. [Sidebar Fixes](#12-sidebar-fixes)
 13. [Miscellaneous Visual Regressions](#13-miscellaneous-visual-regressions)
 14. [Global CSS Rules Added](#14-global-css-rules-added)
-15. [Files Changed Summary](#15-files-changed-summary)
+15. [Print Stylesheet Updates](#15-print-stylesheet-updates)
+16. [View-Specific Large Restructurings](#16-view-specific-large-restructurings)
+17. [Files Changed Summary](#17-files-changed-summary)
+18. [Change Scale Reference](#18-change-scale-reference)
 
 ---
 
@@ -78,11 +81,13 @@ BS5 namespaces all data attributes under `data-bs-*`.
 
 **Search regex:** `data-toggle=` → replace with `data-bs-toggle=`, etc.
 
+**Scale:** ~197 data attribute renames across all Vue templates.
+
 ---
 
 ## 3. CSS Class Renames
 
-### Spacing and Alignment
+### Spacing and Alignment (~370 instances)
 
 | BS4 | BS5 |
 |-----|-----|
@@ -95,7 +100,9 @@ BS5 namespaces all data attributes under `data-bs-*`.
 | `float-left` | `float-start` |
 | `float-right` | `float-end` |
 
-### Typography and Utilities
+**Note:** Be careful with word boundaries — `ml-auto` → `ms-auto`, but don't accidentally match `html-*` or similar. Use regex with word boundaries: `\bml-(\d|auto)` → `ms-$1`.
+
+### Typography and Utilities (~130 instances)
 
 | BS4 | BS5 |
 |-----|-----|
@@ -105,10 +112,27 @@ BS5 namespaces all data attributes under `data-bs-*`.
 | `text-bold` (AdminLTE) | `fw-bold` |
 | `font-italic` | `fst-italic` |
 | `sr-only` | `visually-hidden` |
-| `badge-*` (e.g. `badge-success`) | `bg-*` on badge (e.g. `bg-success`) |
-| `btn-block` | `d-grid` wrapper or `w-100` |
+| `badge-*` (e.g. `badge-success`) | `bg-*` on badge (e.g. `badge bg-success`) |
+| `btn-block` | `d-grid` wrapper or `w-100` on the button |
 
-### Forms
+**Badge detail:** In BS4, `badge badge-success` was one class. In BS5, keep the `badge` class and change the contextual class: `badge bg-success`. The badge class provides the shape; `bg-*` provides the color.
+
+**btn-block example:**
+
+```html
+<!-- BS4 -->
+<button class="btn btn-primary btn-block">Submit</button>
+
+<!-- BS5 option A: d-grid wrapper -->
+<div class="d-grid">
+    <button class="btn btn-primary">Submit</button>
+</div>
+
+<!-- BS5 option B: w-100 directly -->
+<button class="btn btn-primary w-100">Submit</button>
+```
+
+### Forms (~400+ instances — the single most frequent change category)
 
 | BS4 | BS5 |
 |-----|-----|
@@ -117,17 +141,31 @@ BS5 namespaces all data attributes under `data-bs-*`.
 | `custom-control` | `form-check` |
 | `custom-control-input` | `form-check-input` |
 | `custom-control-label` | `form-check-label` |
-| `custom-switch` | `form-switch` |
+| `custom-checkbox` | `form-check` |
+| `custom-radio` | `form-check` |
+| `custom-switch` | `form-check form-switch` |
 | `custom-select` | `form-select` |
 | `form-control` (on `<select>`) | `form-select` |
 | `input-group-append` | *(removed — place button directly in input-group)* |
 | `input-group-prepend` | *(removed — place span directly in input-group)* |
 
-### Close Button
+**Note:** `form-group` → `mb-3` was the single most frequent change across the entire migration (~291 removals, ~343 additions including new instances).
 
-| BS4 | BS5 |
-|-----|-----|
-| `<button class="close" data-dismiss="modal">×</button>` | `<button class="btn-close" data-bs-dismiss="modal"></button>` |
+### Close Button (~14 instances)
+
+BS5 replaces the close button class AND removes the inner `×` character. The new `btn-close` uses a CSS background-image for the X icon:
+
+```html
+<!-- BS4 -->
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+
+<!-- BS5 -->
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+```
+
+**Key difference:** The `<span>&times;</span>` inside the button must be removed entirely. The `btn-close` class renders the X via CSS.
 
 ### Dropdowns
 
@@ -142,6 +180,14 @@ BS5 namespaces all data attributes under `data-bs-*`.
 |-----|-----|
 | `no-gutters` | `g-0` |
 
+### Opacity Utilities
+
+| BS4 | BS5 |
+|-----|-----|
+| `style="opacity: 0.8"` | `opacity-75` class (or keep inline) |
+
+BS5 provides `opacity-25`, `opacity-50`, `opacity-75`, `opacity-100` utility classes. Use them when close enough to the desired value.
+
 ---
 
 ## 4. AdminLTE 3 → 4 Layout Changes
@@ -154,12 +200,14 @@ AdminLTE 4 renames the major layout wrapper classes:
 | `.main-header` | `.app-header` |
 | `.main-sidebar` | `.app-sidebar` |
 | `.main-footer` | `.app-footer` |
-| `.content-wrapper` | `.app-content` |
+| `.content-wrapper` | `.app-main` (outer) / `.app-content` (inner) |
 | `.content-header` | `.app-content-header` |
 | `.content` | `.app-content` (body area) |
 | `sidebar-dark-primary` | `bg-body-secondary` + `data-bs-theme="dark"` |
 | `navbar-dark` | `bg-dark` + `data-bs-theme="dark"` |
-| `elevation-*` | `shadow` / `shadow-sm` / `shadow-lg` |
+| `elevation-1` | `shadow-sm` |
+| `elevation-2` | `shadow` |
+| `elevation-4` | `shadow` (or `shadow-lg` for more) |
 | `brand-link` (as direct child of aside) | Wrap in `<div class="sidebar-brand">` |
 | `.sidebar` (scrollable area) | `.sidebar-wrapper` |
 | `data-widget="pushmenu"` | `data-lte-toggle="sidebar"` |
@@ -277,6 +325,26 @@ document.querySelectorAll('[data-lte-toggle="treeview"]').forEach((el) => {
 });
 ```
 
+### Sidebar Collapse Logic Rewrite
+
+AdminLTE 3's `data-widget="pushmenu"` handled both mobile and desktop sidebar toggling automatically. AdminLTE 4 requires manual handling. Rewrite the collapse function to handle both cases:
+
+```js
+function collapseMenu() {
+    const body = document.body;
+    const isMobile = window.innerWidth <= 992;
+    if (isMobile) {
+        body.classList.toggle('sidebar-open');
+        body.classList.remove('sidebar-collapse');
+    } else {
+        body.classList.toggle('sidebar-collapse');
+    }
+    // Persist state in cookie
+    const toggleState = body.classList.contains('sidebar-collapse') ? 'closed' : 'opened';
+    document.cookie = `toggleState=${toggleState}; path=/`;
+}
+```
+
 ---
 
 ## 5. JavaScript / Bootstrap API Changes
@@ -315,6 +383,36 @@ document.body.classList.add('hold-transition', 'sidebar-mini', 'layout-fixed');
 // BS5 / AdminLTE 4
 document.body.classList.add('hold-transition', 'sidebar-mini', 'layout-fixed', 'sidebar-expand-lg', 'bg-body-tertiary');
 ```
+
+### Bootstrap Component API (Modals, Collapse, etc.)
+
+BS4 used jQuery methods (`$('#myModal').modal('show')`). BS5 uses vanilla JS constructors. ~22 instances were updated across Vue components:
+
+```js
+// BS4 (jQuery)
+$('#myModal').modal('show');
+$('#myModal').modal('hide');
+$('#myCollapse').collapse('toggle');
+
+// BS5 (vanilla JS)
+import * as bootstrap from 'bootstrap';
+const modal = new bootstrap.Modal(document.getElementById('myModal'));
+modal.show();
+modal.hide();
+const collapse = new bootstrap.Collapse(document.getElementById('myCollapse'));
+collapse.toggle();
+```
+
+**Common BS5 component constructors used:**
+- `new bootstrap.Modal(element)` — `.show()`, `.hide()`, `.toggle()`
+- `new bootstrap.Collapse(element)` — `.show()`, `.hide()`, `.toggle()`
+- `new bootstrap.Tooltip(element)` — `.show()`, `.hide()`, `.dispose()`
+- `new bootstrap.Popover(element)` — `.show()`, `.hide()`, `.dispose()`
+- `new bootstrap.Dropdown(element)` — `.show()`, `.hide()`, `.toggle()`
+
+### jQuery Plugin Initialization (`src/plugins/jquery.ts`)
+
+BS4's jQuery-based tooltip/popover plugins were imported via `import 'bootstrap'` which auto-registered them as jQuery plugins. BS5 does not register jQuery plugins. Remove any jQuery-specific Bootstrap imports and switch to the vanilla API above.
 
 ---
 
@@ -508,7 +606,16 @@ If you had global width rules on `.form-control` for DataTables length selectors
 }
 ```
 
-### Checkboxes (iCheck → native BS5)
+### Checkboxes and Radios (iCheck → native BS5)
+
+AdminLTE 3 used the iCheck plugin with classes like `icheck-success`, `icheck-primary`, `icheck-danger`, etc. for styled checkboxes and radios. BS5 has native styled form controls that replace this entirely. ~61 instances were migrated.
+
+**All iCheck variants to replace:**
+- `icheck-success` → `form-check`
+- `icheck-primary` → `form-check`
+- `icheck-danger` → `form-check`
+- `icheck-info` → `form-check`
+- `icheck-warning` → `form-check`
 
 ```html
 <!-- BS4 / iCheck -->
@@ -524,6 +631,38 @@ If you had global width rules on `.form-control` for DataTables length selectors
 </div>
 ```
 
+**For radio buttons:**
+
+```html
+<!-- BS4 / iCheck -->
+<div class="icheck-primary">
+    <input type="radio" id="r1" name="group" value="1" />
+    <label for="r1">Option 1</label>
+</div>
+
+<!-- BS5 -->
+<div class="form-check">
+    <input type="radio" id="r1" name="group" value="1" class="form-check-input" />
+    <label for="r1" class="form-check-label">Option 1</label>
+</div>
+```
+
+**For switches:**
+
+```html
+<!-- BS4 -->
+<div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="sw" />
+    <label class="custom-control-label" for="sw">Toggle</label>
+</div>
+
+<!-- BS5 -->
+<div class="form-check form-switch">
+    <input type="checkbox" class="form-check-input" id="sw" />
+    <label class="form-check-label" for="sw">Toggle</label>
+</div>
+```
+
 Style the accent color to match the old iCheck theme:
 
 ```css
@@ -531,7 +670,13 @@ Style the accent color to match the old iCheck theme:
     background-color: #136bdd !important;
     border-color: #136bdd !important;
 }
+
+.form-check-input:not(:checked):not(:disabled):hover {
+    border-color: #136bdd !important;
+}
 ```
+
+**Also remove:** Any iCheck CSS imports and the ~26 lines of iCheck override rules that existed in custom stylesheets.
 
 ---
 
@@ -693,7 +838,59 @@ th > i.fa, th > i.fas, th > i.far { display: inline; }
 
 ---
 
-## 15. Files Changed Summary
+## 15. Print Stylesheet Updates
+
+Print stylesheets (`hide_printed_links.css` and similar) reference layout wrapper selectors that change with AdminLTE 4. Update all selectors:
+
+```css
+/* BS4 / AdminLTE 3 */
+.content-wrapper { /* print rules */ }
+.main-sidebar { display: none; }
+.main-header { display: none; }
+.main-footer { display: none; }
+
+/* BS5 / AdminLTE 4 */
+.app-main { /* print rules */ }
+.app-sidebar { display: none; }
+.app-header { display: none; }
+.app-footer { display: none; }
+```
+
+Also update any dark mode CSS (`admin_darkmode.css`) that targets the old class names.
+
+---
+
+## 16. View-Specific Large Restructurings
+
+Some views required substantial restructuring beyond mechanical class renames. Document these for reference:
+
+### Login.vue (~2,344 lines changed)
+The login page had a complete template overhaul — form layouts, card structures, and validation patterns were all updated for BS5 form classes.
+
+### Invoices.vue (~1,258 lines changed)
+Large table and form migration with DataTables integration. Required careful handling of `form-select` width scoping and `input-group` restructuring.
+
+### OrderDomain.vue (~1,228 lines changed)
+Domain order forms with complex multi-step layouts, radio groups (iCheck → form-check), and conditional sections.
+
+### ViewTicket.vue (~1,186 lines changed)
+Ticket view with modal markup restructured for BS5 modal API, search input/button layout fixes, status icon binding fixes (object → class array destructuring), and font size adjustments.
+
+### NewTicket.vue (~568 lines changed)
+File upload input-group restructuring, form layout updates.
+
+### Affiliate.vue (~740 lines changed)
+Major layout restructuring — status buttons (nav-tabs → btn-group), search/pagesize layout (inline with d-flex), btn-app icon fixes, DataTables integration.
+
+### OrderLicense.vue (~1,002 lines changed)
+Replaced `card-columns` with `row-cols` grid, form control migrations, radio group updates.
+
+### Login/Register pages
+Complete form restructuring with BS5 form-check, form-select, and validation classes.
+
+---
+
+## 17. Files Changed Summary
 
 ### Core Infrastructure
 - `package.json` — dependency swaps
@@ -743,35 +940,109 @@ Every view file under `src/views/` was updated. The most common changes per file
 
 ---
 
+## 18. Change Scale Reference
+
+| Category | Approximate Instance Count |
+|----------|---------------------------|
+| Form class migrations (`form-group`, `custom-*`, `input-group-*`) | ~400+ |
+| Spacing/float utility renames (`ml-`→`ms-`, `float-left`→`float-start`, etc.) | ~370 |
+| Font Awesome icon fixes | ~260 lines |
+| Data attribute namespace changes (`data-toggle`→`data-bs-toggle`) | ~197 |
+| Typography utility renames (`font-weight-bold`→`fw-bold`, `text-bold`→`fw-bold`) | ~130 |
+| iCheck → form-check migrations | ~61 |
+| AdminLTE structural renames (wrapper, header, sidebar, footer) | ~50 |
+| Bootstrap JS API conversions (jQuery → vanilla) | ~22 |
+| Badge class migrations (`badge-*`→`bg-*`) | ~20 |
+| Close button migrations | ~14 |
+| Accessibility class renames (`sr-only`→`visually-hidden`) | ~7 |
+
+---
+
 ## Migration Checklist
 
 Use this as a step-by-step checklist:
 
+### Phase 1: Dependencies and Imports
 - [ ] Update `package.json` dependencies (BS5, AdminLTE 4, select2-bs5-theme, popperjs, tempus-dominus)
+- [ ] Remove BS4-specific packages (`@sweetalert2/theme-bootstrap-4`, `select2-bootstrap-theme`, `tempusdominus-bootstrap-4`)
 - [ ] Run `yarn install` to regenerate lock file
-- [ ] Global find-replace: `data-toggle=` → `data-bs-toggle=`
-- [ ] Global find-replace: `data-target=` → `data-bs-target=`
-- [ ] Global find-replace: `data-dismiss=` → `data-bs-dismiss=`
-- [ ] Global find-replace: `data-content=` → `data-bs-content=`
-- [ ] Global find-replace: `data-placement=` → `data-bs-placement=`
-- [ ] Global find-replace spacing: `ml-` → `ms-`, `mr-` → `me-`, `pl-` → `ps-`, `pr-` → `pe-`
-- [ ] Global find-replace alignment: `text-left` → `text-start`, `text-right` → `text-end`
-- [ ] Global find-replace floats: `float-left` → `float-start`, `float-right` → `float-end`
-- [ ] Global find-replace: `font-weight-bold` → `fw-bold`, `font-weight-light` → `fw-light`
-- [ ] Global find-replace: `sr-only` → `visually-hidden`
-- [ ] Global find-replace: `badge-` → `bg-` (on badge elements only)
-- [ ] Replace `form-group` with `mb-3`
-- [ ] Replace `custom-control*` with `form-check*`
-- [ ] Replace `form-control` on `<select>` with `form-select`
-- [ ] Remove `input-group-append`/`input-group-prepend` wrappers
+- [ ] Update `import 'bootstrap'` → `import * as bootstrap from 'bootstrap'`
+- [ ] Add FA4 v4-shims CSS import if backend returns FA4 class names
+- [ ] Remove iCheck CSS/JS imports
+
+### Phase 2: Global Find-Replace (mechanical, can be scripted)
+- [ ] `data-toggle=` → `data-bs-toggle=`
+- [ ] `data-target=` → `data-bs-target=`
+- [ ] `data-dismiss=` → `data-bs-dismiss=`
+- [ ] `data-content=` → `data-bs-content=`
+- [ ] `data-placement=` → `data-bs-placement=`
+- [ ] `ml-` → `ms-`, `mr-` → `me-`, `pl-` → `ps-`, `pr-` → `pe-` (use word boundaries!)
+- [ ] `text-left` → `text-start`, `text-right` → `text-end`
+- [ ] `float-left` → `float-start`, `float-right` → `float-end`
+- [ ] `font-weight-bold` → `fw-bold`, `font-weight-light` → `fw-light`, `font-weight-normal` → `fw-normal`
+- [ ] `text-bold` (AdminLTE) → `fw-bold`
+- [ ] `sr-only` → `visually-hidden`
+- [ ] `badge-success`/`badge-danger`/etc. → `bg-success`/`bg-danger`/etc. (keep `badge` class)
+- [ ] `no-gutters` → `g-0`
+- [ ] `dropdown-menu-right` → `dropdown-menu-end`
+- [ ] `form-group` → `mb-3`
+- [ ] `form-row` → `row g-3`
+
+### Phase 3: Form Controls (semi-mechanical, review each)
+- [ ] Replace `custom-control` → `form-check`, `custom-control-input` → `form-check-input`, `custom-control-label` → `form-check-label`
+- [ ] Replace `custom-checkbox` → `form-check`, `custom-radio` → `form-check`
+- [ ] Replace `custom-switch` → `form-check form-switch`
+- [ ] Replace `custom-select` → `form-select`
+- [ ] Replace `form-control` on `<select>` elements → `form-select`
+- [ ] Replace `icheck-*` → `form-check` (all iCheck variants)
+- [ ] Remove `input-group-append`/`input-group-prepend` wrappers (keep children)
+- [ ] Replace `btn-block` → `d-grid` wrapper or `w-100`
+- [ ] Replace `close` buttons with `btn-close` (remove inner `<span>&times;</span>`)
+
+### Phase 4: AdminLTE Layout (manual, app shell)
+- [ ] Update layout wrapper classes: `wrapper`→`app-wrapper`, `main-header`→`app-header`, `main-sidebar`→`app-sidebar`, `main-footer`→`app-footer`, `content-wrapper`→`app-main`
+- [ ] Add `container-fluid` wrapper inside navbar
+- [ ] Wrap `brand-link` in `sidebar-brand` div
+- [ ] Replace `.sidebar` with `.sidebar-wrapper`
+- [ ] Replace `sidebar-dark-primary` with `bg-body-secondary` + `data-bs-theme="dark"`
+- [ ] Replace `navbar-dark` with `bg-dark` + `data-bs-theme="dark"`
+- [ ] Replace `elevation-*` with `shadow`/`shadow-sm`
+- [ ] Add `sidebar-expand-lg` and `bg-body-tertiary` to body classes
+- [ ] Rewrite sidebar collapse logic for mobile/desktop
+- [ ] Add treeview JS handler in `onMounted` (AdminLTE 4 DOMContentLoaded fires before Vue)
+- [ ] Replace `data-widget="pushmenu"` → `data-lte-toggle="sidebar"`
+
+### Phase 5: JavaScript API (manual)
+- [ ] Replace jQuery tooltip/popover init with `new bootstrap.Tooltip()` / `new bootstrap.Popover()`
+- [ ] Replace jQuery modal calls with `new bootstrap.Modal()` API
+- [ ] Replace jQuery collapse calls with `new bootstrap.Collapse()` API
+- [ ] Update Select2 theme: `'bootstrap4'` → `'bootstrap-5'`
+
+### Phase 6: Component-Specific (manual)
 - [ ] Replace `card-columns` with `row row-cols-*` grid
-- [ ] Replace `close` buttons with `btn-close`
-- [ ] Update AdminLTE layout classes (wrapper, header, sidebar, footer)
-- [ ] Add AdminLTE 4 treeview JS handler in app mount
-- [ ] Update tooltip/popover initialization to BS5 API
-- [ ] Add FA4 v4-shims import if backend returns FA4 classes
-- [ ] Fix FA4→FA5 icon name changes
-- [ ] Add Tailwind heading restoration CSS
-- [ ] Add global CSS rules (small-box colors, card-title spacing, btn-app, sort icons)
-- [ ] Scope any global form-select width rules
+- [ ] Fix FA4→FA5 icon names (see Section 7 table)
+- [ ] Fix `far` → `fas` prefix for solid-only icons
+- [ ] Fix dynamic icon class bindings (destructure objects properly)
+
+### Phase 7: CSS Fixes (global stylesheet)
+- [ ] Add Tailwind heading restoration CSS (if using Tailwind)
+- [ ] Add btn-app recreation CSS (if using AdminLTE btn-app)
+- [ ] Add card-title icon spacing rule
+- [ ] Add small-box white text rules
+- [ ] Add sort icon inline display rules
+- [ ] Add checkbox accent color rules
+- [ ] Scope any global form-select width rules to DataTables only
+- [ ] Update print stylesheet selectors for AdminLTE 4 class names
+- [ ] Update dark mode CSS selectors for AdminLTE 4 class names
+
+### Phase 8: Visual QA
 - [ ] Test every page for visual regressions
+- [ ] Check sidebar collapsed state
+- [ ] Check mobile responsive behavior
+- [ ] Check dark mode (if applicable)
+- [ ] Check all modals open/close correctly
+- [ ] Check all dropdowns work
+- [ ] Check all tooltips/popovers render
+- [ ] Check form validation styling
+- [ ] Check DataTables integration
+- [ ] Check print layout
