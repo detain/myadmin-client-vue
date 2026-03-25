@@ -365,9 +365,10 @@ useDarkMode();
     border: 1px solid #ced4da;
 }
 
-/* Fix BS5: input-group width:100% overrides col-* widths when on same element */
+/* Fix BS5: input-group/form-control width:100% overrides col-* widths when on same element */
 @media (min-width: 576px) {
-    .row > .col-sm-9.input-group { width: 75%; }
+    .row > .col-sm-9.input-group,
+    .row > .col-sm-9.form-control { width: 75%; }
 }
 @media (min-width: 768px) {
     .row > .col-md-7.input-group { width: 58.333333%; }
