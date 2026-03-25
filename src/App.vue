@@ -351,11 +351,15 @@ useDarkMode();
     text-decoration: none;
 }
 
-/* Sidebar collapsed: reduce user panel spacing */
+/* Sidebar collapsed: reduce user panel spacing and hide text */
 .sidebar-collapse .user-panel {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
     padding-bottom: 0.5rem !important;
+}
+
+.sidebar-collapse .user-panel .info {
+    display: none;
 }
 
 /* Search input in dark navbar: white bg, black text */

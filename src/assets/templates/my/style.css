@@ -35,7 +35,8 @@ ul#sidemenu-content {
     background: none !important;
 }
 
-.form-select {
+.dataTables_length .form-select,
+.dt-length .form-select {
     width: 80px !important;
 }
 
