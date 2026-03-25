@@ -329,6 +329,11 @@ useDarkMode();
 /* AdminLTE 4 sidebar: set default nav-link color from sidebar CSS vars */
 .app-sidebar .sidebar-menu .nav-link {
     color: var(--lte-sidebar-color);
+    text-decoration: none;
+}
+
+.app-sidebar .sidebar-menu .nav-link:hover {
+    text-decoration: none;
 }
 
 .app-sidebar .sidebar-menu .nav-link .nav-icon {
@@ -338,10 +343,19 @@ useDarkMode();
 /* Sidebar user panel link color */
 .app-sidebar .user-panel a {
     color: #c2c7d0;
+    text-decoration: none;
 }
 
 .app-sidebar .user-panel a:hover {
     color: #fff;
+    text-decoration: none;
+}
+
+/* Sidebar collapsed: reduce user panel spacing */
+.sidebar-collapse .user-panel {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
 }
 
 /* Search input in dark navbar: white bg, black text */
@@ -349,5 +363,16 @@ useDarkMode();
     background-color: #fff;
     color: #212529;
     border: 1px solid #ced4da;
+}
+
+/* Fix BS5: input-group width:100% overrides col-* widths when on same element */
+@media (min-width: 576px) {
+    .row > .col-sm-9.input-group { width: 75%; }
+}
+@media (min-width: 768px) {
+    .row > .col-md-7.input-group { width: 58.333333%; }
+    .row > .col-md-8.input-group { width: 66.666667%; }
+    .row > .col-md-9.input-group { width: 75%; }
+    .row > .col-md-12.input-group { width: 100%; }
 }
 </style>
