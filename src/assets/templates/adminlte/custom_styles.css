@@ -330,9 +330,10 @@ tr.shown td.details-control {
     color: #6c757d !important;
     border: 1px solid #ddd;
     border-radius: 3px;
-    padding: 15px 5px;
+    padding: 10px 5px 5px;
     min-width: 80px;
     text-align: center;
+    margin-right: 5px;
 }
 
 .btn-app:hover {
