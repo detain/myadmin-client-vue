@@ -256,7 +256,7 @@ loadNameservers();
                                         <span :class="ns.can_delete == '1' ? 'text-green' : 'text-red'">{{ ns.can_delete == '1' ? t('domains.nameservers.yes') : t('domains.nameservers.no') }}</span>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0)" :title="t('common.buttons.delete')" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><i class="fas fa-trash-o"></i></a>
+                                        <a href="javascript:void(0)" :title="t('common.buttons.delete')" @click.prevent="confirmDelete(ns.name, ns.ipaddress)"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

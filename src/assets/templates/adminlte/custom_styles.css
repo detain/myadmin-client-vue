@@ -328,6 +328,11 @@ tr.shown td.details-control {
     background-color: #f8f9fa !important;
     transition-duration: 0.3s;
     color: #6c757d !important;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 15px 5px;
+    min-width: 80px;
+    text-align: center;
 }
 
 .btn-app:hover {

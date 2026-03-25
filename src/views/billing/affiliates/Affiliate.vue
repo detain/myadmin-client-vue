@@ -243,11 +243,11 @@ onMounted(() => {
                             <router-link class="btn btn-app mb-3" :to="'/affiliate/banners'" :title="t('affiliate.viewBannersLinks')"><i class="fas fa-image" aria-hidden="true"></i>{{ t('affiliate.viewBannersLinks') }}</router-link>
                             <router-link class="btn btn-app mb-3" :to="'/affiliate/landing_pg'" :title="t('affiliate.setupLandingPage')"><i class="fas fa-ticket-alt" aria-hidden="true"></i>{{ t('affiliate.setupLandingPage') }}</router-link>
                             <router-link class="btn btn-app mb-3" :to="'/affiliate/payment_setup'" :title="t('affiliate.setupPaymentMethod')"><i class="fas fa-money-bill" aria-hidden="true"></i>{{ t('affiliate.setupPaymentMethod') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" :title="t('affiliate.richReport')"><i class="fas fa-file-text-o" aria-hidden="true"></i>{{ t('affiliate.richReport') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/rich_report'" :title="t('affiliate.richReport')"><i class="fas fa-file-alt" aria-hidden="true"></i>{{ t('affiliate.richReport') }}</router-link>
                             <router-link class="btn btn-app mb-3" :to="'/affiliate/web_traffic'" :title="t('affiliate.latestWebTraffic')"><i class="fas fa-globe" aria-hidden="true"></i>{{ t('affiliate.latestWebTraffic') }}</router-link>
                             <router-link class="btn btn-app mb-3" :to="'/affiliate/status_legend'" :title="t('affiliate.statusLegend')"><i class="fas fa-closed-captioning" aria-hidden="true"></i>{{ t('affiliate.statusLegend') }}</router-link>
                             <router-link class="btn btn-app mb-3" :to="'/affiliate/faq'" :title="t('affiliate.frequentlyAskedQuestions')"><i class="fas fa-question" aria-hidden="true"></i>{{ t('affiliate.frequentlyAskedQuestions') }}</router-link>
-                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" :title="t('affiliate.termsOfService')"><i class="fas fa-file-text" aria-hidden="true"></i>{{ t('affiliate.termsOfService') }}</router-link>
+                            <router-link class="btn btn-app mb-3" :to="'/affiliate/tos'" :title="t('affiliate.termsOfService')"><i class="fas fa-file-alt" aria-hidden="true"></i>{{ t('affiliate.termsOfService') }}</router-link>
                         </div>
                     </div>
                 </div>
@@ -292,23 +292,21 @@ onMounted(() => {
                                 </div>
                             </div>
                             <!-- Page Size & Search -->
-                            <div class="row mb-3 align-items-end">
-                                <div class="col-md-2">
-                                    <label class="form-label">{{ t('common.labels.pageSize') }}</label>
-                                    <select v-model.number="pageSize" class="form-select form-select-sm">
+                            <div class="row mb-3 align-items-center">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <label class="me-2 mb-0 text-nowrap">{{ t('common.labels.pageSize') }}</label>
+                                    <select v-model.number="pageSize" class="form-select form-select-sm" style="width: auto">
                                         <option :value="10">10</option>
                                         <option :value="25">25</option>
                                         <option :value="50">50</option>
                                         <option :value="100">100</option>
                                         <option :value="500">500</option>
                                     </select>
+                                    <span class="text-muted ms-3 text-nowrap">{{ t('affiliate.signups.recordsFound', { count: filteredRows.length }) }}</span>
                                 </div>
-                                <div class="col-md-4">
-                                    <span class="text-muted">{{ t('affiliate.signups.recordsFound', { count: filteredRows.length }) }}</span>
-                                </div>
-                                <div class="col-md-3 ms-auto">
-                                    <label class="form-label">{{ t('common.search.placeholder') }}</label>
-                                    <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
+                                <div class="col-md-4 ms-auto d-flex align-items-center justify-content-end">
+                                    <label class="me-2 mb-0 text-nowrap">{{ t('common.search.placeholder') }}</label>
+                                    <input v-model="searchText" type="text" class="form-control form-control-sm" style="width: auto" :placeholder="t('common.search.placeholder')" />
                                 </div>
                             </div>
                             <!-- Signups Table -->
