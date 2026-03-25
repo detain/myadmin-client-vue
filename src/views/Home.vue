@@ -70,12 +70,12 @@ const { breadcrums, page_heading } = storeToRefs(siteStore);
         </aside>
         <!-- Content Wrapper. Contains page content -->
         <main class="app-main">
-            <div class="app-content-header">
+            <div class="app-content-header pb-0">
                 <!-- Content Header (Page header) -->
                 <div class="container-fluid">
-                    <div class="row mb-2">
+                    <div class="row mb-0">
                         <div class="col-sm-12">
-                            <h1 class="m-0">{{ page_heading }}</h1>
+                            <h3 class="m-0">{{ page_heading }}</h3>
                         </div>
                         <div class="col-sm-12">
                             <ol class="breadcrumb">
