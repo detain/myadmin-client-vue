@@ -336,11 +336,15 @@ tr.shown td.details-control {
     color: #444 !important;
 }
 
+.btn-app > .fas,
+.btn-app > .far,
+.btn-app > .fa,
 .btn-app > .material-icons {
     display: block;
     font-size: 1.4rem;
     font-weight: 800;
     line-height: 1;
+    margin-bottom: 0.25rem;
 }
 
 #info-progress-lg {

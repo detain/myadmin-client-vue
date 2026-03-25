@@ -214,11 +214,11 @@ onMounted(() => {
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body mb-2 pb-4 text-center">
+                        <div class="card-body mb-2 pb-4">
                             <form class="row row-cols-auto g-3 align-items-center" @submit.prevent="copyUrl">
                                 <div class="mb-3 w-50 me-2">
                                     <input id="affiliateinput" type="text" class="form-control form-control-sm w-100" placeholder="Affiliate URL" :value="'https://www.interserver.net/r/' + custid" readonly />
-                                    <span class="text-muted text-xs">{{ t('affiliate.shareUrl') }}</span>
+                                    <span class="text-muted text-xs text-start d-block">{{ t('affiliate.shareUrl') }}</span>
                                 </div>
                                 <button type="submit" class="btn btn-custom btn-sm mb-3">{{ t('common.buttons.copyToClipboard') }}</button>
                             </form>
@@ -276,7 +276,7 @@ onMounted(() => {
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <span class="text-md text-center">{{ t('affiliate.signups.affiliateStatus') }} </span>
-                                    <div class="nav nav-tabs d-inline-flex">
+                                    <div class="btn-group d-inline-flex" id="title_btns">
                                         <button :class="['btn btn-info btn-sm', { active: activeTab === 'default' }]" @click="switchTab('default')">{{ t('affiliate.signups.default') }}</button>
                                         <button :class="['btn btn-info btn-sm', { active: activeTab === 'pending' }]" @click="switchTab('pending')">{{ t('affiliate.signups.pending') }}</button>
                                         <button :class="['btn btn-info btn-sm', { active: activeTab === 'paid' }]" @click="switchTab('paid')">{{ t('affiliate.signups.paid') }}</button>
@@ -291,12 +291,8 @@ onMounted(() => {
                                     <button class="btn btn-sm btn-custom" @click="exportFile('pdf', activeTab)">PDF</button>
                                 </div>
                             </div>
-                            <!-- Search & Page Size -->
+                            <!-- Page Size & Search -->
                             <div class="row mb-3 align-items-end">
-                                <div class="col-md-3">
-                                    <label class="form-label">{{ t('common.search.placeholder') }}</label>
-                                    <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
-                                </div>
                                 <div class="col-md-2">
                                     <label class="form-label">{{ t('common.labels.pageSize') }}</label>
                                     <select v-model.number="pageSize" class="form-select form-select-sm">
@@ -309,6 +305,10 @@ onMounted(() => {
                                 </div>
                                 <div class="col-md-4">
                                     <span class="text-muted">{{ t('affiliate.signups.recordsFound', { count: filteredRows.length }) }}</span>
+                                </div>
+                                <div class="col-md-3 ms-auto">
+                                    <label class="form-label">{{ t('common.search.placeholder') }}</label>
+                                    <input v-model="searchText" type="text" class="form-control form-control-sm" :placeholder="t('common.search.placeholder')" />
                                 </div>
                             </div>
                             <!-- Signups Table -->
@@ -366,8 +366,4 @@ th.sortable {
     opacity: 0.7;
 }
 
-.nav-tabs .btn.active {
-    font-weight: bold;
-    border-bottom: 2px solid #fff;
-}
 </style>
