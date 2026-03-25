@@ -281,4 +281,26 @@ useDarkMode();
     padding-bottom: 0;
     min-height: 0;
 }
+
+/* BS5 dark theme: ensure navbar icons/links use light color */
+.app-header .nav-link,
+.app-header .btn-link {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.app-header .nav-link:hover,
+.app-header .nav-link:focus,
+.app-header .btn-link:hover,
+.app-header .btn-link:focus {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* AdminLTE 4 sidebar: set default nav-link color from sidebar CSS vars */
+.app-sidebar .sidebar-menu .nav-link {
+    color: var(--lte-sidebar-color);
+}
+
+.app-sidebar .sidebar-menu .nav-link .nav-icon {
+    color: var(--lte-sidebar-color);
+}
 </style>
