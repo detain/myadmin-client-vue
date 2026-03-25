@@ -284,7 +284,10 @@ a.blog-link:hover {
 }
 
 /* Keep sort icons on same line as header text */
-th.sortable,
+th.sortable {
+    white-space: nowrap;
+}
+
 th .sort-arrow {
     white-space: nowrap;
     display: inline;
