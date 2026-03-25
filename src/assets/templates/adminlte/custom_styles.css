@@ -283,13 +283,15 @@ a.blog-link:hover {
     color: #4f5962;
 }
 
-/* Keep sort icons on same line as header text */
-th.sortable {
-    white-space: nowrap;
-}
-
+/* Keep sort arrow icons inline with header text */
 th .sort-arrow {
     white-space: nowrap;
+    display: inline;
+}
+
+th > i.fa,
+th > i.fas,
+th > i.far {
     display: inline;
 }
 
