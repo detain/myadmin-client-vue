@@ -201,7 +201,30 @@ function updateTrayMenu(): void {
 
 // ── Auto-updater setup ──────────────────────────────────────────────────────
 
+function getUpdateUrl(): string {
+    const base = 'https://myautoupdate.interserver.net/electron';
+    let platformDir: string;
+    switch (process.platform) {
+        case 'win32':
+            platformDir = process.arch === 'arm64' ? 'win-arm64' : 'win-x64';
+            break;
+        case 'darwin':
+            platformDir = 'mac-universal';
+            break;
+        case 'linux':
+            platformDir = process.arch === 'arm64' ? 'linux-arm64' : 'linux-x64';
+            break;
+        default:
+            platformDir = 'win-x64';
+    }
+    return `${base}/${platformDir}`;
+}
+
 function setupAutoUpdater(): void {
+    autoUpdater.setFeedURL({
+        provider: 'generic',
+        url: getUpdateUrl(),
+    });
     autoUpdater.autoDownload = true;
     autoUpdater.autoInstallOnAppQuit = true;
 

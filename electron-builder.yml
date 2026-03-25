@@ -69,10 +69,10 @@ deb:
 snap:
     artifactName: ${name}-${version}-${arch}.${ext}
 
-# Auto-update
+# Auto-update (URL is overridden at runtime by getUpdateUrl() in main process)
 publish:
     provider: generic
-    url: https://example.com/auto-updates
+    url: https://myautoupdate.interserver.net/electron/win-x64
 
 electronDownload:
     mirror: https://github.com/electron/electron/releases/download/v
