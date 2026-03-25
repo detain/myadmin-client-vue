@@ -351,6 +351,11 @@ useDarkMode();
     text-decoration: none;
 }
 
+/* Sidebar brand: align logo left instead of AdminLTE 4 default center */
+.app-sidebar .sidebar-brand {
+    justify-content: flex-start;
+}
+
 /* Sidebar collapsed: reduce user panel spacing and hide text */
 .sidebar-collapse .user-panel {
     margin-top: 0.5rem !important;
