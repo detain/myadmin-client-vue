@@ -1,0 +1,12 @@
+{
+    "title": "Research Personnel Registry",
+    "addUser": "Enlist New Research Personnel",
+    "editUser": "Modify Research Personnel Parameters",
+    "firstName": "First Designation",
+    "lastName": "Family Designation",
+    "username": "Researcher Identification Code",
+    "password": "Security Access Passphrase",
+    "keepSamePassword": "Leave blank to preserve the existing Security Access Passphrase",
+    "errorLoading": "CATASTROPHIC FAILURE! Error loading research personnel data:",
+    "errorLoadingUser": "CATASTROPHIC FAILURE! Error loading research personnel record:"
+}

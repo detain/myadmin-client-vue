@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Grimoire Settings"
+    },
+    "changePassword": {
+        "title": "Alter Incantation",
+        "cardTitle": "Transmute Incantation",
+        "currentPassword": "Current Incantation",
+        "newPassword": "New Incantation",
+        "confirmPassword": "Bind Incantation",
+        "updatePassword": "Transmute Incantation"
+    },
+    "changeUsername": {
+        "title": "Alter Mage Name",
+        "disabled": "Mage Name alterations have been temporarily hexed.",
+        "currentUsername": "Current Mage Name",
+        "newDesiredUsername": "Desired New Mage Name",
+        "confirmationCode": "Confirmation Rune",
+        "pleaseWait": "Patience, apprentice!",
+        "gotError": "A calamity arose: {error}"
+    },
+    "contactInfo": {
+        "title": "Registry of Contacts",
+        "cardTitle": "Transmute Registry of Contacts",
+        "headsUp": "Heed this warning!",
+        "headsUpMessage": "Though this knowledge is optional, providing accurate information shall enrich our dealings and lower thy Risk % Score, granting thee swifter and more convenient passage through the tower (such as not requiring thee to authenticate a payment rune).",
+        "riskScore": "Risk % Score",
+        "personalInformation": "Personal Inscriptions",
+        "name": "True Name",
+        "namePlaceholder": "Aldric the Cool",
+        "company": "Guild or Order",
+        "gstinTaxId": "GSTIN Tax Seal",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Rune",
+        "addressLine1": "Realm Address Line 1",
+        "addressLine2": "Realm Address Line 2",
+        "cityState": "Township, Province",
+        "city": "Township",
+        "state": "Province",
+        "country": "Kingdom",
+        "zipcode": "Postal Rune",
+        "phoneNo": "Sending Crystal No",
+        "phoneNumber": "Sending Crystal Number",
+        "language": "Tongue",
+        "auto": "Auto",
+        "currency": "Coin Type",
+        "timeZone": "Temporal Zone",
+        "otherSettings": "Other Mystical Settings",
+        "disablePasswordResets": "Forbid (Forgotten Incantation) Incantation Resets.",
+        "disableInvoiceReminders": "Forbid Debt Scroll Reminder Stone Notifications.",
+        "disableServerInvoiceReminders": "Forbid Iron Golem Debt Scroll Reminder Stone Notifications.",
+        "disableReinstall": "Forbid Re-Conjuring.",
+        "alternateEmailInvoices": "Alternate Sending Stone for Debt Scrolls",
+        "alternateEmailInvoicesPlaceholder": "Alternative ethereal address for dispatching debt scrolls",
+        "alternateEmailAbuse": "Alternate Sending Stone for Grievance Reports",
+        "updateInfo": "Transmute Registry"
+    }
+}

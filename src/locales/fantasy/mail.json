@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Messenger Ravens Services List",
+        "orderTitle": "Commission Messenger Raven Registrations"
+    },
+    "view": {
+        "title": "View Messenger Raven {id}",
+        "package": "Equipment Tier",
+        "nextInvoiceDate": "Next Gold Due Date:",
+        "billing": "Gold Ledger",
+        "billed": "inscribed:",
+        "statusIs": "Quest Status is:",
+        "mailApi": "Messenger Raven API",
+        "usageCount": "Raven Dispatch Count:",
+        "links": "Quest Links",
+        "connectionInfo": "Connection Scroll Info",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome raven?",
+        "emailSent": "Raven Dispatched",
+        "emailSentMessage": "The welcome raven has been resent. Check your messenger raven perch."
+    },
+    "order": {
+        "title": "Commission Messenger Raven"
+    },
+    "alerts": {
+        "title": "Guild Alerts",
+        "addAlert": "Add Alert",
+        "editAlert": "Modify Alert",
+        "noAlerts": "No guild alerts found"
+    },
+    "delist": {
+        "title": "Delist",
+        "blockedEmails": "Blocked Raven Addresses"
+    },
+    "denyRules": {
+        "title": "Deny Edicts",
+        "addRule": "Inscribe Edict",
+        "noRules": "No deny edicts found"
+    },
+    "logs": {
+        "title": "Raven Dispatch Logs",
+        "searchLogs": "Search Raven Logs"
+    },
+    "stats": {
+        "title": "Raven Dispatch Statistics"
+    },
+    "deliverability": {
+        "title": "Raven Deliverability"
+    }
+}

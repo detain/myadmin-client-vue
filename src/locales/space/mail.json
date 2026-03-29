@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Subspace Comm Network Services List",
+        "orderTitle": "Requisition Subspace Comm Network Registrations"
+    },
+    "view": {
+        "title": "View Subspace Comm Module {id}",
+        "package": "Mission Package",
+        "nextInvoiceDate": "Next Resource Allocation Date:",
+        "billing": "Credits & Resource Ledger",
+        "billed": "billed:",
+        "statusIs": "Mission Status is:",
+        "mailApi": "Comm Module API",
+        "usageCount": "Transmission Count:",
+        "links": "Navigation Links",
+        "connectionInfo": "Connection Data",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the welcome subspace message?",
+        "emailSent": "Transmission Sent",
+        "emailSentMessage": "The welcome subspace transmission has been resent. Check your comm channel."
+    },
+    "order": {
+        "title": "Requisition Subspace Comm Module"
+    },
+    "alerts": {
+        "title": "System Alerts",
+        "addAlert": "Add System Alert",
+        "editAlert": "Modify System Alert",
+        "noAlerts": "No system alerts detected"
+    },
+    "delist": {
+        "title": "Delist from Blocked Registry",
+        "blockedEmails": "Blocked Subspace Comm Addresses"
+    },
+    "denyRules": {
+        "title": "Deny Transmission Rules",
+        "addRule": "Add Deny Rule",
+        "noRules": "No deny rules detected"
+    },
+    "logs": {
+        "title": "Transmission Logs",
+        "searchLogs": "Scan Transmission Logs"
+    },
+    "stats": {
+        "title": "Transmission Statistics"
+    },
+    "deliverability": {
+        "title": "Transmission Deliverability"
+    }
+}

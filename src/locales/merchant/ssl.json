@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Security Certificates List",
+        "orderTitle": "Place Your Order — Don't Wait! for Security Certificate Registrations"
+    },
+    "view": {
+        "title": "View Security Certificate {id}",
+        "package": "Service Package (Today's Best Value!)",
+        "nextInvoiceDate": "Payment Due Date:",
+        "billing": "The Debt Ledger",
+        "billed": "billed:",
+        "statusIs": "Deal Status is:",
+        "orderInfo": "Order Info",
+        "certificateInfo": "Security Certificate Info",
+        "links": "Quick Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Place Your Order — Don't Wait! for a Security Certificate"
+    },
+    "changeApproverEmail": {
+        "title": "Change Approver Contact Address",
+        "selectApproverEmail": "Select Approver Contact Address"
+    }
+}

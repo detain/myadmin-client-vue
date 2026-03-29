@@ -1,0 +1,12 @@
+{
+    "title": "Guild Members",
+    "addUser": "Enroll Guild Member",
+    "editUser": "Alter Guild Member",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "username": "Mage Name",
+    "password": "Incantation",
+    "keepSamePassword": "Leave blank to keep the same incantation",
+    "errorLoading": "Calamity loading guild members:",
+    "errorLoadingUser": "Calamity loading guild member:"
+}

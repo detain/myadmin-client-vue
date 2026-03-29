@@ -1,0 +1,28 @@
+{
+    "title": "Adventurer's Guild Hall",
+    "welcome": "Well met, {name}!",
+    "lastLogin": "Last Guild Entry",
+    "lastLoginIp": "Last Entry Stronghold Coordinates",
+    "prepay": {
+        "title": "Coin Pouch Balance",
+        "remainingBalance": "Remaining Coin Pouch Balance",
+        "manageAccount": "Manage Guild Membership",
+        "manageTooltip": "Manage Your Coin Pouch"
+    },
+    "invoices": {
+        "title": "Unpaid Gold Due Notices",
+        "totalUnpaid": "Total Unpaid Gold Due Notices",
+        "totalAmount": "Total Gold Amount to Be Paid",
+        "payTotalTooltip": "Pay Total Gold Amount"
+    },
+    "callInPin": "Call-in Guild PIN",
+    "recentTickets": "Recent Active Quests",
+    "viewAllTickets": "View All Active Quests",
+    "editTicket": "Modify Active Quest",
+    "serviceCount": "No active services | {count} active service | {count} active services",
+    "affiliate": {
+        "earnPerSale": "Earn {amount} Per Recruit",
+        "urlPlaceholder": "Bounty Hunter URL",
+        "shareWith": "Share with fellow adventurers"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Seals of Authentication List",
+        "orderTitle": "Conjure Seal of Authentication Registrations"
+    },
+    "view": {
+        "title": "View Seal of Authentication {id}",
+        "package": "Enchantment Tier",
+        "nextInvoiceDate": "Next Debt Scroll Date:",
+        "billing": "Grand Treasury",
+        "billed": "tithed:",
+        "statusIs": "Aura is:",
+        "orderInfo": "Conjuration Info",
+        "certificateInfo": "Seal Inscriptions",
+        "links": "Portals",
+        "welcomeEmailConfirm": "Art thou certain thou wishest to resend the welcoming stone?",
+        "emailSent": "Sending Stone Dispatched",
+        "emailSentMessage": "The welcoming stone hath been resent. Check thy inbox."
+    },
+    "order": {
+        "title": "Conjure Seal of Authentication"
+    },
+    "changeApproverEmail": {
+        "title": "Alter Approver Ethereal Address",
+        "selectApproverEmail": "Select Approver Ethereal Address"
+    }
+}

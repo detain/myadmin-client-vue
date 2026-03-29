@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Ship's Ledger Settings"
+    },
+    "changePassword": {
+        "title": "Change Secret Countersign",
+        "cardTitle": "Update Secret Countersign",
+        "currentPassword": "Current Secret Countersign",
+        "newPassword": "New Secret Countersign",
+        "confirmPassword": "Confirm Secret Countersign",
+        "updatePassword": "Update Secret Countersign"
+    },
+    "changeUsername": {
+        "title": "Change Pirate Handle",
+        "disabled": "Pirate Handle changes have been temporarily anchored.",
+        "currentUsername": "Current Pirate Handle",
+        "newDesiredUsername": "New Desired Pirate Handle",
+        "confirmationCode": "Confirmation Code",
+        "pleaseWait": "Patience, landlubber!",
+        "gotError": "Shiver me timbers! Got error {error}"
+    },
+    "contactInfo": {
+        "title": "Crew Contact Info",
+        "cardTitle": "Update Crew Contact Info",
+        "headsUp": "All hands on deck!",
+        "headsUpMessage": "Although this information be optional, providing (accurate) information will help both enrich our interactions and lower yer Risk % Score giving ye quicker and more convenient access to parts of the ship (such as not having to authenticate a Letter of Credit).",
+        "riskScore": "Risk % Score",
+        "personalInformation": "Personal Information",
+        "name": "Pirate Name",
+        "namePlaceholder": "Blackbeard",
+        "company": "Pirate Company",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Port Address Line 1",
+        "addressLine2": "Port Address Line 2",
+        "cityState": "Port, Territory",
+        "city": "Port",
+        "state": "Territory",
+        "country": "Claimed Waters",
+        "zipcode": "Port Code",
+        "phoneNo": "Signal Horn No",
+        "phoneNumber": "Signal Horn Number",
+        "language": "Tongue Spoken",
+        "auto": "Auto",
+        "currency": "Coin of the Realm",
+        "timeZone": "Ship's Time Zone",
+        "otherSettings": "Other Ship's Articles",
+        "disablePasswordResets": "Disable (Forgotten yer Countersign) Secret Countersign Resets.",
+        "disableInvoiceReminders": "Disable Bill of Plunder Reminder Dispatches.",
+        "disableServerInvoiceReminders": "Disable Ship Invoice Reminder Dispatches.",
+        "disableReinstall": "Disable Re-commissioning.",
+        "alternateEmailInvoices": "Alternate Message Bottle for Bills of Plunder",
+        "alternateEmailInvoicesPlaceholder": "Alternative message bottle address for sending bills of plunder",
+        "alternateEmailAbuse": "Alternate Message Bottle for Abuse Reports",
+        "updateInfo": "Update the Ship's Log"
+    }
+}

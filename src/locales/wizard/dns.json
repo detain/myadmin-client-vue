@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Summoning Registry",
+        "addDomain": "Summon Named Territory",
+        "deleteDomain": "Banish Named Territory",
+        "domainName": "Territory Name",
+        "dnsServers": "Summoning Servers",
+        "confirmDelete": "Art thou certain thou wishest to banish this named territory?",
+        "noDomains": "No named territories found"
+    },
+    "editor": {
+        "title": "Summoning Registry Scribe",
+        "addRecord": "Summon Record",
+        "deleteRecord": "Banish Record",
+        "editRecord": "Alter Record",
+        "recordType": "Record Type",
+        "hostname": "Realm Address",
+        "address": "Ether Address",
+        "distance": "Distance",
+        "weight": "Weight",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Actions",
+        "confirmDelete": "Art thou certain thou wishest to banish this record?"
+    }
+}

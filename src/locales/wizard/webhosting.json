@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Web Weaving List",
+        "orderTitle": "Conjure Web Weaving Registrations"
+    },
+    "view": {
+        "title": "View Web Weaving {id}",
+        "package": "Enchantment Tier",
+        "nextInvoiceDate": "Next Debt Scroll Date:",
+        "billing": "Grand Treasury",
+        "billed": "tithed",
+        "billingStatusIs": "Treasury Aura is:",
+        "hostInfo": "Host Info",
+        "username": "Mage Name:",
+        "ip": "Ether Address:",
+        "server": "Iron Golem:",
+        "notSetYet": "Not yet inscribed",
+        "login": "Enter the Tower",
+        "types": "Types:",
+        "linksLabel": "Portals:",
+        "manualLogin": "Manual Tower Entry",
+        "automaticLogin": "Automatic Tower Entry",
+        "clickHere": "Traverse Here",
+        "defaultNameservers": "Default Name-Binders",
+        "nameservers": "Name-Binders:",
+        "externalLinks": "External Portals",
+        "names": "Names:",
+        "websitePreview": "Web Weaving Preview",
+        "links": "Portals",
+        "welcomeEmailConfirm": "Art thou certain thou wishest to resend the welcoming stone?",
+        "emailSent": "Sending Stone Dispatched",
+        "emailSentMessage": "The welcoming stone hath been resent. Check thy inbox."
+    },
+    "buyIp": {
+        "title": "Conjure Additional Ether Address Addon",
+        "existingAddonIps": "Existing Addon Ether Addresses",
+        "additionalIp": "Additional Ether Address",
+        "monthlyCost": "Moon Cycle Gold ({symbol})",
+        "costDescription": "Gold ({symbol}) every moon cycle as thy web weaving is tithed",
+        "confirmPurchase": "Bind Conjuration",
+        "confirmMessage": "Additional Ether Address gold: {symbol}{cost}/moon cycle. Art thou certain thou wishest to conjure an additional ether address?",
+        "placeOrder": "Place Conjuration",
+        "orderPlaced": "Conjuration Placed"
+    },
+    "reverseDns": {
+        "title": "Reverse Summoning Registry",
+        "updateReverseDns": "Transmute Reverse Summoning Registry"
+    },
+    "downloadBackups": {
+        "title": "Extract Vault Copies",
+        "backup": "Vault Copy",
+        "size": "Size",
+        "options": "Options"
+    },
+    "migration": {
+        "title": "Transport Thy Web Weaving",
+        "currentWebHostInfo": "Current Web Weaving Info",
+        "customerPortalUrl": "Patron Portal URL",
+        "portalExample": "For Example: sso.godaddy.com",
+        "registeredUsername": "Registered Mage Name / Ethereal Address / Arcane ID",
+        "password": "Incantation",
+        "controlPanelUrl": "Control Sanctum URL",
+        "controlPanelExample": "For Example: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Control Sanctum Mage Name",
+        "ftpPassword": "FTP / Control Sanctum Incantation",
+        "holdingPageQuestion": "If the site is live/busy with high arcane traffic, may we set a holding sanctum during migration?",
+        "specialRequirementsQuestion": "Doth this site have special requirements such as PHP Version / Modules?",
+        "domainRegistryInfo": "Territory Registry Information",
+        "transferDomainQuestion": "Dost thou also wish us to aid thee in transferring the territory name registration?",
+        "updateNameserversQuestion": "Dost thou wish us to transmute the name-binders as soon as we finish the data migration?",
+        "domainRegistryPortal": "Territory Registry Patron Portal",
+        "importantNotes": "Heed These Warnings",
+        "note1": "Filling out this parchment shall open a new magical parchment for our arcane council to begin thy migration.",
+        "note2": "Prithee be as complete and accurate as possible to avoid any delays.",
+        "note3": "A typical migration is completed within 48 to 72 hours. Sometimes longer if the amount of data to transport is vast.",
+        "note4": "The old web weaving grimoire needs to be online and accessible whilst we are performing the migration, otherwise we may face difficulty.",
+        "note5": "Prithee make no alterations on thy site whilst we perform the migration, otherwise those data may not be transported to the new web weaving."
+    },
+    "order": {
+        "title": "Conjure Web Weaving"
+    }
+}

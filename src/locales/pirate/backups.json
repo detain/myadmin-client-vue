@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Treasure Hold / Hidden Cache List",
+        "orderTitle": "Commission New Hidden Cache"
+    },
+    "view": {
+        "title": "Survey Hidden Cache {id}",
+        "package": "Ship's Provisions Package",
+        "nextInvoiceDate": "Next Bill of Plunder Date:",
+        "billing": "The Plunder Ledger",
+        "billed": "plundered:",
+        "statusIs": "Vessel Status is:",
+        "hostServer": "Host Ship",
+        "links": "Sailing Routes",
+        "welcomeEmailConfirm": "Are ye sure ye want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check yer crow's nest."
+    },
+    "order": {
+        "title": "Commission Treasure Hold"
+    }
+}

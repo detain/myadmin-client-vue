@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Trading Permits List",
+        "orderTitle": "Place Your Order — Don't Wait! for Trading Permit Registrations"
+    },
+    "view": {
+        "title": "View Trading Permit {id}",
+        "package": "Service Package (Today's Best Value!)",
+        "nextInvoiceDate": "Payment Due Date:",
+        "billing": "The Debt Ledger",
+        "billed": "billed:",
+        "statusIs": "Deal Status is:",
+        "licenseInfo": "Trading Permit Info",
+        "cpanelInfo": "cPanel Info",
+        "links": "Quick Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Place Your Order — Don't Wait! for a Trading Permit"
+    },
+    "changeIp": {
+        "title": "Change Network Address"
+    },
+    "changeOs": {
+        "title": "Change Operating System",
+        "selectLicenseOs": "Select Trading Permit Operating System"
+    }
+}

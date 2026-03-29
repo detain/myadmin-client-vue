@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "The Warehouse & Reserve Stock List",
+        "orderTitle": "Place Your Order — Don't Wait! for Warehouse & Reserve Stock"
+    },
+    "view": {
+        "title": "View Reserve Stock {id}",
+        "package": "Service Package (Today's Best Value!)",
+        "nextInvoiceDate": "Payment Due Date:",
+        "billing": "The Debt Ledger",
+        "billed": "billed:",
+        "statusIs": "Deal Status is:",
+        "hostServer": "Host Cargo Unit",
+        "links": "Quick Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Place Your Order — Don't Wait! for Warehouse Storage"
+    }
+}

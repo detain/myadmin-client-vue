@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Deep Space Vault / Data Archive List",
+        "orderTitle": "Requisition Deep Space Vault Registrations"
+    },
+    "view": {
+        "title": "View Data Archive {id}",
+        "package": "Mission Package",
+        "nextInvoiceDate": "Next Resource Allocation Date:",
+        "billing": "Credits & Resource Ledger",
+        "billed": "billed:",
+        "statusIs": "Mission Status is:",
+        "hostServer": "Host Star Station",
+        "links": "Navigation Links",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the welcome subspace message?",
+        "emailSent": "Transmission Sent",
+        "emailSentMessage": "The welcome subspace transmission has been resent. Check your comm channel."
+    },
+    "order": {
+        "title": "Requisition Deep Space Vault Storage"
+    }
+}

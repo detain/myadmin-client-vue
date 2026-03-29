@@ -19,6 +19,16 @@ const { loading, error, data } = storeToRefs(accountStore);
 const timezones = ref<string[]>([]);
 const currencies = ref<string[]>([]);
 const locales = ref<Record<string, LocaleInfo>>({});
+
+const themedLocales: { code: string; name: string }[] = [
+    { code: 'wizard', name: 'Wizard (Arcane Guild)' },
+    { code: 'fantasy', name: 'Fantasy (Adventurer\'s Guild)' },
+    { code: 'feudal', name: 'Feudal (Royal Kingdom)' },
+    { code: 'mad_scientist', name: 'Mad Scientist (The Laboratory)' },
+    { code: 'merchant', name: 'Merchant (Grand Bazaar)' },
+    { code: 'pirate', name: 'Pirate (High Seas)' },
+    { code: 'space', name: 'Space (Galactic Federation)' },
+];
 const baseUrl = siteStore.getBaseUrl();
 const countries = ref({});
 
@@ -216,6 +226,9 @@ loadLocales();
                                         <select id="locale" v-model="data.locale" name="locale" class="form-control select2 form-control-sm">
                                             <option value="auto">{{ t('account.contactInfo.auto') }}</option>
                                             <option v-for="(localeData, code, index) in locales" :key="index" :value="code">{{ code }} - {{ localeData.name }} ({{ localeData.local_name }})</option>
+                                            <optgroup label="── Themed ──">
+                                                <option v-for="theme in themedLocales" :key="theme.code" :value="theme.code">{{ theme.code }} - {{ theme.name }}</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                     <span class="form-text"></span>

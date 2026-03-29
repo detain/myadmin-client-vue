@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Pneumatic Message System Registry",
+        "orderTitle": "Requisition Pneumatic Message System Registrations"
+    },
+    "view": {
+        "title": "Inspect Pneumatic Message System {id}",
+        "package": "Research Package",
+        "nextInvoiceDate": "Next Funding Requisition Date:",
+        "billing": "Research Funding",
+        "billed": "billed:",
+        "statusIs": "Operational Status is:",
+        "mailApi": "Message System API",
+        "usageCount": "Transmission Count:",
+        "links": "System Links",
+        "connectionInfo": "Connection Parameters",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the laboratory orientation communication?",
+        "emailSent": "Pneumatic Message Dispatched",
+        "emailSentMessage": "The laboratory orientation communication has been retransmitted. Check your message receptacle."
+    },
+    "order": {
+        "title": "Requisition Pneumatic Message System"
+    },
+    "alerts": {
+        "title": "System Anomaly Alerts",
+        "addAlert": "Add Anomaly Alert",
+        "editAlert": "Modify Anomaly Alert Parameters",
+        "noAlerts": "No anomaly alerts detected in apparatus"
+    },
+    "delist": {
+        "title": "Decontaminate Blocked Addresses",
+        "blockedEmails": "Quarantined Electronic Correspondence Addresses"
+    },
+    "denyRules": {
+        "title": "Transmission Prohibition Rules",
+        "addRule": "Add Prohibition Rule",
+        "noRules": "No transmission prohibition rules detected in apparatus"
+    },
+    "logs": {
+        "title": "Laboratory Transmission Logs",
+        "searchLogs": "Query Transmission Logs"
+    },
+    "stats": {
+        "title": "Transmission Statistics"
+    },
+    "deliverability": {
+        "title": "Transmission Success Rate Analysis"
+    }
+}
