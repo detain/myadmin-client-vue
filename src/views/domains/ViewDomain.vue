@@ -114,7 +114,7 @@ loadLink(route.params.link as string);
                     <h3>{{ t('domains.view.package') }}</h3>
                     <p>{{ serviceType.services_name }}</p>
                     <p>
-                        {{ t('domains.view.nextInvoiceDate', { date: '' }) }} <b>{{ formatDate(billingDetails.next_date) }}</b>
+                        <i18n-t keypath="domains.view.nextInvoiceDate" tag="span"><template #date><b>{{ formatDate(billingDetails.next_date) }}</b></template></i18n-t>
                     </p>
                 </div>
                 <div class="icon"><i class="fas fa-briefcase"></i></div>
@@ -130,7 +130,7 @@ loadLink(route.params.link as string);
                         {{ t('domains.view.billedFrequency', { frequency: billingDetails.service_frequency }) }}
                     </p>
                     <p>
-                        {{ t('domains.view.expireDate', { date: '' }) }} <b>{{ allInfo.attributes && allInfo.attributes.expiredate ? formatDate(allInfo.attributes.expiredate) : formatDate(serviceInfo.domain_expire_date) }}</b>
+                        <i18n-t keypath="domains.view.expireDate" tag="span"><template #date><b>{{ allInfo.attributes && allInfo.attributes.expiredate ? formatDate(allInfo.attributes.expiredate) : formatDate(serviceInfo.domain_expire_date) }}</b></template></i18n-t>
                     </p>
                 </div>
                 <div class="icon"><i class="fas fa-dollar-sign"></i></div>
@@ -144,7 +144,7 @@ loadLink(route.params.link as string);
                 <div class="inner mb-1 px-3 pb-2 text-white">
                     <h3>{{ t('domains.view.whoisPrivacy') }}</h3>
                     <p style="padding-top: 1.3rem; padding-bottom: 1rem">
-                        {{ t('domains.view.whoisPrivacyIs', { status: '' }) }} <b class="text-md">{{ whoisPrivacy }}</b>
+                        <i18n-t keypath="domains.view.whoisPrivacyIs" tag="span"><template #status><b class="text-md">{{ whoisPrivacy }}</b></template></i18n-t>
                     </p>
                 </div>
                 <div class="icon"><i class="fas fa-user-secret"></i></div>
