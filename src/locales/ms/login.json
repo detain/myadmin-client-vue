@@ -80,8 +80,11 @@
     "home": {
         "cart": "Troli",
         "editPersonalInfo": "Edit Maklumat Peribadi",
-        "copyright": "Hak Cipta \u00a9 {year} InterServer Inc.",
+        "copyright": "Hak Cipta © {year} InterServer Inc.",
         "allRightsReserved": "Hak cipta terpelihara."
     },
-    "copyright": "Hak Cipta \u00a9 {year} - Hak Cipta Terpelihara."
+    "copyright": "Hak Cipta © {year} - Hak Cipta Terpelihara.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Pelayan"
 }

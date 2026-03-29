@@ -80,8 +80,11 @@
     "home": {
         "cart": "Coș",
         "editPersonalInfo": "Editare informații personale",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Toate drepturile rezervate."
     },
-    "copyright": "Copyright \u00a9 {year} - Toate drepturile rezervate."
+    "copyright": "Copyright © {year} - Toate drepturile rezervate.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servere"
 }

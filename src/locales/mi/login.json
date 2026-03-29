@@ -83,5 +83,8 @@
         "copyright": "Manatārua © {year} InterServer Inc.",
         "allRightsReserved": "Ngā tika katoa kei roto."
     },
-    "copyright": "Manatārua © {year} - Ngā Tika Katoa Kei Roto."
+    "copyright": "Manatārua © {year} - Ngā Tika Katoa Kei Roto.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Ngā Tūmau"
 }

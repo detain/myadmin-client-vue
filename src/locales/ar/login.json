@@ -80,8 +80,11 @@
     "home": {
         "cart": "سلة التسوق",
         "editPersonalInfo": "تعديل المعلومات الشخصية",
-        "copyright": "حقوق النشر \u00a9 {year} InterServer Inc.",
+        "copyright": "حقوق النشر © {year} InterServer Inc.",
         "allRightsReserved": "جميع الحقوق محفوظة."
     },
-    "copyright": "حقوق النشر \u00a9 {year} - جميع الحقوق محفوظة."
+    "copyright": "حقوق النشر © {year} - جميع الحقوق محفوظة.",
+    "statsVps": "VPS",
+    "statsWebsites": "استضافة الويب",
+    "statsServers": "الخوادم"
 }

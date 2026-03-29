@@ -80,8 +80,11 @@
     "home": {
         "cart": "Kerrtu",
         "editPersonalInfo": "Editja l-Informazzjoni Personali",
-        "copyright": "Drittijiet tal-Awtur \u00a9 {year} InterServer Inc.",
+        "copyright": "Drittijiet tal-Awtur © {year} InterServer Inc.",
         "allRightsReserved": "Id-drittijiet kollha riżervati."
     },
-    "copyright": "Drittijiet tal-Awtur \u00a9 {year} - Id-Drittijiet Kollha Riżervati."
+    "copyright": "Drittijiet tal-Awtur © {year} - Id-Drittijiet Kollha Riżervati.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servers"
 }

@@ -80,8 +80,11 @@
     "home": {
         "cart": "The Plunder Haul",
         "editPersonalInfo": "Amend Yer Crew File",
-        "copyright": "Protected by the Pirate's Code \u00a9 {year} InterServer Inc.",
+        "copyright": "Protected by the Pirate's Code © {year} InterServer Inc.",
         "allRightsReserved": "All plunder reserved."
     },
-    "copyright": "Protected by the Pirate's Code \u00a9 {year} - All Plunder Reserved."
+    "copyright": "Protected by the Pirate's Code © {year} - All Plunder Reserved.",
+    "statsVps": "Captured Vessels",
+    "statsWebsites": "Digital Coves",
+    "statsServers": "Ships o' the Line"
 }

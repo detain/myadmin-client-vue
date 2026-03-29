@@ -83,5 +83,8 @@
         "copyright": "Copyright \u00a9 {year} InterServer Inc.",
         "allRightsReserved": "All rights reserved."
     },
-    "copyright": "Copyright \u00a9 {year} - All Rights Reserved."
+    "copyright": "Copyright \u00a9 {year} - All Rights Reserved.",
+    "statsVps": "VPS",
+    "statsWebsites": "Websites",
+    "statsServers": "Servers"
 }

@@ -80,8 +80,11 @@
     "home": {
         "cart": "Kosár",
         "editPersonalInfo": "Személyes adatok szerkesztése",
-        "copyright": "Szerzői jog \u00a9 {year} InterServer Inc.",
+        "copyright": "Szerzői jog © {year} InterServer Inc.",
         "allRightsReserved": "Minden jog fenntartva."
     },
-    "copyright": "Szerzői jog \u00a9 {year} - Minden jog fenntartva."
+    "copyright": "Szerzői jog © {year} - Minden jog fenntartva.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Szerverek"
 }

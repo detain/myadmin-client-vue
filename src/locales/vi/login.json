@@ -80,8 +80,11 @@
     "home": {
         "cart": "Giỏ hàng",
         "editPersonalInfo": "Chỉnh sửa thông tin cá nhân",
-        "copyright": "Bản quyền \u00a9 {year} InterServer Inc.",
+        "copyright": "Bản quyền © {year} InterServer Inc.",
         "allRightsReserved": "Đã đăng ký bản quyền."
     },
-    "copyright": "Bản quyền \u00a9 {year} - Đã đăng ký bản quyền."
+    "copyright": "Bản quyền © {year} - Đã đăng ký bản quyền.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Máy chủ"
 }

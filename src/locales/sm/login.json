@@ -80,8 +80,11 @@
     "home": {
         "cart": "Kato Fa'atau",
         "editPersonalInfo": "Fa'atonutonu Fa'amatalaga Patino",
-        "copyright": "Totogi Puletaofia \u00a9 {year} InterServer Inc.",
+        "copyright": "Totogi Puletaofia © {year} InterServer Inc.",
         "allRightsReserved": "Aia uma o lo'o fa'asaoina."
     },
-    "copyright": "Totogi Puletaofia \u00a9 {year} - Aia Uma Fa'asaoina."
+    "copyright": "Totogi Puletaofia © {year} - Aia Uma Fa'asaoina.",
+    "statsVps": "VPS",
+    "statsWebsites": "Talimalo Initaneti",
+    "statsServers": "Server"
 }

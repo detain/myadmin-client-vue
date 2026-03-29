@@ -80,8 +80,11 @@
     "home": {
         "cart": "Mission Requisitions",
         "editPersonalInfo": "Modify Officer Identification Records",
-        "copyright": "Protected under Galactic Federation Law \u00a9 {year} InterServer Inc.",
+        "copyright": "Protected under Galactic Federation Law © {year} InterServer Inc.",
         "allRightsReserved": "All rights reserved across all known sectors."
     },
-    "copyright": "Protected under Galactic Federation Law \u00a9 {year} - All Rights Reserved."
+    "copyright": "Protected under Galactic Federation Law © {year} - All Rights Reserved.",
+    "statsVps": "Orbital Platforms",
+    "statsWebsites": "Orbital Web Arrays",
+    "statsServers": "Deep Space Stations"
 }

@@ -80,8 +80,11 @@
     "home": {
         "cart": "Ingqola",
         "editPersonalInfo": "Hlela Ulwazi Lwakho Buqu",
-        "copyright": "Ilungelo lokushicilela \u00a9 {year} InterServer Inc.",
+        "copyright": "Ilungelo lokushicilela © {year} InterServer Inc.",
         "allRightsReserved": "Amalungelo onke agciniwe."
     },
-    "copyright": "Ilungelo lokushicilela \u00a9 {year} - Amalungelo Onke Agciniwe."
+    "copyright": "Ilungelo lokushicilela © {year} - Amalungelo Onke Agciniwe.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Iiseva"
 }
