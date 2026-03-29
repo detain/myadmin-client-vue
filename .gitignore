@@ -1,3 +1,5 @@
+.claude/settings.local.json
+.claude/worktrees
 .claire
 #SSL Certs
 privkey.pem
