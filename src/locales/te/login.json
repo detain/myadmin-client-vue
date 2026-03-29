@@ -80,8 +80,11 @@
     "home": {
         "cart": "కార్ట్",
         "editPersonalInfo": "వ్యక్తిగత సమాచారం సవరించు",
-        "copyright": "కాపీరైట్ \u00a9 {year} InterServer Inc.",
+        "copyright": "కాపీరైట్ © {year} InterServer Inc.",
         "allRightsReserved": "అన్ని హక్కులు రిజర్వు చేయబడ్డాయి."
     },
-    "copyright": "కాపీరైట్ \u00a9 {year} - అన్ని హక్కులు రిజర్వు చేయబడ్డాయి."
+    "copyright": "కాపీరైట్ © {year} - అన్ని హక్కులు రిజర్వు చేయబడ్డాయి.",
+    "statsVps": "VPS",
+    "statsWebsites": "వెబ్ హోస్టింగ్",
+    "statsServers": "సర్వర్లు"
 }

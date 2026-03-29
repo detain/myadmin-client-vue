@@ -80,8 +80,11 @@
     "home": {
         "cart": "Panye",
         "editPersonalInfo": "Modifye Enfòmasyon Pèsonèl",
-        "copyright": "Dwa otè \u00a9 {year} InterServer Inc.",
+        "copyright": "Dwa otè © {year} InterServer Inc.",
         "allRightsReserved": "Tout dwa rezève."
     },
-    "copyright": "Dwa otè \u00a9 {year} - Tout Dwa Rezève."
+    "copyright": "Dwa otè © {year} - Tout Dwa Rezève.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Sèvè"
 }

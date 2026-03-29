@@ -80,8 +80,11 @@
     "home": {
         "cart": "Adventurer's Pack",
         "editPersonalInfo": "Modify Personal Dossier",
-        "copyright": "Protected by the Adventurer's Guild Charter \u00a9 {year} InterServer Inc.",
+        "copyright": "Protected by the Adventurer's Guild Charter © {year} InterServer Inc.",
         "allRightsReserved": "All rights reserved by the Guild."
     },
-    "copyright": "Protected by the Adventurer's Guild Charter \u00a9 {year} - All Rights Reserved."
+    "copyright": "Protected by the Adventurer's Guild Charter © {year} - All Rights Reserved.",
+    "statsVps": "Summoned Companions",
+    "statsWebsites": "Territory Webworks",
+    "statsServers": "Strongholds"
 }

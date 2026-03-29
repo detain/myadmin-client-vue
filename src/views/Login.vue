@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import * as Yup from 'yup';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import { router } from '@/router/index';
+import { defaultLocale, loadLocaleMessages, resolveAppLocale, setAppLocale } from '@/i18n';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -580,6 +581,7 @@ function loadTurnstileScript(): Promise<void> {
 }
 
 onMounted(async () => {
+    await onLocaleChange();
     await loadTurnstileScript();
     widgetId.value = window.turnstile.render(containerRef.value, {
         sitekey: '0x4AAAAAABeXCi3hjKZn2bcS',
@@ -601,10 +603,78 @@ onMounted(async () => {
 
 //useRecaptchaProvider();
 authStore.load();
+
+// ── Language selector ─────────────────────────────────────────────────────────
+const localeModules = import.meta.glob('../locales/*/common.json');
+const localeDisplayNames: Record<string, string> = {
+    af: 'Afrikaans', am: 'አማርኛ', ar: 'العربية', az: 'Azərbaycan',
+    be: 'Беларуская', bg: 'Български', bn: 'বাংলা', bs: 'Bosanski',
+    ca: 'Català', ceb: 'Cebuano', co: 'Corsu', cs: 'Čeština',
+    cy: 'Cymraeg', da: 'Dansk', de: 'Deutsch', el: 'Ελληνικά',
+    en: 'English', eo: 'Esperanto', es: 'Español', et: 'Eesti',
+    eu: 'Euskara', fa: 'فارسی', fi: 'Suomi', fr: 'Français',
+    fy: 'Frysk', ga: 'Gaeilge', gd: 'Gàidhlig', gl: 'Galego',
+    gu: 'ગુજરાતી', ha: 'Hausa', haw: 'ʻŌlelo Hawaiʻi', he: 'עברית',
+    hi: 'हिन्दी', hmn: 'Hmong', hr: 'Hrvatski', ht: 'Kreyòl ayisyen',
+    hu: 'Magyar', hy: 'Հայերեն', id: 'Bahasa Indonesia', ig: 'Igbo',
+    is: 'Íslenska', it: 'Italiano', ja: '日本語', ka: 'ქართული',
+    kk: 'Қазақша', km: 'ខ្មែរ', kn: 'ಕನ್ನಡ', ko: '한국어',
+    ku: 'Kurdî', ky: 'Кыргызча', la: 'Latina', lb: 'Lëtzebuergesch',
+    lo: 'ລາວ', lt: 'Lietuvių', lv: 'Latviešu', mg: 'Malagasy',
+    mi: 'Te Reo Māori', mk: 'Македонски', ml: 'മലയാളം', mn: 'Монгол',
+    mr: 'मराठी', ms: 'Bahasa Melayu', mt: 'Malti', my: 'မြန်မာဘာသာ',
+    ne: 'नेपाली', nl: 'Nederlands', no: 'Norsk', ny: 'Chichewa',
+    pa: 'ਪੰਜਾਬੀ', pl: 'Polski', ps: 'پښتو', pt: 'Português',
+    ro: 'Română', ru: 'Русский', sd: 'سنڌي', si: 'සිංහල',
+    sk: 'Slovenčina', sl: 'Slovenščina', sm: 'Samoan', sn: 'Shona',
+    so: 'Soomaali', sq: 'Shqip', sr: 'Српски', st: 'Sesotho',
+    su: 'Basa Sunda', sv: 'Svenska', sw: 'Kiswahili', ta: 'தமிழ்',
+    te: 'తెలుగు', tg: 'Тоҷикӣ', th: 'ภาษาไทย', tl: 'Filipino',
+    tr: 'Türkçe', uk: 'Українська', ur: 'اردو', uz: 'Oʻzbek',
+    vi: 'Tiếng Việt', xh: 'IsiXhosa', yi: 'ייִדיש', yo: 'Yorùbá',
+    zh: '中文', zu: 'IsiZulu',
+    // Themed
+    wizard: '🧙 Wizard', fantasy: '⚔️ Fantasy', feudal: '👑 Feudal',
+    mad_scientist: '🧪 Mad Scientist', merchant: '🏪 Merchant',
+    pirate: '☠️ Pirate', space: '🚀 Space',
+};
+const themedCodes = new Set(['wizard', 'fantasy', 'feudal', 'mad_scientist', 'merchant', 'pirate', 'space']);
+
+const availableLocales = computed(() =>
+    Object.keys(localeModules)
+        .map((path) => path.match(/\/locales\/([^/]+)\/common\.json$/)?.[1])
+        .filter((code): code is string => Boolean(code))
+        .map((code) => ({ code, name: localeDisplayNames[code] ?? code }))
+        .sort((a, b) => {
+            const aThemed = themedCodes.has(a.code);
+            const bThemed = themedCodes.has(b.code);
+            if (aThemed !== bThemed) return aThemed ? 1 : -1;
+            return a.name.localeCompare(b.name);
+        })
+);
+
+const selectedLocale = ref(resolveAppLocale(null));
+
+async function onLocaleChange() {
+    const locale = setAppLocale(selectedLocale.value);
+    await Promise.all([
+        loadLocaleMessages(locale, 'common'),
+        loadLocaleMessages(locale, 'login'),
+        loadLocaleMessages(defaultLocale, 'common'),
+        loadLocaleMessages(defaultLocale, 'login'),
+    ]);
+}
+
+watch(selectedLocale, onLocaleChange);
 </script>
 
 <template>
-    <div class="bg-black p-3 px-3"><img src="../assets/images/logo_new.png" alt="" /></div>
+    <div class="bg-black p-3 px-3 flex items-center justify-between">
+        <img src="../assets/images/logo_new.png" alt="" />
+        <select v-model="selectedLocale" class="bg-gray-800 text-white text-sm rounded px-3 py-1 border border-gray-600 focus:outline-none focus:border-blue-400 cursor-pointer" :title="t('account.contactInfo.language')" aria-label="Language">
+            <option v-for="loc in availableLocales" :key="loc.code" :value="loc.code">{{ loc.name }}</option>
+        </select>
+    </div>
     <div class="container-main flex min-h-screen flex-grow flex-col-reverse lg:flex-row">
         <div class="marketing-content min-h-full w-full bg-blue-700 lg:block lg:w-5/12">
             <h1 class="mt-5 w-full text-center text-3xl uppercase tracking-widest text-white">{{ t('login.welcomeBack') }}</h1>
@@ -612,17 +682,17 @@ authStore.load();
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/vps.png" alt="" /></div>
                     <div id="count-v" class="text-center text-4xl tracking-widest text-white">{{ counts?.vps }}</div>
-                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">VPS</div>
+                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">{{ t('login.statsVps') }}</div>
                 </div>
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/website.png" alt="" /></div>
                     <div id="count-w" class="text-center text-4xl tracking-widest text-white">{{ counts?.websites }}</div>
-                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Websites</div>
+                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">{{ t('login.statsWebsites') }}</div>
                 </div>
                 <div class="mx-auto">
                     <div class="mb-1"><img src="../assets/images/servers.png" alt="" /></div>
                     <div id="count-s" class="text-center text-4xl tracking-widest text-white">{{ counts?.servers }}</div>
-                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Servers</div>
+                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">{{ t('login.statsServers') }}</div>
                 </div>
             </div>
         </div>

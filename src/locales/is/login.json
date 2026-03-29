@@ -80,8 +80,11 @@
     "home": {
         "cart": "Karfa",
         "editPersonalInfo": "Breyta persónulegum upplýsingum",
-        "copyright": "Höfundarréttur \u00a9 {year} InterServer Inc.",
+        "copyright": "Höfundarréttur © {year} InterServer Inc.",
         "allRightsReserved": "Öll réttindi áskilin."
     },
-    "copyright": "Höfundarréttur \u00a9 {year} - Öll réttindi áskilin."
+    "copyright": "Höfundarréttur © {year} - Öll réttindi áskilin.",
+    "statsVps": "VPS",
+    "statsWebsites": "Vefhýsing",
+    "statsServers": "Þjónar"
 }

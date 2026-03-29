@@ -80,8 +80,11 @@
     "home": {
         "cart": "Košík",
         "editPersonalInfo": "Upravit osobní údaje",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Všechna práva vyhrazena."
     },
-    "copyright": "Copyright \u00a9 {year} – Všechna práva vyhrazena."
+    "copyright": "Copyright © {year} – Všechna práva vyhrazena.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servery"
 }

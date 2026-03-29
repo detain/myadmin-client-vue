@@ -80,8 +80,11 @@
     "home": {
         "cart": "Тэрэг",
         "editPersonalInfo": "Хувийн мэдээлэл засах",
-        "copyright": "Зохиогчийн эрх \u00a9 {year} InterServer Inc.",
+        "copyright": "Зохиогчийн эрх © {year} InterServer Inc.",
         "allRightsReserved": "Бүх эрх хуулиар хамгаалагдсан."
     },
-    "copyright": "Зохиогчийн эрх \u00a9 {year} - Бүх эрх хуулиар хамгаалагдсан."
+    "copyright": "Зохиогчийн эрх © {year} - Бүх эрх хуулиар хамгаалагдсан.",
+    "statsVps": "VPS",
+    "statsWebsites": "Вэб хостинг",
+    "statsServers": "Серверүүд"
 }

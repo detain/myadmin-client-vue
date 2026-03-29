@@ -80,8 +80,11 @@
     "home": {
         "cart": "Səbət",
         "editPersonalInfo": "Şəxsi Məlumatları Redaktə Et",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Bütün hüquqlar qorunur."
     },
-    "copyright": "Copyright \u00a9 {year} - Bütün Hüquqlar Qorunur."
+    "copyright": "Copyright © {year} - Bütün Hüquqlar Qorunur.",
+    "statsVps": "VPS",
+    "statsWebsites": "Veb Hostinq",
+    "statsServers": "Serverlər"
 }

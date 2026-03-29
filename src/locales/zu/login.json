@@ -80,8 +80,11 @@
     "home": {
         "cart": "Inqola",
         "editPersonalInfo": "Hlela Ulwazi Lomuntu Siqu",
-        "copyright": "Ilungelo Lodumo \u00a9 {year} InterServer Inc.",
+        "copyright": "Ilungelo Lodumo © {year} InterServer Inc.",
         "allRightsReserved": "Wonke amalungelo agodliwe."
     },
-    "copyright": "Ilungelo Lodumo \u00a9 {year} - Wonke Amalungelo Agodliwe."
+    "copyright": "Ilungelo Lodumo © {year} - Wonke Amalungelo Agodliwe.",
+    "statsVps": "VPS",
+    "statsWebsites": "Iwebhu Hosithinge",
+    "statsServers": "Izeva"
 }

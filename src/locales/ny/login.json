@@ -80,8 +80,11 @@
     "home": {
         "cart": "Dengu",
         "editPersonalInfo": "Sinthani Zambiri Zanu",
-        "copyright": "Ufulu wa Cholemba \u00a9 {year} InterServer Inc.",
+        "copyright": "Ufulu wa Cholemba © {year} InterServer Inc.",
         "allRightsReserved": "Ufulu wonse wasungidwa."
     },
-    "copyright": "Ufulu wa Cholemba \u00a9 {year} - Ufulu Wonse Wasungidwa."
+    "copyright": "Ufulu wa Cholemba © {year} - Ufulu Wonse Wasungidwa.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhoteli",
+    "statsServers": "Maseva"
 }

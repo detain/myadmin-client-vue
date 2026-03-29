@@ -80,8 +80,11 @@
     "home": {
         "cart": "Handlekurv",
         "editPersonalInfo": "Rediger personlig informasjon",
-        "copyright": "Opphavsrett \u00a9 {year} InterServer Inc.",
+        "copyright": "Opphavsrett © {year} InterServer Inc.",
         "allRightsReserved": "Alle rettigheter forbeholdt."
     },
-    "copyright": "Opphavsrett \u00a9 {year} - Alle rettigheter forbeholdt."
+    "copyright": "Opphavsrett © {year} - Alle rettigheter forbeholdt.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhotell",
+    "statsServers": "Servere"
 }

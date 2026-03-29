@@ -80,8 +80,11 @@
     "home": {
         "cart": "Your Shopping Haul",
         "editPersonalInfo": "Revise Personal Info",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc. — Best Prices Guaranteed!",
+        "copyright": "Copyright © {year} InterServer Inc. — Best Prices Guaranteed!",
         "allRightsReserved": "All rights reserved."
     },
-    "copyright": "Copyright \u00a9 {year} - All Rights Reserved."
+    "copyright": "Copyright © {year} - All Rights Reserved.",
+    "statsVps": "Premium Wares",
+    "statsWebsites": "Shopfront Rentals",
+    "statsServers": "Heavy Cargo Units"
 }

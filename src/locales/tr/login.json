@@ -80,8 +80,11 @@
     "home": {
         "cart": "Sepet",
         "editPersonalInfo": "Kişisel Bilgileri Düzenle",
-        "copyright": "Telif Hakkı \u00a9 {year} InterServer Inc.",
+        "copyright": "Telif Hakkı © {year} InterServer Inc.",
         "allRightsReserved": "Tüm hakları saklıdır."
     },
-    "copyright": "Telif Hakkı \u00a9 {year} - Tüm Hakları Saklıdır."
+    "copyright": "Telif Hakkı © {year} - Tüm Hakları Saklıdır.",
+    "statsVps": "VPS",
+    "statsWebsites": "Web Barındırma",
+    "statsServers": "Sunucular"
 }

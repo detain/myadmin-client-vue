@@ -80,8 +80,11 @@
     "home": {
         "cart": "ตะกร้าสินค้า",
         "editPersonalInfo": "แก้ไขข้อมูลส่วนตัว",
-        "copyright": "ลิขสิทธิ์ \u00a9 {year} InterServer Inc.",
+        "copyright": "ลิขสิทธิ์ © {year} InterServer Inc.",
         "allRightsReserved": "สงวนลิขสิทธิ์ทั้งหมด"
     },
-    "copyright": "ลิขสิทธิ์ \u00a9 {year} - สงวนลิขสิทธิ์ทั้งหมด"
+    "copyright": "ลิขสิทธิ์ © {year} - สงวนลิขสิทธิ์ทั้งหมด",
+    "statsVps": "VPS",
+    "statsWebsites": "เว็บโฮสติ้ง",
+    "statsServers": "เซิร์ฟเวอร์"
 }

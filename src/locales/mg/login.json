@@ -80,8 +80,11 @@
     "home": {
         "cart": "Sarety",
         "editPersonalInfo": "Hanova ny Fampahalalana Manokana",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Zo rehetra voatokana."
     },
-    "copyright": "Copyright \u00a9 {year} - Zo Rehetra Voatokana."
+    "copyright": "Copyright © {year} - Zo Rehetra Voatokana.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servers"
 }

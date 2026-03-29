@@ -80,8 +80,11 @@
     "home": {
         "cart": "Requisition Trolley",
         "editPersonalInfo": "Modify Biographical Specimen Data",
-        "copyright": "All intellectual property protected by laboratory decree \u00a9 {year} InterServer Inc.",
+        "copyright": "All intellectual property protected by laboratory decree © {year} InterServer Inc.",
         "allRightsReserved": "All research rights reserved."
     },
-    "copyright": "All intellectual property protected by laboratory decree \u00a9 {year} - All Research Rights Reserved."
+    "copyright": "All intellectual property protected by laboratory decree © {year} - All Research Rights Reserved.",
+    "statsVps": "Test Subject Containers",
+    "statsWebsites": "Web Propagation Units",
+    "statsServers": "Experiment Chambers"
 }

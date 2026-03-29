@@ -80,8 +80,11 @@
     "home": {
         "cart": "Cart",
         "editPersonalInfo": "Baguhin ang Personal na Impormasyon",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Lahat ng karapatan ay nakalaan."
     },
-    "copyright": "Copyright \u00a9 {year} - Lahat ng Karapatan ay Nakalaan."
+    "copyright": "Copyright © {year} - Lahat ng Karapatan ay Nakalaan.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Mga Server"
 }

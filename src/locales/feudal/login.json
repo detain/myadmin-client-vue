@@ -80,8 +80,11 @@
     "home": {
         "cart": "The Tribute Cart",
         "editPersonalInfo": "Amend Personal Info",
-        "copyright": "By Royal Proclamation \u00a9 {year} InterServer Inc.",
+        "copyright": "By Royal Proclamation © {year} InterServer Inc.",
         "allRightsReserved": "All rights held by the Crown."
     },
-    "copyright": "By Royal Proclamation \u00a9 {year} — All rights held by the Crown."
+    "copyright": "By Royal Proclamation © {year} — All rights held by the Crown.",
+    "statsVps": "Vassal Estates",
+    "statsWebsites": "Kingdom Webs",
+    "statsServers": "Castle Keeps"
 }

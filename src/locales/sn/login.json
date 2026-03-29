@@ -80,8 +80,11 @@
     "home": {
         "cart": "Kete",
         "editPersonalInfo": "Shandura Ruzivo Rwedu",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Kodzero dzose dzakachengeterwa."
     },
-    "copyright": "Copyright \u00a9 {year} - Kodzero Dzose Dzakachengeterwa."
+    "copyright": "Copyright © {year} - Kodzero Dzose Dzakachengeterwa.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Maseva"
 }
