@@ -105,6 +105,7 @@
         "loading": "Cargando...",
         "noData": "No hay datos disponibles",
         "noActiveServices": "No Hay Servicios Activos",
+        "noServicesMatchingFilter": "No se encontraron servicios que coincidan con el filtro '{filter}'",
         "controlPanel": "Panel de Control",
         "welcomeEmail": "Correo de Bienvenida",
         "invoices": "Facturas",

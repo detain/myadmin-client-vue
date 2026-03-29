@@ -1,6 +1,12 @@
 {
-    "title": "Usuaris", "addUser": "Afegir usuari", "editUser": "Editar usuari",
-    "firstName": "Nom", "lastName": "Cognom", "username": "Nom d'usuari", "password": "Contrasenya",
+    "title": "Usuaris",
+    "addUser": "Afegir usuari",
+    "editUser": "Editar usuari",
+    "firstName": "Nom",
+    "lastName": "Cognom",
+    "username": "Nom d'usuari",
+    "password": "Contrasenya",
     "keepSamePassword": "Deixeu en blanc per mantenir la mateixa contrasenya",
-    "errorLoading": "Error en carregar els usuaris:", "errorLoadingUser": "Error en carregar l'usuari:"
+    "errorLoading": "Error en carregar els usuaris:",
+    "errorLoadingUser": "Error en carregar l'usuari:"
 }

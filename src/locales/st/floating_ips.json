@@ -1,24 +1,24 @@
 {
-  "list": {
-    "title": "Lenaneo la Litšebeletso tsa Floating IPs",
-    "orderTitle": "Oda Lirejistaro tsa Floating IP"
-  },
-  "view": {
-    "title": "Bona Floating IP {id}",
-    "package": "Sepalesa",
-    "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
-    "billing": "Tefello",
-    "billed": "e lefisitsoeng:",
-    "statusIs": "Boemo ke:",
-    "floatingIp": "Floating IP",
-    "links": "Likhoele",
-    "emailSent": "Imeile e Romelitsoe",
-    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
-  },
-  "order": {
-    "title": "Oda Floating IP"
-  },
-  "changeIp": {
-    "title": "Fetola IP ea Sepheo"
-  }
+    "list": {
+        "title": "Lenaneo la Litšebeletso tsa Floating IPs",
+        "orderTitle": "Oda Lirejistaro tsa Floating IP"
+    },
+    "view": {
+        "title": "Bona Floating IP {id}",
+        "package": "Sepalesa",
+        "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
+        "billing": "Tefello",
+        "billed": "e lefisitsoeng:",
+        "statusIs": "Boemo ke:",
+        "floatingIp": "Floating IP",
+        "links": "Likhoele",
+        "emailSent": "Imeile e Romelitsoe",
+        "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+    },
+    "order": {
+        "title": "Oda Floating IP"
+    },
+    "changeIp": {
+        "title": "Fetola IP ea Sepheo"
+    }
 }

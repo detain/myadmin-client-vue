@@ -1,8 +1,28 @@
 {
-    "title": "Pannellu", "welcome": "Benvenuto, {name}", "lastLogin": "Ultimu accede", "lastLoginIp": "IP di l'ultimu accede",
-    "prepay": { "title": "Bilancio prepagatu", "remainingBalance": "Bilancio prepagatu restante", "manageAccount": "Gestisce u contu", "manageTooltip": "Gestisce u vostru contu prepagatu" },
-    "invoices": { "title": "Fatture non pagate", "totalUnpaid": "Totale fatture non pagate", "totalAmount": "Quantità totale da pagà", "payTotalTooltip": "Pagà a quantità totale" },
-    "callInPin": "PIN per chiamate", "recentTickets": "Biglietti recenti", "viewAllTickets": "Vede tutti i biglietti", "editTicket": "Mudificà u biglietta",
+    "title": "Pannellu",
+    "welcome": "Benvenuto, {name}",
+    "lastLogin": "Ultimu accede",
+    "lastLoginIp": "IP di l'ultimu accede",
+    "prepay": {
+        "title": "Bilancio prepagatu",
+        "remainingBalance": "Bilancio prepagatu restante",
+        "manageAccount": "Gestisce u contu",
+        "manageTooltip": "Gestisce u vostru contu prepagatu"
+    },
+    "invoices": {
+        "title": "Fatture non pagate",
+        "totalUnpaid": "Totale fatture non pagate",
+        "totalAmount": "Quantità totale da pagà",
+        "payTotalTooltip": "Pagà a quantità totale"
+    },
+    "callInPin": "PIN per chiamate",
+    "recentTickets": "Biglietti recenti",
+    "viewAllTickets": "Vede tutti i biglietti",
+    "editTicket": "Mudificà u biglietta",
     "serviceCount": "Nisciun serviziu attivu | {count} serviziu attivu | {count} servizii attivi",
-    "affiliate": { "earnPerSale": "Guadagnà {amount} per vendita", "urlPlaceholder": "URL d'affiliatu", "shareWith": "Cundivide cù" }
+    "affiliate": {
+        "earnPerSale": "Guadagnà {amount} per vendita",
+        "urlPlaceholder": "URL d'affiliatu",
+        "shareWith": "Cundivide cù"
+    }
 }

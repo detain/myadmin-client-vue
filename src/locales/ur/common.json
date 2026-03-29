@@ -105,6 +105,7 @@
         "loading": "لوڈ ہو رہا ہے...",
         "noData": "کوئی ڈیٹا دستیاب نہیں",
         "noActiveServices": "کوئی فعال سروس نہیں",
+        "noServicesMatchingFilter": "'{filter}' فلٹر سے مماثل کوئی سروس نہیں ملی",
         "controlPanel": "کنٹرول پینل",
         "welcomeEmail": "خوش آمدید ای میل",
         "invoices": "انوائسز",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "کیا آپ واقعی منسوخ کرنا چاہتے ہیں؟"
     },
     "footer": {
-        "copyright": "کاپی رائٹ \u00a9 {year} InterServer Inc.",
+        "copyright": "کاپی رائٹ © {year} InterServer Inc.",
         "allRightsReserved": "تمام حقوق محفوظ ہیں۔"
     },
     "search": {

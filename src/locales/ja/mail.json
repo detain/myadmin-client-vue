@@ -1,49 +1,49 @@
 {
-  "list": {
-    "title": "メールサービス一覧",
-    "orderTitle": "メール登録を注文"
-  },
-  "view": {
-    "title": "メール {id} を表示",
-    "package": "パッケージ",
-    "nextInvoiceDate": "次回請求日:",
-    "billing": "請求",
-    "billed": "請求済み:",
-    "statusIs": "ステータス:",
-    "mailApi": "メール API",
-    "usageCount": "使用回数:",
-    "links": "リンク",
-    "connectionInfo": "接続情報",
-    "emailSent": "メール送信済み",
-    "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。",
-    "welcomeEmailConfirm": "ウェルカムメールを再送してもよろしいですか？"
-  },
-  "order": {
-    "title": "メールを注文"
-  },
-  "alerts": {
-    "title": "アラート",
-    "addAlert": "アラートを追加",
-    "editAlert": "アラートを編集",
-    "noAlerts": "アラートが見つかりません"
-  },
-  "delist": {
-    "title": "リスト削除",
-    "blockedEmails": "ブロックされたメール"
-  },
-  "denyRules": {
-    "title": "拒否ルール",
-    "addRule": "ルールを追加",
-    "noRules": "拒否ルールが見つかりません"
-  },
-  "logs": {
-    "title": "ログ",
-    "searchLogs": "ログを検索"
-  },
-  "stats": {
-    "title": "統計"
-  },
-  "deliverability": {
-    "title": "配信可能性"
-  }
+    "list": {
+        "title": "メールサービス一覧",
+        "orderTitle": "メール登録を注文"
+    },
+    "view": {
+        "title": "メール {id} を表示",
+        "package": "パッケージ",
+        "nextInvoiceDate": "次回請求日:",
+        "billing": "請求",
+        "billed": "請求済み:",
+        "statusIs": "ステータス:",
+        "mailApi": "メール API",
+        "usageCount": "使用回数:",
+        "links": "リンク",
+        "connectionInfo": "接続情報",
+        "emailSent": "メール送信済み",
+        "emailSentMessage": "ウェルカムメールが再送されました。受信トレイをご確認ください。",
+        "welcomeEmailConfirm": "ウェルカムメールを再送してもよろしいですか？"
+    },
+    "order": {
+        "title": "メールを注文"
+    },
+    "alerts": {
+        "title": "アラート",
+        "addAlert": "アラートを追加",
+        "editAlert": "アラートを編集",
+        "noAlerts": "アラートが見つかりません"
+    },
+    "delist": {
+        "title": "リスト削除",
+        "blockedEmails": "ブロックされたメール"
+    },
+    "denyRules": {
+        "title": "拒否ルール",
+        "addRule": "ルールを追加",
+        "noRules": "拒否ルールが見つかりません"
+    },
+    "logs": {
+        "title": "ログ",
+        "searchLogs": "ログを検索"
+    },
+    "stats": {
+        "title": "統計"
+    },
+    "deliverability": {
+        "title": "配信可能性"
+    }
 }

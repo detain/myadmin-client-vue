@@ -1,65 +1,65 @@
 {
-  "list": {
-    "title": "Puhdistus-IP-osoitteiden palveluiden lista",
-    "orderTitle": "Tilaa puhdistus-IP-osoitteet"
-  },
-  "view": {
-    "title": "Näytä puhdistus-IP-osoitteet",
-    "currentIp": "Nykyinen IP",
-    "ipAddress": "IP-osoite",
-    "ipFromService": "IP palvelusta"
-  },
-  "filters": {
-    "title": "Suodattimet",
-    "createNew": "Luo uusi",
-    "createNewFilter": "Luo uusi suodatin",
-    "filterType": "Suodattimen tyyppi",
-    "ipAddress": "IP-osoite",
-    "portNo": "Porttinumero",
-    "filter": "Suodatin",
-    "destinationIp": "Kohde-IP",
-    "destinationPort": "Kohdeportti",
-    "noFiltersFound": "Suodattimia ei löytynyt!",
-    "deleteFilterConfirm": "Haluatko varmasti poistaa tämän suodattimen?",
-    "selectFilterType": "Valitse suodatintyyppi",
-    "unableToCreateFilter": "Suodatinta ei voi luoda tällä hetkellä.",
-    "unableToDeleteFilter": "Suodatinta ei voi poistaa tällä hetkellä."
-  },
-  "firewallRules": {
-    "title": "Palomuurisäännöt",
-    "createNewFirewall": "Luo uusi palomuurisääntö",
-    "protocol": "Protokolla",
-    "destinationIp": "Kohde-IP",
-    "sourceIp": "Lähde-IP",
-    "block": "Estä",
-    "whitelist": "Valkolista",
-    "noRulesFound": "Sääntöjä ei löytynyt!",
-    "deleteRuleConfirm": "Haluatko varmasti poistaa tämän säännön?",
-    "createNew": "Luo uusi",
-    "destinationPort": "Kohdeportti",
-    "sourcePort": "Lähdeportti",
-    "xdpAction": "XDP-toiminto",
-    "ipRequired": "IP-osoite vaaditaan",
-    "unableToCreateRule": "Palomuurisääntöä ei voi luoda tällä hetkellä.",
-    "unableToDeleteRule": "Palomuurisääntöä ei voi poistaa tällä hetkellä."
-  },
-  "geoFirewallRules": {
-    "title": "Geo-palomuurisäännöt",
-    "createNewGeoRule": "Luo uusi geo-palomuurisääntö",
-    "destinationIp": "Kohde-IP",
-    "sourceCountry": "Lähtömaa",
-    "sourceAsn": "Lähde-ASN",
-    "selectCountry": "Valitse maa",
-    "block": "Estä",
-    "whitelist": "Valkolista",
-    "noRulesFound": "Sääntöjä ei löytynyt!",
-    "deleteGeoRuleConfirm": "Haluatko varmasti poistaa tämän geo-säännön?",
-    "createNew": "Luo uusi",
-    "destinationPort": "Kohdeportti",
-    "xdpAction": "XDP-toiminto",
-    "portNo": "Portti nro",
-    "asn": "ASN",
-    "unableToCreateRule": "Palomuurisääntöä ei voi luoda tällä hetkellä.",
-    "unableToDeleteRule": "Geo-palomuurisääntöä ei voi poistaa tällä hetkellä."
-  }
+    "list": {
+        "title": "Puhdistus-IP-osoitteiden palveluiden lista",
+        "orderTitle": "Tilaa puhdistus-IP-osoitteet"
+    },
+    "view": {
+        "title": "Näytä puhdistus-IP-osoitteet",
+        "currentIp": "Nykyinen IP",
+        "ipAddress": "IP-osoite",
+        "ipFromService": "IP palvelusta"
+    },
+    "filters": {
+        "title": "Suodattimet",
+        "createNew": "Luo uusi",
+        "createNewFilter": "Luo uusi suodatin",
+        "filterType": "Suodattimen tyyppi",
+        "ipAddress": "IP-osoite",
+        "portNo": "Porttinumero",
+        "filter": "Suodatin",
+        "destinationIp": "Kohde-IP",
+        "destinationPort": "Kohdeportti",
+        "noFiltersFound": "Suodattimia ei löytynyt!",
+        "deleteFilterConfirm": "Haluatko varmasti poistaa tämän suodattimen?",
+        "selectFilterType": "Valitse suodatintyyppi",
+        "unableToCreateFilter": "Suodatinta ei voi luoda tällä hetkellä.",
+        "unableToDeleteFilter": "Suodatinta ei voi poistaa tällä hetkellä."
+    },
+    "firewallRules": {
+        "title": "Palomuurisäännöt",
+        "createNewFirewall": "Luo uusi palomuurisääntö",
+        "protocol": "Protokolla",
+        "destinationIp": "Kohde-IP",
+        "sourceIp": "Lähde-IP",
+        "block": "Estä",
+        "whitelist": "Valkolista",
+        "noRulesFound": "Sääntöjä ei löytynyt!",
+        "deleteRuleConfirm": "Haluatko varmasti poistaa tämän säännön?",
+        "createNew": "Luo uusi",
+        "destinationPort": "Kohdeportti",
+        "sourcePort": "Lähdeportti",
+        "xdpAction": "XDP-toiminto",
+        "ipRequired": "IP-osoite vaaditaan",
+        "unableToCreateRule": "Palomuurisääntöä ei voi luoda tällä hetkellä.",
+        "unableToDeleteRule": "Palomuurisääntöä ei voi poistaa tällä hetkellä."
+    },
+    "geoFirewallRules": {
+        "title": "Geo-palomuurisäännöt",
+        "createNewGeoRule": "Luo uusi geo-palomuurisääntö",
+        "destinationIp": "Kohde-IP",
+        "sourceCountry": "Lähtömaa",
+        "sourceAsn": "Lähde-ASN",
+        "selectCountry": "Valitse maa",
+        "block": "Estä",
+        "whitelist": "Valkolista",
+        "noRulesFound": "Sääntöjä ei löytynyt!",
+        "deleteGeoRuleConfirm": "Haluatko varmasti poistaa tämän geo-säännön?",
+        "createNew": "Luo uusi",
+        "destinationPort": "Kohdeportti",
+        "xdpAction": "XDP-toiminto",
+        "portNo": "Portti nro",
+        "asn": "ASN",
+        "unableToCreateRule": "Palomuurisääntöä ei voi luoda tällä hetkellä.",
+        "unableToDeleteRule": "Geo-palomuurisääntöä ei voi poistaa tällä hetkellä."
+    }
 }

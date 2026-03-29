@@ -1,21 +1,21 @@
 {
-  "list": {
-    "title": "Lenaneo la Poloko / Backup",
-    "orderTitle": "Oda Lirejistaro tsa Backup"
-  },
-  "view": {
-    "title": "Bona Backup {id}",
-    "package": "Sepalesa",
-    "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
-    "billing": "Tefello",
-    "billed": "e lefisitsoeng:",
-    "statusIs": "Boemo ke:",
-    "hostServer": "Haolo ea Mochini",
-    "links": "Likhoele",
-    "emailSent": "Imeile e Romelitsoe",
-    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
-  },
-  "order": {
-    "title": "Oda Poloko"
-  }
+    "list": {
+        "title": "Lenaneo la Poloko / Backup",
+        "orderTitle": "Oda Lirejistaro tsa Backup"
+    },
+    "view": {
+        "title": "Bona Backup {id}",
+        "package": "Sepalesa",
+        "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
+        "billing": "Tefello",
+        "billed": "e lefisitsoeng:",
+        "statusIs": "Boemo ke:",
+        "hostServer": "Haolo ea Mochini",
+        "links": "Likhoele",
+        "emailSent": "Imeile e Romelitsoe",
+        "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+    },
+    "order": {
+        "title": "Oda Poloko"
+    }
 }

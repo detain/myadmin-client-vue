@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Liste des services IP flottantes",
-    "orderTitle": "Commander des enregistrements d'IP flottantes"
-  },
-  "view": {
-    "title": "Voir l'IP flottante {id}",
-    "package": "Forfait",
-    "nextInvoiceDate": "Date de la prochaine facture :",
-    "billing": "Facturation",
-    "billed": "facturé :",
-    "statusIs": "Le statut est :",
-    "floatingIp": "IP flottante",
-    "links": "Liens",
-    "emailSent": "E-mail envoyé",
-    "emailSentMessage": "L'e-mail de bienvenue a été renvoyé. Vérifiez votre boîte de réception.",
-    "welcomeEmailConfirm": "Êtes-vous sûr de vouloir renvoyer l'e-mail de bienvenue ?"
-  },
-  "order": {
-    "title": "Commander une IP flottante"
-  },
-  "changeIp": {
-    "title": "Modifier l'IP cible"
-  }
+    "list": {
+        "title": "Liste des services IP flottantes",
+        "orderTitle": "Commander des enregistrements d'IP flottantes"
+    },
+    "view": {
+        "title": "Voir l'IP flottante {id}",
+        "package": "Forfait",
+        "nextInvoiceDate": "Date de la prochaine facture :",
+        "billing": "Facturation",
+        "billed": "facturé :",
+        "statusIs": "Le statut est :",
+        "floatingIp": "IP flottante",
+        "links": "Liens",
+        "emailSent": "E-mail envoyé",
+        "emailSentMessage": "L'e-mail de bienvenue a été renvoyé. Vérifiez votre boîte de réception.",
+        "welcomeEmailConfirm": "Êtes-vous sûr de vouloir renvoyer l'e-mail de bienvenue ?"
+    },
+    "order": {
+        "title": "Commander une IP flottante"
+    },
+    "changeIp": {
+        "title": "Modifier l'IP cible"
+    }
 }

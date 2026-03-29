@@ -1,49 +1,49 @@
 {
-  "list": {
-    "title": "Sähköpostipalveluiden lista",
-    "orderTitle": "Tilaa sähköpostirekisteröinnit"
-  },
-  "view": {
-    "title": "Näytä sähköposti {id}",
-    "package": "Paketti",
-    "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
-    "billing": "Laskutus",
-    "billed": "laskutettu:",
-    "statusIs": "Tila on:",
-    "mailApi": "Sähköposti-API",
-    "usageCount": "Käyttömäärä:",
-    "links": "Linkit",
-    "connectionInfo": "Yhteystiedot",
-    "emailSent": "Sähköposti lähetetty",
-    "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
-    "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
-  },
-  "order": {
-    "title": "Tilaa sähköposti"
-  },
-  "alerts": {
-    "title": "Hälytykset",
-    "addAlert": "Lisää hälytys",
-    "editAlert": "Muokkaa hälytystä",
-    "noAlerts": "Hälytyksiä ei löytynyt"
-  },
-  "delist": {
-    "title": "Poista listalta",
-    "blockedEmails": "Estetyt sähköpostit"
-  },
-  "denyRules": {
-    "title": "Kieltosäännöt",
-    "addRule": "Lisää sääntö",
-    "noRules": "Kieltosääntöjä ei löytynyt"
-  },
-  "logs": {
-    "title": "Lokit",
-    "searchLogs": "Etsi lokeja"
-  },
-  "stats": {
-    "title": "Tilastot"
-  },
-  "deliverability": {
-    "title": "Toimitettavuus"
-  }
+    "list": {
+        "title": "Sähköpostipalveluiden lista",
+        "orderTitle": "Tilaa sähköpostirekisteröinnit"
+    },
+    "view": {
+        "title": "Näytä sähköposti {id}",
+        "package": "Paketti",
+        "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
+        "billing": "Laskutus",
+        "billed": "laskutettu:",
+        "statusIs": "Tila on:",
+        "mailApi": "Sähköposti-API",
+        "usageCount": "Käyttömäärä:",
+        "links": "Linkit",
+        "connectionInfo": "Yhteystiedot",
+        "emailSent": "Sähköposti lähetetty",
+        "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
+        "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
+    },
+    "order": {
+        "title": "Tilaa sähköposti"
+    },
+    "alerts": {
+        "title": "Hälytykset",
+        "addAlert": "Lisää hälytys",
+        "editAlert": "Muokkaa hälytystä",
+        "noAlerts": "Hälytyksiä ei löytynyt"
+    },
+    "delist": {
+        "title": "Poista listalta",
+        "blockedEmails": "Estetyt sähköpostit"
+    },
+    "denyRules": {
+        "title": "Kieltosäännöt",
+        "addRule": "Lisää sääntö",
+        "noRules": "Kieltosääntöjä ei löytynyt"
+    },
+    "logs": {
+        "title": "Lokit",
+        "searchLogs": "Etsi lokeja"
+    },
+    "stats": {
+        "title": "Tilastot"
+    },
+    "deliverability": {
+        "title": "Toimitettavuus"
+    }
 }

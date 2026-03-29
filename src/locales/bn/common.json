@@ -105,6 +105,7 @@
         "loading": "লোড হচ্ছে...",
         "noData": "কোনো ডেটা উপলব্ধ নেই",
         "noActiveServices": "কোনো সক্রিয় সেবা নেই",
+        "noServicesMatchingFilter": "'{filter}' ফিল্টারের সাথে মিলে যাওয়া কোনো সেবা পাওয়া যায়নি",
         "controlPanel": "কন্ট্রোল প্যানেল",
         "welcomeEmail": "স্বাগত ইমেইল",
         "invoices": "চালানসমূহ",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "আপনি কি বাতিল করতে চান?"
     },
     "footer": {
-        "copyright": "কপিরাইট \u00a9 {year} InterServer Inc.",
+        "copyright": "কপিরাইট © {year} InterServer Inc.",
         "allRightsReserved": "সর্বস্বত্ব সংরক্ষিত।"
     },
     "search": {

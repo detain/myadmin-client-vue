@@ -105,6 +105,7 @@
         "loading": "Checking our stock...",
         "noData": "Nothing here, friend — check back later!",
         "noActiveServices": "No Currently Trading Services",
+        "noServicesMatchingFilter": "No wares found matching the inquiry '{filter}'",
         "controlPanel": "Control Panel",
         "welcomeEmail": "Welcome Dispatch",
         "invoices": "Bills Due",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Are you sure you want to void the agreement?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc. — Best Prices Guaranteed!",
+        "copyright": "Copyright © {year} InterServer Inc. — Best Prices Guaranteed!",
         "allRightsReserved": "All rights reserved."
     },
     "search": {

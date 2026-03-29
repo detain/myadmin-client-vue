@@ -1,7 +1,12 @@
 {
-    "required": "{field} hè obbligatoriu", "email": "Dev'è esse un indirizzu email validu",
-    "minLength": "Dev'esse almenu {min} caratteri", "maxLength": "Ùn deve micca superà {max} caratteri",
-    "passwordMatch": "E password devenu currisponde", "invalidFormat": "Formatu invalidu",
-    "numeric": "Dev'esse un numeru", "url": "Dev'esse un URL validu",
-    "ipAddress": "Dev'esse un indirizzu IP validu", "hostname": "Dev'esse un nome d'ospite validu"
+    "required": "{field} hè obbligatoriu",
+    "email": "Dev'è esse un indirizzu email validu",
+    "minLength": "Dev'esse almenu {min} caratteri",
+    "maxLength": "Ùn deve micca superà {max} caratteri",
+    "passwordMatch": "E password devenu currisponde",
+    "invalidFormat": "Formatu invalidu",
+    "numeric": "Dev'esse un numeru",
+    "url": "Dev'esse un URL validu",
+    "ipAddress": "Dev'esse un indirizzu IP validu",
+    "hostname": "Dev'esse un nome d'ospite validu"
 }

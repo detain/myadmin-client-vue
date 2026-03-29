@@ -1,26 +1,26 @@
 {
-  "manager": {
-    "title": "DNS pārvaldnieks",
-    "addDomain": "Pievienot domēnu",
-    "deleteDomain": "Dzēst domēnu",
-    "domainName": "Domēna nosaukums",
-    "dnsServers": "DNS serveri",
-    "confirmDelete": "Vai tiešām vēlaties dzēst šo domēnu?",
-    "noDomains": "Domēni nav atrasti"
-  },
-  "editor": {
-    "title": "DNS redaktors",
-    "addRecord": "Pievienot ierakstu",
-    "deleteRecord": "Dzēst ierakstu",
-    "editRecord": "Rediģēt ierakstu",
-    "recordType": "Ieraksta veids",
-    "hostname": "Resursdatora nosaukums",
-    "address": "Adrese",
-    "distance": "Attālums",
-    "weight": "Svars",
-    "port": "Ports",
-    "ttl": "TTL",
-    "actions": "Darbības",
-    "confirmDelete": "Vai tiešām vēlaties dzēst šo ierakstu?"
-  }
+    "manager": {
+        "title": "DNS pārvaldnieks",
+        "addDomain": "Pievienot domēnu",
+        "deleteDomain": "Dzēst domēnu",
+        "domainName": "Domēna nosaukums",
+        "dnsServers": "DNS serveri",
+        "confirmDelete": "Vai tiešām vēlaties dzēst šo domēnu?",
+        "noDomains": "Domēni nav atrasti"
+    },
+    "editor": {
+        "title": "DNS redaktors",
+        "addRecord": "Pievienot ierakstu",
+        "deleteRecord": "Dzēst ierakstu",
+        "editRecord": "Rediģēt ierakstu",
+        "recordType": "Ieraksta veids",
+        "hostname": "Resursdatora nosaukums",
+        "address": "Adrese",
+        "distance": "Attālums",
+        "weight": "Svars",
+        "port": "Ports",
+        "ttl": "TTL",
+        "actions": "Darbības",
+        "confirmDelete": "Vai tiešām vēlaties dzēst šo ierakstu?"
+    }
 }

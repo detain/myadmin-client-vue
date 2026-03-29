@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "Webhosting-lista",
-    "orderTitle": "Tilaa verkkosivurekisteröinnit"
-  },
-  "view": {
-    "title": "Näytä verkkosivusto {id}",
-    "package": "Paketti",
-    "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
-    "billing": "Laskutus",
-    "billed": "laskutettu",
-    "billingStatusIs": "Laskutuksen tila on:",
-    "login": "Kirjaudu sisään",
-    "links": "Linkit",
-    "emailSent": "Sähköposti lähetetty",
-    "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
-    "hostInfo": "Isäntätiedot",
-    "username": "Käyttäjätunnus:",
-    "ip": "IP:",
-    "server": "Palvelin:",
-    "notSetYet": "Ei vielä asetettu",
-    "types": "Tyypit:",
-    "linksLabel": "Linkit:",
-    "manualLogin": "Manuaalinen kirjautuminen",
-    "automaticLogin": "Automaattinen kirjautuminen",
-    "clickHere": "Napsauta tästä",
-    "defaultNameservers": "Oletusnimipalvelimet",
-    "nameservers": "Nimipalvelimet:",
-    "externalLinks": "Ulkoiset linkit",
-    "names": "Nimet:",
-    "websitePreview": "Verkkosivuston esikatselu",
-    "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
-  },
-  "order": {
-    "title": "Tilaa verkkosivusto"
-  },
-  "migration": {
-    "title": "Siirrä verkkosivustosi",
-    "password": "Salasana",
-    "importantNotes": "Tärkeät huomiot",
-    "currentWebHostInfo": "Nykyisen webhosting-palvelun tiedot",
-    "customerPortalUrl": "Asiakasportaalin URL",
-    "portalExample": "Esimerkiksi: sso.godaddy.com",
-    "registeredUsername": "Rekisteröity käyttäjätunnus / sähköposti / ID",
-    "controlPanelUrl": "Ohjauspaneelin URL",
-    "controlPanelExample": "Esimerkiksi: yourdomain.com/cpanel",
-    "ftpUsername": "FTP / ohjauspaneelin käyttäjätunnus",
-    "ftpPassword": "FTP / ohjauspaneelin salasana",
-    "holdingPageQuestion": "Jos sivusto on live/vilkas sivusto, jolla on paljon liikennettä, voimmeko asettaa odotussivun siirron aikana?",
-    "specialRequirementsQuestion": "Onko tällä sivustolla erityisvaatimuksia, kuten PHP-versio / moduulit?",
-    "domainRegistryInfo": "Verkkotunnusrekisterin tiedot",
-    "transferDomainQuestion": "Haluatko myös, että autamme sinua verkkotunnusrekisteröinnin siirrossa?",
-    "updateNameserversQuestion": "Haluatko, että päivitämme nimipalvelimet heti, kun olemme saaneet tiedonsiirron valmiiksi?",
-    "domainRegistryPortal": "Verkkotunnusrekisterin asiakasportaali",
-    "note1": "Tämän lomakkeen täyttäminen avaa uuden tiketin tukiosastolle siirron aloittamista varten.",
-    "note2": "Ole mahdollisimman kattava ja tarkka viivästysten välttämiseksi.",
-    "note3": "Tyypillinen siirto suoritetaan 48–72 tunnissa. Joskus kauemmin, jos kopioitavan datan määrä on suuri.",
-    "note4": "Vanhan hosting-tilin täytyy olla verkossa ja saavutettavissa siirron aikana, muuten saatamme kohdata vaikeuksia.",
-    "note5": "Älä tee sivustollesi päivityksiä siirron aikana, muuten niitä tietoja ei ehkä kopioida uuteen hostingiin."
-  },
-  "buyIp": {
-    "title": "Osta lisä-IP-lisäosa",
-    "existingAddonIps": "Olemassa olevat lisä-IP:t",
-    "additionalIp": "Lisä-IP",
-    "monthlyCost": "Kuukausikustannus ({symbol})",
-    "costDescription": "Kustannus ({symbol}) joka kuukausi verkkosivustosi laskutuksen mukaan",
-    "confirmPurchase": "Vahvista osto",
-    "confirmMessage": "Lisä-IP-kustannus: {symbol}{cost}/kuukausi. Haluatko varmasti tilata lisä-IP:n?",
-    "placeOrder": "Tee tilaus",
-    "orderPlaced": "Tilaus tehty"
-  },
-  "reverseDns": {
-    "title": "Käänteinen DNS",
-    "updateReverseDns": "Päivitä käänteinen DNS"
-  },
-  "downloadBackups": {
-    "title": "Lataa varmuuskopiot",
-    "backup": "Varmuuskopio",
-    "size": "Koko",
-    "options": "Vaihtoehdot"
-  }
+    "list": {
+        "title": "Webhosting-lista",
+        "orderTitle": "Tilaa verkkosivurekisteröinnit"
+    },
+    "view": {
+        "title": "Näytä verkkosivusto {id}",
+        "package": "Paketti",
+        "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
+        "billing": "Laskutus",
+        "billed": "laskutettu",
+        "billingStatusIs": "Laskutuksen tila on:",
+        "login": "Kirjaudu sisään",
+        "links": "Linkit",
+        "emailSent": "Sähköposti lähetetty",
+        "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
+        "hostInfo": "Isäntätiedot",
+        "username": "Käyttäjätunnus:",
+        "ip": "IP:",
+        "server": "Palvelin:",
+        "notSetYet": "Ei vielä asetettu",
+        "types": "Tyypit:",
+        "linksLabel": "Linkit:",
+        "manualLogin": "Manuaalinen kirjautuminen",
+        "automaticLogin": "Automaattinen kirjautuminen",
+        "clickHere": "Napsauta tästä",
+        "defaultNameservers": "Oletusnimipalvelimet",
+        "nameservers": "Nimipalvelimet:",
+        "externalLinks": "Ulkoiset linkit",
+        "names": "Nimet:",
+        "websitePreview": "Verkkosivuston esikatselu",
+        "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
+    },
+    "order": {
+        "title": "Tilaa verkkosivusto"
+    },
+    "migration": {
+        "title": "Siirrä verkkosivustosi",
+        "password": "Salasana",
+        "importantNotes": "Tärkeät huomiot",
+        "currentWebHostInfo": "Nykyisen webhosting-palvelun tiedot",
+        "customerPortalUrl": "Asiakasportaalin URL",
+        "portalExample": "Esimerkiksi: sso.godaddy.com",
+        "registeredUsername": "Rekisteröity käyttäjätunnus / sähköposti / ID",
+        "controlPanelUrl": "Ohjauspaneelin URL",
+        "controlPanelExample": "Esimerkiksi: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / ohjauspaneelin käyttäjätunnus",
+        "ftpPassword": "FTP / ohjauspaneelin salasana",
+        "holdingPageQuestion": "Jos sivusto on live/vilkas sivusto, jolla on paljon liikennettä, voimmeko asettaa odotussivun siirron aikana?",
+        "specialRequirementsQuestion": "Onko tällä sivustolla erityisvaatimuksia, kuten PHP-versio / moduulit?",
+        "domainRegistryInfo": "Verkkotunnusrekisterin tiedot",
+        "transferDomainQuestion": "Haluatko myös, että autamme sinua verkkotunnusrekisteröinnin siirrossa?",
+        "updateNameserversQuestion": "Haluatko, että päivitämme nimipalvelimet heti, kun olemme saaneet tiedonsiirron valmiiksi?",
+        "domainRegistryPortal": "Verkkotunnusrekisterin asiakasportaali",
+        "note1": "Tämän lomakkeen täyttäminen avaa uuden tiketin tukiosastolle siirron aloittamista varten.",
+        "note2": "Ole mahdollisimman kattava ja tarkka viivästysten välttämiseksi.",
+        "note3": "Tyypillinen siirto suoritetaan 48–72 tunnissa. Joskus kauemmin, jos kopioitavan datan määrä on suuri.",
+        "note4": "Vanhan hosting-tilin täytyy olla verkossa ja saavutettavissa siirron aikana, muuten saatamme kohdata vaikeuksia.",
+        "note5": "Älä tee sivustollesi päivityksiä siirron aikana, muuten niitä tietoja ei ehkä kopioida uuteen hostingiin."
+    },
+    "buyIp": {
+        "title": "Osta lisä-IP-lisäosa",
+        "existingAddonIps": "Olemassa olevat lisä-IP:t",
+        "additionalIp": "Lisä-IP",
+        "monthlyCost": "Kuukausikustannus ({symbol})",
+        "costDescription": "Kustannus ({symbol}) joka kuukausi verkkosivustosi laskutuksen mukaan",
+        "confirmPurchase": "Vahvista osto",
+        "confirmMessage": "Lisä-IP-kustannus: {symbol}{cost}/kuukausi. Haluatko varmasti tilata lisä-IP:n?",
+        "placeOrder": "Tee tilaus",
+        "orderPlaced": "Tilaus tehty"
+    },
+    "reverseDns": {
+        "title": "Käänteinen DNS",
+        "updateReverseDns": "Päivitä käänteinen DNS"
+    },
+    "downloadBackups": {
+        "title": "Lataa varmuuskopiot",
+        "backup": "Varmuuskopio",
+        "size": "Koko",
+        "options": "Vaihtoehdot"
+    }
 }

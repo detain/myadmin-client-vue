@@ -33,13 +33,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<Record<string, any>[]>([]);
+const loading = ref(true);
 
 const loadData = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/vps`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadData();
@@ -52,6 +56,7 @@ loadData();
         :columns="columns"
         id-field="vps_id"
         status-field="vps_status"
+        :loading="loading"
         :order-title="t('vps.list.orderVps')"
     />
 </template>

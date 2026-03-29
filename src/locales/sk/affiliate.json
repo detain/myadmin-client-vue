@@ -1,7 +1,7 @@
 {
     "title": "Affiliate systém",
     "breadcrumb": "Affiliate",
-    "attention": "Tento affiliate program nie je určený na odporúčanie \u201erodinných príslušníkov\u201c alebo \u201eklientov.\u201c Pred pokračovaním si prečítajte {faqLink}.",
+    "attention": "Tento affiliate program nie je určený na odporúčanie „rodinných príslušníkov“ alebo „klientov.“ Pred pokračovaním si prečítajte {faqLink}.",
     "faqLinkText": "FAQ",
     "earnPerSale": "Zarobiť {amount} za každý predaj novému zákazníkovi!",
     "earnDescription": "Pridaním odkazu na InterServer na vaše webové stránky získate províziu {amount} z každého nového predaja, ktorý získame kliknutím na odkaz na vašom webe.",

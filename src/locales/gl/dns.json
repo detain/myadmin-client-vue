@@ -1,1 +1,26 @@
-{ "manager": { "title": "Xestor DNS", "addDomain": "Engadir dominio", "deleteDomain": "Eliminar dominio", "domainName": "Nome de dominio", "dnsServers": "Servidores DNS", "confirmDelete": "Está seguro de que quere eliminar este dominio?", "noDomains": "Non se atoparon dominios" }, "editor": { "title": "Editor DNS", "addRecord": "Engadir rexistro", "deleteRecord": "Eliminar rexistro", "editRecord": "Editar rexistro", "recordType": "Tipo de rexistro", "hostname": "Nome de host", "address": "Enderezo", "distance": "Distancia", "weight": "Peso", "port": "Porto", "ttl": "TTL", "actions": "Accións", "confirmDelete": "Está seguro de que quere eliminar este rexistro?" } }
+{
+    "manager": {
+        "title": "Xestor DNS",
+        "addDomain": "Engadir dominio",
+        "deleteDomain": "Eliminar dominio",
+        "domainName": "Nome de dominio",
+        "dnsServers": "Servidores DNS",
+        "confirmDelete": "Está seguro de que quere eliminar este dominio?",
+        "noDomains": "Non se atoparon dominios"
+    },
+    "editor": {
+        "title": "Editor DNS",
+        "addRecord": "Engadir rexistro",
+        "deleteRecord": "Eliminar rexistro",
+        "editRecord": "Editar rexistro",
+        "recordType": "Tipo de rexistro",
+        "hostname": "Nome de host",
+        "address": "Enderezo",
+        "distance": "Distancia",
+        "weight": "Peso",
+        "port": "Porto",
+        "ttl": "TTL",
+        "actions": "Accións",
+        "confirmDelete": "Está seguro de que quere eliminar este rexistro?"
+    }
+}

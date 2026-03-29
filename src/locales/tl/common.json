@@ -105,6 +105,7 @@
         "loading": "Naglo-load...",
         "noData": "Walang available na data",
         "noActiveServices": "Walang Aktibong Serbisyo",
+        "noServicesMatchingFilter": "Walang serbisyong nahanap na tumutugma sa filter na '{filter}'",
         "controlPanel": "Control Panel",
         "welcomeEmail": "Welcome Email",
         "invoices": "Mga Invoice",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Sigurado ba kayong nais ninyong kanselahin?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Lahat ng karapatan ay nakalaan."
     },
     "search": {

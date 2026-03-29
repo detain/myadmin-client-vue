@@ -1,26 +1,26 @@
 {
-  "manager": {
-    "title": "DNS ನಿರ್ವಾಹಕ",
-    "addDomain": "ಡೊಮೇನ್ ಸೇರಿಸಿ",
-    "deleteDomain": "ಡೊಮೇನ್ ಅಳಿಸಿ",
-    "domainName": "ಡೊಮೇನ್ ಹೆಸರು",
-    "dnsServers": "DNS ಸರ್ವರ್‌ಗಳು",
-    "confirmDelete": "ಈ ಡೊಮೇನ್ ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?",
-    "noDomains": "ಯಾವುದೇ ಡೊಮೇನ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ"
-  },
-  "editor": {
-    "title": "DNS ಸಂಪಾದಕ",
-    "addRecord": "ರೆಕಾರ್ಡ್ ಸೇರಿಸಿ",
-    "deleteRecord": "ರೆಕಾರ್ಡ್ ಅಳಿಸಿ",
-    "editRecord": "ರೆಕಾರ್ಡ್ ಸಂಪಾದಿಸಿ",
-    "recordType": "ರೆಕಾರ್ಡ್ ಪ್ರಕಾರ",
-    "hostname": "ಹೋಸ್ಟ್‌ನೇಮ್",
-    "address": "ವಿಳಾಸ",
-    "distance": "ದೂರ",
-    "weight": "ತೂಕ",
-    "port": "ಪೋರ್ಟ್",
-    "ttl": "TTL",
-    "actions": "ಕ್ರಿಯೆಗಳು",
-    "confirmDelete": "ಈ ರೆಕಾರ್ಡ್ ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?"
-  }
+    "manager": {
+        "title": "DNS ನಿರ್ವಾಹಕ",
+        "addDomain": "ಡೊಮೇನ್ ಸೇರಿಸಿ",
+        "deleteDomain": "ಡೊಮೇನ್ ಅಳಿಸಿ",
+        "domainName": "ಡೊಮೇನ್ ಹೆಸರು",
+        "dnsServers": "DNS ಸರ್ವರ್‌ಗಳು",
+        "confirmDelete": "ಈ ಡೊಮೇನ್ ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?",
+        "noDomains": "ಯಾವುದೇ ಡೊಮೇನ್‌ಗಳು ಕಂಡುಬಂದಿಲ್ಲ"
+    },
+    "editor": {
+        "title": "DNS ಸಂಪಾದಕ",
+        "addRecord": "ರೆಕಾರ್ಡ್ ಸೇರಿಸಿ",
+        "deleteRecord": "ರೆಕಾರ್ಡ್ ಅಳಿಸಿ",
+        "editRecord": "ರೆಕಾರ್ಡ್ ಸಂಪಾದಿಸಿ",
+        "recordType": "ರೆಕಾರ್ಡ್ ಪ್ರಕಾರ",
+        "hostname": "ಹೋಸ್ಟ್‌ನೇಮ್",
+        "address": "ವಿಳಾಸ",
+        "distance": "ದೂರ",
+        "weight": "ತೂಕ",
+        "port": "ಪೋರ್ಟ್",
+        "ttl": "TTL",
+        "actions": "ಕ್ರಿಯೆಗಳು",
+        "confirmDelete": "ಈ ರೆಕಾರ್ಡ್ ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ?"
+    }
 }

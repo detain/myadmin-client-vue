@@ -1,4 +1,26 @@
 {
-    "manager": { "title": "Gestor DNS", "addDomain": "Afegir domini", "deleteDomain": "Eliminar domini", "domainName": "Nom de domini", "dnsServers": "Servidors DNS", "confirmDelete": "Esteu segur que voleu eliminar aquest domini?", "noDomains": "No s'han trobat dominis" },
-    "editor": { "title": "Editor DNS", "addRecord": "Afegir registre", "deleteRecord": "Eliminar registre", "editRecord": "Editar registre", "recordType": "Tipus de registre", "hostname": "Nom d'amfitrió", "address": "Adreça", "distance": "Distància", "weight": "Pes", "port": "Port", "ttl": "TTL", "actions": "Accions", "confirmDelete": "Esteu segur que voleu eliminar aquest registre?" }
+    "manager": {
+        "title": "Gestor DNS",
+        "addDomain": "Afegir domini",
+        "deleteDomain": "Eliminar domini",
+        "domainName": "Nom de domini",
+        "dnsServers": "Servidors DNS",
+        "confirmDelete": "Esteu segur que voleu eliminar aquest domini?",
+        "noDomains": "No s'han trobat dominis"
+    },
+    "editor": {
+        "title": "Editor DNS",
+        "addRecord": "Afegir registre",
+        "deleteRecord": "Eliminar registre",
+        "editRecord": "Editar registre",
+        "recordType": "Tipus de registre",
+        "hostname": "Nom d'amfitrió",
+        "address": "Adreça",
+        "distance": "Distància",
+        "weight": "Pes",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Accions",
+        "confirmDelete": "Esteu segur que voleu eliminar aquest registre?"
+    }
 }

@@ -1,1 +1,28 @@
-{ "title": "Papa Hana", "welcome": "Aloha, {name}", "lastLogin": "Komo Hope", "lastLoginIp": "IP Komo Hope", "prepay": { "title": "Kālā Uku Mamua", "remainingBalance": "Kālā Koe o ka Uku Mamua", "manageAccount": "Hoʻokele Waihona", "manageTooltip": "Hoʻokele Kāu Waihona Uku Mamua" }, "invoices": { "title": "Mau Bila ʻAʻole i Uku ʻia", "totalUnpaid": "Nā Bila ʻAʻole i Uku ʻia a Pau", "totalAmount": "Ka Nui Kālā e Uku ʻia", "payTotalTooltip": "Uku i ka Nui Kālā" }, "callInPin": "PIN Kelepona", "recentTickets": "Mau Tikeke Hou", "viewAllTickets": "Nānā i Nā Tikeke a Pau", "editTicket": "Hoʻoponopono Tikeke", "serviceCount": "ʻAʻohe lawelawe hana | {count} lawelawe hana | {count} mau lawelawe hana", "affiliate": { "earnPerSale": "Loaʻa {amount} no kēlā me kēia kūʻai", "urlPlaceholder": "URL Pilina", "shareWith": "Kaʻana me" } }
+{
+    "title": "Papa Hana",
+    "welcome": "Aloha, {name}",
+    "lastLogin": "Komo Hope",
+    "lastLoginIp": "IP Komo Hope",
+    "prepay": {
+        "title": "Kālā Uku Mamua",
+        "remainingBalance": "Kālā Koe o ka Uku Mamua",
+        "manageAccount": "Hoʻokele Waihona",
+        "manageTooltip": "Hoʻokele Kāu Waihona Uku Mamua"
+    },
+    "invoices": {
+        "title": "Mau Bila ʻAʻole i Uku ʻia",
+        "totalUnpaid": "Nā Bila ʻAʻole i Uku ʻia a Pau",
+        "totalAmount": "Ka Nui Kālā e Uku ʻia",
+        "payTotalTooltip": "Uku i ka Nui Kālā"
+    },
+    "callInPin": "PIN Kelepona",
+    "recentTickets": "Mau Tikeke Hou",
+    "viewAllTickets": "Nānā i Nā Tikeke a Pau",
+    "editTicket": "Hoʻoponopono Tikeke",
+    "serviceCount": "ʻAʻohe lawelawe hana | {count} lawelawe hana | {count} mau lawelawe hana",
+    "affiliate": {
+        "earnPerSale": "Loaʻa {amount} no kēlā me kēia kūʻai",
+        "urlPlaceholder": "URL Pilina",
+        "shareWith": "Kaʻana me"
+    }
+}

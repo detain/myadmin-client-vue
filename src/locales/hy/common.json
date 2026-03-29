@@ -105,6 +105,7 @@
         "loading": "Բեռնվում է...",
         "noData": "Տվյալներ չկան",
         "noActiveServices": "Ակտիվ ծառայություններ չկան",
+        "noServicesMatchingFilter": "'{filter}' զտիչին համապատասխանող ծառայություններ չեն գտնվել",
         "controlPanel": "Կառավարման վահանակ",
         "welcomeEmail": "Ողջույնի նամակ",
         "invoices": "Հաշիվ-ապրանքագրեր",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Համոզվա՞ծ եք, որ ցանկանում եք չեղարկել:"
     },
     "footer": {
-        "copyright": "Հեղինակային իրավունք \u00a9 {year} InterServer Inc.",
+        "copyright": "Հեղինակային իրավունք © {year} InterServer Inc.",
         "allRightsReserved": "Բոլոր իրավունքները պաշտպանված են:"
     },
     "search": {

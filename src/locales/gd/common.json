@@ -105,6 +105,7 @@
         "loading": "A' luchdadh...",
         "noData": "Chan eil dàta ri fhaotainn",
         "noActiveServices": "Chan eil Seirbheisean Gnìomhach ann",
+        "noServicesMatchingFilter": "Cha deach seirbheisean a lorg a tha a' freagairt ris an sìoltachan '{filter}'",
         "controlPanel": "Panail Smachd",
         "welcomeEmail": "Post-d Fàilte",
         "invoices": "Cunntasan-pàighidh",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "A bheil thu cinnteach gu bheil thu airson a chur dheth?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Gach còir glèidhte."
     },
     "search": {

@@ -1,30 +1,30 @@
 {
-  "list": {
-    "title": "Papa Palapala ʻAe",
-    "orderTitle": "Kauoha Mau Inoa Palapala ʻAe"
-  },
-  "view": {
-    "title": "Nānā Palapala ʻAe {id}",
-    "package": "ʻAha Hana",
-    "nextInvoiceDate": "Lā Bila Aʻe:",
-    "billing": "Uku Kālā",
-    "billed": "ua uku ʻia:",
-    "statusIs": "ʻO ke kūlana:",
-    "licenseInfo": "ʻIke Palapala ʻAe",
-    "cpanelInfo": "ʻIke cPanel",
-    "links": "Mau Pili",
-    "emailSent": "Ua Hoʻouna ʻia ka Leka",
-    "emailSentMessage": "Ua hoʻouna hou ʻia ka leka aloha. E nānā i kāu waihona leka.",
-    "welcomeEmailConfirm": "Makemake ʻoe e hoʻouna hou i ka leka uila aloha?"
-  },
-  "order": {
-    "title": "Kauoha Palapala ʻAe"
-  },
-  "changeIp": {
-    "title": "Hoʻololi IP"
-  },
-  "changeOs": {
-    "title": "Hoʻololi Pūnaehana",
-    "selectLicenseOs": "Koho Pūnaehana Palapala ʻAe"
-  }
+    "list": {
+        "title": "Papa Palapala ʻAe",
+        "orderTitle": "Kauoha Mau Inoa Palapala ʻAe"
+    },
+    "view": {
+        "title": "Nānā Palapala ʻAe {id}",
+        "package": "ʻAha Hana",
+        "nextInvoiceDate": "Lā Bila Aʻe:",
+        "billing": "Uku Kālā",
+        "billed": "ua uku ʻia:",
+        "statusIs": "ʻO ke kūlana:",
+        "licenseInfo": "ʻIke Palapala ʻAe",
+        "cpanelInfo": "ʻIke cPanel",
+        "links": "Mau Pili",
+        "emailSent": "Ua Hoʻouna ʻia ka Leka",
+        "emailSentMessage": "Ua hoʻouna hou ʻia ka leka aloha. E nānā i kāu waihona leka.",
+        "welcomeEmailConfirm": "Makemake ʻoe e hoʻouna hou i ka leka uila aloha?"
+    },
+    "order": {
+        "title": "Kauoha Palapala ʻAe"
+    },
+    "changeIp": {
+        "title": "Hoʻololi IP"
+    },
+    "changeOs": {
+        "title": "Hoʻololi Pūnaehana",
+        "selectLicenseOs": "Koho Pūnaehana Palapala ʻAe"
+    }
 }

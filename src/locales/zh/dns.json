@@ -1,4 +1,26 @@
 {
-    "manager": { "title": "DNS 管理器", "addDomain": "添加域名", "deleteDomain": "删除域名", "domainName": "域名", "dnsServers": "DNS 服务器", "confirmDelete": "确定要删除此域名吗？", "noDomains": "未找到域名" },
-    "editor": { "title": "DNS 编辑器", "addRecord": "添加记录", "deleteRecord": "删除记录", "editRecord": "编辑记录", "recordType": "记录类型", "hostname": "主机名", "address": "地址", "distance": "距离", "weight": "权重", "port": "端口", "ttl": "TTL", "actions": "操作", "confirmDelete": "确定要删除此记录吗？" }
+    "manager": {
+        "title": "DNS 管理器",
+        "addDomain": "添加域名",
+        "deleteDomain": "删除域名",
+        "domainName": "域名",
+        "dnsServers": "DNS 服务器",
+        "confirmDelete": "确定要删除此域名吗？",
+        "noDomains": "未找到域名"
+    },
+    "editor": {
+        "title": "DNS 编辑器",
+        "addRecord": "添加记录",
+        "deleteRecord": "删除记录",
+        "editRecord": "编辑记录",
+        "recordType": "记录类型",
+        "hostname": "主机名",
+        "address": "地址",
+        "distance": "距离",
+        "weight": "权重",
+        "port": "端口",
+        "ttl": "TTL",
+        "actions": "操作",
+        "confirmDelete": "确定要删除此记录吗？"
+    }
 }

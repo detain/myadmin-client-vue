@@ -1,12 +1,12 @@
 {
-  "required": "{field} e hlokahala",
-  "email": "E tlameha ho ba aterese ea imeile e nepahetseng",
-  "minLength": "E tlameha ho ba bonyane litlhaku tse {min}",
-  "maxLength": "E tlameha ho se fete litlhaku tse {max}",
-  "passwordMatch": "Lipasewete li tlameha ho tshwana",
-  "invalidFormat": "Sebopeho ha se nepahale",
-  "numeric": "E tlameha ho ba nomoro",
-  "url": "E tlameha ho ba URL e nepahetseng",
-  "ipAddress": "E tlameha ho ba aterese ea IP e nepahetseng",
-  "hostname": "E tlameha ho ba lebitso la haolo le nepahetseng"
+    "required": "{field} e hlokahala",
+    "email": "E tlameha ho ba aterese ea imeile e nepahetseng",
+    "minLength": "E tlameha ho ba bonyane litlhaku tse {min}",
+    "maxLength": "E tlameha ho se fete litlhaku tse {max}",
+    "passwordMatch": "Lipasewete li tlameha ho tshwana",
+    "invalidFormat": "Sebopeho ha se nepahale",
+    "numeric": "E tlameha ho ba nomoro",
+    "url": "E tlameha ho ba URL e nepahetseng",
+    "ipAddress": "E tlameha ho ba aterese ea IP e nepahetseng",
+    "hostname": "E tlameha ho ba lebitso la haolo le nepahetseng"
 }

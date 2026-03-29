@@ -105,6 +105,7 @@
         "loading": "Fa'atali...",
         "noData": "Leai se fa'amaumauga",
         "noActiveServices": "Leai Auaunaga Fa'agaoioi",
+        "noServicesMatchingFilter": "Leai auaunaga maua e fetaui ma le faamama '{filter}'",
         "controlPanel": "Pane Fa'atonutonu",
         "welcomeEmail": "Imeli Afio Mai",
         "invoices": "Pili",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "E mautinoa oe e fa'aleaogaina?"
     },
     "footer": {
-        "copyright": "Totogi Puletaofia \u00a9 {year} InterServer Inc.",
+        "copyright": "Totogi Puletaofia © {year} InterServer Inc.",
         "allRightsReserved": "Aia uma o lo'o fa'asaoina."
     },
     "search": {

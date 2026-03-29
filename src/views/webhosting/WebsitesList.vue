@@ -31,13 +31,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<Record<string, any>[]>([]);
+const loading = ref(true);
 
 const loadData = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/${moduleLink(module)}`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadData();
@@ -50,6 +54,7 @@ loadData();
         :columns="columns"
         id-field="website_id"
         status-field="website_status"
+        :loading="loading"
         :order-title="t('webhosting.list.orderTitle')"
     />
 </template>

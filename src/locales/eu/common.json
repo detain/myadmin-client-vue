@@ -105,6 +105,7 @@
         "loading": "Kargatzen...",
         "noData": "Ez dago daturik erabilgarri",
         "noActiveServices": "Ez dago zerbitzu aktiborik",
+        "noServicesMatchingFilter": "Ez da '{filter}' iragazkiarekin bat datorren zerbitzurik aurkitu",
         "controlPanel": "Kontrol Panela",
         "welcomeEmail": "Ongi Etorri Mezua",
         "invoices": "Fakturak",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ziur al zaude utzi nahi duzula?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Eskubide guztiak erreserbatuta."
     },
     "search": {

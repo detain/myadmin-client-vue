@@ -1,17 +1,48 @@
 {
-  "list": {"title": "Daptar Layanan Surat", "orderTitle": "Pesan Registrasi Surat"},
-  "view": {
-    "title": "Tempo Surat {id}", "package": "Paket", "nextInvoiceDate": "Tanggal Invoice Salajengna:",
-    "billing": "Tagihan", "billed": "ditagih:", "statusIs": "Status nyaeta:", "mailApi": "API Surat",
-    "usageCount": "Jumlah Panggunaan:", "links": "Tautan", "connectionInfo": "Inpo Koneksi",
-    "emailSent": "Email Dikirimkeun",
-    "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
-  },
-  "order": {"title": "Pesan Surat"},
-  "alerts": {"title": "Peringatan", "addAlert": "Tambah Peringatan", "editAlert": "Edit Peringatan", "noAlerts": "Teu kapendak peringatan"},
-  "delist": {"title": "Hapus tina Daptar", "blockedEmails": "Email Diblokir"},
-  "denyRules": {"title": "Aturan Penolakan", "addRule": "Tambah Aturan", "noRules": "Teu kapendak aturan penolakan"},
-  "logs": {"title": "Log", "searchLogs": "Teang Log"},
-  "stats": {"title": "Statistik"},
-  "deliverability": {"title": "Kemampuan Pengiriman"}
+    "list": {
+        "title": "Daptar Layanan Surat",
+        "orderTitle": "Pesan Registrasi Surat"
+    },
+    "view": {
+        "title": "Tempo Surat {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Invoice Salajengna:",
+        "billing": "Tagihan",
+        "billed": "ditagih:",
+        "statusIs": "Status nyaeta:",
+        "mailApi": "API Surat",
+        "usageCount": "Jumlah Panggunaan:",
+        "links": "Tautan",
+        "connectionInfo": "Inpo Koneksi",
+        "emailSent": "Email Dikirimkeun",
+        "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+    },
+    "order": {
+        "title": "Pesan Surat"
+    },
+    "alerts": {
+        "title": "Peringatan",
+        "addAlert": "Tambah Peringatan",
+        "editAlert": "Edit Peringatan",
+        "noAlerts": "Teu kapendak peringatan"
+    },
+    "delist": {
+        "title": "Hapus tina Daptar",
+        "blockedEmails": "Email Diblokir"
+    },
+    "denyRules": {
+        "title": "Aturan Penolakan",
+        "addRule": "Tambah Aturan",
+        "noRules": "Teu kapendak aturan penolakan"
+    },
+    "logs": {
+        "title": "Log",
+        "searchLogs": "Teang Log"
+    },
+    "stats": {
+        "title": "Statistik"
+    },
+    "deliverability": {
+        "title": "Kemampuan Pengiriman"
+    }
 }

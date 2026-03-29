@@ -1,12 +1,12 @@
 {
-  "title": "Utenti",
-  "addUser": "Aggiungi Utente",
-  "editUser": "Modifica Utente",
-  "firstName": "Nome",
-  "lastName": "Cognome",
-  "username": "Nome Utente",
-  "password": "Password",
-  "keepSamePassword": "Lascia vuoto per mantenere la stessa password",
-  "errorLoading": "Errore nel caricamento utenti:",
-  "errorLoadingUser": "Errore nel caricamento utente:"
+    "title": "Utenti",
+    "addUser": "Aggiungi Utente",
+    "editUser": "Modifica Utente",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "username": "Nome Utente",
+    "password": "Password",
+    "keepSamePassword": "Lascia vuoto per mantenere la stessa password",
+    "errorLoading": "Errore nel caricamento utenti:",
+    "errorLoadingUser": "Errore nel caricamento utente:"
 }

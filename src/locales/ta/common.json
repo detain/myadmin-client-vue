@@ -105,6 +105,7 @@
         "loading": "ஏற்றுகிறது...",
         "noData": "தரவு இல்லை",
         "noActiveServices": "செயலில் உள்ள சேவைகள் இல்லை",
+        "noServicesMatchingFilter": "'{filter}' வடிகட்டியுடன் பொருந்தும் சேவைகள் எதுவும் கிடைக்கவில்லை",
         "controlPanel": "கட்டுப்பாட்டு பலகை",
         "welcomeEmail": "வரவேற்பு மின்னஞ்சல்",
         "invoices": "விலைப்பட்டியல்கள்",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "நீங்கள் ரத்து செய்ய விரும்புகிறீர்களா?"
     },
     "footer": {
-        "copyright": "பதிப்புரிமை \u00a9 {year} InterServer Inc.",
+        "copyright": "பதிப்புரிமை © {year} InterServer Inc.",
         "allRightsReserved": "அனைத்து உரிமைகளும் பாதுகாக்கப்படுகின்றன."
     },
     "search": {

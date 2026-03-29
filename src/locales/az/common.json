@@ -105,6 +105,7 @@
         "loading": "Yüklənir...",
         "noData": "Məlumat yoxdur",
         "noActiveServices": "Aktiv Xidmət Yoxdur",
+        "noServicesMatchingFilter": "'{filter}' filtrinə uyğun xidmət tapılmadı",
         "controlPanel": "İdarəetmə Paneli",
         "welcomeEmail": "Xoş Gəlmisiniz E-poçtu",
         "invoices": "Fakturalar",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ləğv etmək istədiyinizə əminsinizmi?"
     },
     "footer": {
-        "copyright": "Müəllif Hüququ \u00a9 {year} InterServer Inc.",
+        "copyright": "Müəllif Hüququ © {year} InterServer Inc.",
         "allRightsReserved": "Bütün hüquqlar qorunur."
     },
     "search": {

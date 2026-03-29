@@ -1,12 +1,12 @@
 {
-  "title": "Lietotāji",
-  "addUser": "Pievienot lietotāju",
-  "editUser": "Rediģēt lietotāju",
-  "firstName": "Vārds",
-  "lastName": "Uzvārds",
-  "username": "Lietotājvārds",
-  "password": "Parole",
-  "keepSamePassword": "Atstājiet tukšu, lai saglabātu to pašu paroli",
-  "errorLoading": "Kļūda ielādējot lietotājus:",
-  "errorLoadingUser": "Kļūda ielādējot lietotāju:"
+    "title": "Lietotāji",
+    "addUser": "Pievienot lietotāju",
+    "editUser": "Rediģēt lietotāju",
+    "firstName": "Vārds",
+    "lastName": "Uzvārds",
+    "username": "Lietotājvārds",
+    "password": "Parole",
+    "keepSamePassword": "Atstājiet tukšu, lai saglabātu to pašu paroli",
+    "errorLoading": "Kļūda ielādējot lietotājus:",
+    "errorLoadingUser": "Kļūda ielādējot lietotāju:"
 }

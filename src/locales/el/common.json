@@ -105,6 +105,7 @@
         "loading": "Φόρτωση...",
         "noData": "Δεν υπάρχουν διαθέσιμα δεδομένα",
         "noActiveServices": "Δεν Υπάρχουν Ενεργές Υπηρεσίες",
+        "noServicesMatchingFilter": "Δεν βρέθηκαν υπηρεσίες που να ταιριάζουν με το φίλτρο '{filter}'",
         "controlPanel": "Πίνακας Ελέγχου",
         "welcomeEmail": "Email Καλωσορίσματος",
         "invoices": "Τιμολόγια",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Είστε σίγουροι ότι θέλετε να ακυρώσετε;"
     },
     "footer": {
-        "copyright": "Πνευματικά Δικαιώματα \u00a9 {year} InterServer Inc.",
+        "copyright": "Πνευματικά Δικαιώματα © {year} InterServer Inc.",
         "allRightsReserved": "Όλα τα δικαιώματα διατηρούνται."
     },
     "search": {

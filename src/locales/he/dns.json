@@ -1,1 +1,26 @@
-{ "manager": { "title": "מנהל DNS", "addDomain": "הוסף דומיין", "deleteDomain": "מחק דומיין", "domainName": "שם דומיין", "dnsServers": "שרתי DNS", "confirmDelete": "האם אתה בטוח שברצונך למחוק דומיין זה?", "noDomains": "לא נמצאו דומיינים" }, "editor": { "title": "עורך DNS", "addRecord": "הוסף רשומה", "deleteRecord": "מחק רשומה", "editRecord": "ערוך רשומה", "recordType": "סוג רשומה", "hostname": "שם מארח", "address": "כתובת", "distance": "מרחק", "weight": "משקל", "port": "פורט", "ttl": "TTL", "actions": "פעולות", "confirmDelete": "האם אתה בטוח שברצונך למחוק רשומה זו?" } }
+{
+    "manager": {
+        "title": "מנהל DNS",
+        "addDomain": "הוסף דומיין",
+        "deleteDomain": "מחק דומיין",
+        "domainName": "שם דומיין",
+        "dnsServers": "שרתי DNS",
+        "confirmDelete": "האם אתה בטוח שברצונך למחוק דומיין זה?",
+        "noDomains": "לא נמצאו דומיינים"
+    },
+    "editor": {
+        "title": "עורך DNS",
+        "addRecord": "הוסף רשומה",
+        "deleteRecord": "מחק רשומה",
+        "editRecord": "ערוך רשומה",
+        "recordType": "סוג רשומה",
+        "hostname": "שם מארח",
+        "address": "כתובת",
+        "distance": "מרחק",
+        "weight": "משקל",
+        "port": "פורט",
+        "ttl": "TTL",
+        "actions": "פעולות",
+        "confirmDelete": "האם אתה בטוח שברצונך למחוק רשומה זו?"
+    }
+}

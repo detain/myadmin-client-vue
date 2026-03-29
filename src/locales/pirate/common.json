@@ -105,6 +105,7 @@
         "loading": "Scanning the horizon...",
         "noData": "Nothing in the crow's nest",
         "noActiveServices": "No Vessels Currently Sailing",
+        "noServicesMatchingFilter": "No vessels found matching the lookout for '{filter}'",
         "controlPanel": "The Helm",
         "welcomeEmail": "Welcome Dispatch",
         "invoices": "Bills of Plunder",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Are ye sure ye want to stand down?"
     },
     "footer": {
-        "copyright": "Protected by the Pirate's Code \u00a9 {year} InterServer Inc.",
+        "copyright": "Protected by the Pirate's Code © {year} InterServer Inc.",
         "allRightsReserved": "All plunder reserved."
     },
     "search": {

@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Floating IPs paslaugų sąrašas",
-    "orderTitle": "Užsakyti Floating IP registracijas"
-  },
-  "view": {
-    "title": "Peržiūrėti Floating IP {id}",
-    "package": "Paketas",
-    "nextInvoiceDate": "Kita sąskaitos data:",
-    "billing": "Atsiskaitymas",
-    "billed": "išrašyta sąskaita:",
-    "statusIs": "Būsena:",
-    "floatingIp": "Floating IP",
-    "links": "Nuorodos",
-    "emailSent": "El. laiškas išsiųstas",
-    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius.",
-    "welcomeEmailConfirm": "Ar tikrai norite iš naujo išsiųsti sveikinimo laišką?"
-  },
-  "order": {
-    "title": "Užsakyti Floating IP"
-  },
-  "changeIp": {
-    "title": "Keisti tikslinio IP"
-  }
+    "list": {
+        "title": "Floating IPs paslaugų sąrašas",
+        "orderTitle": "Užsakyti Floating IP registracijas"
+    },
+    "view": {
+        "title": "Peržiūrėti Floating IP {id}",
+        "package": "Paketas",
+        "nextInvoiceDate": "Kita sąskaitos data:",
+        "billing": "Atsiskaitymas",
+        "billed": "išrašyta sąskaita:",
+        "statusIs": "Būsena:",
+        "floatingIp": "Floating IP",
+        "links": "Nuorodos",
+        "emailSent": "El. laiškas išsiųstas",
+        "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius.",
+        "welcomeEmailConfirm": "Ar tikrai norite iš naujo išsiųsti sveikinimo laišką?"
+    },
+    "order": {
+        "title": "Užsakyti Floating IP"
+    },
+    "changeIp": {
+        "title": "Keisti tikslinio IP"
+    }
 }

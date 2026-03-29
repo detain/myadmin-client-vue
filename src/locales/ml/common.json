@@ -105,6 +105,7 @@
         "loading": "ലോഡ് ചെയ്യുന്നു...",
         "noData": "ഡാറ്റ ലഭ്യമല്ല",
         "noActiveServices": "സജീവ സേവനങ്ങൾ ഇല്ല",
+        "noServicesMatchingFilter": "'{filter}' ഫിൽട്ടറുമായി പൊരുത്തപ്പെടുന്ന സേവനങ്ങളൊന്നും കണ്ടെത്തിയില്ല",
         "controlPanel": "കൺട്രോൾ പാനൽ",
         "welcomeEmail": "സ്വാഗത ഇമെയിൽ",
         "invoices": "ഇൻവോയ്സുകൾ",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "നിങ്ങൾ റദ്ദാക്കാൻ ഉറപ്പാണോ?"
     },
     "footer": {
-        "copyright": "കോപ്പിറൈറ്റ് \u00a9 {year} InterServer Inc.",
+        "copyright": "കോപ്പിറൈറ്റ് © {year} InterServer Inc.",
         "allRightsReserved": "എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തമാണ്."
     },
     "search": {

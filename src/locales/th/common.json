@@ -105,6 +105,7 @@
         "loading": "กำลังโหลด...",
         "noData": "ไม่มีข้อมูล",
         "noActiveServices": "ไม่มีบริการที่ใช้งานอยู่",
+        "noServicesMatchingFilter": "ไม่พบบริการที่ตรงกับตัวกรอง '{filter}'",
         "controlPanel": "แผงควบคุม",
         "welcomeEmail": "อีเมลต้อนรับ",
         "invoices": "ใบแจ้งหนี้",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิก?"
     },
     "footer": {
-        "copyright": "ลิขสิทธิ์ \u00a9 {year} InterServer Inc.",
+        "copyright": "ลิขสิทธิ์ © {year} InterServer Inc.",
         "allRightsReserved": "สงวนลิขสิทธิ์ทั้งหมด"
     },
     "search": {

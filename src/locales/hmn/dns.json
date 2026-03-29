@@ -1,1 +1,26 @@
-{ "manager": { "title": "Tus Tswj DNS", "addDomain": "Ntxiv Domain", "deleteDomain": "Rho Domain", "domainName": "Npe Domain", "dnsServers": "Cov Server DNS", "confirmDelete": "Koj pom zoo rho domain no?", "noDomains": "Tsis nrhiav tau domains" }, "editor": { "title": "Kho DNS", "addRecord": "Ntxiv Ntaub Ntawv", "deleteRecord": "Rho Ntaub Ntawv", "editRecord": "Kho Ntaub Ntawv", "recordType": "Hom Ntaub Ntawv", "hostname": "Npe Tsev", "address": "Chaw Nyob", "distance": "Deb Npaum Li Cas", "weight": "Hnyav", "port": "Port", "ttl": "TTL", "actions": "Cov Haujlwm", "confirmDelete": "Koj pom zoo rho ntaub ntawv no?" } }
+{
+    "manager": {
+        "title": "Tus Tswj DNS",
+        "addDomain": "Ntxiv Domain",
+        "deleteDomain": "Rho Domain",
+        "domainName": "Npe Domain",
+        "dnsServers": "Cov Server DNS",
+        "confirmDelete": "Koj pom zoo rho domain no?",
+        "noDomains": "Tsis nrhiav tau domains"
+    },
+    "editor": {
+        "title": "Kho DNS",
+        "addRecord": "Ntxiv Ntaub Ntawv",
+        "deleteRecord": "Rho Ntaub Ntawv",
+        "editRecord": "Kho Ntaub Ntawv",
+        "recordType": "Hom Ntaub Ntawv",
+        "hostname": "Npe Tsev",
+        "address": "Chaw Nyob",
+        "distance": "Deb Npaum Li Cas",
+        "weight": "Hnyav",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Cov Haujlwm",
+        "confirmDelete": "Koj pom zoo rho ntaub ntawv no?"
+    }
+}

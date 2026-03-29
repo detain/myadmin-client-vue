@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Floating IPs Service-Lëscht",
-    "orderTitle": "Floating IP-Registréierungen bestalln"
-  },
-  "view": {
-    "title": "Floating IP {id} ukucken",
-    "package": "Pak",
-    "nextInvoiceDate": "Nächst Rechnungsdatum:",
-    "billing": "Rechnung",
-    "billed": "berechent:",
-    "statusIs": "Status ass:",
-    "floatingIp": "Floating IP",
-    "links": "Linken",
-    "emailSent": "E-Mail geschéckt",
-    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
-    "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
-  },
-  "order": {
-    "title": "Floating IP bestalln"
-  },
-  "changeIp": {
-    "title": "Zil-IP änneren"
-  }
+    "list": {
+        "title": "Floating IPs Service-Lëscht",
+        "orderTitle": "Floating IP-Registréierungen bestalln"
+    },
+    "view": {
+        "title": "Floating IP {id} ukucken",
+        "package": "Pak",
+        "nextInvoiceDate": "Nächst Rechnungsdatum:",
+        "billing": "Rechnung",
+        "billed": "berechent:",
+        "statusIs": "Status ass:",
+        "floatingIp": "Floating IP",
+        "links": "Linken",
+        "emailSent": "E-Mail geschéckt",
+        "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
+        "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
+    },
+    "order": {
+        "title": "Floating IP bestalln"
+    },
+    "changeIp": {
+        "title": "Zil-IP änneren"
+    }
 }

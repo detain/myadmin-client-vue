@@ -105,6 +105,7 @@
         "loading": "Se încarcă...",
         "noData": "Nu există date disponibile",
         "noActiveServices": "Niciun serviciu activ",
+        "noServicesMatchingFilter": "Nu au fost găsite servicii care să corespundă filtrului '{filter}'",
         "controlPanel": "Panou de control",
         "welcomeEmail": "Email de bun venit",
         "invoices": "Facturi",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ești sigur că vrei să anulezi?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Toate drepturile rezervate."
     },
     "search": {

@@ -105,6 +105,7 @@
         "loading": "Đang tải...",
         "noData": "Không có dữ liệu",
         "noActiveServices": "Không có dịch vụ đang hoạt động",
+        "noServicesMatchingFilter": "Không tìm thấy dịch vụ nào phù hợp với bộ lọc '{filter}'",
         "controlPanel": "Bảng điều khiển",
         "welcomeEmail": "Email chào mừng",
         "invoices": "Hóa đơn",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Bạn có chắc muốn hủy không?"
     },
     "footer": {
-        "copyright": "Bản quyền \u00a9 {year} InterServer Inc.",
+        "copyright": "Bản quyền © {year} InterServer Inc.",
         "allRightsReserved": "Đã đăng ký bản quyền."
     },
     "search": {

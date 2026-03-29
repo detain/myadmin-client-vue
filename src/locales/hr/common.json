@@ -105,6 +105,7 @@
         "loading": "Učitavanje...",
         "noData": "Nema dostupnih podataka",
         "noActiveServices": "Nema aktivnih usluga",
+        "noServicesMatchingFilter": "Nisu pronađene usluge koje odgovaraju filtru '{filter}'",
         "controlPanel": "Upravljačka ploča",
         "welcomeEmail": "E-mail dobrodošlice",
         "invoices": "Fakture",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Jeste li sigurni da želite otkazati?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Sva prava pridržana."
     },
     "search": {
