@@ -80,8 +80,11 @@
     "home": {
         "cart": "Baaskiidka",
         "editPersonalInfo": "Macluumaadka Shakhsiga Wax ka beddel",
-        "copyright": "Xuquuqda \u00a9 {year} InterServer Inc.",
+        "copyright": "Xuquuqda © {year} InterServer Inc.",
         "allRightsReserved": "Dhammaan xuquuqaha waa dhawrsanaan."
     },
-    "copyright": "Xuquuqda \u00a9 {year} - Dhammaan Xuquuqaha Waa Dhawrsanaan."
+    "copyright": "Xuquuqda © {year} - Dhammaan Xuquuqaha Waa Dhawrsanaan.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servers"
 }

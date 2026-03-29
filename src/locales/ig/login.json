@@ -80,8 +80,11 @@
     "home": {
         "cart": "Ụgbọ ahịa",
         "editPersonalInfo": "Dezie Ozi Nkeonwe",
-        "copyright": "Ikike Ndebi \u00a9 {year} InterServer Inc.",
+        "copyright": "Ikike Ndebi © {year} InterServer Inc.",
         "allRightsReserved": "Ikike niile echekwara."
     },
-    "copyright": "Ikike Ndebi \u00a9 {year} - Ikike Niile Echekwara."
+    "copyright": "Ikike Ndebi © {year} - Ikike Niile Echekwara.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servers"
 }

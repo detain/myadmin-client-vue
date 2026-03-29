@@ -80,8 +80,11 @@
     "home": {
         "cart": "Ciseán",
         "editPersonalInfo": "Cuir Eolas Pearsanta in Eagar",
-        "copyright": "Cóipcheart \u00a9 {year} InterServer Inc.",
+        "copyright": "Cóipcheart © {year} InterServer Inc.",
         "allRightsReserved": "Gach ceart ar cosaint."
     },
-    "copyright": "Cóipcheart \u00a9 {year} - Gach Ceart ar Cosaint."
+    "copyright": "Cóipcheart © {year} - Gach Ceart ar Cosaint.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Freastalaithe"
 }

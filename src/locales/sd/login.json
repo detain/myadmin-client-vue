@@ -80,8 +80,11 @@
     "home": {
         "cart": "ڪارٽ",
         "editPersonalInfo": "ذاتي معلومات تبديل ڪريو",
-        "copyright": "ڪاپي رائيٽ \u00a9 {year} InterServer Inc.",
+        "copyright": "ڪاپي رائيٽ © {year} InterServer Inc.",
         "allRightsReserved": "سڀ حق محفوظ آهن."
     },
-    "copyright": "ڪاپي رائيٽ \u00a9 {year} - سڀ حق محفوظ آهن."
+    "copyright": "ڪاپي رائيٽ © {year} - سڀ حق محفوظ آهن.",
+    "statsVps": "VPS",
+    "statsWebsites": "ويب هوسٽنگ",
+    "statsServers": "سرورز"
 }

@@ -80,8 +80,11 @@
     "home": {
         "cart": "කරත්තය",
         "editPersonalInfo": "පෞද්ගලික තොරතුරු සංස්කරණය කරන්න",
-        "copyright": "කතුහිමිකම \u00a9 {year} InterServer Inc.",
+        "copyright": "කතුහිමිකම © {year} InterServer Inc.",
         "allRightsReserved": "සියලුම හිමිකම් ඇවිරිණි."
     },
-    "copyright": "කතුහිමිකම \u00a9 {year} - සියලුම හිමිකම් ඇවිරිණි."
+    "copyright": "කතුහිමිකම © {year} - සියලුම හිමිකම් ඇවිරිණි.",
+    "statsVps": "VPS",
+    "statsWebsites": "වෙබ් හොස්ටිං",
+    "statsServers": "සේවාදායකයන්"
 }

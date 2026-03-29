@@ -80,8 +80,11 @@
     "home": {
         "cart": "Warenkorb",
         "editPersonalInfo": "Persönliche Daten bearbeiten",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Alle Rechte vorbehalten."
     },
-    "copyright": "Copyright \u00a9 {year} - Alle Rechte vorbehalten."
+    "copyright": "Copyright © {year} - Alle Rechte vorbehalten.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Server"
 }

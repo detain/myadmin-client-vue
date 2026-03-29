@@ -80,8 +80,11 @@
     "home": {
         "cart": "Корпа",
         "editPersonalInfo": "Уреди личне информације",
-        "copyright": "Ауторска права \u00a9 {year} InterServer Inc.",
+        "copyright": "Ауторска права © {year} InterServer Inc.",
         "allRightsReserved": "Сва права задржана."
     },
-    "copyright": "Ауторска права \u00a9 {year} - Сва права задржана."
+    "copyright": "Ауторска права © {year} - Сва права задржана.",
+    "statsVps": "VPS",
+    "statsWebsites": "Веб хостинг",
+    "statsServers": "Сервери"
 }

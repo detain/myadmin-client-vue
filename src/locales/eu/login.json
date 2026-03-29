@@ -80,8 +80,11 @@
     "home": {
         "cart": "Saskia",
         "editPersonalInfo": "Editatu Informazio Pertsonala",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Eskubide guztiak erreserbatuta."
     },
-    "copyright": "Copyright \u00a9 {year} - Eskubide Guztiak Erreserbatuta."
+    "copyright": "Copyright © {year} - Eskubide Guztiak Erreserbatuta.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Zerbitzariak"
 }

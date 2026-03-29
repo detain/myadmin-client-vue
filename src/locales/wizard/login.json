@@ -80,8 +80,11 @@
     "home": {
         "cart": "Artifact Satchel",
         "editPersonalInfo": "Alter Personal Inscriptions",
-        "copyright": "Sealed by Arcane Law \u00a9 {year} InterServer Inc.",
+        "copyright": "Sealed by Arcane Law © {year} InterServer Inc.",
         "allRightsReserved": "All rights bound by the covenant."
     },
-    "copyright": "Sealed by Arcane Law \u00a9 {year} - All Rights Bound by the Covenant."
+    "copyright": "Sealed by Arcane Law © {year} - All Rights Bound by the Covenant.",
+    "statsVps": "Enchanted Crystals",
+    "statsWebsites": "Web Weavings",
+    "statsServers": "Iron Golems"
 }

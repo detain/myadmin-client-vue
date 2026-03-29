@@ -80,8 +80,11 @@
     "home": {
         "cart": "ກາຕ້າ",
         "editPersonalInfo": "ແກ້ໄຂຂໍ້ມູນສ່ວນຕົວ",
-        "copyright": "ລິຂະສິດ \u00a9 {year} InterServer Inc.",
+        "copyright": "ລິຂະສິດ © {year} InterServer Inc.",
         "allRightsReserved": "ສະຫງວນລິຂະສິດ."
     },
-    "copyright": "ລິຂະສິດ \u00a9 {year} - ສະຫງວນລິຂະສິດ."
+    "copyright": "ລິຂະສິດ © {year} - ສະຫງວນລິຂະສິດ.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "ເຊີຟເວີ"
 }

@@ -80,8 +80,11 @@
     "home": {
         "cart": "Mandjie",
         "editPersonalInfo": "Wysig Persoonlike Inligting",
-        "copyright": "Kopiereg \u00a9 {year} InterServer Inc.",
+        "copyright": "Kopiereg © {year} InterServer Inc.",
         "allRightsReserved": "Alle regte voorbehou."
     },
-    "copyright": "Kopiereg \u00a9 {year} - Alle Regte Voorbehou."
+    "copyright": "Kopiereg © {year} - Alle Regte Voorbehou.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webgasvrye",
+    "statsServers": "Bedieners"
 }

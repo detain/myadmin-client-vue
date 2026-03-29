@@ -80,8 +80,11 @@
     "home": {
         "cart": "ਕਾਰਟ",
         "editPersonalInfo": "ਨਿੱਜੀ ਜਾਣਕਾਰੀ ਸੰਪਾਦਿਤ ਕਰੋ",
-        "copyright": "ਕਾਪੀਰਾਈਟ \u00a9 {year} InterServer Inc.",
+        "copyright": "ਕਾਪੀਰਾਈਟ © {year} InterServer Inc.",
         "allRightsReserved": "ਸਾਰੇ ਅਧਿਕਾਰ ਸੁਰੱਖਿਅਤ ਹਨ।"
     },
-    "copyright": "ਕਾਪੀਰਾਈਟ \u00a9 {year} - ਸਾਰੇ ਅਧਿਕਾਰ ਸੁਰੱਖਿਅਤ ਹਨ।"
+    "copyright": "ਕਾਪੀਰਾਈਟ © {year} - ਸਾਰੇ ਅਧਿਕਾਰ ਸੁਰੱਖਿਅਤ ਹਨ।",
+    "statsVps": "VPS",
+    "statsWebsites": "ਵੈੱਬਹੋਸਟਿੰਗ",
+    "statsServers": "ਸਰਵਰ"
 }

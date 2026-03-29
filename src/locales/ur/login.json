@@ -80,8 +80,11 @@
     "home": {
         "cart": "کارٹ",
         "editPersonalInfo": "ذاتی معلومات ترمیم کریں",
-        "copyright": "کاپی رائٹ \u00a9 {year} InterServer Inc.",
+        "copyright": "کاپی رائٹ © {year} InterServer Inc.",
         "allRightsReserved": "تمام حقوق محفوظ ہیں۔"
     },
-    "copyright": "کاپی رائٹ \u00a9 {year} - تمام حقوق محفوظ ہیں۔"
+    "copyright": "کاپی رائٹ © {year} - تمام حقوق محفوظ ہیں۔",
+    "statsVps": "VPS",
+    "statsWebsites": "ویب ہوسٹنگ",
+    "statsServers": "سرورز"
 }
