@@ -14,8 +14,9 @@ function normalizeLocale(locale: string): string {
 }
 
 function findBestSupportedLocale(locale: string): string | null {
+    const raw = locale.trim().toLowerCase();
     const normalized = normalizeLocale(locale);
-    const candidates = [normalized, normalized.split('-')[0]];
+    const candidates = [raw, normalized, normalized.split('-')[0]];
 
     for (const candidate of candidates) {
         if (supportedLocales.has(candidate)) {
