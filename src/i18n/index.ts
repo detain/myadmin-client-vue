@@ -137,17 +137,22 @@ export async function loadLocaleMessages(locale: string, namespace: string): Pro
 }
 
 /**
- * Reload all previously-loaded namespaces for a new locale.
- * This ensures that when the user switches language, every part of the UI
- * (menu, breadcrumbs, other views' labels) updates — not just the current view.
+ * Switch to a new locale: loads ALL previously-used namespaces for the target
+ * locale first, then flips the active locale so Vue re-renders with every
+ * translation already in place.
  */
-export async function reloadAllNamespacesForLocale(locale: string): Promise<void> {
+export async function switchLocale(locale: string): Promise<string> {
+    const resolvedLocale = findBestSupportedLocale(locale) ?? DEFAULT_LOCALE;
     const namespacesToLoad = new Set<string>();
     for (const key of loadedNamespaces) {
         const ns = key.split(':')[1];
         namespacesToLoad.add(ns);
     }
-    await Promise.all([...namespacesToLoad].flatMap((ns) => [loadLocaleMessages(locale, ns), loadLocaleMessages(defaultLocale, ns)]));
+    // Load all messages BEFORE changing the locale so nothing renders with missing keys
+    await Promise.all([...namespacesToLoad].flatMap((ns) => [loadLocaleMessages(resolvedLocale, ns), loadLocaleMessages(DEFAULT_LOCALE, ns)]));
+    // Now flip the locale — Vue re-renders and every t() call has its translation ready
+    i18n.global.locale.value = resolvedLocale;
+    return resolvedLocale;
 }
 
 export async function loadCommonMessages(): Promise<void> {
