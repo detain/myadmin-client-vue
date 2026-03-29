@@ -68,6 +68,20 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 ## Downloads
 
 <!-- DOWNLOADS-START -->
+## Latest Downloads (v0.99.3)
+
+### Web
+- [Web (zip)](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.3/my-interserver-client-web-0.99.3.zip)
+
+### Electron
+#### Linux
+- [x64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.3/my-interserver-client-0.99.3-linux-x64.zip)
+- [arm64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.3/my-interserver-client-0.99.3-linux-arm64.zip)
+#### Windows
+- [x64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.3/my-interserver-client-0.99.3-windows-x64.zip)
+- [arm64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.3/my-interserver-client-0.99.3-windows-arm64.zip)
+#### macOS
+- [Universal](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.3/my-interserver-client-0.99.3-mac.zip)
 <!-- DOWNLOADS-END -->
 
 ## Installation
