@@ -1,6 +1,12 @@
 {
-    "title": "用户", "addUser": "添加用户", "editUser": "编辑用户",
-    "firstName": "名字", "lastName": "姓氏", "username": "用户名", "password": "密码",
+    "title": "用户",
+    "addUser": "添加用户",
+    "editUser": "编辑用户",
+    "firstName": "名字",
+    "lastName": "姓氏",
+    "username": "用户名",
+    "password": "密码",
     "keepSamePassword": "留空以保持相同密码",
-    "errorLoading": "加载用户时出错：", "errorLoadingUser": "加载用户时出错："
+    "errorLoading": "加载用户时出错：",
+    "errorLoadingUser": "加载用户时出错："
 }

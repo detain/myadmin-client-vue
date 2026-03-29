@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Flosantaj IP-oj Servoj Listo",
-    "orderTitle": "Mendi Flosantaj IP Registradojn"
-  },
-  "view": {
-    "title": "Vidi Flosantan IP {id}",
-    "package": "Pakaĵo",
-    "nextInvoiceDate": "Sekva Faktura Dato:",
-    "billing": "Fakturado",
-    "billed": "fakturita:",
-    "statusIs": "Statuso estas:",
-    "floatingIp": "Flosanta IP",
-    "links": "Ligiloj",
-    "emailSent": "Retpoŝto Sendita",
-    "emailSentMessage": "La bonvenigaj retpoŝto estis resenditaj. Kontrolu vian enirkeston.",
-    "welcomeEmailConfirm": "Ĉu vi certe volas resendi la bonveninan retpoŝton?"
-  },
-  "order": {
-    "title": "Mendi Flosantan IP"
-  },
-  "changeIp": {
-    "title": "Ŝanĝi Celan IP"
-  }
+    "list": {
+        "title": "Flosantaj IP-oj Servoj Listo",
+        "orderTitle": "Mendi Flosantaj IP Registradojn"
+    },
+    "view": {
+        "title": "Vidi Flosantan IP {id}",
+        "package": "Pakaĵo",
+        "nextInvoiceDate": "Sekva Faktura Dato:",
+        "billing": "Fakturado",
+        "billed": "fakturita:",
+        "statusIs": "Statuso estas:",
+        "floatingIp": "Flosanta IP",
+        "links": "Ligiloj",
+        "emailSent": "Retpoŝto Sendita",
+        "emailSentMessage": "La bonvenigaj retpoŝto estis resenditaj. Kontrolu vian enirkeston.",
+        "welcomeEmailConfirm": "Ĉu vi certe volas resendi la bonveninan retpoŝton?"
+    },
+    "order": {
+        "title": "Mendi Flosantan IP"
+    },
+    "changeIp": {
+        "title": "Ŝanĝi Celan IP"
+    }
 }

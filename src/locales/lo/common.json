@@ -105,6 +105,7 @@
         "loading": "ກຳລັງໂຫຼດ...",
         "noData": "ບໍ່ມີຂໍ້ມູນ",
         "noActiveServices": "ບໍ່ມີບໍລິການທີ່ໃຊ້ງານ",
+        "noServicesMatchingFilter": "ບໍ່ພົບບໍລິການທີ່ກົງກັບຕົວກັ່ນຕອງ '{filter}'",
         "controlPanel": "ແຜງຄວບຄຸມ",
         "welcomeEmail": "ອີເມລ໌ຍິນດີຕ້ອນຮັບ",
         "invoices": "ໃບແຈ້ງໜີ້",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະຍົກເລີກ?"
     },
     "footer": {
-        "copyright": "ລິຂະສິດ \u00a9 {year} InterServer Inc.",
+        "copyright": "ລິຂະສິດ © {year} InterServer Inc.",
         "allRightsReserved": "ສະຫງວນລິຂະສິດ."
     },
     "search": {

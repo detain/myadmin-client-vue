@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "רשימת אחסון אתרים",
-    "orderTitle": "הזמן רישומי אתר"
-  },
-  "view": {
-    "title": "הצג אתר {id}",
-    "package": "חבילה",
-    "nextInvoiceDate": "תאריך חשבונית הבא:",
-    "billing": "חיוב",
-    "billed": "חויב",
-    "billingStatusIs": "סטטוס חיוב הוא:",
-    "login": "כניסה",
-    "links": "קישורים",
-    "emailSent": "הדואר האלקטרוני נשלח",
-    "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך.",
-    "hostInfo": "מידע שרת",
-    "username": "שם משתמש:",
-    "ip": "IP:",
-    "server": "שרת:",
-    "notSetYet": "טרם הוגדר",
-    "types": "סוגים:",
-    "linksLabel": "קישורים:",
-    "manualLogin": "כניסה ידנית",
-    "automaticLogin": "כניסה אוטומטית",
-    "clickHere": "לחץ כאן",
-    "defaultNameservers": "שרתי שמות ברירת מחדל",
-    "nameservers": "שרתי שמות:",
-    "externalLinks": "קישורים חיצוניים",
-    "names": "שמות:",
-    "websitePreview": "תצוגה מקדימה של אתר",
-    "welcomeEmailConfirm": "האם אתה בטוח שברצונך לשלוח מחדש את הדוא\"ל ברוך הבא?"
-  },
-  "order": {
-    "title": "הזמן אתר"
-  },
-  "migration": {
-    "title": "העבר את האתר שלך",
-    "password": "סיסמה",
-    "importantNotes": "הערות חשובות",
-    "currentWebHostInfo": "מידע שרת אחסון נוכחי",
-    "customerPortalUrl": "URL פורטל לקוחות",
-    "portalExample": "לדוגמה: sso.godaddy.com",
-    "registeredUsername": "שם משתמש / דוא\"ל / מזהה רשום",
-    "controlPanelUrl": "URL לוח בקרה",
-    "controlPanelExample": "לדוגמה: yourdomain.com/cpanel",
-    "ftpUsername": "שם משתמש FTP / לוח בקרה",
-    "ftpPassword": "סיסמת FTP / לוח בקרה",
-    "holdingPageQuestion": "אם האתר פעיל/עמוס עם תנועה גבוהה, האם נוכל להגדיר עמוד המתנה במהלך ההגירה?",
-    "specialRequirementsQuestion": "האם לאתר זה יש דרישות מיוחדות כגון גרסת PHP / מודולים?",
-    "domainRegistryInfo": "מידע רישום דומיין",
-    "transferDomainQuestion": "האם גם תרצה שנסייע לך להעביר את רישום שם הדומיין?",
-    "updateNameserversQuestion": "האם תרצה שנעדכן את שרתי השמות מיד עם סיום הגירת הנתונים?",
-    "domainRegistryPortal": "פורטל לקוחות רישום דומיין",
-    "note1": "מילוי טופס זה יפתח כרטיס חדש למחלקת התמיכה שלנו.",
-    "note2": "אנא היה שלם ומדויק ככל האפשר כדי להימנע מעיכובים.",
-    "note3": "הגירה טיפוסית מושלמת תוך 48 עד 72 שעות.",
-    "note4": "חשבון האחסון הישן צריך להיות מקוון ונגיש בזמן שאנו מבצעים את ההגירה.",
-    "note5": "אנא אל תבצע עדכונים באתר שלך בזמן שאנו מבצעים את ההגירה."
-  },
-  "buyIp": {
-    "title": "רכוש תוסף IP נוסף",
-    "existingAddonIps": "כתובות IP נוספות קיימות",
-    "additionalIp": "IP נוסף",
-    "monthlyCost": "עלות חודשית ({symbol})",
-    "costDescription": "עלות ({symbol}) כל חודש בעת חיוב האתר",
-    "confirmPurchase": "אשר רכישה",
-    "confirmMessage": "עלות IP נוסף: {symbol}{cost}/חודש. האם אתה בטוח שברצונך להזמין IP נוסף?",
-    "placeOrder": "בצע הזמנה",
-    "orderPlaced": "הזמנה בוצעה"
-  },
-  "reverseDns": {
-    "title": "DNS הפוך",
-    "updateReverseDns": "עדכן DNS הפוך"
-  },
-  "downloadBackups": {
-    "title": "הורד גיבויים",
-    "backup": "גיבוי",
-    "size": "גודל",
-    "options": "אפשרויות"
-  }
+    "list": {
+        "title": "רשימת אחסון אתרים",
+        "orderTitle": "הזמן רישומי אתר"
+    },
+    "view": {
+        "title": "הצג אתר {id}",
+        "package": "חבילה",
+        "nextInvoiceDate": "תאריך חשבונית הבא:",
+        "billing": "חיוב",
+        "billed": "חויב",
+        "billingStatusIs": "סטטוס חיוב הוא:",
+        "login": "כניסה",
+        "links": "קישורים",
+        "emailSent": "הדואר האלקטרוני נשלח",
+        "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך.",
+        "hostInfo": "מידע שרת",
+        "username": "שם משתמש:",
+        "ip": "IP:",
+        "server": "שרת:",
+        "notSetYet": "טרם הוגדר",
+        "types": "סוגים:",
+        "linksLabel": "קישורים:",
+        "manualLogin": "כניסה ידנית",
+        "automaticLogin": "כניסה אוטומטית",
+        "clickHere": "לחץ כאן",
+        "defaultNameservers": "שרתי שמות ברירת מחדל",
+        "nameservers": "שרתי שמות:",
+        "externalLinks": "קישורים חיצוניים",
+        "names": "שמות:",
+        "websitePreview": "תצוגה מקדימה של אתר",
+        "welcomeEmailConfirm": "האם אתה בטוח שברצונך לשלוח מחדש את הדוא\"ל ברוך הבא?"
+    },
+    "order": {
+        "title": "הזמן אתר"
+    },
+    "migration": {
+        "title": "העבר את האתר שלך",
+        "password": "סיסמה",
+        "importantNotes": "הערות חשובות",
+        "currentWebHostInfo": "מידע שרת אחסון נוכחי",
+        "customerPortalUrl": "URL פורטל לקוחות",
+        "portalExample": "לדוגמה: sso.godaddy.com",
+        "registeredUsername": "שם משתמש / דוא\"ל / מזהה רשום",
+        "controlPanelUrl": "URL לוח בקרה",
+        "controlPanelExample": "לדוגמה: yourdomain.com/cpanel",
+        "ftpUsername": "שם משתמש FTP / לוח בקרה",
+        "ftpPassword": "סיסמת FTP / לוח בקרה",
+        "holdingPageQuestion": "אם האתר פעיל/עמוס עם תנועה גבוהה, האם נוכל להגדיר עמוד המתנה במהלך ההגירה?",
+        "specialRequirementsQuestion": "האם לאתר זה יש דרישות מיוחדות כגון גרסת PHP / מודולים?",
+        "domainRegistryInfo": "מידע רישום דומיין",
+        "transferDomainQuestion": "האם גם תרצה שנסייע לך להעביר את רישום שם הדומיין?",
+        "updateNameserversQuestion": "האם תרצה שנעדכן את שרתי השמות מיד עם סיום הגירת הנתונים?",
+        "domainRegistryPortal": "פורטל לקוחות רישום דומיין",
+        "note1": "מילוי טופס זה יפתח כרטיס חדש למחלקת התמיכה שלנו.",
+        "note2": "אנא היה שלם ומדויק ככל האפשר כדי להימנע מעיכובים.",
+        "note3": "הגירה טיפוסית מושלמת תוך 48 עד 72 שעות.",
+        "note4": "חשבון האחסון הישן צריך להיות מקוון ונגיש בזמן שאנו מבצעים את ההגירה.",
+        "note5": "אנא אל תבצע עדכונים באתר שלך בזמן שאנו מבצעים את ההגירה."
+    },
+    "buyIp": {
+        "title": "רכוש תוסף IP נוסף",
+        "existingAddonIps": "כתובות IP נוספות קיימות",
+        "additionalIp": "IP נוסף",
+        "monthlyCost": "עלות חודשית ({symbol})",
+        "costDescription": "עלות ({symbol}) כל חודש בעת חיוב האתר",
+        "confirmPurchase": "אשר רכישה",
+        "confirmMessage": "עלות IP נוסף: {symbol}{cost}/חודש. האם אתה בטוח שברצונך להזמין IP נוסף?",
+        "placeOrder": "בצע הזמנה",
+        "orderPlaced": "הזמנה בוצעה"
+    },
+    "reverseDns": {
+        "title": "DNS הפוך",
+        "updateReverseDns": "עדכן DNS הפוך"
+    },
+    "downloadBackups": {
+        "title": "הורד גיבויים",
+        "backup": "גיבוי",
+        "size": "גודל",
+        "options": "אפשרויות"
+    }
 }

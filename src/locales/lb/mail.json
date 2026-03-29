@@ -1,49 +1,49 @@
 {
-  "list": {
-    "title": "Post-Service-Lëscht",
-    "orderTitle": "Post-Registréierungen bestalln"
-  },
-  "view": {
-    "title": "Post {id} ukucken",
-    "package": "Pak",
-    "nextInvoiceDate": "Nächst Rechnungsdatum:",
-    "billing": "Rechnung",
-    "billed": "berechent:",
-    "statusIs": "Status ass:",
-    "mailApi": "Post-API",
-    "usageCount": "Notzungszuel:",
-    "links": "Linken",
-    "connectionInfo": "Verbindungsinformatioun",
-    "emailSent": "E-Mail geschéckt",
-    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
-    "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
-  },
-  "order": {
-    "title": "Post bestalln"
-  },
-  "alerts": {
-    "title": "Alerten",
-    "addAlert": "Alert dobäisetzen",
-    "editAlert": "Alert editéieren",
-    "noAlerts": "Keng Alerten fonnt"
-  },
-  "delist": {
-    "title": "Vun der Lëscht ewechhuelen",
-    "blockedEmails": "Geblockte E-Mailen"
-  },
-  "denyRules": {
-    "title": "Ablehnungsregelen",
-    "addRule": "Regel dobäisetzen",
-    "noRules": "Keng Ablehnungsregelen fonnt"
-  },
-  "logs": {
-    "title": "Logbicher",
-    "searchLogs": "Logbicher duerchsichen"
-  },
-  "stats": {
-    "title": "Statistiken"
-  },
-  "deliverability": {
-    "title": "Zustellbarkeetsgrad"
-  }
+    "list": {
+        "title": "Post-Service-Lëscht",
+        "orderTitle": "Post-Registréierungen bestalln"
+    },
+    "view": {
+        "title": "Post {id} ukucken",
+        "package": "Pak",
+        "nextInvoiceDate": "Nächst Rechnungsdatum:",
+        "billing": "Rechnung",
+        "billed": "berechent:",
+        "statusIs": "Status ass:",
+        "mailApi": "Post-API",
+        "usageCount": "Notzungszuel:",
+        "links": "Linken",
+        "connectionInfo": "Verbindungsinformatioun",
+        "emailSent": "E-Mail geschéckt",
+        "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
+        "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
+    },
+    "order": {
+        "title": "Post bestalln"
+    },
+    "alerts": {
+        "title": "Alerten",
+        "addAlert": "Alert dobäisetzen",
+        "editAlert": "Alert editéieren",
+        "noAlerts": "Keng Alerten fonnt"
+    },
+    "delist": {
+        "title": "Vun der Lëscht ewechhuelen",
+        "blockedEmails": "Geblockte E-Mailen"
+    },
+    "denyRules": {
+        "title": "Ablehnungsregelen",
+        "addRule": "Regel dobäisetzen",
+        "noRules": "Keng Ablehnungsregelen fonnt"
+    },
+    "logs": {
+        "title": "Logbicher",
+        "searchLogs": "Logbicher duerchsichen"
+    },
+    "stats": {
+        "title": "Statistiken"
+    },
+    "deliverability": {
+        "title": "Zustellbarkeetsgrad"
+    }
 }

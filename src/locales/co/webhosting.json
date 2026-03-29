@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "Lista d'ospitalità web",
-    "orderTitle": "Ordinate registrazioni di situ web"
-  },
-  "view": {
-    "title": "Vede situ web {id}",
-    "package": "Pacchettu",
-    "nextInvoiceDate": "Data di a prossima fattura:",
-    "billing": "Fatturazione",
-    "billed": "fatturatu",
-    "billingStatusIs": "U statu di fatturazione hè:",
-    "login": "Accede",
-    "links": "Ligami",
-    "emailSent": "Email mandata",
-    "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella.",
-    "hostInfo": "Infurmazione di Host",
-    "username": "Nome Utilizatore:",
-    "ip": "IP:",
-    "server": "Servitore:",
-    "notSetYet": "Ùn hè micca ancora impostatu",
-    "types": "Tipi:",
-    "linksLabel": "Ligami:",
-    "manualLogin": "Login Manuale",
-    "automaticLogin": "Login Automaticu",
-    "clickHere": "Cliccate Quì",
-    "defaultNameservers": "Nameserver Predefiniti",
-    "nameservers": "Nameserver:",
-    "externalLinks": "Ligami Esterni",
-    "names": "Nomi:",
-    "websitePreview": "Anticipazione di u Situ Web",
-    "welcomeEmailConfirm": "Siete sicuru di vulè rimandà l'email di benvenuta?"
-  },
-  "order": {
-    "title": "Ordinate un situ web"
-  },
-  "migration": {
-    "title": "Migrate u vostru situ web",
-    "password": "Password",
-    "importantNotes": "Note impurtanti",
-    "currentWebHostInfo": "Infurmazione di u Web Host Attuali",
-    "customerPortalUrl": "URL di u Portale di u Cliente",
-    "portalExample": "Per esempiu: sso.godaddy.com",
-    "registeredUsername": "Nome Utilizatore / Email / ID Registratu",
-    "controlPanelUrl": "URL di u Panellu di Cuntrollu",
-    "controlPanelExample": "Per esempiu: yourdomain.com/cpanel",
-    "ftpUsername": "FTP / Nome Utilizatore di u Panellu di Cuntrollu",
-    "ftpPassword": "FTP / Password di u Panellu di Cuntrollu",
-    "holdingPageQuestion": "Se u situ hè vivu/affollatu cù grande trafficu, pudemu impostà una pagina d'attesa durante a migrazione?",
-    "specialRequirementsQuestion": "Stu situ hà requisiti speciali cum'è Versione PHP / Moduli?",
-    "domainRegistryInfo": "Infurmazione di u Registru di Duminiu",
-    "transferDomainQuestion": "Vulete chì vi aiutemu à trasferisce a registrazione di u nome di duminiu?",
-    "updateNameserversQuestion": "Vulete chì aghjurnemu i name server appena finemu a migrazione di dati?",
-    "domainRegistryPortal": "Portale di u Cliente di u Registru di Duminiu",
-    "note1": "A compilazione di stu furmulariu aprirà un novu ticket per u nostru dipartimentu di supportu per cuminciare a vostra migrazione.",
-    "note2": "Per piacè siate u più cumplettu è precisu pussibule per evità qualsiasi ritardu.",
-    "note3": "Una migrazione tipica hè cumpletata in 48 à 72 ore. Certi volte più longu se a quantità di dati da copiare hè grande.",
-    "note4": "U vecchiu account di hosting deve esse online è accessibile mentre femu a migrazione, altrimenti pudemu affruntà difficultà.",
-    "note5": "Per piacè ùn fate micca alcun aghjurnamentu nantu à u vostru situ mentre femu a migrazione, altrimenti quei dati ponu micca esse cupiati à u novu hosting."
-  },
-  "buyIp": {
-    "title": "Acquistà un Aghjuntu IP Supplementariu",
-    "existingAddonIps": "IP di Aghjunti Esistenti",
-    "additionalIp": "IP Supplementariu",
-    "monthlyCost": "Costu Mensile ({symbol})",
-    "costDescription": "Costu ({symbol}) ogni mese cum'è u vostru situ web hè fatturatu",
-    "confirmPurchase": "Cunfirmà l'Acquistu",
-    "confirmMessage": "Costu IP supplementariu: {symbol}{cost}/mese. Siete sicuru di vulè urdinà un IP supplementariu?",
-    "placeOrder": "Piazzà Ordine",
-    "orderPlaced": "Ordine Piazzatu"
-  },
-  "reverseDns": {
-    "title": "DNS Inversu",
-    "updateReverseDns": "Aghjurnà u DNS Inversu"
-  },
-  "downloadBackups": {
-    "title": "Scaricà i Backups",
-    "backup": "Backup",
-    "size": "Taglia",
-    "options": "Opzioni"
-  }
+    "list": {
+        "title": "Lista d'ospitalità web",
+        "orderTitle": "Ordinate registrazioni di situ web"
+    },
+    "view": {
+        "title": "Vede situ web {id}",
+        "package": "Pacchettu",
+        "nextInvoiceDate": "Data di a prossima fattura:",
+        "billing": "Fatturazione",
+        "billed": "fatturatu",
+        "billingStatusIs": "U statu di fatturazione hè:",
+        "login": "Accede",
+        "links": "Ligami",
+        "emailSent": "Email mandata",
+        "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella.",
+        "hostInfo": "Infurmazione di Host",
+        "username": "Nome Utilizatore:",
+        "ip": "IP:",
+        "server": "Servitore:",
+        "notSetYet": "Ùn hè micca ancora impostatu",
+        "types": "Tipi:",
+        "linksLabel": "Ligami:",
+        "manualLogin": "Login Manuale",
+        "automaticLogin": "Login Automaticu",
+        "clickHere": "Cliccate Quì",
+        "defaultNameservers": "Nameserver Predefiniti",
+        "nameservers": "Nameserver:",
+        "externalLinks": "Ligami Esterni",
+        "names": "Nomi:",
+        "websitePreview": "Anticipazione di u Situ Web",
+        "welcomeEmailConfirm": "Siete sicuru di vulè rimandà l'email di benvenuta?"
+    },
+    "order": {
+        "title": "Ordinate un situ web"
+    },
+    "migration": {
+        "title": "Migrate u vostru situ web",
+        "password": "Password",
+        "importantNotes": "Note impurtanti",
+        "currentWebHostInfo": "Infurmazione di u Web Host Attuali",
+        "customerPortalUrl": "URL di u Portale di u Cliente",
+        "portalExample": "Per esempiu: sso.godaddy.com",
+        "registeredUsername": "Nome Utilizatore / Email / ID Registratu",
+        "controlPanelUrl": "URL di u Panellu di Cuntrollu",
+        "controlPanelExample": "Per esempiu: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Nome Utilizatore di u Panellu di Cuntrollu",
+        "ftpPassword": "FTP / Password di u Panellu di Cuntrollu",
+        "holdingPageQuestion": "Se u situ hè vivu/affollatu cù grande trafficu, pudemu impostà una pagina d'attesa durante a migrazione?",
+        "specialRequirementsQuestion": "Stu situ hà requisiti speciali cum'è Versione PHP / Moduli?",
+        "domainRegistryInfo": "Infurmazione di u Registru di Duminiu",
+        "transferDomainQuestion": "Vulete chì vi aiutemu à trasferisce a registrazione di u nome di duminiu?",
+        "updateNameserversQuestion": "Vulete chì aghjurnemu i name server appena finemu a migrazione di dati?",
+        "domainRegistryPortal": "Portale di u Cliente di u Registru di Duminiu",
+        "note1": "A compilazione di stu furmulariu aprirà un novu ticket per u nostru dipartimentu di supportu per cuminciare a vostra migrazione.",
+        "note2": "Per piacè siate u più cumplettu è precisu pussibule per evità qualsiasi ritardu.",
+        "note3": "Una migrazione tipica hè cumpletata in 48 à 72 ore. Certi volte più longu se a quantità di dati da copiare hè grande.",
+        "note4": "U vecchiu account di hosting deve esse online è accessibile mentre femu a migrazione, altrimenti pudemu affruntà difficultà.",
+        "note5": "Per piacè ùn fate micca alcun aghjurnamentu nantu à u vostru situ mentre femu a migrazione, altrimenti quei dati ponu micca esse cupiati à u novu hosting."
+    },
+    "buyIp": {
+        "title": "Acquistà un Aghjuntu IP Supplementariu",
+        "existingAddonIps": "IP di Aghjunti Esistenti",
+        "additionalIp": "IP Supplementariu",
+        "monthlyCost": "Costu Mensile ({symbol})",
+        "costDescription": "Costu ({symbol}) ogni mese cum'è u vostru situ web hè fatturatu",
+        "confirmPurchase": "Cunfirmà l'Acquistu",
+        "confirmMessage": "Costu IP supplementariu: {symbol}{cost}/mese. Siete sicuru di vulè urdinà un IP supplementariu?",
+        "placeOrder": "Piazzà Ordine",
+        "orderPlaced": "Ordine Piazzatu"
+    },
+    "reverseDns": {
+        "title": "DNS Inversu",
+        "updateReverseDns": "Aghjurnà u DNS Inversu"
+    },
+    "downloadBackups": {
+        "title": "Scaricà i Backups",
+        "backup": "Backup",
+        "size": "Taglia",
+        "options": "Opzioni"
+    }
 }

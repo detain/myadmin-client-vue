@@ -1,22 +1,22 @@
 {
-  "list": {
-    "title": "Konservado / Sekurkopio Listo",
-    "orderTitle": "Mendi Sekurkopiajn Registradojn"
-  },
-  "view": {
-    "title": "Vidi Sekurkopion {id}",
-    "package": "Pakaĵo",
-    "nextInvoiceDate": "Sekva Faktura Dato:",
-    "billing": "Fakturado",
-    "billed": "fakturita:",
-    "statusIs": "Statuso estas:",
-    "hostServer": "Gastiga Servilo",
-    "links": "Ligiloj",
-    "emailSent": "Retpoŝto Sendita",
-    "emailSentMessage": "La bonvenigaj retpoŝto estis resenditaj. Kontrolu vian enirkeston.",
-    "welcomeEmailConfirm": "Ĉu vi certe volas resendi la bonveninan retpoŝton?"
-  },
-  "order": {
-    "title": "Mendi Konservadon"
-  }
+    "list": {
+        "title": "Konservado / Sekurkopio Listo",
+        "orderTitle": "Mendi Sekurkopiajn Registradojn"
+    },
+    "view": {
+        "title": "Vidi Sekurkopion {id}",
+        "package": "Pakaĵo",
+        "nextInvoiceDate": "Sekva Faktura Dato:",
+        "billing": "Fakturado",
+        "billed": "fakturita:",
+        "statusIs": "Statuso estas:",
+        "hostServer": "Gastiga Servilo",
+        "links": "Ligiloj",
+        "emailSent": "Retpoŝto Sendita",
+        "emailSentMessage": "La bonvenigaj retpoŝto estis resenditaj. Kontrolu vian enirkeston.",
+        "welcomeEmailConfirm": "Ĉu vi certe volas resendi la bonveninan retpoŝton?"
+    },
+    "order": {
+        "title": "Mendi Konservadon"
+    }
 }

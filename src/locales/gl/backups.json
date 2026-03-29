@@ -1,22 +1,22 @@
 {
-  "list": {
-    "title": "Lista de almacenamento / copia de seguridade",
-    "orderTitle": "Pedir rexistros de copia de seguridade"
-  },
-  "view": {
-    "title": "Ver copia de seguridade {id}",
-    "package": "Paquete",
-    "nextInvoiceDate": "Data da próxima factura:",
-    "billing": "Facturación",
-    "billed": "facturado:",
-    "statusIs": "O estado é:",
-    "hostServer": "Servidor anfitrión",
-    "links": "Ligazóns",
-    "emailSent": "Correo enviado",
-    "emailSentMessage": "O correo de benvida foi reenviado. Comprobe a súa caixa de entrada.",
-    "welcomeEmailConfirm": "¿Está seguro de que quere reenviar o correo de benvida?"
-  },
-  "order": {
-    "title": "Pedir almacenamento"
-  }
+    "list": {
+        "title": "Lista de almacenamento / copia de seguridade",
+        "orderTitle": "Pedir rexistros de copia de seguridade"
+    },
+    "view": {
+        "title": "Ver copia de seguridade {id}",
+        "package": "Paquete",
+        "nextInvoiceDate": "Data da próxima factura:",
+        "billing": "Facturación",
+        "billed": "facturado:",
+        "statusIs": "O estado é:",
+        "hostServer": "Servidor anfitrión",
+        "links": "Ligazóns",
+        "emailSent": "Correo enviado",
+        "emailSentMessage": "O correo de benvida foi reenviado. Comprobe a súa caixa de entrada.",
+        "welcomeEmailConfirm": "¿Está seguro de que quere reenviar o correo de benvida?"
+    },
+    "order": {
+        "title": "Pedir almacenamento"
+    }
 }

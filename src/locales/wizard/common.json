@@ -105,6 +105,7 @@
         "loading": "Divining...",
         "noData": "The crystal ball shows nothing",
         "noActiveServices": "No Enchanted Services",
+        "noServicesMatchingFilter": "No enchantments found matching the spell '{filter}'",
         "controlPanel": "Control Sanctum",
         "welcomeEmail": "Welcoming Stone",
         "invoices": "Debt Scrolls",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Art thou certain thou wishest to dispel?"
     },
     "footer": {
-        "copyright": "Sealed by Arcane Law \u00a9 {year} InterServer Inc.",
+        "copyright": "Sealed by Arcane Law © {year} InterServer Inc.",
         "allRightsReserved": "All rights bound by the covenant."
     },
     "search": {

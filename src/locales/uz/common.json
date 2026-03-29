@@ -105,6 +105,7 @@
         "loading": "Yuklanmoqda...",
         "noData": "Ma'lumot mavjud emas",
         "noActiveServices": "Faol xizmatlar yo'q",
+        "noServicesMatchingFilter": "'{filter}' filtriga mos xizmatlar topilmadi",
         "controlPanel": "Boshqaruv paneli",
         "welcomeEmail": "Xush kelibsiz elektron pochtasi",
         "invoices": "Hisob-fakturalar",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Bekor qilishni xohlaysizmi?"
     },
     "footer": {
-        "copyright": "Mualliflik huquqi \u00a9 {year} InterServer Inc.",
+        "copyright": "Mualliflik huquqi © {year} InterServer Inc.",
         "allRightsReserved": "Barcha huquqlar himoyalangan."
     },
     "search": {

@@ -105,6 +105,7 @@
         "loading": "Iyalayisha...",
         "noData": "Ayikho idatha etholakalayo",
         "noActiveServices": "Azikho Izinkonzo Ezisebenzayo",
+        "noServicesMatchingFilter": "Azikho izinkonzo ezitholakele ezihambelana nesihluzo '{filter}'",
         "controlPanel": "Iphaneli Yokulawula",
         "welcomeEmail": "I-imeyili Yamukelekile",
         "invoices": "Izikweletu",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Uqinisekile ukuthi ufuna ukukhansela?"
     },
     "footer": {
-        "copyright": "Ilungelo Lodumo \u00a9 {year} InterServer Inc.",
+        "copyright": "Ilungelo Lodumo © {year} InterServer Inc.",
         "allRightsReserved": "Wonke amalungelo agodliwe."
     },
     "search": {

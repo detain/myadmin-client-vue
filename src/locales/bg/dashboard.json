@@ -1,8 +1,28 @@
 {
-    "title": "Табло", "welcome": "Добре дошли, {name}", "lastLogin": "Последно влизане", "lastLoginIp": "IP на последното влизане",
-    "prepay": { "title": "Предплатен баланс", "remainingBalance": "Оставащ предплатен баланс", "manageAccount": "Управление на акаунта", "manageTooltip": "Управление на вашия предплатен акаунт" },
-    "invoices": { "title": "Неплатени фактури", "totalUnpaid": "Общо неплатени фактури", "totalAmount": "Обща сума за плащане", "payTotalTooltip": "Плащане на общата сума" },
-    "callInPin": "PIN за обаждане", "recentTickets": "Скорошни тикети", "viewAllTickets": "Преглед на всички тикети", "editTicket": "Редактиране на тикет",
+    "title": "Табло",
+    "welcome": "Добре дошли, {name}",
+    "lastLogin": "Последно влизане",
+    "lastLoginIp": "IP на последното влизане",
+    "prepay": {
+        "title": "Предплатен баланс",
+        "remainingBalance": "Оставащ предплатен баланс",
+        "manageAccount": "Управление на акаунта",
+        "manageTooltip": "Управление на вашия предплатен акаунт"
+    },
+    "invoices": {
+        "title": "Неплатени фактури",
+        "totalUnpaid": "Общо неплатени фактури",
+        "totalAmount": "Обща сума за плащане",
+        "payTotalTooltip": "Плащане на общата сума"
+    },
+    "callInPin": "PIN за обаждане",
+    "recentTickets": "Скорошни тикети",
+    "viewAllTickets": "Преглед на всички тикети",
+    "editTicket": "Редактиране на тикет",
     "serviceCount": "Няма активни услуги | {count} активна услуга | {count} активни услуги",
-    "affiliate": { "earnPerSale": "Спечелете {amount} на продажба", "urlPlaceholder": "Партньорски URL", "shareWith": "Споделете с" }
+    "affiliate": {
+        "earnPerSale": "Спечелете {amount} на продажба",
+        "urlPlaceholder": "Партньорски URL",
+        "shareWith": "Споделете с"
+    }
 }

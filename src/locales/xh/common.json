@@ -105,6 +105,7 @@
         "loading": "Iyalayisha...",
         "noData": "Akukho datha iyafumaneka",
         "noActiveServices": "Akukho Iinkonzo Ezisebenzayo",
+        "noServicesMatchingFilter": "Akukho zinkonzo zifunyenweyo ezihambelana nesihluzo '{filter}'",
         "controlPanel": "Ipaneli yolawulo",
         "welcomeEmail": "I-imeyili yaMkelo",
         "invoices": "Iifatshi",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Uqinisekile ukuba ufuna ukurhoxisa?"
     },
     "footer": {
-        "copyright": "Ilungelo lokushicilela \u00a9 {year} InterServer Inc.",
+        "copyright": "Ilungelo lokushicilela © {year} InterServer Inc.",
         "allRightsReserved": "Amalungelo onke agciniwe."
     },
     "search": {

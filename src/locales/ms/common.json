@@ -105,6 +105,7 @@
         "loading": "Memuatkan...",
         "noData": "Tiada data tersedia",
         "noActiveServices": "Tiada Perkhidmatan Aktif",
+        "noServicesMatchingFilter": "Tiada perkhidmatan ditemui yang sepadan dengan penapis '{filter}'",
         "controlPanel": "Panel Kawalan",
         "welcomeEmail": "E-mel Alu-aluan",
         "invoices": "Invois",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Adakah anda pasti mahu membatalkan?"
     },
     "footer": {
-        "copyright": "Hak Cipta \u00a9 {year} InterServer Inc.",
+        "copyright": "Hak Cipta © {year} InterServer Inc.",
         "allRightsReserved": "Hak cipta terpelihara."
     },
     "search": {

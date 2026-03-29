@@ -1,49 +1,49 @@
 {
-  "list": {
-    "title": "Pašto paslaugų sąrašas",
-    "orderTitle": "Užsakyti pašto registracijas"
-  },
-  "view": {
-    "title": "Peržiūrėti paštą {id}",
-    "package": "Paketas",
-    "nextInvoiceDate": "Kita sąskaitos data:",
-    "billing": "Atsiskaitymas",
-    "billed": "išrašyta sąskaita:",
-    "statusIs": "Būsena:",
-    "mailApi": "Pašto API",
-    "usageCount": "Naudojimo skaičius:",
-    "links": "Nuorodos",
-    "connectionInfo": "Ryšio informacija",
-    "emailSent": "El. laiškas išsiųstas",
-    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius.",
-    "welcomeEmailConfirm": "Ar tikrai norite iš naujo išsiųsti sveikinimo laišką?"
-  },
-  "order": {
-    "title": "Užsakyti paštą"
-  },
-  "alerts": {
-    "title": "Įspėjimai",
-    "addAlert": "Pridėti įspėjimą",
-    "editAlert": "Redaguoti įspėjimą",
-    "noAlerts": "Įspėjimų nerasta"
-  },
-  "delist": {
-    "title": "Pašalinti iš sąrašo",
-    "blockedEmails": "Blokuoti el. laiškai"
-  },
-  "denyRules": {
-    "title": "Draudimo taisyklės",
-    "addRule": "Pridėti taisyklę",
-    "noRules": "Draudimo taisyklių nerasta"
-  },
-  "logs": {
-    "title": "Žurnalai",
-    "searchLogs": "Ieškoti žurnaluose"
-  },
-  "stats": {
-    "title": "Statistika"
-  },
-  "deliverability": {
-    "title": "Pristatymas"
-  }
+    "list": {
+        "title": "Pašto paslaugų sąrašas",
+        "orderTitle": "Užsakyti pašto registracijas"
+    },
+    "view": {
+        "title": "Peržiūrėti paštą {id}",
+        "package": "Paketas",
+        "nextInvoiceDate": "Kita sąskaitos data:",
+        "billing": "Atsiskaitymas",
+        "billed": "išrašyta sąskaita:",
+        "statusIs": "Būsena:",
+        "mailApi": "Pašto API",
+        "usageCount": "Naudojimo skaičius:",
+        "links": "Nuorodos",
+        "connectionInfo": "Ryšio informacija",
+        "emailSent": "El. laiškas išsiųstas",
+        "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius.",
+        "welcomeEmailConfirm": "Ar tikrai norite iš naujo išsiųsti sveikinimo laišką?"
+    },
+    "order": {
+        "title": "Užsakyti paštą"
+    },
+    "alerts": {
+        "title": "Įspėjimai",
+        "addAlert": "Pridėti įspėjimą",
+        "editAlert": "Redaguoti įspėjimą",
+        "noAlerts": "Įspėjimų nerasta"
+    },
+    "delist": {
+        "title": "Pašalinti iš sąrašo",
+        "blockedEmails": "Blokuoti el. laiškai"
+    },
+    "denyRules": {
+        "title": "Draudimo taisyklės",
+        "addRule": "Pridėti taisyklę",
+        "noRules": "Draudimo taisyklių nerasta"
+    },
+    "logs": {
+        "title": "Žurnalai",
+        "searchLogs": "Ieškoti žurnaluose"
+    },
+    "stats": {
+        "title": "Statistika"
+    },
+    "deliverability": {
+        "title": "Pristatymas"
+    }
 }

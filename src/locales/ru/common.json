@@ -105,6 +105,7 @@
         "loading": "Загрузка...",
         "noData": "Нет доступных данных",
         "noActiveServices": "Нет активных услуг",
+        "noServicesMatchingFilter": "Не найдено услуг, соответствующих фильтру '{filter}'",
         "controlPanel": "Панель управления",
         "welcomeEmail": "Приветственное письмо",
         "invoices": "Счета",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Вы уверены, что хотите отменить?"
     },
     "footer": {
-        "copyright": "Авторские права \u00a9 {year} InterServer Inc.",
+        "copyright": "Авторские права © {year} InterServer Inc.",
         "allRightsReserved": "Все права защищены."
     },
     "search": {

@@ -1,27 +1,27 @@
 {
-  "list": {
-    "title": "SSL-Zertifikatslëscht",
-    "orderTitle": "SSL-Registréierungen bestalln"
-  },
-  "view": {
-    "title": "SSL {id} ukucken",
-    "package": "Pak",
-    "nextInvoiceDate": "Nächst Rechnungsdatum:",
-    "billing": "Rechnung",
-    "billed": "berechent:",
-    "statusIs": "Status ass:",
-    "orderInfo": "Bestellungsinformatioun",
-    "certificateInfo": "Zertifikatsinformatioun",
-    "links": "Linken",
-    "emailSent": "E-Mail geschéckt",
-    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
-    "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
-  },
-  "order": {
-    "title": "SSL bestalln"
-  },
-  "changeApproverEmail": {
-    "title": "Genehmiger-E-Mail änneren",
-    "selectApproverEmail": "Genehmiger-E-Mail auswiele"
-  }
+    "list": {
+        "title": "SSL-Zertifikatslëscht",
+        "orderTitle": "SSL-Registréierungen bestalln"
+    },
+    "view": {
+        "title": "SSL {id} ukucken",
+        "package": "Pak",
+        "nextInvoiceDate": "Nächst Rechnungsdatum:",
+        "billing": "Rechnung",
+        "billed": "berechent:",
+        "statusIs": "Status ass:",
+        "orderInfo": "Bestellungsinformatioun",
+        "certificateInfo": "Zertifikatsinformatioun",
+        "links": "Linken",
+        "emailSent": "E-Mail geschéckt",
+        "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
+        "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
+    },
+    "order": {
+        "title": "SSL bestalln"
+    },
+    "changeApproverEmail": {
+        "title": "Genehmiger-E-Mail änneren",
+        "selectApproverEmail": "Genehmiger-E-Mail auswiele"
+    }
 }

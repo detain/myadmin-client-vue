@@ -105,6 +105,7 @@
         "loading": "Qed jitgħabba...",
         "noData": "L-ebda data disponibbli",
         "noActiveServices": "L-ebda Servizzi Attivi",
+        "noServicesMatchingFilter": "L-ebda servizzi nstabu li jaqblu mal-filtru '{filter}'",
         "controlPanel": "Pannell tal-Kontroll",
         "welcomeEmail": "Email ta' Merħba",
         "invoices": "Fatturi",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ċert li trid tikkanċella?"
     },
     "footer": {
-        "copyright": "Drittijiet tal-Awtur \u00a9 {year} InterServer Inc.",
+        "copyright": "Drittijiet tal-Awtur © {year} InterServer Inc.",
         "allRightsReserved": "Id-drittijiet kollha riżervati."
     },
     "search": {

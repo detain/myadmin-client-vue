@@ -1,27 +1,27 @@
 {
-  "list": {
-    "title": "SSL Atestiloj Listo",
-    "orderTitle": "Mendi SSL Registradojn"
-  },
-  "view": {
-    "title": "Vidi SSL {id}",
-    "package": "Pakaĵo",
-    "nextInvoiceDate": "Sekva Faktura Dato:",
-    "billing": "Fakturado",
-    "billed": "fakturita:",
-    "statusIs": "Statuso estas:",
-    "orderInfo": "Menda Informo",
-    "certificateInfo": "Atestila Informo",
-    "links": "Ligiloj",
-    "emailSent": "Retpoŝto Sendita",
-    "emailSentMessage": "La bonvenigaj retpoŝto estis resenditaj. Kontrolu vian enirkeston.",
-    "welcomeEmailConfirm": "Ĉu vi certe volas resendi la bonveninan retpoŝton?"
-  },
-  "order": {
-    "title": "Mendi SSL"
-  },
-  "changeApproverEmail": {
-    "title": "Ŝanĝi Aprobantan Retpoŝton",
-    "selectApproverEmail": "Elekti Aprobintan Retpoŝton"
-  }
+    "list": {
+        "title": "SSL Atestiloj Listo",
+        "orderTitle": "Mendi SSL Registradojn"
+    },
+    "view": {
+        "title": "Vidi SSL {id}",
+        "package": "Pakaĵo",
+        "nextInvoiceDate": "Sekva Faktura Dato:",
+        "billing": "Fakturado",
+        "billed": "fakturita:",
+        "statusIs": "Statuso estas:",
+        "orderInfo": "Menda Informo",
+        "certificateInfo": "Atestila Informo",
+        "links": "Ligiloj",
+        "emailSent": "Retpoŝto Sendita",
+        "emailSentMessage": "La bonvenigaj retpoŝto estis resenditaj. Kontrolu vian enirkeston.",
+        "welcomeEmailConfirm": "Ĉu vi certe volas resendi la bonveninan retpoŝton?"
+    },
+    "order": {
+        "title": "Mendi SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Ŝanĝi Aprobantan Retpoŝton",
+        "selectApproverEmail": "Elekti Aprobintan Retpoŝton"
+    }
 }

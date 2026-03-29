@@ -105,6 +105,7 @@
         "loading": "Бор шудан...",
         "noData": "Маълумот мавҷуд нест",
         "noActiveServices": "Хизматрасониҳои фаъол нест",
+        "noServicesMatchingFilter": "Хизматрасониҳое, ки ба филтри '{filter}' мувофиқат мекунанд, ёфт нашуданд",
         "controlPanel": "Панели идоракунӣ",
         "welcomeEmail": "Почтаи хайрамадгӯӣ",
         "invoices": "Ҳисобномаҳо",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Оё мутмаин ҳастед, ки мехоҳед бекор кунед?"
     },
     "footer": {
-        "copyright": "Ҳуқуқи муаллиф \u00a9 {year} InterServer Inc.",
+        "copyright": "Ҳуқуқи муаллиф © {year} InterServer Inc.",
         "allRightsReserved": "Ҳамаи ҳуқуқҳо ҳифз шудаанд."
     },
     "search": {

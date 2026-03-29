@@ -105,6 +105,7 @@
         "loading": "Načítání...",
         "noData": "Žádná data k dispozici",
         "noActiveServices": "Žádné aktivní služby",
+        "noServicesMatchingFilter": "Nebyly nalezeny žádné služby odpovídající filtru '{filter}'",
         "controlPanel": "Ovládací panel",
         "welcomeEmail": "Uvítací e-mail",
         "invoices": "Faktury",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Opravdu chcete zrušit?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Všechna práva vyhrazena."
     },
     "search": {

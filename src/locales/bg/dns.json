@@ -1,4 +1,26 @@
 {
-    "manager": { "title": "DNS Мениджър", "addDomain": "Добавяне на домейн", "deleteDomain": "Изтриване на домейн", "domainName": "Домейн име", "dnsServers": "DNS сървъри", "confirmDelete": "Сигурни ли сте, че искате да изтриете този домейн?", "noDomains": "Не са намерени домейни" },
-    "editor": { "title": "DNS Редактор", "addRecord": "Добавяне на запис", "deleteRecord": "Изтриване на запис", "editRecord": "Редактиране на запис", "recordType": "Тип на записа", "hostname": "Хост име", "address": "Адрес", "distance": "Разстояние", "weight": "Тегло", "port": "Порт", "ttl": "TTL", "actions": "Действия", "confirmDelete": "Сигурни ли сте, че искате да изтриете този запис?" }
+    "manager": {
+        "title": "DNS Мениджър",
+        "addDomain": "Добавяне на домейн",
+        "deleteDomain": "Изтриване на домейн",
+        "domainName": "Домейн име",
+        "dnsServers": "DNS сървъри",
+        "confirmDelete": "Сигурни ли сте, че искате да изтриете този домейн?",
+        "noDomains": "Не са намерени домейни"
+    },
+    "editor": {
+        "title": "DNS Редактор",
+        "addRecord": "Добавяне на запис",
+        "deleteRecord": "Изтриване на запис",
+        "editRecord": "Редактиране на запис",
+        "recordType": "Тип на записа",
+        "hostname": "Хост име",
+        "address": "Адрес",
+        "distance": "Разстояние",
+        "weight": "Тегло",
+        "port": "Порт",
+        "ttl": "TTL",
+        "actions": "Действия",
+        "confirmDelete": "Сигурни ли сте, че искате да изтриете този запис?"
+    }
 }

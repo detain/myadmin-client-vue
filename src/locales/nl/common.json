@@ -105,6 +105,7 @@
         "loading": "Laden...",
         "noData": "Geen gegevens beschikbaar",
         "noActiveServices": "Geen actieve services",
+        "noServicesMatchingFilter": "Geen services gevonden die overeenkomen met filter '{filter}'",
         "controlPanel": "Configuratiescherm",
         "welcomeEmail": "Welkomstmail",
         "invoices": "Facturen",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Weet je zeker dat je wilt annuleren?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Alle rechten voorbehouden."
     },
     "search": {

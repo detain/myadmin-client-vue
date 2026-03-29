@@ -105,6 +105,7 @@
         "loading": "بارکردن...",
         "noData": "داتایەک بەردەست نییە",
         "noActiveServices": "خزمەتگوزارییەکی چالاک نییە",
+        "noServicesMatchingFilter": "هیچ خزمەتگوزارییەک نەدۆزرایەوە کە لەگەڵ فلتەری '{filter}' بگونجێت",
         "controlPanel": "پانێلی کۆنترۆڵ",
         "welcomeEmail": "ئیمەیڵی بەخێرهاتن",
         "invoices": "پسووڵەکان",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "دڵنیایت کە دەتەوێت هەڵیوەشێنیتەوە؟"
     },
     "footer": {
-        "copyright": "مافی چاپ \u00a9 {year} InterServer Inc.",
+        "copyright": "مافی چاپ © {year} InterServer Inc.",
         "allRightsReserved": "هەموو مافەکان پارێزراون."
     },
     "search": {

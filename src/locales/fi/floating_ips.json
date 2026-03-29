@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Kelluvien IP-osoitteiden palveluiden lista",
-    "orderTitle": "Tilaa kelluvien IP-osoitteiden rekisteröinnit"
-  },
-  "view": {
-    "title": "Näytä kelluva IP {id}",
-    "package": "Paketti",
-    "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
-    "billing": "Laskutus",
-    "billed": "laskutettu:",
-    "statusIs": "Tila on:",
-    "floatingIp": "Kelluva IP",
-    "links": "Linkit",
-    "emailSent": "Sähköposti lähetetty",
-    "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
-    "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
-  },
-  "order": {
-    "title": "Tilaa kelluva IP"
-  },
-  "changeIp": {
-    "title": "Vaihda kohde-IP"
-  }
+    "list": {
+        "title": "Kelluvien IP-osoitteiden palveluiden lista",
+        "orderTitle": "Tilaa kelluvien IP-osoitteiden rekisteröinnit"
+    },
+    "view": {
+        "title": "Näytä kelluva IP {id}",
+        "package": "Paketti",
+        "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
+        "billing": "Laskutus",
+        "billed": "laskutettu:",
+        "statusIs": "Tila on:",
+        "floatingIp": "Kelluva IP",
+        "links": "Linkit",
+        "emailSent": "Sähköposti lähetetty",
+        "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
+        "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
+    },
+    "order": {
+        "title": "Tilaa kelluva IP"
+    },
+    "changeIp": {
+        "title": "Vaihda kohde-IP"
+    }
 }

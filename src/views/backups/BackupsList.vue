@@ -40,13 +40,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<backupsRow[]>([]);
+const loading = ref(true);
 
 const loadBackups = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/backups`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadBackups();
@@ -59,6 +63,7 @@ loadBackups();
         :columns="columns"
         id-field="backup_id"
         status-field="backup_status"
+        :loading="loading"
         :order-title="t('backups.list.orderTitle')"
     />
 </template>

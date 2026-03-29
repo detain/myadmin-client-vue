@@ -1,28 +1,28 @@
 {
-  "title": "Valdymo skydelis",
-  "welcome": "Sveiki, {name}",
-  "lastLogin": "Paskutinis prisijungimas",
-  "lastLoginIp": "Paskutinio prisijungimo IP",
-  "prepay": {
-    "title": "Išankstinio mokėjimo balansas",
-    "remainingBalance": "Likęs išankstinio mokėjimo balansas",
-    "manageAccount": "Tvarkyti paskyrą",
-    "manageTooltip": "Tvarkyti išankstinio mokėjimo paskyrą"
-  },
-  "invoices": {
-    "title": "Neapmokėtos sąskaitos",
-    "totalUnpaid": "Iš viso neapmokėtų sąskaitų",
-    "totalAmount": "Bendra suma, kurią reikia sumokėti",
-    "payTotalTooltip": "Mokėti visą sumą"
-  },
-  "callInPin": "Skambučio PIN",
-  "recentTickets": "Naujausi prašymai",
-  "viewAllTickets": "Peržiūrėti visas užklausas",
-  "editTicket": "Redaguoti užklausą",
-  "serviceCount": "Nėra aktyvių paslaugų | {count} aktyvi paslauga | {count} aktyvios paslaugos",
-  "affiliate": {
-    "earnPerSale": "Uždirbkite {amount} už kiekvieną pardavimą",
-    "urlPlaceholder": "Partnerio URL",
-    "shareWith": "Dalintis su"
-  }
+    "title": "Valdymo skydelis",
+    "welcome": "Sveiki, {name}",
+    "lastLogin": "Paskutinis prisijungimas",
+    "lastLoginIp": "Paskutinio prisijungimo IP",
+    "prepay": {
+        "title": "Išankstinio mokėjimo balansas",
+        "remainingBalance": "Likęs išankstinio mokėjimo balansas",
+        "manageAccount": "Tvarkyti paskyrą",
+        "manageTooltip": "Tvarkyti išankstinio mokėjimo paskyrą"
+    },
+    "invoices": {
+        "title": "Neapmokėtos sąskaitos",
+        "totalUnpaid": "Iš viso neapmokėtų sąskaitų",
+        "totalAmount": "Bendra suma, kurią reikia sumokėti",
+        "payTotalTooltip": "Mokėti visą sumą"
+    },
+    "callInPin": "Skambučio PIN",
+    "recentTickets": "Naujausi prašymai",
+    "viewAllTickets": "Peržiūrėti visas užklausas",
+    "editTicket": "Redaguoti užklausą",
+    "serviceCount": "Nėra aktyvių paslaugų | {count} aktyvi paslauga | {count} aktyvios paslaugos",
+    "affiliate": {
+        "earnPerSale": "Uždirbkite {amount} už kiekvieną pardavimą",
+        "urlPlaceholder": "Partnerio URL",
+        "shareWith": "Dalintis su"
+    }
 }

@@ -105,6 +105,7 @@
         "loading": "Laddar...",
         "noData": "Inga data tillgängliga",
         "noActiveServices": "Inga aktiva tjänster",
+        "noServicesMatchingFilter": "Inga tjänster hittades som matchar filtret '{filter}'",
         "controlPanel": "Kontrollpanel",
         "welcomeEmail": "Välkomstmejl",
         "invoices": "Fakturor",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Är du säker på att du vill avbryta?"
     },
     "footer": {
-        "copyright": "Upphovsrätt \u00a9 {year} InterServer Inc.",
+        "copyright": "Upphovsrätt © {year} InterServer Inc.",
         "allRightsReserved": "Alla rättigheter förbehållna."
     },
     "search": {

@@ -1,1 +1,28 @@
-{ "title": "डैशबोर्ड", "welcome": "स्वागत है, {name}", "lastLogin": "अंतिम लॉगिन", "lastLoginIp": "अंतिम लॉगिन IP", "prepay": { "title": "प्री-पे बैलेंस", "remainingBalance": "शेष प्री-पे बैलेंस", "manageAccount": "खाता प्रबंधित करें", "manageTooltip": "अपना प्री-पे खाता प्रबंधित करें" }, "invoices": { "title": "अवैतनिक इनवॉइस", "totalUnpaid": "कुल अवैतनिक इनवॉइस", "totalAmount": "भुगतान की जाने वाली कुल राशि", "payTotalTooltip": "कुल राशि का भुगतान करें" }, "callInPin": "कॉल-इन PIN", "recentTickets": "हाल के टिकट", "viewAllTickets": "सभी टिकट देखें", "editTicket": "टिकट संपादित करें", "serviceCount": "कोई सक्रिय सेवाएं नहीं | {count} सक्रिय सेवा | {count} सक्रिय सेवाएं", "affiliate": { "earnPerSale": "प्रति बिक्री {amount} कमाएं", "urlPlaceholder": "सहयोगी URL", "shareWith": "इसके साथ साझा करें" } }
+{
+    "title": "डैशबोर्ड",
+    "welcome": "स्वागत है, {name}",
+    "lastLogin": "अंतिम लॉगिन",
+    "lastLoginIp": "अंतिम लॉगिन IP",
+    "prepay": {
+        "title": "प्री-पे बैलेंस",
+        "remainingBalance": "शेष प्री-पे बैलेंस",
+        "manageAccount": "खाता प्रबंधित करें",
+        "manageTooltip": "अपना प्री-पे खाता प्रबंधित करें"
+    },
+    "invoices": {
+        "title": "अवैतनिक इनवॉइस",
+        "totalUnpaid": "कुल अवैतनिक इनवॉइस",
+        "totalAmount": "भुगतान की जाने वाली कुल राशि",
+        "payTotalTooltip": "कुल राशि का भुगतान करें"
+    },
+    "callInPin": "कॉल-इन PIN",
+    "recentTickets": "हाल के टिकट",
+    "viewAllTickets": "सभी टिकट देखें",
+    "editTicket": "टिकट संपादित करें",
+    "serviceCount": "कोई सक्रिय सेवाएं नहीं | {count} सक्रिय सेवा | {count} सक्रिय सेवाएं",
+    "affiliate": {
+        "earnPerSale": "प्रति बिक्री {amount} कमाएं",
+        "urlPlaceholder": "सहयोगी URL",
+        "shareWith": "इसके साथ साझा करें"
+    }
+}

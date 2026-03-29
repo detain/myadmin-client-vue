@@ -1,1 +1,26 @@
-{ "manager": { "title": "DNS-Administranto", "addDomain": "Aldoni Domenon", "deleteDomain": "Forigi Domenon", "domainName": "Domennomo", "dnsServers": "DNS-Serviloj", "confirmDelete": "Ĉu vi certas ke vi volas forigi ĉi tiun domenon?", "noDomains": "Neniuj domenoj trovitaj" }, "editor": { "title": "DNS-Redaktisto", "addRecord": "Aldoni Rekordon", "deleteRecord": "Forigi Rekordon", "editRecord": "Redakti Rekordon", "recordType": "Rekorda Tipo", "hostname": "Gastignomo", "address": "Adreso", "distance": "Distanco", "weight": "Pezo", "port": "Haveno", "ttl": "TTL", "actions": "Agoj", "confirmDelete": "Ĉu vi certas ke vi volas forigi ĉi tiun rekordon?" } }
+{
+    "manager": {
+        "title": "DNS-Administranto",
+        "addDomain": "Aldoni Domenon",
+        "deleteDomain": "Forigi Domenon",
+        "domainName": "Domennomo",
+        "dnsServers": "DNS-Serviloj",
+        "confirmDelete": "Ĉu vi certas ke vi volas forigi ĉi tiun domenon?",
+        "noDomains": "Neniuj domenoj trovitaj"
+    },
+    "editor": {
+        "title": "DNS-Redaktisto",
+        "addRecord": "Aldoni Rekordon",
+        "deleteRecord": "Forigi Rekordon",
+        "editRecord": "Redakti Rekordon",
+        "recordType": "Rekorda Tipo",
+        "hostname": "Gastignomo",
+        "address": "Adreso",
+        "distance": "Distanco",
+        "weight": "Pezo",
+        "port": "Haveno",
+        "ttl": "TTL",
+        "actions": "Agoj",
+        "confirmDelete": "Ĉu vi certas ke vi volas forigi ĉi tiun rekordon?"
+    }
+}

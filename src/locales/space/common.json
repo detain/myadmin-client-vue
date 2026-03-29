@@ -105,6 +105,7 @@
         "loading": "Scanning...",
         "noData": "No signal detected",
         "noActiveServices": "No Active Service Modules",
+        "noServicesMatchingFilter": "No service modules detected matching scan '{filter}'",
         "controlPanel": "Control Panel",
         "welcomeEmail": "Welcome Transmission",
         "invoices": "Resource Allocation Notices",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Are you sure you want to abort this mission?"
     },
     "footer": {
-        "copyright": "Protected under Galactic Federation Law \u00a9 {year} InterServer Inc.",
+        "copyright": "Protected under Galactic Federation Law © {year} InterServer Inc.",
         "allRightsReserved": "All rights reserved across all known sectors."
     },
     "search": {

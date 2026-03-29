@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "Webhosting-Lëscht",
-    "orderTitle": "Websäit-Registréierungen bestalln"
-  },
-  "view": {
-    "title": "Websäit {id} ukucken",
-    "package": "Pak",
-    "nextInvoiceDate": "Nächst Rechnungsdatum:",
-    "billing": "Rechnung",
-    "billed": "berechent",
-    "billingStatusIs": "Rechnungsstatus ass:",
-    "login": "Aloggen",
-    "links": "Linken",
-    "emailSent": "E-Mail geschéckt",
-    "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
-    "hostInfo": "Host Info",
-    "username": "Benotzernumm:",
-    "ip": "IP:",
-    "server": "Server:",
-    "notSetYet": "Nach net agestallt",
-    "types": "Typen:",
-    "linksLabel": "Links:",
-    "manualLogin": "Manuell Umeldung",
-    "automaticLogin": "Automatesch Umeldung",
-    "clickHere": "Klickt hei",
-    "defaultNameservers": "Standard Nummserver",
-    "nameservers": "Nummserver:",
-    "externalLinks": "Extern Links",
-    "names": "Nimm:",
-    "websitePreview": "Website Virschau",
-    "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
-  },
-  "order": {
-    "title": "Websäit bestalln"
-  },
-  "migration": {
-    "title": "Är Websäit migréieren",
-    "password": "Passwuert",
-    "importantNotes": "Wichteg Notizen",
-    "currentWebHostInfo": "Aktuell Web Host Info",
-    "customerPortalUrl": "Clientsportal URL",
-    "portalExample": "Beispill: sso.godaddy.com",
-    "registeredUsername": "Registréierte Benotzernumm / E-Mail / ID",
-    "controlPanelUrl": "Kontrollpanel URL",
-    "controlPanelExample": "Beispill: yourdomain.com/cpanel",
-    "ftpUsername": "FTP / Kontrollpanel Benotzernumm",
-    "ftpPassword": "FTP / Kontrollpanel Passwuert",
-    "holdingPageQuestion": "Wann d'Websäit live ass mat héichem Traffic, kënne mir eng Haltungssäit wärend der Migratioun astellen?",
-    "specialRequirementsQuestion": "Huet dës Websäit speziell Ufuerderungen wéi PHP Versioun / Module?",
-    "domainRegistryInfo": "Domän Registry Informatiounen",
-    "transferDomainQuestion": "Wëllt Dir och, datt mir Iech beim Transfer vun der Domänregistréierung hëllefen?",
-    "updateNameserversQuestion": "Wëllt Dir, datt mir d'Nummserver aktualiséieren soubal mir d'Datemigratioun ofgeschloss hunn?",
-    "domainRegistryPortal": "Domän Registry Clientsportal",
-    "note1": "Dës Form ausfëllen wäert en neie Ticket fir eisen Support opmaachen fir Är Migratioun ze starten.",
-    "note2": "Wannechgelift sidd esou vollstänneg a präzis wéi méiglech fir Verspéidungen ze vermeiden.",
-    "note3": "Eng typesch Migratioun gëtt bannent 48 bis 72 Stonnen ofgeschloss.",
-    "note4": "Den aalten Hosting-Konto muss online a zougänglech sinn wärend mir d'Migratioun duerchféieren.",
-    "note5": "Wannechgelift maacht keng Ännerungen op Ärer Websäit wärend mir d'Migratioun duerchféieren."
-  },
-  "buyIp": {
-    "title": "Zousätzlecht IP Add-on kafen",
-    "existingAddonIps": "Bestehend Add-on IPs",
-    "additionalIp": "Zousätzlech IP",
-    "monthlyCost": "Monatleche Käschten ({symbol})",
-    "costDescription": "Käschten ({symbol}) all Mount wéi Är Websäit verrechent gëtt",
-    "confirmPurchase": "Kaf bestätegen",
-    "confirmMessage": "Zousätzlech IP Käschten: {symbol}{cost}/Mount. Sidd Dir sécher?",
-    "placeOrder": "Bestellung opginn",
-    "orderPlaced": "Bestellung opginn"
-  },
-  "reverseDns": {
-    "title": "Ëmgekéierten DNS",
-    "updateReverseDns": "Ëmgekéierten DNS aktualiséieren"
-  },
-  "downloadBackups": {
-    "title": "Backups eroflueden",
-    "backup": "Backup",
-    "size": "Gréisst",
-    "options": "Optiounen"
-  }
+    "list": {
+        "title": "Webhosting-Lëscht",
+        "orderTitle": "Websäit-Registréierungen bestalln"
+    },
+    "view": {
+        "title": "Websäit {id} ukucken",
+        "package": "Pak",
+        "nextInvoiceDate": "Nächst Rechnungsdatum:",
+        "billing": "Rechnung",
+        "billed": "berechent",
+        "billingStatusIs": "Rechnungsstatus ass:",
+        "login": "Aloggen",
+        "links": "Linken",
+        "emailSent": "E-Mail geschéckt",
+        "emailSentMessage": "D'Wëllkommes-E-Mail gouf erëm geschéckt. Iwwerpréift Ären Agang.",
+        "hostInfo": "Host Info",
+        "username": "Benotzernumm:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Nach net agestallt",
+        "types": "Typen:",
+        "linksLabel": "Links:",
+        "manualLogin": "Manuell Umeldung",
+        "automaticLogin": "Automatesch Umeldung",
+        "clickHere": "Klickt hei",
+        "defaultNameservers": "Standard Nummserver",
+        "nameservers": "Nummserver:",
+        "externalLinks": "Extern Links",
+        "names": "Nimm:",
+        "websitePreview": "Website Virschau",
+        "welcomeEmailConfirm": "Sidd Dir sécher, datt Dir d'Wëllkommes-E-Mail erëm schécke wëllt?"
+    },
+    "order": {
+        "title": "Websäit bestalln"
+    },
+    "migration": {
+        "title": "Är Websäit migréieren",
+        "password": "Passwuert",
+        "importantNotes": "Wichteg Notizen",
+        "currentWebHostInfo": "Aktuell Web Host Info",
+        "customerPortalUrl": "Clientsportal URL",
+        "portalExample": "Beispill: sso.godaddy.com",
+        "registeredUsername": "Registréierte Benotzernumm / E-Mail / ID",
+        "controlPanelUrl": "Kontrollpanel URL",
+        "controlPanelExample": "Beispill: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Kontrollpanel Benotzernumm",
+        "ftpPassword": "FTP / Kontrollpanel Passwuert",
+        "holdingPageQuestion": "Wann d'Websäit live ass mat héichem Traffic, kënne mir eng Haltungssäit wärend der Migratioun astellen?",
+        "specialRequirementsQuestion": "Huet dës Websäit speziell Ufuerderungen wéi PHP Versioun / Module?",
+        "domainRegistryInfo": "Domän Registry Informatiounen",
+        "transferDomainQuestion": "Wëllt Dir och, datt mir Iech beim Transfer vun der Domänregistréierung hëllefen?",
+        "updateNameserversQuestion": "Wëllt Dir, datt mir d'Nummserver aktualiséieren soubal mir d'Datemigratioun ofgeschloss hunn?",
+        "domainRegistryPortal": "Domän Registry Clientsportal",
+        "note1": "Dës Form ausfëllen wäert en neie Ticket fir eisen Support opmaachen fir Är Migratioun ze starten.",
+        "note2": "Wannechgelift sidd esou vollstänneg a präzis wéi méiglech fir Verspéidungen ze vermeiden.",
+        "note3": "Eng typesch Migratioun gëtt bannent 48 bis 72 Stonnen ofgeschloss.",
+        "note4": "Den aalten Hosting-Konto muss online a zougänglech sinn wärend mir d'Migratioun duerchféieren.",
+        "note5": "Wannechgelift maacht keng Ännerungen op Ärer Websäit wärend mir d'Migratioun duerchféieren."
+    },
+    "buyIp": {
+        "title": "Zousätzlecht IP Add-on kafen",
+        "existingAddonIps": "Bestehend Add-on IPs",
+        "additionalIp": "Zousätzlech IP",
+        "monthlyCost": "Monatleche Käschten ({symbol})",
+        "costDescription": "Käschten ({symbol}) all Mount wéi Är Websäit verrechent gëtt",
+        "confirmPurchase": "Kaf bestätegen",
+        "confirmMessage": "Zousätzlech IP Käschten: {symbol}{cost}/Mount. Sidd Dir sécher?",
+        "placeOrder": "Bestellung opginn",
+        "orderPlaced": "Bestellung opginn"
+    },
+    "reverseDns": {
+        "title": "Ëmgekéierten DNS",
+        "updateReverseDns": "Ëmgekéierten DNS aktualiséieren"
+    },
+    "downloadBackups": {
+        "title": "Backups eroflueden",
+        "backup": "Backup",
+        "size": "Gréisst",
+        "options": "Optiounen"
+    }
 }

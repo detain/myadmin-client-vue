@@ -1,28 +1,28 @@
 {
-  "title": "Vadības panelis",
-  "welcome": "Laipni lūdzam, {name}",
-  "lastLogin": "Pēdējā pieteikšanās",
-  "lastLoginIp": "Pēdējās pieteikšanās IP",
-  "prepay": {
-    "title": "Priekšapmaksas atlikums",
-    "remainingBalance": "Atlikušais priekšapmaksas atlikums",
-    "manageAccount": "Pārvaldīt kontu",
-    "manageTooltip": "Pārvaldīt savu priekšapmaksas kontu"
-  },
-  "invoices": {
-    "title": "Neapmaksātie rēķini",
-    "totalUnpaid": "Kopējie neapmaksātie rēķini",
-    "totalAmount": "Kopējā summa, kas jāsamaksā",
-    "payTotalTooltip": "Maksāt kopējo summu"
-  },
-  "callInPin": "Tālruņa PIN",
-  "recentTickets": "Jaunākie pieteikumi",
-  "viewAllTickets": "Skatīt visus pieteikumus",
-  "editTicket": "Rediģēt pieteikumu",
-  "serviceCount": "Nav aktīvu pakalpojumu | {count} aktīvs pakalpojums | {count} aktīvi pakalpojumi",
-  "affiliate": {
-    "earnPerSale": "Nopelniet {amount} par pārdošanu",
-    "urlPlaceholder": "Affiliātu URL",
-    "shareWith": "Dalīties ar"
-  }
+    "title": "Vadības panelis",
+    "welcome": "Laipni lūdzam, {name}",
+    "lastLogin": "Pēdējā pieteikšanās",
+    "lastLoginIp": "Pēdējās pieteikšanās IP",
+    "prepay": {
+        "title": "Priekšapmaksas atlikums",
+        "remainingBalance": "Atlikušais priekšapmaksas atlikums",
+        "manageAccount": "Pārvaldīt kontu",
+        "manageTooltip": "Pārvaldīt savu priekšapmaksas kontu"
+    },
+    "invoices": {
+        "title": "Neapmaksātie rēķini",
+        "totalUnpaid": "Kopējie neapmaksātie rēķini",
+        "totalAmount": "Kopējā summa, kas jāsamaksā",
+        "payTotalTooltip": "Maksāt kopējo summu"
+    },
+    "callInPin": "Tālruņa PIN",
+    "recentTickets": "Jaunākie pieteikumi",
+    "viewAllTickets": "Skatīt visus pieteikumus",
+    "editTicket": "Rediģēt pieteikumu",
+    "serviceCount": "Nav aktīvu pakalpojumu | {count} aktīvs pakalpojums | {count} aktīvi pakalpojumi",
+    "affiliate": {
+        "earnPerSale": "Nopelniet {amount} par pārdošanu",
+        "urlPlaceholder": "Affiliātu URL",
+        "shareWith": "Dalīties ar"
+    }
 }

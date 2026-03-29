@@ -105,6 +105,7 @@
         "loading": "Loading...",
         "noData": "No data available",
         "noActiveServices": "No Active Services",
+        "noServicesMatchingFilter": "No services found matching filter '{filter}'",
         "controlPanel": "Control Panel",
         "welcomeEmail": "Welcome Email",
         "invoices": "Invoices",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Are you sure you want to cancel?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "All rights reserved."
     },
     "search": {

@@ -105,6 +105,7 @@
         "loading": "Consulting the Royal Scribes...",
         "noData": "The royal archives hold no such record",
         "noActiveServices": "No Services In Service to the Crown",
+        "noServicesMatchingFilter": "No services found matching the royal decree '{filter}'",
         "controlPanel": "Royal Control Panel",
         "welcomeEmail": "Welcome Carrier Pigeon",
         "invoices": "Tax Notices",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Are you sure you want to withdraw?"
     },
     "footer": {
-        "copyright": "By Royal Proclamation \u00a9 {year} InterServer Inc.",
+        "copyright": "By Royal Proclamation © {year} InterServer Inc.",
         "allRightsReserved": "All rights held by the Crown."
     },
     "search": {

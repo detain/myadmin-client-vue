@@ -105,6 +105,7 @@
         "loading": "لوڊ ٿي رهيو آهي...",
         "noData": "ڊيٽا دستياب ناهي",
         "noActiveServices": "ڪو به فعال خدمت ناهي",
+        "noServicesMatchingFilter": "'{filter}' فلٽر سان ملندڙ ڪا به خدمت نه مليا",
         "controlPanel": "ڪنٽرول پينل",
         "welcomeEmail": "خوش آمديد اي ميل",
         "invoices": "انوائس",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "ڇا توهان پڪ سان رد ڪرڻ چاهيو ٿا؟"
     },
     "footer": {
-        "copyright": "ڪاپي رائيٽ \u00a9 {year} InterServer Inc.",
+        "copyright": "ڪاپي رائيٽ © {year} InterServer Inc.",
         "allRightsReserved": "سڀ حق محفوظ آهن."
     },
     "search": {

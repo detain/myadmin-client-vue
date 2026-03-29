@@ -1,1 +1,12 @@
-{ "title": "Usuarios", "addUser": "Engadir usuario", "editUser": "Editar usuario", "firstName": "Nome", "lastName": "Apelido", "username": "Nome de usuario", "password": "Contrasinal", "keepSamePassword": "Deixe en branco para manter o mesmo contrasinal", "errorLoading": "Erro ao cargar usuarios:", "errorLoadingUser": "Erro ao cargar usuario:" }
+{
+    "title": "Usuarios",
+    "addUser": "Engadir usuario",
+    "editUser": "Editar usuario",
+    "firstName": "Nome",
+    "lastName": "Apelido",
+    "username": "Nome de usuario",
+    "password": "Contrasinal",
+    "keepSamePassword": "Deixe en branco para manter o mesmo contrasinal",
+    "errorLoading": "Erro ao cargar usuarios:",
+    "errorLoadingUser": "Erro ao cargar usuario:"
+}

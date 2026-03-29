@@ -1,28 +1,28 @@
 {
-    "title": "\u0aa1\u0ac5\u0ab6\u0aac\u0acb\u0ab0\u0acd\u0aa1",
-    "welcome": "\u0ab8\u0acd\u0ab5\u0abe\u0a97\u0aa4, {name}",
-    "lastLogin": "\u0a9b\u0ac7\u0ab2\u0acd\u0ab2\u0ac1\u0a82 \u0ab2\u0cbe\u0a97 \u0a87\u0aa8",
-    "lastLoginIp": "\u0a9b\u0ac7\u0ab2\u0acd\u0ab2\u0ac1\u0a82 \u0ab2\u0cbe\u0a97 \u0a87\u0aa8 IP",
+    "title": "ડૅશબોર્ડ",
+    "welcome": "સ્વાગત, {name}",
+    "lastLogin": "છેલ્લું લಾગ ઇન",
+    "lastLoginIp": "છેલ્લું લಾગ ઇન IP",
     "prepay": {
-        "title": "\u0aaa\u0acd\u0ab0\u0ac0\u0aaa\u0ac7 \u0aac\u0ac7\u0ab2\u0ac7\u0aa8\u0acd\u0ab8",
-        "remainingBalance": "\u0aaa\u0acd\u0ab0\u0ac0\u0aaa\u0ac7 \u0aac\u0abe\u0a95\u0ac0 \u0aac\u0ac7\u0ab2\u0ac7\u0aa8\u0acd\u0ab8",
-        "manageAccount": "\u0a8f\u0a95\u0abe\u0a89\u0aa8\u0acd\u0a9f \u0aae\u0ac7\u0aa8\u0ac7\u0a9c \u0a95\u0ab0\u0acb",
-        "manageTooltip": "\u0aa4\u0aae\u0afe\u0ab0\u0ac1\u0a82 \u0aaa\u0acd\u0ab0\u0ac0\u0aaa\u0ac7 \u0a8f\u0a95\u0abe\u0a89\u0aa8\u0acd\u0a9f \u0aae\u0ac7\u0aa8\u0ac7\u0a9c \u0a95\u0ab0\u0acb"
+        "title": "પ્રીપે બેલેન્સ",
+        "remainingBalance": "પ્રીપે બાકી બેલેન્સ",
+        "manageAccount": "એકાઉન્ટ મેનેજ કરો",
+        "manageTooltip": "તમ૾રું પ્રીપે એકાઉન્ટ મેનેજ કરો"
     },
     "invoices": {
-        "title": "\u0a85\u0a9a\u0ac2\u0a95\u0ab5\u0ac7\u0ab2\u0ac0 \u0a87\u0aa8\u0acd\u0ab5\u0c49\u0a87\u0ab8",
-        "totalUnpaid": "\u0a95\u0ac1\u0ab2 \u0a85\u0a9a\u0ac2\u0a95\u0ab5\u0ac7\u0ab2\u0ac0 \u0a87\u0aa8\u0acd\u0ab5\u0c49\u0a87\u0ab8",
-        "totalAmount": "\u0a9a\u0ac2\u0a95\u0ab5\u0ab5\u0abe\u0aa8\u0ac0 \u0a95\u0ac1\u0ab2 \u0ab0\u0a95\u0aae",
-        "payTotalTooltip": "\u0a95\u0ac1\u0ab2 \u0ab0\u0a95\u0aae \u0a9a\u0ac2\u0a95\u0ab5\u0acb"
+        "title": "અચૂકવેલી ઇન્વ౉ઇસ",
+        "totalUnpaid": "કુલ અચૂકવેલી ઇન્વ౉ઇસ",
+        "totalAmount": "ચૂકવવાની કુલ રકમ",
+        "payTotalTooltip": "કુલ રકમ ચૂકવો"
     },
-    "callInPin": "\u0a95\u0cbe\u0ab2-\u0a87\u0aa8 PIN",
-    "recentTickets": "\u0aa4\u0abe\u0a9c\u0ac7\u0aa4\u0ab0\u0ac0\u0aa8 \u0a9f\u0abf\u0a95\u0abf\u0a9f\u0acd\u0ab8",
-    "viewAllTickets": "\u0aac\u0aa7\u0ac0 \u0a9f\u0abf\u0a95\u0abf\u0a9f\u0acd\u0ab8 \u0a9c\u0ac1\u0a93",
-    "editTicket": "\u0a9f\u0abf\u0a95\u0abf\u0a9f \u0ab8\u0a82\u0aaa\u0abe\u0aa6\u0abf\u0aa4 \u0a95\u0ab0\u0acb",
-    "serviceCount": "\u0a95\u0acb\u0a88 \u0ab8\u0a95\u0acd\u0ab0\u0abf\u0aaf \u0ab8\u0ac7\u0ab5\u0abe\u0a93 \u0aa8\u0aa5\u0ac0 | {count} \u0ab8\u0a95\u0acd\u0ab0\u0abf\u0aaf \u0ab8\u0ac7\u0ab5\u0abe | {count} \u0ab8\u0a95\u0acd\u0ab0\u0abf\u0aaf \u0ab8\u0ac7\u0ab5\u0abe\u0a93",
+    "callInPin": "કಾલ-ઇન PIN",
+    "recentTickets": "તાજેતરીન ટિકિટ્સ",
+    "viewAllTickets": "બધી ટિકિટ્સ જુઓ",
+    "editTicket": "ટિકિટ સંપાદિત કરો",
+    "serviceCount": "કોઈ સક્રિય સેવાઓ નથી | {count} સક્રિય સેવા | {count} સક્રિય સેવાઓ",
     "affiliate": {
-        "earnPerSale": "\u0aaa\u0acd\u0ab0\u0aa4\u0abf \u0ab5\u0ac7\u0a9a\u0abe\u0aa3 {amount} \u0a95\u0aae\u0abe\u0a93",
-        "urlPlaceholder": "\u0a8f\u0aab\u0abf\u0ab2\u0abf\u0a8f\u0a9f URL",
-        "shareWith": "\u0ab6\u0ac7\u0ab0 \u0a95\u0ab0\u0acb"
+        "earnPerSale": "પ્રતિ વેચાણ {amount} કમાઓ",
+        "urlPlaceholder": "એફિલિએટ URL",
+        "shareWith": "શેર કરો"
     }
 }

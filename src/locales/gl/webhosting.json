@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "Lista de hospedaxe web",
-    "orderTitle": "Pedir rexistros de sitio web"
-  },
-  "view": {
-    "title": "Ver sitio web {id}",
-    "package": "Paquete",
-    "nextInvoiceDate": "Data da próxima factura:",
-    "billing": "Facturación",
-    "billed": "facturado",
-    "billingStatusIs": "O estado de facturación é:",
-    "login": "Iniciar sesión",
-    "links": "Ligazóns",
-    "emailSent": "Correo enviado",
-    "emailSentMessage": "O correo de benvida foi reenviado. Comprobe a súa caixa de entrada.",
-    "hostInfo": "Información do servidor",
-    "username": "Nome de usuario:",
-    "ip": "IP:",
-    "server": "Servidor:",
-    "notSetYet": "Aínda non establecido",
-    "types": "Tipos:",
-    "linksLabel": "Ligazóns:",
-    "manualLogin": "Inicio de sesión manual",
-    "automaticLogin": "Inicio de sesión automático",
-    "clickHere": "Faga clic aquí",
-    "defaultNameservers": "Servidores de nomes predeterminados",
-    "nameservers": "Servidores de nomes:",
-    "externalLinks": "Ligazóns externas",
-    "names": "Nomes:",
-    "websitePreview": "Vista previa do sitio web",
-    "welcomeEmailConfirm": "Está seguro de que quere reenviar o correo electrónico de benvida?"
-  },
-  "order": {
-    "title": "Pedir sitio web"
-  },
-  "migration": {
-    "title": "Migrar o seu sitio web",
-    "password": "Contrasinal",
-    "importantNotes": "Notas importantes",
-    "currentWebHostInfo": "Información do aloxamento web actual",
-    "customerPortalUrl": "URL do portal do cliente",
-    "portalExample": "Por exemplo: sso.godaddy.com",
-    "registeredUsername": "Nome de usuario / correo electrónico / ID rexistrado",
-    "controlPanelUrl": "URL do panel de control",
-    "controlPanelExample": "Por exemplo: yourdomain.com/cpanel",
-    "ftpUsername": "Nome de usuario FTP / panel de control",
-    "ftpPassword": "Contrasinal FTP / panel de control",
-    "holdingPageQuestion": "Se o sitio está en directo/ocupado con moito tráfico, podemos establecer unha páxina de espera durante a migración?",
-    "specialRequirementsQuestion": "Este sitio ten requisitos especiais como versión PHP / módulos?",
-    "domainRegistryInfo": "Información do rexistro de dominios",
-    "transferDomainQuestion": "Tamén quere que lle axudemos a transferir o rexistro do nome de dominio?",
-    "updateNameserversQuestion": "Quere que actualicemos os servidores de nomes en canto rematemos a migración de datos?",
-    "domainRegistryPortal": "Portal do cliente do rexistro de dominios",
-    "note1": "Cubrir este formulario abrirá un novo ticket para que o noso departamento de soporte comece a súa migración.",
-    "note2": "Por favor, sexa o máis completo e preciso posible para evitar calquera atraso.",
-    "note3": "Unha migración típica complétase en 48 a 72 horas. Ás veces máis tempo se a cantidade de datos a copiar é grande.",
-    "note4": "A conta de aloxamento antiga ten que estar en liña e accesible mentres realizamos a migración, doutro xeito podemos ter dificultades.",
-    "note5": "Por favor, non faga ningunha actualización no seu sitio mentres realizamos a migración, doutro xeito eses datos poderían non copiarse ao novo aloxamento."
-  },
-  "buyIp": {
-    "title": "Mercar complemento de IP adicional",
-    "existingAddonIps": "IP de complemento existentes",
-    "additionalIp": "IP adicional",
-    "monthlyCost": "Custo mensual ({symbol})",
-    "costDescription": "Custo ({symbol}) cada mes cando se factura o seu sitio web",
-    "confirmPurchase": "Confirmar compra",
-    "confirmMessage": "Custo de IP adicional: {symbol}{cost}/mes. Está seguro de que quere pedir un IP adicional?",
-    "placeOrder": "Realizar pedido",
-    "orderPlaced": "Pedido realizado"
-  },
-  "reverseDns": {
-    "title": "DNS inverso",
-    "updateReverseDns": "Actualizar DNS inverso"
-  },
-  "downloadBackups": {
-    "title": "Descargar copias de seguridade",
-    "backup": "Copia de seguridade",
-    "size": "Tamaño",
-    "options": "Opcións"
-  }
+    "list": {
+        "title": "Lista de hospedaxe web",
+        "orderTitle": "Pedir rexistros de sitio web"
+    },
+    "view": {
+        "title": "Ver sitio web {id}",
+        "package": "Paquete",
+        "nextInvoiceDate": "Data da próxima factura:",
+        "billing": "Facturación",
+        "billed": "facturado",
+        "billingStatusIs": "O estado de facturación é:",
+        "login": "Iniciar sesión",
+        "links": "Ligazóns",
+        "emailSent": "Correo enviado",
+        "emailSentMessage": "O correo de benvida foi reenviado. Comprobe a súa caixa de entrada.",
+        "hostInfo": "Información do servidor",
+        "username": "Nome de usuario:",
+        "ip": "IP:",
+        "server": "Servidor:",
+        "notSetYet": "Aínda non establecido",
+        "types": "Tipos:",
+        "linksLabel": "Ligazóns:",
+        "manualLogin": "Inicio de sesión manual",
+        "automaticLogin": "Inicio de sesión automático",
+        "clickHere": "Faga clic aquí",
+        "defaultNameservers": "Servidores de nomes predeterminados",
+        "nameservers": "Servidores de nomes:",
+        "externalLinks": "Ligazóns externas",
+        "names": "Nomes:",
+        "websitePreview": "Vista previa do sitio web",
+        "welcomeEmailConfirm": "Está seguro de que quere reenviar o correo electrónico de benvida?"
+    },
+    "order": {
+        "title": "Pedir sitio web"
+    },
+    "migration": {
+        "title": "Migrar o seu sitio web",
+        "password": "Contrasinal",
+        "importantNotes": "Notas importantes",
+        "currentWebHostInfo": "Información do aloxamento web actual",
+        "customerPortalUrl": "URL do portal do cliente",
+        "portalExample": "Por exemplo: sso.godaddy.com",
+        "registeredUsername": "Nome de usuario / correo electrónico / ID rexistrado",
+        "controlPanelUrl": "URL do panel de control",
+        "controlPanelExample": "Por exemplo: yourdomain.com/cpanel",
+        "ftpUsername": "Nome de usuario FTP / panel de control",
+        "ftpPassword": "Contrasinal FTP / panel de control",
+        "holdingPageQuestion": "Se o sitio está en directo/ocupado con moito tráfico, podemos establecer unha páxina de espera durante a migración?",
+        "specialRequirementsQuestion": "Este sitio ten requisitos especiais como versión PHP / módulos?",
+        "domainRegistryInfo": "Información do rexistro de dominios",
+        "transferDomainQuestion": "Tamén quere que lle axudemos a transferir o rexistro do nome de dominio?",
+        "updateNameserversQuestion": "Quere que actualicemos os servidores de nomes en canto rematemos a migración de datos?",
+        "domainRegistryPortal": "Portal do cliente do rexistro de dominios",
+        "note1": "Cubrir este formulario abrirá un novo ticket para que o noso departamento de soporte comece a súa migración.",
+        "note2": "Por favor, sexa o máis completo e preciso posible para evitar calquera atraso.",
+        "note3": "Unha migración típica complétase en 48 a 72 horas. Ás veces máis tempo se a cantidade de datos a copiar é grande.",
+        "note4": "A conta de aloxamento antiga ten que estar en liña e accesible mentres realizamos a migración, doutro xeito podemos ter dificultades.",
+        "note5": "Por favor, non faga ningunha actualización no seu sitio mentres realizamos a migración, doutro xeito eses datos poderían non copiarse ao novo aloxamento."
+    },
+    "buyIp": {
+        "title": "Mercar complemento de IP adicional",
+        "existingAddonIps": "IP de complemento existentes",
+        "additionalIp": "IP adicional",
+        "monthlyCost": "Custo mensual ({symbol})",
+        "costDescription": "Custo ({symbol}) cada mes cando se factura o seu sitio web",
+        "confirmPurchase": "Confirmar compra",
+        "confirmMessage": "Custo de IP adicional: {symbol}{cost}/mes. Está seguro de que quere pedir un IP adicional?",
+        "placeOrder": "Realizar pedido",
+        "orderPlaced": "Pedido realizado"
+    },
+    "reverseDns": {
+        "title": "DNS inverso",
+        "updateReverseDns": "Actualizar DNS inverso"
+    },
+    "downloadBackups": {
+        "title": "Descargar copias de seguridade",
+        "backup": "Copia de seguridade",
+        "size": "Tamaño",
+        "options": "Opcións"
+    }
 }

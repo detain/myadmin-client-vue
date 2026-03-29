@@ -105,6 +105,7 @@
         "loading": "Onerans...",
         "noData": "Nulla Data Praesto",
         "noActiveServices": "Nulli Servitii Activi",
+        "noServicesMatchingFilter": "Nulli servitii inventi sunt qui filtro '{filter}' congruunt",
         "controlPanel": "Tabula Moderatrix",
         "welcomeEmail": "Epistula Salutationis",
         "invoices": "Rationes",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Esne certus te velle cancellare?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Omnia iura reservantur."
     },
     "search": {

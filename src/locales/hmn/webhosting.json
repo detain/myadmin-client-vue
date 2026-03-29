@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "Cov Webhosting",
-    "orderTitle": "Xaj Npe Nkag Rau Vev Xaib"
-  },
-  "view": {
-    "title": "Saib Vev Xaib {id}",
-    "package": "Pob Khoom",
-    "nextInvoiceDate": "Hnub Nqi Tom Ntej:",
-    "billing": "Them Nqi",
-    "billed": "tau them nqi",
-    "billingStatusIs": "Xwm Txheej Them Nqi:",
-    "login": "Nkag",
-    "links": "Cov Txuas",
-    "emailSent": "Email Xa Lawm",
-    "emailSentMessage": "Email txais tos xa dua lawm.",
-    "hostInfo": "Cov Ntaub Ntawv Host",
-    "username": "Lub Npe Siv:",
-    "ip": "IP:",
-    "server": "Server:",
-    "notSetYet": "Tsis tau teeb tsa",
-    "types": "Hom:",
-    "linksLabel": "Cov Kab Txuas:",
-    "manualLogin": "Kev Nkag Tes",
-    "automaticLogin": "Kev Nkag Tsis Tu Ncua",
-    "clickHere": "Nyem Ntawm No",
-    "defaultNameservers": "Cov Nameserver Ib Txwm",
-    "nameservers": "Cov Nameserver:",
-    "externalLinks": "Cov Kab Txuas Sab Nraud",
-    "names": "Cov Npe:",
-    "websitePreview": "Saib Ua Ntej Lub Website",
-    "welcomeEmailConfirm": "Koj puas xav xa email txais tos dua?"
-  },
-  "order": {
-    "title": "Xaj Vev Xaib"
-  },
-  "migration": {
-    "title": "Hloov Koj Vev Xaib",
-    "password": "Tus Lej Nkag",
-    "importantNotes": "Cov Lus Qhia Tseem Ceeb",
-    "currentWebHostInfo": "Cov Ntaub Ntawv Web Host Tam Sim No",
-    "customerPortalUrl": "Qhov Chaw Siv Hauv Customer Portal",
-    "portalExample": "Piv Txwv: sso.godaddy.com",
-    "registeredUsername": "Lub Npe Siv Sau Npe / Email / ID",
-    "controlPanelUrl": "Qhov Chaw Siv Hauv Control Panel",
-    "controlPanelExample": "Piv Txwv: yourdomain.com/cpanel",
-    "ftpUsername": "FTP / Control Panel Lub Npe Siv",
-    "ftpPassword": "FTP / Control Panel Tus Lej Zais",
-    "holdingPageQuestion": "Yog lub website muaj neeg siv ntau, puas tuaj yeem teeb ib nplooj ntawv tog thaum hloov chaw?",
-    "specialRequirementsQuestion": "Puas muaj lub website no muaj cov kev xav tau tshwj xeeb xws li PHP Version / Modules?",
-    "domainRegistryInfo": "Cov Ntaub Ntawv Sau Npe Domain",
-    "transferDomainQuestion": "Koj puas xav kom peb pab koj hloov kev sau npe domain npe?",
-    "updateNameserversQuestion": "Koj puas xav kom peb hloov cov nameserver tamsim peb ua tiav kev hloov cov ntaub ntawv?",
-    "domainRegistryPortal": "Domain Registry Customer Portal",
-    "note1": "Kev ua tiav daim ntawv no yuav qhib ib daim ntawv tshiab rau peb lub chav pab cuam pib koj kev hloov chaw.",
-    "note2": "Thov muab cov ntaub ntawv tiav thiab raug kom zam kev lig.",
-    "note3": "Kev hloov chaw ib txwm ua tiav hauv 48 txog 72 teev.",
-    "note4": "Tus account hosting qub yuav tsum online thiab nkag tau thaum peb ua kev hloov chaw.",
-    "note5": "Thov txhob hloov pauv koj lub website thaum peb ua kev hloov chaw."
-  },
-  "buyIp": {
-    "title": "Yuav IP Ntxiv",
-    "existingAddonIps": "Cov IP Ntxiv Muaj Lawm",
-    "additionalIp": "IP Ntxiv",
-    "monthlyCost": "Tus Nqi Txhua Hli ({symbol})",
-    "costDescription": "Tus Nqi ({symbol}) txhua hli thaum koj lub website raug them nqi",
-    "confirmPurchase": "Lees Paub Kev Yuav",
-    "confirmMessage": "Tus nqi IP ntxiv: {symbol}{cost}/hli. Koj puas xav txiav txim IP ntxiv?",
-    "placeOrder": "Muab Kev Txiav Txim",
-    "orderPlaced": "Kev Txiav Txim Tau Muab Lawm"
-  },
-  "reverseDns": {
-    "title": "Reverse DNS",
-    "updateReverseDns": "Hloov Reverse DNS"
-  },
-  "downloadBackups": {
-    "title": "Rub Tawm Cov Backup",
-    "backup": "Backup",
-    "size": "Loj",
-    "options": "Cov Kev Xaiv"
-  }
+    "list": {
+        "title": "Cov Webhosting",
+        "orderTitle": "Xaj Npe Nkag Rau Vev Xaib"
+    },
+    "view": {
+        "title": "Saib Vev Xaib {id}",
+        "package": "Pob Khoom",
+        "nextInvoiceDate": "Hnub Nqi Tom Ntej:",
+        "billing": "Them Nqi",
+        "billed": "tau them nqi",
+        "billingStatusIs": "Xwm Txheej Them Nqi:",
+        "login": "Nkag",
+        "links": "Cov Txuas",
+        "emailSent": "Email Xa Lawm",
+        "emailSentMessage": "Email txais tos xa dua lawm.",
+        "hostInfo": "Cov Ntaub Ntawv Host",
+        "username": "Lub Npe Siv:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Tsis tau teeb tsa",
+        "types": "Hom:",
+        "linksLabel": "Cov Kab Txuas:",
+        "manualLogin": "Kev Nkag Tes",
+        "automaticLogin": "Kev Nkag Tsis Tu Ncua",
+        "clickHere": "Nyem Ntawm No",
+        "defaultNameservers": "Cov Nameserver Ib Txwm",
+        "nameservers": "Cov Nameserver:",
+        "externalLinks": "Cov Kab Txuas Sab Nraud",
+        "names": "Cov Npe:",
+        "websitePreview": "Saib Ua Ntej Lub Website",
+        "welcomeEmailConfirm": "Koj puas xav xa email txais tos dua?"
+    },
+    "order": {
+        "title": "Xaj Vev Xaib"
+    },
+    "migration": {
+        "title": "Hloov Koj Vev Xaib",
+        "password": "Tus Lej Nkag",
+        "importantNotes": "Cov Lus Qhia Tseem Ceeb",
+        "currentWebHostInfo": "Cov Ntaub Ntawv Web Host Tam Sim No",
+        "customerPortalUrl": "Qhov Chaw Siv Hauv Customer Portal",
+        "portalExample": "Piv Txwv: sso.godaddy.com",
+        "registeredUsername": "Lub Npe Siv Sau Npe / Email / ID",
+        "controlPanelUrl": "Qhov Chaw Siv Hauv Control Panel",
+        "controlPanelExample": "Piv Txwv: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Control Panel Lub Npe Siv",
+        "ftpPassword": "FTP / Control Panel Tus Lej Zais",
+        "holdingPageQuestion": "Yog lub website muaj neeg siv ntau, puas tuaj yeem teeb ib nplooj ntawv tog thaum hloov chaw?",
+        "specialRequirementsQuestion": "Puas muaj lub website no muaj cov kev xav tau tshwj xeeb xws li PHP Version / Modules?",
+        "domainRegistryInfo": "Cov Ntaub Ntawv Sau Npe Domain",
+        "transferDomainQuestion": "Koj puas xav kom peb pab koj hloov kev sau npe domain npe?",
+        "updateNameserversQuestion": "Koj puas xav kom peb hloov cov nameserver tamsim peb ua tiav kev hloov cov ntaub ntawv?",
+        "domainRegistryPortal": "Domain Registry Customer Portal",
+        "note1": "Kev ua tiav daim ntawv no yuav qhib ib daim ntawv tshiab rau peb lub chav pab cuam pib koj kev hloov chaw.",
+        "note2": "Thov muab cov ntaub ntawv tiav thiab raug kom zam kev lig.",
+        "note3": "Kev hloov chaw ib txwm ua tiav hauv 48 txog 72 teev.",
+        "note4": "Tus account hosting qub yuav tsum online thiab nkag tau thaum peb ua kev hloov chaw.",
+        "note5": "Thov txhob hloov pauv koj lub website thaum peb ua kev hloov chaw."
+    },
+    "buyIp": {
+        "title": "Yuav IP Ntxiv",
+        "existingAddonIps": "Cov IP Ntxiv Muaj Lawm",
+        "additionalIp": "IP Ntxiv",
+        "monthlyCost": "Tus Nqi Txhua Hli ({symbol})",
+        "costDescription": "Tus Nqi ({symbol}) txhua hli thaum koj lub website raug them nqi",
+        "confirmPurchase": "Lees Paub Kev Yuav",
+        "confirmMessage": "Tus nqi IP ntxiv: {symbol}{cost}/hli. Koj puas xav txiav txim IP ntxiv?",
+        "placeOrder": "Muab Kev Txiav Txim",
+        "orderPlaced": "Kev Txiav Txim Tau Muab Lawm"
+    },
+    "reverseDns": {
+        "title": "Reverse DNS",
+        "updateReverseDns": "Hloov Reverse DNS"
+    },
+    "downloadBackups": {
+        "title": "Rub Tawm Cov Backup",
+        "backup": "Backup",
+        "size": "Loj",
+        "options": "Cov Kev Xaiv"
+    }
 }

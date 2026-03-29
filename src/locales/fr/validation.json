@@ -1,1 +1,12 @@
-{ "required": "{field} est obligatoire", "email": "Doit être une adresse e-mail valide", "minLength": "Doit comporter au moins {min} caractères", "maxLength": "Ne doit pas dépasser {max} caractères", "passwordMatch": "Les mots de passe doivent correspondre", "invalidFormat": "Format invalide", "numeric": "Doit être un nombre", "url": "Doit être une URL valide", "ipAddress": "Doit être une adresse IP valide", "hostname": "Doit être un nom d'hôte valide" }
+{
+    "required": "{field} est obligatoire",
+    "email": "Doit être une adresse e-mail valide",
+    "minLength": "Doit comporter au moins {min} caractères",
+    "maxLength": "Ne doit pas dépasser {max} caractères",
+    "passwordMatch": "Les mots de passe doivent correspondre",
+    "invalidFormat": "Format invalide",
+    "numeric": "Doit être un nombre",
+    "url": "Doit être une URL valide",
+    "ipAddress": "Doit être une adresse IP valide",
+    "hostname": "Doit être un nom d'hôte valide"
+}

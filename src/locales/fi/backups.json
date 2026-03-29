@@ -1,22 +1,22 @@
 {
-  "list": {
-    "title": "Tallennus / Varmuuskopio-lista",
-    "orderTitle": "Tilaa varmuuskopiointirekisteröinnit"
-  },
-  "view": {
-    "title": "Näytä varmuuskopio {id}",
-    "package": "Paketti",
-    "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
-    "billing": "Laskutus",
-    "billed": "laskutettu:",
-    "statusIs": "Tila on:",
-    "hostServer": "Isäntäpalvelin",
-    "links": "Linkit",
-    "emailSent": "Sähköposti lähetetty",
-    "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
-    "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
-  },
-  "order": {
-    "title": "Tilaa tallennus"
-  }
+    "list": {
+        "title": "Tallennus / Varmuuskopio-lista",
+        "orderTitle": "Tilaa varmuuskopiointirekisteröinnit"
+    },
+    "view": {
+        "title": "Näytä varmuuskopio {id}",
+        "package": "Paketti",
+        "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
+        "billing": "Laskutus",
+        "billed": "laskutettu:",
+        "statusIs": "Tila on:",
+        "hostServer": "Isäntäpalvelin",
+        "links": "Linkit",
+        "emailSent": "Sähköposti lähetetty",
+        "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
+        "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
+    },
+    "order": {
+        "title": "Tilaa tallennus"
+    }
 }

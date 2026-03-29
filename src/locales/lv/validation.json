@@ -1,12 +1,12 @@
 {
-  "required": "{field} ir obligāts",
-  "email": "Jābūt derīgai e-pasta adresei",
-  "minLength": "Jābūt vismaz {min} rakstzīmēm",
-  "maxLength": "Nedrīkst pārsniegt {max} rakstzīmes",
-  "passwordMatch": "Parolēm jāsakrīt",
-  "invalidFormat": "Nepareizs formāts",
-  "numeric": "Jābūt skaitlim",
-  "url": "Jābūt derīgam URL",
-  "ipAddress": "Jābūt derīgai IP adresei",
-  "hostname": "Jābūt derīgam resursdatora nosaukumam"
+    "required": "{field} ir obligāts",
+    "email": "Jābūt derīgai e-pasta adresei",
+    "minLength": "Jābūt vismaz {min} rakstzīmēm",
+    "maxLength": "Nedrīkst pārsniegt {max} rakstzīmes",
+    "passwordMatch": "Parolēm jāsakrīt",
+    "invalidFormat": "Nepareizs formāts",
+    "numeric": "Jābūt skaitlim",
+    "url": "Jābūt derīgam URL",
+    "ipAddress": "Jābūt derīgai IP adresei",
+    "hostname": "Jābūt derīgam resursdatora nosaukumam"
 }

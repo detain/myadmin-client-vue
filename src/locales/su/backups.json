@@ -1,10 +1,21 @@
 {
-  "list": {"title": "Daptar Panyimpenan / Cadangan", "orderTitle": "Pesan Registrasi Cadangan"},
-  "view": {
-    "title": "Tempo Cadangan {id}", "package": "Paket", "nextInvoiceDate": "Tanggal Invoice Salajengna:",
-    "billing": "Tagihan", "billed": "ditagih:", "statusIs": "Status nyaeta:", "hostServer": "Server Host",
-    "links": "Tautan", "emailSent": "Email Dikirimkeun",
-    "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
-  },
-  "order": {"title": "Pesan Panyimpenan"}
+    "list": {
+        "title": "Daptar Panyimpenan / Cadangan",
+        "orderTitle": "Pesan Registrasi Cadangan"
+    },
+    "view": {
+        "title": "Tempo Cadangan {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Invoice Salajengna:",
+        "billing": "Tagihan",
+        "billed": "ditagih:",
+        "statusIs": "Status nyaeta:",
+        "hostServer": "Server Host",
+        "links": "Tautan",
+        "emailSent": "Email Dikirimkeun",
+        "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+    },
+    "order": {
+        "title": "Pesan Panyimpenan"
+    }
 }

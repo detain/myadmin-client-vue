@@ -105,6 +105,7 @@
         "loading": "Ag lódáil...",
         "noData": "Níl aon sonraí ar fáil",
         "noActiveServices": "Níl aon Seirbhísí Gníomhacha ann",
+        "noServicesMatchingFilter": "Níor aimsíodh aon seirbhísí a mheaitseálann an scagaire '{filter}'",
         "controlPanel": "Painéal Rialaithe",
         "welcomeEmail": "Ríomhphost Fáilte",
         "invoices": "Sonraisc",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "An bhfuil tú cinnte gur mhaith leat cealú?"
     },
     "footer": {
-        "copyright": "Cóipcheart \u00a9 {year} InterServer Inc.",
+        "copyright": "Cóipcheart © {year} InterServer Inc.",
         "allRightsReserved": "Gach ceart ar cosaint."
     },
     "search": {

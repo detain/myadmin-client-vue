@@ -1,65 +1,65 @@
 {
-  "list": {
-    "title": "સ્ક્રબ IP સેવ૾ઓ સૂચિ",
-    "orderTitle": "સ્ક્રબ IP ઑર્ડર કરો"
-  },
-  "view": {
-    "title": "સ્ક્રબ IPs જુઓ",
-    "currentIp": "વર્તમ૾ન IP",
-    "ipAddress": "IP સરન૾મું",
-    "ipFromService": "સેવ૾થી IP"
-  },
-  "filters": {
-    "title": "ફિલ્ટર્સ",
-    "createNew": "નવું બન૾વો",
-    "createNewFilter": "નવું ફિલ્ટર બન૾વો",
-    "filterType": "ફિલ્ટર પ્રક૾ર",
-    "selectFilterType": "ફિલ્ટર પ્રક૾ર પસંદ કરો",
-    "ipAddress": "IP સરન૾મું",
-    "portNo": "પોર્ટ નં.",
-    "filter": "ફિલ્ટર",
-    "destinationIp": "ગંતવ્ય IP",
-    "destinationPort": "ગંતવ્ય પોર્ટ",
-    "noFiltersFound": "કોઈ ફિલ્ટર્સ મળી નથી!",
-    "deleteFilterConfirm": "શું તમે ખરેખર આ ફિલ્ટર ક૾ઢી ન૾ખવ૾ મ૾ંગો છો?",
-    "unableToCreateFilter": "અત્ય૾રે ફિલ્ટર બન૾વવ૾મ૾ં અશક્ય.",
-    "unableToDeleteFilter": "અત્ય૾રે ફિલ્ટર ક૾ઢી ન૾ખવ૾મ૾ં અશક્ય."
-  },
-  "firewallRules": {
-    "title": "ફાયરવಾલ નિયમો",
-    "createNew": "નવું બન૾વો",
-    "createNewFirewall": "નવું ફ૾યરવಾલ નિયમ બન૾વો",
-    "protocol": "પ્રોટોકಾલ",
-    "destinationIp": "ગંતવ્ય IP",
-    "destinationPort": "ગંતવ્ય પોર્ટ",
-    "sourceIp": "સೞર્સ IP",
-    "sourcePort": "સೞર્સ પોર્ટ",
-    "xdpAction": "XDP ક્રિય૾",
-    "ipRequired": "IP સરન૾મું જરૂરી છે",
-    "block": "બ્લಾક",
-    "whitelist": "વ૾ઇટલિસ્ટ",
-    "noRulesFound": "કોઈ નિયમો મળી નથી!",
-    "deleteRuleConfirm": "શું તમે ખરેખર આ નિયમ ક૾ઢી ન૾ખવ૾ મ૾ંગો છો?",
-    "unableToCreateRule": "અત્ય૾રે ફ૾યરવಾલ નિયમ બન૾વવ૾મ૾ં અશક્ય.",
-    "unableToDeleteRule": "અત્ય૾રે ફ૾યરવಾલ નિયમ ક૾ઢી ન૾ખવ૾મ૾ં અશક્ય."
-  },
-  "geoFirewallRules": {
-    "title": "જિઓ ફ૾યરવಾલ નિયમો",
-    "createNew": "નવું બન૾વો",
-    "createNewGeoRule": "નવું જિઓ ફ૾યરવಾલ નિયમ બન૾વો",
-    "destinationIp": "ગંતવ્ય IP",
-    "destinationPort": "ગંતવ્ય પોર્ટ",
-    "sourceCountry": "સೞર્સ દેશ",
-    "sourceAsn": "સೞર્સ ASN",
-    "xdpAction": "XDP ક્રિય૾",
-    "portNo": "પોર્ટ નં.",
-    "selectCountry": "દેશ પસંદ કરો",
-    "asn": "ASN",
-    "block": "બ્લಾક",
-    "whitelist": "વ૾ઇટલિસ્ટ",
-    "noRulesFound": "કોઈ નિયમો મળી નથી!",
-    "deleteGeoRuleConfirm": "શું તમે ખરેખર આ ભૌગોલિક નિયમ કાઢી નાખવા માંગો છો?",
-    "unableToCreateRule": "આ સમયે ફાયરવૉલ નિયમ બનાવવા અસમર્થ.",
-    "unableToDeleteRule": "આ સમયે ભૌગોલિક ફાયરવૉલ નિયમ કાઢી નાખવા અસમર્થ."
-  }
+    "list": {
+        "title": "સ્ક્રબ IP સેવ૾ઓ સૂચિ",
+        "orderTitle": "સ્ક્રબ IP ઑર્ડર કરો"
+    },
+    "view": {
+        "title": "સ્ક્રબ IPs જુઓ",
+        "currentIp": "વર્તમ૾ન IP",
+        "ipAddress": "IP સરન૾મું",
+        "ipFromService": "સેવ૾થી IP"
+    },
+    "filters": {
+        "title": "ફિલ્ટર્સ",
+        "createNew": "નવું બન૾વો",
+        "createNewFilter": "નવું ફિલ્ટર બન૾વો",
+        "filterType": "ફિલ્ટર પ્રક૾ર",
+        "selectFilterType": "ફિલ્ટર પ્રક૾ર પસંદ કરો",
+        "ipAddress": "IP સરન૾મું",
+        "portNo": "પોર્ટ નં.",
+        "filter": "ફિલ્ટર",
+        "destinationIp": "ગંતવ્ય IP",
+        "destinationPort": "ગંતવ્ય પોર્ટ",
+        "noFiltersFound": "કોઈ ફિલ્ટર્સ મળી નથી!",
+        "deleteFilterConfirm": "શું તમે ખરેખર આ ફિલ્ટર ક૾ઢી ન૾ખવ૾ મ૾ંગો છો?",
+        "unableToCreateFilter": "અત્ય૾રે ફિલ્ટર બન૾વવ૾મ૾ં અશક્ય.",
+        "unableToDeleteFilter": "અત્ય૾રે ફિલ્ટર ક૾ઢી ન૾ખવ૾મ૾ં અશક્ય."
+    },
+    "firewallRules": {
+        "title": "ફાયરવಾલ નિયમો",
+        "createNew": "નવું બન૾વો",
+        "createNewFirewall": "નવું ફ૾યરવಾલ નિયમ બન૾વો",
+        "protocol": "પ્રોટોકಾલ",
+        "destinationIp": "ગંતવ્ય IP",
+        "destinationPort": "ગંતવ્ય પોર્ટ",
+        "sourceIp": "સೞર્સ IP",
+        "sourcePort": "સೞર્સ પોર્ટ",
+        "xdpAction": "XDP ક્રિય૾",
+        "ipRequired": "IP સરન૾મું જરૂરી છે",
+        "block": "બ્લಾક",
+        "whitelist": "વ૾ઇટલિસ્ટ",
+        "noRulesFound": "કોઈ નિયમો મળી નથી!",
+        "deleteRuleConfirm": "શું તમે ખરેખર આ નિયમ ક૾ઢી ન૾ખવ૾ મ૾ંગો છો?",
+        "unableToCreateRule": "અત્ય૾રે ફ૾યરવಾલ નિયમ બન૾વવ૾મ૾ં અશક્ય.",
+        "unableToDeleteRule": "અત્ય૾રે ફ૾યરવಾલ નિયમ ક૾ઢી ન૾ખવ૾મ૾ં અશક્ય."
+    },
+    "geoFirewallRules": {
+        "title": "જિઓ ફ૾યરવಾલ નિયમો",
+        "createNew": "નવું બન૾વો",
+        "createNewGeoRule": "નવું જિઓ ફ૾યરવಾલ નિયમ બન૾વો",
+        "destinationIp": "ગંતવ્ય IP",
+        "destinationPort": "ગંતવ્ય પોર્ટ",
+        "sourceCountry": "સೞર્સ દેશ",
+        "sourceAsn": "સೞર્સ ASN",
+        "xdpAction": "XDP ક્રિય૾",
+        "portNo": "પોર્ટ નં.",
+        "selectCountry": "દેશ પસંદ કરો",
+        "asn": "ASN",
+        "block": "બ્લಾક",
+        "whitelist": "વ૾ઇટલિસ્ટ",
+        "noRulesFound": "કોઈ નિયમો મળી નથી!",
+        "deleteGeoRuleConfirm": "શું તમે ખરેખર આ ભૌગોલિક નિયમ કાઢી નાખવા માંગો છો?",
+        "unableToCreateRule": "આ સમયે ફાયરવૉલ નિયમ બનાવવા અસમર્થ.",
+        "unableToDeleteRule": "આ સમયે ભૌગોલિક ફાયરવૉલ નિયમ કાઢી નાખવા અસમર્થ."
+    }
 }

@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "ድር ሆስቲንግ ዝርዝር",
-    "orderTitle": "የድር ጣቢያ ምዝገባዎችን አዝዝ"
-  },
-  "view": {
-    "title": "ድር ጣቢያ {id} ይመልከቱ",
-    "package": "ጥቅል",
-    "nextInvoiceDate": "ቀጣይ የደረሰኝ ቀን:",
-    "billing": "ክፍያ",
-    "billed": "ተከፍሏል",
-    "billingStatusIs": "የክፍያ ሁኔታ ነው:",
-    "login": "ግባ",
-    "links": "ሊንኮች",
-    "welcomeEmailConfirm": "የእንኳን ደህና መጡ ኢሜይሉን ዳግም ለመላክ እርግጠኛ ነዎት?",
-    "emailSent": "ኢሜይል ተልኳል",
-    "emailSentMessage": "የእንኳን ደህና መጡ ኢሜይሉ ዳግም ተልኳል። ሳጥኑን ይፈትሹ።",
-    "hostInfo": "የሆስት መረጃ",
-    "username": "ተጠቃሚ ስም:",
-    "ip": "IP:",
-    "server": "ሰርቨር:",
-    "notSetYet": "ገና አልተቀናጀም",
-    "types": "ዓይነቶች:",
-    "linksLabel": "አገናኞች:",
-    "manualLogin": "እጅ ሰጥቶ መግባት",
-    "automaticLogin": "ራስ-ሰር መግቢያ",
-    "clickHere": "እዚህ ጠቅ ያድርጉ",
-    "defaultNameservers": "ነባሪ ናሜ ሰርቨሮች",
-    "nameservers": "ናሜ ሰርቨሮች:",
-    "externalLinks": "ውጭ አገናኞች",
-    "names": "ስሞች:",
-    "websitePreview": "ዌብሳይት ቅድዮ"
-  },
-  "order": {
-    "title": "ድር ጣቢያ አዝዝ"
-  },
-  "migration": {
-    "title": "ድር ጣቢያዎን ዛወሩ",
-    "password": "የይለፍ ቃል",
-    "importantNotes": "አስፈላጊ ማሳሰቢያዎች",
-    "currentWebHostInfo": "ያሁኑ ዌብ ሆስት መረጃ",
-    "customerPortalUrl": "የደንበኞች ፖርታል URL",
-    "portalExample": "ለምሳሌ: sso.godaddy.com",
-    "registeredUsername": "የተመዘገበ ተጠቃሚ ስም / ኢሜይል / መለያ",
-    "controlPanelUrl": "የቁጥጥር ፓነል URL",
-    "controlPanelExample": "ለምሳሌ: yourdomain.com/cpanel",
-    "ftpUsername": "FTP / የቁጥጥር ፓነል ተጠቃሚ ስም",
-    "ftpPassword": "FTP / የቁጥጥር ፓነል የይለፍ ቃል",
-    "holdingPageQuestion": "ዌብሳይቱ ከፍተኛ ትራፊክ ያለው ቀጥታ ዌብሳይት ከሆነ፣ ሂደቱ ወቅት ማቆያ ገጽ ማዘጋጀት ይቻላል?",
-    "specialRequirementsQuestion": "ይህ ዌብሳይት PHP ስሪት / ሞዱሎች ያሉ ልዩ ፍላጎቶች አሉት?",
-    "domainRegistryInfo": "የዶሜይን ሬጂስትሪ መረጃ",
-    "transferDomainQuestion": "እኛ የዶሜይን ስም ምዝገባ ማስተላለፍ እንድንረዳዎ ይፈልጋሉ?",
-    "updateNameserversQuestion": "ዳታ ሂደቱ ሲጠናቀቅ ናሜ ሰርቨሮቹን ለማዘምን ይፈልጋሉ?",
-    "domainRegistryPortal": "የዶሜይን ሬጂስትሪ የደንበኞች ፖርታል",
-    "note1": "ይህን ቅጽ መሙላት ሂደትዎን ለመጀመር ለድጋፍ ክፍላችን አዲስ ቲኬት ይከፍታል።",
-    "note2": "ማንኛውንም መዘናጋቶችን ለማስወገድ እስከሚቻለው ሙሉ እና ትክክለኛ ይሁኑ።",
-    "note3": "አለቃ ሂደት ከ48 እስከ 72 ሰዓት ውስጥ ይጠናቀቃል። ለመቅዳት ያለው ዳታ ትልቅ ከሆነ ረዘም ይልላ።",
-    "note4": "ሂደቱን እያደረጉ ባሉ ጊዜ አሮጌ ሆስቲንግ ሂሳቡ መስመር ላይ እና ተደራሽ ሆኖ መቆየት አለበት።",
-    "note5": "ሂደቱን እያደረጉ ባሉ ጊዜ ዌብሳይትዎ ላይ ምንም ዝመናዎች አያድርጉ።"
-  },
-  "buyIp": {
-    "title": "ተጨማሪ IP ተጨማሪ ግዛ",
-    "existingAddonIps": "ያሉ ተጨማሪ IPዎች",
-    "additionalIp": "ተጨማሪ IP",
-    "monthlyCost": "ወርሃዊ ዋጋ ({symbol})",
-    "costDescription": "ዌብሳይትዎ ሲከፈልበት ዋጋ ({symbol}) በወር",
-    "confirmPurchase": "ግዢ አረጋግጥ",
-    "confirmMessage": "ተጨማሪ IP ዋጋ: {symbol}{cost}/ወር። ተጨማሪ IP ለማዘዝ ይፈልጋሉ?",
-    "placeOrder": "ትዕዛዝ አስቀምጥ",
-    "orderPlaced": "ትዕዛዝ ተቀምጧል"
-  },
-  "reverseDns": {
-    "title": "ተገላቢጦሽ DNS",
-    "updateReverseDns": "ተገላቢጦሽ DNS ዘምን"
-  },
-  "downloadBackups": {
-    "title": "ምትኬዎችን አውርድ",
-    "backup": "ምትኬ",
-    "size": "መጠን",
-    "options": "አማራጮች"
-  }
+    "list": {
+        "title": "ድር ሆስቲንግ ዝርዝር",
+        "orderTitle": "የድር ጣቢያ ምዝገባዎችን አዝዝ"
+    },
+    "view": {
+        "title": "ድር ጣቢያ {id} ይመልከቱ",
+        "package": "ጥቅል",
+        "nextInvoiceDate": "ቀጣይ የደረሰኝ ቀን:",
+        "billing": "ክፍያ",
+        "billed": "ተከፍሏል",
+        "billingStatusIs": "የክፍያ ሁኔታ ነው:",
+        "login": "ግባ",
+        "links": "ሊንኮች",
+        "welcomeEmailConfirm": "የእንኳን ደህና መጡ ኢሜይሉን ዳግም ለመላክ እርግጠኛ ነዎት?",
+        "emailSent": "ኢሜይል ተልኳል",
+        "emailSentMessage": "የእንኳን ደህና መጡ ኢሜይሉ ዳግም ተልኳል። ሳጥኑን ይፈትሹ።",
+        "hostInfo": "የሆስት መረጃ",
+        "username": "ተጠቃሚ ስም:",
+        "ip": "IP:",
+        "server": "ሰርቨር:",
+        "notSetYet": "ገና አልተቀናጀም",
+        "types": "ዓይነቶች:",
+        "linksLabel": "አገናኞች:",
+        "manualLogin": "እጅ ሰጥቶ መግባት",
+        "automaticLogin": "ራስ-ሰር መግቢያ",
+        "clickHere": "እዚህ ጠቅ ያድርጉ",
+        "defaultNameservers": "ነባሪ ናሜ ሰርቨሮች",
+        "nameservers": "ናሜ ሰርቨሮች:",
+        "externalLinks": "ውጭ አገናኞች",
+        "names": "ስሞች:",
+        "websitePreview": "ዌብሳይት ቅድዮ"
+    },
+    "order": {
+        "title": "ድር ጣቢያ አዝዝ"
+    },
+    "migration": {
+        "title": "ድር ጣቢያዎን ዛወሩ",
+        "password": "የይለፍ ቃል",
+        "importantNotes": "አስፈላጊ ማሳሰቢያዎች",
+        "currentWebHostInfo": "ያሁኑ ዌብ ሆስት መረጃ",
+        "customerPortalUrl": "የደንበኞች ፖርታል URL",
+        "portalExample": "ለምሳሌ: sso.godaddy.com",
+        "registeredUsername": "የተመዘገበ ተጠቃሚ ስም / ኢሜይል / መለያ",
+        "controlPanelUrl": "የቁጥጥር ፓነል URL",
+        "controlPanelExample": "ለምሳሌ: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / የቁጥጥር ፓነል ተጠቃሚ ስም",
+        "ftpPassword": "FTP / የቁጥጥር ፓነል የይለፍ ቃል",
+        "holdingPageQuestion": "ዌብሳይቱ ከፍተኛ ትራፊክ ያለው ቀጥታ ዌብሳይት ከሆነ፣ ሂደቱ ወቅት ማቆያ ገጽ ማዘጋጀት ይቻላል?",
+        "specialRequirementsQuestion": "ይህ ዌብሳይት PHP ስሪት / ሞዱሎች ያሉ ልዩ ፍላጎቶች አሉት?",
+        "domainRegistryInfo": "የዶሜይን ሬጂስትሪ መረጃ",
+        "transferDomainQuestion": "እኛ የዶሜይን ስም ምዝገባ ማስተላለፍ እንድንረዳዎ ይፈልጋሉ?",
+        "updateNameserversQuestion": "ዳታ ሂደቱ ሲጠናቀቅ ናሜ ሰርቨሮቹን ለማዘምን ይፈልጋሉ?",
+        "domainRegistryPortal": "የዶሜይን ሬጂስትሪ የደንበኞች ፖርታል",
+        "note1": "ይህን ቅጽ መሙላት ሂደትዎን ለመጀመር ለድጋፍ ክፍላችን አዲስ ቲኬት ይከፍታል።",
+        "note2": "ማንኛውንም መዘናጋቶችን ለማስወገድ እስከሚቻለው ሙሉ እና ትክክለኛ ይሁኑ።",
+        "note3": "አለቃ ሂደት ከ48 እስከ 72 ሰዓት ውስጥ ይጠናቀቃል። ለመቅዳት ያለው ዳታ ትልቅ ከሆነ ረዘም ይልላ።",
+        "note4": "ሂደቱን እያደረጉ ባሉ ጊዜ አሮጌ ሆስቲንግ ሂሳቡ መስመር ላይ እና ተደራሽ ሆኖ መቆየት አለበት።",
+        "note5": "ሂደቱን እያደረጉ ባሉ ጊዜ ዌብሳይትዎ ላይ ምንም ዝመናዎች አያድርጉ።"
+    },
+    "buyIp": {
+        "title": "ተጨማሪ IP ተጨማሪ ግዛ",
+        "existingAddonIps": "ያሉ ተጨማሪ IPዎች",
+        "additionalIp": "ተጨማሪ IP",
+        "monthlyCost": "ወርሃዊ ዋጋ ({symbol})",
+        "costDescription": "ዌብሳይትዎ ሲከፈልበት ዋጋ ({symbol}) በወር",
+        "confirmPurchase": "ግዢ አረጋግጥ",
+        "confirmMessage": "ተጨማሪ IP ዋጋ: {symbol}{cost}/ወር። ተጨማሪ IP ለማዘዝ ይፈልጋሉ?",
+        "placeOrder": "ትዕዛዝ አስቀምጥ",
+        "orderPlaced": "ትዕዛዝ ተቀምጧል"
+    },
+    "reverseDns": {
+        "title": "ተገላቢጦሽ DNS",
+        "updateReverseDns": "ተገላቢጦሽ DNS ዘምን"
+    },
+    "downloadBackups": {
+        "title": "ምትኬዎችን አውርድ",
+        "backup": "ምትኬ",
+        "size": "መጠን",
+        "options": "አማራጮች"
+    }
 }

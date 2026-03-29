@@ -105,6 +105,7 @@
         "loading": "Загрузка...",
         "noData": "Даных няма",
         "noActiveServices": "Няма актыўных паслуг",
+        "noServicesMatchingFilter": "Не знойдзена паслуг, якія адпавядаюць фільтру '{filter}'",
         "controlPanel": "Панэль кіравання",
         "welcomeEmail": "Вітальны ліст",
         "invoices": "Рахункі",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Вы ўпэўнены, што хочаце скасаваць?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Усе правы абаронены."
     },
     "search": {

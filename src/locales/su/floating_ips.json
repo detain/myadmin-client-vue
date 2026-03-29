@@ -1,11 +1,24 @@
 {
-  "list": {"title": "Daptar Layanan IP Ngambang", "orderTitle": "Pesan Registrasi IP Ngambang"},
-  "view": {
-    "title": "Tempo IP Ngambang {id}", "package": "Paket", "nextInvoiceDate": "Tanggal Invoice Salajengna:",
-    "billing": "Tagihan", "billed": "ditagih:", "statusIs": "Status nyaeta:", "floatingIp": "IP Ngambang",
-    "links": "Tautan", "emailSent": "Email Dikirimkeun",
-    "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
-  },
-  "order": {"title": "Pesan IP Ngambang"},
-  "changeIp": {"title": "Ganti IP Tujuan"}
+    "list": {
+        "title": "Daptar Layanan IP Ngambang",
+        "orderTitle": "Pesan Registrasi IP Ngambang"
+    },
+    "view": {
+        "title": "Tempo IP Ngambang {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Invoice Salajengna:",
+        "billing": "Tagihan",
+        "billed": "ditagih:",
+        "statusIs": "Status nyaeta:",
+        "floatingIp": "IP Ngambang",
+        "links": "Tautan",
+        "emailSent": "Email Dikirimkeun",
+        "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+    },
+    "order": {
+        "title": "Pesan IP Ngambang"
+    },
+    "changeIp": {
+        "title": "Ganti IP Tujuan"
+    }
 }

@@ -26,13 +26,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<Record<string, any>[]>([]);
+const loading = ref(true);
 
 const loadData = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/qs`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadData();
@@ -45,6 +49,7 @@ loadData();
         :columns="columns"
         id-field="qs_id"
         status-field="qs_status"
+        :loading="loading"
         order-title="Order Qs Registrations"
     />
 </template>

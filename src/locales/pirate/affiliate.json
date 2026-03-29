@@ -39,8 +39,7 @@
         "noRecords": "Nothin' in these waters, matey",
         "page": "Page {current} of {total}",
         "prev": "Return to Deck",
-        "next": "Full Sail Ahead"
-    ,
+        "next": "Full Sail Ahead",
         "columns": {
             "id": "Registry Number",
             "sid": "SID",

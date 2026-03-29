@@ -1,26 +1,26 @@
 {
-  "manager": {
-    "title": "Manajer DNS",
-    "addDomain": "Tambah Domain",
-    "deleteDomain": "Hapus Domain",
-    "domainName": "Ngaran Domain",
-    "dnsServers": "Server DNS",
-    "confirmDelete": "Naha anjeun yakin hoyong ngahapus domain ieu?",
-    "noDomains": "Teu kapendak domain"
-  },
-  "editor": {
-    "title": "Editor DNS",
-    "addRecord": "Tambah Rékaman",
-    "deleteRecord": "Hapus Rékaman",
-    "editRecord": "Édit Rékaman",
-    "recordType": "Jenis Rékaman",
-    "hostname": "Hostname",
-    "address": "Alamat",
-    "distance": "Jarak",
-    "weight": "Beurat",
-    "port": "Port",
-    "ttl": "TTL",
-    "actions": "Aksi",
-    "confirmDelete": "Naha anjeun yakin hoyong ngahapus rékaman ieu?"
-  }
+    "manager": {
+        "title": "Manajer DNS",
+        "addDomain": "Tambah Domain",
+        "deleteDomain": "Hapus Domain",
+        "domainName": "Ngaran Domain",
+        "dnsServers": "Server DNS",
+        "confirmDelete": "Naha anjeun yakin hoyong ngahapus domain ieu?",
+        "noDomains": "Teu kapendak domain"
+    },
+    "editor": {
+        "title": "Editor DNS",
+        "addRecord": "Tambah Rékaman",
+        "deleteRecord": "Hapus Rékaman",
+        "editRecord": "Édit Rékaman",
+        "recordType": "Jenis Rékaman",
+        "hostname": "Hostname",
+        "address": "Alamat",
+        "distance": "Jarak",
+        "weight": "Beurat",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Aksi",
+        "confirmDelete": "Naha anjeun yakin hoyong ngahapus rékaman ieu?"
+    }
 }

@@ -1,1 +1,12 @@
-{ "required": "{field} estas deviga", "email": "Devas esti valida retpoŝta adreso", "minLength": "Devas havi almenaŭ {min} signojn", "maxLength": "Devas havi ne pli ol {max} signojn", "passwordMatch": "Pasvortoj devas kongrui", "invalidFormat": "Nevalida formato", "numeric": "Devas esti nombro", "url": "Devas esti valida URL", "ipAddress": "Devas esti valida IP-adreso", "hostname": "Devas esti valida gastignomo" }
+{
+    "required": "{field} estas deviga",
+    "email": "Devas esti valida retpoŝta adreso",
+    "minLength": "Devas havi almenaŭ {min} signojn",
+    "maxLength": "Devas havi ne pli ol {max} signojn",
+    "passwordMatch": "Pasvortoj devas kongrui",
+    "invalidFormat": "Nevalida formato",
+    "numeric": "Devas esti nombro",
+    "url": "Devas esti valida URL",
+    "ipAddress": "Devas esti valida IP-adreso",
+    "hostname": "Devas esti valida gastignomo"
+}

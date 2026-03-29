@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "Jerin Masaukin Yanar Gizo",
-    "orderTitle": "Oda Rajistan Yanar Gizo"
-  },
-  "view": {
-    "title": "Duba Yanar Gizo {id}",
-    "package": "Fakiti",
-    "nextInvoiceDate": "Ranar Takardar Biyan Kuɗi Mai Zuwa:",
-    "billing": "Biyan Kuɗi",
-    "billed": "an biya",
-    "billingStatusIs": "Matsayin Biyan Kuɗi shine:",
-    "login": "Shiga",
-    "links": "Hanyoyin Haɗi",
-    "emailSent": "An Aika Imel",
-    "emailSentMessage": "An sake aika imel na maraba. Duba akwatin imel ɗinka.",
-    "hostInfo": "Bayanan Rundunar",
-    "username": "Sunan Mai Amfani:",
-    "ip": "IP:",
-    "server": "Server:",
-    "notSetYet": "Ba a saita tukuna",
-    "types": "Nau'ikan:",
-    "linksLabel": "Hanyoyin haɗi:",
-    "manualLogin": "Shiga da Hannu",
-    "automaticLogin": "Shiga Kai tsaye",
-    "clickHere": "Danna Nan",
-    "defaultNameservers": "Sabar Suna na Asali",
-    "nameservers": "Sabar Suna:",
-    "externalLinks": "Hanyoyin haɗi na Waje",
-    "names": "Sunayen:",
-    "websitePreview": "Kallon Gidan Yanar Gizo",
-    "welcomeEmailConfirm": "Shin kuna da tabbacin cewa kuna son sake aika imel na maraba?"
-  },
-  "order": {
-    "title": "Oda Yanar Gizo"
-  },
-  "migration": {
-    "title": "Canza Yanar Gizon ku",
-    "password": "Kalmar Sirri",
-    "importantNotes": "Bayanan Muhimmanci",
-    "currentWebHostInfo": "Bayanan Rundunar Yanar Gizo na Yanzu",
-    "customerPortalUrl": "URL na Tashar Abokin Ciniki",
-    "portalExample": "Misali: sso.godaddy.com",
-    "registeredUsername": "Sunan Mai Amfani / Imel / ID da aka Yi Rajista",
-    "controlPanelUrl": "URL na Panel na Sarrafa",
-    "controlPanelExample": "Misali: yourdomain.com/cpanel",
-    "ftpUsername": "Sunan Mai Amfani na FTP / Panel na Sarrafa",
-    "ftpPassword": "Kalmar Sirri ta FTP / Panel na Sarrafa",
-    "holdingPageQuestion": "Idan gidan yanar gizo yana da rai/cunkoso tare da zirga-zirga mai yawa, za mu iya saita shafin jira yayin ƙaura?",
-    "specialRequirementsQuestion": "Shin wannan gidan yanar gizo yana da buƙatun musamman kamar Sigar PHP / Mododules?",
-    "domainRegistryInfo": "Bayanan Rajistan Domain",
-    "transferDomainQuestion": "Kuna so mu taimaka muku canza rajistar sunan domain?",
-    "updateNameserversQuestion": "Kuna so mu sabunta sabar sunayen da zarar mun gama ƙaurar bayanai?",
-    "domainRegistryPortal": "Tashar Abokin Ciniki ta Rajistan Domain",
-    "note1": "Cika wannan fom zai buɗe sabon tiket ga sashen tallafi mu don fara ƙaurarku.",
-    "note2": "Da fatan za a kasance mai cikakke da daidaici gwargwado don gujewa kowane jinkiri.",
-    "note3": "Ana kammala ƙaura ta yau da kullum a cikin awanni 48 zuwa 72. Wani lokaci fiye da haka idan yawan bayanai da za a kwafi ya yi yawa.",
-    "note4": "Asusun hosting na tsoho yana buƙatar kasancewa a kan layi kuma ana iya shiga shi yayin da muke yin ƙaura, in ba haka ba za mu iya fuskantar wahala.",
-    "note5": "Da fatan za a ƙaurace wa yin sabunta kowace kan gidan yanar gizon ku yayin da muke yin ƙaura, in ba haka ba waɗancan bayanai na iya ba a kwafa su zuwa sabon hosting."
-  },
-  "buyIp": {
-    "title": "Saya Ƙarin IP",
-    "existingAddonIps": "IP ɗin Ƙari da ke akwai",
-    "additionalIp": "IP Ƙari",
-    "monthlyCost": "Kudin Wata ({symbol})",
-    "costDescription": "Kudi ({symbol}) a kowane wata yayin da ake cajin gidan yanar gizon ku",
-    "confirmPurchase": "Tabbatar da Siya",
-    "confirmMessage": "Kudin IP ƙari: {symbol}{cost}/wata. Shin kuna da tabbacin cewa kuna son oda IP ƙari?",
-    "placeOrder": "Sanya Oda",
-    "orderPlaced": "An Sanya Oda"
-  },
-  "reverseDns": {
-    "title": "DNS na Baya",
-    "updateReverseDns": "Sabunta DNS na Baya"
-  },
-  "downloadBackups": {
-    "title": "Sauke Ajiyar Kwafi",
-    "backup": "Ajiyar Kwafi",
-    "size": "Girman",
-    "options": "Zaɓuɓɓuka"
-  }
+    "list": {
+        "title": "Jerin Masaukin Yanar Gizo",
+        "orderTitle": "Oda Rajistan Yanar Gizo"
+    },
+    "view": {
+        "title": "Duba Yanar Gizo {id}",
+        "package": "Fakiti",
+        "nextInvoiceDate": "Ranar Takardar Biyan Kuɗi Mai Zuwa:",
+        "billing": "Biyan Kuɗi",
+        "billed": "an biya",
+        "billingStatusIs": "Matsayin Biyan Kuɗi shine:",
+        "login": "Shiga",
+        "links": "Hanyoyin Haɗi",
+        "emailSent": "An Aika Imel",
+        "emailSentMessage": "An sake aika imel na maraba. Duba akwatin imel ɗinka.",
+        "hostInfo": "Bayanan Rundunar",
+        "username": "Sunan Mai Amfani:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Ba a saita tukuna",
+        "types": "Nau'ikan:",
+        "linksLabel": "Hanyoyin haɗi:",
+        "manualLogin": "Shiga da Hannu",
+        "automaticLogin": "Shiga Kai tsaye",
+        "clickHere": "Danna Nan",
+        "defaultNameservers": "Sabar Suna na Asali",
+        "nameservers": "Sabar Suna:",
+        "externalLinks": "Hanyoyin haɗi na Waje",
+        "names": "Sunayen:",
+        "websitePreview": "Kallon Gidan Yanar Gizo",
+        "welcomeEmailConfirm": "Shin kuna da tabbacin cewa kuna son sake aika imel na maraba?"
+    },
+    "order": {
+        "title": "Oda Yanar Gizo"
+    },
+    "migration": {
+        "title": "Canza Yanar Gizon ku",
+        "password": "Kalmar Sirri",
+        "importantNotes": "Bayanan Muhimmanci",
+        "currentWebHostInfo": "Bayanan Rundunar Yanar Gizo na Yanzu",
+        "customerPortalUrl": "URL na Tashar Abokin Ciniki",
+        "portalExample": "Misali: sso.godaddy.com",
+        "registeredUsername": "Sunan Mai Amfani / Imel / ID da aka Yi Rajista",
+        "controlPanelUrl": "URL na Panel na Sarrafa",
+        "controlPanelExample": "Misali: yourdomain.com/cpanel",
+        "ftpUsername": "Sunan Mai Amfani na FTP / Panel na Sarrafa",
+        "ftpPassword": "Kalmar Sirri ta FTP / Panel na Sarrafa",
+        "holdingPageQuestion": "Idan gidan yanar gizo yana da rai/cunkoso tare da zirga-zirga mai yawa, za mu iya saita shafin jira yayin ƙaura?",
+        "specialRequirementsQuestion": "Shin wannan gidan yanar gizo yana da buƙatun musamman kamar Sigar PHP / Mododules?",
+        "domainRegistryInfo": "Bayanan Rajistan Domain",
+        "transferDomainQuestion": "Kuna so mu taimaka muku canza rajistar sunan domain?",
+        "updateNameserversQuestion": "Kuna so mu sabunta sabar sunayen da zarar mun gama ƙaurar bayanai?",
+        "domainRegistryPortal": "Tashar Abokin Ciniki ta Rajistan Domain",
+        "note1": "Cika wannan fom zai buɗe sabon tiket ga sashen tallafi mu don fara ƙaurarku.",
+        "note2": "Da fatan za a kasance mai cikakke da daidaici gwargwado don gujewa kowane jinkiri.",
+        "note3": "Ana kammala ƙaura ta yau da kullum a cikin awanni 48 zuwa 72. Wani lokaci fiye da haka idan yawan bayanai da za a kwafi ya yi yawa.",
+        "note4": "Asusun hosting na tsoho yana buƙatar kasancewa a kan layi kuma ana iya shiga shi yayin da muke yin ƙaura, in ba haka ba za mu iya fuskantar wahala.",
+        "note5": "Da fatan za a ƙaurace wa yin sabunta kowace kan gidan yanar gizon ku yayin da muke yin ƙaura, in ba haka ba waɗancan bayanai na iya ba a kwafa su zuwa sabon hosting."
+    },
+    "buyIp": {
+        "title": "Saya Ƙarin IP",
+        "existingAddonIps": "IP ɗin Ƙari da ke akwai",
+        "additionalIp": "IP Ƙari",
+        "monthlyCost": "Kudin Wata ({symbol})",
+        "costDescription": "Kudi ({symbol}) a kowane wata yayin da ake cajin gidan yanar gizon ku",
+        "confirmPurchase": "Tabbatar da Siya",
+        "confirmMessage": "Kudin IP ƙari: {symbol}{cost}/wata. Shin kuna da tabbacin cewa kuna son oda IP ƙari?",
+        "placeOrder": "Sanya Oda",
+        "orderPlaced": "An Sanya Oda"
+    },
+    "reverseDns": {
+        "title": "DNS na Baya",
+        "updateReverseDns": "Sabunta DNS na Baya"
+    },
+    "downloadBackups": {
+        "title": "Sauke Ajiyar Kwafi",
+        "backup": "Ajiyar Kwafi",
+        "size": "Girman",
+        "options": "Zaɓuɓɓuka"
+    }
 }

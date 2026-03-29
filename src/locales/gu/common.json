@@ -105,6 +105,7 @@
         "loading": "લોડ થઈ રહ્યું છે...",
         "noData": "કોઈ ડેટા ઉપલ્બ્ધ નથી",
         "noActiveServices": "કોઈ સક્રિય સેવાઓ નથી",
+        "noServicesMatchingFilter": "'{filter}' ફિલ્ટર સાથે મેળ ખાતી કોઈ સેવાઓ મળી નથી",
         "controlPanel": "કન્ટ્રોલ પૅનલ",
         "welcomeEmail": "સ્વાગત ઇમેઇલ",
         "invoices": "ઇન્વૉઇસ",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "શું તમે ખરેખર રદ કરવા માંગો છો?"
     },
     "footer": {
-        "copyright": "કૉપિરાઇટ \u00a9 {year} InterServer Inc.",
+        "copyright": "કૉપિરાઇટ © {year} InterServer Inc.",
         "allRightsReserved": "સર્વ હકો સુરક્ષિત."
     },
     "search": {

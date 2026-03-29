@@ -38,13 +38,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<mailRow[]>([]);
+const loading = ref(true);
 
 const loadMail = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/mail`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadMail();
@@ -57,6 +61,7 @@ loadMail();
         :columns="columns"
         id-field="mail_id"
         status-field="mail_status"
+        :loading="loading"
         :order-title="t('mail.list.orderTitle')"
     />
 </template>

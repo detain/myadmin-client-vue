@@ -1,30 +1,30 @@
 {
-  "list": {
-    "title": "Lisenssien lista",
-    "orderTitle": "Tilaa lisenssirekisteröinnit"
-  },
-  "view": {
-    "title": "Näytä lisenssi {id}",
-    "package": "Paketti",
-    "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
-    "billing": "Laskutus",
-    "billed": "laskutettu:",
-    "statusIs": "Tila on:",
-    "licenseInfo": "Lisenssin tiedot",
-    "cpanelInfo": "cPanel tiedot",
-    "links": "Linkit",
-    "emailSent": "Sähköposti lähetetty",
-    "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
-    "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
-  },
-  "order": {
-    "title": "Tilaa lisenssi"
-  },
-  "changeIp": {
-    "title": "Vaihda IP"
-  },
-  "changeOs": {
-    "title": "Vaihda OS",
-    "selectLicenseOs": "Valitse lisenssin OS"
-  }
+    "list": {
+        "title": "Lisenssien lista",
+        "orderTitle": "Tilaa lisenssirekisteröinnit"
+    },
+    "view": {
+        "title": "Näytä lisenssi {id}",
+        "package": "Paketti",
+        "nextInvoiceDate": "Seuraavan laskun päivämäärä:",
+        "billing": "Laskutus",
+        "billed": "laskutettu:",
+        "statusIs": "Tila on:",
+        "licenseInfo": "Lisenssin tiedot",
+        "cpanelInfo": "cPanel tiedot",
+        "links": "Linkit",
+        "emailSent": "Sähköposti lähetetty",
+        "emailSentMessage": "Tervetulosähköposti on lähetetty uudelleen. Tarkista postilaatikkosi.",
+        "welcomeEmailConfirm": "Haluatko varmasti lähettää tervetulosähköpostin uudelleen?"
+    },
+    "order": {
+        "title": "Tilaa lisenssi"
+    },
+    "changeIp": {
+        "title": "Vaihda IP"
+    },
+    "changeOs": {
+        "title": "Vaihda OS",
+        "selectLicenseOs": "Valitse lisenssin OS"
+    }
 }

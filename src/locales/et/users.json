@@ -1,1 +1,12 @@
-{ "title": "Kasutajad", "addUser": "Lisa kasutaja", "editUser": "Muuda kasutajat", "firstName": "Eesnimi", "lastName": "Perekonnanimi", "username": "Kasutajanimi", "password": "Parool", "keepSamePassword": "Jäta tühjaks, et säilitada sama parool", "errorLoading": "Kasutajate laadimisel tekkis viga:", "errorLoadingUser": "Kasutaja laadimisel tekkis viga:" }
+{
+    "title": "Kasutajad",
+    "addUser": "Lisa kasutaja",
+    "editUser": "Muuda kasutajat",
+    "firstName": "Eesnimi",
+    "lastName": "Perekonnanimi",
+    "username": "Kasutajanimi",
+    "password": "Parool",
+    "keepSamePassword": "Jäta tühjaks, et säilitada sama parool",
+    "errorLoading": "Kasutajate laadimisel tekkis viga:",
+    "errorLoadingUser": "Kasutaja laadimisel tekkis viga:"
+}

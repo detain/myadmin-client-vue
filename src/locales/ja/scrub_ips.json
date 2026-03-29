@@ -1,65 +1,65 @@
 {
-  "list": {
-    "title": "スクラブ IP サービス一覧",
-    "orderTitle": "スクラブ IP を注文"
-  },
-  "view": {
-    "title": "スクラブ IP を表示",
-    "currentIp": "現在の IP",
-    "ipAddress": "IP アドレス",
-    "ipFromService": "サービスからの IP"
-  },
-  "filters": {
-    "title": "フィルター",
-    "createNew": "新規作成",
-    "createNewFilter": "新しいフィルターを作成",
-    "filterType": "フィルタータイプ",
-    "ipAddress": "IP アドレス",
-    "portNo": "ポート番号",
-    "filter": "フィルター",
-    "destinationIp": "宛先 IP",
-    "destinationPort": "宛先ポート",
-    "noFiltersFound": "フィルターが見つかりません!",
-    "deleteFilterConfirm": "このフィルターを削除してよろしいですか?",
-    "selectFilterType": "フィルタータイプを選択",
-    "unableToCreateFilter": "現時点でフィルターを作成できません。",
-    "unableToDeleteFilter": "現時点でフィルターを削除できません。"
-  },
-  "firewallRules": {
-    "title": "ファイアウォールルール",
-    "createNewFirewall": "新しいファイアウォールルールを作成",
-    "protocol": "プロトコル",
-    "destinationIp": "宛先 IP",
-    "sourceIp": "送信元 IP",
-    "block": "ブロック",
-    "whitelist": "ホワイトリスト",
-    "noRulesFound": "ルールが見つかりません!",
-    "deleteRuleConfirm": "このルールを削除してよろしいですか?",
-    "createNew": "新規作成",
-    "destinationPort": "宛先ポート",
-    "sourcePort": "送信元ポート",
-    "xdpAction": "XDPアクション",
-    "ipRequired": "IPアドレスが必要です",
-    "unableToCreateRule": "現時点でファイアウォールルールを作成できません。",
-    "unableToDeleteRule": "現時点でファイアウォールルールを削除できません。"
-  },
-  "geoFirewallRules": {
-    "title": "地域ファイアウォールルール",
-    "createNewGeoRule": "新しい地域ファイアウォールルールを作成",
-    "destinationIp": "宛先 IP",
-    "sourceCountry": "送信元国",
-    "sourceAsn": "送信元 ASN",
-    "selectCountry": "国を選択",
-    "block": "ブロック",
-    "whitelist": "ホワイトリスト",
-    "noRulesFound": "ルールが見つかりません!",
-    "deleteGeoRuleConfirm": "この地域ルールを削除してよろしいですか?",
-    "createNew": "新規作成",
-    "destinationPort": "宛先ポート",
-    "xdpAction": "XDPアクション",
-    "portNo": "ポート番号",
-    "asn": "ASN",
-    "unableToCreateRule": "現時点でファイアウォールルールを作成できません。",
-    "unableToDeleteRule": "現時点でジオファイアウォールルールを削除できません。"
-  }
+    "list": {
+        "title": "スクラブ IP サービス一覧",
+        "orderTitle": "スクラブ IP を注文"
+    },
+    "view": {
+        "title": "スクラブ IP を表示",
+        "currentIp": "現在の IP",
+        "ipAddress": "IP アドレス",
+        "ipFromService": "サービスからの IP"
+    },
+    "filters": {
+        "title": "フィルター",
+        "createNew": "新規作成",
+        "createNewFilter": "新しいフィルターを作成",
+        "filterType": "フィルタータイプ",
+        "ipAddress": "IP アドレス",
+        "portNo": "ポート番号",
+        "filter": "フィルター",
+        "destinationIp": "宛先 IP",
+        "destinationPort": "宛先ポート",
+        "noFiltersFound": "フィルターが見つかりません!",
+        "deleteFilterConfirm": "このフィルターを削除してよろしいですか?",
+        "selectFilterType": "フィルタータイプを選択",
+        "unableToCreateFilter": "現時点でフィルターを作成できません。",
+        "unableToDeleteFilter": "現時点でフィルターを削除できません。"
+    },
+    "firewallRules": {
+        "title": "ファイアウォールルール",
+        "createNewFirewall": "新しいファイアウォールルールを作成",
+        "protocol": "プロトコル",
+        "destinationIp": "宛先 IP",
+        "sourceIp": "送信元 IP",
+        "block": "ブロック",
+        "whitelist": "ホワイトリスト",
+        "noRulesFound": "ルールが見つかりません!",
+        "deleteRuleConfirm": "このルールを削除してよろしいですか?",
+        "createNew": "新規作成",
+        "destinationPort": "宛先ポート",
+        "sourcePort": "送信元ポート",
+        "xdpAction": "XDPアクション",
+        "ipRequired": "IPアドレスが必要です",
+        "unableToCreateRule": "現時点でファイアウォールルールを作成できません。",
+        "unableToDeleteRule": "現時点でファイアウォールルールを削除できません。"
+    },
+    "geoFirewallRules": {
+        "title": "地域ファイアウォールルール",
+        "createNewGeoRule": "新しい地域ファイアウォールルールを作成",
+        "destinationIp": "宛先 IP",
+        "sourceCountry": "送信元国",
+        "sourceAsn": "送信元 ASN",
+        "selectCountry": "国を選択",
+        "block": "ブロック",
+        "whitelist": "ホワイトリスト",
+        "noRulesFound": "ルールが見つかりません!",
+        "deleteGeoRuleConfirm": "この地域ルールを削除してよろしいですか?",
+        "createNew": "新規作成",
+        "destinationPort": "宛先ポート",
+        "xdpAction": "XDPアクション",
+        "portNo": "ポート番号",
+        "asn": "ASN",
+        "unableToCreateRule": "現時点でファイアウォールルールを作成できません。",
+        "unableToDeleteRule": "現時点でジオファイアウォールルールを削除できません。"
+    }
 }
