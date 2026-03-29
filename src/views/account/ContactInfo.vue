@@ -7,7 +7,7 @@ import { useAccountStore } from '@/stores/account.store';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
 import { useSiteStore } from '@/stores/site.store';
-import { defaultLocale, loadLocaleMessages, resolveAppLocale, setAppLocale } from '@/i18n';
+import { defaultLocale, loadLocaleMessages, reloadAllNamespacesForLocale, resolveAppLocale, setAppLocale } from '@/i18n';
 const { t } = useI18n();
 const siteStore = useSiteStore();
 const alertStore = useAlertStore();
@@ -50,7 +50,7 @@ watch(
     () => data.value.locale,
     async (locale) => {
         const resolvedLocale = setAppLocale(resolveAppLocale(locale));
-        await Promise.all([loadLocaleMessages(resolvedLocale, 'common'), loadLocaleMessages(resolvedLocale, 'account'), loadLocaleMessages(defaultLocale, 'common'), loadLocaleMessages(defaultLocale, 'account')]);
+        await reloadAllNamespacesForLocale(resolvedLocale);
     },
     { immediate: true }
 );

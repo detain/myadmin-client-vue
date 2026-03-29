@@ -136,6 +136,20 @@ export async function loadLocaleMessages(locale: string, namespace: string): Pro
     }
 }
 
+/**
+ * Reload all previously-loaded namespaces for a new locale.
+ * This ensures that when the user switches language, every part of the UI
+ * (menu, breadcrumbs, other views' labels) updates — not just the current view.
+ */
+export async function reloadAllNamespacesForLocale(locale: string): Promise<void> {
+    const namespacesToLoad = new Set<string>();
+    for (const key of loadedNamespaces) {
+        const ns = key.split(':')[1];
+        namespacesToLoad.add(ns);
+    }
+    await Promise.all([...namespacesToLoad].flatMap((ns) => [loadLocaleMessages(locale, ns), loadLocaleMessages(defaultLocale, ns)]));
+}
+
 export async function loadCommonMessages(): Promise<void> {
     const locale = i18n.global.locale.value;
     await Promise.all([loadLocaleMessages(locale, 'common'), loadLocaleMessages(DEFAULT_LOCALE, 'common')]);
