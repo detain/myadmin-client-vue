@@ -1,0 +1,28 @@
+{
+    "title": "Primary Laboratory Control Center",
+    "welcome": "Welcome to the Laboratory, Dr. {name}",
+    "lastLogin": "Last Laboratory Entry",
+    "lastLoginIp": "Last Entry Network Node Address",
+    "prepay": {
+        "title": "Pre-allocated Research Budget Balance",
+        "remainingBalance": "Remaining Pre-allocated Research Budget",
+        "manageAccount": "Manage Research Profile",
+        "manageTooltip": "Manage Your Pre-allocated Research Budget Profile"
+    },
+    "invoices": {
+        "title": "Outstanding Funding Requisition Documents",
+        "totalUnpaid": "Total Outstanding Funding Requisitions",
+        "totalAmount": "Total Funding Amount to Be Remitted",
+        "payTotalTooltip": "Remit Total Funding Amount"
+    },
+    "callInPin": "Vocal Communication Authentication PIN",
+    "recentTickets": "Recent Laboratory Incident Reports",
+    "viewAllTickets": "Inspect All Laboratory Incident Reports",
+    "editTicket": "Modify Incident Report Parameters",
+    "serviceCount": "No fully operational laboratory apparatuses | {count} fully operational laboratory apparatus | {count} fully operational laboratory apparatuses",
+    "affiliate": {
+        "earnPerSale": "Acquire {amount} Per Research Subject Recruitment",
+        "urlPlaceholder": "Research Network Recruitment URL",
+        "shareWith": "Disseminate with"
+    }
+}

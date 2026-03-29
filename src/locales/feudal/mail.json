@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Carrier Pigeons / Royal Dispatches Services List",
+        "orderTitle": "Commission Royal Dispatch Registrations"
+    },
+    "view": {
+        "title": "View Royal Dispatch {id}",
+        "package": "Estate Class",
+        "nextInvoiceDate": "Next Tax Notice Date:",
+        "billing": "The Tax Collector's Ledger",
+        "billed": "tithed:",
+        "statusIs": "Standing is:",
+        "mailApi": "Royal Dispatch API",
+        "usageCount": "Usage Count:",
+        "links": "Dispatches",
+        "connectionInfo": "Connection Info",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome carrier pigeon?",
+        "emailSent": "Carrier Pigeon Dispatched",
+        "emailSentMessage": "The welcome carrier pigeon has been resent. Check your dovecote."
+    },
+    "order": {
+        "title": "Commission Royal Dispatch"
+    },
+    "alerts": {
+        "title": "Alerts",
+        "addAlert": "Append Alert",
+        "editAlert": "Amend Alert",
+        "noAlerts": "The royal archives hold no alerts"
+    },
+    "delist": {
+        "title": "Delist",
+        "blockedEmails": "Barred Royal Dispatches"
+    },
+    "denyRules": {
+        "title": "Denial Royal Decrees",
+        "addRule": "Append Decree",
+        "noRules": "The royal archives hold no denial decrees"
+    },
+    "logs": {
+        "title": "Logs",
+        "searchLogs": "Search the Archives — Logs"
+    },
+    "stats": {
+        "title": "Statistics"
+    },
+    "deliverability": {
+        "title": "Deliverability"
+    }
+}

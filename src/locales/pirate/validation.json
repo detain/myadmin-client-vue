@@ -1,0 +1,12 @@
+{
+    "required": "{field} be required, matey",
+    "email": "Must be a valid gull post address",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be no more than {max} characters",
+    "passwordMatch": "Passphrases must match, arrr",
+    "invalidFormat": "Invalid format",
+    "numeric": "Must be a number",
+    "url": "Must be a valid URL",
+    "ipAddress": "Must be valid ship coordinates",
+    "hostname": "Must be a valid ship name"
+}

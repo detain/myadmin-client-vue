@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Crow's Nest Dispatch Services List",
+        "orderTitle": "Commission New Dispatch Service"
+    },
+    "view": {
+        "title": "Survey Crow's Nest Dispatch {id}",
+        "package": "Ship's Provisions Package",
+        "nextInvoiceDate": "Next Bill of Plunder Date:",
+        "billing": "The Plunder Ledger",
+        "billed": "plundered:",
+        "statusIs": "Vessel Status is:",
+        "mailApi": "Dispatch API",
+        "usageCount": "Messages in Bottles Sent:",
+        "links": "Sailing Routes",
+        "connectionInfo": "Rigging Connection Info",
+        "welcomeEmailConfirm": "Are ye sure ye want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check yer crow's nest."
+    },
+    "order": {
+        "title": "Commission Crow's Nest Dispatch"
+    },
+    "alerts": {
+        "title": "Storm Warnings",
+        "addAlert": "Add Storm Warning",
+        "editAlert": "Amend Storm Warning",
+        "noAlerts": "No storm warnings found"
+    },
+    "delist": {
+        "title": "Delist",
+        "blockedEmails": "Blockaded Message Bottles"
+    },
+    "denyRules": {
+        "title": "Deny Rules",
+        "addRule": "Add Rule",
+        "noRules": "No deny rules found in the ship's log"
+    },
+    "logs": {
+        "title": "Dispatch Logs",
+        "searchLogs": "Search the Dispatch Logs"
+    },
+    "stats": {
+        "title": "Dispatch Statistics"
+    },
+    "deliverability": {
+        "title": "Delivery Reliability"
+    }
+}

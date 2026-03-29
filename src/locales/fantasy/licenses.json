@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Guild Charters List",
+        "orderTitle": "Commission Guild Charter Registrations"
+    },
+    "view": {
+        "title": "View Guild Charter {id}",
+        "package": "Equipment Tier",
+        "nextInvoiceDate": "Next Gold Due Date:",
+        "billing": "Gold Ledger",
+        "billed": "inscribed:",
+        "statusIs": "Quest Status is:",
+        "licenseInfo": "Guild Charter Info",
+        "cpanelInfo": "cPanel Info",
+        "links": "Quest Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome raven?",
+        "emailSent": "Raven Dispatched",
+        "emailSentMessage": "The welcome raven has been resent. Check your messenger raven perch."
+    },
+    "order": {
+        "title": "Commission Guild Charter"
+    },
+    "changeIp": {
+        "title": "Change Stronghold Coordinates"
+    },
+    "changeOs": {
+        "title": "Change Base Enchantment Layer",
+        "selectLicenseOs": "Select Guild Charter Base Enchantment Layer"
+    }
+}

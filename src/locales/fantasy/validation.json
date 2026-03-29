@@ -1,0 +1,12 @@
+{
+    "required": "{field} is required by the guild",
+    "email": "Must be a valid raven address",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be no more than {max} characters",
+    "passwordMatch": "Secret passphrases must match",
+    "invalidFormat": "Invalid format — the scribes are confused",
+    "numeric": "Must be a number",
+    "url": "Must be a valid URL",
+    "ipAddress": "Must be a valid stronghold coordinates address",
+    "hostname": "Must be a valid stronghold name"
+}

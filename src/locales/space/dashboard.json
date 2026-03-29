@@ -1,0 +1,28 @@
+{
+    "title": "Command Bridge",
+    "welcome": "Welcome aboard, Officer {name}",
+    "lastLogin": "Last Terminal Access",
+    "lastLoginIp": "Last Access Network Beacon",
+    "prepay": {
+        "title": "Pre-Mission Credits Balance",
+        "remainingBalance": "Pre-Mission Credits Remaining",
+        "manageAccount": "Manage Officer Profile",
+        "manageTooltip": "Manage Your Pre-Mission Credits Profile"
+    },
+    "invoices": {
+        "title": "Unpaid Resource Allocation Notices",
+        "totalUnpaid": "Total Unpaid Resource Allocation Notices",
+        "totalAmount": "Total Credits to Be Transferred",
+        "payTotalTooltip": "Transfer Total Credits"
+    },
+    "callInPin": "Subspace Comm PIN",
+    "recentTickets": "Recent Distress Signals",
+    "viewAllTickets": "View All Distress Signals",
+    "editTicket": "Modify Distress Signal",
+    "serviceCount": "No active service modules | {count} active service module | {count} active service modules",
+    "affiliate": {
+        "earnPerSale": "Earn {amount} Per Enlistment",
+        "urlPlaceholder": "Allied Systems Beacon URL",
+        "shareWith": "Broadcast to"
+    }
+}

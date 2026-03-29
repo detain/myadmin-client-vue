@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Galactic Navigation Registry",
+        "addDomain": "Register Sector Claim",
+        "deleteDomain": "Purge Sector Claim",
+        "domainName": "Sector Claim Designation",
+        "dnsServers": "Navigation Registry Servers",
+        "confirmDelete": "Are you sure you want to purge this sector claim from the registry?",
+        "noDomains": "No sector claims detected in registry"
+    },
+    "editor": {
+        "title": "Navigation Registry Editor",
+        "addRecord": "Add Navigation Record",
+        "deleteRecord": "Purge Navigation Record",
+        "editRecord": "Modify Navigation Record",
+        "recordType": "Record Type",
+        "hostname": "Station Designation",
+        "address": "Network Beacon Address",
+        "distance": "Distance",
+        "weight": "Weight",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Operations",
+        "confirmDelete": "Are you sure you want to purge this navigation record?"
+    }
+}
