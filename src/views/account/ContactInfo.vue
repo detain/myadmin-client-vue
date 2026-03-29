@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
-import { ref, watch, watchEffect } from 'vue';
+import { computed, ref, watch, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAccountStore } from '@/stores/account.store';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
 import { useSiteStore } from '@/stores/site.store';
-import { defaultLocale, loadLocaleMessages, reloadAllNamespacesForLocale, resolveAppLocale, setAppLocale } from '@/i18n';
+import { resolveAppLocale, switchLocale } from '@/i18n';
+import LocalePreviewSelect from '@/components/LocalePreviewSelect.vue';
+import type { LocaleOption } from '@/components/LocalePreviewSelect.vue';
 const { t } = useI18n();
 const siteStore = useSiteStore();
 const alertStore = useAlertStore();
@@ -20,14 +22,14 @@ const timezones = ref<string[]>([]);
 const currencies = ref<string[]>([]);
 const locales = ref<Record<string, LocaleInfo>>({});
 
-const themedLocales: { code: string; name: string }[] = [
-    { code: 'wizard', name: 'Wizard (Arcane Guild)' },
-    { code: 'fantasy', name: 'Fantasy (Adventurer\'s Guild)' },
-    { code: 'feudal', name: 'Feudal (Royal Kingdom)' },
-    { code: 'mad_scientist', name: 'Mad Scientist (The Laboratory)' },
-    { code: 'merchant', name: 'Merchant (Grand Bazaar)' },
-    { code: 'pirate', name: 'Pirate (High Seas)' },
-    { code: 'space', name: 'Space (Galactic Federation)' },
+const themedLocales: { code: string; icon: string; name: string }[] = [
+    { code: 'wizard', icon: '🧙', name: 'Wizard (Arcane Guild)' },
+    { code: 'fantasy', icon: '⚔️', name: 'Fantasy (Adventurer\'s Guild)' },
+    { code: 'feudal', icon: '👑', name: 'Feudal (Royal Kingdom)' },
+    { code: 'mad_scientist', icon: '🧪', name: 'Mad Scientist (The Laboratory)' },
+    { code: 'merchant', icon: '🏪', name: 'Merchant (Grand Bazaar)' },
+    { code: 'pirate', icon: '☠️', name: 'Pirate (High Seas)' },
+    { code: 'space', icon: '🚀', name: 'Space (Galactic Federation)' },
 ];
 const baseUrl = siteStore.getBaseUrl();
 const countries = ref({});
@@ -49,11 +51,21 @@ watchEffect(() => {
 watch(
     () => data.value.locale,
     async (locale) => {
-        const resolvedLocale = setAppLocale(resolveAppLocale(locale));
-        await reloadAllNamespacesForLocale(resolvedLocale);
+        await switchLocale(resolveAppLocale(locale));
     },
     { immediate: true }
 );
+
+const localeOptions = computed<LocaleOption[]>(() => {
+    const opts: LocaleOption[] = [{ value: 'auto', label: t('account.contactInfo.auto') }];
+    for (const [code, info] of Object.entries(locales.value)) {
+        opts.push({ value: code, label: `${code} - ${info.name} (${info.local_name})` });
+    }
+    for (const theme of themedLocales) {
+        opts.push({ value: theme.code, label: `${theme.icon} - ${theme.name}`, group: 'Themed' });
+    }
+    return opts;
+});
 
 async function onSubmit() {
     try {
@@ -223,13 +235,7 @@ loadLocales();
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label" for="locale">{{ t('account.contactInfo.language') }}</label>
                                     <div class="col-md-6">
-                                        <select id="locale" v-model="data.locale" name="locale" class="form-control select2 form-control-sm">
-                                            <option value="auto">{{ t('account.contactInfo.auto') }}</option>
-                                            <option v-for="(localeData, code, index) in locales" :key="index" :value="code">{{ code }} - {{ localeData.name }} ({{ localeData.local_name }})</option>
-                                            <optgroup label="── Themed ──">
-                                                <option v-for="theme in themedLocales" :key="theme.code" :value="theme.code">{{ theme.code }} - {{ theme.name }}</option>
-                                            </optgroup>
-                                        </select>
+                                        <LocalePreviewSelect v-model="data.locale" :options="localeOptions" select-class="form-control form-control-sm" block />
                                     </div>
                                     <span class="form-text"></span>
                                 </div>

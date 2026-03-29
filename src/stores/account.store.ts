@@ -3,7 +3,7 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import { AccountState } from '@/types/account';
-import { resolveAppLocale, setAppLocale } from '@/i18n';
+import { resolveAppLocale, switchLocale } from '@/i18n';
 
 export const useAccountStore = defineStore('account', {
     state: (): AccountState => ({
@@ -127,7 +127,7 @@ export const useAccountStore = defineStore('account', {
                 this.oAuthAdapters = response.oauthadapters;
                 this.oAuthConfig = response.oauthconfig;
                 this.oAuthProviders = response.oauthproviders;
-                setAppLocale(resolveAppLocale(this.data.locale));
+                await switchLocale(resolveAppLocale(this.data.locale));
                 this.loading = false;
             } catch (error: any) {
                 console.log('api failed', error);
