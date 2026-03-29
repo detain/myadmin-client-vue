@@ -146,7 +146,7 @@ function scrollToHighlighted() {
     if (!listRef.value) return;
     const el = listRef.value.querySelector('[data-highlighted="true"]') as HTMLElement | null;
     if (el) {
-        el.scrollIntoView({ block: 'nearest' });
+        el.scrollIntoView?.({ block: 'nearest' });
     }
 }
 
