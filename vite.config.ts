@@ -99,7 +99,7 @@ export default defineConfig({
         alias: {
             //'@': path.resolve(__dirname, './src'),
             '@': fileURLToPath(new URL('./src', import.meta.url)),
-            'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js',
+            'vue-i18n': 'vue-i18n/dist/vue-i18n.esm-bundler.js',
         },
     },
     server: {
