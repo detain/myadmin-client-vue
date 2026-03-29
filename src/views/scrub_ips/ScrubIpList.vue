@@ -30,13 +30,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<Record<string, any>[]>([]);
+const loading = ref(true);
 
 const loadData = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/scrub_ips`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadData();
@@ -49,6 +53,7 @@ loadData();
         :columns="columns"
         id-field="scrub_ip_id"
         status-field="scrub_ip_status"
+        :loading="loading"
         order-title="Order Scrub IPs"
     />
 </template>

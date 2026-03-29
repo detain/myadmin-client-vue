@@ -105,6 +105,7 @@
         "loading": "Na-ebudata...",
         "noData": "Enweghị data dị",
         "noActiveServices": "Enweghị Ọrụ Na-arụ Ọrụ",
+        "noServicesMatchingFilter": "Ọ nweghị ọrụ ọ bụla enyere nke dabara na nzacha '{filter}'",
         "controlPanel": "Ngwaọrụ Njikwa",
         "welcomeEmail": "Email Nnaabata",
         "invoices": "Ụgwọ",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ị dị mma ịkagbu?"
     },
     "footer": {
-        "copyright": "Ikike Ndebi \u00a9 {year} InterServer Inc.",
+        "copyright": "Ikike Ndebi © {year} InterServer Inc.",
         "allRightsReserved": "Ikike niile echekwara."
     },
     "search": {

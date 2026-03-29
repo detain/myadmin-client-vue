@@ -105,6 +105,7 @@
         "loading": "E uta ana...",
         "noData": "Kāore he raraunga",
         "noActiveServices": "Kāore he Ratonga Hohe",
+        "noServicesMatchingFilter": "Kāore he ratonga i kitea e hāngai ana ki te tātari '{filter}'",
         "controlPanel": "Pane Whakahaere",
         "welcomeEmail": "Īmēra Whakamihi",
         "invoices": "Ngā Pire",

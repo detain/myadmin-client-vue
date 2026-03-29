@@ -1,1 +1,12 @@
-{ "required": "{field} on kohustuslik", "email": "Peab olema kehtiv e-posti aadress", "minLength": "Peab olema vähemalt {min} tähemärki", "maxLength": "Ei tohi olla rohkem kui {max} tähemärki", "passwordMatch": "Paroolid peavad kattuma", "invalidFormat": "Vigane vorming", "numeric": "Peab olema number", "url": "Peab olema kehtiv URL", "ipAddress": "Peab olema kehtiv IP-aadress", "hostname": "Peab olema kehtiv hostinimi" }
+{
+    "required": "{field} on kohustuslik",
+    "email": "Peab olema kehtiv e-posti aadress",
+    "minLength": "Peab olema vähemalt {min} tähemärki",
+    "maxLength": "Ei tohi olla rohkem kui {max} tähemärki",
+    "passwordMatch": "Paroolid peavad kattuma",
+    "invalidFormat": "Vigane vorming",
+    "numeric": "Peab olema number",
+    "url": "Peab olema kehtiv URL",
+    "ipAddress": "Peab olema kehtiv IP-aadress",
+    "hostname": "Peab olema kehtiv hostinimi"
+}

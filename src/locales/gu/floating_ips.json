@@ -1,25 +1,25 @@
 {
     "list": {
-        "title": "\u0aab\u0acd\u0ab2\u0acb\u0a9f\u0abf\u0a82\u0a97 IP \u0ab8\u0ac7\u0ab5\u0abe\u0a93 \u0ab8\u0ac2\u0a9a\u0abf",
-        "orderTitle": "\u0aab\u0acd\u0ab2\u0acb\u0a9f\u0abf\u0a82\u0a97 IP \u0aa8\u0acb\u0a82\u0aa7\u0aa3\u0ac0 \u0a91\u0ab0\u0acd\u0aa1\u0ab0 \u0a95\u0ab0\u0acb"
+        "title": "ફ્લોટિંગ IP સેવાઓ સૂચિ",
+        "orderTitle": "ફ્લોટિંગ IP નોંધણી ઑર્ડર કરો"
     },
     "view": {
-        "title": "\u0aab\u0acd\u0ab2\u0acb\u0a9f\u0abf\u0a82\u0a97 IP {id} \u0a9c\u0ac1\u0a93",
-        "package": "\u0aaa\u0ac5\u0a95\u0ac7\u0a9c",
-        "nextInvoiceDate": "\u0a86\u0a97\u0ab3\u0ac0 \u0a87\u0aa8\u0acd\u0ab5\u0c49\u0a87\u0ab8 \u0aa4\u0afe\u0ab0\u0ac0\u0a96:",
-        "billing": "\u0aac\u0abf\u0ab2\u0abf\u0a82\u0a97",
-        "billed": "\u0aac\u0abf\u0ab2:",
-        "statusIs": "\u0ab8\u0acd\u0a9f\u0ac7\u0a9f\u0ab8:",
-        "floatingIp": "\u0aab\u0acd\u0ab2\u0acb\u0a9f\u0abf\u0a82\u0a97 IP",
-        "links": "\u0ab2\u0abf\u0a82\u0a95\u0acd\u0ab8",
-        "welcomeEmailConfirm": "\u0ab6\u0ac1\u0a82 \u0aa4\u0aae\u0ac7 \u0a96\u0ab0\u0ac7\u0a96\u0ab0 \u0ab8\u0acd\u0ab5\u0abe\u0a97\u0aa4 \u0a87\u0aae\u0ac7\u0a87\u0ab2 \u0aab\u0ab0\u0ac0\u0aa5\u0ac0 \u0aae\u0acb\u0a95\u0ab2\u0ab5\u0afe \u0aae\u0afe\u0a82\u0a97\u0acb \u0a9b\u0acb?",
-        "emailSent": "\u0a87\u0aae\u0ac7\u0a87\u0ab2 \u0aae\u0acb\u0a95\u0ab2\u0afe\u0aaf\u0acb",
-        "emailSentMessage": "\u0ab8\u0acd\u0ab5\u0afe\u0a97\u0aa4 \u0a87\u0aae\u0ac7\u0a87\u0ab2 \u0aab\u0ab0\u0ac0\u0aa5\u0ac0 \u0aae\u0acb\u0a95\u0ab2\u0afe\u0aaf\u0acb. \u0aa4\u0aae\u0afe\u0ab0\u0acb \u0a87\u0aa8\u0aac\u0cbe\u0a95\u0acd\u0ab8 \u0aa4\u0aaa\u0abe\u0ab8\u0acb."
+        "title": "ફ્લોટિંગ IP {id} જુઓ",
+        "package": "પૅકેજ",
+        "nextInvoiceDate": "આગળી ઇન્વ౉ઇસ ત૾રીખ:",
+        "billing": "બિલિંગ",
+        "billed": "બિલ:",
+        "statusIs": "સ્ટેટસ:",
+        "floatingIp": "ફ્લોટિંગ IP",
+        "links": "લિંક્સ",
+        "welcomeEmailConfirm": "શું તમે ખરેખર સ્વાગત ઇમેઇલ ફરીથી મોકલવ૾ મ૾ંગો છો?",
+        "emailSent": "ઇમેઇલ મોકલ૾યો",
+        "emailSentMessage": "સ્વ૾ગત ઇમેઇલ ફરીથી મોકલ૾યો. તમ૾રો ઇનબಾક્સ તપાસો."
     },
     "order": {
-        "title": "\u0aab\u0acd\u0ab2\u0acb\u0a9f\u0abf\u0a82\u0a97 IP \u0a91\u0ab0\u0acd\u0aa1\u0ab0 \u0a95\u0ab0\u0acb"
+        "title": "ફ્લોટિંગ IP ઑર્ડર કરો"
     },
     "changeIp": {
-        "title": "\u0a9f\u0abe\u0ab0\u0a97\u0ac7\u0a9f IP \u0aac\u0aa6\u0ab2\u0acb"
+        "title": "ટારગેટ IP બદલો"
     }
 }

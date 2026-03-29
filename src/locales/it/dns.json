@@ -1,26 +1,26 @@
 {
-  "manager": {
-    "title": "Gestore DNS",
-    "addDomain": "Aggiungi Dominio",
-    "deleteDomain": "Elimina Dominio",
-    "domainName": "Nome Dominio",
-    "dnsServers": "Server DNS",
-    "confirmDelete": "Sei sicuro di voler eliminare questo dominio?",
-    "noDomains": "Nessun dominio trovato"
-  },
-  "editor": {
-    "title": "Editor DNS",
-    "addRecord": "Aggiungi Record",
-    "deleteRecord": "Elimina Record",
-    "editRecord": "Modifica Record",
-    "recordType": "Tipo Record",
-    "hostname": "Hostname",
-    "address": "Indirizzo",
-    "distance": "Distanza",
-    "weight": "Peso",
-    "port": "Porta",
-    "ttl": "TTL",
-    "actions": "Azioni",
-    "confirmDelete": "Sei sicuro di voler eliminare questo record?"
-  }
+    "manager": {
+        "title": "Gestore DNS",
+        "addDomain": "Aggiungi Dominio",
+        "deleteDomain": "Elimina Dominio",
+        "domainName": "Nome Dominio",
+        "dnsServers": "Server DNS",
+        "confirmDelete": "Sei sicuro di voler eliminare questo dominio?",
+        "noDomains": "Nessun dominio trovato"
+    },
+    "editor": {
+        "title": "Editor DNS",
+        "addRecord": "Aggiungi Record",
+        "deleteRecord": "Elimina Record",
+        "editRecord": "Modifica Record",
+        "recordType": "Tipo Record",
+        "hostname": "Hostname",
+        "address": "Indirizzo",
+        "distance": "Distanza",
+        "weight": "Peso",
+        "port": "Porta",
+        "ttl": "TTL",
+        "actions": "Azioni",
+        "confirmDelete": "Sei sicuro di voler eliminare questo record?"
+    }
 }

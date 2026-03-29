@@ -1,28 +1,28 @@
 {
-  "title": "ダッシュボード",
-  "welcome": "ようこそ、{name}",
-  "lastLogin": "最終ログイン",
-  "lastLoginIp": "最終ログイン IP",
-  "prepay": {
-    "title": "プリペイド残高",
-    "remainingBalance": "プリペイド残高",
-    "manageAccount": "アカウント管理",
-    "manageTooltip": "プリペイドアカウントを管理"
-  },
-  "invoices": {
-    "title": "未払い請求書",
-    "totalUnpaid": "未払い請求書合計",
-    "totalAmount": "支払い合計金額",
-    "payTotalTooltip": "合計金額を支払う"
-  },
-  "callInPin": "電話認証 PIN",
-  "recentTickets": "最近のチケット",
-  "viewAllTickets": "すべてのチケットを表示",
-  "editTicket": "チケットを編集",
-  "serviceCount": "アクティブなサービスなし | {count} 件のアクティブなサービス | {count} 件のアクティブなサービス",
-  "affiliate": {
-    "earnPerSale": "1件の販売ごとに {amount} 獲得",
-    "urlPlaceholder": "アフィリエイト URL",
-    "shareWith": "共有する"
-  }
+    "title": "ダッシュボード",
+    "welcome": "ようこそ、{name}",
+    "lastLogin": "最終ログイン",
+    "lastLoginIp": "最終ログイン IP",
+    "prepay": {
+        "title": "プリペイド残高",
+        "remainingBalance": "プリペイド残高",
+        "manageAccount": "アカウント管理",
+        "manageTooltip": "プリペイドアカウントを管理"
+    },
+    "invoices": {
+        "title": "未払い請求書",
+        "totalUnpaid": "未払い請求書合計",
+        "totalAmount": "支払い合計金額",
+        "payTotalTooltip": "合計金額を支払う"
+    },
+    "callInPin": "電話認証 PIN",
+    "recentTickets": "最近のチケット",
+    "viewAllTickets": "すべてのチケットを表示",
+    "editTicket": "チケットを編集",
+    "serviceCount": "アクティブなサービスなし | {count} 件のアクティブなサービス | {count} 件のアクティブなサービス",
+    "affiliate": {
+        "earnPerSale": "1件の販売ごとに {amount} 獲得",
+        "urlPlaceholder": "アフィリエイト URL",
+        "shareWith": "共有する"
+    }
 }

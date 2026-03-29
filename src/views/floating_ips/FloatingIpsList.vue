@@ -38,13 +38,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<FloatingIpRow[]>([]);
+const loading = ref(true);
 
 const loadFloatingIps = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/floating_ips`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadFloatingIps();
@@ -57,6 +61,7 @@ loadFloatingIps();
         :columns="columns"
         id-field="floating_ip_id"
         status-field="floating_ip_status"
+        :loading="loading"
         :order-title="t('floating_ips.list.orderTitle')"
     />
 </template>

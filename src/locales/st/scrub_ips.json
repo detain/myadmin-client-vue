@@ -1,48 +1,48 @@
 {
-  "list": {
-    "title": "Lenaneo la Litšebeletso tsa Scrub IPs",
-    "orderTitle": "Oda Scrub IPs"
-  },
-  "view": {
-    "title": "Bona Scrub IPs",
-    "currentIp": "IP ea Hajoale",
-    "ipAddress": "Aterese ea IP",
-    "ipFromService": "IP ho tsoa ho Tšebeletso"
-  },
-  "filters": {
-    "title": "Lifilter",
-    "createNew": "Theha e Ncha",
-    "createNewFilter": "Theha Filter e Ncha",
-    "filterType": "Mofuta oa Filter",
-    "ipAddress": "Aterese ea IP",
-    "portNo": "Nomoro ea Port",
-    "filter": "Filter",
-    "destinationIp": "IP ea Sepheo",
-    "destinationPort": "Port ea Sepheo",
-    "noFiltersFound": "Ha ho lifilter tse fumanehileng!",
-    "deleteFilterConfirm": "Na u tiisetsa hore u batla ho phimola filter ena?"
-  },
-  "firewallRules": {
-    "title": "Melao ea Firewall",
-    "createNewFirewall": "Theha Molao o Mocha oa Firewall",
-    "protocol": "Protocol",
-    "destinationIp": "IP ea Sepheo",
-    "sourceIp": "IP ea Mohloli",
-    "block": "Thibela",
-    "whitelist": "Lenaneo le Lesweu",
-    "noRulesFound": "Ha ho melao e fumanehileng!",
-    "deleteRuleConfirm": "Na u tiisetsa hore u batla ho phimola molao ona?"
-  },
-  "geoFirewallRules": {
-    "title": "Melao ea Geo Firewall",
-    "createNewGeoRule": "Theha Molao o Mocha oa Geo Firewall",
-    "destinationIp": "IP ea Sepheo",
-    "sourceCountry": "Naha ea Mohloli",
-    "sourceAsn": "ASN ea Mohloli",
-    "selectCountry": "Khetha Naha",
-    "block": "Thibela",
-    "whitelist": "Lenaneo le Lesweu",
-    "noRulesFound": "Ha ho melao e fumanehileng!",
-    "deleteGeoRuleConfirm": "Na u tiisetsa hore u batla ho phimola molao ona oa geo?"
-  }
+    "list": {
+        "title": "Lenaneo la Litšebeletso tsa Scrub IPs",
+        "orderTitle": "Oda Scrub IPs"
+    },
+    "view": {
+        "title": "Bona Scrub IPs",
+        "currentIp": "IP ea Hajoale",
+        "ipAddress": "Aterese ea IP",
+        "ipFromService": "IP ho tsoa ho Tšebeletso"
+    },
+    "filters": {
+        "title": "Lifilter",
+        "createNew": "Theha e Ncha",
+        "createNewFilter": "Theha Filter e Ncha",
+        "filterType": "Mofuta oa Filter",
+        "ipAddress": "Aterese ea IP",
+        "portNo": "Nomoro ea Port",
+        "filter": "Filter",
+        "destinationIp": "IP ea Sepheo",
+        "destinationPort": "Port ea Sepheo",
+        "noFiltersFound": "Ha ho lifilter tse fumanehileng!",
+        "deleteFilterConfirm": "Na u tiisetsa hore u batla ho phimola filter ena?"
+    },
+    "firewallRules": {
+        "title": "Melao ea Firewall",
+        "createNewFirewall": "Theha Molao o Mocha oa Firewall",
+        "protocol": "Protocol",
+        "destinationIp": "IP ea Sepheo",
+        "sourceIp": "IP ea Mohloli",
+        "block": "Thibela",
+        "whitelist": "Lenaneo le Lesweu",
+        "noRulesFound": "Ha ho melao e fumanehileng!",
+        "deleteRuleConfirm": "Na u tiisetsa hore u batla ho phimola molao ona?"
+    },
+    "geoFirewallRules": {
+        "title": "Melao ea Geo Firewall",
+        "createNewGeoRule": "Theha Molao o Mocha oa Geo Firewall",
+        "destinationIp": "IP ea Sepheo",
+        "sourceCountry": "Naha ea Mohloli",
+        "sourceAsn": "ASN ea Mohloli",
+        "selectCountry": "Khetha Naha",
+        "block": "Thibela",
+        "whitelist": "Lenaneo le Lesweu",
+        "noRulesFound": "Ha ho melao e fumanehileng!",
+        "deleteGeoRuleConfirm": "Na u tiisetsa hore u batla ho phimola molao ona oa geo?"
+    }
 }

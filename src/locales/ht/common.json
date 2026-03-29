@@ -105,6 +105,7 @@
         "loading": "Kap chaje...",
         "noData": "Pa gen done disponib",
         "noActiveServices": "Pa gen Sèvis Aktif",
+        "noServicesMatchingFilter": "Pa gen sèvis jwenn ki matche ak filtè '{filter}'",
         "controlPanel": "Panno Kontwòl",
         "welcomeEmail": "Imèl Byenvini",
         "invoices": "Fakti",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Èske ou sèten ou vle anile?"
     },
     "footer": {
-        "copyright": "Dwa otè \u00a9 {year} InterServer Inc.",
+        "copyright": "Dwa otè © {year} InterServer Inc.",
         "allRightsReserved": "Tout dwa rezève."
     },
     "search": {

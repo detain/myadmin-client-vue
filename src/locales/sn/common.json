@@ -105,6 +105,7 @@
         "loading": "Kurodhiwa...",
         "noData": "Hapana data iripo",
         "noActiveServices": "Hapana sevhisi inoshanda",
+        "noServicesMatchingFilter": "Hapana sevhisi yawanikwa inoenderana nesefa '{filter}'",
         "controlPanel": "Bhodhi rekutonga",
         "welcomeEmail": "Email yekugamuchira",
         "invoices": "Invoice",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Une chokwadi chekukanzura here?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Kodzero dzose dzakachengetwa."
     },
     "search": {

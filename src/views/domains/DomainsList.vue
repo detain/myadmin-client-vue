@@ -39,13 +39,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<domainsRow[]>([]);
+const loading = ref(true);
 
 const loadDomains = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/domains`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadDomains();
@@ -58,6 +62,7 @@ loadDomains();
         :columns="columns"
         id-field="domain_id"
         status-field="domain_status"
+        :loading="loading"
         :order-title="t('domains.list.orderTitle')"
     />
 </template>

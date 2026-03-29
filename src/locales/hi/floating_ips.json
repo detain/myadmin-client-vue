@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Floating IPs सेवाएं सूची",
-    "orderTitle": "Floating IP पंजीकरण ऑर्डर करें"
-  },
-  "view": {
-    "title": "Floating IP {id} देखें",
-    "package": "पैकेज",
-    "nextInvoiceDate": "अगली इनवॉइस तिथि:",
-    "billing": "बिलिंग",
-    "billed": "बिल किया गया:",
-    "statusIs": "स्थिति है:",
-    "floatingIp": "Floating IP",
-    "links": "लिंक",
-    "emailSent": "ईमेल भेजा गया",
-    "emailSentMessage": "स्वागत ईमेल पुनः भेजा गया। अपना इनबॉक्स जांचें।",
-    "welcomeEmailConfirm": "क्या आप वाकई स्वागत ईमेल फिर से भेजना चाहते हैं?"
-  },
-  "order": {
-    "title": "Floating IP ऑर्डर करें"
-  },
-  "changeIp": {
-    "title": "लक्ष्य IP बदलें"
-  }
+    "list": {
+        "title": "Floating IPs सेवाएं सूची",
+        "orderTitle": "Floating IP पंजीकरण ऑर्डर करें"
+    },
+    "view": {
+        "title": "Floating IP {id} देखें",
+        "package": "पैकेज",
+        "nextInvoiceDate": "अगली इनवॉइस तिथि:",
+        "billing": "बिलिंग",
+        "billed": "बिल किया गया:",
+        "statusIs": "स्थिति है:",
+        "floatingIp": "Floating IP",
+        "links": "लिंक",
+        "emailSent": "ईमेल भेजा गया",
+        "emailSentMessage": "स्वागत ईमेल पुनः भेजा गया। अपना इनबॉक्स जांचें।",
+        "welcomeEmailConfirm": "क्या आप वाकई स्वागत ईमेल फिर से भेजना चाहते हैं?"
+    },
+    "order": {
+        "title": "Floating IP ऑर्डर करें"
+    },
+    "changeIp": {
+        "title": "लक्ष्य IP बदलें"
+    }
 }

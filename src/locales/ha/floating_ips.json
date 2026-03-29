@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Jerin Sabis na Floating IPs",
-    "orderTitle": "Oda Rajistan Floating IP"
-  },
-  "view": {
-    "title": "Duba Floating IP {id}",
-    "package": "Fakiti",
-    "nextInvoiceDate": "Ranar Takardar Biyan Kuɗi Mai Zuwa:",
-    "billing": "Biyan Kuɗi",
-    "billed": "an biya:",
-    "statusIs": "Matsayi shine:",
-    "floatingIp": "Floating IP",
-    "links": "Hanyoyin Haɗi",
-    "emailSent": "An Aika Imel",
-    "emailSentMessage": "An sake aika imel na maraba. Duba akwatin imel ɗinka.",
-    "welcomeEmailConfirm": "Ka tabbata kana son sake aika imel na maraba?"
-  },
-  "order": {
-    "title": "Oda Floating IP"
-  },
-  "changeIp": {
-    "title": "Canza IP Maƙasudi"
-  }
+    "list": {
+        "title": "Jerin Sabis na Floating IPs",
+        "orderTitle": "Oda Rajistan Floating IP"
+    },
+    "view": {
+        "title": "Duba Floating IP {id}",
+        "package": "Fakiti",
+        "nextInvoiceDate": "Ranar Takardar Biyan Kuɗi Mai Zuwa:",
+        "billing": "Biyan Kuɗi",
+        "billed": "an biya:",
+        "statusIs": "Matsayi shine:",
+        "floatingIp": "Floating IP",
+        "links": "Hanyoyin Haɗi",
+        "emailSent": "An Aika Imel",
+        "emailSentMessage": "An sake aika imel na maraba. Duba akwatin imel ɗinka.",
+        "welcomeEmailConfirm": "Ka tabbata kana son sake aika imel na maraba?"
+    },
+    "order": {
+        "title": "Oda Floating IP"
+    },
+    "changeIp": {
+        "title": "Canza IP Maƙasudi"
+    }
 }

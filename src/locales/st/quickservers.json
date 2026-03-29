@@ -1,43 +1,43 @@
 {
-  "list": {
-    "title": "Lenaneo la Lihaolo tsa Rapid Deploy",
-    "orderTitle": "Oda Lirejistaro tsa Haolo ea Rapid Deploy"
-  },
-  "view": {
-    "title": "Bona Haolo ea Rapid Deploy {id}",
-    "package": "Sepalesa",
-    "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
-    "billing": "Tefello",
-    "billed": "e lefisitsoeng:",
-    "paymentStatus": "Boemo ba Tefo:",
-    "statusIs": "Boemo ke:",
-    "serverInformation": "Lintlha tsa QuickServer",
-    "powerStatusIs": "Boemo ba Matla ke:",
-    "selectAction": "Khetha Ketso",
-    "disk": "Disk",
-    "totalSpace": "Sebaka Sohle:",
-    "freeSpace": "Sebaka se Lokolohang:",
-    "remainingSpace": "Sebaka se Setseng:",
-    "systemInformation": "Lintlha tsa Sisteme",
-    "os": "OS",
-    "links": "Likhoele",
-    "updateComment": "Ntlafatsa Tlhaloso",
-    "saveChanges": "Boloka Liphetoho",
-    "emailSent": "Imeile e Romelitsoe",
-    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
-  },
-  "order": {
-    "title": "Oda Haolo ea Rapid Deploy",
-    "orderSummary": "Kakaretso ea Oda",
-    "selectServer": "Khetha Haolo",
-    "osDistribution": "Phatlalatso ea OS",
-    "osVersion": "Phetolelo ea OS",
-    "rootPassword": "Password ea Root",
-    "total": "Kakaretso",
-    "serverName": "Lebitso la Haolo",
-    "operatingSystem": "Sisteme ea Tshebetso",
-    "agreeToTerms": "Lumela le maemo a tšebeletso",
-    "iAgreeToTerms": "Ke bale maemo a ka holimo 'me ke a lumela.",
-    "placeOrder": "Beha Oda"
-  }
+    "list": {
+        "title": "Lenaneo la Lihaolo tsa Rapid Deploy",
+        "orderTitle": "Oda Lirejistaro tsa Haolo ea Rapid Deploy"
+    },
+    "view": {
+        "title": "Bona Haolo ea Rapid Deploy {id}",
+        "package": "Sepalesa",
+        "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
+        "billing": "Tefello",
+        "billed": "e lefisitsoeng:",
+        "paymentStatus": "Boemo ba Tefo:",
+        "statusIs": "Boemo ke:",
+        "serverInformation": "Lintlha tsa QuickServer",
+        "powerStatusIs": "Boemo ba Matla ke:",
+        "selectAction": "Khetha Ketso",
+        "disk": "Disk",
+        "totalSpace": "Sebaka Sohle:",
+        "freeSpace": "Sebaka se Lokolohang:",
+        "remainingSpace": "Sebaka se Setseng:",
+        "systemInformation": "Lintlha tsa Sisteme",
+        "os": "OS",
+        "links": "Likhoele",
+        "updateComment": "Ntlafatsa Tlhaloso",
+        "saveChanges": "Boloka Liphetoho",
+        "emailSent": "Imeile e Romelitsoe",
+        "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+    },
+    "order": {
+        "title": "Oda Haolo ea Rapid Deploy",
+        "orderSummary": "Kakaretso ea Oda",
+        "selectServer": "Khetha Haolo",
+        "osDistribution": "Phatlalatso ea OS",
+        "osVersion": "Phetolelo ea OS",
+        "rootPassword": "Password ea Root",
+        "total": "Kakaretso",
+        "serverName": "Lebitso la Haolo",
+        "operatingSystem": "Sisteme ea Tshebetso",
+        "agreeToTerms": "Lumela le maemo a tšebeletso",
+        "iAgreeToTerms": "Ke bale maemo a ka holimo 'me ke a lumela.",
+        "placeOrder": "Beha Oda"
+    }
 }

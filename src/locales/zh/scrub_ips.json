@@ -1,65 +1,65 @@
 {
-  "list": {
-    "title": "清洗 IP 服务列表",
-    "orderTitle": "订购清洗 IP"
-  },
-  "view": {
-    "title": "查看清洗 IP",
-    "currentIp": "当前 IP",
-    "ipAddress": "IP 地址",
-    "ipFromService": "来自服务的 IP"
-  },
-  "filters": {
-    "title": "过滤器",
-    "createNew": "新建",
-    "createNewFilter": "新建过滤器",
-    "filterType": "过滤器类型",
-    "ipAddress": "IP 地址",
-    "portNo": "端口号",
-    "filter": "过滤器",
-    "destinationIp": "目标 IP",
-    "destinationPort": "目标端口",
-    "noFiltersFound": "未找到过滤器！",
-    "deleteFilterConfirm": "确定要删除此过滤器吗？",
-    "selectFilterType": "选择过滤器类型",
-    "unableToCreateFilter": "目前无法创建过滤器。",
-    "unableToDeleteFilter": "目前无法删除过滤器。"
-  },
-  "firewallRules": {
-    "title": "防火墙规则",
-    "createNewFirewall": "新建防火墙规则",
-    "protocol": "协议",
-    "destinationIp": "目标 IP",
-    "sourceIp": "源 IP",
-    "block": "屏蔽",
-    "whitelist": "白名单",
-    "noRulesFound": "未找到规则！",
-    "deleteRuleConfirm": "确定要删除此规则吗？",
-    "createNew": "新建",
-    "destinationPort": "目标端口",
-    "sourcePort": "源端口",
-    "xdpAction": "XDP 操作",
-    "ipRequired": "IP 地址为必填项",
-    "unableToCreateRule": "目前无法创建防火墙规则。",
-    "unableToDeleteRule": "目前无法删除防火墙规则。"
-  },
-  "geoFirewallRules": {
-    "title": "地理防火墙规则",
-    "createNewGeoRule": "新建地理防火墙规则",
-    "destinationIp": "目标 IP",
-    "sourceCountry": "源国家",
-    "sourceAsn": "源 ASN",
-    "selectCountry": "选择国家",
-    "block": "屏蔽",
-    "whitelist": "白名单",
-    "noRulesFound": "未找到规则！",
-    "deleteGeoRuleConfirm": "确定要删除此地理规则吗？",
-    "createNew": "新建",
-    "destinationPort": "目标端口",
-    "xdpAction": "XDP 操作",
-    "portNo": "端口号",
-    "asn": "ASN",
-    "unableToCreateRule": "目前无法创建防火墙规则。",
-    "unableToDeleteRule": "目前无法删除地理防火墙规则。"
-  }
+    "list": {
+        "title": "清洗 IP 服务列表",
+        "orderTitle": "订购清洗 IP"
+    },
+    "view": {
+        "title": "查看清洗 IP",
+        "currentIp": "当前 IP",
+        "ipAddress": "IP 地址",
+        "ipFromService": "来自服务的 IP"
+    },
+    "filters": {
+        "title": "过滤器",
+        "createNew": "新建",
+        "createNewFilter": "新建过滤器",
+        "filterType": "过滤器类型",
+        "ipAddress": "IP 地址",
+        "portNo": "端口号",
+        "filter": "过滤器",
+        "destinationIp": "目标 IP",
+        "destinationPort": "目标端口",
+        "noFiltersFound": "未找到过滤器！",
+        "deleteFilterConfirm": "确定要删除此过滤器吗？",
+        "selectFilterType": "选择过滤器类型",
+        "unableToCreateFilter": "目前无法创建过滤器。",
+        "unableToDeleteFilter": "目前无法删除过滤器。"
+    },
+    "firewallRules": {
+        "title": "防火墙规则",
+        "createNewFirewall": "新建防火墙规则",
+        "protocol": "协议",
+        "destinationIp": "目标 IP",
+        "sourceIp": "源 IP",
+        "block": "屏蔽",
+        "whitelist": "白名单",
+        "noRulesFound": "未找到规则！",
+        "deleteRuleConfirm": "确定要删除此规则吗？",
+        "createNew": "新建",
+        "destinationPort": "目标端口",
+        "sourcePort": "源端口",
+        "xdpAction": "XDP 操作",
+        "ipRequired": "IP 地址为必填项",
+        "unableToCreateRule": "目前无法创建防火墙规则。",
+        "unableToDeleteRule": "目前无法删除防火墙规则。"
+    },
+    "geoFirewallRules": {
+        "title": "地理防火墙规则",
+        "createNewGeoRule": "新建地理防火墙规则",
+        "destinationIp": "目标 IP",
+        "sourceCountry": "源国家",
+        "sourceAsn": "源 ASN",
+        "selectCountry": "选择国家",
+        "block": "屏蔽",
+        "whitelist": "白名单",
+        "noRulesFound": "未找到规则！",
+        "deleteGeoRuleConfirm": "确定要删除此地理规则吗？",
+        "createNew": "新建",
+        "destinationPort": "目标端口",
+        "xdpAction": "XDP 操作",
+        "portNo": "端口号",
+        "asn": "ASN",
+        "unableToCreateRule": "目前无法创建防火墙规则。",
+        "unableToDeleteRule": "目前无法删除地理防火墙规则。"
+    }
 }

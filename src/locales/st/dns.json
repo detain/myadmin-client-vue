@@ -1,26 +1,26 @@
 {
-  "manager": {
-    "title": "Motsamaisi oa DNS",
-    "addDomain": "Kenya Thebe",
-    "deleteDomain": "Phimola Thebe",
-    "domainName": "Lebitso la Thebe",
-    "dnsServers": "Lihaolo tsa DNS",
-    "confirmDelete": "Na u tiisetsa hore u batla ho phimola thebe ena?",
-    "noDomains": "Ha ho dithebe tse fumanehileng"
-  },
-  "editor": {
-    "title": "Setlhophisi sa DNS",
-    "addRecord": "Kenya Rekoto",
-    "deleteRecord": "Phimola Rekoto",
-    "editRecord": "Hlophisa Rekoto",
-    "recordType": "Mofuta oa Rekoto",
-    "hostname": "Lebitso la Haolo",
-    "address": "Aterese",
-    "distance": "Leeto",
-    "weight": "Boima",
-    "port": "Molapo",
-    "ttl": "TTL",
-    "actions": "Liketso",
-    "confirmDelete": "Na u tiisetsa hore u batla ho phimola rekoto ena?"
-  }
+    "manager": {
+        "title": "Motsamaisi oa DNS",
+        "addDomain": "Kenya Thebe",
+        "deleteDomain": "Phimola Thebe",
+        "domainName": "Lebitso la Thebe",
+        "dnsServers": "Lihaolo tsa DNS",
+        "confirmDelete": "Na u tiisetsa hore u batla ho phimola thebe ena?",
+        "noDomains": "Ha ho dithebe tse fumanehileng"
+    },
+    "editor": {
+        "title": "Setlhophisi sa DNS",
+        "addRecord": "Kenya Rekoto",
+        "deleteRecord": "Phimola Rekoto",
+        "editRecord": "Hlophisa Rekoto",
+        "recordType": "Mofuta oa Rekoto",
+        "hostname": "Lebitso la Haolo",
+        "address": "Aterese",
+        "distance": "Leeto",
+        "weight": "Boima",
+        "port": "Molapo",
+        "ttl": "TTL",
+        "actions": "Liketso",
+        "confirmDelete": "Na u tiisetsa hore u batla ho phimola rekoto ena?"
+    }
 }

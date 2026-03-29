@@ -1,12 +1,12 @@
 {
-  "required": "{field} は必須です",
-  "email": "有効なメールアドレスである必要があります",
-  "minLength": "{min} 文字以上である必要があります",
-  "maxLength": "{max} 文字以内である必要があります",
-  "passwordMatch": "パスワードが一致している必要があります",
-  "invalidFormat": "無効な形式です",
-  "numeric": "数字である必要があります",
-  "url": "有効な URL である必要があります",
-  "ipAddress": "有効な IP アドレスである必要があります",
-  "hostname": "有効なホスト名である必要があります"
+    "required": "{field} は必須です",
+    "email": "有効なメールアドレスである必要があります",
+    "minLength": "{min} 文字以上である必要があります",
+    "maxLength": "{max} 文字以内である必要があります",
+    "passwordMatch": "パスワードが一致している必要があります",
+    "invalidFormat": "無効な形式です",
+    "numeric": "数字である必要があります",
+    "url": "有効な URL である必要があります",
+    "ipAddress": "有効な IP アドレスである必要があります",
+    "hostname": "有効なホスト名である必要があります"
 }

@@ -105,6 +105,7 @@
         "loading": "පූරණය වෙමින්...",
         "noData": "දත්ත නොමැත",
         "noActiveServices": "සක්‍රිය සේවාවන් නොමැත",
+        "noServicesMatchingFilter": "'{filter}' පෙරහනට ගැළපෙන සේවාවන් හමු නොවීය",
         "controlPanel": "පාලන පුවරුව",
         "welcomeEmail": "සාදරයෙන් පිළිගැනීමේ විද්‍යුත් තැපෑල",
         "invoices": "ඉන්වොයිස්",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "ඔබට අවලංගු කිරීමට විශ්වාසද?"
     },
     "footer": {
-        "copyright": "කතුහිමිකම \u00a9 {year} InterServer Inc.",
+        "copyright": "කතුහිමිකම © {year} InterServer Inc.",
         "allRightsReserved": "සියලුම හිමිකම් ඇවිරිණි."
     },
     "search": {

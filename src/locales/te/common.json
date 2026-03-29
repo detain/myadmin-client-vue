@@ -105,6 +105,7 @@
         "loading": "లోడ్ అవుతున్నది...",
         "noData": "డేటా అందుబాటులో లేదు",
         "noActiveServices": "చురుకైన సేవలు లేవు",
+        "noServicesMatchingFilter": "'{filter}' ఫిల్టర్‌తో సరిపోలే సేవలు ఏవీ కనుగొనబడలేదు",
         "controlPanel": "కంట్రోల్ పానెల్",
         "welcomeEmail": "స్వాగత ఇమెయిల్",
         "invoices": "ఇన్వాయిస్‌లు",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "మీరు రద్దు చేయాలనుకుంటున్నారా?"
     },
     "footer": {
-        "copyright": "కాపీరైట్ \u00a9 {year} InterServer Inc.",
+        "copyright": "కాపీరైట్ © {year} InterServer Inc.",
         "allRightsReserved": "అన్ని హక్కులు రిజర్వు చేయబడ్డాయి."
     },
     "search": {

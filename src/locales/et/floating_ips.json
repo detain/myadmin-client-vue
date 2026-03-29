@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Hõljuvate IP-de teenuste loend",
-    "orderTitle": "Telli hõljuvate IP-de registreeringud"
-  },
-  "view": {
-    "title": "Vaata hõljuvat IP-d {id}",
-    "package": "Pakett",
-    "nextInvoiceDate": "Järgmise arve kuupäev:",
-    "billing": "Arveldus",
-    "billed": "arveldatud:",
-    "statusIs": "Olek on:",
-    "floatingIp": "Hõljuv IP",
-    "links": "Lingid",
-    "emailSent": "E-post saadetud",
-    "emailSentMessage": "Tervitusmeil on uuesti saadetud. Kontrolli oma postkasti.",
-    "welcomeEmailConfirm": "Kas olete kindel, et soovite tervitusmeili uuesti saata?"
-  },
-  "order": {
-    "title": "Telli hõljuv IP"
-  },
-  "changeIp": {
-    "title": "Muuda siht-IP-d"
-  }
+    "list": {
+        "title": "Hõljuvate IP-de teenuste loend",
+        "orderTitle": "Telli hõljuvate IP-de registreeringud"
+    },
+    "view": {
+        "title": "Vaata hõljuvat IP-d {id}",
+        "package": "Pakett",
+        "nextInvoiceDate": "Järgmise arve kuupäev:",
+        "billing": "Arveldus",
+        "billed": "arveldatud:",
+        "statusIs": "Olek on:",
+        "floatingIp": "Hõljuv IP",
+        "links": "Lingid",
+        "emailSent": "E-post saadetud",
+        "emailSentMessage": "Tervitusmeil on uuesti saadetud. Kontrolli oma postkasti.",
+        "welcomeEmailConfirm": "Kas olete kindel, et soovite tervitusmeili uuesti saata?"
+    },
+    "order": {
+        "title": "Telli hõljuv IP"
+    },
+    "changeIp": {
+        "title": "Muuda siht-IP-d"
+    }
 }

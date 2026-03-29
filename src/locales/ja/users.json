@@ -1,12 +1,12 @@
 {
-  "title": "ユーザー",
-  "addUser": "ユーザーを追加",
-  "editUser": "ユーザーを編集",
-  "firstName": "名",
-  "lastName": "姓",
-  "username": "ユーザー名",
-  "password": "パスワード",
-  "keepSamePassword": "同じパスワードを保持する場合は空欄のままにしてください",
-  "errorLoading": "ユーザーの読み込みエラー:",
-  "errorLoadingUser": "ユーザーの読み込みエラー:"
+    "title": "ユーザー",
+    "addUser": "ユーザーを追加",
+    "editUser": "ユーザーを編集",
+    "firstName": "名",
+    "lastName": "姓",
+    "username": "ユーザー名",
+    "password": "パスワード",
+    "keepSamePassword": "同じパスワードを保持する場合は空欄のままにしてください",
+    "errorLoading": "ユーザーの読み込みエラー:",
+    "errorLoadingUser": "ユーザーの読み込みエラー:"
 }

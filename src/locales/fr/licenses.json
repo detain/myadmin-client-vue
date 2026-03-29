@@ -1,30 +1,30 @@
 {
-  "list": {
-    "title": "Liste des licences",
-    "orderTitle": "Commander des enregistrements de licence"
-  },
-  "view": {
-    "title": "Voir la licence {id}",
-    "package": "Forfait",
-    "nextInvoiceDate": "Date de la prochaine facture :",
-    "billing": "Facturation",
-    "billed": "facturé :",
-    "statusIs": "Le statut est :",
-    "licenseInfo": "Informations de licence",
-    "cpanelInfo": "Informations cPanel",
-    "links": "Liens",
-    "emailSent": "E-mail envoyé",
-    "emailSentMessage": "L'e-mail de bienvenue a été renvoyé. Vérifiez votre boîte de réception.",
-    "welcomeEmailConfirm": "Êtes-vous sûr de vouloir renvoyer l'e-mail de bienvenue ?"
-  },
-  "order": {
-    "title": "Commander une licence"
-  },
-  "changeIp": {
-    "title": "Modifier l'IP"
-  },
-  "changeOs": {
-    "title": "Modifier l'OS",
-    "selectLicenseOs": "Sélectionner l'OS de licence"
-  }
+    "list": {
+        "title": "Liste des licences",
+        "orderTitle": "Commander des enregistrements de licence"
+    },
+    "view": {
+        "title": "Voir la licence {id}",
+        "package": "Forfait",
+        "nextInvoiceDate": "Date de la prochaine facture :",
+        "billing": "Facturation",
+        "billed": "facturé :",
+        "statusIs": "Le statut est :",
+        "licenseInfo": "Informations de licence",
+        "cpanelInfo": "Informations cPanel",
+        "links": "Liens",
+        "emailSent": "E-mail envoyé",
+        "emailSentMessage": "L'e-mail de bienvenue a été renvoyé. Vérifiez votre boîte de réception.",
+        "welcomeEmailConfirm": "Êtes-vous sûr de vouloir renvoyer l'e-mail de bienvenue ?"
+    },
+    "order": {
+        "title": "Commander une licence"
+    },
+    "changeIp": {
+        "title": "Modifier l'IP"
+    },
+    "changeOs": {
+        "title": "Modifier l'OS",
+        "selectLicenseOs": "Sélectionner l'OS de licence"
+    }
 }

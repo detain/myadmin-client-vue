@@ -105,6 +105,7 @@
         "loading": "Yn llwytho...",
         "noData": "Dim data ar gael",
         "noActiveServices": "Dim Gwasanaethau Actif",
+        "noServicesMatchingFilter": "Ni chanfuwyd gwasanaethau sy'n cyfateb i'r hidlydd '{filter}'",
         "controlPanel": "Panel Rheoli",
         "welcomeEmail": "E-bost Croeso",
         "invoices": "Anfonebau",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ydych chi'n siŵr eich bod am ganslo?"
     },
     "footer": {
-        "copyright": "Hawlfraint \u00a9 {year} InterServer Inc.",
+        "copyright": "Hawlfraint © {year} InterServer Inc.",
         "allRightsReserved": "Cedwir pob hawl."
     },
     "search": {

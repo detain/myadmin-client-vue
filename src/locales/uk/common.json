@@ -105,6 +105,7 @@
         "loading": "Завантаження...",
         "noData": "Дані відсутні",
         "noActiveServices": "Немає активних послуг",
+        "noServicesMatchingFilter": "Не знайдено послуг, що відповідають фільтру '{filter}'",
         "controlPanel": "Панель керування",
         "welcomeEmail": "Вітальний лист",
         "invoices": "Рахунки",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ви впевнені, що хочете скасувати?"
     },
     "footer": {
-        "copyright": "Авторське право \u00a9 {year} InterServer Inc.",
+        "copyright": "Авторське право © {year} InterServer Inc.",
         "allRightsReserved": "Всі права захищені."
     },
     "search": {

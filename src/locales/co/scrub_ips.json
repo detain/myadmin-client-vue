@@ -1,65 +1,65 @@
 {
-  "list": {
-    "title": "Lista di servizii Scrub IP",
-    "orderTitle": "Ordinate Scrub IP"
-  },
-  "view": {
-    "title": "Vede Scrub IP",
-    "currentIp": "IP attuale",
-    "ipAddress": "Indirizzu IP",
-    "ipFromService": "IP da u serviziu"
-  },
-  "filters": {
-    "title": "Filtri",
-    "createNew": "Creà novu",
-    "createNewFilter": "Creà novu filtru",
-    "filterType": "Tipu di filtru",
-    "ipAddress": "Indirizzu IP",
-    "portNo": "Numeru di portu",
-    "filter": "Filtru",
-    "destinationIp": "IP destinazione",
-    "destinationPort": "Portu destinazione",
-    "noFiltersFound": "Nisciun filtru trovu!",
-    "deleteFilterConfirm": "Sì sicuru di vulè sguassà stu filtru?",
-    "selectFilterType": "Scelite u Tipu di Filtru",
-    "unableToCreateFilter": "Impossibbule creà u filtru in questu momentu.",
-    "unableToDeleteFilter": "Impossibbule eliminà u filtru in questu momentu."
-  },
-  "firewallRules": {
-    "title": "Regule di firewall",
-    "createNewFirewall": "Creà nova regula di firewall",
-    "protocol": "Protocolu",
-    "destinationIp": "IP destinazione",
-    "sourceIp": "IP sorgente",
-    "block": "Bluccà",
-    "whitelist": "Lista bianca",
-    "noRulesFound": "Nisciuna regula trovata!",
-    "deleteRuleConfirm": "Sì sicuru di vulè sguassà sta regula?",
-    "createNew": "Creà Novu",
-    "destinationPort": "Portu di Destinazione",
-    "sourcePort": "Portu Sorgente",
-    "xdpAction": "Azzione XDP",
-    "ipRequired": "L'indirizzu IP hè richiesta.",
-    "unableToCreateRule": "Impossibbule creà a regula di firewall in questu momentu.",
-    "unableToDeleteRule": "Impossibbule eliminate a regula di firewall in questu momentu."
-  },
-  "geoFirewallRules": {
-    "title": "Regule di firewall geo",
-    "createNewGeoRule": "Creà nova regula di firewall geo",
-    "destinationIp": "IP destinazione",
-    "sourceCountry": "Paese sorgente",
-    "sourceAsn": "ASN sorgente",
-    "selectCountry": "Sceglite u paese",
-    "block": "Bluccà",
-    "whitelist": "Lista bianca",
-    "noRulesFound": "Nisciuna regula trovata!",
-    "deleteGeoRuleConfirm": "Sì sicuru di vulè sguassà sta regula geo?",
-    "createNew": "Creà Novu",
-    "destinationPort": "Portu di Destinazione",
-    "xdpAction": "Azzione XDP",
-    "portNo": "Nùmeru di Portu",
-    "asn": "ASN",
-    "unableToCreateRule": "Impossibbule creà a regula di firewall in questu momentu.",
-    "unableToDeleteRule": "Impossibbule eliminate a regula di firewall geograficu in questu momentu."
-  }
+    "list": {
+        "title": "Lista di servizii Scrub IP",
+        "orderTitle": "Ordinate Scrub IP"
+    },
+    "view": {
+        "title": "Vede Scrub IP",
+        "currentIp": "IP attuale",
+        "ipAddress": "Indirizzu IP",
+        "ipFromService": "IP da u serviziu"
+    },
+    "filters": {
+        "title": "Filtri",
+        "createNew": "Creà novu",
+        "createNewFilter": "Creà novu filtru",
+        "filterType": "Tipu di filtru",
+        "ipAddress": "Indirizzu IP",
+        "portNo": "Numeru di portu",
+        "filter": "Filtru",
+        "destinationIp": "IP destinazione",
+        "destinationPort": "Portu destinazione",
+        "noFiltersFound": "Nisciun filtru trovu!",
+        "deleteFilterConfirm": "Sì sicuru di vulè sguassà stu filtru?",
+        "selectFilterType": "Scelite u Tipu di Filtru",
+        "unableToCreateFilter": "Impossibbule creà u filtru in questu momentu.",
+        "unableToDeleteFilter": "Impossibbule eliminà u filtru in questu momentu."
+    },
+    "firewallRules": {
+        "title": "Regule di firewall",
+        "createNewFirewall": "Creà nova regula di firewall",
+        "protocol": "Protocolu",
+        "destinationIp": "IP destinazione",
+        "sourceIp": "IP sorgente",
+        "block": "Bluccà",
+        "whitelist": "Lista bianca",
+        "noRulesFound": "Nisciuna regula trovata!",
+        "deleteRuleConfirm": "Sì sicuru di vulè sguassà sta regula?",
+        "createNew": "Creà Novu",
+        "destinationPort": "Portu di Destinazione",
+        "sourcePort": "Portu Sorgente",
+        "xdpAction": "Azzione XDP",
+        "ipRequired": "L'indirizzu IP hè richiesta.",
+        "unableToCreateRule": "Impossibbule creà a regula di firewall in questu momentu.",
+        "unableToDeleteRule": "Impossibbule eliminate a regula di firewall in questu momentu."
+    },
+    "geoFirewallRules": {
+        "title": "Regule di firewall geo",
+        "createNewGeoRule": "Creà nova regula di firewall geo",
+        "destinationIp": "IP destinazione",
+        "sourceCountry": "Paese sorgente",
+        "sourceAsn": "ASN sorgente",
+        "selectCountry": "Sceglite u paese",
+        "block": "Bluccà",
+        "whitelist": "Lista bianca",
+        "noRulesFound": "Nisciuna regula trovata!",
+        "deleteGeoRuleConfirm": "Sì sicuru di vulè sguassà sta regula geo?",
+        "createNew": "Creà Novu",
+        "destinationPort": "Portu di Destinazione",
+        "xdpAction": "Azzione XDP",
+        "portNo": "Nùmeru di Portu",
+        "asn": "ASN",
+        "unableToCreateRule": "Impossibbule creà a regula di firewall in questu momentu.",
+        "unableToDeleteRule": "Impossibbule eliminate a regula di firewall geograficu in questu momentu."
+    }
 }

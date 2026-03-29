@@ -105,6 +105,7 @@
         "loading": "Laster...",
         "noData": "Ingen data tilgjengelig",
         "noActiveServices": "Ingen aktive tjenester",
+        "noServicesMatchingFilter": "Ingen tjenester funnet som samsvarer med filteret '{filter}'",
         "controlPanel": "Kontrollpanel",
         "welcomeEmail": "Velkomst-e-post",
         "invoices": "Fakturaer",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Er du sikker på at du vil avbryte?"
     },
     "footer": {
-        "copyright": "Opphavsrett \u00a9 {year} InterServer Inc.",
+        "copyright": "Opphavsrett © {year} InterServer Inc.",
         "allRightsReserved": "Alle rettigheter forbeholdt."
     },
     "search": {

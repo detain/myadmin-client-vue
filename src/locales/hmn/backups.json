@@ -1,22 +1,22 @@
 {
-  "list": {
-    "title": "Chaw Cia / Backup",
-    "orderTitle": "Xaj Npe Nkag Rau Backup"
-  },
-  "view": {
-    "title": "Saib Backup {id}",
-    "package": "Pob Khoom",
-    "nextInvoiceDate": "Hnub Nqi Tom Ntej:",
-    "billing": "Them Nqi",
-    "billed": "tau them nqi:",
-    "statusIs": "xwm txheej yog:",
-    "hostServer": "Server Tuav",
-    "links": "Cov Txuas",
-    "emailSent": "Email Xa Lawm",
-    "emailSentMessage": "Email txais tos xa dua lawm.",
-    "welcomeEmailConfirm": "Koj puas xav xa email txais tos dua?"
-  },
-  "order": {
-    "title": "Xaj Chaw Cia"
-  }
+    "list": {
+        "title": "Chaw Cia / Backup",
+        "orderTitle": "Xaj Npe Nkag Rau Backup"
+    },
+    "view": {
+        "title": "Saib Backup {id}",
+        "package": "Pob Khoom",
+        "nextInvoiceDate": "Hnub Nqi Tom Ntej:",
+        "billing": "Them Nqi",
+        "billed": "tau them nqi:",
+        "statusIs": "xwm txheej yog:",
+        "hostServer": "Server Tuav",
+        "links": "Cov Txuas",
+        "emailSent": "Email Xa Lawm",
+        "emailSentMessage": "Email txais tos xa dua lawm.",
+        "welcomeEmailConfirm": "Koj puas xav xa email txais tos dua?"
+    },
+    "order": {
+        "title": "Xaj Chaw Cia"
+    }
 }

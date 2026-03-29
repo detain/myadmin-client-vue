@@ -1,11 +1,26 @@
 {
-  "list": {"title": "Daptar Hosting Web", "orderTitle": "Pesan Registrasi Situs Web"},
-  "view": {
-    "title": "Tempo Situs Web {id}", "package": "Paket", "nextInvoiceDate": "Tanggal Invoice Salajengna:",
-    "billing": "Tagihan", "billed": "ditagih", "billingStatusIs": "Status Tagihan nyaeta:",
-    "login": "Lebet", "links": "Tautan", "emailSent": "Email Dikirimkeun",
-    "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
-  },
-  "order": {"title": "Pesan Situs Web"},
-  "migration": {"title": "Migrasi Situs Web Anjeun", "password": "Kecap Akses", "importantNotes": "Catetan Penting"}
+    "list": {
+        "title": "Daptar Hosting Web",
+        "orderTitle": "Pesan Registrasi Situs Web"
+    },
+    "view": {
+        "title": "Tempo Situs Web {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Invoice Salajengna:",
+        "billing": "Tagihan",
+        "billed": "ditagih",
+        "billingStatusIs": "Status Tagihan nyaeta:",
+        "login": "Lebet",
+        "links": "Tautan",
+        "emailSent": "Email Dikirimkeun",
+        "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+    },
+    "order": {
+        "title": "Pesan Situs Web"
+    },
+    "migration": {
+        "title": "Migrasi Situs Web Anjeun",
+        "password": "Kecap Akses",
+        "importantNotes": "Catetan Penting"
+    }
 }

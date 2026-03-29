@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "Veebimajutuse loend",
-    "orderTitle": "Telli veebisaidi registreeringud"
-  },
-  "view": {
-    "title": "Vaata veebisaiti {id}",
-    "package": "Pakett",
-    "nextInvoiceDate": "Järgmise arve kuupäev:",
-    "billing": "Arveldus",
-    "billed": "arveldatud",
-    "billingStatusIs": "Arvelduse olek on:",
-    "login": "Logi sisse",
-    "links": "Lingid",
-    "emailSent": "E-post saadetud",
-    "emailSentMessage": "Tervitusmeil on uuesti saadetud. Kontrolli oma postkasti.",
-    "hostInfo": "Serveri teave",
-    "username": "Kasutajanimi:",
-    "ip": "IP:",
-    "server": "Server:",
-    "notSetYet": "Pole veel seadistatud",
-    "types": "Tüübid:",
-    "linksLabel": "Lingid:",
-    "manualLogin": "Käsitsi sisselogimine",
-    "automaticLogin": "Automaatne sisselogimine",
-    "clickHere": "Klõpsake siin",
-    "defaultNameservers": "Vaikimisi nimeserverid",
-    "nameservers": "Nimeserverid:",
-    "externalLinks": "Välised lingid",
-    "names": "Nimed:",
-    "websitePreview": "Veebisaidi eelvaade",
-    "welcomeEmailConfirm": "Kas olete kindel, et soovite tervitusmeil uuesti saata?"
-  },
-  "order": {
-    "title": "Telli veebisait"
-  },
-  "migration": {
-    "title": "Migreerige oma veebisait",
-    "password": "Parool",
-    "importantNotes": "Olulised märkused",
-    "currentWebHostInfo": "Praeguse veebihoteli teave",
-    "customerPortalUrl": "Kliendipordaali URL",
-    "portalExample": "Näiteks: sso.godaddy.com",
-    "registeredUsername": "Registreeritud kasutajanimi / e-post / ID",
-    "controlPanelUrl": "Juhtpaneeli URL",
-    "controlPanelExample": "Näiteks: yourdomain.com/cpanel",
-    "ftpUsername": "FTP / juhtpaneeli kasutajanimi",
-    "ftpPassword": "FTP / juhtpaneeli parool",
-    "holdingPageQuestion": "Kui sait on live/hõivatud sait suure liiklusega, kas saame migratsiooni ajal seadistada ootava lehe?",
-    "specialRequirementsQuestion": "Kas sellel saidil on erinõuded, nagu PHP versioon / moodulid?",
-    "domainRegistryInfo": "Domeeniregistri teave",
-    "transferDomainQuestion": "Kas soovite, et aitaksime teil domeeni nime registreerimist üle kanda?",
-    "updateNameserversQuestion": "Kas soovite, et uuendaksime nimeservereid kohe pärast andmete migreerimise lõpetamist?",
-    "domainRegistryPortal": "Domeeniregistri kliendipordaal",
-    "note1": "Selle vormi täitmine avab toe osakonnale uue pileti migratsiooni alustamiseks.",
-    "note2": "Palun olge nii täielik ja täpne kui võimalik, et vältida viivitusi.",
-    "note3": "Tüüpiline migratsioon lõpetatakse 48 kuni 72 tunni jooksul. Mõnikord kauem, kui kopeeritavate andmete hulk on suur.",
-    "note4": "Vana hostimine konto peab olema võrgus ja juurdepääsetav, kuni me migratsiooni teostame, vastasel juhul võime raskustega silmitsi seista.",
-    "note5": "Palun ärge tehke oma saidil ühtegi uuendust, kuni me migratsiooni teostame, vastasel juhul neid andmeid ei pruugita uuele hostimisele kopeerida."
-  },
-  "buyIp": {
-    "title": "Osta täiendav IP lisandmoodul",
-    "existingAddonIps": "Olemasolevad lisandmooduli IP-d",
-    "additionalIp": "Täiendav IP",
-    "monthlyCost": "Igakuine kulu ({symbol})",
-    "costDescription": "Kulu ({symbol}) iga kuu, kuna teie veebisaiti arveldatakse",
-    "confirmPurchase": "Kinnita ost",
-    "confirmMessage": "Täiendava IP kulu: {symbol}{cost}/kuu. Kas olete kindel, et soovite täiendava IP tellida?",
-    "placeOrder": "Esita tellimus",
-    "orderPlaced": "Tellimus esitatud"
-  },
-  "reverseDns": {
-    "title": "Pöördpäring DNS",
-    "updateReverseDns": "Uuenda pöördpäring DNS"
-  },
-  "downloadBackups": {
-    "title": "Laadi varukoopiad alla",
-    "backup": "Varukoopia",
-    "size": "Suurus",
-    "options": "Valikud"
-  }
+    "list": {
+        "title": "Veebimajutuse loend",
+        "orderTitle": "Telli veebisaidi registreeringud"
+    },
+    "view": {
+        "title": "Vaata veebisaiti {id}",
+        "package": "Pakett",
+        "nextInvoiceDate": "Järgmise arve kuupäev:",
+        "billing": "Arveldus",
+        "billed": "arveldatud",
+        "billingStatusIs": "Arvelduse olek on:",
+        "login": "Logi sisse",
+        "links": "Lingid",
+        "emailSent": "E-post saadetud",
+        "emailSentMessage": "Tervitusmeil on uuesti saadetud. Kontrolli oma postkasti.",
+        "hostInfo": "Serveri teave",
+        "username": "Kasutajanimi:",
+        "ip": "IP:",
+        "server": "Server:",
+        "notSetYet": "Pole veel seadistatud",
+        "types": "Tüübid:",
+        "linksLabel": "Lingid:",
+        "manualLogin": "Käsitsi sisselogimine",
+        "automaticLogin": "Automaatne sisselogimine",
+        "clickHere": "Klõpsake siin",
+        "defaultNameservers": "Vaikimisi nimeserverid",
+        "nameservers": "Nimeserverid:",
+        "externalLinks": "Välised lingid",
+        "names": "Nimed:",
+        "websitePreview": "Veebisaidi eelvaade",
+        "welcomeEmailConfirm": "Kas olete kindel, et soovite tervitusmeil uuesti saata?"
+    },
+    "order": {
+        "title": "Telli veebisait"
+    },
+    "migration": {
+        "title": "Migreerige oma veebisait",
+        "password": "Parool",
+        "importantNotes": "Olulised märkused",
+        "currentWebHostInfo": "Praeguse veebihoteli teave",
+        "customerPortalUrl": "Kliendipordaali URL",
+        "portalExample": "Näiteks: sso.godaddy.com",
+        "registeredUsername": "Registreeritud kasutajanimi / e-post / ID",
+        "controlPanelUrl": "Juhtpaneeli URL",
+        "controlPanelExample": "Näiteks: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / juhtpaneeli kasutajanimi",
+        "ftpPassword": "FTP / juhtpaneeli parool",
+        "holdingPageQuestion": "Kui sait on live/hõivatud sait suure liiklusega, kas saame migratsiooni ajal seadistada ootava lehe?",
+        "specialRequirementsQuestion": "Kas sellel saidil on erinõuded, nagu PHP versioon / moodulid?",
+        "domainRegistryInfo": "Domeeniregistri teave",
+        "transferDomainQuestion": "Kas soovite, et aitaksime teil domeeni nime registreerimist üle kanda?",
+        "updateNameserversQuestion": "Kas soovite, et uuendaksime nimeservereid kohe pärast andmete migreerimise lõpetamist?",
+        "domainRegistryPortal": "Domeeniregistri kliendipordaal",
+        "note1": "Selle vormi täitmine avab toe osakonnale uue pileti migratsiooni alustamiseks.",
+        "note2": "Palun olge nii täielik ja täpne kui võimalik, et vältida viivitusi.",
+        "note3": "Tüüpiline migratsioon lõpetatakse 48 kuni 72 tunni jooksul. Mõnikord kauem, kui kopeeritavate andmete hulk on suur.",
+        "note4": "Vana hostimine konto peab olema võrgus ja juurdepääsetav, kuni me migratsiooni teostame, vastasel juhul võime raskustega silmitsi seista.",
+        "note5": "Palun ärge tehke oma saidil ühtegi uuendust, kuni me migratsiooni teostame, vastasel juhul neid andmeid ei pruugita uuele hostimisele kopeerida."
+    },
+    "buyIp": {
+        "title": "Osta täiendav IP lisandmoodul",
+        "existingAddonIps": "Olemasolevad lisandmooduli IP-d",
+        "additionalIp": "Täiendav IP",
+        "monthlyCost": "Igakuine kulu ({symbol})",
+        "costDescription": "Kulu ({symbol}) iga kuu, kuna teie veebisaiti arveldatakse",
+        "confirmPurchase": "Kinnita ost",
+        "confirmMessage": "Täiendava IP kulu: {symbol}{cost}/kuu. Kas olete kindel, et soovite täiendava IP tellida?",
+        "placeOrder": "Esita tellimus",
+        "orderPlaced": "Tellimus esitatud"
+    },
+    "reverseDns": {
+        "title": "Pöördpäring DNS",
+        "updateReverseDns": "Uuenda pöördpäring DNS"
+    },
+    "downloadBackups": {
+        "title": "Laadi varukoopiad alla",
+        "backup": "Varukoopia",
+        "size": "Suurus",
+        "options": "Valikud"
+    }
 }

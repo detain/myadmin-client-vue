@@ -1,30 +1,30 @@
 {
-  "list": {
-    "title": "许可证列表",
-    "orderTitle": "订购许可证注册"
-  },
-  "view": {
-    "title": "查看许可证 {id}",
-    "package": "套餐",
-    "nextInvoiceDate": "下次发票日期：",
-    "billing": "账单",
-    "billed": "已计费：",
-    "statusIs": "状态：",
-    "licenseInfo": "许可证信息",
-    "cpanelInfo": "cPanel 信息",
-    "links": "链接",
-    "emailSent": "邮件已发送",
-    "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。",
-    "welcomeEmailConfirm": "您确定要重新发送欢迎邮件吗？"
-  },
-  "order": {
-    "title": "订购许可证"
-  },
-  "changeIp": {
-    "title": "修改 IP"
-  },
-  "changeOs": {
-    "title": "修改操作系统",
-    "selectLicenseOs": "选择许可证操作系统"
-  }
+    "list": {
+        "title": "许可证列表",
+        "orderTitle": "订购许可证注册"
+    },
+    "view": {
+        "title": "查看许可证 {id}",
+        "package": "套餐",
+        "nextInvoiceDate": "下次发票日期：",
+        "billing": "账单",
+        "billed": "已计费：",
+        "statusIs": "状态：",
+        "licenseInfo": "许可证信息",
+        "cpanelInfo": "cPanel 信息",
+        "links": "链接",
+        "emailSent": "邮件已发送",
+        "emailSentMessage": "欢迎邮件已重新发送。请检查您的收件箱。",
+        "welcomeEmailConfirm": "您确定要重新发送欢迎邮件吗？"
+    },
+    "order": {
+        "title": "订购许可证"
+    },
+    "changeIp": {
+        "title": "修改 IP"
+    },
+    "changeOs": {
+        "title": "修改操作系统",
+        "selectLicenseOs": "选择许可证操作系统"
+    }
 }

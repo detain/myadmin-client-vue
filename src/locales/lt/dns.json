@@ -1,26 +1,26 @@
 {
-  "manager": {
-    "title": "DNS tvarkyklė",
-    "addDomain": "Pridėti domeną",
-    "deleteDomain": "Ištrinti domeną",
-    "domainName": "Domeno pavadinimas",
-    "dnsServers": "DNS serveriai",
-    "confirmDelete": "Ar tikrai norite ištrinti šį domeną?",
-    "noDomains": "Domenų nerasta"
-  },
-  "editor": {
-    "title": "DNS redaktorius",
-    "addRecord": "Pridėti įrašą",
-    "deleteRecord": "Ištrinti įrašą",
-    "editRecord": "Redaguoti įrašą",
-    "recordType": "Įrašo tipas",
-    "hostname": "Pagrindinio kompiuterio vardas",
-    "address": "Adresas",
-    "distance": "Atstumas",
-    "weight": "Svoris",
-    "port": "Prievadas",
-    "ttl": "TTL",
-    "actions": "Veiksmai",
-    "confirmDelete": "Ar tikrai norite ištrinti šį įrašą?"
-  }
+    "manager": {
+        "title": "DNS tvarkyklė",
+        "addDomain": "Pridėti domeną",
+        "deleteDomain": "Ištrinti domeną",
+        "domainName": "Domeno pavadinimas",
+        "dnsServers": "DNS serveriai",
+        "confirmDelete": "Ar tikrai norite ištrinti šį domeną?",
+        "noDomains": "Domenų nerasta"
+    },
+    "editor": {
+        "title": "DNS redaktorius",
+        "addRecord": "Pridėti įrašą",
+        "deleteRecord": "Ištrinti įrašą",
+        "editRecord": "Redaguoti įrašą",
+        "recordType": "Įrašo tipas",
+        "hostname": "Pagrindinio kompiuterio vardas",
+        "address": "Adresas",
+        "distance": "Atstumas",
+        "weight": "Svoris",
+        "port": "Prievadas",
+        "ttl": "TTL",
+        "actions": "Veiksmai",
+        "confirmDelete": "Ar tikrai norite ištrinti šį įrašą?"
+    }
 }

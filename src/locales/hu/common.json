@@ -105,6 +105,7 @@
         "loading": "Betöltés...",
         "noData": "Nincs elérhető adat",
         "noActiveServices": "Nincs aktív szolgáltatás",
+        "noServicesMatchingFilter": "Nem található a(z) '{filter}' szűrőnek megfelelő szolgáltatás",
         "controlPanel": "Vezérlőpanel",
         "welcomeEmail": "Üdvözlő e-mail",
         "invoices": "Számlák",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Biztosan le szeretné mondani?"
     },
     "footer": {
-        "copyright": "Szerzői jog \u00a9 {year} InterServer Inc.",
+        "copyright": "Szerzői jog © {year} InterServer Inc.",
         "allRightsReserved": "Minden jog fenntartva."
     },
     "search": {

@@ -1,1 +1,28 @@
-{ "title": "לוח בקרה", "welcome": "ברוך הבא, {name}", "lastLogin": "כניסה אחרונה", "lastLoginIp": "IP כניסה אחרונה", "prepay": { "title": "יתרת תשלום מראש", "remainingBalance": "יתרת תשלום מראש נותרת", "manageAccount": "נהל חשבון", "manageTooltip": "נהל את חשבון התשלום מראש שלך" }, "invoices": { "title": "חשבוניות לא משולמות", "totalUnpaid": "סה\"כ חשבוניות לא משולמות", "totalAmount": "סכום כולל לתשלום", "payTotalTooltip": "שלם סכום כולל" }, "callInPin": "PIN לשיחה", "recentTickets": "כרטיסיות אחרונות", "viewAllTickets": "הצג את כל הכרטיסיות", "editTicket": "ערוך כרטיסייה", "serviceCount": "אין שירותים פעילים | {count} שירות פעיל | {count} שירותים פעילים", "affiliate": { "earnPerSale": "הרווח {amount} לכל מכירה", "urlPlaceholder": "כתובת URL של שותף", "shareWith": "שתף עם" } }
+{
+    "title": "לוח בקרה",
+    "welcome": "ברוך הבא, {name}",
+    "lastLogin": "כניסה אחרונה",
+    "lastLoginIp": "IP כניסה אחרונה",
+    "prepay": {
+        "title": "יתרת תשלום מראש",
+        "remainingBalance": "יתרת תשלום מראש נותרת",
+        "manageAccount": "נהל חשבון",
+        "manageTooltip": "נהל את חשבון התשלום מראש שלך"
+    },
+    "invoices": {
+        "title": "חשבוניות לא משולמות",
+        "totalUnpaid": "סה\"כ חשבוניות לא משולמות",
+        "totalAmount": "סכום כולל לתשלום",
+        "payTotalTooltip": "שלם סכום כולל"
+    },
+    "callInPin": "PIN לשיחה",
+    "recentTickets": "כרטיסיות אחרונות",
+    "viewAllTickets": "הצג את כל הכרטיסיות",
+    "editTicket": "ערוך כרטיסייה",
+    "serviceCount": "אין שירותים פעילים | {count} שירות פעיל | {count} שירותים פעילים",
+    "affiliate": {
+        "earnPerSale": "הרווח {amount} לכל מכירה",
+        "urlPlaceholder": "כתובת URL של שותף",
+        "shareWith": "שתף עם"
+    }
+}

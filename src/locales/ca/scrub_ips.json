@@ -1,65 +1,65 @@
 {
-  "list": {
-    "title": "Llista de serveis de neteja d'IPs",
-    "orderTitle": "Comandar neteja d'IPs"
-  },
-  "view": {
-    "title": "Veure neteja d'IPs",
-    "currentIp": "IP actual",
-    "ipAddress": "Adreça IP",
-    "ipFromService": "IP del servei"
-  },
-  "filters": {
-    "title": "Filtres",
-    "createNew": "Crear nou",
-    "createNewFilter": "Crear nou filtre",
-    "filterType": "Tipus de filtre",
-    "ipAddress": "Adreça IP",
-    "portNo": "Número de port",
-    "filter": "Filtre",
-    "destinationIp": "IP de destinació",
-    "destinationPort": "Port de destinació",
-    "noFiltersFound": "No s'han trobat filtres!",
-    "deleteFilterConfirm": "Esteu segur que voleu eliminar aquest filtre?",
-    "selectFilterType": "Seleccionar el tipus de filtre",
-    "unableToCreateFilter": "No es pot crear el filtre en aquest moment.",
-    "unableToDeleteFilter": "No es pot eliminar el filtre en aquest moment."
-  },
-  "firewallRules": {
-    "title": "Regles de tallafoc",
-    "createNewFirewall": "Crear nova regla de tallafoc",
-    "protocol": "Protocol",
-    "destinationIp": "IP de destinació",
-    "sourceIp": "IP d'origen",
-    "block": "Bloquejar",
-    "whitelist": "Llista blanca",
-    "noRulesFound": "No s'han trobat regles!",
-    "deleteRuleConfirm": "Esteu segur que voleu eliminar aquesta regla?",
-    "createNew": "Crear nou",
-    "destinationPort": "Port de destinació",
-    "sourcePort": "Port d'origen",
-    "xdpAction": "Acció XDP",
-    "ipRequired": "Cal una adreça IP",
-    "unableToCreateRule": "No es pot crear la regla de tallafocs en aquest moment.",
-    "unableToDeleteRule": "No es pot eliminar la regla de tallafocs en aquest moment."
-  },
-  "geoFirewallRules": {
-    "title": "Regles de tallafoc geogràfic",
-    "createNewGeoRule": "Crear nova regla de tallafoc geogràfic",
-    "destinationIp": "IP de destinació",
-    "sourceCountry": "País d'origen",
-    "sourceAsn": "ASN d'origen",
-    "selectCountry": "Seleccionar país",
-    "block": "Bloquejar",
-    "whitelist": "Llista blanca",
-    "noRulesFound": "No s'han trobat regles!",
-    "deleteGeoRuleConfirm": "Esteu segur que voleu eliminar aquesta regla geogràfica?",
-    "createNew": "Crear nou",
-    "destinationPort": "Port de destinació",
-    "xdpAction": "Acció XDP",
-    "portNo": "Número de port",
-    "asn": "ASN",
-    "unableToCreateRule": "No es pot crear la regla de tallafocs en aquest moment.",
-    "unableToDeleteRule": "No es pot eliminar la regla de tallafocs geogràfic en aquest moment."
-  }
+    "list": {
+        "title": "Llista de serveis de neteja d'IPs",
+        "orderTitle": "Comandar neteja d'IPs"
+    },
+    "view": {
+        "title": "Veure neteja d'IPs",
+        "currentIp": "IP actual",
+        "ipAddress": "Adreça IP",
+        "ipFromService": "IP del servei"
+    },
+    "filters": {
+        "title": "Filtres",
+        "createNew": "Crear nou",
+        "createNewFilter": "Crear nou filtre",
+        "filterType": "Tipus de filtre",
+        "ipAddress": "Adreça IP",
+        "portNo": "Número de port",
+        "filter": "Filtre",
+        "destinationIp": "IP de destinació",
+        "destinationPort": "Port de destinació",
+        "noFiltersFound": "No s'han trobat filtres!",
+        "deleteFilterConfirm": "Esteu segur que voleu eliminar aquest filtre?",
+        "selectFilterType": "Seleccionar el tipus de filtre",
+        "unableToCreateFilter": "No es pot crear el filtre en aquest moment.",
+        "unableToDeleteFilter": "No es pot eliminar el filtre en aquest moment."
+    },
+    "firewallRules": {
+        "title": "Regles de tallafoc",
+        "createNewFirewall": "Crear nova regla de tallafoc",
+        "protocol": "Protocol",
+        "destinationIp": "IP de destinació",
+        "sourceIp": "IP d'origen",
+        "block": "Bloquejar",
+        "whitelist": "Llista blanca",
+        "noRulesFound": "No s'han trobat regles!",
+        "deleteRuleConfirm": "Esteu segur que voleu eliminar aquesta regla?",
+        "createNew": "Crear nou",
+        "destinationPort": "Port de destinació",
+        "sourcePort": "Port d'origen",
+        "xdpAction": "Acció XDP",
+        "ipRequired": "Cal una adreça IP",
+        "unableToCreateRule": "No es pot crear la regla de tallafocs en aquest moment.",
+        "unableToDeleteRule": "No es pot eliminar la regla de tallafocs en aquest moment."
+    },
+    "geoFirewallRules": {
+        "title": "Regles de tallafoc geogràfic",
+        "createNewGeoRule": "Crear nova regla de tallafoc geogràfic",
+        "destinationIp": "IP de destinació",
+        "sourceCountry": "País d'origen",
+        "sourceAsn": "ASN d'origen",
+        "selectCountry": "Seleccionar país",
+        "block": "Bloquejar",
+        "whitelist": "Llista blanca",
+        "noRulesFound": "No s'han trobat regles!",
+        "deleteGeoRuleConfirm": "Esteu segur que voleu eliminar aquesta regla geogràfica?",
+        "createNew": "Crear nou",
+        "destinationPort": "Port de destinació",
+        "xdpAction": "Acció XDP",
+        "portNo": "Número de port",
+        "asn": "ASN",
+        "unableToCreateRule": "No es pot crear la regla de tallafocs en aquest moment.",
+        "unableToDeleteRule": "No es pot eliminar la regla de tallafocs geogràfic en aquest moment."
+    }
 }

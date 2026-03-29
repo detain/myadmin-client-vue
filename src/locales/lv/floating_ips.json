@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Floating IPs pakalpojumu saraksts",
-    "orderTitle": "Pasūtīt Floating IP reģistrācijas"
-  },
-  "view": {
-    "title": "Skatīt Floating IP {id}",
-    "package": "Pakete",
-    "nextInvoiceDate": "Nākamā rēķina datums:",
-    "billing": "Norēķini",
-    "billed": "norēķināts:",
-    "statusIs": "Statuss ir:",
-    "floatingIp": "Floating IP",
-    "links": "Saites",
-    "emailSent": "E-pasts nosūtīts",
-    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni.",
-    "welcomeEmailConfirm": "Vai tiešām vēlaties atkārtoti nosūtīt sveiciena e-pastu?"
-  },
-  "order": {
-    "title": "Pasūtīt Floating IP"
-  },
-  "changeIp": {
-    "title": "Mainīt mērķa IP"
-  }
+    "list": {
+        "title": "Floating IPs pakalpojumu saraksts",
+        "orderTitle": "Pasūtīt Floating IP reģistrācijas"
+    },
+    "view": {
+        "title": "Skatīt Floating IP {id}",
+        "package": "Pakete",
+        "nextInvoiceDate": "Nākamā rēķina datums:",
+        "billing": "Norēķini",
+        "billed": "norēķināts:",
+        "statusIs": "Statuss ir:",
+        "floatingIp": "Floating IP",
+        "links": "Saites",
+        "emailSent": "E-pasts nosūtīts",
+        "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni.",
+        "welcomeEmailConfirm": "Vai tiešām vēlaties atkārtoti nosūtīt sveiciena e-pastu?"
+    },
+    "order": {
+        "title": "Pasūtīt Floating IP"
+    },
+    "changeIp": {
+        "title": "Mainīt mērķa IP"
+    }
 }

@@ -105,6 +105,7 @@
         "loading": "Hleð...",
         "noData": "Engar upplýsingar tiltækar",
         "noActiveServices": "Engar virkar þjónustur",
+        "noServicesMatchingFilter": "Engar þjónustur fundust sem passa við síu '{filter}'",
         "controlPanel": "Stjórnborð",
         "welcomeEmail": "Velkominn tölvupóstur",
         "invoices": "Reikningar",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ertu viss um að þú viljir hætta við?"
     },
     "footer": {
-        "copyright": "Höfundarréttur \u00a9 {year} InterServer Inc.",
+        "copyright": "Höfundarréttur © {year} InterServer Inc.",
         "allRightsReserved": "Öll réttindi áskilin."
     },
     "search": {

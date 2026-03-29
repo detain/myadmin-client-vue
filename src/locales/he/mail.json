@@ -1,49 +1,49 @@
 {
-  "list": {
-    "title": "רשימת שירותי דואר",
-    "orderTitle": "הזמן רישומי דואר"
-  },
-  "view": {
-    "title": "הצג דואר {id}",
-    "package": "חבילה",
-    "nextInvoiceDate": "תאריך חשבונית הבא:",
-    "billing": "חיוב",
-    "billed": "חויב:",
-    "statusIs": "הסטטוס הוא:",
-    "mailApi": "API דואר",
-    "usageCount": "מספר שימושים:",
-    "links": "קישורים",
-    "connectionInfo": "מידע חיבור",
-    "emailSent": "הדואר האלקטרוני נשלח",
-    "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך.",
-    "welcomeEmailConfirm": "האם אתה בטוח שברצונך לשלוח מחדש את הדוא\"ל ברוך הבא?"
-  },
-  "order": {
-    "title": "הזמן דואר"
-  },
-  "alerts": {
-    "title": "התראות",
-    "addAlert": "הוסף התראה",
-    "editAlert": "ערוך התראה",
-    "noAlerts": "לא נמצאו התראות"
-  },
-  "delist": {
-    "title": "הסר מרשימה",
-    "blockedEmails": "כתובות דואר חסומות"
-  },
-  "denyRules": {
-    "title": "כללי דחייה",
-    "addRule": "הוסף כלל",
-    "noRules": "לא נמצאו כללי דחייה"
-  },
-  "logs": {
-    "title": "יומנים",
-    "searchLogs": "חפש ביומנים"
-  },
-  "stats": {
-    "title": "סטטיסטיקות"
-  },
-  "deliverability": {
-    "title": "יכולת מסירה"
-  }
+    "list": {
+        "title": "רשימת שירותי דואר",
+        "orderTitle": "הזמן רישומי דואר"
+    },
+    "view": {
+        "title": "הצג דואר {id}",
+        "package": "חבילה",
+        "nextInvoiceDate": "תאריך חשבונית הבא:",
+        "billing": "חיוב",
+        "billed": "חויב:",
+        "statusIs": "הסטטוס הוא:",
+        "mailApi": "API דואר",
+        "usageCount": "מספר שימושים:",
+        "links": "קישורים",
+        "connectionInfo": "מידע חיבור",
+        "emailSent": "הדואר האלקטרוני נשלח",
+        "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך.",
+        "welcomeEmailConfirm": "האם אתה בטוח שברצונך לשלוח מחדש את הדוא\"ל ברוך הבא?"
+    },
+    "order": {
+        "title": "הזמן דואר"
+    },
+    "alerts": {
+        "title": "התראות",
+        "addAlert": "הוסף התראה",
+        "editAlert": "ערוך התראה",
+        "noAlerts": "לא נמצאו התראות"
+    },
+    "delist": {
+        "title": "הסר מרשימה",
+        "blockedEmails": "כתובות דואר חסומות"
+    },
+    "denyRules": {
+        "title": "כללי דחייה",
+        "addRule": "הוסף כלל",
+        "noRules": "לא נמצאו כללי דחייה"
+    },
+    "logs": {
+        "title": "יומנים",
+        "searchLogs": "חפש ביומנים"
+    },
+    "stats": {
+        "title": "סטטיסטיקות"
+    },
+    "deliverability": {
+        "title": "יכולת מסירה"
+    }
 }

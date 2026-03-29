@@ -105,6 +105,7 @@
         "loading": "Жүктөлүүдө...",
         "noData": "Маалымат жок",
         "noActiveServices": "Активдүү Кызматтар Жок",
+        "noServicesMatchingFilter": "'{filter}' чыпкасына дал келген кызматтар табылган жок",
         "controlPanel": "Башкаруу Панели",
         "welcomeEmail": "Кош Келиңиз Электрондук Почтасы",
         "invoices": "Эсеп-фактуралар",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Жокко чыгарууну каалаганыңызга ишенесизби?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Бардык укуктар корголгон."
     },
     "search": {

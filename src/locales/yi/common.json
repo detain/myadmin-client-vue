@@ -105,6 +105,7 @@
         "loading": "לאָדט...",
         "noData": "קיין דאַטן נישטאָ",
         "noActiveServices": "קיין אַקטיווע דינסטן",
+        "noServicesMatchingFilter": "קיין דינסטן געפֿונען וואָס שטימען מיט פֿילטער '{filter}'",
         "controlPanel": "קאָנטראָל פּאַנעל",
         "welcomeEmail": "ווילקומען E-פּאָסט",
         "invoices": "חשבונות",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "זענט איר זיכער אַז איר ווילט אָפּזאָגן?"
     },
     "footer": {
-        "copyright": "קאָפּירעכט \u00a9 {year} InterServer Inc.",
+        "copyright": "קאָפּירעכט © {year} InterServer Inc.",
         "allRightsReserved": "אַלע רעכטן אָנגעהאַלטן."
     },
     "search": {

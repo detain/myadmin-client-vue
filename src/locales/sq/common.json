@@ -105,6 +105,7 @@
         "loading": "Po ngarkohet...",
         "noData": "Nuk ka të dhëna të disponueshme",
         "noActiveServices": "Nuk ka Shërbime Aktive",
+        "noServicesMatchingFilter": "Nuk u gjetën shërbime që përputhen me filtrin '{filter}'",
         "controlPanel": "Paneli i Kontrollit",
         "welcomeEmail": "Emaili i Mirëseardhjes",
         "invoices": "Faturat",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "A jeni i sigurt që dëshironi të anuloni?"
     },
     "footer": {
-        "copyright": "E drejta e autorit \u00a9 {year} InterServer Inc.",
+        "copyright": "E drejta e autorit © {year} InterServer Inc.",
         "allRightsReserved": "Të gjitha të drejtat e rezervuara."
     },
     "search": {

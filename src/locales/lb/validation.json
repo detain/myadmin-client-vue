@@ -1,12 +1,12 @@
 {
-  "required": "{field} ass obligatoresch",
-  "email": "Muss eng gëlteg E-Mail-Adress sinn",
-  "minLength": "Muss mindestens {min} Zeechen hunn",
-  "maxLength": "Dierf net méi wéi {max} Zeechen hunn",
-  "passwordMatch": "Passwierder mussen iwwerenëstëmmen",
-  "invalidFormat": "Ongëltegt Format",
-  "numeric": "Muss eng Zuel sinn",
-  "url": "Muss eng gëlteg URL sinn",
-  "ipAddress": "Muss eng gëlteg IP-Adress sinn",
-  "hostname": "Muss e gëltegen Hostname sinn"
+    "required": "{field} ass obligatoresch",
+    "email": "Muss eng gëlteg E-Mail-Adress sinn",
+    "minLength": "Muss mindestens {min} Zeechen hunn",
+    "maxLength": "Dierf net méi wéi {max} Zeechen hunn",
+    "passwordMatch": "Passwierder mussen iwwerenëstëmmen",
+    "invalidFormat": "Ongëltegt Format",
+    "numeric": "Muss eng Zuel sinn",
+    "url": "Muss eng gëlteg URL sinn",
+    "ipAddress": "Muss eng gëlteg IP-Adress sinn",
+    "hostname": "Muss e gëltegen Hostname sinn"
 }

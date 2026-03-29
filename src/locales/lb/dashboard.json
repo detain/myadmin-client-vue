@@ -1,28 +1,28 @@
 {
-  "title": "Dashbord",
-  "welcome": "Wëllkomm, {name}",
-  "lastLogin": "Leschten Aloggen",
-  "lastLoginIp": "Leschten Aloggen IP",
-  "prepay": {
-    "title": "Virausbezuelungs-Guthaben",
-    "remainingBalance": "Reschtleche Virausbezuelungs-Guthaben",
-    "manageAccount": "Konto geréieren",
-    "manageTooltip": "Äre Virausbezuelungskonto geréieren"
-  },
-  "invoices": {
-    "title": "Onbezuelte Rechnungen",
-    "totalUnpaid": "Total onbezuelte Rechnungen",
-    "totalAmount": "Gesamtbetrag deen bezuelt muss ginn",
-    "payTotalTooltip": "Gesamtbetrag bezuelen"
-  },
-  "callInPin": "Telefon-PIN",
-  "recentTickets": "Rezent Ticketen",
-  "viewAllTickets": "All Ticketen ukucken",
-  "editTicket": "Ticket editéieren",
-  "serviceCount": "Keng aktiv Servicer | {count} aktive Service | {count} aktiv Servicer",
-  "affiliate": {
-    "earnPerSale": "{amount} pro Verkaf verdéngen",
-    "urlPlaceholder": "Affiliéierten-URL",
-    "shareWith": "Deelen mat"
-  }
+    "title": "Dashbord",
+    "welcome": "Wëllkomm, {name}",
+    "lastLogin": "Leschten Aloggen",
+    "lastLoginIp": "Leschten Aloggen IP",
+    "prepay": {
+        "title": "Virausbezuelungs-Guthaben",
+        "remainingBalance": "Reschtleche Virausbezuelungs-Guthaben",
+        "manageAccount": "Konto geréieren",
+        "manageTooltip": "Äre Virausbezuelungskonto geréieren"
+    },
+    "invoices": {
+        "title": "Onbezuelte Rechnungen",
+        "totalUnpaid": "Total onbezuelte Rechnungen",
+        "totalAmount": "Gesamtbetrag deen bezuelt muss ginn",
+        "payTotalTooltip": "Gesamtbetrag bezuelen"
+    },
+    "callInPin": "Telefon-PIN",
+    "recentTickets": "Rezent Ticketen",
+    "viewAllTickets": "All Ticketen ukucken",
+    "editTicket": "Ticket editéieren",
+    "serviceCount": "Keng aktiv Servicer | {count} aktive Service | {count} aktiv Servicer",
+    "affiliate": {
+        "earnPerSale": "{amount} pro Verkaf verdéngen",
+        "urlPlaceholder": "Affiliéierten-URL",
+        "shareWith": "Deelen mat"
+    }
 }

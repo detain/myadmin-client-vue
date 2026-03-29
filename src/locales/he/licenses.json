@@ -1,30 +1,30 @@
 {
-  "list": {
-    "title": "רשימת רישיונות",
-    "orderTitle": "הזמן רישומי רישיון"
-  },
-  "view": {
-    "title": "הצג רישיון {id}",
-    "package": "חבילה",
-    "nextInvoiceDate": "תאריך חשבונית הבא:",
-    "billing": "חיוב",
-    "billed": "חויב:",
-    "statusIs": "הסטטוס הוא:",
-    "licenseInfo": "מידע רישיון",
-    "cpanelInfo": "מידע cPanel",
-    "links": "קישורים",
-    "emailSent": "הדואר האלקטרוני נשלח",
-    "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך.",
-    "welcomeEmailConfirm": "האם אתה בטוח שברצונך לשלוח מחדש את הדוא\"ל ברוך הבא?"
-  },
-  "order": {
-    "title": "הזמן רישיון"
-  },
-  "changeIp": {
-    "title": "שנה IP"
-  },
-  "changeOs": {
-    "title": "שנה מערכת הפעלה",
-    "selectLicenseOs": "בחר מערכת הפעלה לרישיון"
-  }
+    "list": {
+        "title": "רשימת רישיונות",
+        "orderTitle": "הזמן רישומי רישיון"
+    },
+    "view": {
+        "title": "הצג רישיון {id}",
+        "package": "חבילה",
+        "nextInvoiceDate": "תאריך חשבונית הבא:",
+        "billing": "חיוב",
+        "billed": "חויב:",
+        "statusIs": "הסטטוס הוא:",
+        "licenseInfo": "מידע רישיון",
+        "cpanelInfo": "מידע cPanel",
+        "links": "קישורים",
+        "emailSent": "הדואר האלקטרוני נשלח",
+        "emailSentMessage": "דואר הברוכים הבאים נשלח מחדש. בדוק את תיבת הדואר שלך.",
+        "welcomeEmailConfirm": "האם אתה בטוח שברצונך לשלוח מחדש את הדוא\"ל ברוך הבא?"
+    },
+    "order": {
+        "title": "הזמן רישיון"
+    },
+    "changeIp": {
+        "title": "שנה IP"
+    },
+    "changeOs": {
+        "title": "שנה מערכת הפעלה",
+        "selectLicenseOs": "בחר מערכת הפעלה לרישיון"
+    }
 }

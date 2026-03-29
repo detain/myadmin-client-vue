@@ -1,30 +1,30 @@
 {
-  "list": {
-    "title": "Licencijų sąrašas",
-    "orderTitle": "Užsakyti licencijų registracijas"
-  },
-  "view": {
-    "title": "Peržiūrėti licenciją {id}",
-    "package": "Paketas",
-    "nextInvoiceDate": "Kita sąskaitos data:",
-    "billing": "Atsiskaitymas",
-    "billed": "išrašyta sąskaita:",
-    "statusIs": "Būsena:",
-    "licenseInfo": "Licencijos informacija",
-    "cpanelInfo": "cPanel informacija",
-    "links": "Nuorodos",
-    "emailSent": "El. laiškas išsiųstas",
-    "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius.",
-    "welcomeEmailConfirm": "Ar tikrai norite iš naujo išsiųsti sveikinimo laišką?"
-  },
-  "order": {
-    "title": "Užsakyti licenciją"
-  },
-  "changeIp": {
-    "title": "Keisti IP"
-  },
-  "changeOs": {
-    "title": "Keisti OS",
-    "selectLicenseOs": "Pasirinkti licencijos OS"
-  }
+    "list": {
+        "title": "Licencijų sąrašas",
+        "orderTitle": "Užsakyti licencijų registracijas"
+    },
+    "view": {
+        "title": "Peržiūrėti licenciją {id}",
+        "package": "Paketas",
+        "nextInvoiceDate": "Kita sąskaitos data:",
+        "billing": "Atsiskaitymas",
+        "billed": "išrašyta sąskaita:",
+        "statusIs": "Būsena:",
+        "licenseInfo": "Licencijos informacija",
+        "cpanelInfo": "cPanel informacija",
+        "links": "Nuorodos",
+        "emailSent": "El. laiškas išsiųstas",
+        "emailSentMessage": "Sveikinamasis el. laiškas buvo išsiųstas iš naujo. Patikrinkite savo gautuosius.",
+        "welcomeEmailConfirm": "Ar tikrai norite iš naujo išsiųsti sveikinimo laišką?"
+    },
+    "order": {
+        "title": "Užsakyti licenciją"
+    },
+    "changeIp": {
+        "title": "Keisti IP"
+    },
+    "changeOs": {
+        "title": "Keisti OS",
+        "selectLicenseOs": "Pasirinkti licencijos OS"
+    }
 }

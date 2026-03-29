@@ -1,8 +1,28 @@
 {
-    "title": "控制台", "welcome": "欢迎，{name}", "lastLogin": "上次登录", "lastLoginIp": "上次登录 IP",
-    "prepay": { "title": "预付款余额", "remainingBalance": "预付款剩余余额", "manageAccount": "管理账户", "manageTooltip": "管理您的预付款账户" },
-    "invoices": { "title": "未付发票", "totalUnpaid": "未付发票总数", "totalAmount": "待支付总金额", "payTotalTooltip": "支付总金额" },
-    "callInPin": "电话 PIN 码", "recentTickets": "最近工单", "viewAllTickets": "查看所有工单", "editTicket": "编辑工单",
+    "title": "控制台",
+    "welcome": "欢迎，{name}",
+    "lastLogin": "上次登录",
+    "lastLoginIp": "上次登录 IP",
+    "prepay": {
+        "title": "预付款余额",
+        "remainingBalance": "预付款剩余余额",
+        "manageAccount": "管理账户",
+        "manageTooltip": "管理您的预付款账户"
+    },
+    "invoices": {
+        "title": "未付发票",
+        "totalUnpaid": "未付发票总数",
+        "totalAmount": "待支付总金额",
+        "payTotalTooltip": "支付总金额"
+    },
+    "callInPin": "电话 PIN 码",
+    "recentTickets": "最近工单",
+    "viewAllTickets": "查看所有工单",
+    "editTicket": "编辑工单",
     "serviceCount": "无活跃服务 | {count} 个活跃服务 | {count} 个活跃服务",
-    "affiliate": { "earnPerSale": "每次销售赚取 {amount}", "urlPlaceholder": "联盟 URL", "shareWith": "分享给" }
+    "affiliate": {
+        "earnPerSale": "每次销售赚取 {amount}",
+        "urlPlaceholder": "联盟 URL",
+        "shareWith": "分享给"
+    }
 }

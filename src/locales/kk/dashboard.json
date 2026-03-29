@@ -1,28 +1,28 @@
 {
-  "title": "Басқару тақтасы",
-  "welcome": "Қош келдіңіз, {name}",
-  "lastLogin": "Соңғы кіру",
-  "lastLoginIp": "Соңғы кіру IP",
-  "prepay": {
-    "title": "Алдын ала төлем балансы",
-    "remainingBalance": "Қалған алдын ала төлем балансы",
-    "manageAccount": "Аккаунтты басқару",
-    "manageTooltip": "Алдын ала төлем аккаунтыңызды басқарыңыз"
-  },
-  "invoices": {
-    "title": "Төленбеген шоттар",
-    "totalUnpaid": "Барлық төленбеген шоттар",
-    "totalAmount": "Төленетін жалпы сома",
-    "payTotalTooltip": "Жалпы соманы төлеу"
-  },
-  "callInPin": "Қоңырау шалу PIN",
-  "recentTickets": "Соңғы тикеттер",
-  "viewAllTickets": "Барлық тикеттерді қарау",
-  "editTicket": "Тикетті өңдеу",
-  "serviceCount": "Белсенді қызметтер жоқ | {count} белсенді қызмет | {count} белсенді қызмет",
-  "affiliate": {
-    "earnPerSale": "Әр сатылымнан {amount} табыңыз",
-    "urlPlaceholder": "Аффилиат URL",
-    "shareWith": "Бөлісу"
-  }
+    "title": "Басқару тақтасы",
+    "welcome": "Қош келдіңіз, {name}",
+    "lastLogin": "Соңғы кіру",
+    "lastLoginIp": "Соңғы кіру IP",
+    "prepay": {
+        "title": "Алдын ала төлем балансы",
+        "remainingBalance": "Қалған алдын ала төлем балансы",
+        "manageAccount": "Аккаунтты басқару",
+        "manageTooltip": "Алдын ала төлем аккаунтыңызды басқарыңыз"
+    },
+    "invoices": {
+        "title": "Төленбеген шоттар",
+        "totalUnpaid": "Барлық төленбеген шоттар",
+        "totalAmount": "Төленетін жалпы сома",
+        "payTotalTooltip": "Жалпы соманы төлеу"
+    },
+    "callInPin": "Қоңырау шалу PIN",
+    "recentTickets": "Соңғы тикеттер",
+    "viewAllTickets": "Барлық тикеттерді қарау",
+    "editTicket": "Тикетті өңдеу",
+    "serviceCount": "Белсенді қызметтер жоқ | {count} белсенді қызмет | {count} белсенді қызмет",
+    "affiliate": {
+        "earnPerSale": "Әр сатылымнан {amount} табыңыз",
+        "urlPlaceholder": "Аффилиат URL",
+        "shareWith": "Бөлісу"
+    }
 }

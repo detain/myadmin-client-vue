@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "वेब होस्टिंग सूची",
-    "orderTitle": "वेबसाइट पंजीकरण ऑर्डर करें"
-  },
-  "view": {
-    "title": "वेबसाइट {id} देखें",
-    "package": "पैकेज",
-    "nextInvoiceDate": "अगली इनवॉइस तिथि:",
-    "billing": "बिलिंग",
-    "billed": "बिल किया गया",
-    "billingStatusIs": "बिलिंग स्थिति है:",
-    "login": "लॉगिन",
-    "links": "लिंक",
-    "emailSent": "ईमेल भेजा गया",
-    "emailSentMessage": "स्वागत ईमेल पुनः भेजा गया। अपना इनबॉक्स जांचें।",
-    "hostInfo": "होस्ट जानकारी",
-    "username": "उपयोगकर्ता नाम:",
-    "ip": "IP:",
-    "server": "सर्वर:",
-    "notSetYet": "अभी सेट नहीं",
-    "types": "प्रकार:",
-    "linksLabel": "लिंक:",
-    "manualLogin": "मैनुअल लॉगिन",
-    "automaticLogin": "स्वचालित लॉगिन",
-    "clickHere": "यहाँ क्लिक करें",
-    "defaultNameservers": "डिफ़ॉल्ट नेमसर्वर",
-    "nameservers": "नेमसर्वर:",
-    "externalLinks": "बाहरी लिंक",
-    "names": "नाम:",
-    "websitePreview": "वेबसाइट पूर्वावलोकन",
-    "welcomeEmailConfirm": "क्या आप वाकई स्वागत ईमेल फिर से भेजना चाहते हैं?"
-  },
-  "order": {
-    "title": "वेबसाइट ऑर्डर करें"
-  },
-  "migration": {
-    "title": "अपनी वेबसाइट माइग्रेट करें",
-    "password": "पासवर्ड",
-    "importantNotes": "महत्वपूर्ण नोट्स",
-    "currentWebHostInfo": "वर्तमान वेब होस्ट जानकारी",
-    "customerPortalUrl": "ग्राहक पोर्टल URL",
-    "portalExample": "उदाहरण: sso.godaddy.com",
-    "registeredUsername": "पंजीकृत उपयोगकर्ता नाम / ईमेल / ID",
-    "controlPanelUrl": "कंट्रोल पैनल URL",
-    "controlPanelExample": "उदाहरण: yourdomain.com/cpanel",
-    "ftpUsername": "FTP / कंट्रोल पैनल उपयोगकर्ता नाम",
-    "ftpPassword": "FTP / कंट्रोल पैनल पासवर्ड",
-    "holdingPageQuestion": "यदि साइट लाइव/व्यस्त है, तो क्या हम माइग्रेशन के दौरान होल्डिंग पेज सेट कर सकते हैं?",
-    "specialRequirementsQuestion": "क्या इस साइट की PHP संस्करण / मॉड्यूल जैसी विशेष आवश्यकताएं हैं?",
-    "domainRegistryInfo": "डोमेन रजिस्ट्री जानकारी",
-    "transferDomainQuestion": "क्या आप चाहते हैं कि हम डोमेन नाम पंजीकरण स्थानांतरित करने में भी मदद करें?",
-    "updateNameserversQuestion": "क्या आप चाहते हैं कि डेटा माइग्रेशन पूरा होते ही हम नेमसर्वर अपडेट करें?",
-    "domainRegistryPortal": "डोमेन रजिस्ट्री ग्राहक पोर्टल",
-    "note1": "यह फ़ॉर्म भरने से आपके माइग्रेशन शुरू करने के लिए एक नया टिकट खुलेगा।",
-    "note2": "देरी से बचने के लिए कृपया यथासंभव पूर्ण और सटीक रहें।",
-    "note3": "एक सामान्य माइग्रेशन 48 से 72 घंटों के भीतर पूरा होता है।",
-    "note4": "माइग्रेशन के दौरान पुराना होस्टिंग खाता ऑनलाइन और सुलभ होना चाहिए।",
-    "note5": "माइग्रेशन के दौरान अपनी साइट पर कोई अपडेट न करें।"
-  },
-  "buyIp": {
-    "title": "अतिरिक्त IP ऐड-ऑन खरीदें",
-    "existingAddonIps": "मौजूदा ऐड-ऑन IP",
-    "additionalIp": "अतिरिक्त IP",
-    "monthlyCost": "मासिक लागत ({symbol})",
-    "costDescription": "लागत ({symbol}) हर महीने जैसे आपकी वेबसाइट बिल होती है",
-    "confirmPurchase": "खरीद की पुष्टि करें",
-    "confirmMessage": "अतिरिक्त IP लागत: {symbol}{cost}/माह। क्या आप वाकई अतिरिक्त IP ऑर्डर करना चाहते हैं?",
-    "placeOrder": "ऑर्डर करें",
-    "orderPlaced": "ऑर्डर हो गया"
-  },
-  "reverseDns": {
-    "title": "रिवर्स DNS",
-    "updateReverseDns": "रिवर्स DNS अपडेट करें"
-  },
-  "downloadBackups": {
-    "title": "बैकअप डाउनलोड करें",
-    "backup": "बैकअप",
-    "size": "आकार",
-    "options": "विकल्प"
-  }
+    "list": {
+        "title": "वेब होस्टिंग सूची",
+        "orderTitle": "वेबसाइट पंजीकरण ऑर्डर करें"
+    },
+    "view": {
+        "title": "वेबसाइट {id} देखें",
+        "package": "पैकेज",
+        "nextInvoiceDate": "अगली इनवॉइस तिथि:",
+        "billing": "बिलिंग",
+        "billed": "बिल किया गया",
+        "billingStatusIs": "बिलिंग स्थिति है:",
+        "login": "लॉगिन",
+        "links": "लिंक",
+        "emailSent": "ईमेल भेजा गया",
+        "emailSentMessage": "स्वागत ईमेल पुनः भेजा गया। अपना इनबॉक्स जांचें।",
+        "hostInfo": "होस्ट जानकारी",
+        "username": "उपयोगकर्ता नाम:",
+        "ip": "IP:",
+        "server": "सर्वर:",
+        "notSetYet": "अभी सेट नहीं",
+        "types": "प्रकार:",
+        "linksLabel": "लिंक:",
+        "manualLogin": "मैनुअल लॉगिन",
+        "automaticLogin": "स्वचालित लॉगिन",
+        "clickHere": "यहाँ क्लिक करें",
+        "defaultNameservers": "डिफ़ॉल्ट नेमसर्वर",
+        "nameservers": "नेमसर्वर:",
+        "externalLinks": "बाहरी लिंक",
+        "names": "नाम:",
+        "websitePreview": "वेबसाइट पूर्वावलोकन",
+        "welcomeEmailConfirm": "क्या आप वाकई स्वागत ईमेल फिर से भेजना चाहते हैं?"
+    },
+    "order": {
+        "title": "वेबसाइट ऑर्डर करें"
+    },
+    "migration": {
+        "title": "अपनी वेबसाइट माइग्रेट करें",
+        "password": "पासवर्ड",
+        "importantNotes": "महत्वपूर्ण नोट्स",
+        "currentWebHostInfo": "वर्तमान वेब होस्ट जानकारी",
+        "customerPortalUrl": "ग्राहक पोर्टल URL",
+        "portalExample": "उदाहरण: sso.godaddy.com",
+        "registeredUsername": "पंजीकृत उपयोगकर्ता नाम / ईमेल / ID",
+        "controlPanelUrl": "कंट्रोल पैनल URL",
+        "controlPanelExample": "उदाहरण: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / कंट्रोल पैनल उपयोगकर्ता नाम",
+        "ftpPassword": "FTP / कंट्रोल पैनल पासवर्ड",
+        "holdingPageQuestion": "यदि साइट लाइव/व्यस्त है, तो क्या हम माइग्रेशन के दौरान होल्डिंग पेज सेट कर सकते हैं?",
+        "specialRequirementsQuestion": "क्या इस साइट की PHP संस्करण / मॉड्यूल जैसी विशेष आवश्यकताएं हैं?",
+        "domainRegistryInfo": "डोमेन रजिस्ट्री जानकारी",
+        "transferDomainQuestion": "क्या आप चाहते हैं कि हम डोमेन नाम पंजीकरण स्थानांतरित करने में भी मदद करें?",
+        "updateNameserversQuestion": "क्या आप चाहते हैं कि डेटा माइग्रेशन पूरा होते ही हम नेमसर्वर अपडेट करें?",
+        "domainRegistryPortal": "डोमेन रजिस्ट्री ग्राहक पोर्टल",
+        "note1": "यह फ़ॉर्म भरने से आपके माइग्रेशन शुरू करने के लिए एक नया टिकट खुलेगा।",
+        "note2": "देरी से बचने के लिए कृपया यथासंभव पूर्ण और सटीक रहें।",
+        "note3": "एक सामान्य माइग्रेशन 48 से 72 घंटों के भीतर पूरा होता है।",
+        "note4": "माइग्रेशन के दौरान पुराना होस्टिंग खाता ऑनलाइन और सुलभ होना चाहिए।",
+        "note5": "माइग्रेशन के दौरान अपनी साइट पर कोई अपडेट न करें।"
+    },
+    "buyIp": {
+        "title": "अतिरिक्त IP ऐड-ऑन खरीदें",
+        "existingAddonIps": "मौजूदा ऐड-ऑन IP",
+        "additionalIp": "अतिरिक्त IP",
+        "monthlyCost": "मासिक लागत ({symbol})",
+        "costDescription": "लागत ({symbol}) हर महीने जैसे आपकी वेबसाइट बिल होती है",
+        "confirmPurchase": "खरीद की पुष्टि करें",
+        "confirmMessage": "अतिरिक्त IP लागत: {symbol}{cost}/माह। क्या आप वाकई अतिरिक्त IP ऑर्डर करना चाहते हैं?",
+        "placeOrder": "ऑर्डर करें",
+        "orderPlaced": "ऑर्डर हो गया"
+    },
+    "reverseDns": {
+        "title": "रिवर्स DNS",
+        "updateReverseDns": "रिवर्स DNS अपडेट करें"
+    },
+    "downloadBackups": {
+        "title": "बैकअप डाउनलोड करें",
+        "backup": "बैकअप",
+        "size": "आकार",
+        "options": "विकल्प"
+    }
 }

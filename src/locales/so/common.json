@@ -105,6 +105,7 @@
         "loading": "Waa la rarayo...",
         "noData": "Xog ma jirto",
         "noActiveServices": "Adeeg Firfircoon Ma Jiro",
+        "noServicesMatchingFilter": "Lama helin adeeg u dhigma shaandhayinta '{filter}'",
         "controlPanel": "Barnaamijka Xukumida",
         "welcomeEmail": "Iimaylka Soo-dhawaynta",
         "invoices": "Qaybsashada",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ma hubtaa inaad joojin doontid?"
     },
     "footer": {
-        "copyright": "Xuquuqda \u00a9 {year} InterServer Inc.",
+        "copyright": "Xuquuqda © {year} InterServer Inc.",
         "allRightsReserved": "Dhammaan xuquuqaha waa dhawrsanaan."
     },
     "search": {

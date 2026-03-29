@@ -1,7 +1,12 @@
 {
-    "required": "{field} és obligatori", "email": "Ha de ser una adreça de correu electrònic vàlida",
-    "minLength": "Ha de tenir almenys {min} caràcters", "maxLength": "No ha de superar els {max} caràcters",
-    "passwordMatch": "Les contrasenyes han de coincidir", "invalidFormat": "Format no vàlid",
-    "numeric": "Ha de ser un número", "url": "Ha de ser una URL vàlida",
-    "ipAddress": "Ha de ser una adreça IP vàlida", "hostname": "Ha de ser un nom d'amfitrió vàlid"
+    "required": "{field} és obligatori",
+    "email": "Ha de ser una adreça de correu electrònic vàlida",
+    "minLength": "Ha de tenir almenys {min} caràcters",
+    "maxLength": "No ha de superar els {max} caràcters",
+    "passwordMatch": "Les contrasenyes han de coincidir",
+    "invalidFormat": "Format no vàlid",
+    "numeric": "Ha de ser un número",
+    "url": "Ha de ser una URL vàlida",
+    "ipAddress": "Ha de ser una adreça IP vàlida",
+    "hostname": "Ha de ser un nom d'amfitrió vàlid"
 }

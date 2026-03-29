@@ -105,6 +105,7 @@
         "loading": "በመጫን ላይ...",
         "noData": "ምንም ዳታ አይገኝም",
         "noActiveServices": "ምንም ንቁ አገልግሎቶች",
+        "noServicesMatchingFilter": "ከማጣሪያ '{filter}' ጋር የሚዛመዱ አገልግሎቶች አልተገኙም",
         "controlPanel": "ቁጥጥር ፓነል",
         "welcomeEmail": "የእንኳን ደህና መጡ ኢሜይል",
         "invoices": "ደረሰኞች",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "ሰርዝ እርግጠኛ ነዎት?"
     },
     "footer": {
-        "copyright": "የቅጂ መብት \u00a9 {year} InterServer Inc.",
+        "copyright": "የቅጂ መብት © {year} InterServer Inc.",
         "allRightsReserved": "ሁሉም መብቶች የተጠበቁ ናቸው።"
     },
     "search": {

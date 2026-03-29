@@ -1,1 +1,12 @@
-{ "required": "{field} yuav tsum muaj", "email": "Yuav tsum yog qhov chaw email raug", "minLength": "Yuav tsum muaj tsawg kawg {min} tus ntawv", "maxLength": "Yuav tsum tsis tshaj {max} tus ntawv", "passwordMatch": "Cov lej nkag yuav tsum sib xws", "invalidFormat": "Hom tsis raug", "numeric": "Yuav tsum yog tus lej", "url": "Yuav tsum yog URL raug", "ipAddress": "Yuav tsum yog qhov chaw IP raug", "hostname": "Yuav tsum yog npe tsev raug" }
+{
+    "required": "{field} yuav tsum muaj",
+    "email": "Yuav tsum yog qhov chaw email raug",
+    "minLength": "Yuav tsum muaj tsawg kawg {min} tus ntawv",
+    "maxLength": "Yuav tsum tsis tshaj {max} tus ntawv",
+    "passwordMatch": "Cov lej nkag yuav tsum sib xws",
+    "invalidFormat": "Hom tsis raug",
+    "numeric": "Yuav tsum yog tus lej",
+    "url": "Yuav tsum yog URL raug",
+    "ipAddress": "Yuav tsum yog qhov chaw IP raug",
+    "hostname": "Yuav tsum yog npe tsev raug"
+}

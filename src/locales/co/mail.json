@@ -1,49 +1,49 @@
 {
-  "list": {
-    "title": "Lista di servizii di posta",
-    "orderTitle": "Ordinate registrazioni di posta"
-  },
-  "view": {
-    "title": "Vede posta {id}",
-    "package": "Pacchettu",
-    "nextInvoiceDate": "Data di a prossima fattura:",
-    "billing": "Fatturazione",
-    "billed": "fatturatu:",
-    "statusIs": "U statu hè:",
-    "mailApi": "API posta",
-    "usageCount": "Cuntatore d'usu:",
-    "links": "Ligami",
-    "connectionInfo": "Infurmazioni di cunnessione",
-    "emailSent": "Email mandata",
-    "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella.",
-    "welcomeEmailConfirm": "Siete sicuru di vulè rimandà l'email di benvenuta?"
-  },
-  "order": {
-    "title": "Ordinate posta"
-  },
-  "alerts": {
-    "title": "Allerte",
-    "addAlert": "Aghjunghje allerta",
-    "editAlert": "Mudificà allerta",
-    "noAlerts": "Nisciuna allerta trovata"
-  },
-  "delist": {
-    "title": "Sguassà da a lista",
-    "blockedEmails": "Email bluccate"
-  },
-  "denyRules": {
-    "title": "Regule di rifiutu",
-    "addRule": "Aghjunghje regula",
-    "noRules": "Nisciuna regula di rifiutu trovata"
-  },
-  "logs": {
-    "title": "Registri",
-    "searchLogs": "Ricercà in i registri"
-  },
-  "stats": {
-    "title": "Statistiche"
-  },
-  "deliverability": {
-    "title": "Consegnabilità"
-  }
+    "list": {
+        "title": "Lista di servizii di posta",
+        "orderTitle": "Ordinate registrazioni di posta"
+    },
+    "view": {
+        "title": "Vede posta {id}",
+        "package": "Pacchettu",
+        "nextInvoiceDate": "Data di a prossima fattura:",
+        "billing": "Fatturazione",
+        "billed": "fatturatu:",
+        "statusIs": "U statu hè:",
+        "mailApi": "API posta",
+        "usageCount": "Cuntatore d'usu:",
+        "links": "Ligami",
+        "connectionInfo": "Infurmazioni di cunnessione",
+        "emailSent": "Email mandata",
+        "emailSentMessage": "L'email di benvenuta hè stata rimessa. Cuntrullate a vostra casella.",
+        "welcomeEmailConfirm": "Siete sicuru di vulè rimandà l'email di benvenuta?"
+    },
+    "order": {
+        "title": "Ordinate posta"
+    },
+    "alerts": {
+        "title": "Allerte",
+        "addAlert": "Aghjunghje allerta",
+        "editAlert": "Mudificà allerta",
+        "noAlerts": "Nisciuna allerta trovata"
+    },
+    "delist": {
+        "title": "Sguassà da a lista",
+        "blockedEmails": "Email bluccate"
+    },
+    "denyRules": {
+        "title": "Regule di rifiutu",
+        "addRule": "Aghjunghje regula",
+        "noRules": "Nisciuna regula di rifiutu trovata"
+    },
+    "logs": {
+        "title": "Registri",
+        "searchLogs": "Ricercà in i registri"
+    },
+    "stats": {
+        "title": "Statistiche"
+    },
+    "deliverability": {
+        "title": "Consegnabilità"
+    }
 }

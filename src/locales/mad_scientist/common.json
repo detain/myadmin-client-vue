@@ -105,6 +105,7 @@
         "loading": "Calculating...",
         "noData": "No data detected in apparatus",
         "noActiveServices": "No Fully Operational Laboratory Apparatuses",
+        "noServicesMatchingFilter": "No experimental apparatus detected matching parameters '{filter}'",
         "controlPanel": "Command & Control Interface",
         "welcomeEmail": "Laboratory Orientation Communication",
         "invoices": "Funding Requisition Documents",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Are you sure you want to abort this experiment?"
     },
     "footer": {
-        "copyright": "All intellectual property protected by laboratory decree \u00a9 {year} InterServer Inc.",
+        "copyright": "All intellectual property protected by laboratory decree © {year} InterServer Inc.",
         "allRightsReserved": "All research rights reserved."
     },
     "search": {

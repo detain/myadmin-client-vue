@@ -1,82 +1,82 @@
 {
-  "list": {
-    "title": "Llista d'allotjament web",
-    "orderTitle": "Comandar registres de lloc web"
-  },
-  "view": {
-    "title": "Veure lloc web {id}",
-    "package": "Paquet",
-    "nextInvoiceDate": "Data de la pròxima factura:",
-    "billing": "Facturació",
-    "billed": "facturat",
-    "billingStatusIs": "L'estat de facturació és:",
-    "login": "Iniciar sessió",
-    "links": "Enllaços",
-    "emailSent": "Correu electrònic enviat",
-    "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada.",
-    "hostInfo": "Informació de l'amfitrió",
-    "username": "Nom d'usuari:",
-    "ip": "IP:",
-    "server": "Servidor:",
-    "notSetYet": "Encara no s'ha configurat",
-    "types": "Tipus:",
-    "linksLabel": "Enllaços:",
-    "manualLogin": "Inici de sessió manual",
-    "automaticLogin": "Inici de sessió automàtic",
-    "clickHere": "Feu clic aquí",
-    "defaultNameservers": "Servidors de noms per defecte",
-    "nameservers": "Servidors de noms:",
-    "externalLinks": "Enllaços externs",
-    "names": "Noms:",
-    "websitePreview": "Previsualització del lloc web",
-    "welcomeEmailConfirm": "Esteu segur que voleu tornar a enviar el correu electrònic de benvinguda?"
-  },
-  "order": {
-    "title": "Comandar lloc web"
-  },
-  "migration": {
-    "title": "Migrar el vostre lloc web",
-    "password": "Contrasenya",
-    "importantNotes": "Notes importants",
-    "currentWebHostInfo": "Informació de l'allotjament web actual",
-    "customerPortalUrl": "URL del portal del client",
-    "portalExample": "Per exemple: sso.godaddy.com",
-    "registeredUsername": "Nom d'usuari / Correu electrònic / ID registrat",
-    "controlPanelUrl": "URL del tauler de control",
-    "controlPanelExample": "Per exemple: yourdomain.com/cpanel",
-    "ftpUsername": "FTP / Nom d'usuari del tauler de control",
-    "ftpPassword": "FTP / Contrasenya del tauler de control",
-    "holdingPageQuestion": "Si el lloc és actiu/ocupat amb molt de trànsit, podem establir una pàgina d'espera durant la migració?",
-    "specialRequirementsQuestion": "Té aquest lloc requisits especials com la versió de PHP / Mòduls?",
-    "domainRegistryInfo": "Informació del registre de domini",
-    "transferDomainQuestion": "Voleu que us ajudem a transferir el registre del domini?",
-    "updateNameserversQuestion": "Voleu que actualitzem els servidors de noms tan aviat com acabem la migració de dades?",
-    "domainRegistryPortal": "Portal del client del registre de domini",
-    "note1": "Omplir aquest formulari obrirà un nou tíquet per al nostre departament de suport perquè comenci la vostra migració.",
-    "note2": "Sigueu el més complet i precís possible per evitar retards.",
-    "note3": "Una migració típica es completa en 48 a 72 hores. De vegades més si la quantitat de dades a copiar és gran.",
-    "note4": "L'allotjament antic ha d'estar en línia i accessible mentre realitzem la migració, d'altra manera podem tenir dificultats.",
-    "note5": "No feu actualitzacions al vostre lloc mentre realitzem la migració, d'altra manera aquestes dades poden no copiar-se al nou allotjament."
-  },
-  "buyIp": {
-    "title": "Comprar complement d'IP addicional",
-    "existingAddonIps": "IP de complements existents",
-    "additionalIp": "IP addicional",
-    "monthlyCost": "Cost mensual ({symbol})",
-    "costDescription": "Cost ({symbol}) cada mes quan es factura el lloc web",
-    "confirmPurchase": "Confirmar la compra",
-    "confirmMessage": "Cost d'IP addicional: {symbol}{cost}/mes. Esteu segur que voleu demanar una IP addicional?",
-    "placeOrder": "Fer la comanda",
-    "orderPlaced": "Comanda feta"
-  },
-  "reverseDns": {
-    "title": "DNS invers",
-    "updateReverseDns": "Actualitzar el DNS invers"
-  },
-  "downloadBackups": {
-    "title": "Descarregar còpies de seguretat",
-    "backup": "Còpia de seguretat",
-    "size": "Mida",
-    "options": "Opcions"
-  }
+    "list": {
+        "title": "Llista d'allotjament web",
+        "orderTitle": "Comandar registres de lloc web"
+    },
+    "view": {
+        "title": "Veure lloc web {id}",
+        "package": "Paquet",
+        "nextInvoiceDate": "Data de la pròxima factura:",
+        "billing": "Facturació",
+        "billed": "facturat",
+        "billingStatusIs": "L'estat de facturació és:",
+        "login": "Iniciar sessió",
+        "links": "Enllaços",
+        "emailSent": "Correu electrònic enviat",
+        "emailSentMessage": "El correu de benvinguda s'ha tornat a enviar. Comproveu la vostra bústia d'entrada.",
+        "hostInfo": "Informació de l'amfitrió",
+        "username": "Nom d'usuari:",
+        "ip": "IP:",
+        "server": "Servidor:",
+        "notSetYet": "Encara no s'ha configurat",
+        "types": "Tipus:",
+        "linksLabel": "Enllaços:",
+        "manualLogin": "Inici de sessió manual",
+        "automaticLogin": "Inici de sessió automàtic",
+        "clickHere": "Feu clic aquí",
+        "defaultNameservers": "Servidors de noms per defecte",
+        "nameservers": "Servidors de noms:",
+        "externalLinks": "Enllaços externs",
+        "names": "Noms:",
+        "websitePreview": "Previsualització del lloc web",
+        "welcomeEmailConfirm": "Esteu segur que voleu tornar a enviar el correu electrònic de benvinguda?"
+    },
+    "order": {
+        "title": "Comandar lloc web"
+    },
+    "migration": {
+        "title": "Migrar el vostre lloc web",
+        "password": "Contrasenya",
+        "importantNotes": "Notes importants",
+        "currentWebHostInfo": "Informació de l'allotjament web actual",
+        "customerPortalUrl": "URL del portal del client",
+        "portalExample": "Per exemple: sso.godaddy.com",
+        "registeredUsername": "Nom d'usuari / Correu electrònic / ID registrat",
+        "controlPanelUrl": "URL del tauler de control",
+        "controlPanelExample": "Per exemple: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Nom d'usuari del tauler de control",
+        "ftpPassword": "FTP / Contrasenya del tauler de control",
+        "holdingPageQuestion": "Si el lloc és actiu/ocupat amb molt de trànsit, podem establir una pàgina d'espera durant la migració?",
+        "specialRequirementsQuestion": "Té aquest lloc requisits especials com la versió de PHP / Mòduls?",
+        "domainRegistryInfo": "Informació del registre de domini",
+        "transferDomainQuestion": "Voleu que us ajudem a transferir el registre del domini?",
+        "updateNameserversQuestion": "Voleu que actualitzem els servidors de noms tan aviat com acabem la migració de dades?",
+        "domainRegistryPortal": "Portal del client del registre de domini",
+        "note1": "Omplir aquest formulari obrirà un nou tíquet per al nostre departament de suport perquè comenci la vostra migració.",
+        "note2": "Sigueu el més complet i precís possible per evitar retards.",
+        "note3": "Una migració típica es completa en 48 a 72 hores. De vegades més si la quantitat de dades a copiar és gran.",
+        "note4": "L'allotjament antic ha d'estar en línia i accessible mentre realitzem la migració, d'altra manera podem tenir dificultats.",
+        "note5": "No feu actualitzacions al vostre lloc mentre realitzem la migració, d'altra manera aquestes dades poden no copiar-se al nou allotjament."
+    },
+    "buyIp": {
+        "title": "Comprar complement d'IP addicional",
+        "existingAddonIps": "IP de complements existents",
+        "additionalIp": "IP addicional",
+        "monthlyCost": "Cost mensual ({symbol})",
+        "costDescription": "Cost ({symbol}) cada mes quan es factura el lloc web",
+        "confirmPurchase": "Confirmar la compra",
+        "confirmMessage": "Cost d'IP addicional: {symbol}{cost}/mes. Esteu segur que voleu demanar una IP addicional?",
+        "placeOrder": "Fer la comanda",
+        "orderPlaced": "Comanda feta"
+    },
+    "reverseDns": {
+        "title": "DNS invers",
+        "updateReverseDns": "Actualitzar el DNS invers"
+    },
+    "downloadBackups": {
+        "title": "Descarregar còpies de seguretat",
+        "backup": "Còpia de seguretat",
+        "size": "Mida",
+        "options": "Opcions"
+    }
 }

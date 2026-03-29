@@ -1,1 +1,12 @@
-{ "title": "Masu Amfani", "addUser": "Ƙara Mai Amfani", "editUser": "Gyara Mai Amfani", "firstName": "Suna na Farko", "lastName": "Suna na Ƙarshe", "username": "Sunan Mai Amfani", "password": "Kalmar Sirri", "keepSamePassword": "Bar fanko don kiyaye kalmar sirri ɗaya", "errorLoading": "Kuskure wajen lodi masu amfani:", "errorLoadingUser": "Kuskure wajen lodi mai amfani:" }
+{
+    "title": "Masu Amfani",
+    "addUser": "Ƙara Mai Amfani",
+    "editUser": "Gyara Mai Amfani",
+    "firstName": "Suna na Farko",
+    "lastName": "Suna na Ƙarshe",
+    "username": "Sunan Mai Amfani",
+    "password": "Kalmar Sirri",
+    "keepSamePassword": "Bar fanko don kiyaye kalmar sirri ɗaya",
+    "errorLoading": "Kuskure wajen lodi masu amfani:",
+    "errorLoadingUser": "Kuskure wajen lodi mai amfani:"
+}
