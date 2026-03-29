@@ -6,201 +6,205 @@ description: Creates a new Pinia store in src/stores/{domain}.store.ts following
 
 ## Critical
 
-- **All stores use Options API** (`state`, `getters`, `actions` object) — NOT Composition API / setup function, despite components using `<script setup>`.
-- **Never use raw `fetch` or `axios`** — always use `fetchWrapper` from `@/helpers/fetchWrapper`.
-- **Base URL** must come from `useSiteStore().getBaseUrl()` — never hardcode API URLs.
-- **File naming**: `src/stores/{domain}.store.ts` — export as `use{Domain}Store`.
-- **Call `this.$reset()`** inside `getById()` before mapping response properties to clear stale state.
+- **Options API only** — all service stores use `defineStore('name', { state, getters, actions })`, never Setup stores.
+- **Never use `axios` or raw `fetch`** — always `fetchWrapper` from `@/helpers/fetchWrapper`.
+- **Use `@` alias** — import from `@/stores/...`, `@/helpers/...`, `@/types/...`. No relative paths.
+- **One store per domain** — file goes in `src/stores/` following the pattern of `src/stores/mail.store.ts`, `src/stores/backup.store.ts`, `src/stores/vps.store.ts`, exported as `use{Domain}Store`.
+- **API calls belong in actions, not components.**
 
 ## Instructions
 
-### Step 1: Define the service info interface
+1. **Determine the domain name and API endpoint.** Ask the user for:
+   - Domain name (e.g., `backup`, `dns`, `ssl`) — used for file naming and store ID
+   - API endpoint path (e.g., `backups`, `dns`) — used in fetchWrapper URLs
+   - Key fields the service has (e.g., `backup_id`, `backup_hostname`, `backup_status`)
+   - Which fields should be `titleField` / `titleField2` getters
 
-Create the `{Domain}Info` interface at the top of the file. Fields follow the pattern `{prefix}_{field}` matching the API response. Every service has at minimum: `id`, `type`, `currency`, `order_date`, `custid`, `ip`, `status`, `invoice`, `coupon`, `extra`, `server_status`, `comment`.
+   Verify: domain name is snake_case, store ID matches existing convention. Check existing stores for reference:
 
-```typescript
-interface DomainInfo {
-    domain_id: number;
-    domain_type: number;
-    domain_currency: string;
-    domain_order_date: string;
-    domain_custid: number;
-    domain_ip: string;
-    domain_status: string;
-    domain_invoice: number;
-    domain_coupon: number;
-    domain_extra: string;
-    domain_server_status: string;
-    domain_comment: string;
-}
-```
+   ```bash
+   ls src/stores/
+   ```
 
-**Verify**: Interface field names match the API's snake_case response keys before proceeding.
+2. **Create the `{Domain}Info` interface.** Define all service-specific fields with proper types. Follow the naming pattern `{domain}_{field}` matching the API response. Reference `src/stores/backup.store.ts` or `src/stores/mail.store.ts` for real examples:
+   ```typescript
+   interface BackupInfo {
+       backup_id: number;
+       backup_type: number;
+       backup_currency: string;
+       backup_order_date: string;
+       backup_custid: number;
+       backup_ip: string;
+       backup_status: string;
+       backup_invoice: number;
+       backup_coupon: number;
+       backup_extra: string;
+       backup_server_status: string;
+       backup_comment: string;
+   }
+   ```
+   Verify: every field has an explicit type (no implicit `any`), ID field is `number`.
 
-### Step 2: Define the state interface
+3. **Create the `{Domain}State` interface.** Always include these standard fields:
+   ```typescript
+   interface BackupState {
+       backupList: BackupInfo[];        // camelCase domain + "List"
+       serviceInfo: BackupInfo;
+       loading: boolean;
+       error: boolean | string;
+       linkDisplay: boolean | string;
+       pkg: string;
+       clientLinks: ClientLink[];
+       billingDetails: BillingDetails;
+       custCurrency: string;
+       custCurrencySymbol: string;
+       serviceExtra: any;
+       extraInfoTables: ExtraInfoTables;
+       serviceType: ServiceType;
+       usage_count: number;
+   }
+   ```
+   Verify: `{domain}List` uses camelCase (e.g., `floatingIpList` not `floating_ipsList`). See `src/stores/floating_ips.store.ts` for this pattern.
 
-Create `{Domain}State` with the standard service store shape:
+4. **Write the store file** in `src/stores/` (e.g., `src/stores/backup.store.ts`). Use this exact template:
 
-```typescript
-interface DomainState {
-    domainList: DomainInfo[];
-    serviceInfo: DomainInfo;
-    loading: boolean;
-    error: boolean | string;
-    linkDisplay: boolean | string;
-    pkg: string;
-    clientLinks: ClientLink[];
-    billingDetails: BillingDetails;
-    custCurrency: string;
-    custCurrencySymbol: string;
-    serviceExtra: any;
-    extraInfoTables: ExtraInfoTables;
-    serviceType: ServiceType;
-    usage_count: number;
-}
-```
+   ```typescript
+   import { defineStore } from 'pinia';
+   import { fetchWrapper } from '@/helpers/fetchWrapper';
+   import { snakeToCamel } from '@/helpers/snakeToCamel';
 
-**Verify**: Import shared types from `@/types/view-service-common`:
-```typescript
-import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
-```
+   import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
+   import { useAuthStore } from '@/stores/auth.store';
+   import { useSiteStore } from '@/stores/site.store';
 
-### Step 3: Create the store with defineStore
+   // ... interfaces here ...
 
-Use the exact import and export pattern:
+   export const useBackupStore = defineStore('backup', {
+       state: (): BackupState => ({
+           backupList: [],
+           loading: false,
+           error: false,
+           pkg: '',
+           linkDisplay: false,
+           serviceInfo: { /* all fields with zero/empty defaults */ },
+           clientLinks: [],
+           billingDetails: {
+               service_last_invoice_date: '',
+               service_payment_status: '',
+               service_frequency: '',
+               next_date: '',
+               service_next_invoice_date: '',
+               service_currency: 'USD',
+               service_currency_symbol: '$',
+               service_coupon: '',
+               service_cost_info: '0.00',
+               service_extra: [],
+           },
+           custCurrency: 'USD',
+           custCurrencySymbol: '$',
+           serviceExtra: [],
+           extraInfoTables: {
+               backup: { title: 'Connection Information', rows: [] },
+               tutorials: { title: 'Tutorials', rows: [] },
+           },
+           serviceType: {
+               services_id: 0,
+               services_name: '',
+               services_cost: 0,
+               services_category: 0,
+               services_buyable: 0,
+               services_type: 0,
+               services_field1: '',
+               services_field2: '',
+               services_module: 'backups',
+           },
+           usage_count: 0,
+       }),
+       getters: {
+           titleField: (state) => state.serviceInfo.backup_hostname,
+           titleField2: (state) => state.serviceInfo.backup_ip,
+       },
+       actions: {
+           async register(user: any): Promise<void> {
+               const siteStore = useSiteStore();
+               const baseUrl = siteStore.getBaseUrl();
+               await fetchWrapper.post(`${baseUrl}/register`, user);
+           },
+           async getAll(): Promise<void> {
+               const siteStore = useSiteStore();
+               const baseUrl = siteStore.getBaseUrl();
+               this.loading = true;
+               try {
+                   this.backupList = await fetchWrapper.get(`${baseUrl}/backups`);
+               } catch (error: any) {
+                   console.log(`got error response${error}`);
+                   this.error = error;
+               }
+               this.loading = false;
+           },
+           async getById(id: number | string): Promise<void> {
+               const siteStore = useSiteStore();
+               const baseUrl = siteStore.getBaseUrl();
+               try {
+                   const response = await fetchWrapper.get(`${baseUrl}/backups/${id}`);
+                   this.$reset();
+                   console.log(response);
+                   this.serviceInfo = response.serviceInfo;
+                   this.clientLinks = response.client_links;
+                   this.billingDetails = response.billingDetails;
+                   this.custCurrency = response.custCurrency;
+                   this.custCurrencySymbol = response.custCurrencySymbol;
+                   this.pkg = response.package;
+                   this.serviceExtra = response.serviceExtra;
+                   this.extraInfoTables = response.extraInfoTables;
+                   this.serviceType = response.serviceType;
+                   this.usage_count = response.usage_count;
+               } catch (error: any) {
+                   console.log('api failed', error);
+               }
+           },
+           async update(id: number, params: any): Promise<void> {},
+           async delete(id: number): Promise<void> {
+               const siteStore = useSiteStore();
+               const baseUrl = siteStore.getBaseUrl();
+               await fetchWrapper.delete(`${baseUrl}/${id}`);
+               this.backupList = this.backupList.filter((x) => x.backup_id !== id);
+           },
+       },
+   });
+   ```
 
-```typescript
-import { defineStore } from 'pinia';
-import { fetchWrapper } from '@/helpers/fetchWrapper';
-import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
-import { useSiteStore } from '@/stores/site.store';
+   Verify: file exports exactly one store. Run `yarn ts` to type-check:
 
-export const useDomainStore = defineStore('domain', {
-    state: (): DomainState => ({ /* defaults */ }),
-    getters: { /* titleField, titleField2 */ },
-    actions: { /* register, getAll, getById, update, delete */ },
-});
-```
+   ```bash
+   yarn ts
+   ```
 
-**Verify**: Store ID string (first arg to `defineStore`) matches the API endpoint name (e.g., `'mail'`, `'floating_ips'`).
+5. **Verify the store compiles.** Fix any type errors before proceeding. Confirm the store ID string passed to `defineStore` is unique across all stores in `src/stores/`:
 
-### Step 4: Populate state defaults
-
-Follow the exact default value pattern from existing stores:
-- `{domain}List: []`
-- `loading: false`, `error: false`, `linkDisplay: false`
-- `pkg: ''`
-- `serviceInfo`: all number fields default to `0`, strings to `''`
-- `clientLinks: []`
-- `billingDetails`: copy the exact shape from mail.store.ts (currency `'USD'`, symbol `'$'`, cost_info `'0.00'`, service_extra `[]`)
-- `custCurrency: 'USD'`, `custCurrencySymbol: '$'`
-- `serviceExtra: []`
-- `extraInfoTables`: keyed by domain name + `'tutorials'`, each with `title` and `rows: []`
-- `serviceType`: all defaults to `0`/`''`, set `services_module` to the API endpoint name
-- `usage_count: 0`
-
-**Verify**: `extraInfoTables` first key matches the domain name, `serviceType.services_module` matches the API endpoint.
-
-### Step 5: Add getters
-
-Define `titleField` and `titleField2` pointing to the most useful display fields:
-
-```typescript
-getters: {
-    titleField: (state) => state.serviceInfo.domain_name,
-    titleField2: (state) => state.serviceInfo.domain_ip,
-},
-```
-
-### Step 6: Implement actions
-
-All actions follow this exact pattern:
-
-```typescript
-actions: {
-    async register(user: any): Promise<void> {
-        const siteStore = useSiteStore();
-        const baseUrl = siteStore.getBaseUrl();
-        await fetchWrapper.post(`${baseUrl}/register`, user);
-    },
-    async getAll(): Promise<void> {
-        const siteStore = useSiteStore();
-        const baseUrl = siteStore.getBaseUrl();
-        this.loading = true;
-        try {
-            this.domainList = await fetchWrapper.get(`${baseUrl}/domains`);
-        } catch (error: any) {
-            console.log(`got error response${error}`);
-            this.error = error;
-        }
-        this.loading = false;
-    },
-    async getById(id: number | string): Promise<void> {
-        const siteStore = useSiteStore();
-        const baseUrl = siteStore.getBaseUrl();
-        try {
-            const response = await fetchWrapper.get(`${baseUrl}/domains/${id}`);
-            this.$reset();
-            this.serviceInfo = response.serviceInfo;
-            this.clientLinks = response.client_links;
-            this.billingDetails = response.billingDetails;
-            this.custCurrency = response.custCurrency;
-            this.custCurrencySymbol = response.custCurrencySymbol;
-            this.pkg = response.package;
-            this.serviceExtra = response.serviceExtra;
-            this.extraInfoTables = response.extraInfoTables;
-            this.serviceType = response.serviceType;
-            this.usage_count = response.usage_count;
-        } catch (error: any) {
-            console.log('api failed', error);
-        }
-    },
-    async update(id: number, params: any): Promise<void> {},
-    async delete(id: number): Promise<void> {
-        const siteStore = useSiteStore();
-        const baseUrl = siteStore.getBaseUrl();
-        await fetchWrapper.delete(`${baseUrl}/${id}`);
-        this.domainList = this.domainList.filter((x) => x.domain_id !== id);
-    },
-},
-```
-
-**Verify**: `this.$reset()` is called in `getById` BEFORE mapping response. The `getAll` endpoint and `getById` endpoint match the API route.
-
-### Step 7: Run type-check
-
-```bash
-yarn ts
-```
-
-**Verify**: No TypeScript errors related to the new store file.
+   ```bash
+   grep "defineStore(" src/stores/*.ts
+   ```
 
 ## Examples
 
-**User says**: "Create a new Pinia store for the CDN service"
+**User says:** "Create a new Pinia store for backups"
 
-**Actions taken**:
-1. Create `src/stores/cdn.store.ts`
-2. Define `CdnInfo` interface with `cdn_id`, `cdn_hostname`, `cdn_ip`, `cdn_status`, etc.
-3. Define `CdnState` with `cdnList: CdnInfo[]` and standard service fields
-4. Export `useCdnStore = defineStore('cdn', { ... })` with Options API
-5. Set `extraInfoTables` key to `'cdn'`, `serviceType.services_module` to `'cdn'`
-6. Add getters: `titleField` → `cdn_hostname`, `titleField2` → `cdn_ip`
-7. Implement `register`, `getAll` (endpoint `/cdn`), `getById`, `update` (empty stub), `delete`
-8. Run `yarn ts` to verify
+**Actions taken:**
+1. Create `src/stores/backup.store.ts`
+2. Define `BackupInfo` interface with fields: `backup_id`, `backup_hostname`, `backup_type`, `backup_currency`, `backup_order_date`, `backup_custid`, `backup_status`, `backup_invoice`, `backup_coupon`, `backup_extra`, `backup_server_status`, `backup_comment`
+3. Define `BackupState` with `backupList: BackupInfo[]` and all standard service state fields
+4. Export `useBackupStore = defineStore('backup', { ... })` with `getAll()` hitting `/backups`, `getById(id)` hitting `/backups/${id}`
+5. Set `titleField` getter to `state.serviceInfo.backup_hostname`
+6. Run `yarn ts` — passes with no errors
 
-**Result**: `src/stores/cdn.store.ts` exports `useCdnStore`, ready to import in views as:
-```typescript
-import { useCdnStore } from '@/stores/cdn.store';
-import { storeToRefs } from 'pinia';
-const cdnStore = useCdnStore();
-const { cdnList, loading, serviceInfo } = storeToRefs(cdnStore);
-```
+**Result:** `src/stores/backup.store.ts` matches the exact pattern of `src/stores/mail.store.ts` and `src/stores/floating_ips.store.ts`.
 
 ## Common Issues
 
-- **`Property 'xxx' does not exist on type`**: The `{Domain}Info` interface is missing a field. Add the field to the interface and provide a default in `state()`.
-- **`this.$reset is not a function`**: You used Composition API (setup function) instead of Options API. Stores MUST use `defineStore('name', { state, getters, actions })` — the setup syntax does not support `$reset()`.
-- **API returns 404 on `getAll()`**: The endpoint path in `fetchWrapper.get()` doesn't match the backend route. Check `useSiteStore().modules` for the correct `TBLNAME` value (e.g., `'floating_ips'` not `'floatingIps'`).
-- **State not clearing between service views**: Ensure `this.$reset()` is called at the top of `getById()` before mapping response properties. This prevents stale data from a previous service leaking into the current view.
-- **Import error for `ClientLink` / `BillingDetails`**: Import from `@/types/view-service-common`, not from individual type files.
+- **`Type 'X' is not assignable to type 'Y'`**: Check that `serviceInfo` default values match the interface exactly — every field must be initialized with the correct type (`0` for numbers, `''` for strings).
+- **`Property 'backupList' does not exist`**: The list property name must be camelCase. For `floating_ips` domain, it's `floatingIpList` not `floating_ipsList`. Use `snakeToCamel` mentally: underscores removed, next letter capitalized.
+- **Store ID collision**: The string passed to `defineStore('...')` must be unique. Check existing stores with `grep "defineStore(" src/stores/*.ts`. Existing IDs include: `floating_ip`, `mail`, `website`, `account`, `auth`, `site`, `alert`. Use singular form matching the API module name.
+- **`fetchWrapper is not defined`**: Must import from `@/helpers/fetchWrapper`, not destructure from a different path. The import is `import { fetchWrapper } from '@/helpers/fetchWrapper';`.
+- **`billingDetails` missing fields**: Copy the exact `BillingDetails` default object from an existing store like `src/stores/mail.store.ts`. All optional fields from the type should still have empty-string defaults in state.
+- **`getBaseUrl is not a function`**: You must call `useSiteStore()` inside each action, not at module level. Pinia stores aren't available until the app is mounted.
