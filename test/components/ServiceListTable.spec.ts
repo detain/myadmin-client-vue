@@ -248,15 +248,18 @@ describe('ServiceListTable', () => {
                 { id: 1, hostname: 'server1.test.com', status: 'expired' },
             ];
             const wrapper = createWrapper({ data: noActiveData });
-            // Default filter is active, no items are active
+            // Default filter is active, no items are active — shows empty-state message row
             const rows = wrapper.findAll('tbody tr');
-            expect(rows.length).toBe(0);
+            expect(rows.length).toBe(1);
+            expect(rows[0].text()).toContain('No services found matching filter');
         });
 
         it('renders table with no data', () => {
             const wrapper = createWrapper({ data: [] });
+            // Empty data shows empty-state message row
             const rows = wrapper.findAll('tbody tr');
-            expect(rows.length).toBe(0);
+            expect(rows.length).toBe(1);
+            expect(rows[0].text()).toContain('No services found matching filter');
         });
     });
 
