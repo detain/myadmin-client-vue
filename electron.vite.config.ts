@@ -62,7 +62,7 @@ export default defineConfig({
                     },
                     manualChunks(id) {
                         if (id.includes('node_modules')) {
-                            if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router' || id.includes('vue-i18n')) {
+                            if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router') || id.includes('vue-i18')) {
                                 return 'framework';
                             }
                             if (id.includes('admin-lte') || id.includes('jquery') || id.includes('bootstrap') || id.includes('select2')) {
