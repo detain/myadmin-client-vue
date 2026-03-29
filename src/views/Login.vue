@@ -7,7 +7,7 @@ import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import { router } from '@/router/index';
-import { defaultLocale, loadLocaleMessages, resolveAppLocale, setAppLocale } from '@/i18n';
+import { defaultLocale, loadLocaleMessages, reloadAllNamespacesForLocale, resolveAppLocale, setAppLocale } from '@/i18n';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -657,12 +657,7 @@ const selectedLocale = ref(resolveAppLocale(null));
 
 async function onLocaleChange() {
     const locale = setAppLocale(selectedLocale.value);
-    await Promise.all([
-        loadLocaleMessages(locale, 'common'),
-        loadLocaleMessages(locale, 'login'),
-        loadLocaleMessages(defaultLocale, 'common'),
-        loadLocaleMessages(defaultLocale, 'login'),
-    ]);
+    await reloadAllNamespacesForLocale(locale);
 }
 
 watch(selectedLocale, onLocaleChange);
