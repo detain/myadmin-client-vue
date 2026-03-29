@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Roaming Runes Services List",
+        "orderTitle": "Conjure Roaming Rune Registrations"
+    },
+    "view": {
+        "title": "View Roaming Rune {id}",
+        "package": "Enchantment Tier",
+        "nextInvoiceDate": "Next Debt Scroll Date:",
+        "billing": "Grand Treasury",
+        "billed": "tithed:",
+        "statusIs": "Aura is:",
+        "floatingIp": "Roaming Rune",
+        "links": "Portals",
+        "welcomeEmailConfirm": "Art thou certain thou wishest to resend the welcoming stone?",
+        "emailSent": "Sending Stone Dispatched",
+        "emailSentMessage": "The welcoming stone hath been resent. Check thy inbox."
+    },
+    "order": {
+        "title": "Conjure Roaming Rune"
+    },
+    "changeIp": {
+        "title": "Alter Target Ether Address"
+    }
+}

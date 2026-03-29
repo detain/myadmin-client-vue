@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Trader Account Shop Preferences"
+    },
+    "changePassword": {
+        "title": "Change Secret Access Code",
+        "cardTitle": "Update the Terms of Your Secret Access Code",
+        "currentPassword": "Current Secret Access Code",
+        "newPassword": "New Secret Access Code",
+        "confirmPassword": "Confirm New Secret Access Code",
+        "updatePassword": "Lock In New Secret Access Code"
+    },
+    "changeUsername": {
+        "title": "Change Trading Alias",
+        "disabled": "Trading Alias changes have been temporarily suspended — come back later!",
+        "currentUsername": "Current Trading Alias",
+        "newDesiredUsername": "Your Desired New Trading Alias",
+        "confirmationCode": "Confirmation Code",
+        "pleaseWait": "Just a moment, we're processing your order...",
+        "gotError": "Something went wrong — our apologies! {error}"
+    },
+    "contactInfo": {
+        "title": "Contact Details",
+        "cardTitle": "Update Your Contact Details",
+        "headsUp": "Hear ye, hear ye!",
+        "headsUpMessage": "Although this information is optional, providing (accurate) information will help both enrich our dealings and lower your Risk % Score — giving you quicker and more convenient access to parts of the bazaar (such as not having to authenticate a payment card).",
+        "riskScore": "Risk % Score",
+        "personalInformation": "Personal Trading Information",
+        "name": "Name",
+        "namePlaceholder": "Joe Cool",
+        "company": "Company",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "cityState": "City, State",
+        "city": "City",
+        "state": "State",
+        "country": "Country",
+        "zipcode": "Zipcode",
+        "phoneNo": "Phone No",
+        "phoneNumber": "Phone Number",
+        "language": "Language",
+        "auto": "Auto",
+        "currency": "Currency",
+        "timeZone": "Time Zone",
+        "otherSettings": "Other Shop Preferences",
+        "disablePasswordResets": "Disable (Forgot your Secret Access Code) Password Resets.",
+        "disableInvoiceReminders": "Disable Bills Due Reminder Contact Address Notifications.",
+        "disableServerInvoiceReminders": "Disable Cargo Unit Bills Due Reminder Contact Address Notifications.",
+        "disableReinstall": "Disable Reinstall.",
+        "alternateEmailInvoices": "Alternate Contact Address for Bills Due",
+        "alternateEmailInvoicesPlaceholder": "Alternative contact address for sending bills",
+        "alternateEmailAbuse": "Alternate Contact Address for Abuse Reports",
+        "updateInfo": "Update the Terms"
+    }
+}

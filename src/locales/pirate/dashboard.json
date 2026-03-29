@@ -1,0 +1,28 @@
+{
+    "title": "The Captain's Quarters",
+    "welcome": "Welcome aboard, {name}",
+    "lastLogin": "Last Time Ye Boarded",
+    "lastLoginIp": "Last Boarding Ship's Coordinates",
+    "prepay": {
+        "title": "Pre-Loaded Coin Chest",
+        "remainingBalance": "Remaining Doubloons in the Coin Chest",
+        "manageAccount": "Manage Ship's Ledger",
+        "manageTooltip": "Manage Yer Pre-Loaded Coin Chest"
+    },
+    "invoices": {
+        "title": "Unsettled Bills of Plunder",
+        "totalUnpaid": "Total Unsettled Bills of Plunder",
+        "totalAmount": "Total Doubloons Yet to Be Plundered",
+        "payTotalTooltip": "Pay Total Doubloons Owed"
+    },
+    "callInPin": "Call-in PIN",
+    "recentTickets": "Recent Grievances",
+    "viewAllTickets": "Survey All Grievances",
+    "editTicket": "Amend Grievance",
+    "serviceCount": "No vessels currently sailing | {count} vessel sailing full speed | {count} vessels sailing full speed",
+    "affiliate": {
+        "earnPerSale": "Earn {amount} Per Plunder",
+        "urlPlaceholder": "Privateer Network URL",
+        "shareWith": "Share with yer crew"
+    }
+}

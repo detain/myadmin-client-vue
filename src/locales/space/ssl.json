@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Encryption Certificates List",
+        "orderTitle": "Requisition Encryption Certificate Registrations"
+    },
+    "view": {
+        "title": "View Encryption Certificate {id}",
+        "package": "Mission Package",
+        "nextInvoiceDate": "Next Resource Allocation Date:",
+        "billing": "Credits & Resource Ledger",
+        "billed": "billed:",
+        "statusIs": "Mission Status is:",
+        "orderInfo": "Requisition Data",
+        "certificateInfo": "Certificate Data",
+        "links": "Navigation Links",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the welcome subspace message?",
+        "emailSent": "Transmission Sent",
+        "emailSentMessage": "The welcome subspace transmission has been resent. Check your comm channel."
+    },
+    "order": {
+        "title": "Requisition Encryption Certificate"
+    },
+    "changeApproverEmail": {
+        "title": "Change Authorizing Subspace Address",
+        "selectApproverEmail": "Select Authorizing Subspace Address"
+    }
+}

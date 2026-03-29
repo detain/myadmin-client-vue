@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Officer Profile Settings"
+    },
+    "changePassword": {
+        "title": "Change Encryption Passphrase",
+        "cardTitle": "Update Security Clearance Code",
+        "currentPassword": "Current Encryption Passphrase",
+        "newPassword": "New Encryption Passphrase",
+        "confirmPassword": "Confirm Encryption Passphrase",
+        "updatePassword": "Update Security Clearance Code"
+    },
+    "changeUsername": {
+        "title": "Change Crew Designation",
+        "disabled": "Crew Designation changes have been temporarily suspended by Fleet Command.",
+        "currentUsername": "Current Crew Designation",
+        "newDesiredUsername": "New Desired Crew Designation",
+        "confirmationCode": "Confirmation Code",
+        "pleaseWait": "Processing... standby, Officer...",
+        "gotError": "System malfunction detected: {error}"
+    },
+    "contactInfo": {
+        "title": "Contact Coordinates",
+        "cardTitle": "Update Contact Coordinates",
+        "headsUp": "Attention, Officer!",
+        "headsUpMessage": "Although this information is optional, providing accurate coordinates will enrich your interactions with Fleet Command and lower your Risk % Score, granting you quicker access to restricted sectors of the station (such as bypassing Credit Chip authentication requirements).",
+        "riskScore": "Risk % Score",
+        "personalInformation": "Personal Identification Records",
+        "name": "Officer Name",
+        "namePlaceholder": "Commander Cool",
+        "company": "Fleet Division",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Galactic Services Taxpayer Identification Number",
+        "addressLine1": "Station Address Line 1",
+        "addressLine2": "Station Address Line 2",
+        "cityState": "Sector, Quadrant",
+        "city": "Sector",
+        "state": "Quadrant",
+        "country": "Planet / Territory",
+        "zipcode": "Sector Code",
+        "phoneNo": "Comm Channel No.",
+        "phoneNumber": "Subspace Comm Number",
+        "language": "Language",
+        "auto": "Auto",
+        "currency": "Currency",
+        "timeZone": "Galactic Time Zone",
+        "otherSettings": "Additional Configuration",
+        "disablePasswordResets": "Disable (Forgot your Encryption Passphrase) Security Clearance Resets.",
+        "disableInvoiceReminders": "Disable Resource Allocation Notice Reminder Subspace Transmissions.",
+        "disableServerInvoiceReminders": "Disable Star Station Resource Allocation Notice Reminder Subspace Transmissions.",
+        "disableReinstall": "Disable Reinstall Protocols.",
+        "alternateEmailInvoices": "Alternate Subspace Address for Resource Allocation Notices",
+        "alternateEmailInvoicesPlaceholder": "Alternative subspace address for transmitting resource allocation notices",
+        "alternateEmailAbuse": "Alternate Subspace Address for Violation Reports",
+        "updateInfo": "Update Officer Records"
+    }
+}

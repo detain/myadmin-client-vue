@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Digital Cove Rental List",
+        "orderTitle": "Rent a New Digital Cove"
+    },
+    "view": {
+        "title": "Survey Digital Cove {id}",
+        "package": "Ship's Provisions Package",
+        "nextInvoiceDate": "Next Bill of Plunder Date:",
+        "billing": "The Plunder Ledger",
+        "billed": "plundered",
+        "billingStatusIs": "Plunder Ledger Status is:",
+        "hostInfo": "Host Ship Info",
+        "username": "Pirate Handle:",
+        "ip": "Ship's Coordinates:",
+        "server": "Host Ship:",
+        "notSetYet": "Not set yet, matey",
+        "login": "Board",
+        "types": "Types:",
+        "linksLabel": "Sailing Routes:",
+        "manualLogin": "Manual Boarding",
+        "automaticLogin": "Automatic Boarding",
+        "clickHere": "Click Here",
+        "defaultNameservers": "Default Port Navigation Servers",
+        "nameservers": "Port Navigation Servers:",
+        "externalLinks": "External Sailing Routes",
+        "names": "Pirate Names:",
+        "websitePreview": "Cove Preview",
+        "links": "Sailing Routes",
+        "welcomeEmailConfirm": "Are ye sure ye want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check yer crow's nest."
+    },
+    "buyIp": {
+        "title": "Purchase Additional Ship's Coordinates Addon",
+        "existingAddonIps": "Existing Addon Ship's Coordinates",
+        "additionalIp": "Additional Ship's Coordinates",
+        "monthlyCost": "Monthly Doubloons ({symbol})",
+        "costDescription": "Doubloons ({symbol}) every moon cycle as yer cove be plundered",
+        "confirmPurchase": "Confirm by Captain's Seal",
+        "confirmMessage": "Additional Ship's Coordinates doubloons: {symbol}{cost}/moon cycle. Are ye sure ye want to order additional Ship's Coordinates?",
+        "placeOrder": "Issue Orders",
+        "orderPlaced": "Orders Issued"
+    },
+    "reverseDns": {
+        "title": "Reverse Navigation Chart (DNS)",
+        "updateReverseDns": "Update Reverse Navigation Chart"
+    },
+    "downloadBackups": {
+        "title": "Haul Aboard Treasure Caches",
+        "backup": "Treasure Cache",
+        "size": "Size",
+        "options": "Sailing Options"
+    },
+    "migration": {
+        "title": "Sail Yer Cove to New Waters",
+        "currentWebHostInfo": "Current Digital Cove Info",
+        "customerPortalUrl": "Captain's Portal URL",
+        "portalExample": "For Example: sso.godaddy.com",
+        "registeredUsername": "Registered Pirate Handle / Message Bottle / ID",
+        "password": "Secret Countersign",
+        "controlPanelUrl": "The Helm URL",
+        "controlPanelExample": "For Example: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / The Helm Pirate Handle",
+        "ftpPassword": "FTP / The Helm Secret Countersign",
+        "holdingPageQuestion": "If the cove be live and weathering heavy traffic, can we set a holding page during the voyage?",
+        "specialRequirementsQuestion": "Does this cove have special requirements like PHP Version / Modules?",
+        "domainRegistryInfo": "Named Port Registry Information",
+        "transferDomainQuestion": "Do ye also want us to help ye transfer the named port registration?",
+        "updateNameserversQuestion": "Do ye want us to update the port navigation servers as soon as we finish the cargo migration?",
+        "domainRegistryPortal": "Named Port Registry Captain's Portal",
+        "importantNotes": "Important Notes from the Captain",
+        "note1": "Filling out this form will open a new grievance for our ship's officers to begin yer voyage.",
+        "note2": "Please be as complete and accurate as possible to avoid any delays.",
+        "note3": "A typical voyage is completed within 48 to 72 hours. Sometimes longer if the amount of cargo to haul be large.",
+        "note4": "The old cove needs to be sailing and accessible while we are performing the voyage, otherwise we may face difficulty.",
+        "note5": "Please do not make any updates on yer cove while we perform the voyage, otherwise those cargo may not be hauled to the new cove."
+    },
+    "order": {
+        "title": "Rent Digital Cove"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "The Address Registry Stall",
+        "addDomain": "Add Property Deed Name",
+        "deleteDomain": "Discard Property Deed Name",
+        "domainName": "Property Deed Name",
+        "dnsServers": "DNS Cargo Units",
+        "confirmDelete": "Are you sure you want to discard this property deed?",
+        "noDomains": "Nothing here, friend — no property deeds found!"
+    },
+    "editor": {
+        "title": "Address Registry Editor",
+        "addRecord": "Add Record",
+        "deleteRecord": "Discard Record",
+        "editRecord": "Revise Terms of Record",
+        "recordType": "Record Type",
+        "hostname": "Unit Designation",
+        "address": "Address",
+        "distance": "Distance",
+        "weight": "Weight",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Actions",
+        "confirmDelete": "Are you sure you want to discard this record?"
+    }
+}

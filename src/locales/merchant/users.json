@@ -1,0 +1,12 @@
+{
+    "title": "Traders on Account",
+    "addUser": "Add to Haul Trader",
+    "editUser": "Revise Terms of Trader",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "username": "Trading Alias",
+    "password": "Secret Access Code",
+    "keepSamePassword": "Leave blank to keep the same secret access code",
+    "errorLoading": "Something went wrong — our apologies! loading traders:",
+    "errorLoadingUser": "Something went wrong — our apologies! loading trader:"
+}

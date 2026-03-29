@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Shopfront Rentals List",
+        "orderTitle": "Place Your Order — Don't Wait! for Shopfront Rental Registrations"
+    },
+    "view": {
+        "title": "View Shopfront Rental {id}",
+        "package": "Service Package (Today's Best Value!)",
+        "nextInvoiceDate": "Payment Due Date:",
+        "billing": "The Debt Ledger",
+        "billed": "billed",
+        "billingStatusIs": "Debt Ledger Deal Status is:",
+        "hostInfo": "Host Info",
+        "username": "Trading Alias:",
+        "ip": "Network Address:",
+        "server": "Cargo Unit:",
+        "notSetYet": "Not set yet",
+        "login": "Enter the Bazaar",
+        "types": "Types:",
+        "linksLabel": "Quick Links:",
+        "manualLogin": "Manual Entry",
+        "automaticLogin": "Automatic Entry",
+        "clickHere": "Click Here",
+        "defaultNameservers": "Default Nameservers",
+        "nameservers": "Nameservers:",
+        "externalLinks": "External Quick Links",
+        "names": "Names:",
+        "websitePreview": "Shopfront Preview",
+        "links": "Quick Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check your inbox."
+    },
+    "buyIp": {
+        "title": "Buy Additional Network Address Addon",
+        "existingAddonIps": "Existing Addon Network Addresses",
+        "additionalIp": "Additional Network Address",
+        "monthlyCost": "Monthly Price (Best Deal Guaranteed!) ({symbol})",
+        "costDescription": "Price (Best Deal Guaranteed!) ({symbol}) every month as your shopfront is invoiced",
+        "confirmPurchase": "Confirm Purchase",
+        "confirmMessage": "Additional Network Address price: {symbol}{cost}/month. Are you sure you want to order an additional network address?",
+        "placeOrder": "Place Your Order — Don't Wait!",
+        "orderPlaced": "Order Placed"
+    },
+    "reverseDns": {
+        "title": "Reverse DNS",
+        "updateReverseDns": "Update the Terms of Reverse DNS"
+    },
+    "downloadBackups": {
+        "title": "Download Your Receipt Warehouse Backups",
+        "backup": "Backup",
+        "size": "Size",
+        "options": "Options"
+    },
+    "migration": {
+        "title": "Migrate Your Shopfront",
+        "currentWebHostInfo": "Current Shopfront Rental Info",
+        "customerPortalUrl": "Customer Portal URL",
+        "portalExample": "For Example: sso.godaddy.com",
+        "registeredUsername": "Registered Trading Alias / Contact Address / Transaction ID",
+        "password": "Secret Access Code",
+        "controlPanelUrl": "Control Panel URL",
+        "controlPanelExample": "For Example: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Control Panel Trading Alias",
+        "ftpPassword": "FTP / Control Panel Secret Access Code",
+        "holdingPageQuestion": "If the shopfront is live/busy having high traffic, can we set a holding page during migration?",
+        "specialRequirementsQuestion": "Does this shopfront have special requirements like PHP Version / Modules?",
+        "domainRegistryInfo": "Property Deed Registry Information",
+        "transferDomainQuestion": "Do you also want us to help you transfer the property deed registration?",
+        "updateNameserversQuestion": "Do you want us to update the name servers as soon as we finish the data migration?",
+        "domainRegistryPortal": "Property Deed Registry Customer Portal",
+        "importantNotes": "Important Notes",
+        "note1": "Filling out this form will open a new Complaint Slip for our Customer Support Desk to begin your migration.",
+        "note2": "Please be as complete and accurate as possible to avoid any delays.",
+        "note3": "A typical migration is completed within 48 to 72 hours. Sometimes longer if the amount of data to copy is large.",
+        "note4": "The old shopfront account needs to be online and accessible while we are performing the migration, otherwise we may face difficulty.",
+        "note5": "Please do not make any updates on your shopfront while we perform the migration, otherwise those data may not be copied to the new shopfront."
+    },
+    "order": {
+        "title": "Place Your Order — Don't Wait! for a Shopfront Rental"
+    }
+}

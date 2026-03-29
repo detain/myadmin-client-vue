@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Cleansing Sigils Services List",
+        "orderTitle": "Conjure Cleansing Sigils"
+    },
+    "view": {
+        "title": "View Cleansing Sigils",
+        "currentIp": "Current Ether Address",
+        "ipAddress": "Ether Address",
+        "ipFromService": "Ether Address from Service"
+    },
+    "filters": {
+        "title": "Hex Filters",
+        "createNew": "Manifest New",
+        "createNewFilter": "Manifest New Hex Filter",
+        "filterType": "Hex Filter Type",
+        "selectFilterType": "Select Hex Filter Type",
+        "ipAddress": "Ether Address",
+        "portNo": "Portal No",
+        "filter": "Hex Filter",
+        "destinationIp": "Destination Ether Address",
+        "destinationPort": "Destination Portal",
+        "noFiltersFound": "No hex filters found!",
+        "deleteFilterConfirm": "Art thou certain thou wishest to banish this hex filter?",
+        "unableToCreateFilter": "Unable to manifest hex filter at this time.",
+        "unableToDeleteFilter": "Unable to banish hex filter at this time."
+    },
+    "firewallRules": {
+        "title": "Warding Circle Edicts",
+        "createNew": "Manifest New",
+        "createNewFirewall": "Manifest New Warding Circle Edict",
+        "protocol": "Protocol",
+        "destinationIp": "Destination Ether Address",
+        "destinationPort": "Destination Portal",
+        "sourceIp": "Source Ether Address",
+        "sourcePort": "Source Portal",
+        "xdpAction": "XDP Action",
+        "ipRequired": "Ether Address is required",
+        "block": "Ward Off",
+        "whitelist": "Blessed List",
+        "noRulesFound": "No warding edicts found!",
+        "deleteRuleConfirm": "Art thou certain thou wishest to banish this warding edict?",
+        "unableToCreateRule": "Unable to manifest warding circle edict at this time.",
+        "unableToDeleteRule": "Unable to banish warding circle edict at this time."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Warding Circle Edicts",
+        "createNew": "Manifest New",
+        "createNewGeoRule": "Manifest New Geo Warding Circle Edict",
+        "destinationIp": "Destination Ether Address",
+        "destinationPort": "Destination Portal",
+        "sourceCountry": "Source Kingdom",
+        "sourceAsn": "Source ASN",
+        "xdpAction": "XDP Action",
+        "portNo": "Portal No",
+        "selectCountry": "Select Kingdom",
+        "asn": "ASN",
+        "block": "Ward Off",
+        "whitelist": "Blessed List",
+        "noRulesFound": "No warding edicts found!",
+        "deleteGeoRuleConfirm": "Art thou certain thou wishest to banish this geo warding edict?",
+        "unableToCreateRule": "Unable to manifest warding circle edict at this time.",
+        "unableToDeleteRule": "Unable to banish geo warding circle edict at this time."
+    }
+}

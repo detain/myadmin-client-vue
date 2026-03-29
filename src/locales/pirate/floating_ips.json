@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Roving Anchor Points Services List",
+        "orderTitle": "Commission New Roving Anchor Points"
+    },
+    "view": {
+        "title": "Survey Roving Anchor Point {id}",
+        "package": "Ship's Provisions Package",
+        "nextInvoiceDate": "Next Bill of Plunder Date:",
+        "billing": "The Plunder Ledger",
+        "billed": "plundered:",
+        "statusIs": "Vessel Status is:",
+        "floatingIp": "Roving Anchor Point",
+        "links": "Sailing Routes",
+        "welcomeEmailConfirm": "Are ye sure ye want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check yer crow's nest."
+    },
+    "order": {
+        "title": "Commission Roving Anchor Point"
+    },
+    "changeIp": {
+        "title": "Change Target Ship's Coordinates"
+    }
+}

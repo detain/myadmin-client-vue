@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Letters of Marque List",
+        "orderTitle": "Commission New Letters of Marque"
+    },
+    "view": {
+        "title": "Survey Letter of Marque {id}",
+        "package": "Ship's Provisions Package",
+        "nextInvoiceDate": "Next Bill of Plunder Date:",
+        "billing": "The Plunder Ledger",
+        "billed": "plundered:",
+        "statusIs": "Vessel Status is:",
+        "licenseInfo": "Letter of Marque Info",
+        "cpanelInfo": "cPanel Info",
+        "links": "Sailing Routes",
+        "welcomeEmailConfirm": "Are ye sure ye want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check yer crow's nest."
+    },
+    "order": {
+        "title": "Commission Letter of Marque"
+    },
+    "changeIp": {
+        "title": "Change Ship's Coordinates"
+    },
+    "changeOs": {
+        "title": "Change Ship's Operating Charter",
+        "selectLicenseOs": "Select Letter of Marque Ship's Operating Charter"
+    }
+}

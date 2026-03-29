@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Royal Charters List",
+        "orderTitle": "Commission Royal Charter Registrations"
+    },
+    "view": {
+        "title": "View Royal Charter {id}",
+        "package": "Estate Class",
+        "nextInvoiceDate": "Next Tax Notice Date:",
+        "billing": "The Tax Collector's Ledger",
+        "billed": "tithed:",
+        "statusIs": "Standing is:",
+        "licenseInfo": "Royal Charter Info",
+        "cpanelInfo": "cPanel Info",
+        "links": "Dispatches",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome carrier pigeon?",
+        "emailSent": "Carrier Pigeon Dispatched",
+        "emailSentMessage": "The welcome carrier pigeon has been resent. Check your dovecote."
+    },
+    "order": {
+        "title": "Commission Royal Charter"
+    },
+    "changeIp": {
+        "title": "Change Garrison Coordinates"
+    },
+    "changeOs": {
+        "title": "Change Foundation Layer",
+        "selectLicenseOs": "Select Royal Charter Foundation Layer"
+    }
+}
