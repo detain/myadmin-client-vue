@@ -1,5 +1,4 @@
 .claire
-.claude
 #SSL Certs
 privkey.pem
 fullchain.pem
@@ -60,3 +59,6 @@ coverage/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Caliber local state
+.caliber/
