@@ -31,9 +31,15 @@ yarn ts               # Type-check only (vue-tsc --noEmit)
 
 **Helpers** (`src/helpers/`): `fetchWrapper.ts` (central HTTP client) · `moduleLink.ts` · `ucwords.ts` · `generatePassword.ts` · `useDarkMode.ts`
 
-**i18n** (`src/i18n/index.ts`): lazy-loaded namespaces from `src/locales/{lang}/{namespace}.json` · 40+ languages · English default
+**i18n** (`src/i18n/index.ts`): lazy-loaded namespaces from `src/locales/en/vps.json`, `src/locales/en/domains.json`, etc. across 110 locale directories · 40+ languages · English default
 
 **Types**: `src/types/` · **Plugins**: `src/plugins/` (jQuery) · **Mocks**: `src/mocks/` (MSW handlers) · **Assets**: `src/assets/` (CSS, images, webfonts, templates)
+
+**CI/CD** (`.github/workflows/`): `ci-cd.yml` (build, deploy, branch sync), `playwright.yml` (E2E test runner) · **Git Hooks** (`.husky/`): pre-commit and commit-msg hooks via `.husky/_/husky.sh` enforcing lint and conventional commits · **Editor** (`.vscode/extensions.json`): recommended VS Code extensions · **Yarn** (`.yarn/install-state.gz`): PnP install state cache
+
+**Static Files** (`public/`): `favicon.ico`, `.htaccess` (Apache SPA fallback), `mockServiceWorker.js` (MSW service worker for tests) · **Styles** (`src/assets/css/`): `admin_darkmode.css` · `tailwind.min.css` · `view_service.css` · `login.css` · `home_new.css` · `crud_table5.css`, plus `misha-theme/` jQuery UI theme · **Images** (`src/assets/images/`): provider logos (`cpanel.png`, `directadmin.png`, `litespeed.png`, `cloudlinux.png`), subdirectories: `icons/`, `logos/`, `myadmin/`, `crud/`, `vps/`
+
+**MCP integrations**: Playwright browser automation available via `mcp__plugin_playwright_playwright__*` tools for E2E interaction.
 
 ## Key Patterns
 
@@ -49,42 +55,33 @@ yarn ts               # Type-check only (vue-tsc --noEmit)
 
 ## Code Style
 
-### Prettier (`.prettierrc.json`)
-
-- Print width: 9999 · 4 spaces · Single quotes · Semicolons required · Trailing commas ES5 · LF endings · `vueIndentScriptAndStyle: false`
-
-### ESLint (`eslint.config.js`)
-
-- Flat config with TypeScript + Vue plugins · `v-html` allowed · Prefer template literals · Ignores `.claire/**`, `.claude/**`, `dist/`
-
-### TypeScript (`tsconfig.json`)
-
-- Strict mode · ESNext target/module · `allowJs`+`checkJs` enabled · `noUnusedLocals`/`noUnusedParameters` off · Types: `vite/client`, `vitest/globals`, `jquery`, `node`
+- **Prettier** (`.prettierrc.json`): Print width 9999 · 4 spaces · Single quotes · Semicolons · Trailing commas ES5 · LF · `vueIndentScriptAndStyle: false`
+- **ESLint** (`eslint.config.js`): Flat config · TypeScript + Vue plugins · `v-html` allowed · Prefer template literals · Ignores `.claire/**`, `.claude/**`, `dist/`
+- **TypeScript** (`tsconfig.json`): Strict mode · ESNext target/module · `allowJs`+`checkJs` · Types: `vite/client`, `vitest/globals`, `jquery`, `node`
 
 ## Conventions
 
-- **Views** go in `src/views/{domain}/` — each domain has: list (`{Domain}sList.vue`), view (`View{Domain}.vue`), order (`Order{Domain}.vue`), plus sub-actions
-- **Stores** in `src/stores/{domain}.store.ts` — API calls inside actions, not components
+- **Views** in `src/views/{domain}/` — list (`{Domain}sList.vue`), view (`View{Domain}.vue`), order (`Order{Domain}.vue`), plus sub-actions
+- **Stores** in `src/stores/{domain}.store.ts` — API calls inside actions, not components. All use **Options API** (`state`/`getters`/`actions`), not setup stores
 - **Routes** in `src/router/index.ts` — parameterized with `:id(\\d+)`, sub-links via `:link(action1|action2)`
-- **i18n** — `$t('key')` in templates, `t('key')` in `<script setup>` via `useI18n()` · Files at `src/locales/{lang}/{namespace}.json` · No `<i18n>` SFC blocks
+- **i18n** — `$t('key')` in templates, `t('key')` in `<script setup>` via `useI18n()` · Files at `src/locales/en/vps.json`, `src/locales/en/domains.json`, etc. · No `<i18n>` SFC blocks · Use `<i18n-t>` for interpolation with HTML/components
 - **Commit messages** follow conventional commits (`@commitlint/config-conventional`)
 
 ## Testing
 
-### Vitest (`vite.config.ts` test section)
+- **Vitest** (`vite.config.ts` test section): tests in `test/` mirroring `src/` · `jsdom` environment · Setup: `test/setup.ts` · MSW mocks: `src/mocks/`
+- **Playwright** (`playwright.config.ts`): tests in `e2e/` · Chromium only · Dev server auto-start · 2 retries on CI
 
-- Tests in `test/` mirroring `src/` — e.g. `test/stores/auth.store.spec.ts`, `test/views/Login.spec.ts`, `test/helpers/fetchWrapper.spec.ts`
-- `jsdom` environment · Setup: `test/setup.ts` · MSW mocks: `src/mocks/` · `public/mockServiceWorker.js`
-
-### Playwright (`playwright.config.ts`)
-
-- Tests in `e2e/` · Chromium only · Dev server auto-start · 2 retries on CI
+```bash
+yarn vitest run test/stores/auth.store.spec.ts    # Run single test file
+yarn playwright test e2e/ --project=chromium      # Run E2E tests locally
+yarn vitest --coverage                            # Coverage report
+```
 
 ## Build & Deploy
 
 - **Vite 8 + Rolldown** (`vite.config.ts`) — chunks: `framework` (Vue/Pinia/Router/i18n), `legacy-ui` (jQuery/Bootstrap/AdminLTE/Select2), `vendor`, `view-{scope}`
 - Plugins: `vite-plugin-checker` (vue-tsc), `vite-plugin-inspect`, `vite-plugin-vue-inspector`, `unplugin-turbo-console`, `vite-plugin-dts`
-- Browser config: `vitest.browser.config.ts`
 
 ## Branch Strategy
 
@@ -94,7 +91,7 @@ yarn ts               # Type-check only (vue-tsc --noEmit)
 | `electron` | Desktop (Electron) | Win, macOS, Linux |
 | `capacitor` | Mobile (Capacitor) | Android, iOS |
 
-**All dev on `master`.** CI syncs to `electron`/`capacitor` via `sync-release-branches` job. Do not commit shared code to platform branches.
+**All dev on `master`.** CI syncs to `electron`/`capacitor`. Do not commit shared code to platform branches.
 
 ## Important Rules
 
@@ -111,7 +108,7 @@ Run `caliber refresh` before creating git commits to keep docs in sync with code
 After it completes, stage any modified doc files before committing:
 
 ```bash
-caliber refresh && git add CLAUDE.md .claude/ .cursor/ .github/copilot-instructions.md AGENTS.md CALIBER_LEARNINGS.md 2>/dev/null
+caliber refresh && git add CLAUDE.md .claude/ .cursor/ AGENTS.md CALIBER_LEARNINGS.md 2>/dev/null
 ```
 <!-- /caliber:managed:pre-commit -->
 
