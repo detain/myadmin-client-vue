@@ -68,20 +68,20 @@ Check your ad blocker or privacy addons, they might need to be disabled for this
 ## Downloads
 
 <!-- DOWNLOADS-START -->
-## Latest Downloads (v0.99.4)
+## Latest Downloads (v0.99.5)
 
 ### Web
-- [Web (zip)](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.4/my-interserver-client-web-0.99.4.zip)
+- [Web (zip)](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.5/my-interserver-client-web-0.99.5.zip)
 
 ### Electron
 #### Linux
-- [x64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.4/my-interserver-client-0.99.4-linux-x64.zip)
-- [arm64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.4/my-interserver-client-0.99.4-linux-arm64.zip)
+- [x64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.5/my-interserver-client-0.99.5-linux-x64.zip)
+- [arm64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.5/my-interserver-client-0.99.5-linux-arm64.zip)
 #### Windows
-- [x64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.4/my-interserver-client-0.99.4-windows-x64.zip)
-- [arm64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.4/my-interserver-client-0.99.4-windows-arm64.zip)
+- [x64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.5/my-interserver-client-0.99.5-windows-x64.zip)
+- [arm64](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.5/my-interserver-client-0.99.5-windows-arm64.zip)
 #### macOS
-- [Universal](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.4/my-interserver-client-0.99.4-mac.zip)
+- [Universal](https://github.com/detain/myadmin-client-vue/releases/download/v0.99.5/my-interserver-client-0.99.5-mac.zip)
 <!-- DOWNLOADS-END -->
 
 ## Installation
