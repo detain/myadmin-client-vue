@@ -59,6 +59,7 @@ interface SiteState {
     page_heading: string;
     sidemenu: string;
     title: string;
+    routeLoading: boolean;
     modules: {
         [key: string]: ModuleSettings;
     };
@@ -80,6 +81,7 @@ export const useSiteStore = defineStore('site', {
         page_heading: '',
         sidemenu: '',
         title: '',
+        routeLoading: false,
         modules: {
             domains: {
                 SERVICE_ID_OFFSET: 10000,
@@ -314,6 +316,9 @@ export const useSiteStore = defineStore('site', {
         },
         setSideMenu(value: string) {
             this.sidemenu = value;
+        },
+        setRouteLoading(value: boolean) {
+            this.routeLoading = value;
         },
     },
 });
