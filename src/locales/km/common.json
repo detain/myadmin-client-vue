@@ -105,6 +105,7 @@
         "loading": "កំពុងផ្ទុក...",
         "noData": "គ្មានទិន្នន័យ",
         "noActiveServices": "គ្មានសេវាសកម្ម",
+        "noServicesMatchingFilter": "រកមិនឃើញសេវាដែលត្រូវនឹងតម្រង '{filter}'",
         "controlPanel": "បន្ទះបញ្ជា",
         "welcomeEmail": "អ៊ីម៉ែលស្វាគមន៍",
         "invoices": "វិក្កយបត្រ",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "តើអ្នកប្រាកដថាចង់លុបចោលទេ?"
     },
     "footer": {
-        "copyright": "រក្សាសិទ្ធ \u00a9 {year} InterServer Inc.",
+        "copyright": "រក្សាសិទ្ធ © {year} InterServer Inc.",
         "allRightsReserved": "រក្សាសិទ្ធទាំងអស់។"
     },
     "search": {

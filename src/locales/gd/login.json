@@ -80,8 +80,11 @@
     "home": {
         "cart": "Cairt-bhùtha",
         "editPersonalInfo": "Deasaich fiosrachadh pearsanta",
-        "copyright": "Dlighe-sgrìobhaidh \u00a9 {year} InterServer Inc.",
+        "copyright": "Dlighe-sgrìobhaidh © {year} InterServer Inc.",
         "allRightsReserved": "Gach cead glèidhte."
     },
-    "copyright": "Dlighe-sgrìobhaidh \u00a9 {year} - Gach Cead Glèidhte."
+    "copyright": "Dlighe-sgrìobhaidh © {year} - Gach Cead Glèidhte.",
+    "statsVps": "VPS",
+    "statsWebsites": "Aoigheachd-lìn",
+    "statsServers": "Frithealaichean"
 }

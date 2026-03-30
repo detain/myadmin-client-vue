@@ -83,5 +83,8 @@
         "copyright": "د حق خوندیتوب © {year} InterServer Inc.",
         "allRightsReserved": "ټول حقوق خوندي دي."
     },
-    "copyright": "د حق خوندیتوب © {year} - ټول حقوق خوندي دي."
+    "copyright": "د حق خوندیتوب © {year} - ټول حقوق خوندي دي.",
+    "statsVps": "VPS",
+    "statsWebsites": "ویب هوسټینګ",
+    "statsServers": "سرورونه"
 }

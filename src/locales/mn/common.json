@@ -105,6 +105,7 @@
         "loading": "Ачааллаж байна...",
         "noData": "Өгөгдөл байхгүй",
         "noActiveServices": "Идэвхтэй үйлчилгээ байхгүй",
+        "noServicesMatchingFilter": "'{filter}' шүүлтүүрт тохирох үйлчилгээ олдсонгүй",
         "controlPanel": "Хяналтын самбар",
         "welcomeEmail": "Тавтай морил имэйл",
         "invoices": "Нэхэмжлэлүүд",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Та цуцлахдаа итгэлтэй байна уу?"
     },
     "footer": {
-        "copyright": "Зохиогчийн эрх \u00a9 {year} InterServer Inc.",
+        "copyright": "Зохиогчийн эрх © {year} InterServer Inc.",
         "allRightsReserved": "Бүх эрх хуулиар хамгаалагдсан."
     },
     "search": {

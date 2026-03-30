@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Portal Routing Apparatus",
+        "addDomain": "Register Dimensional Portal",
+        "deleteDomain": "Eradicate Dimensional Portal",
+        "domainName": "Portal Designation",
+        "dnsServers": "Routing Apparatus Servers",
+        "confirmDelete": "Are you sure you want to eradicate this dimensional portal from the apparatus?",
+        "noDomains": "No dimensional portals detected in apparatus"
+    },
+    "editor": {
+        "title": "Portal Routing Apparatus Editor",
+        "addRecord": "Add Routing Record",
+        "deleteRecord": "Eradicate Routing Record",
+        "editRecord": "Modify Routing Record Parameters",
+        "recordType": "Routing Record Classification",
+        "hostname": "System Designation",
+        "address": "Network Node Address",
+        "distance": "Routing Distance",
+        "weight": "Signal Weight",
+        "port": "Port Number",
+        "ttl": "TTL",
+        "actions": "Protocol Actions",
+        "confirmDelete": "Are you sure you want to eradicate this routing record from the apparatus?"
+    }
+}

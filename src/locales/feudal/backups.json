@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Royal Vault / Backup List",
+        "orderTitle": "Commission Royal Vault Registrations"
+    },
+    "view": {
+        "title": "View Royal Vault {id}",
+        "package": "Estate Class",
+        "nextInvoiceDate": "Next Tax Notice Date:",
+        "billing": "The Tax Collector's Ledger",
+        "billed": "tithed:",
+        "statusIs": "Standing is:",
+        "hostServer": "Host Castle Keep",
+        "links": "Dispatches",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome carrier pigeon?",
+        "emailSent": "Carrier Pigeon Dispatched",
+        "emailSentMessage": "The welcome carrier pigeon has been resent. Check your dovecote."
+    },
+    "order": {
+        "title": "Commission Royal Vault Storage"
+    }
+}

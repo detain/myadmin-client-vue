@@ -80,8 +80,11 @@
     "home": {
         "cart": "Agbọn Rira",
         "editPersonalInfo": "Ṣatunkọ Alaye Ti ara ẹni",
-        "copyright": "Ẹtọ-ara \u00a9 {year} InterServer Inc.",
+        "copyright": "Ẹtọ-ara © {year} InterServer Inc.",
         "allRightsReserved": "Gbogbo awọn ẹtọ ni a pa mọ."
     },
-    "copyright": "Ẹtọ-ara \u00a9 {year} - Gbogbo Awọn Ẹtọ Ni A Pa Mọ."
+    "copyright": "Ẹtọ-ara © {year} - Gbogbo Awọn Ẹtọ Ni A Pa Mọ.",
+    "statsVps": "VPS",
+    "statsWebsites": "Gbalejo Wẹẹbu",
+    "statsServers": "Awọn Sarvari"
 }

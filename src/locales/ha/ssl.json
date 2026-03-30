@@ -1,27 +1,27 @@
 {
-  "list": {
-    "title": "Jerin Takardar Shedar SSL",
-    "orderTitle": "Oda Rajistan SSL"
-  },
-  "view": {
-    "title": "Duba SSL {id}",
-    "package": "Fakiti",
-    "nextInvoiceDate": "Ranar Takardar Biyan Kuɗi Mai Zuwa:",
-    "billing": "Biyan Kuɗi",
-    "billed": "an biya:",
-    "statusIs": "Matsayi shine:",
-    "orderInfo": "Bayanan Oda",
-    "certificateInfo": "Bayanan Takardar Sheda",
-    "links": "Hanyoyin Haɗi",
-    "emailSent": "An Aika Imel",
-    "emailSentMessage": "An sake aika imel na maraba. Duba akwatin imel ɗinka.",
-    "welcomeEmailConfirm": "Ka tabbata kana son sake aika imel na maraba?"
-  },
-  "order": {
-    "title": "Oda SSL"
-  },
-  "changeApproverEmail": {
-    "title": "Canza Imel na Mai Amincewa",
-    "selectApproverEmail": "Zaɓi Imel na Mai Amincewa"
-  }
+    "list": {
+        "title": "Jerin Takardar Shedar SSL",
+        "orderTitle": "Oda Rajistan SSL"
+    },
+    "view": {
+        "title": "Duba SSL {id}",
+        "package": "Fakiti",
+        "nextInvoiceDate": "Ranar Takardar Biyan Kuɗi Mai Zuwa:",
+        "billing": "Biyan Kuɗi",
+        "billed": "an biya:",
+        "statusIs": "Matsayi shine:",
+        "orderInfo": "Bayanan Oda",
+        "certificateInfo": "Bayanan Takardar Sheda",
+        "links": "Hanyoyin Haɗi",
+        "emailSent": "An Aika Imel",
+        "emailSentMessage": "An sake aika imel na maraba. Duba akwatin imel ɗinka.",
+        "welcomeEmailConfirm": "Ka tabbata kana son sake aika imel na maraba?"
+    },
+    "order": {
+        "title": "Oda SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Canza Imel na Mai Amincewa",
+        "selectApproverEmail": "Zaɓi Imel na Mai Amincewa"
+    }
 }

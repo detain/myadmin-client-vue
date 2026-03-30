@@ -1,64 +1,64 @@
 {
-  "list": {
-    "pageTitle": "Lenaneo la Lirejistaro tsa Thebe",
-    "orderTitle": "Oda Lirejistaro tsa Thebe",
-    "domainName": "Lebitso la Thebe",
-    "domainExpirationDate": "Letsatsi la ho Fela ha Thebe",
-    "active": "E Sebetsa",
-    "pending": "E Emetse",
-    "expired": "E Fetile",
-    "all": "Tsohle"
-  },
-  "view": {
-    "pageTitle": "Bona Thebe - {hostname}",
-    "package": "Sepalesa",
-    "billing": "Tefello",
-    "whoisPrivacy": "Lekunutu la Whois",
-    "nameservers": "Lihaolo tsa Mabitso",
-    "contactInformation": "Lintlha tsa Ts'ebisano",
-    "emailSent": "Imeile e Romelitsoe",
-    "welcomeEmailResent": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
-  },
-  "order": {
-    "pageTitle": "Oda Thebe",
-    "findDomain": "Fumana thebe ea hau 'me u leke ho bona hore na e fumanehile.",
-    "available": "Ee! Thebe ea hau {domain} e fumanehile! U ka e rejista bakeng sa {cost}. Theko ea ho ntlafatsa e tla ba {renewal}.",
-    "taken": "Masoabi! Thebe ea hau {domain} e se e nkuoe!",
-    "registerDomain": "Rejista Thebe ({hostname})",
-    "contactInformation": "Lintlha tsa Ts'ebisano",
-    "goBack": "Khutlela Morao",
-    "continue": "Tsoela Pele",
-    "total": "Kakaretso",
-    "agreeCheckbox": "Ke bale maemo a ka holimo 'me ke a lumela.",
-    "placeOrder": "Beha Oda"
-  },
-  "nameservers": {
-    "title": "Lihaolo tsa Mabitso a Thebe",
-    "nameservers": "Lihaolo tsa Mabitso",
-    "hostname": "Lebitso la Haolo",
-    "ipAddress": "Aterese ea IP",
-    "deleteConfirm": "U batla ho phimola haolo ea lebitso la thebe ea hau.",
-    "yesDeleteIt": "Ee, e Phimole"
-  },
-  "whois": {
-    "title": "Lekunutu la Whois",
-    "currentlyEnabled": "Lekunutu la Whois le lumetsoe hajoale bakeng sa {hostname}.",
-    "disableAndCancel": "Thibela 'me u Hlakole Lekunutu la Whois",
-    "orderSuccess": "Oda ea lekunutu la whois e kentse ka katleho!",
-    "whoisEnabled": "Lekunutu la Whois le lumetsoe joale.",
-    "whoisDisabled": "Lekunutu la Whois le thibetsoe 'me le hlakotsoe."
-  },
-  "lock": {
-    "title": "Koala/Bula Thebe",
-    "lockIt": "Ee, e Koale.",
-    "unlockIt": "Ee, e Bule."
-  },
-  "renew": {
-    "title": "Ntlafatsa",
-    "domain": "Thebe",
-    "expiryDate": "Letsatsi la ho Fela",
-    "renewCost": "Theko ea ho Ntlafatsa",
-    "totalCost": "Theko Kakaretso",
-    "goToPayment": "Eya Tefelleng"
-  }
+    "list": {
+        "pageTitle": "Lenaneo la Lirejistaro tsa Thebe",
+        "orderTitle": "Oda Lirejistaro tsa Thebe",
+        "domainName": "Lebitso la Thebe",
+        "domainExpirationDate": "Letsatsi la ho Fela ha Thebe",
+        "active": "E Sebetsa",
+        "pending": "E Emetse",
+        "expired": "E Fetile",
+        "all": "Tsohle"
+    },
+    "view": {
+        "pageTitle": "Bona Thebe - {hostname}",
+        "package": "Sepalesa",
+        "billing": "Tefello",
+        "whoisPrivacy": "Lekunutu la Whois",
+        "nameservers": "Lihaolo tsa Mabitso",
+        "contactInformation": "Lintlha tsa Ts'ebisano",
+        "emailSent": "Imeile e Romelitsoe",
+        "welcomeEmailResent": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+    },
+    "order": {
+        "pageTitle": "Oda Thebe",
+        "findDomain": "Fumana thebe ea hau 'me u leke ho bona hore na e fumanehile.",
+        "available": "Ee! Thebe ea hau {domain} e fumanehile! U ka e rejista bakeng sa {cost}. Theko ea ho ntlafatsa e tla ba {renewal}.",
+        "taken": "Masoabi! Thebe ea hau {domain} e se e nkuoe!",
+        "registerDomain": "Rejista Thebe ({hostname})",
+        "contactInformation": "Lintlha tsa Ts'ebisano",
+        "goBack": "Khutlela Morao",
+        "continue": "Tsoela Pele",
+        "total": "Kakaretso",
+        "agreeCheckbox": "Ke bale maemo a ka holimo 'me ke a lumela.",
+        "placeOrder": "Beha Oda"
+    },
+    "nameservers": {
+        "title": "Lihaolo tsa Mabitso a Thebe",
+        "nameservers": "Lihaolo tsa Mabitso",
+        "hostname": "Lebitso la Haolo",
+        "ipAddress": "Aterese ea IP",
+        "deleteConfirm": "U batla ho phimola haolo ea lebitso la thebe ea hau.",
+        "yesDeleteIt": "Ee, e Phimole"
+    },
+    "whois": {
+        "title": "Lekunutu la Whois",
+        "currentlyEnabled": "Lekunutu la Whois le lumetsoe hajoale bakeng sa {hostname}.",
+        "disableAndCancel": "Thibela 'me u Hlakole Lekunutu la Whois",
+        "orderSuccess": "Oda ea lekunutu la whois e kentse ka katleho!",
+        "whoisEnabled": "Lekunutu la Whois le lumetsoe joale.",
+        "whoisDisabled": "Lekunutu la Whois le thibetsoe 'me le hlakotsoe."
+    },
+    "lock": {
+        "title": "Koala/Bula Thebe",
+        "lockIt": "Ee, e Koale.",
+        "unlockIt": "Ee, e Bule."
+    },
+    "renew": {
+        "title": "Ntlafatsa",
+        "domain": "Thebe",
+        "expiryDate": "Letsatsi la ho Fela",
+        "renewCost": "Theko ea ho Ntlafatsa",
+        "totalCost": "Theko Kakaretso",
+        "goToPayment": "Eya Tefelleng"
+    }
 }

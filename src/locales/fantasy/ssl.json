@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Authentication Seals List",
+        "orderTitle": "Commission Authentication Seal Registrations"
+    },
+    "view": {
+        "title": "View Authentication Seal {id}",
+        "package": "Equipment Tier",
+        "nextInvoiceDate": "Next Gold Due Date:",
+        "billing": "Gold Ledger",
+        "billed": "inscribed:",
+        "statusIs": "Quest Status is:",
+        "orderInfo": "Commission Info",
+        "certificateInfo": "Seal Info",
+        "links": "Quest Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome raven?",
+        "emailSent": "Raven Dispatched",
+        "emailSentMessage": "The welcome raven has been resent. Check your messenger raven perch."
+    },
+    "order": {
+        "title": "Commission Authentication Seal"
+    },
+    "changeApproverEmail": {
+        "title": "Change Approver Raven Address",
+        "selectApproverEmail": "Select Approver Raven Address"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Research Authorization Permit Registry",
+        "orderTitle": "Requisition Research Authorization Permit Registrations"
+    },
+    "view": {
+        "title": "Inspect Research Authorization Permit {id}",
+        "package": "Research Package",
+        "nextInvoiceDate": "Next Funding Requisition Date:",
+        "billing": "Research Funding",
+        "billed": "billed:",
+        "statusIs": "Operational Status is:",
+        "licenseInfo": "Authorization Permit Data",
+        "cpanelInfo": "cPanel Laboratory Data",
+        "links": "System Links",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the laboratory orientation communication?",
+        "emailSent": "Pneumatic Message Dispatched",
+        "emailSentMessage": "The laboratory orientation communication has been retransmitted. Check your message receptacle."
+    },
+    "order": {
+        "title": "Requisition Research Authorization Permit"
+    },
+    "changeIp": {
+        "title": "Reassign Network Node Address"
+    },
+    "changeOs": {
+        "title": "Modify Base Operating Substrate",
+        "selectLicenseOs": "Select Authorization Permit Base Operating Substrate"
+    }
+}

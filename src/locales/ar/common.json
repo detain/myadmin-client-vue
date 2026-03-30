@@ -105,6 +105,7 @@
         "loading": "جارٍ التحميل...",
         "noData": "لا توجد بيانات متاحة",
         "noActiveServices": "لا توجد خدمات نشطة",
+        "noServicesMatchingFilter": "لم يتم العثور على خدمات تطابق الفلتر '{filter}'",
         "controlPanel": "لوحة التحكم",
         "welcomeEmail": "بريد الترحيب",
         "invoices": "الفواتير",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "هل أنت متأكد أنك تريد الإلغاء؟"
     },
     "footer": {
-        "copyright": "حقوق النشر \u00a9 {year} InterServer Inc.",
+        "copyright": "حقوق النشر © {year} InterServer Inc.",
         "allRightsReserved": "جميع الحقوق محفوظة."
     },
     "search": {

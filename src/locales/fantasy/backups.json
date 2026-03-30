@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Dragon's Hoard / Secure Vault List",
+        "orderTitle": "Commission Dragon's Hoard Registrations"
+    },
+    "view": {
+        "title": "View Dragon's Hoard {id}",
+        "package": "Equipment Tier",
+        "nextInvoiceDate": "Next Gold Due Date:",
+        "billing": "Gold Ledger",
+        "billed": "inscribed:",
+        "statusIs": "Quest Status is:",
+        "hostServer": "Host Stronghold",
+        "links": "Quest Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome raven?",
+        "emailSent": "Raven Dispatched",
+        "emailSentMessage": "The welcome raven has been resent. Check your messenger raven perch."
+    },
+    "order": {
+        "title": "Commission Dragon's Hoard Storage"
+    }
+}

@@ -1,29 +1,29 @@
 {
-  "list": {
-    "title": "Lenaneo la Laesense",
-    "orderTitle": "Oda Lirejistaro tsa Laesense"
-  },
-  "view": {
-    "title": "Bona Laesense {id}",
-    "package": "Sepalesa",
-    "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
-    "billing": "Tefello",
-    "billed": "e lefisitsoeng:",
-    "statusIs": "Boemo ke:",
-    "licenseInfo": "Lintlha tsa Laesense",
-    "cpanelInfo": "Lintlha tsa cPanel",
-    "links": "Likhoele",
-    "emailSent": "Imeile e Romelitsoe",
-    "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
-  },
-  "order": {
-    "title": "Oda Laesense"
-  },
-  "changeIp": {
-    "title": "Fetola IP"
-  },
-  "changeOs": {
-    "title": "Fetola OS",
-    "selectLicenseOs": "Khetha OS ea Laesense"
-  }
+    "list": {
+        "title": "Lenaneo la Laesense",
+        "orderTitle": "Oda Lirejistaro tsa Laesense"
+    },
+    "view": {
+        "title": "Bona Laesense {id}",
+        "package": "Sepalesa",
+        "nextInvoiceDate": "Letsatsi la Invoice e Latelang:",
+        "billing": "Tefello",
+        "billed": "e lefisitsoeng:",
+        "statusIs": "Boemo ke:",
+        "licenseInfo": "Lintlha tsa Laesense",
+        "cpanelInfo": "Lintlha tsa cPanel",
+        "links": "Likhoele",
+        "emailSent": "Imeile e Romelitsoe",
+        "emailSentMessage": "Imeile ea kamohelo e rometse hape. Sheba lehokong la hau."
+    },
+    "order": {
+        "title": "Oda Laesense"
+    },
+    "changeIp": {
+        "title": "Fetola IP"
+    },
+    "changeOs": {
+        "title": "Fetola OS",
+        "selectLicenseOs": "Khetha OS ea Laesense"
+    }
 }

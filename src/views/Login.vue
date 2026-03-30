@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import * as Yup from 'yup';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import { router } from '@/router/index';
+import { resolveAppLocale, switchLocale } from '@/i18n';
+import LocalePreviewSelect from '@/components/LocalePreviewSelect.vue';
+import type { LocaleOption } from '@/components/LocalePreviewSelect.vue';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 
@@ -580,6 +583,7 @@ function loadTurnstileScript(): Promise<void> {
 }
 
 onMounted(async () => {
+    await switchLocale(selectedLocale.value);
     await loadTurnstileScript();
     widgetId.value = window.turnstile.render(containerRef.value, {
         sitekey: '0x4AAAAAABeXCi3hjKZn2bcS',
@@ -601,28 +605,128 @@ onMounted(async () => {
 
 //useRecaptchaProvider();
 authStore.load();
+
+// ── Language selector ─────────────────────────────────────────────────────────
+const localeModules = import.meta.glob('../locales/*/common.json');
+const localeEnglishNames: Record<string, string> = {
+    af: 'Afrikaans', am: 'Amharic', ar: 'Arabic', az: 'Azerbaijani',
+    be: 'Belarusian', bg: 'Bulgarian', bn: 'Bengali', bs: 'Bosnian',
+    ca: 'Catalan', ceb: 'Cebuano', co: 'Corsican', cs: 'Czech',
+    cy: 'Welsh', da: 'Danish', de: 'German', el: 'Greek',
+    en: 'English', eo: 'Esperanto', es: 'Spanish', et: 'Estonian',
+    eu: 'Basque', fa: 'Persian', fi: 'Finnish', fr: 'French',
+    fy: 'Frisian', ga: 'Irish', gd: 'Scottish Gaelic', gl: 'Galician',
+    gu: 'Gujarati', ha: 'Hausa', haw: 'Hawaiian', he: 'Hebrew',
+    hi: 'Hindi', hmn: 'Hmong', hr: 'Croatian', ht: 'Haitian Creole',
+    hu: 'Hungarian', hy: 'Armenian', id: 'Indonesian', ig: 'Igbo',
+    is: 'Icelandic', it: 'Italian', ja: 'Japanese', ka: 'Georgian',
+    kk: 'Kazakh', km: 'Khmer', kn: 'Kannada', ko: 'Korean',
+    ku: 'Kurdish', ky: 'Kyrgyz', la: 'Latin', lb: 'Luxembourgish',
+    lo: 'Lao', lt: 'Lithuanian', lv: 'Latvian', mg: 'Malagasy',
+    mi: 'Maori', mk: 'Macedonian', ml: 'Malayalam', mn: 'Mongolian',
+    mr: 'Marathi', ms: 'Malay', mt: 'Maltese', my: 'Myanmar',
+    ne: 'Nepali', nl: 'Dutch', no: 'Norwegian', ny: 'Chichewa',
+    pa: 'Punjabi', pl: 'Polish', ps: 'Pashto', pt: 'Portuguese',
+    ro: 'Romanian', ru: 'Russian', sd: 'Sindhi', si: 'Sinhala',
+    sk: 'Slovak', sl: 'Slovenian', sm: 'Samoan', sn: 'Shona',
+    so: 'Somali', sq: 'Albanian', sr: 'Serbian', st: 'Sesotho',
+    su: 'Sundanese', sv: 'Swedish', sw: 'Swahili', ta: 'Tamil',
+    te: 'Telugu', tg: 'Tajik', th: 'Thai', tl: 'Filipino',
+    tr: 'Turkish', uk: 'Ukrainian', ur: 'Urdu', uz: 'Uzbek',
+    vi: 'Vietnamese', xh: 'Xhosa', yi: 'Yiddish', yo: 'Yoruba',
+    zh: 'Chinese', zu: 'Zulu',
+};
+const localeLocalNames: Record<string, string> = {
+    af: 'Afrikaans', am: 'አማርኛ', ar: 'العربية', az: 'Azərbaycan',
+    be: 'Беларуская', bg: 'Български', bn: 'বাংলা', bs: 'Bosanski',
+    ca: 'Català', ceb: 'Cebuano', co: 'Corsu', cs: 'Čeština',
+    cy: 'Cymraeg', da: 'Dansk', de: 'Deutsch', el: 'Ελληνικά',
+    en: 'English', eo: 'Esperanto', es: 'Español', et: 'Eesti',
+    eu: 'Euskara', fa: 'فارسی', fi: 'Suomi', fr: 'Français',
+    fy: 'Frysk', ga: 'Gaeilge', gd: 'Gàidhlig', gl: 'Galego',
+    gu: 'ગુજરાતી', ha: 'Hausa', haw: 'ʻŌlelo Hawaiʻi', he: 'עברית',
+    hi: 'हिन्दी', hmn: 'Hmong', hr: 'Hrvatski', ht: 'Kreyòl ayisyen',
+    hu: 'Magyar', hy: 'Հայերեն', id: 'Bahasa Indonesia', ig: 'Igbo',
+    is: 'Íslenska', it: 'Italiano', ja: '日本語', ka: 'ქართული',
+    kk: 'Қазақша', km: 'ខ្មែរ', kn: 'ಕನ್ನಡ', ko: '한국어',
+    ku: 'Kurdî', ky: 'Кыргызча', la: 'Latina', lb: 'Lëtzebuergesch',
+    lo: 'ລາວ', lt: 'Lietuvių', lv: 'Latviešu', mg: 'Malagasy',
+    mi: 'Te Reo Māori', mk: 'Македонски', ml: 'മലയാളം', mn: 'Монгол',
+    mr: 'मराठी', ms: 'Bahasa Melayu', mt: 'Malti', my: 'မြန်မာဘာသာ',
+    ne: 'नेपाली', nl: 'Nederlands', no: 'Norsk', ny: 'Chichewa',
+    pa: 'ਪੰਜਾਬੀ', pl: 'Polski', ps: 'پښتو', pt: 'Português',
+    ro: 'Română', ru: 'Русский', sd: 'سنڌي', si: 'සිංහල',
+    sk: 'Slovenčina', sl: 'Slovenščina', sm: 'Samoan', sn: 'Shona',
+    so: 'Soomaali', sq: 'Shqip', sr: 'Српски', st: 'Sesotho',
+    su: 'Basa Sunda', sv: 'Svenska', sw: 'Kiswahili', ta: 'தமிழ்',
+    te: 'తెలుగు', tg: 'Тоҷикӣ', th: 'ภาษาไทย', tl: 'Filipino',
+    tr: 'Türkçe', uk: 'Українська', ur: 'اردو', uz: 'Oʻzbek',
+    vi: 'Tiếng Việt', xh: 'IsiXhosa', yi: 'ייִדיש', yo: 'Yorùbá',
+    zh: '中文', zu: 'IsiZulu',
+};
+const themedLocales: Record<string, { icon: string; name: string }> = {
+    wizard: { icon: '🧙', name: 'Wizard (Arcane Guild)' },
+    fantasy: { icon: '⚔️', name: 'Fantasy (Adventurer\'s Guild)' },
+    feudal: { icon: '👑', name: 'Feudal (Royal Kingdom)' },
+    mad_scientist: { icon: '🧪', name: 'Mad Scientist (The Laboratory)' },
+    merchant: { icon: '🏪', name: 'Merchant (Grand Bazaar)' },
+    pirate: { icon: '☠️', name: 'Pirate (High Seas)' },
+    space: { icon: '🚀', name: 'Space (Galactic Federation)' },
+};
+const themedCodes = new Set(Object.keys(themedLocales));
+
+const availableLocales = computed<LocaleOption[]>(() =>
+    Object.keys(localeModules)
+        .map((path) => path.match(/\/locales\/([^/]+)\/common\.json$/)?.[1])
+        .filter((code): code is string => Boolean(code))
+        .map((code) => {
+            const themed = themedLocales[code];
+            if (themed) {
+                return { value: code, label: `${themed.icon} - ${themed.name}`, group: 'Themed' };
+            }
+            const english = localeEnglishNames[code] ?? code;
+            const local = localeLocalNames[code] ?? code;
+            return { value: code, label: english === local ? `${code} - ${english}` : `${code} - ${english} (${local})` };
+        })
+        .sort((a, b) => {
+            const aThemed = a.group === 'Themed';
+            const bThemed = b.group === 'Themed';
+            if (aThemed !== bThemed) return aThemed ? 1 : -1;
+            return a.label.localeCompare(b.label);
+        })
+);
+
+const selectedLocale = ref(resolveAppLocale(null));
+const selectedLocaleDisplayLabel = computed(() => {
+    const themed = themedLocales[selectedLocale.value];
+    if (themed) return `${themed.icon} ${themed.name.split('(')[0].trim()}`;
+    return localeLocalNames[selectedLocale.value] ?? selectedLocale.value;
+});
 </script>
 
 <template>
-    <div class="bg-black p-3 px-3"><img src="../assets/images/logo_new.png" alt="" /></div>
+    <div class="bg-black p-3 px-3 flex items-center justify-between">
+        <img src="../assets/images/logo_new.png" alt="" />
+        <LocalePreviewSelect v-model="selectedLocale" :options="availableLocales" :display-label="selectedLocaleDisplayLabel" select-class="bg-gray-800 text-white" :aria-label="'Language'" />
+    </div>
     <div class="container-main flex min-h-screen flex-grow flex-col-reverse lg:flex-row">
         <div class="marketing-content min-h-full w-full bg-blue-700 lg:block lg:w-5/12">
             <h1 class="mt-5 w-full text-center text-3xl uppercase tracking-widest text-white">{{ t('login.welcomeBack') }}</h1>
-            <div class="mt-24 flex">
-                <div class="mx-auto">
+            <div class="mt-24 flex justify-around">
+                <div class="flex flex-col items-center flex-1">
                     <div class="mb-1"><img src="../assets/images/vps.png" alt="" /></div>
                     <div id="count-v" class="text-center text-4xl tracking-widest text-white">{{ counts?.vps }}</div>
-                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">VPS</div>
+                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">{{ t('login.statsVps') }}</div>
                 </div>
-                <div class="mx-auto">
+                <div class="flex flex-col items-center flex-1">
                     <div class="mb-1"><img src="../assets/images/website.png" alt="" /></div>
                     <div id="count-w" class="text-center text-4xl tracking-widest text-white">{{ counts?.websites }}</div>
-                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Websites</div>
+                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">{{ t('login.statsWebsites') }}</div>
                 </div>
-                <div class="mx-auto">
+                <div class="flex flex-col items-center flex-1">
                     <div class="mb-1"><img src="../assets/images/servers.png" alt="" /></div>
                     <div id="count-s" class="text-center text-4xl tracking-widest text-white">{{ counts?.servers }}</div>
-                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">Servers</div>
+                    <div class="text-center text-3xl uppercase tracking-widest text-yellow-600">{{ t('login.statsServers') }}</div>
                 </div>
             </div>
         </div>

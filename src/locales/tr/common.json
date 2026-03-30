@@ -105,6 +105,7 @@
         "loading": "Yükleniyor...",
         "noData": "Veri mevcut değil",
         "noActiveServices": "Aktif Hizmet Yok",
+        "noServicesMatchingFilter": "'{filter}' filtresine uyan hizmet bulunamadı",
         "controlPanel": "Kontrol Paneli",
         "welcomeEmail": "Hoş Geldiniz E-postası",
         "invoices": "Faturalar",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "İptal etmek istediğinizden emin misiniz?"
     },
     "footer": {
-        "copyright": "Telif Hakkı \u00a9 {year} InterServer Inc.",
+        "copyright": "Telif Hakkı © {year} InterServer Inc.",
         "allRightsReserved": "Tüm hakları saklıdır."
     },
     "search": {

@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Port Registry & Navigation Charts",
+        "addDomain": "Chart a New Named Port",
+        "deleteDomain": "Strike Named Port from the Charts",
+        "domainName": "Named Port",
+        "dnsServers": "Navigation Servers",
+        "confirmDelete": "Are ye sure ye want to strike this named port from the charts?",
+        "noDomains": "No named ports charted"
+    },
+    "editor": {
+        "title": "Navigation Chart Editor",
+        "addRecord": "Add Navigation Record",
+        "deleteRecord": "Strike Navigation Record",
+        "editRecord": "Amend Navigation Record",
+        "recordType": "Record Type",
+        "hostname": "Ship Name",
+        "address": "Ship's Coordinates",
+        "distance": "Distance",
+        "weight": "Cargo Weight",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Actions",
+        "confirmDelete": "Are ye sure ye want to strike this navigation record from the charts?"
+    }
+}

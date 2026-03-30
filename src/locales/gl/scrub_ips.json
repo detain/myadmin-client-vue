@@ -1,65 +1,65 @@
 {
-  "list": {
-    "title": "Lista de servizos de IPs de limpeza",
-    "orderTitle": "Pedir IPs de limpeza"
-  },
-  "view": {
-    "title": "Ver IPs de limpeza",
-    "currentIp": "IP actual",
-    "ipAddress": "Enderezo IP",
-    "ipFromService": "IP do servizo"
-  },
-  "filters": {
-    "title": "Filtros",
-    "createNew": "Crear novo",
-    "createNewFilter": "Crear novo filtro",
-    "filterType": "Tipo de filtro",
-    "ipAddress": "Enderezo IP",
-    "portNo": "Número de porto",
-    "filter": "Filtro",
-    "destinationIp": "IP de destino",
-    "destinationPort": "Porto de destino",
-    "noFiltersFound": "Non se atoparon filtros!",
-    "deleteFilterConfirm": "Está seguro de que quere eliminar este filtro?",
-    "selectFilterType": "Seleccionar tipo de filtro",
-    "unableToCreateFilter": "Non é posible crear o filtro neste momento.",
-    "unableToDeleteFilter": "Non é posible eliminar o filtro neste momento."
-  },
-  "firewallRules": {
-    "title": "Regras de firewall",
-    "createNewFirewall": "Crear nova regra de firewall",
-    "protocol": "Protocolo",
-    "destinationIp": "IP de destino",
-    "sourceIp": "IP de orixe",
-    "block": "Bloquear",
-    "whitelist": "Lista branca",
-    "noRulesFound": "Non se atoparon regras!",
-    "deleteRuleConfirm": "Está seguro de que quere eliminar esta regra?",
-    "createNew": "Crear novo",
-    "destinationPort": "Porto de destino",
-    "sourcePort": "Porto de orixe",
-    "xdpAction": "Acción XDP",
-    "ipRequired": "O enderezo IP é obrigatorio",
-    "unableToCreateRule": "Non é posible crear a regra de firewall neste momento.",
-    "unableToDeleteRule": "Non é posible eliminar a regra de firewall neste momento."
-  },
-  "geoFirewallRules": {
-    "title": "Regras de firewall xeográfico",
-    "createNewGeoRule": "Crear nova regra de firewall xeográfico",
-    "destinationIp": "IP de destino",
-    "sourceCountry": "País de orixe",
-    "sourceAsn": "ASN de orixe",
-    "selectCountry": "Seleccionar país",
-    "block": "Bloquear",
-    "whitelist": "Lista branca",
-    "noRulesFound": "Non se atoparon regras!",
-    "deleteGeoRuleConfirm": "Está seguro de que quere eliminar esta regra xeográfica?",
-    "createNew": "Crear novo",
-    "destinationPort": "Porto de destino",
-    "xdpAction": "Acción XDP",
-    "portNo": "Nº de porto",
-    "asn": "ASN",
-    "unableToCreateRule": "Non é posible crear a regra de firewall neste momento.",
-    "unableToDeleteRule": "Non é posible eliminar a regra de firewall xeográfico neste momento."
-  }
+    "list": {
+        "title": "Lista de servizos de IPs de limpeza",
+        "orderTitle": "Pedir IPs de limpeza"
+    },
+    "view": {
+        "title": "Ver IPs de limpeza",
+        "currentIp": "IP actual",
+        "ipAddress": "Enderezo IP",
+        "ipFromService": "IP do servizo"
+    },
+    "filters": {
+        "title": "Filtros",
+        "createNew": "Crear novo",
+        "createNewFilter": "Crear novo filtro",
+        "filterType": "Tipo de filtro",
+        "ipAddress": "Enderezo IP",
+        "portNo": "Número de porto",
+        "filter": "Filtro",
+        "destinationIp": "IP de destino",
+        "destinationPort": "Porto de destino",
+        "noFiltersFound": "Non se atoparon filtros!",
+        "deleteFilterConfirm": "Está seguro de que quere eliminar este filtro?",
+        "selectFilterType": "Seleccionar tipo de filtro",
+        "unableToCreateFilter": "Non é posible crear o filtro neste momento.",
+        "unableToDeleteFilter": "Non é posible eliminar o filtro neste momento."
+    },
+    "firewallRules": {
+        "title": "Regras de firewall",
+        "createNewFirewall": "Crear nova regra de firewall",
+        "protocol": "Protocolo",
+        "destinationIp": "IP de destino",
+        "sourceIp": "IP de orixe",
+        "block": "Bloquear",
+        "whitelist": "Lista branca",
+        "noRulesFound": "Non se atoparon regras!",
+        "deleteRuleConfirm": "Está seguro de que quere eliminar esta regra?",
+        "createNew": "Crear novo",
+        "destinationPort": "Porto de destino",
+        "sourcePort": "Porto de orixe",
+        "xdpAction": "Acción XDP",
+        "ipRequired": "O enderezo IP é obrigatorio",
+        "unableToCreateRule": "Non é posible crear a regra de firewall neste momento.",
+        "unableToDeleteRule": "Non é posible eliminar a regra de firewall neste momento."
+    },
+    "geoFirewallRules": {
+        "title": "Regras de firewall xeográfico",
+        "createNewGeoRule": "Crear nova regra de firewall xeográfico",
+        "destinationIp": "IP de destino",
+        "sourceCountry": "País de orixe",
+        "sourceAsn": "ASN de orixe",
+        "selectCountry": "Seleccionar país",
+        "block": "Bloquear",
+        "whitelist": "Lista branca",
+        "noRulesFound": "Non se atoparon regras!",
+        "deleteGeoRuleConfirm": "Está seguro de que quere eliminar esta regra xeográfica?",
+        "createNew": "Crear novo",
+        "destinationPort": "Porto de destino",
+        "xdpAction": "Acción XDP",
+        "portNo": "Nº de porto",
+        "asn": "ASN",
+        "unableToCreateRule": "Non é posible crear a regra de firewall neste momento.",
+        "unableToDeleteRule": "Non é posible eliminar a regra de firewall xeográfico neste momento."
+    }
 }

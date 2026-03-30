@@ -80,8 +80,11 @@
     "home": {
         "cart": "Καλάθι",
         "editPersonalInfo": "Επεξεργασία Προσωπικών Στοιχείων",
-        "copyright": "Πνευματικά Δικαιώματα \u00a9 {year} InterServer Inc.",
+        "copyright": "Πνευματικά Δικαιώματα © {year} InterServer Inc.",
         "allRightsReserved": "Όλα τα δικαιώματα διατηρούνται."
     },
-    "copyright": "Πνευματικά Δικαιώματα \u00a9 {year} - Όλα τα Δικαιώματα Διατηρούνται."
+    "copyright": "Πνευματικά Δικαιώματα © {year} - Όλα τα Δικαιώματα Διατηρούνται.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Διακομιστές"
 }

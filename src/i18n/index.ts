@@ -14,8 +14,9 @@ function normalizeLocale(locale: string): string {
 }
 
 function findBestSupportedLocale(locale: string): string | null {
+    const raw = locale.trim().toLowerCase();
     const normalized = normalizeLocale(locale);
-    const candidates = [normalized, normalized.split('-')[0]];
+    const candidates = [raw, normalized, normalized.split('-')[0]];
 
     for (const candidate of candidates) {
         if (supportedLocales.has(candidate)) {
@@ -133,6 +134,25 @@ export async function loadLocaleMessages(locale: string, namespace: string): Pro
     } catch (error) {
         console.error(`[i18n] Failed to load namespace "${namespace}" for locale "${locale}"`, error);
     }
+}
+
+/**
+ * Switch to a new locale: loads ALL previously-used namespaces for the target
+ * locale first, then flips the active locale so Vue re-renders with every
+ * translation already in place.
+ */
+export async function switchLocale(locale: string): Promise<string> {
+    const resolvedLocale = findBestSupportedLocale(locale) ?? DEFAULT_LOCALE;
+    const namespacesToLoad = new Set<string>();
+    for (const key of loadedNamespaces) {
+        const ns = key.split(':')[1];
+        namespacesToLoad.add(ns);
+    }
+    // Load all messages BEFORE changing the locale so nothing renders with missing keys
+    await Promise.all([...namespacesToLoad].flatMap((ns) => [loadLocaleMessages(resolvedLocale, ns), loadLocaleMessages(DEFAULT_LOCALE, ns)]));
+    // Now flip the locale — Vue re-renders and every t() call has its translation ready
+    i18n.global.locale.value = resolvedLocale;
+    return resolvedLocale;
 }
 
 export async function loadCommonMessages(): Promise<void> {

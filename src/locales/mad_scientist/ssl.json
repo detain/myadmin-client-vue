@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Encryption Authentication Certificate Registry",
+        "orderTitle": "Requisition Encryption Authentication Certificate Registrations"
+    },
+    "view": {
+        "title": "Inspect Encryption Authentication Certificate {id}",
+        "package": "Research Package",
+        "nextInvoiceDate": "Next Funding Requisition Date:",
+        "billing": "Research Funding",
+        "billed": "billed:",
+        "statusIs": "Operational Status is:",
+        "orderInfo": "Requisition Data",
+        "certificateInfo": "Encryption Authentication Certificate Data",
+        "links": "System Links",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the laboratory orientation communication?",
+        "emailSent": "Pneumatic Message Dispatched",
+        "emailSentMessage": "The laboratory orientation communication has been retransmitted. Check your message receptacle."
+    },
+    "order": {
+        "title": "Requisition Encryption Authentication Certificate"
+    },
+    "changeApproverEmail": {
+        "title": "Reassign Authorization Electronic Correspondence Address",
+        "selectApproverEmail": "Select Authorization Electronic Correspondence Address"
+    }
+}

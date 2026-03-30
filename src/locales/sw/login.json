@@ -80,8 +80,11 @@
     "home": {
         "cart": "Kikapu",
         "editPersonalInfo": "Hariri Maelezo ya Kibinafsi",
-        "copyright": "Hakimiliki \u00a9 {year} InterServer Inc.",
+        "copyright": "Hakimiliki © {year} InterServer Inc.",
         "allRightsReserved": "Haki zote zimehifadhiwa."
     },
-    "copyright": "Hakimiliki \u00a9 {year} - Haki Zote Zimehifadhiwa."
+    "copyright": "Hakimiliki © {year} - Haki Zote Zimehifadhiwa.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servers"
 }

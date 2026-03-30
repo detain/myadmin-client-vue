@@ -257,7 +257,7 @@ loadWhois();
                         <p>{{ t('domains.whois.contactPrivacyDescription2') }}</p>
                         <p>{{ t('domains.whois.contactPrivacyDescription3') }}</p>
                         <p>
-                            {{ t('domains.whois.contactPrivacyAvailable', { cost: '' }) }} <span class="text-md text-green text-md">{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</span>
+                            <i18n-t keypath="domains.whois.contactPrivacyAvailable" tag="span"><template #cost><span class="text-md text-green text-md">{{ currencySymbol }}{{ whoisCost.toFixed(2) }}</span></template></i18n-t>
                         </p>
                         <p>{{ t('domains.whois.enableNow') }}</p>
                     </div>

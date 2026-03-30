@@ -1,0 +1,28 @@
+{
+    "title": "The Royal Court",
+    "welcome": "Hear ye, {name}",
+    "lastLogin": "Last Fealty Sworn",
+    "lastLoginIp": "Last Fealty Sworn Garrison Coordinates",
+    "prepay": {
+        "title": "Pre-Paid Tribute Balance",
+        "remainingBalance": "Pre-Paid Tribute Remaining Balance",
+        "manageAccount": "Manage Account in the Royal Ledger",
+        "manageTooltip": "Manage Your Pre-Paid Tribute Account in the Royal Ledger"
+    },
+    "invoices": {
+        "title": "Unpaid Tax Notices",
+        "totalUnpaid": "Total Unpaid Tax Notices",
+        "totalAmount": "Total Tribute Amount To Be Rendered",
+        "payTotalTooltip": "Render Total Tribute Amount"
+    },
+    "callInPin": "Call-in Sigil PIN",
+    "recentTickets": "Recent Royal Petitions",
+    "viewAllTickets": "View All Royal Petitions",
+    "editTicket": "Amend Royal Petition",
+    "serviceCount": "No services in service to the Crown | {count} service in service to the Crown | {count} services in service to the Crown",
+    "affiliate": {
+        "earnPerSale": "Earn {amount} Per Commission",
+        "urlPlaceholder": "Vassalage Dispatch URL",
+        "shareWith": "Share with"
+    }
+}

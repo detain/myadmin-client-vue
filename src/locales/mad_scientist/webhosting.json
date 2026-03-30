@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Web Experiment Deployment Catalog",
+        "orderTitle": "Requisition Web Experiment Deployment Registrations"
+    },
+    "view": {
+        "title": "Inspect Web Experiment Deployment {id}",
+        "package": "Configuration Class",
+        "nextInvoiceDate": "Next Funding Demand Date:",
+        "billing": "Funding Requisitions",
+        "billed": "funding cycle",
+        "billingStatusIs": "Funding Experiment Status is:",
+        "hostInfo": "Host Intelligence",
+        "username": "Subject Identifier:",
+        "ip": "Network Coordinates:",
+        "server": "Experiment Chamber:",
+        "notSetYet": "Not yet configured",
+        "login": "Authenticate",
+        "types": "Types:",
+        "linksLabel": "Laboratory Connections:",
+        "manualLogin": "Manual Authentication",
+        "automaticLogin": "Automatic Authentication",
+        "clickHere": "Activate Here",
+        "defaultNameservers": "Default Nameservers",
+        "nameservers": "Nameservers:",
+        "externalLinks": "External Laboratory Connections",
+        "names": "Designations:",
+        "websitePreview": "Web Experiment Preview",
+        "links": "Laboratory Connections",
+        "welcomeEmailConfirm": "Are you certain you want to re-dispatch the welcome pneumatic message?",
+        "emailSent": "Pneumatic Message Dispatched",
+        "emailSentMessage": "The welcome pneumatic message has been re-dispatched. Inspect your pneumatic inbox."
+    },
+    "buyIp": {
+        "title": "Acquire Additional Network Coordinates Addon",
+        "existingAddonIps": "Existing Addon Network Coordinates",
+        "additionalIp": "Additional Network Coordinates",
+        "monthlyCost": "Monthly Budget Allocation ({symbol})",
+        "costDescription": "Budget Allocation ({symbol}) every lunar cycle as your web experiment is billed",
+        "confirmPurchase": "Confirm Acquisition Parameters",
+        "confirmMessage": "Additional Network Coordinates budget allocation: {symbol}{cost}/lunar cycle. Are you certain you want to requisition an additional Network Coordinates?",
+        "placeOrder": "Place Requisition",
+        "orderPlaced": "Requisition Placed"
+    },
+    "reverseDns": {
+        "title": "Reverse Specimen Classification Registry",
+        "updateReverseDns": "Recalibrate Reverse Specimen Classification Registry"
+    },
+    "downloadBackups": {
+        "title": "Extract Cryogenic Backups",
+        "backup": "Cryogenic Backup",
+        "size": "Size",
+        "options": "Options"
+    },
+    "migration": {
+        "title": "Migrate Your Web Experiment",
+        "currentWebHostInfo": "Current Web Experiment Host Intelligence",
+        "customerPortalUrl": "Research Subject Portal URL",
+        "portalExample": "For Example: sso.godaddy.com",
+        "registeredUsername": "Registered Subject Identifier / Pneumatic Address / Subject ID",
+        "password": "Security Passphrase",
+        "controlPanelUrl": "Control Panel URL",
+        "controlPanelExample": "For Example: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Control Panel Subject Identifier",
+        "ftpPassword": "FTP / Control Panel Security Passphrase",
+        "holdingPageQuestion": "If the experiment is live/active with high traffic, can we configure a holding page during migration?",
+        "specialRequirementsQuestion": "Does this experiment have special requirements like PHP Version / Modules?",
+        "domainRegistryInfo": "Dimensional Portal Registry Intelligence",
+        "transferDomainQuestion": "Do you also want us to assist in transferring the dimensional portal designation registration?",
+        "updateNameserversQuestion": "Do you want us to recalibrate the nameservers as soon as we complete the data migration?",
+        "domainRegistryPortal": "Dimensional Portal Registry Research Subject Portal",
+        "importantNotes": "Critical Laboratory Notes",
+        "note1": "Completing this form will synthesize a new anomaly report for our Technical Support Division to initiate your migration experiment.",
+        "note2": "Please be as complete and accurate as possible to avoid experimental delays.",
+        "note3": "A typical migration experiment is completed within 48 to 72 hours. Sometimes longer if the amount of data to transfer is large.",
+        "note4": "The old hosting account needs to be online and accessible while we are performing the migration experiment, otherwise we may face difficulty.",
+        "note5": "Please do not modify any specimens on your web experiment while we perform the migration, otherwise those data may not be transferred to the new experiment deployment."
+    },
+    "order": {
+        "title": "Requisition Web Experiment Deployment"
+    }
+}

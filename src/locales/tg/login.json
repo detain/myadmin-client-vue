@@ -80,8 +80,11 @@
     "home": {
         "cart": "Сабад",
         "editPersonalInfo": "Таҳрири маълумоти шахсӣ",
-        "copyright": "Ҳуқуқи муаллиф \u00a9 {year} InterServer Inc.",
+        "copyright": "Ҳуқуқи муаллиф © {year} InterServer Inc.",
         "allRightsReserved": "Ҳамаи ҳуқуқҳо ҳифз шудаанд."
     },
-    "copyright": "Ҳуқуқи муаллиф \u00a9 {year} - Ҳамаи ҳуқуқҳо ҳифз шудаанд."
+    "copyright": "Ҳуқуқи муаллиф © {year} - Ҳамаи ҳуқуқҳо ҳифз шудаанд.",
+    "statsVps": "VPS",
+    "statsWebsites": "Веб-хостинг",
+    "statsServers": "Серверҳо"
 }

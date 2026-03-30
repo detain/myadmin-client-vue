@@ -1,0 +1,12 @@
+{
+    "title": "Fleet Officers",
+    "addUser": "Enlist Fleet Officer",
+    "editUser": "Modify Fleet Officer Record",
+    "firstName": "Given Name",
+    "lastName": "Family Name",
+    "username": "Crew Designation",
+    "password": "Encryption Passphrase",
+    "keepSamePassword": "Leave blank to retain current encryption passphrase",
+    "errorLoading": "System malfunction loading fleet officers:",
+    "errorLoadingUser": "System malfunction loading fleet officer:"
+}

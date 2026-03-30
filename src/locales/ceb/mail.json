@@ -1,49 +1,49 @@
 {
-  "list": {
-    "title": "Listahan sa Mga Serbisyo sa Mail",
-    "orderTitle": "Mag-order og Mail Registrations"
-  },
-  "view": {
-    "title": "Tan-awa ang Mail {id}",
-    "package": "Package",
-    "nextInvoiceDate": "Petsa sa Sunod nga Invoice:",
-    "billing": "Billing",
-    "billed": "na-bill:",
-    "statusIs": "Ang Status mao:",
-    "mailApi": "Mail API",
-    "usageCount": "Bilang sa Paggamit:",
-    "links": "Mga Link",
-    "connectionInfo": "Impormasyon sa Koneksyon",
-    "emailSent": "Email Gipadala",
-    "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox.",
-    "welcomeEmailConfirm": "Sigurado ka ba nga gusto mong ipadala pag-usab ang welcome email?"
-  },
-  "order": {
-    "title": "Mag-order og Mail"
-  },
-  "alerts": {
-    "title": "Mga Alerto",
-    "addAlert": "Idugang ang Alerto",
-    "editAlert": "I-edit ang Alerto",
-    "noAlerts": "Walay nakit-an nga mga alerto"
-  },
-  "delist": {
-    "title": "Tanggalon sa Listahan",
-    "blockedEmails": "Mga Na-block nga Email"
-  },
-  "denyRules": {
-    "title": "Mga Lagda sa Pagtangging",
-    "addRule": "Idugang ang Lagda",
-    "noRules": "Walay nakit-an nga mga lagda sa pagtangging"
-  },
-  "logs": {
-    "title": "Mga Log",
-    "searchLogs": "Pangitaa ang mga Log"
-  },
-  "stats": {
-    "title": "Mga Estadistika"
-  },
-  "deliverability": {
-    "title": "Kakayahan sa Paghatod"
-  }
+    "list": {
+        "title": "Listahan sa Mga Serbisyo sa Mail",
+        "orderTitle": "Mag-order og Mail Registrations"
+    },
+    "view": {
+        "title": "Tan-awa ang Mail {id}",
+        "package": "Package",
+        "nextInvoiceDate": "Petsa sa Sunod nga Invoice:",
+        "billing": "Billing",
+        "billed": "na-bill:",
+        "statusIs": "Ang Status mao:",
+        "mailApi": "Mail API",
+        "usageCount": "Bilang sa Paggamit:",
+        "links": "Mga Link",
+        "connectionInfo": "Impormasyon sa Koneksyon",
+        "emailSent": "Email Gipadala",
+        "emailSentMessage": "Ang welcome email gi-resend. Susiha ang imong inbox.",
+        "welcomeEmailConfirm": "Sigurado ka ba nga gusto mong ipadala pag-usab ang welcome email?"
+    },
+    "order": {
+        "title": "Mag-order og Mail"
+    },
+    "alerts": {
+        "title": "Mga Alerto",
+        "addAlert": "Idugang ang Alerto",
+        "editAlert": "I-edit ang Alerto",
+        "noAlerts": "Walay nakit-an nga mga alerto"
+    },
+    "delist": {
+        "title": "Tanggalon sa Listahan",
+        "blockedEmails": "Mga Na-block nga Email"
+    },
+    "denyRules": {
+        "title": "Mga Lagda sa Pagtangging",
+        "addRule": "Idugang ang Lagda",
+        "noRules": "Walay nakit-an nga mga lagda sa pagtangging"
+    },
+    "logs": {
+        "title": "Mga Log",
+        "searchLogs": "Pangitaa ang mga Log"
+    },
+    "stats": {
+        "title": "Mga Estadistika"
+    },
+    "deliverability": {
+        "title": "Kakayahan sa Paghatod"
+    }
 }

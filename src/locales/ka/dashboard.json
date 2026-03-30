@@ -1,1 +1,28 @@
-{ "title": "მთავარი პანელი", "welcome": "მოგესალმებით, {name}", "lastLogin": "ბოლო შესვლა", "lastLoginIp": "ბოლო შესვლის IP", "prepay": { "title": "წინასწარი გადახდის ბალანსი", "remainingBalance": "წინასწარი გადახდის დარჩენილი ბალანსი", "manageAccount": "ანგარიშის მართვა", "manageTooltip": "წინასწარი გადახდის ანგარიშის მართვა" }, "invoices": { "title": "გადაუხდელი ინვოისები", "totalUnpaid": "გადაუხდელი ინვოისების ჯამი", "totalAmount": "გადასახდელი ჯამური თანხა", "payTotalTooltip": "ჯამური თანხის გადახდა" }, "callInPin": "სატელეფონო PIN", "recentTickets": "ბოლო ტიკეტები", "viewAllTickets": "ყველა ტიკეტის ნახვა", "editTicket": "ტიკეტის რედაქტირება", "serviceCount": "აქტიური სერვისები არ არის | {count} აქტიური სერვისი | {count} აქტიური სერვისი", "affiliate": { "earnPerSale": "მიიღეთ {amount} ყოველ გაყიდვაზე", "urlPlaceholder": "პარტნიორის URL", "shareWith": "გაზიარება" } }
+{
+    "title": "მთავარი პანელი",
+    "welcome": "მოგესალმებით, {name}",
+    "lastLogin": "ბოლო შესვლა",
+    "lastLoginIp": "ბოლო შესვლის IP",
+    "prepay": {
+        "title": "წინასწარი გადახდის ბალანსი",
+        "remainingBalance": "წინასწარი გადახდის დარჩენილი ბალანსი",
+        "manageAccount": "ანგარიშის მართვა",
+        "manageTooltip": "წინასწარი გადახდის ანგარიშის მართვა"
+    },
+    "invoices": {
+        "title": "გადაუხდელი ინვოისები",
+        "totalUnpaid": "გადაუხდელი ინვოისების ჯამი",
+        "totalAmount": "გადასახდელი ჯამური თანხა",
+        "payTotalTooltip": "ჯამური თანხის გადახდა"
+    },
+    "callInPin": "სატელეფონო PIN",
+    "recentTickets": "ბოლო ტიკეტები",
+    "viewAllTickets": "ყველა ტიკეტის ნახვა",
+    "editTicket": "ტიკეტის რედაქტირება",
+    "serviceCount": "აქტიური სერვისები არ არის | {count} აქტიური სერვისი | {count} აქტიური სერვისი",
+    "affiliate": {
+        "earnPerSale": "მიიღეთ {amount} ყოველ გაყიდვაზე",
+        "urlPlaceholder": "პარტნიორის URL",
+        "shareWith": "გაზიარება"
+    }
+}

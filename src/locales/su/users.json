@@ -1,12 +1,12 @@
 {
-  "title": "Pamaké",
-  "addUser": "Tambah Pamaké",
-  "editUser": "Édit Pamaké",
-  "firstName": "Ngaran Hareup",
-  "lastName": "Ngaran Tukang",
-  "username": "Ngaran Pamaké",
-  "password": "Kecap Akses",
-  "keepSamePassword": "Kosongkeun pikeun ngajaga kecap akses anu sarua",
-  "errorLoading": "Kasalahan muka pamaké:",
-  "errorLoadingUser": "Kasalahan muka pamaké:"
+    "title": "Pamaké",
+    "addUser": "Tambah Pamaké",
+    "editUser": "Édit Pamaké",
+    "firstName": "Ngaran Hareup",
+    "lastName": "Ngaran Tukang",
+    "username": "Ngaran Pamaké",
+    "password": "Kecap Akses",
+    "keepSamePassword": "Kosongkeun pikeun ngajaga kecap akses anu sarua",
+    "errorLoading": "Kasalahan muka pamaké:",
+    "errorLoadingUser": "Kasalahan muka pamaké:"
 }

@@ -105,6 +105,7 @@
         "loading": "Lade...",
         "noData": "Gjin gegevens beskikber",
         "noActiveServices": "Gjin Aktive Tsjinsten",
+        "noServicesMatchingFilter": "Gjin tsjinsten fûn dy oerienkomme mei filter '{filter}'",
         "controlPanel": "Kontrôlepaniel",
         "welcomeEmail": "Wolkom-e-post",
         "invoices": "Fakturen",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Binne jo wis dat jo annulearje wolle?"
     },
     "footer": {
-        "copyright": "Auteursrjocht \u00a9 {year} InterServer Inc.",
+        "copyright": "Auteursrjocht © {year} InterServer Inc.",
         "allRightsReserved": "Alle rjochten foarbehâlden."
     },
     "search": {

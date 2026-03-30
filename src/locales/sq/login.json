@@ -80,8 +80,11 @@
     "home": {
         "cart": "Shporta",
         "editPersonalInfo": "Ndrysho Informacionin Personal",
-        "copyright": "E drejta e autorit \u00a9 {year} InterServer Inc.",
+        "copyright": "E drejta e autorit © {year} InterServer Inc.",
         "allRightsReserved": "Të gjitha të drejtat e rezervuara."
     },
-    "copyright": "E drejta e autorit \u00a9 {year} - Të Gjitha të Drejtat e Rezervuara."
+    "copyright": "E drejta e autorit © {year} - Të Gjitha të Drejtat e Rezervuara.",
+    "statsVps": "VPS",
+    "statsWebsites": "Hostimi Web",
+    "statsServers": "Serverët"
 }

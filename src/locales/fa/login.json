@@ -83,5 +83,8 @@
         "copyright": "حق مؤلف © {year} InterServer Inc.",
         "allRightsReserved": "تمامی حقوق محفوظ است."
     },
-    "copyright": "حق مؤلف © {year} - تمامی حقوق محفوظ است."
+    "copyright": "حق مؤلف © {year} - تمامی حقوق محفوظ است.",
+    "statsVps": "VPS",
+    "statsWebsites": "میزبانی وب",
+    "statsServers": "سرورها"
 }

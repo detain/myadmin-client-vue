@@ -80,8 +80,11 @@
     "home": {
         "cart": "ሸቀጣሸቀጥ",
         "editPersonalInfo": "የግል መረጃ አርትዕ",
-        "copyright": "የቅጂ መብት \u00a9 {year} InterServer Inc.",
+        "copyright": "የቅጂ መብት © {year} InterServer Inc.",
         "allRightsReserved": "ሁሉም መብቶች የተጠበቁ ናቸው።"
     },
-    "copyright": "የቅጂ መብት \u00a9 {year} - ሁሉም መብቶች የተጠበቁ ናቸው።"
+    "copyright": "የቅጂ መብት © {year} - ሁሉም መብቶች የተጠበቁ ናቸው።",
+    "statsVps": "VPS",
+    "statsWebsites": "ድር ሆስቲንግ",
+    "statsServers": "ሰርቨሮች"
 }

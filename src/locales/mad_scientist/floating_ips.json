@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Ambulatory Address Node Registry",
+        "orderTitle": "Requisition Ambulatory Address Node Registrations"
+    },
+    "view": {
+        "title": "Inspect Ambulatory Address Node {id}",
+        "package": "Research Package",
+        "nextInvoiceDate": "Next Funding Requisition Date:",
+        "billing": "Research Funding",
+        "billed": "billed:",
+        "statusIs": "Operational Status is:",
+        "floatingIp": "Ambulatory Address Node",
+        "links": "System Links",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the laboratory orientation communication?",
+        "emailSent": "Pneumatic Message Dispatched",
+        "emailSentMessage": "The laboratory orientation communication has been retransmitted. Check your message receptacle."
+    },
+    "order": {
+        "title": "Requisition Ambulatory Address Node"
+    },
+    "changeIp": {
+        "title": "Reassign Target Network Node Address"
+    }
+}

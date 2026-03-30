@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Address Decontamination Protocol Services List",
+        "orderTitle": "Requisition Address Decontamination Protocol Services"
+    },
+    "view": {
+        "title": "View Address Decontamination Protocol",
+        "currentIp": "Current Network Beacon",
+        "ipAddress": "Network Beacon Address",
+        "ipFromService": "Network Beacon from Service Module"
+    },
+    "filters": {
+        "title": "Sensor Filters",
+        "createNew": "Initialize New",
+        "createNewFilter": "Initialize New Sensor Filter",
+        "filterType": "Sensor Filter Type",
+        "selectFilterType": "Select Sensor Filter Type",
+        "ipAddress": "Network Beacon Address",
+        "portNo": "Port No.",
+        "filter": "Sensor Filter",
+        "destinationIp": "Destination Beacon",
+        "destinationPort": "Destination Port",
+        "noFiltersFound": "No sensor filters detected!",
+        "deleteFilterConfirm": "Are you sure you want to purge this sensor filter?",
+        "unableToCreateFilter": "Unable to initialize sensor filter at this time.",
+        "unableToDeleteFilter": "Unable to purge sensor filter at this time."
+    },
+    "firewallRules": {
+        "title": "Defense Grid Rules",
+        "createNew": "Initialize New",
+        "createNewFirewall": "Initialize New Defense Grid Rule",
+        "protocol": "Protocol",
+        "destinationIp": "Destination Beacon",
+        "destinationPort": "Destination Port",
+        "sourceIp": "Origin Beacon",
+        "sourcePort": "Origin Port",
+        "xdpAction": "XDP Action",
+        "ipRequired": "Network Beacon Address is required",
+        "block": "Block Signal",
+        "whitelist": "Authorized Vessels List",
+        "noRulesFound": "No defense grid rules detected!",
+        "deleteRuleConfirm": "Are you sure you want to purge this defense grid rule?",
+        "unableToCreateRule": "Unable to initialize defense grid rule at this time.",
+        "unableToDeleteRule": "Unable to purge defense grid rule at this time."
+    },
+    "geoFirewallRules": {
+        "title": "Geo-Sector Defense Grid Rules",
+        "createNew": "Initialize New",
+        "createNewGeoRule": "Initialize New Geo-Sector Defense Grid Rule",
+        "destinationIp": "Destination Beacon",
+        "destinationPort": "Destination Port",
+        "sourceCountry": "Origin Planet / Territory",
+        "sourceAsn": "Origin ASN",
+        "xdpAction": "XDP Action",
+        "portNo": "Port No.",
+        "selectCountry": "Select Planet / Territory",
+        "asn": "ASN",
+        "block": "Block Signal",
+        "whitelist": "Authorized Vessels List",
+        "noRulesFound": "No geo-sector defense grid rules detected!",
+        "deleteGeoRuleConfirm": "Are you sure you want to purge this geo-sector defense grid rule?",
+        "unableToCreateRule": "Unable to initialize defense grid rule at this time.",
+        "unableToDeleteRule": "Unable to purge geo-sector defense grid rule at this time."
+    }
+}

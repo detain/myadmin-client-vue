@@ -80,8 +80,11 @@
     "home": {
         "cart": "கார்ட்",
         "editPersonalInfo": "தனிப்பட்ட தகவலை திருத்து",
-        "copyright": "பதிப்புரிமை \u00a9 {year} InterServer Inc.",
+        "copyright": "பதிப்புரிமை © {year} InterServer Inc.",
         "allRightsReserved": "அனைத்து உரிமைகளும் பாதுகாக்கப்படுகின்றன."
     },
-    "copyright": "பதிப்புரிமை \u00a9 {year} - அனைத்து உரிமைகளும் பாதுகாக்கப்படுகின்றன."
+    "copyright": "பதிப்புரிமை © {year} - அனைத்து உரிமைகளும் பாதுகாக்கப்படுகின்றன.",
+    "statsVps": "VPS",
+    "statsWebsites": "வெப் ஹோஸ்டிங்",
+    "statsServers": "சேவையகங்கள்"
 }

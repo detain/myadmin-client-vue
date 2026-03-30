@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Royal Decrees for Your Account in the Royal Ledger"
+    },
+    "changePassword": {
+        "title": "Change Secret Sigil",
+        "cardTitle": "Revise Decree — Secret Sigil",
+        "currentPassword": "Current Secret Sigil",
+        "newPassword": "New Secret Sigil",
+        "confirmPassword": "Confirm Secret Sigil",
+        "updatePassword": "Revise Secret Sigil"
+    },
+    "changeUsername": {
+        "title": "Change Your Title",
+        "disabled": "Changes to Your Title have been temporarily suspended by Royal Decree.",
+        "currentUsername": "Current Title",
+        "newDesiredUsername": "New Desired Title",
+        "confirmationCode": "Confirmation Code",
+        "pleaseWait": "Patience, good subject...",
+        "gotError": "By the King's wrath — an error! {error}"
+    },
+    "contactInfo": {
+        "title": "Contact Info",
+        "cardTitle": "Revise Decree — Contact Info",
+        "headsUp": "Hear ye, hear ye!",
+        "headsUpMessage": "Although this information is optional, providing (accurate) information will help both enrich our interactions and lower your Risk % Standing giving you quicker and more convenient access to parts of the kingdom (such as not having to authenticate a payment token).",
+        "riskScore": "Risk % Standing",
+        "personalInformation": "Personal Information",
+        "name": "Name",
+        "namePlaceholder": "Lord Cool",
+        "company": "House",
+        "gstinTaxId": "GSTIN Tax ID",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Estate Address Line 1",
+        "addressLine2": "Estate Address Line 2",
+        "cityState": "Village, Province",
+        "city": "Village",
+        "state": "Province",
+        "country": "Kingdom",
+        "zipcode": "Manor Code",
+        "phoneNo": "Messenger No",
+        "phoneNumber": "Messenger Number",
+        "language": "Tongue",
+        "auto": "Auto",
+        "currency": "Coinage",
+        "timeZone": "Sundial Zone",
+        "otherSettings": "Other Royal Decrees",
+        "disablePasswordResets": "Revoke Permission for (Forgot your Secret Sigil) Sigil Resets.",
+        "disableInvoiceReminders": "Revoke Permission for Tax Notice Reminder Carrier Pigeon Notifications.",
+        "disableServerInvoiceReminders": "Revoke Permission for Castle Keep Tax Notice Reminder Carrier Pigeon Notifications.",
+        "disableReinstall": "Revoke Permission for Reinstallation.",
+        "alternateEmailInvoices": "Alternate Pigeon Post Address for Tax Notices",
+        "alternateEmailInvoicesPlaceholder": "Alternative pigeon post address for dispatching tax notices",
+        "alternateEmailAbuse": "Alternate Pigeon Post Address for Abuse Reports",
+        "updateInfo": "Revise Decree"
+    }
+}

@@ -80,8 +80,11 @@
     "home": {
         "cart": "Plaustrum",
         "editPersonalInfo": "Emenda Informationes Personales",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Omnia iura reservantur."
     },
-    "copyright": "Copyright \u00a9 {year} - Omnia Iura Reservantur."
+    "copyright": "Copyright © {year} - Omnia Iura Reservantur.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servers"
 }

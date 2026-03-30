@@ -1,0 +1,28 @@
+{
+    "title": "The Arcane Observatory",
+    "welcome": "Hail and well met, {name}",
+    "lastLogin": "Last Tower Entry",
+    "lastLoginIp": "Last Entry Ether Address",
+    "prepay": {
+        "title": "Pre-deposited Essence Balance",
+        "remainingBalance": "Pre-deposited Essence Remaining",
+        "manageAccount": "Manage Grimoire",
+        "manageTooltip": "Manage Thy Pre-deposited Essence Grimoire"
+    },
+    "invoices": {
+        "title": "Unsettled Debt Scrolls",
+        "totalUnpaid": "Total Unsettled Debt Scrolls",
+        "totalAmount": "Total Gold to Be Rendered",
+        "payTotalTooltip": "Render Total Tribute"
+    },
+    "callInPin": "Sending Crystal PIN",
+    "recentTickets": "Recent Magical Parchments",
+    "viewAllTickets": "Behold All Magical Parchments",
+    "editTicket": "Alter Magical Parchment",
+    "serviceCount": "No enchanted services | {count} enchanted service | {count} enchanted services",
+    "affiliate": {
+        "earnPerSale": "Earn {amount} Per Conjuration",
+        "urlPlaceholder": "Circle Portal URL",
+        "shareWith": "Share with"
+    }
+}

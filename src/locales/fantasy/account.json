@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Character Sheet Settings"
+    },
+    "changePassword": {
+        "title": "Change Secret Passphrase",
+        "cardTitle": "Level Up Your Passphrase",
+        "currentPassword": "Current Secret Passphrase",
+        "newPassword": "New Secret Passphrase",
+        "confirmPassword": "Confirm Secret Passphrase",
+        "updatePassword": "Level Up Passphrase"
+    },
+    "changeUsername": {
+        "title": "Change Hero Name",
+        "disabled": "Hero Name changes have been temporarily sealed by the Guild Archmage.",
+        "currentUsername": "Current Hero Name",
+        "newDesiredUsername": "Desired New Hero Name",
+        "confirmationCode": "Confirmation Rune Code",
+        "pleaseWait": "One moment, adventurer...",
+        "gotError": "A curse was detected: {error}"
+    },
+    "contactInfo": {
+        "title": "Guild Contact Scroll",
+        "cardTitle": "Level Up Guild Contact Scroll",
+        "headsUp": "Heed this notice, adventurer!",
+        "headsUpMessage": "Although this information is optional, providing (accurate) information will help enrich our guild interactions and lower your Risk % Score, granting you quicker and more convenient access to restricted areas of the guild hall (such as bypassing the coin purse authentication ritual).",
+        "riskScore": "Risk % Score",
+        "personalInformation": "Personal Dossier",
+        "name": "Hero Name",
+        "namePlaceholder": "Aldric the Bold",
+        "company": "Guild or Order",
+        "gstinTaxId": "GSTIN Tax Seal ID",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Stronghold Address Line 1",
+        "addressLine2": "Stronghold Address Line 2",
+        "cityState": "Town, Province",
+        "city": "Town",
+        "state": "Province",
+        "country": "Realm",
+        "zipcode": "Postal Rune",
+        "phoneNo": "Messenger Pigeon No.",
+        "phoneNumber": "Messenger Pigeon Number",
+        "language": "Tongue",
+        "auto": "Auto",
+        "currency": "Currency",
+        "timeZone": "Realm Time Zone",
+        "otherSettings": "Other Character Settings",
+        "disablePasswordResets": "Disable (Forgot your Secret Passphrase) Passphrase Resets.",
+        "disableInvoiceReminders": "Disable Gold Due Notice Reminder Raven Notifications.",
+        "disableServerInvoiceReminders": "Disable Stronghold Gold Due Notice Reminder Raven Notifications.",
+        "disableReinstall": "Disable Reinstallation Rites.",
+        "alternateEmailInvoices": "Alternate Raven Address for Gold Due Notices",
+        "alternateEmailInvoicesPlaceholder": "Alternative raven address for dispatching gold due notices",
+        "alternateEmailAbuse": "Alternate Raven Address for Misconduct Reports",
+        "updateInfo": "Inscribe Changes in Tome"
+    }
+}

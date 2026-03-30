@@ -105,6 +105,7 @@
         "loading": "Kutsitsa...",
         "noData": "Palibe deta yapezeka",
         "noActiveServices": "Palibe Utumiki Woyenda",
+        "noServicesMatchingFilter": "Palibe utumiki opezeka omwe ndi sefa '{filter}'",
         "controlPanel": "Bwalo la Kuwongolera",
         "welcomeEmail": "Imelo Yoyambirira",
         "invoices": "Mafatura",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Muli ndi chitsimikiziro choleka?"
     },
     "footer": {
-        "copyright": "Ufulu wa Cholemba \u00a9 {year} InterServer Inc.",
+        "copyright": "Ufulu wa Cholemba © {year} InterServer Inc.",
         "allRightsReserved": "Ufulu wonse wasungidwa."
     },
     "search": {

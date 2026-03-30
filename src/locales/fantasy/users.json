@@ -1,0 +1,12 @@
+{
+    "title": "Guild Members",
+    "addUser": "Enlist Guild Member",
+    "editUser": "Modify Guild Member",
+    "firstName": "Given Name",
+    "lastName": "Family Name",
+    "username": "Hero Name",
+    "password": "Secret Passphrase",
+    "keepSamePassword": "Leave blank to keep the same secret passphrase",
+    "errorLoading": "Quest Failed loading guild members:",
+    "errorLoadingUser": "Quest Failed loading guild member:"
+}

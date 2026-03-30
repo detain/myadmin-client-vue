@@ -1,1 +1,12 @@
-{ "required": "Pono ʻia {field}", "email": "Pono e leka uila kūpono", "minLength": "Pono e {min} mau hua palapala ma ka liʻiliʻi", "maxLength": "ʻAʻole hiki ke oi aku ma mua o {max} mau hua palapala", "passwordMatch": "Pono e like nā ʻōlelo hūnā", "invalidFormat": "ʻAno hewa", "numeric": "Pono e helu", "url": "Pono e URL kūpono", "ipAddress": "Pono e helu IP kūpono", "hostname": "Pono e inoa hale kūpono" }
+{
+    "required": "Pono ʻia {field}",
+    "email": "Pono e leka uila kūpono",
+    "minLength": "Pono e {min} mau hua palapala ma ka liʻiliʻi",
+    "maxLength": "ʻAʻole hiki ke oi aku ma mua o {max} mau hua palapala",
+    "passwordMatch": "Pono e like nā ʻōlelo hūnā",
+    "invalidFormat": "ʻAno hewa",
+    "numeric": "Pono e helu",
+    "url": "Pono e URL kūpono",
+    "ipAddress": "Pono e helu IP kūpono",
+    "hostname": "Pono e inoa hale kūpono"
+}

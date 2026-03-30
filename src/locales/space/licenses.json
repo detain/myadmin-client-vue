@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Federation Operating Licenses List",
+        "orderTitle": "Requisition Federation Operating License Registrations"
+    },
+    "view": {
+        "title": "View Federation Operating License {id}",
+        "package": "Mission Package",
+        "nextInvoiceDate": "Next Resource Allocation Date:",
+        "billing": "Credits & Resource Ledger",
+        "billed": "billed:",
+        "statusIs": "Mission Status is:",
+        "licenseInfo": "License Data",
+        "cpanelInfo": "cPanel Info",
+        "links": "Navigation Links",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the welcome subspace message?",
+        "emailSent": "Transmission Sent",
+        "emailSentMessage": "The welcome subspace transmission has been resent. Check your comm channel."
+    },
+    "order": {
+        "title": "Requisition Federation Operating License"
+    },
+    "changeIp": {
+        "title": "Change Network Beacon Address"
+    },
+    "changeOs": {
+        "title": "Change Operating System",
+        "selectLicenseOs": "Select License Operating System"
+    }
+}

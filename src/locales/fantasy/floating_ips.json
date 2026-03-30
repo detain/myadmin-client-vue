@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Wandering Beacons Services List",
+        "orderTitle": "Commission Wandering Beacon Registrations"
+    },
+    "view": {
+        "title": "View Wandering Beacon {id}",
+        "package": "Equipment Tier",
+        "nextInvoiceDate": "Next Gold Due Date:",
+        "billing": "Gold Ledger",
+        "billed": "inscribed:",
+        "statusIs": "Quest Status is:",
+        "floatingIp": "Wandering Beacon",
+        "links": "Quest Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome raven?",
+        "emailSent": "Raven Dispatched",
+        "emailSentMessage": "The welcome raven has been resent. Check your messenger raven perch."
+    },
+    "order": {
+        "title": "Commission Wandering Beacon"
+    },
+    "changeIp": {
+        "title": "Change Target Stronghold Coordinates"
+    }
+}

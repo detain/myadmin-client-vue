@@ -105,6 +105,7 @@
         "loading": "Ṣe igba...",
         "noData": "Ko si data wa",
         "noActiveServices": "Ko si Awọn Iṣẹ Ṣiṣẹ",
+        "noServicesMatchingFilter": "Ko si awọn iṣẹ ri ti o baamu pẹlu àlẹ̀mọ́ '{filter}'",
         "controlPanel": "Pánẹ́ẹ̀lì Iṣakoso",
         "welcomeEmail": "Imeeli Kaabọ",
         "invoices": "Awọn Iwe Isan",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Ṣe o da ọ loju pe o fẹ fagilee?"
     },
     "footer": {
-        "copyright": "Ẹtọ-ara \u00a9 {year} InterServer Inc.",
+        "copyright": "Ẹtọ-ara © {year} InterServer Inc.",
         "allRightsReserved": "Gbogbo awọn ẹtọ ni a pa mọ."
     },
     "search": {

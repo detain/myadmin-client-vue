@@ -1,188 +1,120 @@
 # CLAUDE.md — MyAdmin Client Vue
 
-## Project Overview
+## Overview
 
-**MyAdmin Client Interface** — a Vue 3 + TypeScript SPA for the InterServer billing and management platform. Built with Vite (Rolldown), deployed across web, desktop (Electron), mobile (Android/iOS), and Linux packages.
+**MyAdmin Client Interface** — Vue 3 + TypeScript SPA for InterServer billing/management. Built with Vite 8 (Rolldown). Deployed to web, desktop (Electron), mobile (Capacitor).
 
-## Quick Reference
+## Commands
 
 ```bash
-yarn dev              # Dev server with CORS (http://localhost:5173)
+yarn dev              # Dev server (http://localhost:5173)
 yarn build            # Type-check + production build
-yarn lint             # ESLint with auto-fix (.ts, .vue, .js)
+yarn lint             # ESLint auto-fix (.ts, .vue, .js)
 yarn format           # Prettier format all files
-yarn format:check     # Check formatting without writing
 yarn test             # Vitest unit tests (watch mode)
-yarn test:coverage    # Vitest with coverage report
-yarn test:e2e         # Playwright end-to-end tests
+yarn test:coverage    # Vitest with coverage
+yarn test:e2e         # Playwright E2E tests
 yarn ts               # Type-check only (vue-tsc --noEmit)
 ```
 
-**Node version:** 20 (see `.nvmrc`). **Package manager:** Yarn.
+**Node:** 20 (`.nvmrc`) · **Package manager:** Yarn (`.yarnrc.yml`)
 
 ## Architecture
 
-### Directory Structure
+**Entry**: `src/main.ts` → `src/App.vue` · **Router**: `src/router/index.ts` · **HTML shell**: `index.html`
 
-```
-src/
-├── views/              # Route-based page components (lazy-loaded)
-├── components/         # Reusable UI components
-├── stores/             # Pinia stores (one per service domain)
-├── router/             # Vue Router config with route guards
-├── helpers/            # Utility functions (fetchWrapper, etc.)
-├── types/              # TypeScript interfaces and type definitions
-├── i18n/               # Internationalization setup
-├── locales/            # Translation JSON files (40+ languages)
-├── plugins/            # Vue plugins (jQuery integration)
-├── mocks/              # MSW mock handlers for testing
-└── assets/             # CSS, images, webfonts
-```
+**Views** (`src/views/`): `vps/` · `domains/` · `webhosting/` · `servers/` · `tickets/` · `billing/` · `billing/affiliates/` · `ssl/` · `licenses/` · `mail/` · `floating_ips/` · `scrub_ips/` · `quickservers/` · `backups/` · `dns/` · `account/` · `users/`
 
-### Key Patterns
+**Components** (`src/components/`): `MainMenu.vue` · `Searchbox.vue` · `ServiceListTable.vue` · `Alert.vue` · `Nav.vue` · `Dialog.vue` · `LocalePreviewSelect.vue` · `account/ApiAccess.vue` · `account/SshKeys.vue` · `account/TwoFactorAuth.vue` · `account/AccountFeatures.vue` · `account/IpLimits.vue` · `account/LinkedAccounts.vue` · `services/Cancel.vue` · `services/Invoices.vue` · `services/ServiceActionCardHeader.vue` · `services/view_service/ClientLinks.vue` · `services/view_service/InfoBox.vue`
 
-- **Composition API** with `<script setup>` in all components
-- **Pinia** for state management — each service domain has its own store (e.g., `vps.store.ts`, `domain.store.ts`)
-- **Lazy-loaded routes** — views are dynamically imported via `() => import('@/views/...')`
-- **`fetchWrapper`** (`src/helpers/fetchWrapper.ts`) — central HTTP client; adds `sessionid` or `X-API-KEY` headers; auto-logs out on 401/403
-- **Admin-LTE + Bootstrap 4** for layout, **Tailwind CSS** for utility styling
-- **jQuery** is used for legacy UI components (select2, tablesorter, datepickers)
+**Stores** (`src/stores/`): one per domain — `account.store.ts` · `auth.store.ts` · `mail.store.ts` · `floating_ips.store.ts` · `website.store.ts` · `site.store.ts` · `alert.store.ts` · pattern: `use{Domain}Store` via `defineStore`
 
-### Path Alias
+**Helpers** (`src/helpers/`): `fetchWrapper.ts` (central HTTP client) · `moduleLink.ts` · `ucwords.ts` · `generatePassword.ts` · `useDarkMode.ts`
 
-`@` maps to `src/` — use `@/stores/auth.store` not relative paths from views.
+**i18n** (`src/i18n/index.ts`): lazy-loaded namespaces from `src/locales/en/vps.json`, `src/locales/en/domains.json`, etc. across 110 locale directories · 40+ languages · English default
 
-### API
+**Types**: `src/types/` · **Plugins**: `src/plugins/` (jQuery) · **Mocks**: `src/mocks/` (MSW handlers) · **Assets**: `src/assets/` (CSS, images, webfonts, templates)
 
-- Backend API base URL is configured via `.env.local`
-- All API calls go through `fetchWrapper` — never use raw `fetch` or `axios` directly
-- Auth is session-based (`sessionId` in localStorage) or API key-based (`X-API-KEY` header)
+**CI/CD** (`.github/workflows/`): `ci-cd.yml` (build, deploy, branch sync), `playwright.yml` (E2E test runner) · **Git Hooks** (`.husky/`): pre-commit and commit-msg hooks via `.husky/_/husky.sh` enforcing lint and conventional commits · **Editor** (`.vscode/extensions.json`): recommended VS Code extensions · **Yarn** (`.yarn/install-state.gz`): PnP install state cache
 
-### State Management
+**Static Files** (`public/`): `favicon.ico`, `.htaccess` (Apache SPA fallback), `mockServiceWorker.js` (MSW service worker for tests) · **Styles** (`src/assets/css/`): `admin_darkmode.css` · `tailwind.min.css` · `view_service.css` · `login.css` · `home_new.css` · `crud_table5.css`, plus `misha-theme/` jQuery UI theme · **Images** (`src/assets/images/`): provider logos (`cpanel.png`, `directadmin.png`, `litespeed.png`, `cloudlinux.png`), subdirectories: `icons/`, `logos/`, `myadmin/`, `crud/`, `vps/`
 
-Stores follow this pattern:
-- File: `src/stores/{domain}.store.ts`
-- Export: `use{Domain}Store` (e.g., `useVpsStore`, `useAuthStore`)
-- Auth persistence: `sessionId`, `user`, and `remember` flag stored in localStorage
+**MCP integrations**: Playwright browser automation available via `mcp__plugin_playwright_playwright__*` tools for E2E interaction.
+
+## Key Patterns
+
+- **Composition API** with `<script setup lang="ts">` in all `.vue` files
+- **`fetchWrapper`** (`src/helpers/fetchWrapper.ts`) — adds `sessionid` or `X-API-KEY` headers; auto-logs out on 401/403; never use raw `fetch` or `axios`
+- **Lazy-loaded routes** — `() => import('@/views/...')` with `meta: { i18n: ['namespace'] }`
+- **`@` alias** maps to `src/` — use `@/stores/auth.store` not relative paths
+- **Admin-LTE + Bootstrap 4** for layout, **Tailwind CSS** (`tailwind.config.js`, `postcss.config.cjs`) for utilities
+- **jQuery** for legacy UI (select2, tablesorter) — included via `optimizeDeps.include` in `vite.config.ts`
+- **SweetAlert2** (`sweetalert2`) for confirmations and loading dialogs
+- **`ServiceListTable`** (`src/components/ServiceListTable.vue`) — reusable list component with sorting, status filtering, export
+- Route warmup via `warmFrequentlyUsedRoutes()` and `warmRouteByLocation()` in `src/router/index.ts`
 
 ## Code Style
 
-### Formatting (Prettier)
-
-- **Print width:** 9999 (effectively single-line preference)
-- **Indent:** 4 spaces, no tabs
-- **Quotes:** Single quotes
-- **Semicolons:** Required
-- **Trailing commas:** ES5
-- **Arrow parens:** Always
-- **Line endings:** LF
-- **Vue:** No script/style indentation (`vueIndentScriptAndStyle: false`)
-
-### Linting (ESLint)
-
-- Flat config (`eslint.config.js`) with TypeScript and Vue plugins
-- Strict TypeScript rules enabled
-- `v-html` is allowed (rule disabled)
-- Prefer template literals over string concatenation
-- Ignore patterns: `.claire/**`, `.claude/**`, `dist/`, `node_modules/`
-
-### TypeScript
-
-- **Strict mode** enabled in `tsconfig.json`
-- Target: ESNext, Module: ESNext
-- `allowJs` and `checkJs` are enabled
-- `noUnusedLocals` and `noUnusedParameters` are **off**
-- Types include: `vite/client`, `vitest/globals`, `jquery`, `node`
+- **Prettier** (`.prettierrc.json`): Print width 9999 · 4 spaces · Single quotes · Semicolons · Trailing commas ES5 · LF · `vueIndentScriptAndStyle: false`
+- **ESLint** (`eslint.config.js`): Flat config · TypeScript + Vue plugins · `v-html` allowed · Prefer template literals · Ignores `.claire/**`, `.claude/**`, `dist/`
+- **TypeScript** (`tsconfig.json`): Strict mode · ESNext target/module · `allowJs`+`checkJs` · Types: `vite/client`, `vitest/globals`, `jquery`, `node`
 
 ## Conventions
 
-### Components
-
-- Use **Single File Components** (`.vue`) with `<script setup lang="ts">`
-- Feature-based folder organization under `views/` and `components/`
-- Route components go in `views/`, shared UI goes in `components/`
-
-### Stores
-
-- One store per service domain in `src/stores/`
-- Named exports using `defineStore` with `use{Domain}Store` convention
-- Keep API calls inside store actions, not in components
-
-### Routing
-
-- Routes defined in `src/router/index.ts`
-- Use parameterized routes with regex validation (e.g., `:id(\\d+)`)
-- Protect routes with `beforeEnter` guards
-- Always lazy-load view components
-
-### Internationalization
-
-- English is the default/fallback locale
-- Translation files: `src/locales/{lang}/common.json`
-- Use `$t('key')` in templates, `t('key')` in `<script setup>`
-- 40+ languages supported with lazy loading
+- **Views** in `src/views/{domain}/` — list (`{Domain}sList.vue`), view (`View{Domain}.vue`), order (`Order{Domain}.vue`), plus sub-actions
+- **Stores** in `src/stores/{domain}.store.ts` — API calls inside actions, not components. All use **Options API** (`state`/`getters`/`actions`), not setup stores
+- **Routes** in `src/router/index.ts` — parameterized with `:id(\\d+)`, sub-links via `:link(action1|action2)`
+- **i18n** — `$t('key')` in templates, `t('key')` in `<script setup>` via `useI18n()` · Files at `src/locales/en/vps.json`, `src/locales/en/domains.json`, etc. · No `<i18n>` SFC blocks · Use `<i18n-t>` for interpolation with HTML/components
+- **Commit messages** follow conventional commits (`@commitlint/config-conventional`)
 
 ## Testing
 
-### Unit Tests (Vitest)
+- **Vitest** (`vite.config.ts` test section): tests in `test/` mirroring `src/` · `jsdom` environment · Setup: `test/setup.ts` · MSW mocks: `src/mocks/`
+- **Playwright** (`playwright.config.ts`): tests in `e2e/` · Chromium only · Dev server auto-start · 2 retries on CI
 
-- Test files in `test/` directory mirroring `src/` structure
-- Uses `jsdom` environment with global test APIs
-- Setup file: `test/setup.ts`
-- Mock data via MSW (Mock Service Worker) in `src/mocks/handlers.ts`
-- Run: `yarn test` (watch) or `yarn test:coverage` (with coverage)
+```bash
+yarn vitest run test/stores/auth.store.spec.ts    # Run single test file
+yarn playwright test e2e/ --project=chromium      # Run E2E tests locally
+yarn vitest --coverage                            # Coverage report
+```
 
-### E2E Tests (Playwright)
+## Build & Deploy
 
-- Test files in `e2e/` directory
-- Configured for Chromium
-- Auto-starts dev server on `http://localhost:5173`
-- Run: `yarn test:e2e`
-- 2 retries on CI, 0 locally
+- **Vite 8 + Rolldown** (`vite.config.ts`) — chunks: `framework` (Vue/Pinia/Router/i18n), `legacy-ui` (jQuery/Bootstrap/AdminLTE/Select2), `vendor`, `view-{scope}`
+- Plugins: `vite-plugin-checker` (vue-tsc), `vite-plugin-inspect`, `vite-plugin-vue-inspector`, `unplugin-turbo-console`, `vite-plugin-dts`
 
 ## Branch Strategy
 
-### Three long-lived branches
+| Branch | Purpose | Targets |
+|--------|---------|--------|
+| `master` | Web SPA — primary dev branch | Web |
+| `electron` | Desktop (Electron) | Win, macOS, Linux |
+| `capacitor` | Mobile (Capacitor) | Android, iOS |
 
-| Branch | Purpose | Platform targets |
-|--------|---------|-----------------|
-| `master` | Web SPA — the primary development branch | Web |
-| `electron` | Desktop app via Electron | Windows, macOS, Linux (AppImage, deb, Snap) |
-| `capacitor` | Mobile app via Capacitor | Android, iOS |
+**All dev on `master`.** CI syncs to `electron`/`capacitor`. Do not commit shared code to platform branches.
 
-### Automatic master sync
+## Important Rules
 
-**All development happens on `master`.** The `electron` and `capacitor` branches automatically receive master updates via CI. On every push to `master`, a GitHub Actions job (`sync-release-branches` in `ci-cd.yml`):
+- Never use `axios` — always `fetchWrapper`
+- Never add `<i18n>` SFC blocks — locales lazy-loaded via `import()`
+- Never commit shared code to `electron`/`capacitor`
+- `.claude/` and `.claire/` excluded from lint, tests, and Vite watch
+- CSP headers configured in `index.html` — update when adding external scripts
 
-1. Checks out each branch (`electron`, `capacitor`)
-2. Merges `origin/master` with `--no-ff -Xignore-space-change`
-3. If the only conflict is `yarn.lock`, it auto-resolves by running `yarn` and committing
-4. Pushes the merged branch, then triggers the platform-specific build pipeline
+<!-- caliber:managed:pre-commit -->
+## Before Committing
 
-**Do not commit shared app code directly to `electron` or `capacitor`.** Make changes on `master` and let CI propagate them. Only platform-specific code belongs on those branches:
+Run `caliber refresh` before creating git commits to keep docs in sync with code changes.
+After it completes, stage any modified doc files before committing:
 
-- **`electron` branch extras:** Electron main process, `electron-builder` config, system tray integration (`src/helpers/useElectronTray.ts`), auto-updater, `resources/icon.png`, `vitest.config.ts`, `tsconfig.web.json`
-- **`capacitor` branch extras:** Capacitor config, native plugin wrappers, platform-specific `vite.config.ts` adjustments, ESLint overrides for Capacitor TypeScript files
+```bash
+caliber refresh && git add CLAUDE.md .claude/ .cursor/ AGENTS.md CALIBER_LEARNINGS.md 2>/dev/null
+```
+<!-- /caliber:managed:pre-commit -->
 
-### CI/CD pipeline
+<!-- caliber:managed:learnings -->
+## Session Learnings
 
-- **Push to `master`:** runs tests + lint + coverage, then syncs `electron` and `capacitor` branches, then triggers their builds
-- **Push to `electron`/`capacitor`:** triggers platform-specific build only (no tests — those run on master)
-- **Pull requests** to any of the three branches run the test suite
-- Workflow dispatch allows manually triggering `electron` or `capacitor` builds
-
-## Build & Deployment
-
-- **Vite 8 with Rolldown** for bundling
-- Manual chunks: `framework` (Vue/Pinia/Router/i18n), `legacy-ui` (jQuery/Bootstrap/AdminLTE/Select2), `vendor` (other node_modules), `view-{scope}` (per-view code splitting)
-- Source maps disabled in production
-- Module preload polyfill enabled
-
-## Important Notes
-
-- **Do not use `axios` directly** — always use `fetchWrapper`
-- **Do not add `<i18n>` SFC blocks** — locales are lazy-loaded via dynamic `import()`
-- **Do not commit shared code to `electron` or `capacitor`** — commit to `master` and let CI sync
-- The `.claude/` and `.claire/` directories are excluded from linting, test discovery, and Vite watching
-- jQuery is included via `optimizeDeps.include` for Vite compatibility
-- Commit messages follow conventional commits (`@commitlint/config-conventional` is a dependency)
+Read `CALIBER_LEARNINGS.md` for patterns and anti-patterns learned from previous sessions.
+These are auto-extracted from real tool usage — treat them as project-specific rules.
+<!-- /caliber:managed:learnings -->

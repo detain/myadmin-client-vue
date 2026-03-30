@@ -1,0 +1,12 @@
+{
+    "required": "{field} is required for mission clearance",
+    "email": "Must be a valid subspace comm address",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be no more than {max} characters",
+    "passwordMatch": "Encryption Passphrases must match",
+    "invalidFormat": "Invalid format detected",
+    "numeric": "Must be a numeral value",
+    "url": "Must be a valid navigation URL",
+    "ipAddress": "Must be a valid Network Beacon Address",
+    "hostname": "Must be a valid Station Designation"
+}

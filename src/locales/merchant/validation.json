@@ -1,0 +1,12 @@
+{
+    "required": "{field} is required — can't seal the deal without it!",
+    "email": "Must be a valid contact address",
+    "minLength": "Must be at least {min} characters — no cutting corners!",
+    "maxLength": "Must be no more than {max} characters",
+    "passwordMatch": "Secret Access Codes must match",
+    "invalidFormat": "Invalid format — try again, friend!",
+    "numeric": "Must be a number",
+    "url": "Must be a valid URL",
+    "ipAddress": "Must be a valid network address",
+    "hostname": "Must be a valid unit designation"
+}

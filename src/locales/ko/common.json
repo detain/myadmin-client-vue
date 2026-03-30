@@ -105,6 +105,7 @@
         "loading": "로딩 중...",
         "noData": "사용 가능한 데이터 없음",
         "noActiveServices": "활성 서비스 없음",
+        "noServicesMatchingFilter": "필터 '{filter}'와 일치하는 서비스를 찾을 수 없습니다",
         "controlPanel": "제어판",
         "welcomeEmail": "환영 이메일",
         "invoices": "청구서",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "정말 취소하시겠습니까?"
     },
     "footer": {
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "모든 권리 보유."
     },
     "search": {

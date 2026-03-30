@@ -80,8 +80,11 @@
     "home": {
         "cart": "Себет",
         "editPersonalInfo": "Жеке Маалыматты Өзгөртүү",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Бардык укуктар корголгон."
     },
-    "copyright": "Copyright \u00a9 {year} - Бардык Укуктар Корголгон."
+    "copyright": "Copyright © {year} - Бардык Укуктар Корголгон.",
+    "statsVps": "VPS",
+    "statsWebsites": "Веб-хостинг",
+    "statsServers": "Серверлер"
 }

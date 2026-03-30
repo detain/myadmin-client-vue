@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "Territory Registry",
+        "addDomain": "Claim New Territory",
+        "deleteDomain": "Relinquish Territory",
+        "domainName": "Territory Name",
+        "dnsServers": "Registry Strongholds",
+        "confirmDelete": "Are you sure you want to relinquish this territory?",
+        "noDomains": "No claimed territories found"
+    },
+    "editor": {
+        "title": "Territory Registry Editor",
+        "addRecord": "Inscribe Record",
+        "deleteRecord": "Smite Record",
+        "editRecord": "Modify Record",
+        "recordType": "Record Type",
+        "hostname": "Stronghold Name",
+        "address": "Address",
+        "distance": "Distance",
+        "weight": "Weight",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Actions",
+        "confirmDelete": "Are you sure you want to smite this record?"
+    }
+}

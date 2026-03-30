@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Specimen Preservation Vault Registry",
+        "orderTitle": "Requisition Specimen Preservation Vault Units"
+    },
+    "view": {
+        "title": "Inspect Preservation Vault Specimen {id}",
+        "package": "Research Package",
+        "nextInvoiceDate": "Next Funding Requisition Date:",
+        "billing": "Research Funding",
+        "billed": "billed:",
+        "statusIs": "Operational Status is:",
+        "hostServer": "Host Experiment Chamber",
+        "links": "System Links",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the laboratory orientation communication?",
+        "emailSent": "Pneumatic Message Dispatched",
+        "emailSentMessage": "The laboratory orientation communication has been retransmitted. Check your message receptacle."
+    },
+    "order": {
+        "title": "Requisition Specimen Preservation Vault"
+    }
+}

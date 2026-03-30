@@ -1,0 +1,22 @@
+{
+    "list": {
+        "title": "Vault of Holding List",
+        "orderTitle": "Conjure Vault of Holding Registrations"
+    },
+    "view": {
+        "title": "View Vault of Holding {id}",
+        "package": "Enchantment Tier",
+        "nextInvoiceDate": "Next Debt Scroll Date:",
+        "billing": "Grand Treasury",
+        "billed": "tithed:",
+        "statusIs": "Aura is:",
+        "hostServer": "Host Iron Golem",
+        "links": "Portals",
+        "welcomeEmailConfirm": "Art thou certain thou wishest to resend the welcoming stone?",
+        "emailSent": "Sending Stone Dispatched",
+        "emailSentMessage": "The welcoming stone hath been resent. Check thy inbox."
+    },
+    "order": {
+        "title": "Conjure Vault of Holding"
+    }
+}

@@ -1,22 +1,22 @@
 {
-  "list": {
-    "title": "Elenco Archiviazione / Backup",
-    "orderTitle": "Ordina Registrazioni Backup"
-  },
-  "view": {
-    "title": "Visualizza Backup {id}",
-    "package": "Pacchetto",
-    "nextInvoiceDate": "Data Prossima Fattura:",
-    "billing": "Fatturazione",
-    "billed": "fatturato:",
-    "statusIs": "Stato è:",
-    "hostServer": "Server Host",
-    "links": "Link",
-    "emailSent": "Email Inviata",
-    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta.",
-    "welcomeEmailConfirm": "Sei sicuro di voler reinviare l'email di benvenuto?"
-  },
-  "order": {
-    "title": "Ordina Archiviazione"
-  }
+    "list": {
+        "title": "Elenco Archiviazione / Backup",
+        "orderTitle": "Ordina Registrazioni Backup"
+    },
+    "view": {
+        "title": "Visualizza Backup {id}",
+        "package": "Pacchetto",
+        "nextInvoiceDate": "Data Prossima Fattura:",
+        "billing": "Fatturazione",
+        "billed": "fatturato:",
+        "statusIs": "Stato è:",
+        "hostServer": "Server Host",
+        "links": "Link",
+        "emailSent": "Email Inviata",
+        "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta.",
+        "welcomeEmailConfirm": "Sei sicuro di voler reinviare l'email di benvenuto?"
+    },
+    "order": {
+        "title": "Ordina Archiviazione"
+    }
 }

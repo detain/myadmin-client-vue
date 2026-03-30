@@ -80,8 +80,11 @@
     "home": {
         "cart": "Savat",
         "editPersonalInfo": "Shaxsiy ma'lumotlarni tahrirlash",
-        "copyright": "Mualliflik huquqi \u00a9 {year} InterServer Inc.",
+        "copyright": "Mualliflik huquqi © {year} InterServer Inc.",
         "allRightsReserved": "Barcha huquqlar himoyalangan."
     },
-    "copyright": "Mualliflik huquqi \u00a9 {year} - Barcha huquqlar himoyalangan."
+    "copyright": "Mualliflik huquqi © {year} - Barcha huquqlar himoyalangan.",
+    "statsVps": "VPS",
+    "statsWebsites": "Veb-hosting",
+    "statsServers": "Serverlar"
 }

@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "title": "Researcher Profile Configuration Parameters"
+    },
+    "changePassword": {
+        "title": "Modify Security Access Passphrase",
+        "cardTitle": "Update Security Access Passphrase",
+        "currentPassword": "Current Security Access Passphrase",
+        "newPassword": "New Security Access Passphrase",
+        "confirmPassword": "Confirm Security Access Passphrase",
+        "updatePassword": "Update Security Access Passphrase"
+    },
+    "changeUsername": {
+        "title": "Modify Researcher Identification Code",
+        "disabled": "Researcher Identification Code alterations have been temporarily suspended by laboratory decree.",
+        "currentUsername": "Current Researcher Identification Code",
+        "newDesiredUsername": "Desired New Researcher Identification Code",
+        "confirmationCode": "Confirmation Cipher Code",
+        "pleaseWait": "Processing... please remain stationary...",
+        "gotError": "CATASTROPHIC FAILURE! Experiment error detected: {error}"
+    },
+    "contactInfo": {
+        "title": "Researcher Contact Dossier",
+        "cardTitle": "Update Researcher Contact Dossier",
+        "headsUp": "Laboratory Advisory!",
+        "headsUpMessage": "Although this data is optional, providing accurate biographical specimens will enrich our laboratory interactions and lower your Threat Risk Index, granting you expedited access to restricted laboratory sections (such as bypassing Monetary Transfer Device authentication protocols).",
+        "riskScore": "Threat Risk Index %",
+        "personalInformation": "Biographical Specimen Data",
+        "name": "Researcher Designation",
+        "namePlaceholder": "Dr. Specimen",
+        "company": "Research Institution",
+        "gstinTaxId": "GSTIN Tax Identification Number",
+        "gstinPlaceholder": "Goods and Services Taxpayer Identification Number",
+        "addressLine1": "Laboratory Address Line 1",
+        "addressLine2": "Laboratory Address Line 2",
+        "cityState": "Municipality, Province",
+        "city": "Municipality",
+        "state": "Province",
+        "country": "Nation-State",
+        "zipcode": "Postal Coordinates",
+        "phoneNo": "Telecommunication Node No.",
+        "phoneNumber": "Telecommunication Node Number",
+        "language": "Communication Protocol Language",
+        "auto": "Auto-Detect",
+        "currency": "Monetary Unit",
+        "timeZone": "Temporal Zone Classification",
+        "otherSettings": "Auxiliary Configuration Parameters",
+        "disablePasswordResets": "Disable (Forgotten Security Access Passphrase) Passphrase Reset Protocols.",
+        "disableInvoiceReminders": "Disable Funding Requisition Document Reminder Notifications.",
+        "disableServerInvoiceReminders": "Disable Experiment Chamber Funding Requisition Reminder Notifications.",
+        "disableReinstall": "Disable Re-Installation Protocol.",
+        "alternateEmailInvoices": "Alternate Electronic Correspondence Address for Funding Requisition Documents",
+        "alternateEmailInvoicesPlaceholder": "Secondary electronic address for dispatching funding requisition documents",
+        "alternateEmailAbuse": "Alternate Electronic Correspondence Address for Misconduct Reports",
+        "updateInfo": "Commit Data to Laboratory Journal"
+    }
+}

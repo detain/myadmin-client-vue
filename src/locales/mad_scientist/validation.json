@@ -1,0 +1,12 @@
+{
+    "required": "{field} is a mandatory experimental parameter",
+    "email": "Must be a valid electronic correspondence address",
+    "minLength": "Must contain at least {min} characters in the passphrase sequence",
+    "maxLength": "Must not exceed {max} characters in the passphrase sequence",
+    "passwordMatch": "Security Access Passphrases must be identical",
+    "invalidFormat": "Invalid specimen format detected",
+    "numeric": "Must be a valid numerical value",
+    "url": "Must be a valid portal URL",
+    "ipAddress": "Must be a valid network node address",
+    "hostname": "Must be a valid system designation"
+}

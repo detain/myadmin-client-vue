@@ -1,0 +1,28 @@
+{
+    "title": "The Grand Bazaar Overview",
+    "welcome": "Welcome to the Bazaar, {name} — best prices guaranteed!",
+    "lastLogin": "Last Entered the Bazaar",
+    "lastLoginIp": "Last Entry Network Address",
+    "prepay": {
+        "title": "Pre-Loaded Store Credit Balance",
+        "remainingBalance": "Remaining Store Credit Balance",
+        "manageAccount": "Manage Trader Account",
+        "manageTooltip": "Manage Your Pre-Loaded Store Credit"
+    },
+    "invoices": {
+        "title": "Outstanding Debts",
+        "totalUnpaid": "Total Outstanding Bills",
+        "totalAmount": "Total Amount to Be Settled",
+        "payTotalTooltip": "Settle Total Amount — Don't Wait!"
+    },
+    "callInPin": "Call-in PIN",
+    "recentTickets": "Recent Complaint Slips",
+    "viewAllTickets": "View All Complaint Slips",
+    "editTicket": "Revise Complaint Slip",
+    "serviceCount": "No currently trading services | {count} currently trading service | {count} currently trading services",
+    "affiliate": {
+        "earnPerSale": "Earn {amount} Per Sale — Join the Kickback Program!",
+        "urlPlaceholder": "Referral URL",
+        "shareWith": "Share with"
+    }
+}

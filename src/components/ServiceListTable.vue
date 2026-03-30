@@ -30,11 +30,13 @@ interface Props {
     columns: ServiceListColumn[];
     idField: string;
     statusField: string;
+    loading?: boolean;
     orderTitle?: string;
     orderRoute?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    loading: false,
     orderTitle: 'Order',
     orderRoute: '',
 });
@@ -85,6 +87,16 @@ const filteredData = computed(() => {
         }
         return String(aVal).localeCompare(String(bVal)) * dir;
     });
+});
+
+const limitStatusLabel = computed(() => {
+    const labels: Record<string, string> = {
+        active: t('common.labels.active'),
+        pending: t('common.labels.pending'),
+        expired: t('common.labels.expired'),
+        all: t('common.labels.all'),
+    };
+    return labels[limitStatus.value] || limitStatus.value;
 });
 
 const computedOrderRoute = computed(() => {
@@ -163,7 +175,17 @@ function crud_export(exportType: string): void {
                                             <th>&nbsp;</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody v-if="loading">
+                                        <tr>
+                                            <td :colspan="columns.length + 1" class="text-center">{{ t('common.labels.loading') }}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody v-else-if="filteredData.length === 0">
+                                        <tr>
+                                            <td :colspan="columns.length + 1" class="text-center">{{ t('common.labels.noServicesMatchingFilter', { filter: limitStatusLabel }) }}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody v-else>
                                         <tr v-for="(row, rowIndex) in filteredData" :key="rowIndex" style="text-align: center">
                                             <td v-for="col in columns" :key="col.key">
                                                 <router-link v-if="col.link" :to="'/' + moduleLink(module) + '/' + row[idField]">{{ row[col.key] }}</router-link>

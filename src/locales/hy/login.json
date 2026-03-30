@@ -80,8 +80,11 @@
     "home": {
         "cart": "Զամբյուղ",
         "editPersonalInfo": "Խմբագրել անձնական տեղեկատվությունը",
-        "copyright": "Հեղինակային իրավունք \u00a9 {year} InterServer Inc.",
+        "copyright": "Հեղինակային իրավունք © {year} InterServer Inc.",
         "allRightsReserved": "Բոլոր իրավունքները պաշտպանված են:"
     },
-    "copyright": "Հեղինակային իրավունք \u00a9 {year} - Բոլոր իրավունքները պաշտպանված են:"
+    "copyright": "Հեղինակային իրավունք © {year} - Բոլոր իրավունքները պաշտպանված են:",
+    "statsVps": "VPS",
+    "statsWebsites": "Վեբ հոսթինգ",
+    "statsServers": "Սերվերներ"
 }

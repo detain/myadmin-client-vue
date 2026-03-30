@@ -1,12 +1,29 @@
 {
-  "list": {"title": "Daptar Lisensi", "orderTitle": "Pesan Registrasi Lisensi"},
-  "view": {
-    "title": "Tempo Lisensi {id}", "package": "Paket", "nextInvoiceDate": "Tanggal Invoice Salajengna:",
-    "billing": "Tagihan", "billed": "ditagih:", "statusIs": "Status nyaeta:", "licenseInfo": "Inpo Lisensi",
-    "cpanelInfo": "Inpo cPanel", "links": "Tautan", "emailSent": "Email Dikirimkeun",
-    "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
-  },
-  "order": {"title": "Pesan Lisensi"},
-  "changeIp": {"title": "Ganti IP"},
-  "changeOs": {"title": "Ganti OS", "selectLicenseOs": "Pilih OS Lisensi"}
+    "list": {
+        "title": "Daptar Lisensi",
+        "orderTitle": "Pesan Registrasi Lisensi"
+    },
+    "view": {
+        "title": "Tempo Lisensi {id}",
+        "package": "Paket",
+        "nextInvoiceDate": "Tanggal Invoice Salajengna:",
+        "billing": "Tagihan",
+        "billed": "ditagih:",
+        "statusIs": "Status nyaeta:",
+        "licenseInfo": "Inpo Lisensi",
+        "cpanelInfo": "Inpo cPanel",
+        "links": "Tautan",
+        "emailSent": "Email Dikirimkeun",
+        "emailSentMessage": "Email wilujeng sumping geus dikirimkeun deui. Pariksa kotak asup anjeun."
+    },
+    "order": {
+        "title": "Pesan Lisensi"
+    },
+    "changeIp": {
+        "title": "Ganti IP"
+    },
+    "changeOs": {
+        "title": "Ganti OS",
+        "selectLicenseOs": "Pilih OS Lisensi"
+    }
 }

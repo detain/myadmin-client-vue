@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Stall Cleaning Services List",
+        "orderTitle": "Place Your Order — Don't Wait! for Stall Cleaning Services"
+    },
+    "view": {
+        "title": "View Stall Cleaning Services",
+        "currentIp": "Current Network Address",
+        "ipAddress": "Network Address",
+        "ipFromService": "Network Address from service"
+    },
+    "filters": {
+        "title": "Filters",
+        "createNew": "Open New Account Filter",
+        "createNewFilter": "Open New Account Filter",
+        "filterType": "Filter Type",
+        "selectFilterType": "Select Filter Type",
+        "ipAddress": "Network Address",
+        "portNo": "Port No",
+        "filter": "Filter",
+        "destinationIp": "Destination Network Address",
+        "destinationPort": "Destination Port",
+        "noFiltersFound": "Nothing here, friend — no filters found!",
+        "deleteFilterConfirm": "Are you sure you want to discard this filter?",
+        "unableToCreateFilter": "Unable to open new filter at this time.",
+        "unableToDeleteFilter": "Unable to discard filter at this time."
+    },
+    "firewallRules": {
+        "title": "Security Barrier Rules",
+        "createNew": "Open New Account Rule",
+        "createNewFirewall": "Open New Account Security Barrier Rule",
+        "protocol": "Protocol",
+        "destinationIp": "Destination Network Address",
+        "destinationPort": "Destination Port",
+        "sourceIp": "Source Network Address",
+        "sourcePort": "Source Port",
+        "xdpAction": "XDP Action",
+        "ipRequired": "Network address is required",
+        "block": "Block",
+        "whitelist": "Approved List",
+        "noRulesFound": "Nothing here, friend — no rules found!",
+        "deleteRuleConfirm": "Are you sure you want to discard this rule?",
+        "unableToCreateRule": "Unable to open new Security Barrier rule at this time.",
+        "unableToDeleteRule": "Unable to discard Security Barrier rule at this time."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Security Barrier Rules",
+        "createNew": "Open New Account Geo Rule",
+        "createNewGeoRule": "Open New Account Geo Security Barrier Rule",
+        "destinationIp": "Destination Network Address",
+        "destinationPort": "Destination Port",
+        "sourceCountry": "Source Country",
+        "sourceAsn": "Source ASN",
+        "xdpAction": "XDP Action",
+        "portNo": "Port No",
+        "selectCountry": "Select Country",
+        "asn": "ASN",
+        "block": "Block",
+        "whitelist": "Approved List",
+        "noRulesFound": "Nothing here, friend — no rules found!",
+        "deleteGeoRuleConfirm": "Are you sure you want to discard this geo rule?",
+        "unableToCreateRule": "Unable to open new Security Barrier rule at this time.",
+        "unableToDeleteRule": "Unable to discard geo Security Barrier rule at this time."
+    }
+}

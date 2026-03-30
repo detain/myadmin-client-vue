@@ -1,25 +1,25 @@
 {
-  "list": {
-    "title": "Papa Lawelawe Floating IPs",
-    "orderTitle": "Kauoha Mau Inoa Floating IP"
-  },
-  "view": {
-    "title": "Nānā Floating IP {id}",
-    "package": "ʻAha Hana",
-    "nextInvoiceDate": "Lā Bila Aʻe:",
-    "billing": "Uku Kālā",
-    "billed": "ua uku ʻia:",
-    "statusIs": "ʻO ke kūlana:",
-    "floatingIp": "Floating IP",
-    "links": "Mau Pili",
-    "emailSent": "Ua Hoʻouna ʻia ka Leka",
-    "emailSentMessage": "Ua hoʻouna hou ʻia ka leka aloha. E nānā i kāu waihona leka.",
-    "welcomeEmailConfirm": "Makemake ʻoe e hoʻouna hou i ka leka uila aloha?"
-  },
-  "order": {
-    "title": "Kauoha Floating IP"
-  },
-  "changeIp": {
-    "title": "Hoʻololi IP Pahuhopu"
-  }
+    "list": {
+        "title": "Papa Lawelawe Floating IPs",
+        "orderTitle": "Kauoha Mau Inoa Floating IP"
+    },
+    "view": {
+        "title": "Nānā Floating IP {id}",
+        "package": "ʻAha Hana",
+        "nextInvoiceDate": "Lā Bila Aʻe:",
+        "billing": "Uku Kālā",
+        "billed": "ua uku ʻia:",
+        "statusIs": "ʻO ke kūlana:",
+        "floatingIp": "Floating IP",
+        "links": "Mau Pili",
+        "emailSent": "Ua Hoʻouna ʻia ka Leka",
+        "emailSentMessage": "Ua hoʻouna hou ʻia ka leka aloha. E nānā i kāu waihona leka.",
+        "welcomeEmailConfirm": "Makemake ʻoe e hoʻouna hou i ka leka uila aloha?"
+    },
+    "order": {
+        "title": "Kauoha Floating IP"
+    },
+    "changeIp": {
+        "title": "Hoʻololi IP Pahuhopu"
+    }
 }

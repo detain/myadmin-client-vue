@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Drifting Beacon Nodes Services List",
+        "orderTitle": "Requisition Drifting Beacon Node Registrations"
+    },
+    "view": {
+        "title": "View Drifting Beacon Node {id}",
+        "package": "Mission Package",
+        "nextInvoiceDate": "Next Resource Allocation Date:",
+        "billing": "Credits & Resource Ledger",
+        "billed": "billed:",
+        "statusIs": "Mission Status is:",
+        "floatingIp": "Drifting Beacon Node",
+        "links": "Navigation Links",
+        "welcomeEmailConfirm": "Are you sure you want to retransmit the welcome subspace message?",
+        "emailSent": "Transmission Sent",
+        "emailSentMessage": "The welcome subspace transmission has been resent. Check your comm channel."
+    },
+    "order": {
+        "title": "Requisition Drifting Beacon Node"
+    },
+    "changeIp": {
+        "title": "Change Target Network Beacon"
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Sending Stones Services List",
+        "orderTitle": "Conjure Sending Stone Registrations"
+    },
+    "view": {
+        "title": "View Sending Stone {id}",
+        "package": "Enchantment Tier",
+        "nextInvoiceDate": "Next Debt Scroll Date:",
+        "billing": "Grand Treasury",
+        "billed": "tithed:",
+        "statusIs": "Aura is:",
+        "mailApi": "Sending Stone Mystic Portal",
+        "usageCount": "Usage Count:",
+        "links": "Portals",
+        "connectionInfo": "Binding Info",
+        "welcomeEmailConfirm": "Art thou certain thou wishest to resend the welcoming stone?",
+        "emailSent": "Sending Stone Dispatched",
+        "emailSentMessage": "The welcoming stone hath been resent. Check thy inbox."
+    },
+    "order": {
+        "title": "Conjure Sending Stone"
+    },
+    "alerts": {
+        "title": "Arcane Alerts",
+        "addAlert": "Summon Alert",
+        "editAlert": "Alter Alert",
+        "noAlerts": "No alerts found"
+    },
+    "delist": {
+        "title": "Delist",
+        "blockedEmails": "Warded Ethereal Addresses"
+    },
+    "denyRules": {
+        "title": "Denial Edicts",
+        "addRule": "Summon Edict",
+        "noRules": "No denial edicts found"
+    },
+    "logs": {
+        "title": "Arcane Logs",
+        "searchLogs": "Scry Logs"
+    },
+    "stats": {
+        "title": "Arcane Statistics"
+    },
+    "deliverability": {
+        "title": "Deliverability"
+    }
+}

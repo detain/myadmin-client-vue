@@ -1,0 +1,27 @@
+{
+    "list": {
+        "title": "Captain's Seals of Authenticity List",
+        "orderTitle": "Commission New Captain's Seal Registrations"
+    },
+    "view": {
+        "title": "Survey Captain's Seal {id}",
+        "package": "Ship's Provisions Package",
+        "nextInvoiceDate": "Next Bill of Plunder Date:",
+        "billing": "The Plunder Ledger",
+        "billed": "plundered:",
+        "statusIs": "Vessel Status is:",
+        "orderInfo": "Order Info",
+        "certificateInfo": "Captain's Seal Info",
+        "links": "Sailing Routes",
+        "welcomeEmailConfirm": "Are ye sure ye want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check yer crow's nest."
+    },
+    "order": {
+        "title": "Commission Captain's Seal of Authenticity"
+    },
+    "changeApproverEmail": {
+        "title": "Change Approver Message Bottle",
+        "selectApproverEmail": "Select Approver Message Bottle"
+    }
+}

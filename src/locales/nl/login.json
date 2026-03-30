@@ -80,8 +80,11 @@
     "home": {
         "cart": "Winkelwagen",
         "editPersonalInfo": "Persoonlijke informatie bewerken",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "Alle rechten voorbehouden."
     },
-    "copyright": "Copyright \u00a9 {year} - Alle rechten voorbehouden."
+    "copyright": "Copyright © {year} - Alle rechten voorbehouden.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servers"
 }

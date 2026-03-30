@@ -1,7 +1,38 @@
 import { createRouter, createWebHistory, type RouteLocationRaw, type RouteRecordNormalized } from 'vue-router';
+import { nextTick } from 'vue';
 import { useAuthStore } from '@/stores/auth.store';
 import { useAlertStore } from '@/stores/alert.store';
+import { useSiteStore } from '@/stores/site.store';
 import i18n, { defaultLocale, loadLocaleMessages } from '@/i18n';
+
+/**
+ * Maps first path segment to its i18n menu key for instant title display.
+ * The router beforeEach uses this to set the page heading immediately on
+ * navigation start, before the lazy-loaded component mounts.
+ */
+const menuTitleKeys: Record<string, string> = {
+    '': 'common.menu.dashboard',
+    vps: 'common.menu.vps',
+    domains: 'common.menu.domains',
+    dns: 'common.menu.dnsManager',
+    backups: 'common.menu.storage',
+    mail: 'common.menu.mail',
+    licenses: 'common.menu.licenses',
+    websites: 'common.menu.webhosting',
+    floating_ips: 'common.menu.floatingIps',
+    scrub_ips: 'common.menu.scrubIps',
+    qs: 'common.menu.rapidDeployServers',
+    servers: 'common.menu.servers',
+    ssl: 'common.menu.ssl',
+    affiliate: 'common.menu.affiliateSystem',
+    tickets: 'common.menu.tickets',
+    cart: 'common.menu.cart',
+    invoices: 'common.menu.viewInvoices',
+    payment_types: 'common.menu.creditCards',
+    prepays: 'common.menu.prePaidFunds',
+    account: 'common.menu.settings',
+    users: 'common.menu.settings',
+};
 
 export const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -295,7 +326,6 @@ export function warmFrequentlyUsedRoutes() {
 }
 
 router.beforeEach(async (to) => {
-    //console.log("We are here:"+to.path);
     const publicPages = ['/login', '/login_old', '/register', '/signup', '/sudo', '/logout'];
     const parts = to.path.split('/');
     if (parts.length >= 3) {
@@ -315,6 +345,22 @@ router.beforeEach(async (to) => {
         return '/login';
     }
 
+    // Instant navigation feedback: set title/breadcrumbs from menu and show loading overlay
+    const siteStore = useSiteStore();
+    const pathSegment = to.path.split('/')[1] ?? '';
+    const titleKey = menuTitleKeys[pathSegment];
+    if (titleKey && authRequired) {
+        const t = i18n.global.t;
+        const title = t(titleKey);
+        siteStore.setPageHeading(title);
+        siteStore.setTitle(title);
+        siteStore.setBreadcrums([
+            ['/home', t('common.breadcrumb.home')],
+            ['', title],
+        ]);
+        siteStore.setRouteLoading(true);
+    }
+
     // Load i18n namespaces for the target route
     const i18nNamespaces = to.matched.flatMap((record) => (record.meta.i18n as string[] | undefined) ?? []);
     if (i18nNamespaces.length > 0) {
@@ -325,4 +371,11 @@ router.beforeEach(async (to) => {
     warmRouteByLocation(to);
 
     return true;
+});
+
+router.afterEach(() => {
+    nextTick(() => {
+        const siteStore = useSiteStore();
+        siteStore.setRouteLoading(false);
+    });
 });

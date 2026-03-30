@@ -1,1 +1,26 @@
-{ "manager": { "title": "DNS-haldur", "addDomain": "Lisa domeen", "deleteDomain": "Kustuta domeen", "domainName": "Domeeninimi", "dnsServers": "DNS-serverid", "confirmDelete": "Kas olete kindel, et soovite selle domeeni kustutada?", "noDomains": "Domeene ei leitud" }, "editor": { "title": "DNS-redaktor", "addRecord": "Lisa kirje", "deleteRecord": "Kustuta kirje", "editRecord": "Muuda kirjet", "recordType": "Kirje tüüp", "hostname": "Hostinimi", "address": "Aadress", "distance": "Kaugus", "weight": "Kaal", "port": "Port", "ttl": "TTL", "actions": "Tegevused", "confirmDelete": "Kas olete kindel, et soovite selle kirje kustutada?" } }
+{
+    "manager": {
+        "title": "DNS-haldur",
+        "addDomain": "Lisa domeen",
+        "deleteDomain": "Kustuta domeen",
+        "domainName": "Domeeninimi",
+        "dnsServers": "DNS-serverid",
+        "confirmDelete": "Kas olete kindel, et soovite selle domeeni kustutada?",
+        "noDomains": "Domeene ei leitud"
+    },
+    "editor": {
+        "title": "DNS-redaktor",
+        "addRecord": "Lisa kirje",
+        "deleteRecord": "Kustuta kirje",
+        "editRecord": "Muuda kirjet",
+        "recordType": "Kirje tüüp",
+        "hostname": "Hostinimi",
+        "address": "Aadress",
+        "distance": "Kaugus",
+        "weight": "Kaal",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Tegevused",
+        "confirmDelete": "Kas olete kindel, et soovite selle kirje kustutada?"
+    }
+}

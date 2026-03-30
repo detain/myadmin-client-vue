@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "The Kingdom Web List",
+        "orderTitle": "Commission Kingdom Web Registrations"
+    },
+    "view": {
+        "title": "View Kingdom Web {id}",
+        "package": "Estate Class",
+        "nextInvoiceDate": "Next Tax Notice Date:",
+        "billing": "The Tax Collector's Ledger",
+        "billed": "tithed",
+        "billingStatusIs": "Tax Collector's Standing is:",
+        "hostInfo": "Host Info",
+        "username": "Your Title:",
+        "ip": "Garrison Coordinates:",
+        "server": "Castle Keep:",
+        "notSetYet": "Not yet established",
+        "login": "Swear Fealty",
+        "types": "Types:",
+        "linksLabel": "Dispatches:",
+        "manualLogin": "Manual Fealty",
+        "automaticLogin": "Automatic Fealty",
+        "clickHere": "Click Here",
+        "defaultNameservers": "Default Keep Name Servers",
+        "nameservers": "Keep Name Servers:",
+        "externalLinks": "External Dispatches",
+        "names": "Names:",
+        "websitePreview": "Kingdom Web Preview",
+        "links": "Dispatches",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome carrier pigeon?",
+        "emailSent": "Carrier Pigeon Dispatched",
+        "emailSentMessage": "The welcome carrier pigeon has been resent. Check your dovecote."
+    },
+    "buyIp": {
+        "title": "Commission Additional Garrison Coordinates Addon",
+        "existingAddonIps": "Existing Addon Garrison Coordinates",
+        "additionalIp": "Additional Garrison Coordinates",
+        "monthlyCost": "Monthly Tribute ({symbol})",
+        "costDescription": "Tribute ({symbol}) every month as your kingdom web is tithed",
+        "confirmPurchase": "By Royal Decree — Commission",
+        "confirmMessage": "Additional Garrison Coordinates tribute: {symbol}{cost}/month. Are you sure you want to commission additional garrison coordinates?",
+        "placeOrder": "Present Commission",
+        "orderPlaced": "Commission Presented"
+    },
+    "reverseDns": {
+        "title": "Reverse Herald's Registry",
+        "updateReverseDns": "Revise Decree — Reverse Herald's Registry"
+    },
+    "downloadBackups": {
+        "title": "Retrieve Royal Vault Parchments",
+        "backup": "Royal Vault",
+        "size": "Size",
+        "options": "Options"
+    },
+    "migration": {
+        "title": "Migrate Your Kingdom Web",
+        "currentWebHostInfo": "Current Kingdom Web Host Info",
+        "customerPortalUrl": "Subject Portal URL",
+        "portalExample": "For Example: sso.godaddy.com",
+        "registeredUsername": "Registered Title / Pigeon Post Address / Record Number",
+        "password": "Secret Sigil",
+        "controlPanelUrl": "Royal Control Panel URL",
+        "controlPanelExample": "For Example: yourfiefdom.com/cpanel",
+        "ftpUsername": "FTP / Royal Control Panel Your Title",
+        "ftpPassword": "FTP / Royal Control Panel Secret Sigil",
+        "holdingPageQuestion": "If the estate is live/busy with high traffic, can we set a holding page during migration?",
+        "specialRequirementsQuestion": "Does this estate have special requirements like PHP Version / Modules?",
+        "domainRegistryInfo": "Fiefdom Registry Information",
+        "transferDomainQuestion": "Do you also wish us to help you transfer the fiefdom name registration?",
+        "updateNameserversQuestion": "Do you wish us to revise the keep name servers as soon as we finish the data migration?",
+        "domainRegistryPortal": "Fiefdom Registry Subject Portal",
+        "importantNotes": "Important Royal Proclamations",
+        "note1": "Filling out this parchment shall open a new royal petition for our royal court to commence your migration.",
+        "note2": "Please be as complete and accurate as possible to avoid any delays.",
+        "note3": "A typical migration is completed within 48 to 72 hours. Sometimes longer if the amount of data to copy is large.",
+        "note4": "The old hosting account in the royal ledger needs to be online and accessible while we are performing the migration, otherwise we may face difficulty.",
+        "note5": "Please do not make any updates on your estate while we perform the migration, otherwise those data may not be copied to the new hosting."
+    },
+    "order": {
+        "title": "Commission Kingdom Web"
+    }
+}

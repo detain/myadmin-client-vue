@@ -1,30 +1,30 @@
 {
-  "list": {
-    "title": "Elenco Licenze",
-    "orderTitle": "Ordina Registrazioni Licenze"
-  },
-  "view": {
-    "title": "Visualizza Licenza {id}",
-    "package": "Pacchetto",
-    "nextInvoiceDate": "Data Prossima Fattura:",
-    "billing": "Fatturazione",
-    "billed": "fatturato:",
-    "statusIs": "Stato è:",
-    "licenseInfo": "Informazioni Licenza",
-    "cpanelInfo": "Informazioni cPanel",
-    "links": "Link",
-    "emailSent": "Email Inviata",
-    "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta.",
-    "welcomeEmailConfirm": "Sei sicuro di voler reinviare l'email di benvenuto?"
-  },
-  "order": {
-    "title": "Ordina Licenza"
-  },
-  "changeIp": {
-    "title": "Cambia IP"
-  },
-  "changeOs": {
-    "title": "Cambia OS",
-    "selectLicenseOs": "Seleziona OS Licenza"
-  }
+    "list": {
+        "title": "Elenco Licenze",
+        "orderTitle": "Ordina Registrazioni Licenze"
+    },
+    "view": {
+        "title": "Visualizza Licenza {id}",
+        "package": "Pacchetto",
+        "nextInvoiceDate": "Data Prossima Fattura:",
+        "billing": "Fatturazione",
+        "billed": "fatturato:",
+        "statusIs": "Stato è:",
+        "licenseInfo": "Informazioni Licenza",
+        "cpanelInfo": "Informazioni cPanel",
+        "links": "Link",
+        "emailSent": "Email Inviata",
+        "emailSentMessage": "L'email di benvenuto è stata reinviata. Controlla la tua casella di posta.",
+        "welcomeEmailConfirm": "Sei sicuro di voler reinviare l'email di benvenuto?"
+    },
+    "order": {
+        "title": "Ordina Licenza"
+    },
+    "changeIp": {
+        "title": "Cambia IP"
+    },
+    "changeOs": {
+        "title": "Cambia OS",
+        "selectLicenseOs": "Seleziona OS Licenza"
+    }
 }

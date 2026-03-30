@@ -80,8 +80,11 @@
     "home": {
         "cart": "Winkelwein",
         "editPersonalInfo": "Persoanlike Ynfo Bewurkje",
-        "copyright": "Auteursrjocht \u00a9 {year} InterServer Inc.",
+        "copyright": "Auteursrjocht © {year} InterServer Inc.",
         "allRightsReserved": "Alle rjochten foarbehâlden."
     },
-    "copyright": "Auteursrjocht \u00a9 {year} - Alle Rjochten Foarbehâlden."
+    "copyright": "Auteursrjocht © {year} - Alle Rjochten Foarbehâlden.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "Servers"
 }

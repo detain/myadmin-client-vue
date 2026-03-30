@@ -1,0 +1,12 @@
+{
+    "title": "Court Members",
+    "addUser": "Append Court Member",
+    "editUser": "Amend Court Member",
+    "firstName": "First Name",
+    "lastName": "Family Name",
+    "username": "Your Title",
+    "password": "Secret Sigil",
+    "keepSamePassword": "Leave blank to keep the same secret sigil",
+    "errorLoading": "By the King's wrath — an error loading court members:",
+    "errorLoadingUser": "By the King's wrath — an error loading court member:"
+}

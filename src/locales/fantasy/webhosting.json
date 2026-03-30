@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Territory Webworks List",
+        "orderTitle": "Commission Territory Webworks Registrations"
+    },
+    "view": {
+        "title": "View Territory Webworks {id}",
+        "package": "Equipment Tier",
+        "nextInvoiceDate": "Next Gold Due Date:",
+        "billing": "Gold Ledger",
+        "billed": "inscribed",
+        "billingStatusIs": "Gold Ledger Status is:",
+        "hostInfo": "Host Stronghold Info",
+        "username": "Hero Name:",
+        "ip": "Stronghold Coordinates:",
+        "server": "Stronghold:",
+        "notSetYet": "Not inscribed yet",
+        "login": "Enter",
+        "types": "Types:",
+        "linksLabel": "Quest Links:",
+        "manualLogin": "Manual Entry",
+        "automaticLogin": "Automatic Entry",
+        "clickHere": "Click Here",
+        "defaultNameservers": "Default Nameservers",
+        "nameservers": "Nameservers:",
+        "externalLinks": "External Quest Links",
+        "names": "Names:",
+        "websitePreview": "Territory Preview",
+        "links": "Quest Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome raven?",
+        "emailSent": "Raven Dispatched",
+        "emailSentMessage": "The welcome raven has been resent. Check your messenger raven perch."
+    },
+    "buyIp": {
+        "title": "Commission Additional Stronghold Coordinates Addon",
+        "existingAddonIps": "Existing Addon Stronghold Coordinates",
+        "additionalIp": "Additional Stronghold Coordinates",
+        "monthlyCost": "Monthly Gold Cost ({symbol})",
+        "costDescription": "Gold Cost ({symbol}) every moon as your territory webworks is inscribed",
+        "confirmPurchase": "Confirm Commission",
+        "confirmMessage": "Additional stronghold coordinates gold cost: {symbol}{cost}/moon. Are you sure you want to commission additional stronghold coordinates?",
+        "placeOrder": "Place Commission",
+        "orderPlaced": "Commission Placed"
+    },
+    "reverseDns": {
+        "title": "Reverse DNS",
+        "updateReverseDns": "Level Up Reverse DNS"
+    },
+    "downloadBackups": {
+        "title": "Loot Dragon's Hoard Backups",
+        "backup": "Dragon's Hoard Backup",
+        "size": "Size",
+        "options": "Options"
+    },
+    "migration": {
+        "title": "Migrate Your Territory Webworks",
+        "currentWebHostInfo": "Current Territory Host Info",
+        "customerPortalUrl": "Guild Member Portal URL",
+        "portalExample": "For Example: sso.godaddy.com",
+        "registeredUsername": "Registered Hero Name / Raven Address / Guild ID",
+        "password": "Secret Passphrase",
+        "controlPanelUrl": "Control Panel URL",
+        "controlPanelExample": "For Example: yourterritory.com/cpanel",
+        "ftpUsername": "FTP / Control Panel Hero Name",
+        "ftpPassword": "FTP / Control Panel Secret Passphrase",
+        "holdingPageQuestion": "If the territory is live/busy with high traffic, can we set a holding page during migration?",
+        "specialRequirementsQuestion": "Does this territory have special requirements like PHP Version / Modules?",
+        "domainRegistryInfo": "Territory Registry Information",
+        "transferDomainQuestion": "Do you also want us to help you transfer the territory name registration?",
+        "updateNameserversQuestion": "Do you want us to update the nameservers as soon as we finish the data migration?",
+        "domainRegistryPortal": "Territory Registry Guild Member Portal",
+        "importantNotes": "Heed These Warnings",
+        "note1": "Filling out this scroll will post a new quest for our guild support officers to begin your migration.",
+        "note2": "Please be as complete and accurate as possible to avoid any delays on your quest.",
+        "note3": "A typical migration is completed within 48 to 72 hours. Sometimes longer if the amount of data to move is large.",
+        "note4": "The old hosting territory needs to be online and accessible while we are performing the migration, otherwise we may face difficulty.",
+        "note5": "Please do not make any updates on your territory while we perform the migration, otherwise those data may not be copied to the new hosting."
+    },
+    "order": {
+        "title": "Commission Territory Webworks"
+    }
+}

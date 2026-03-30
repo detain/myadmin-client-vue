@@ -1,0 +1,49 @@
+{
+    "list": {
+        "title": "Dispatch Services List",
+        "orderTitle": "Place Your Order — Don't Wait! for Dispatch Service Registrations"
+    },
+    "view": {
+        "title": "View Dispatch Service {id}",
+        "package": "Service Package (Today's Best Value!)",
+        "nextInvoiceDate": "Payment Due Date:",
+        "billing": "The Debt Ledger",
+        "billed": "billed:",
+        "statusIs": "Deal Status is:",
+        "mailApi": "Dispatch Service API",
+        "usageCount": "Usage Count:",
+        "links": "Quick Links",
+        "connectionInfo": "Connection Info",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Place Your Order — Don't Wait! for Dispatch Service"
+    },
+    "alerts": {
+        "title": "Alerts",
+        "addAlert": "Add to Haul Alert",
+        "editAlert": "Revise Terms of Alert",
+        "noAlerts": "Nothing here, friend — no alerts found!"
+    },
+    "delist": {
+        "title": "Delist",
+        "blockedEmails": "Blocked Dispatches"
+    },
+    "denyRules": {
+        "title": "Deny Rules",
+        "addRule": "Add to Haul Rule",
+        "noRules": "Nothing here, friend — no deny rules found!"
+    },
+    "logs": {
+        "title": "Logs",
+        "searchLogs": "Hunt for Bargains in Logs"
+    },
+    "stats": {
+        "title": "Statistics"
+    },
+    "deliverability": {
+        "title": "Deliverability"
+    }
+}

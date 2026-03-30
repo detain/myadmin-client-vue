@@ -80,8 +80,11 @@
     "home": {
         "cart": "Корзина",
         "editPersonalInfo": "Редактировать личную информацию",
-        "copyright": "Авторские права \u00a9 {year} InterServer Inc.",
+        "copyright": "Авторские права © {year} InterServer Inc.",
         "allRightsReserved": "Все права защищены."
     },
-    "copyright": "Авторские права \u00a9 {year} - Все права защищены."
+    "copyright": "Авторские права © {year} - Все права защищены.",
+    "statsVps": "VPS",
+    "statsWebsites": "Веб-хостинг",
+    "statsServers": "Серверы"
 }

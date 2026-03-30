@@ -80,8 +80,11 @@
     "home": {
         "cart": "কার্ট",
         "editPersonalInfo": "ব্যক্তিগত তথ্য সম্পাদনা করুন",
-        "copyright": "কপিরাইট \u00a9 {year} InterServer Inc.",
+        "copyright": "কপিরাইট © {year} InterServer Inc.",
         "allRightsReserved": "সর্বস্বত্ব সংরক্ষিত।"
     },
-    "copyright": "কপিরাইট \u00a9 {year} - সর্বস্বত্ব সংরক্ষিত।"
+    "copyright": "কপিরাইট © {year} - সর্বস্বত্ব সংরক্ষিত।",
+    "statsVps": "VPS",
+    "statsWebsites": "ওয়েবহোস্টিং",
+    "statsServers": "সার্ভার"
 }

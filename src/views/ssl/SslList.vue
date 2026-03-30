@@ -30,13 +30,17 @@ const columns: ServiceListColumn[] = [
 ];
 
 const data = ref<Record<string, any>[]>([]);
+const loading = ref(true);
 
 const loadData = async () => {
+    loading.value = true;
     try {
         const response = await fetchWrapper.get(`${baseUrl}/ssl`);
         data.value = response;
     } catch (error: any) {
         console.log('api failed', error);
+    } finally {
+        loading.value = false;
     }
 };
 loadData();
@@ -49,6 +53,7 @@ loadData();
         :columns="columns"
         id-field="ssl_id"
         status-field="ssl_status"
+        :loading="loading"
         :order-title="t('ssl.list.orderTitle')"
         order-route="/ssl/order"
     />

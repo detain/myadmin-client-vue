@@ -1,49 +1,49 @@
 {
-  "list": {
-    "title": "Jerin Sabis na Imel",
-    "orderTitle": "Oda Rajistan Imel"
-  },
-  "view": {
-    "title": "Duba Imel {id}",
-    "package": "Fakiti",
-    "nextInvoiceDate": "Ranar Takardar Biyan Kuɗi Mai Zuwa:",
-    "billing": "Biyan Kuɗi",
-    "billed": "an biya:",
-    "statusIs": "Matsayi shine:",
-    "mailApi": "API na Imel",
-    "usageCount": "Adadin Amfani:",
-    "links": "Hanyoyin Haɗi",
-    "connectionInfo": "Bayanan Haɗi",
-    "emailSent": "An Aika Imel",
-    "emailSentMessage": "An sake aika imel na maraba. Duba akwatin imel ɗinka.",
-    "welcomeEmailConfirm": "Ka tabbata kana son sake aika imel na maraba?"
-  },
-  "order": {
-    "title": "Oda Imel"
-  },
-  "alerts": {
-    "title": "Faɗakarwa",
-    "addAlert": "Ƙara Faɗakarwa",
-    "editAlert": "Gyara Faɗakarwa",
-    "noAlerts": "Ba a sami faɗakarwa ba"
-  },
-  "delist": {
-    "title": "Cire daga Jerin",
-    "blockedEmails": "Imellan da aka Toshe"
-  },
-  "denyRules": {
-    "title": "Ƙa'idodin ƙi",
-    "addRule": "Ƙara Ƙa'ida",
-    "noRules": "Ba a sami ƙa'idodin ƙi ba"
-  },
-  "logs": {
-    "title": "Rikodin Ayyuka",
-    "searchLogs": "Bincika Rikodin Ayyuka"
-  },
-  "stats": {
-    "title": "Ƙididdiga"
-  },
-  "deliverability": {
-    "title": "Ƙarfin Isar da Imel"
-  }
+    "list": {
+        "title": "Jerin Sabis na Imel",
+        "orderTitle": "Oda Rajistan Imel"
+    },
+    "view": {
+        "title": "Duba Imel {id}",
+        "package": "Fakiti",
+        "nextInvoiceDate": "Ranar Takardar Biyan Kuɗi Mai Zuwa:",
+        "billing": "Biyan Kuɗi",
+        "billed": "an biya:",
+        "statusIs": "Matsayi shine:",
+        "mailApi": "API na Imel",
+        "usageCount": "Adadin Amfani:",
+        "links": "Hanyoyin Haɗi",
+        "connectionInfo": "Bayanan Haɗi",
+        "emailSent": "An Aika Imel",
+        "emailSentMessage": "An sake aika imel na maraba. Duba akwatin imel ɗinka.",
+        "welcomeEmailConfirm": "Ka tabbata kana son sake aika imel na maraba?"
+    },
+    "order": {
+        "title": "Oda Imel"
+    },
+    "alerts": {
+        "title": "Faɗakarwa",
+        "addAlert": "Ƙara Faɗakarwa",
+        "editAlert": "Gyara Faɗakarwa",
+        "noAlerts": "Ba a sami faɗakarwa ba"
+    },
+    "delist": {
+        "title": "Cire daga Jerin",
+        "blockedEmails": "Imellan da aka Toshe"
+    },
+    "denyRules": {
+        "title": "Ƙa'idodin ƙi",
+        "addRule": "Ƙara Ƙa'ida",
+        "noRules": "Ba a sami ƙa'idodin ƙi ba"
+    },
+    "logs": {
+        "title": "Rikodin Ayyuka",
+        "searchLogs": "Bincika Rikodin Ayyuka"
+    },
+    "stats": {
+        "title": "Ƙididdiga"
+    },
+    "deliverability": {
+        "title": "Ƙarfin Isar da Imel"
+    }
 }

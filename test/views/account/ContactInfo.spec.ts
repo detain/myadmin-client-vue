@@ -171,7 +171,7 @@ describe('ContactInfo.vue', () => {
 
     it('renders Language select', () => {
         const wrapper = mount(ContactInfo, mountOptions);
-        expect(wrapper.find('#locale').exists()).toBe(true);
+        expect(wrapper.find('.locale-preview-select').exists()).toBe(true);
     });
 
     it('renders Currency select', () => {
@@ -236,8 +236,11 @@ describe('ContactInfo.vue', () => {
             });
             const wrapper = mount(ContactInfo, mountOptions);
             await flushPromises();
-            const localeSelect = wrapper.find('#locale');
-            const options = localeSelect.findAll('option');
+            const localeSelect = wrapper.find('.locale-preview-select');
+            expect(localeSelect.exists()).toBe(true);
+            // Open the dropdown to render options
+            await localeSelect.find('button').trigger('click');
+            const options = localeSelect.findAll('li[role="option"]');
             // 'auto' option + 2 locales
             expect(options.length).toBeGreaterThanOrEqual(3);
         });

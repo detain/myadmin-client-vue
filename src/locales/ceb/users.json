@@ -1,6 +1,12 @@
 {
-    "title": "Mga User", "addUser": "Idugang ang User", "editUser": "I-edit ang User",
-    "firstName": "Una nga Ngalan", "lastName": "Apelyido", "username": "Username", "password": "Password",
+    "title": "Mga User",
+    "addUser": "Idugang ang User",
+    "editUser": "I-edit ang User",
+    "firstName": "Una nga Ngalan",
+    "lastName": "Apelyido",
+    "username": "Username",
+    "password": "Password",
     "keepSamePassword": "Biyain nga blangko aron ipadayon ang mao gihapon nga password",
-    "errorLoading": "Sayop sa pag-load sa mga user:", "errorLoadingUser": "Sayop sa pag-load sa user:"
+    "errorLoading": "Sayop sa pag-load sa mga user:",
+    "errorLoadingUser": "Sayop sa pag-load sa user:"
 }

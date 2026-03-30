@@ -1,0 +1,26 @@
+{
+    "manager": {
+        "title": "The Herald's Registry",
+        "addDomain": "Append Fiefdom",
+        "deleteDomain": "Strike Fiefdom from the Record",
+        "domainName": "Fiefdom Name",
+        "dnsServers": "Herald Registry Keeps",
+        "confirmDelete": "Are you sure you want to strike this fiefdom from the record?",
+        "noDomains": "The royal archives hold no fiefdoms"
+    },
+    "editor": {
+        "title": "Herald's Registry Editor",
+        "addRecord": "Append Record",
+        "deleteRecord": "Strike Record from the Record",
+        "editRecord": "Amend Record",
+        "recordType": "Record Type",
+        "hostname": "Keep Name",
+        "address": "Address",
+        "distance": "Distance",
+        "weight": "Weight",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Actions",
+        "confirmDelete": "Are you sure you want to strike this record from the record?"
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "list": {
+        "title": "Galactic Web Nodes List",
+        "orderTitle": "Requisition Galactic Web Node Registrations"
+    },
+    "view": {
+        "title": "View Galactic Web Node {id}",
+        "package": "Configuration Class",
+        "nextInvoiceDate": "Next Credit Invoice Date:",
+        "billing": "Credits Ledger",
+        "billed": "billed",
+        "billingStatusIs": "Credits Ledger Mission Status is:",
+        "hostInfo": "Host Info",
+        "username": "Crew Designation:",
+        "ip": "Network Coordinates:",
+        "server": "Star Station:",
+        "notSetYet": "Not set yet",
+        "login": "Access Terminal",
+        "types": "Types:",
+        "linksLabel": "Navigation Links:",
+        "manualLogin": "Manual Terminal Access",
+        "automaticLogin": "Automatic Terminal Access",
+        "clickHere": "Click Here",
+        "defaultNameservers": "Default Navigation Beacons",
+        "nameservers": "Navigation Beacons:",
+        "externalLinks": "External Navigation Links",
+        "names": "Designations:",
+        "websitePreview": "Galactic Web Node Preview",
+        "links": "Navigation Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome subspace transmission?",
+        "emailSent": "Subspace Transmission Sent",
+        "emailSentMessage": "The welcome subspace transmission has been resent. Check your inbox."
+    },
+    "buyIp": {
+        "title": "Requisition Additional Network Coordinates Addon",
+        "existingAddonIps": "Existing Addon Network Coordinates",
+        "additionalIp": "Additional Network Coordinates",
+        "monthlyCost": "Monthly Credit Cost ({symbol})",
+        "costDescription": "Credit Cost ({symbol}) every month as your galactic web node is invoiced",
+        "confirmPurchase": "Confirm Requisition",
+        "confirmMessage": "Additional Network Coordinates credit cost: {symbol}{cost}/month. Are you sure you want to requisition additional Network Coordinates?",
+        "placeOrder": "Place Requisition",
+        "orderPlaced": "Requisition Placed"
+    },
+    "reverseDns": {
+        "title": "Reverse Navigation Registry",
+        "updateReverseDns": "Update Reverse Navigation Registry"
+    },
+    "downloadBackups": {
+        "title": "Download Cryostorage Backups",
+        "backup": "Cryostorage Backup",
+        "size": "Size",
+        "options": "Options"
+    },
+    "migration": {
+        "title": "Migrate Your Galactic Web Node",
+        "currentWebHostInfo": "Current Galactic Web Host Info",
+        "customerPortalUrl": "Crew Portal URL",
+        "portalExample": "For Example: sso.godaddy.com",
+        "registeredUsername": "Registered Crew Designation / Subspace Address / ID",
+        "password": "Access Code",
+        "controlPanelUrl": "Control Panel URL",
+        "controlPanelExample": "For Example: yourdomain.com/cpanel",
+        "ftpUsername": "FTP / Control Panel Crew Designation",
+        "ftpPassword": "FTP / Control Panel Access Code",
+        "holdingPageQuestion": "If the site is live/busy site having high traffic, can we set a holding beacon during migration?",
+        "specialRequirementsQuestion": "Does this site have special requirements like PHP Version / Modules?",
+        "domainRegistryInfo": "Sector Registration Registry Information",
+        "transferDomainQuestion": "Do you also want us to help you transfer the sector registration?",
+        "updateNameserversQuestion": "Do you want us to update the navigation beacons as soon as we finish the data migration?",
+        "domainRegistryPortal": "Sector Registration Registry Crew Portal",
+        "importantNotes": "Federation Alerts",
+        "note1": "Filling out this form will initialize a new incident log for our Federation Support Division to begin your migration.",
+        "note2": "Please be as complete and accurate as possible to avoid any delays.",
+        "note3": "A typical migration is completed within 48 to 72 hours. Sometimes longer if the amount of data to copy is large.",
+        "note4": "The old hosting profile needs to be online and accessible while we are performing the migration, otherwise we may face difficulty.",
+        "note5": "Please do not make any updates on your site while we perform the migration, otherwise those data may not be copied to the new hosting."
+    },
+    "order": {
+        "title": "Requisition Galactic Web Node"
+    }
+}

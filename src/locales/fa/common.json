@@ -105,6 +105,7 @@
         "loading": "در حال بارگذاری...",
         "noData": "داده‌ای موجود نیست",
         "noActiveServices": "هیچ سرویس فعالی وجود ندارد",
+        "noServicesMatchingFilter": "هیچ سرویسی مطابق با فیلتر '{filter}' یافت نشد",
         "controlPanel": "پنل کنترل",
         "welcomeEmail": "ایمیل خوش‌آمدگویی",
         "invoices": "فاکتورها",

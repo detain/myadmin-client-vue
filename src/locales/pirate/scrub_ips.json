@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Bilge Cleansing Services List",
+        "orderTitle": "Commission Bilge Cleansing"
+    },
+    "view": {
+        "title": "Survey Bilge Cleansing",
+        "currentIp": "Current Ship's Coordinates",
+        "ipAddress": "Ship's Coordinates",
+        "ipFromService": "Ship's Coordinates from vessel"
+    },
+    "filters": {
+        "title": "Navigation Filters",
+        "createNew": "Commission New",
+        "createNewFilter": "Commission New Navigation Filter",
+        "filterType": "Filter Type",
+        "selectFilterType": "Select Filter Type",
+        "ipAddress": "Ship's Coordinates",
+        "portNo": "Port No",
+        "filter": "Navigation Filter",
+        "destinationIp": "Destination Ship's Coordinates",
+        "destinationPort": "Destination Port",
+        "noFiltersFound": "No navigation filters found in the ship's log!",
+        "deleteFilterConfirm": "Are ye sure ye want to throw this navigation filter overboard?",
+        "unableToCreateFilter": "Unable to commission navigation filter at this time.",
+        "unableToDeleteFilter": "Unable to throw navigation filter overboard at this time."
+    },
+    "firewallRules": {
+        "title": "Cannon Battery Rules",
+        "createNew": "Commission New",
+        "createNewFirewall": "Commission New Cannon Battery Rule",
+        "protocol": "Protocol",
+        "destinationIp": "Destination Ship's Coordinates",
+        "destinationPort": "Destination Port",
+        "sourceIp": "Source Ship's Coordinates",
+        "sourcePort": "Source Port",
+        "xdpAction": "XDP Action",
+        "ipRequired": "Ship's Coordinates be required",
+        "block": "Board and Blockade",
+        "whitelist": "Trusted Vessels List",
+        "noRulesFound": "No cannon battery rules found in the ship's log!",
+        "deleteRuleConfirm": "Are ye sure ye want to throw this cannon battery rule overboard?",
+        "unableToCreateRule": "Unable to commission cannon battery rule at this time.",
+        "unableToDeleteRule": "Unable to throw cannon battery rule overboard at this time."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Cannon Battery Rules",
+        "createNew": "Commission New",
+        "createNewGeoRule": "Commission New Geo Cannon Battery Rule",
+        "destinationIp": "Destination Ship's Coordinates",
+        "destinationPort": "Destination Port",
+        "sourceCountry": "Source Claimed Waters",
+        "sourceAsn": "Source ASN",
+        "xdpAction": "XDP Action",
+        "portNo": "Port No",
+        "selectCountry": "Select Claimed Waters",
+        "asn": "ASN",
+        "block": "Board and Blockade",
+        "whitelist": "Trusted Vessels List",
+        "noRulesFound": "No geo cannon battery rules found in the ship's log!",
+        "deleteGeoRuleConfirm": "Are ye sure ye want to throw this geo cannon battery rule overboard?",
+        "unableToCreateRule": "Unable to commission cannon battery rule at this time.",
+        "unableToDeleteRule": "Unable to throw geo cannon battery rule overboard at this time."
+    }
+}

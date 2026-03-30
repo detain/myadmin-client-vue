@@ -105,6 +105,7 @@
         "loading": "بارول...",
         "noData": "هیڅ معلومات شتون نلري",
         "noActiveServices": "هیڅ فعال خدمتونه نشته",
+        "noServicesMatchingFilter": "د '{filter}' فلتر سره مطابق هیڅ خدمتونه ونه موندل شول",
         "controlPanel": "کنټرول پینل",
         "welcomeEmail": "د هرکلي بریښنالیک",
         "invoices": "انوایسونه",

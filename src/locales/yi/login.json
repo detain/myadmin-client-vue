@@ -80,8 +80,11 @@
     "home": {
         "cart": "וואָגן",
         "editPersonalInfo": "רעדאַקטירן פּערזענלעכע אינפֿאָ",
-        "copyright": "קאָפּירעכט \u00a9 {year} InterServer Inc.",
+        "copyright": "קאָפּירעכט © {year} InterServer Inc.",
         "allRightsReserved": "אַלע רעכטן אָנגעהאַלטן."
     },
-    "copyright": "קאָפּירעכט \u00a9 {year} - אַלע רעכטן אָנגעהאַלטן."
+    "copyright": "קאָפּירעכט © {year} - אַלע רעכטן אָנגעהאַלטן.",
+    "statsVps": "VPS",
+    "statsWebsites": "Webhosting",
+    "statsServers": "סערווערס"
 }

@@ -1,0 +1,25 @@
+{
+    "list": {
+        "title": "Portable Stall Locations Services List",
+        "orderTitle": "Place Your Order — Don't Wait! for Portable Stall Location Registrations"
+    },
+    "view": {
+        "title": "View Portable Stall Location {id}",
+        "package": "Service Package (Today's Best Value!)",
+        "nextInvoiceDate": "Payment Due Date:",
+        "billing": "The Debt Ledger",
+        "billed": "billed:",
+        "statusIs": "Deal Status is:",
+        "floatingIp": "Portable Stall Location",
+        "links": "Quick Links",
+        "welcomeEmailConfirm": "Are you sure you want to resend the welcome dispatch?",
+        "emailSent": "Dispatch Sent",
+        "emailSentMessage": "The welcome dispatch has been resent. Check your inbox."
+    },
+    "order": {
+        "title": "Place Your Order — Don't Wait! for a Portable Stall Location"
+    },
+    "changeIp": {
+        "title": "Change Target Network Address"
+    }
+}

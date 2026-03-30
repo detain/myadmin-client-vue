@@ -1,0 +1,30 @@
+{
+    "list": {
+        "title": "Arcane Permits List",
+        "orderTitle": "Conjure Arcane Permit Registrations"
+    },
+    "view": {
+        "title": "View Arcane Permit {id}",
+        "package": "Enchantment Tier",
+        "nextInvoiceDate": "Next Debt Scroll Date:",
+        "billing": "Grand Treasury",
+        "billed": "tithed:",
+        "statusIs": "Aura is:",
+        "licenseInfo": "Arcane Permit Info",
+        "cpanelInfo": "cPanel Info",
+        "links": "Portals",
+        "welcomeEmailConfirm": "Art thou certain thou wishest to resend the welcoming stone?",
+        "emailSent": "Sending Stone Dispatched",
+        "emailSentMessage": "The welcoming stone hath been resent. Check thy inbox."
+    },
+    "order": {
+        "title": "Conjure Arcane Permit"
+    },
+    "changeIp": {
+        "title": "Alter Ether Address"
+    },
+    "changeOs": {
+        "title": "Alter Enchantment Layer",
+        "selectLicenseOs": "Select Arcane Permit Enchantment Layer"
+    }
+}

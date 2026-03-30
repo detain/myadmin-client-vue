@@ -80,8 +80,11 @@
     "home": {
         "cart": "Trol",
         "editPersonalInfo": "Golygu Gwybodaeth Bersonol",
-        "copyright": "Hawlfraint \u00a9 {year} InterServer Inc.",
+        "copyright": "Hawlfraint © {year} InterServer Inc.",
         "allRightsReserved": "Cedwir pob hawl."
     },
-    "copyright": "Hawlfraint \u00a9 {year} - Cedwir Pob Hawl."
+    "copyright": "Hawlfraint © {year} - Cedwir Pob Hawl.",
+    "statsVps": "VPS",
+    "statsWebsites": "Gwesteia Gwe",
+    "statsServers": "Gweinyddion"
 }

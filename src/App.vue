@@ -121,7 +121,7 @@ onBeforeUnmount(() => {
 const authStore = useAuthStore();
 const siteStore = useSiteStore();
 const { user } = storeToRefs(authStore);
-const { breadcrums, page_heading } = storeToRefs(siteStore);
+const { breadcrums, page_heading, routeLoading } = storeToRefs(siteStore);
 
 siteStore.checkInfoLoaded();
 
@@ -261,7 +261,11 @@ useDarkMode();
             </div>
             <!-- /.content-header -->
             <div class="app-content">
-                <div class="container-fluid">
+                <div v-if="routeLoading" class="route-loading-overlay">
+                    <i class="fas fa-spinner fa-spin fa-3x"></i>
+                    <p class="mt-2">{{ t('common.labels.loading') }}</p>
+                </div>
+                <div class="container-fluid" :class="{ 'content-dimmed': routeLoading }">
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <router-view />
@@ -390,5 +394,25 @@ useDarkMode();
     .row > .col-md-8.input-group { width: 66.666667%; }
     .row > .col-md-9.input-group { width: 75%; }
     .row > .col-md-12.input-group { width: 100%; }
+
+.route-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    min-height: 200px;
+    color: #6c757d;
+}
+
+.content-dimmed {
+    opacity: 0.3;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
 }
 </style>

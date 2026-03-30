@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Address Decontamination System Registry",
+        "orderTitle": "Requisition Address Decontamination System Units"
+    },
+    "view": {
+        "title": "Inspect Address Decontamination System",
+        "currentIp": "Current Network Node Address",
+        "ipAddress": "Network Node Address",
+        "ipFromService": "Network Node Address from Laboratory Apparatus"
+    },
+    "filters": {
+        "title": "Data Filtration Systems",
+        "createNew": "Initialize New",
+        "createNewFilter": "Initialize New Data Filtration System",
+        "filterType": "Filtration System Classification",
+        "selectFilterType": "Select Filtration System Classification",
+        "ipAddress": "Network Node Address",
+        "portNo": "Port Number",
+        "filter": "Filtration Apparatus",
+        "destinationIp": "Destination Network Node Address",
+        "destinationPort": "Destination Port",
+        "noFiltersFound": "No data filtration systems detected in apparatus!",
+        "deleteFilterConfirm": "Are you sure you want to eradicate this data filtration system?",
+        "unableToCreateFilter": "Unable to initialize data filtration system at this time.",
+        "unableToDeleteFilter": "Unable to eradicate data filtration system at this time."
+    },
+    "firewallRules": {
+        "title": "Security Perimeter Apparatus Rules",
+        "createNew": "Initialize New",
+        "createNewFirewall": "Initialize New Security Perimeter Apparatus Rule",
+        "protocol": "Communication Protocol",
+        "destinationIp": "Destination Network Node Address",
+        "destinationPort": "Destination Port",
+        "sourceIp": "Source Network Node Address",
+        "sourcePort": "Source Port",
+        "xdpAction": "XDP Action",
+        "ipRequired": "Network Node Address is required for this protocol",
+        "block": "Quarantine",
+        "whitelist": "Approved Entities Registry",
+        "noRulesFound": "No security perimeter rules detected in apparatus!",
+        "deleteRuleConfirm": "Are you sure you want to eradicate this security perimeter rule?",
+        "unableToCreateRule": "Unable to initialize security perimeter rule at this time.",
+        "unableToDeleteRule": "Unable to eradicate security perimeter rule at this time."
+    },
+    "geoFirewallRules": {
+        "title": "Geographic Security Perimeter Apparatus Rules",
+        "createNew": "Initialize New",
+        "createNewGeoRule": "Initialize New Geographic Security Perimeter Rule",
+        "destinationIp": "Destination Network Node Address",
+        "destinationPort": "Destination Port",
+        "sourceCountry": "Source Nation-State",
+        "sourceAsn": "Source ASN",
+        "xdpAction": "XDP Action",
+        "portNo": "Port Number",
+        "selectCountry": "Select Nation-State",
+        "asn": "ASN",
+        "block": "Quarantine",
+        "whitelist": "Approved Entities Registry",
+        "noRulesFound": "No geographic security perimeter rules detected in apparatus!",
+        "deleteGeoRuleConfirm": "Are you sure you want to eradicate this geographic security perimeter rule?",
+        "unableToCreateRule": "Unable to initialize geographic security perimeter rule at this time.",
+        "unableToDeleteRule": "Unable to eradicate geographic security perimeter rule at this time."
+    }
+}

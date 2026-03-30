@@ -80,8 +80,11 @@
     "home": {
         "cart": "장바구니",
         "editPersonalInfo": "개인 정보 편집",
-        "copyright": "Copyright \u00a9 {year} InterServer Inc.",
+        "copyright": "Copyright © {year} InterServer Inc.",
         "allRightsReserved": "모든 권리 보유."
     },
-    "copyright": "Copyright \u00a9 {year} - 모든 권리 보유."
+    "copyright": "Copyright © {year} - 모든 권리 보유.",
+    "statsVps": "VPS",
+    "statsWebsites": "웹 호스팅",
+    "statsServers": "서버"
 }

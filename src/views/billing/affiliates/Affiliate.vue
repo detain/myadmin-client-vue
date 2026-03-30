@@ -179,7 +179,7 @@ onMounted(() => {
         <div class="col">
             <div class="card w-100 mb-4 bg-white p-2 shadow-none" style="border-left: 4px solid red; display: block ruby">
                 <p class="text-md m-0">
-                    <i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">Attention:</b>&nbsp;{{ t('affiliate.attention', { faqLink: '' }) }}<router-link class="link" :to="'/affiliate/faq'">{{ t('affiliate.faqLinkText') }}</router-link>
+                    <i class="fas fa-info-circle text-red" style="color: red" aria-hidden="true"></i>&nbsp;<b class="text-red">Attention:</b>&nbsp;<i18n-t keypath="affiliate.attention" tag="span"><template #faqLink><router-link class="link" :to="'/affiliate/faq'">{{ t('affiliate.faqLinkText') }}</router-link></template></i18n-t>
                 </p>
                 <div class="card-tools float-end">
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times" aria-hidden="true"></i></button>
@@ -199,7 +199,7 @@ onMounted(() => {
                         </div>
                         <div class="card-body">
                             <p>
-                                {{ t('affiliate.earnDescription', { amount: '' }) }}<b class="text-success">{{ '$' + affiliate_amount }}</b> <a href="https://www.interserver.net/affiliate.html" target="__blank" class="link">{{ t('affiliate.knowMore') }}</a>
+                                <i18n-t keypath="affiliate.earnDescription" tag="span"><template #amount><b class="text-success">{{ '$' + affiliate_amount }}</b></template></i18n-t> <a href="https://www.interserver.net/affiliate.html" target="__blank" class="link">{{ t('affiliate.knowMore') }}</a>
                             </p>
                         </div>
                     </div>

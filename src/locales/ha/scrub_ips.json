@@ -1,65 +1,65 @@
 {
-  "list": {
-    "title": "Jerin Sabis na Scrub IPs",
-    "orderTitle": "Oda Scrub IPs"
-  },
-  "view": {
-    "title": "Duba Scrub IPs",
-    "currentIp": "IP na Yanzu",
-    "ipAddress": "Adresin IP",
-    "ipFromService": "IP daga Sabis"
-  },
-  "filters": {
-    "title": "Tacewa",
-    "createNew": "Ƙirƙiri Sabon",
-    "createNewFilter": "Ƙirƙiri Sabon Tacewa",
-    "filterType": "Nau'in Tacewa",
-    "ipAddress": "Adresin IP",
-    "portNo": "Lambar Port",
-    "filter": "Tacewa",
-    "destinationIp": "IP Maƙasudi",
-    "destinationPort": "Port Maƙasudi",
-    "noFiltersFound": "Ba a sami tacewa ba!",
-    "deleteFilterConfirm": "Shin kana tabbata kana son goge wannan tacewa?",
-    "selectFilterType": "Zaɓi Nau'in Tace",
-    "unableToCreateFilter": "Ba za a iya ƙirƙirar tace a wannan lokacin ba.",
-    "unableToDeleteFilter": "Ba za a iya goge tace a wannan lokacin ba."
-  },
-  "firewallRules": {
-    "title": "Ƙa'idodin Katanga",
-    "createNewFirewall": "Ƙirƙiri Sabon Ƙa'idar Katanga",
-    "protocol": "Tsari",
-    "destinationIp": "IP Maƙasudi",
-    "sourceIp": "IP Asali",
-    "block": "Toshe",
-    "whitelist": "Jerin Fari",
-    "noRulesFound": "Ba a sami ƙa'idodi ba!",
-    "deleteRuleConfirm": "Shin kana tabbata kana son goge wannan ƙa'ida?",
-    "createNew": "Ƙirƙiri Sabon",
-    "destinationPort": "Tashar Wuri",
-    "sourcePort": "Tashar Asali",
-    "xdpAction": "Aikin XDP",
-    "ipRequired": "Ana buƙatar adireshi IP",
-    "unableToCreateRule": "Ba za a iya ƙirƙirar ƙa'idar firewall a wannan lokacin ba.",
-    "unableToDeleteRule": "Ba za a iya goge ƙa'idar firewall a wannan lokacin ba."
-  },
-  "geoFirewallRules": {
-    "title": "Ƙa'idodin Katanga na Yankin Kasa",
-    "createNewGeoRule": "Ƙirƙiri Sabon Ƙa'idar Katanga ta Yankin Kasa",
-    "destinationIp": "IP Maƙasudi",
-    "sourceCountry": "Ƙasar Asali",
-    "sourceAsn": "ASN Asali",
-    "selectCountry": "Zaɓi Ƙasa",
-    "block": "Toshe",
-    "whitelist": "Jerin Fari",
-    "noRulesFound": "Ba a sami ƙa'idodi ba!",
-    "deleteGeoRuleConfirm": "Shin kana tabbata kana son goge wannan ƙa'idar yankin kasa?",
-    "createNew": "Ƙirƙiri Sabon",
-    "destinationPort": "Tashar Wuri",
-    "xdpAction": "Aikin XDP",
-    "portNo": "Lambar Tasha",
-    "asn": "ASN",
-    "unableToCreateRule": "Ba za a iya ƙirƙirar ƙa'idar firewall a wannan lokacin ba.",
-    "unableToDeleteRule": "Ba za a iya goge ƙa'idar firewall ta yanki a wannan lokacin ba."
-  }
+    "list": {
+        "title": "Jerin Sabis na Scrub IPs",
+        "orderTitle": "Oda Scrub IPs"
+    },
+    "view": {
+        "title": "Duba Scrub IPs",
+        "currentIp": "IP na Yanzu",
+        "ipAddress": "Adresin IP",
+        "ipFromService": "IP daga Sabis"
+    },
+    "filters": {
+        "title": "Tacewa",
+        "createNew": "Ƙirƙiri Sabon",
+        "createNewFilter": "Ƙirƙiri Sabon Tacewa",
+        "filterType": "Nau'in Tacewa",
+        "ipAddress": "Adresin IP",
+        "portNo": "Lambar Port",
+        "filter": "Tacewa",
+        "destinationIp": "IP Maƙasudi",
+        "destinationPort": "Port Maƙasudi",
+        "noFiltersFound": "Ba a sami tacewa ba!",
+        "deleteFilterConfirm": "Shin kana tabbata kana son goge wannan tacewa?",
+        "selectFilterType": "Zaɓi Nau'in Tace",
+        "unableToCreateFilter": "Ba za a iya ƙirƙirar tace a wannan lokacin ba.",
+        "unableToDeleteFilter": "Ba za a iya goge tace a wannan lokacin ba."
+    },
+    "firewallRules": {
+        "title": "Ƙa'idodin Katanga",
+        "createNewFirewall": "Ƙirƙiri Sabon Ƙa'idar Katanga",
+        "protocol": "Tsari",
+        "destinationIp": "IP Maƙasudi",
+        "sourceIp": "IP Asali",
+        "block": "Toshe",
+        "whitelist": "Jerin Fari",
+        "noRulesFound": "Ba a sami ƙa'idodi ba!",
+        "deleteRuleConfirm": "Shin kana tabbata kana son goge wannan ƙa'ida?",
+        "createNew": "Ƙirƙiri Sabon",
+        "destinationPort": "Tashar Wuri",
+        "sourcePort": "Tashar Asali",
+        "xdpAction": "Aikin XDP",
+        "ipRequired": "Ana buƙatar adireshi IP",
+        "unableToCreateRule": "Ba za a iya ƙirƙirar ƙa'idar firewall a wannan lokacin ba.",
+        "unableToDeleteRule": "Ba za a iya goge ƙa'idar firewall a wannan lokacin ba."
+    },
+    "geoFirewallRules": {
+        "title": "Ƙa'idodin Katanga na Yankin Kasa",
+        "createNewGeoRule": "Ƙirƙiri Sabon Ƙa'idar Katanga ta Yankin Kasa",
+        "destinationIp": "IP Maƙasudi",
+        "sourceCountry": "Ƙasar Asali",
+        "sourceAsn": "ASN Asali",
+        "selectCountry": "Zaɓi Ƙasa",
+        "block": "Toshe",
+        "whitelist": "Jerin Fari",
+        "noRulesFound": "Ba a sami ƙa'idodi ba!",
+        "deleteGeoRuleConfirm": "Shin kana tabbata kana son goge wannan ƙa'idar yankin kasa?",
+        "createNew": "Ƙirƙiri Sabon",
+        "destinationPort": "Tashar Wuri",
+        "xdpAction": "Aikin XDP",
+        "portNo": "Lambar Tasha",
+        "asn": "ASN",
+        "unableToCreateRule": "Ba za a iya ƙirƙirar ƙa'idar firewall a wannan lokacin ba.",
+        "unableToDeleteRule": "Ba za a iya goge ƙa'idar firewall ta yanki a wannan lokacin ba."
+    }
 }

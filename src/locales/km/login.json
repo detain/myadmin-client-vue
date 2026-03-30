@@ -80,8 +80,11 @@
     "home": {
         "cart": "ពានរង្វាន់",
         "editPersonalInfo": "កែប្រែព័ត៌មានផ្ទាល់ខ្លួន",
-        "copyright": "រក្សាសិទ្ធិ \u00a9 {year} InterServer Inc.",
+        "copyright": "រក្សាសិទ្ធិ © {year} InterServer Inc.",
         "allRightsReserved": "រក្សាសិទ្ធិទាំងអស់។"
     },
-    "copyright": "រក្សាសិទ្ធិ \u00a9 {year} - រក្សាសិទ្ធិទាំងអស់។"
+    "copyright": "រក្សាសិទ្ធិ © {year} - រក្សាសិទ្ធិទាំងអស់។",
+    "statsVps": "VPS",
+    "statsWebsites": "ការបង្ហោះគេហទំព័រ",
+    "statsServers": "ម៉ាស៊ីនមេ"
 }

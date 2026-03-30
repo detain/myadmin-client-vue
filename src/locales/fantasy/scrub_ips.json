@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Purification Shrines Services List",
+        "orderTitle": "Commission Purification Shrines"
+    },
+    "view": {
+        "title": "View Purification Shrine",
+        "currentIp": "Current Stronghold Coordinates",
+        "ipAddress": "Stronghold Coordinates",
+        "ipFromService": "Stronghold Coordinates from service"
+    },
+    "filters": {
+        "title": "Arcane Filters",
+        "createNew": "Forge New",
+        "createNewFilter": "Forge New Arcane Filter",
+        "filterType": "Filter Type",
+        "selectFilterType": "Select Filter Type",
+        "ipAddress": "Stronghold Coordinates",
+        "portNo": "Port No",
+        "filter": "Filter",
+        "destinationIp": "Destination Stronghold Coordinates",
+        "destinationPort": "Destination Port",
+        "noFiltersFound": "No arcane filters found!",
+        "deleteFilterConfirm": "Are you sure you want to smite this arcane filter?",
+        "unableToCreateFilter": "Unable to forge arcane filter at this time.",
+        "unableToDeleteFilter": "Unable to smite arcane filter at this time."
+    },
+    "firewallRules": {
+        "title": "Defensive Ward Edicts",
+        "createNew": "Forge New",
+        "createNewFirewall": "Forge New Defensive Ward Edict",
+        "protocol": "Protocol",
+        "destinationIp": "Destination Stronghold Coordinates",
+        "destinationPort": "Destination Port",
+        "sourceIp": "Source Stronghold Coordinates",
+        "sourcePort": "Source Port",
+        "xdpAction": "XDP Action",
+        "ipRequired": "Stronghold coordinates are required",
+        "block": "Block",
+        "whitelist": "Trusted List",
+        "noRulesFound": "No defensive ward edicts found!",
+        "deleteRuleConfirm": "Are you sure you want to smite this defensive ward edict?",
+        "unableToCreateRule": "Unable to forge defensive ward edict at this time.",
+        "unableToDeleteRule": "Unable to smite defensive ward edict at this time."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Defensive Ward Edicts",
+        "createNew": "Forge New",
+        "createNewGeoRule": "Forge New Geo Defensive Ward Edict",
+        "destinationIp": "Destination Stronghold Coordinates",
+        "destinationPort": "Destination Port",
+        "sourceCountry": "Source Realm",
+        "sourceAsn": "Source ASN",
+        "xdpAction": "XDP Action",
+        "portNo": "Port No",
+        "selectCountry": "Select Realm",
+        "asn": "ASN",
+        "block": "Block",
+        "whitelist": "Trusted List",
+        "noRulesFound": "No defensive ward edicts found!",
+        "deleteGeoRuleConfirm": "Are you sure you want to smite this geo defensive ward edict?",
+        "unableToCreateRule": "Unable to forge defensive ward edict at this time.",
+        "unableToDeleteRule": "Unable to smite geo defensive ward edict at this time."
+    }
+}

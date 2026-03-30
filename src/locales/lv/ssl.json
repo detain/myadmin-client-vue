@@ -1,27 +1,27 @@
 {
-  "list": {
-    "title": "SSL sertifikātu saraksts",
-    "orderTitle": "Pasūtīt SSL reģistrācijas"
-  },
-  "view": {
-    "title": "Skatīt SSL {id}",
-    "package": "Pakete",
-    "nextInvoiceDate": "Nākamā rēķina datums:",
-    "billing": "Norēķini",
-    "billed": "norēķināts:",
-    "statusIs": "Statuss ir:",
-    "orderInfo": "Pasūtījuma informācija",
-    "certificateInfo": "Sertifikāta informācija",
-    "links": "Saites",
-    "emailSent": "E-pasts nosūtīts",
-    "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni.",
-    "welcomeEmailConfirm": "Vai tiešām vēlaties atkārtoti nosūtīt sveiciena e-pastu?"
-  },
-  "order": {
-    "title": "Pasūtīt SSL"
-  },
-  "changeApproverEmail": {
-    "title": "Mainīt apstiprinātāja e-pastu",
-    "selectApproverEmail": "Izvēlēties apstiprinātāja e-pastu"
-  }
+    "list": {
+        "title": "SSL sertifikātu saraksts",
+        "orderTitle": "Pasūtīt SSL reģistrācijas"
+    },
+    "view": {
+        "title": "Skatīt SSL {id}",
+        "package": "Pakete",
+        "nextInvoiceDate": "Nākamā rēķina datums:",
+        "billing": "Norēķini",
+        "billed": "norēķināts:",
+        "statusIs": "Statuss ir:",
+        "orderInfo": "Pasūtījuma informācija",
+        "certificateInfo": "Sertifikāta informācija",
+        "links": "Saites",
+        "emailSent": "E-pasts nosūtīts",
+        "emailSentMessage": "Sveiciena e-pasts ir atkārtoti nosūtīts. Pārbaudiet savu iesūtni.",
+        "welcomeEmailConfirm": "Vai tiešām vēlaties atkārtoti nosūtīt sveiciena e-pastu?"
+    },
+    "order": {
+        "title": "Pasūtīt SSL"
+    },
+    "changeApproverEmail": {
+        "title": "Mainīt apstiprinātāja e-pastu",
+        "selectApproverEmail": "Izvēlēties apstiprinātāja e-pastu"
+    }
 }

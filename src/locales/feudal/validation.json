@@ -1,0 +1,12 @@
+{
+    "required": "{field} is required by Royal Decree",
+    "email": "Must be a valid pigeon post address",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be no more than {max} characters",
+    "passwordMatch": "Secret sigils must match",
+    "invalidFormat": "Invalid format",
+    "numeric": "Must be a number",
+    "url": "Must be a valid URL",
+    "ipAddress": "Must be valid garrison coordinates",
+    "hostname": "Must be a valid keep name"
+}

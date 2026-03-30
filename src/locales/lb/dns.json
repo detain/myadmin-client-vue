@@ -1,26 +1,26 @@
 {
-  "manager": {
-    "title": "DNS Manager",
-    "addDomain": "Domaine dobäisetzen",
-    "deleteDomain": "Domaine läschen",
-    "domainName": "Domainnumm",
-    "dnsServers": "DNS-Serveren",
-    "confirmDelete": "Sidd Dir sécher, datt Dir dës Domaine wëllt läschen?",
-    "noDomains": "Keng Domainen fonnt"
-  },
-  "editor": {
-    "title": "DNS-Editor",
-    "addRecord": "Rekord dobäisetzen",
-    "deleteRecord": "Rekord läschen",
-    "editRecord": "Rekord editéieren",
-    "recordType": "Rekordtyp",
-    "hostname": "Hostname",
-    "address": "Adress",
-    "distance": "Distanz",
-    "weight": "Gewiicht",
-    "port": "Port",
-    "ttl": "TTL",
-    "actions": "Aktiounen",
-    "confirmDelete": "Sidd Dir sécher, datt Dir dëse Rekord wëllt läschen?"
-  }
+    "manager": {
+        "title": "DNS Manager",
+        "addDomain": "Domaine dobäisetzen",
+        "deleteDomain": "Domaine läschen",
+        "domainName": "Domainnumm",
+        "dnsServers": "DNS-Serveren",
+        "confirmDelete": "Sidd Dir sécher, datt Dir dës Domaine wëllt läschen?",
+        "noDomains": "Keng Domainen fonnt"
+    },
+    "editor": {
+        "title": "DNS-Editor",
+        "addRecord": "Rekord dobäisetzen",
+        "deleteRecord": "Rekord läschen",
+        "editRecord": "Rekord editéieren",
+        "recordType": "Rekordtyp",
+        "hostname": "Hostname",
+        "address": "Adress",
+        "distance": "Distanz",
+        "weight": "Gewiicht",
+        "port": "Port",
+        "ttl": "TTL",
+        "actions": "Aktiounen",
+        "confirmDelete": "Sidd Dir sécher, datt Dir dëse Rekord wëllt läschen?"
+    }
 }

@@ -105,6 +105,7 @@
         "loading": "Memuat...",
         "noData": "Tidak ada data tersedia",
         "noActiveServices": "Tidak Ada Layanan Aktif",
+        "noServicesMatchingFilter": "Tidak ada layanan yang cocok dengan filter '{filter}'",
         "controlPanel": "Panel Kontrol",
         "welcomeEmail": "Email Selamat Datang",
         "invoices": "Faktur",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Apakah Anda yakin ingin membatalkan?"
     },
     "footer": {
-        "copyright": "Hak Cipta \u00a9 {year} InterServer Inc.",
+        "copyright": "Hak Cipta © {year} InterServer Inc.",
         "allRightsReserved": "Hak cipta dilindungi undang-undang."
     },
     "search": {

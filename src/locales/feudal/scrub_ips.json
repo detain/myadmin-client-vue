@@ -1,0 +1,65 @@
+{
+    "list": {
+        "title": "Purification Rites Services List",
+        "orderTitle": "Commission Purification Rites"
+    },
+    "view": {
+        "title": "View Purification Rites",
+        "currentIp": "Current Garrison Coordinates",
+        "ipAddress": "Garrison Coordinates",
+        "ipFromService": "Garrison Coordinates from service"
+    },
+    "filters": {
+        "title": "Border Checkpoints",
+        "createNew": "Establish New",
+        "createNewFilter": "Establish New Border Checkpoint",
+        "filterType": "Border Checkpoint Type",
+        "selectFilterType": "Select Border Checkpoint Type",
+        "ipAddress": "Garrison Coordinates",
+        "portNo": "Port No",
+        "filter": "Border Checkpoint",
+        "destinationIp": "Destination Garrison Coordinates",
+        "destinationPort": "Destination Port",
+        "noFiltersFound": "The royal archives hold no border checkpoints!",
+        "deleteFilterConfirm": "Are you sure you want to strike this border checkpoint from the record?",
+        "unableToCreateFilter": "Unable to establish border checkpoint at this time.",
+        "unableToDeleteFilter": "Unable to strike border checkpoint from the record at this time."
+    },
+    "firewallRules": {
+        "title": "Fortified Walls Royal Decrees",
+        "createNew": "Establish New",
+        "createNewFirewall": "Establish New Fortified Walls Royal Decree",
+        "protocol": "Protocol",
+        "destinationIp": "Destination Garrison Coordinates",
+        "destinationPort": "Destination Port",
+        "sourceIp": "Source Garrison Coordinates",
+        "sourcePort": "Source Port",
+        "xdpAction": "XDP Action",
+        "ipRequired": "Garrison Coordinates are required",
+        "block": "Bar Entry",
+        "whitelist": "Trusted Allies",
+        "noRulesFound": "The royal archives hold no decrees!",
+        "deleteRuleConfirm": "Are you sure you want to strike this decree from the record?",
+        "unableToCreateRule": "Unable to establish fortified walls royal decree at this time.",
+        "unableToDeleteRule": "Unable to strike fortified walls royal decree from the record at this time."
+    },
+    "geoFirewallRules": {
+        "title": "Geo Fortified Walls Royal Decrees",
+        "createNew": "Establish New",
+        "createNewGeoRule": "Establish New Geo Fortified Walls Royal Decree",
+        "destinationIp": "Destination Garrison Coordinates",
+        "destinationPort": "Destination Port",
+        "sourceCountry": "Source Kingdom",
+        "sourceAsn": "Source ASN",
+        "xdpAction": "XDP Action",
+        "portNo": "Port No",
+        "selectCountry": "Select Kingdom",
+        "asn": "ASN",
+        "block": "Bar Entry",
+        "whitelist": "Trusted Allies",
+        "noRulesFound": "The royal archives hold no decrees!",
+        "deleteGeoRuleConfirm": "Are you sure you want to strike this geo decree from the record?",
+        "unableToCreateRule": "Unable to establish fortified walls royal decree at this time.",
+        "unableToDeleteRule": "Unable to strike geo fortified walls royal decree from the record at this time."
+    }
+}

@@ -80,8 +80,11 @@
     "home": {
         "cart": "سەبەتە",
         "editPersonalInfo": "دەستکاریکردنی زانیاری کەسی",
-        "copyright": "مافی چاپ \u00a9 {year} InterServer Inc.",
+        "copyright": "مافی چاپ © {year} InterServer Inc.",
         "allRightsReserved": "هەموو مافەکان پارێزراون."
     },
-    "copyright": "مافی چاپ \u00a9 {year} - هەموو مافەکان پارێزراون."
+    "copyright": "مافی چاپ © {year} - هەموو مافەکان پارێزراون.",
+    "statsVps": "VPS",
+    "statsWebsites": "میوانداری وێب",
+    "statsServers": "سێرڤەرەکان"
 }

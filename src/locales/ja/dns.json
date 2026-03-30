@@ -1,26 +1,26 @@
 {
-  "manager": {
-    "title": "DNS マネージャー",
-    "addDomain": "ドメインを追加",
-    "deleteDomain": "ドメインを削除",
-    "domainName": "ドメイン名",
-    "dnsServers": "DNS サーバー",
-    "confirmDelete": "このドメインを削除してよろしいですか?",
-    "noDomains": "ドメインが見つかりません"
-  },
-  "editor": {
-    "title": "DNS エディター",
-    "addRecord": "レコードを追加",
-    "deleteRecord": "レコードを削除",
-    "editRecord": "レコードを編集",
-    "recordType": "レコードタイプ",
-    "hostname": "ホスト名",
-    "address": "アドレス",
-    "distance": "距離",
-    "weight": "重み",
-    "port": "ポート",
-    "ttl": "TTL",
-    "actions": "アクション",
-    "confirmDelete": "このレコードを削除してよろしいですか?"
-  }
+    "manager": {
+        "title": "DNS マネージャー",
+        "addDomain": "ドメインを追加",
+        "deleteDomain": "ドメインを削除",
+        "domainName": "ドメイン名",
+        "dnsServers": "DNS サーバー",
+        "confirmDelete": "このドメインを削除してよろしいですか?",
+        "noDomains": "ドメインが見つかりません"
+    },
+    "editor": {
+        "title": "DNS エディター",
+        "addRecord": "レコードを追加",
+        "deleteRecord": "レコードを削除",
+        "editRecord": "レコードを編集",
+        "recordType": "レコードタイプ",
+        "hostname": "ホスト名",
+        "address": "アドレス",
+        "distance": "距離",
+        "weight": "重み",
+        "port": "ポート",
+        "ttl": "TTL",
+        "actions": "アクション",
+        "confirmDelete": "このレコードを削除してよろしいですか?"
+    }
 }

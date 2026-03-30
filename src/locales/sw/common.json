@@ -105,6 +105,7 @@
         "loading": "Inapakia...",
         "noData": "Hakuna data inayopatikana",
         "noActiveServices": "Hakuna Huduma Zinazofanya Kazi",
+        "noServicesMatchingFilter": "Hakuna huduma zilizopatikana zinazolingana na kichujio '{filter}'",
         "controlPanel": "Jopo la Kudhibiti",
         "welcomeEmail": "Barua pepe ya Karibu",
         "invoices": "Ankara",
@@ -190,7 +191,7 @@
         "areYouSureCancelQuestion": "Je, una uhakika unataka kughairi?"
     },
     "footer": {
-        "copyright": "Hakimiliki \u00a9 {year} InterServer Inc.",
+        "copyright": "Hakimiliki © {year} InterServer Inc.",
         "allRightsReserved": "Haki zote zimehifadhiwa."
     },
     "search": {
