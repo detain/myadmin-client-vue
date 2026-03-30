@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
+import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 
 const { t } = useI18n();
+const route = useRoute();
 
 const siteStore = useSiteStore();
 const { sidemenu } = storeToRefs(siteStore);
@@ -54,8 +56,7 @@ const menus = computed<MenuGroup>(() => ({
 }));
 
 function isActive(key: string[] | undefined) {
-    // You need to implement your translation logic here
-    return typeof key != 'undefined' && key.includes(window.location.pathname.split('/')[1]);
+    return typeof key != 'undefined' && key.includes(route.path.split('/')[1]);
 }
 </script>
 
