@@ -394,6 +394,7 @@ useDarkMode();
     .row > .col-md-8.input-group { width: 66.666667%; }
     .row > .col-md-9.input-group { width: 75%; }
     .row > .col-md-12.input-group { width: 100%; }
+}
 
 .route-loading-overlay {
     position: absolute;
