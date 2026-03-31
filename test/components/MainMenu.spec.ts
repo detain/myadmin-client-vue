@@ -2,6 +2,11 @@ import { mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import MainMenu from '@/components/MainMenu.vue';
 
+const mockRoute = { path: '/' };
+vi.mock('vue-router', () => ({
+    useRoute: () => mockRoute,
+}));
+
 vi.mock('@/helpers/fetchWrapper', () => ({
     fetchWrapper: {
         get: vi.fn(),
@@ -25,6 +30,10 @@ describe('MainMenu.vue', () => {
             },
         },
     };
+
+    beforeEach(() => {
+        mockRoute.path = '/';
+    });
 
     it('renders navigation menu', () => {
         const wrapper = mount(MainMenu, mountOptions);
@@ -81,27 +90,15 @@ describe('MainMenu.vue', () => {
 
     describe('isActive detection', () => {
         it('marks billing submenu as active when on /cart path', () => {
-            Object.defineProperty(window, 'location', {
-                value: { pathname: '/cart' },
-                writable: true,
-                configurable: true,
-            });
+            mockRoute.path = '/cart';
             const wrapper = mount(MainMenu, mountOptions);
-            // The billing menu item should have active class on its nav-link
             const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
             expect(billingLink).toBeDefined();
             expect(billingLink!.classes()).toContain('active');
         });
 
         it('does not mark settings as active on /account/settings since isActive uses first path segment only', () => {
-            // isActive checks key.includes(pathname.split('/')[1])
-            // pathname.split('/')[1] = 'account', but activecheck has 'account/settings' (not 'account')
-            // Array.includes does exact match, so 'account' !== 'account/settings'
-            Object.defineProperty(window, 'location', {
-                value: { pathname: '/account/settings' },
-                writable: true,
-                configurable: true,
-            });
+            mockRoute.path = '/account/settings';
             const wrapper = mount(MainMenu, mountOptions);
             const settingsLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Settings'));
             expect(settingsLink).toBeDefined();
@@ -109,11 +106,7 @@ describe('MainMenu.vue', () => {
         });
 
         it('does not mark billing as active when on non-billing path', () => {
-            Object.defineProperty(window, 'location', {
-                value: { pathname: '/vps' },
-                writable: true,
-                configurable: true,
-            });
+            mockRoute.path = '/vps';
             const wrapper = mount(MainMenu, mountOptions);
             const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
             expect(billingLink).toBeDefined();
@@ -121,11 +114,7 @@ describe('MainMenu.vue', () => {
         });
 
         it('does not mark settings as active when on /domains path', () => {
-            Object.defineProperty(window, 'location', {
-                value: { pathname: '/domains' },
-                writable: true,
-                configurable: true,
-            });
+            mockRoute.path = '/domains';
             const wrapper = mount(MainMenu, mountOptions);
             const settingsLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Settings'));
             expect(settingsLink).toBeDefined();
@@ -133,11 +122,7 @@ describe('MainMenu.vue', () => {
         });
 
         it('marks billing as active when on /invoices path', () => {
-            Object.defineProperty(window, 'location', {
-                value: { pathname: '/invoices' },
-                writable: true,
-                configurable: true,
-            });
+            mockRoute.path = '/invoices';
             const wrapper = mount(MainMenu, mountOptions);
             const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
             expect(billingLink).toBeDefined();
@@ -145,11 +130,7 @@ describe('MainMenu.vue', () => {
         });
 
         it('marks billing as active when on /prepays path', () => {
-            Object.defineProperty(window, 'location', {
-                value: { pathname: '/prepays' },
-                writable: true,
-                configurable: true,
-            });
+            mockRoute.path = '/prepays';
             const wrapper = mount(MainMenu, mountOptions);
             const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
             expect(billingLink).toBeDefined();
