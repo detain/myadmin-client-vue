@@ -112,7 +112,6 @@ export const useAccountStore = defineStore('account', {
             this.loading = true;
             try {
                 const response: any = await fetchWrapper.get(`${baseUrl}/account`);
-                this.$reset();
                 console.log(response);
                 this.countryCurrencies = response.countryCurrencies;
                 this.custid = response.custid;
