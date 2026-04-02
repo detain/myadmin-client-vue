@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+dotenv.config({ path: path.resolve(__dirname, '.env.local') });
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
@@ -37,37 +38,27 @@ export default defineConfig({
         {
             name: 'chromium',
             use: { ...devices['Desktop Chrome'] },
-        },
-        /*
-        {
-            name: 'firefox',
-            use: { ...devices['Desktop Firefox'] },
+            testIgnore: /\/real\//,
         },
 
+        /* Real-world integration tests that hit the actual API with real credentials */
         {
-            name: 'webkit',
-            use: { ...devices['Desktop Safari'] },
+            name: 'real-auth-setup',
+            use: { ...devices['Desktop Chrome'] },
+            testMatch: /real\/global-setup\.ts/,
         },
-*/
-        /* Test against mobile viewports. */
-        // {
-        //   name: 'Mobile Chrome',
-        //   use: { ...devices['Pixel 5'] },
-        // },
-        // {
-        //   name: 'Mobile Safari',
-        //   use: { ...devices['iPhone 12'] },
-        // },
-
-        /* Test against branded browsers. */
-        // {
-        //   name: 'Microsoft Edge',
-        //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-        // },
-        // {
-        //   name: 'Google Chrome',
-        //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-        // },
+        {
+            name: 'real',
+            use: {
+                ...devices['Desktop Chrome'],
+                storageState: 'e2e/.auth/user.json',
+            },
+            timeout: 60000,
+            fullyParallel: false,
+            dependencies: ['real-auth-setup'],
+            testMatch: /\/real\/.*\.spec\.ts/,
+            testIgnore: /global-setup\.ts/,
+        },
     ],
 
     /* Run your local dev server before starting the tests */

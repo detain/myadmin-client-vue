@@ -148,17 +148,23 @@ export const useAuthStore = defineStore('auth', {
                 await router.push(this.returnUrl || '/');
             } catch (error: any) {
                 console.log('error:', error);
+                let handled = false;
                 if (typeof error.field != 'undefined') {
                     if (error.field == 'tfa') {
                         this.opts.tfa = true;
+                        handled = true;
                     } else if (error.field == 'verify') {
                         this.opts.verify = true;
+                        handled = true;
                     } else if (error.field == 'captcha') {
                         this.opts.captcha = true;
+                        handled = true;
                     }
                 }
-                const alertStore = useAlertStore();
-                alertStore.error(error);
+                if (!handled) {
+                    const alertStore = useAlertStore();
+                    alertStore.error(error);
+                }
             }
         },
         async signup(signupParms: any): Promise<void> {
@@ -177,22 +183,23 @@ export const useAuthStore = defineStore('auth', {
                 await router.push(this.returnUrl || '/');
             } catch (error: any) {
                 console.log('error:', error);
+                let handled = false;
                 if (typeof error.field != 'undefined') {
                     if (error.field == 'tfa') {
                         this.opts.tfa = true;
+                        handled = true;
                     } else if (error.field == 'email_confirmation') {
                         this.opts.verify = true;
+                        handled = true;
                     } else if (error.field == 'captcha') {
                         this.opts.captcha = true;
+                        handled = true;
                     }
                 }
-                /*Swal.fire({
-                    icon: 'warning',
-n,
-                    html: error.message
-                });*/
-                const alertStore = useAlertStore();
-                alertStore.error(error);
+                if (!handled) {
+                    const alertStore = useAlertStore();
+                    alertStore.error(error);
+                }
             }
         },
         setOAuthSession(data: any): void {

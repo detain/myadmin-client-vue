@@ -78,7 +78,7 @@ interface LoginParams {
     passwd: string;
     remember: boolean;
     tfa?: string;
-    email_confirmation?: string;
+    verify?: string;
     'g-recaptcha-response'?: string;
     'cf-turnstile-response'?: string;
     captcha?: string;
@@ -88,7 +88,11 @@ interface SignupParams extends LoginParams {
     tos?: boolean;
 }
 
-function closePopup() {}
+function closePopup() {
+    authStore.opts.tfa = false;
+    authStore.opts.verify = false;
+    emailCode.value = '';
+}
 
 function submitForgotPassForm() {}
 
@@ -420,6 +424,9 @@ async function onLoginSubmit() {
     if (authStore.opts.tfa == true) {
         loginParams.tfa = twoFactorAuthCode.value;
     }
+    if (authStore.opts.verify == true) {
+        loginParams.verify = emailCode.value;
+    }
     console.log('Login Params:', loginParams);
     await authStore.login(loginParams).then((response) => {
         Swal.close();
@@ -544,7 +551,7 @@ async function onSignupSubmit() {
         remember: remember.value,
     };
     if (authStore.opts.verify == true) {
-        signupParams.email_confirmation = emailCode.value;
+        signupParams.verify = emailCode.value;
     }
     if (authStore.opts.tfa == true) {
         signupParams.tfa = twoFactorAuthCode.value;
@@ -772,7 +779,7 @@ const selectedLocaleDisplayLabel = computed(() => {
                                                     <button id="loginsubmit" type="submit" class="loginsubmit btn btn-primary btn-block text-bold" @click.prevent="onLoginSubmit">{{ t('login.signInButton') }}</button>
                                                 </div>
                                             </div>
-                                            <div class="poppup login_email_popup fixed inset-0 z-10 flex hidden items-center justify-center">
+                                            <div v-if="isLogin && opts.verify" class="poppup login_email_popup fixed inset-0 z-10 flex items-center justify-center">
                                                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                                                 <div class="relative z-10 mx-auto w-full max-w-3xl rounded-lg bg-white py-4 shadow-lg">
                                                     <i class="close far fa-close float-right cursor-pointer px-4 text-lg" @click="closePopup"></i>

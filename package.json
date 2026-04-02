@@ -28,7 +28,7 @@
         "test:browser": "vitest --config=vitest.browser.config.ts",
         "test:browser:install": "playwright install",
         "test:coverage": "vitest run --coverage",
-        "test:e2e": "playwright test"
+        "test:e2e": "playwright test --workers=1"
     },
     "devDependencies": {
         "@commitlint/cli": "*",
