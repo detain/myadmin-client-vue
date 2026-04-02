@@ -69,8 +69,13 @@ const filteredData = computed(() => {
 
 const recordId = ref(0);
 const recordRow = ref({});
+let recordSnapshot: DnsRecordRow | null = null;
 
 async function cancelEditRecord(event: Event) {
+    if (recordSnapshot && recordRow.value) {
+        Object.assign(recordRow.value, recordSnapshot);
+    }
+    recordSnapshot = null;
     recordId.value = 0;
 }
 
@@ -83,49 +88,43 @@ async function showAddDnsRecord(event: Event) {
 }
 
 async function editDnsRecord(event: Event) {
-    let response;
     try {
-        fetchWrapper.post(`${baseUrl}/dns/${id}/${recordId.value}`, recordRow.value).then((response) => {
-            console.log('api success', response);
-            loadDns();
-            Swal.fire({
-                icon: 'success',
-                html: response.message,
-            });
+        const response = await fetchWrapper.post(`${baseUrl}/dns/${id}/${recordId.value}`, recordRow.value);
+        console.log('api success', response);
+        loadDns();
+        Swal.fire({
+            icon: 'success',
+            html: response.message,
         });
     } catch (error: any) {
         console.log('api failed', error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.message}`,
+            html: `Got error ${error?.message ?? error}`,
         });
     }
 }
 
 async function addDnsRecord(event: Event) {
-    let response;
     try {
-        fetchWrapper
-            .post(`${baseUrl}/dns/${id}`, {
-                name: name.value,
-                type: type.value,
-                content: content.value,
-                prio: prio.value,
-                ttl: ttl.value,
-            })
-            .then((response) => {
-                console.log('api success', response);
-                loadDns();
-                Swal.fire({
-                    icon: 'success',
-                    html: response.message,
-                });
-            });
+        const response = await fetchWrapper.post(`${baseUrl}/dns/${id}`, {
+            name: name.value,
+            type: type.value,
+            content: content.value,
+            prio: prio.value,
+            ttl: ttl.value,
+        });
+        console.log('api success', response);
+        loadDns();
+        Swal.fire({
+            icon: 'success',
+            html: response.message,
+        });
     } catch (error: any) {
         console.log('api failed', error);
         Swal.fire({
             icon: 'error',
-            html: `Got error ${error.message}`,
+            html: `Got error ${error?.message ?? error}`,
         });
     }
 }
@@ -136,6 +135,7 @@ async function showEditRecord(event: Event) {
     for (rowIdx in data.value) {
         row = data.value[rowIdx];
         if (row.id == recordId.value) {
+            recordSnapshot = { ...row };
             recordRow.value = row;
         }
     }
@@ -151,22 +151,20 @@ async function deleteRecord(event: Event) {
         showLoaderOnConfirm: true,
         confirmButtonText: 'Yes, Delete it.',
         html: '<p>Are you sure want to delete this record?</p>',
-        preConfirm: () => {
-            console.log('got to this place from deleteRecord preConfirm');
+        preConfirm: async () => {
             try {
-                fetchWrapper.delete(`${baseUrl}/dns/${id}/${record}`).then((response) => {
-                    console.log('api success', response);
-                    loadDns();
-                    Swal.fire({
-                        icon: 'success',
-                        html: response.message,
-                    });
+                const response = await fetchWrapper.delete(`${baseUrl}/dns/${id}/${record}`);
+                console.log('api success', response);
+                loadDns();
+                Swal.fire({
+                    icon: 'success',
+                    html: response.message,
                 });
             } catch (error: any) {
                 console.log('api failed', error);
                 Swal.fire({
                     icon: 'error',
-                    html: `Got error ${error.message}`,
+                    html: `Got error ${error?.message ?? error}`,
                 });
             }
         },
@@ -198,7 +196,7 @@ loadDns();
         </div>
         <div class="card-body">
             <form method="post">
-                <input id="domain_id" type="hidden" name="id" value="35626" />
+                <input id="domain_id" type="hidden" name="id" :value="id" />
             </form>
             <table id="crud-table" ref="table" :options="options" :columns="columns" class="display nowrap crud-table table-bordered table-striped table-hover table-sm table" style="width: 100%">
                 <thead>

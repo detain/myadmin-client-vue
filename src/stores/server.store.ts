@@ -102,20 +102,15 @@ export const useServerStore = defineStore('server', {
                 this.serverList = await fetchWrapper.get(`${baseUrl}/servers`);
             } catch (error: any) {
                 console.log(`got error response${error}`);
-                this.error = error;
+                this.error = error?.message ?? String(error);
             }
             this.loading = false;
         },
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            const keyMap = {
-                package: 'pkg',
-            };
             try {
                 const response = await fetchWrapper.get(`${baseUrl}/servers/${id}`);
-                this.$reset();
-                //let key, value;
                 console.log(response);
                 this.ipmiAuth = response.ipmiAuth;
                 this.serviceInfo = response.serviceInfo;
@@ -139,7 +134,7 @@ export const useServerStore = defineStore('server', {
             const baseUrl = siteStore.getBaseUrl();
             //this.serverList.find((x) => x.server_id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/servers/${id}`);
 
             // remove user from list after deleted
             this.serverList = this.serverList.filter((x) => x.server_id !== id);

@@ -293,13 +293,16 @@ export const useSiteStore = defineStore('site', {
             }
         },
         async loadInfo(): Promise<void> {
-            fetchWrapper.get(`${baseUrl}/info`).then((response) => {
+            try {
+                const response = await fetchWrapper.get(`${baseUrl}/info`);
                 this.modules = response.modules;
                 this.services = response.services;
                 this.serviceTypes = response.serviceTypes;
                 this.serviceCategories = response.serviceCategories;
                 console.log('info success', response);
-            });
+            } catch (error: any) {
+                console.error('Failed to load site info:', error);
+            }
         },
         setBreadcrums(value: BreadCrum[]) {
             this.breadcrums = value;
