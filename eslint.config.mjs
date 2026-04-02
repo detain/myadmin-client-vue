@@ -96,6 +96,32 @@ export default [
     },
 
     // ------------------------------------------------------------
+    // E2E test files (Playwright)
+    // ------------------------------------------------------------
+    {
+        files: ['e2e/**/*.ts'],
+        languageOptions: {
+            parser: tsParser,
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+                process: 'readonly',
+            },
+            parserOptions: {
+                ecmaVersion: 'latest',
+                sourceType: 'module',
+            },
+        },
+        plugins: {
+            '@typescript-eslint': tseslint,
+        },
+        rules: {
+            'no-unused-vars': 'off',
+            '@typescript-eslint/no-unused-vars': 'off',
+        },
+    },
+
+    // ------------------------------------------------------------
     // Disable formatting rules that conflict with Prettier
     // ------------------------------------------------------------
     prettier,

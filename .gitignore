@@ -63,6 +63,7 @@ coverage/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/e2e/.auth/
 
 # Caliber local state
 .caliber/
