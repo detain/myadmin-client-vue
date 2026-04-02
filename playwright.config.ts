@@ -6,7 +6,10 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+dotenv.config({ path: path.resolve(__dirname, '.env.local') });
 dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+const hasRealCredentials = !!(process.env.TEST_USERNAME && process.env.TEST_PASSWORD) || !!process.env.TEST_SESSION_ID || !!process.env.TEST_API_KEY;
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -37,37 +40,35 @@ export default defineConfig({
         {
             name: 'chromium',
             use: { ...devices['Desktop Chrome'] },
+            testIgnore: /\/real\//,
         },
+
         /*
-        {
-            name: 'firefox',
-            use: { ...devices['Desktop Firefox'] },
-        },
-
-        {
-            name: 'webkit',
-            use: { ...devices['Desktop Safari'] },
-        },
-*/
-        /* Test against mobile viewports. */
-        // {
-        //   name: 'Mobile Chrome',
-        //   use: { ...devices['Pixel 5'] },
-        // },
-        // {
-        //   name: 'Mobile Safari',
-        //   use: { ...devices['iPhone 12'] },
-        // },
-
-        /* Test against branded browsers. */
-        // {
-        //   name: 'Microsoft Edge',
-        //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-        // },
-        // {
-        //   name: 'Google Chrome',
-        //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-        // },
+         * Real-world integration tests that hit the actual API with real credentials.
+         * Only included when TEST_USERNAME+TEST_PASSWORD, TEST_SESSION_ID, or TEST_API_KEY
+         * are set in .env.local (or environment). Otherwise these projects are skipped.
+         */
+        ...(hasRealCredentials
+            ? [
+                  {
+                      name: 'real-auth-setup',
+                      use: { ...devices['Desktop Chrome'] },
+                      testMatch: /real\/global-setup\.ts/,
+                  },
+                  {
+                      name: 'real',
+                      use: {
+                          ...devices['Desktop Chrome'],
+                          storageState: 'e2e/.auth/user.json',
+                      },
+                      timeout: 60000,
+                      fullyParallel: false,
+                      dependencies: ['real-auth-setup'],
+                      testMatch: /\/real\/.*\.spec\.ts/,
+                      testIgnore: /global-setup\.ts/,
+                  },
+              ]
+            : []),
     ],
 
     /* Run your local dev server before starting the tests */

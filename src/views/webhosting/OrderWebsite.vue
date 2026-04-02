@@ -553,7 +553,7 @@ watch(
                                 <div class="col-md-12"><input id="coupon" v-model="formData.coupon" type="text" class="form-control form-control-sm" name="coupon" placeholder="Coupon Code" @change="updateCoupon" /></div>
                                 <div class="col-md-12"></div>
                                 <div class="col-md-12">
-                                    <img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" height="20" width="20" alt="" />
+                                    <img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=webhosting" height="20" width="20" alt="" />
                                     <span id="coupon_text" class="text-muted text-sm" style="position: relative; top: 2px"></span>
                                 </div>
                             </div>
@@ -651,7 +651,7 @@ watch(
                                                 <div class="text-md">Coupon Used</div>
                                             </td>
                                             <td>
-                                                <div class="text-md text-bold">{{ formData.coupon }} <img id="couponimg2" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" height="20" width="20" alt="" /></div>
+                                                <div class="text-md text-bold">{{ formData.coupon }} <img id="couponimg2" src="https://my.interserver.net/validate_coupon.php?module=webhosting" style="padding-left: 10px" height="20" width="20" alt="" /></div>
                                             </td>
                                         </tr>
                                     </template>

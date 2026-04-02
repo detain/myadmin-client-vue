@@ -212,7 +212,7 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                                     <input v-model="coupon" type="text" class="form-control form-control-sm" placeholder="Coupon Code" @change="updateCoupon" />
                                 </div>
                                 <div class="offset-md-2 col-md-10">
-                                    <img id="couponimg" alt="" :src="`https://my.interserver.net/validate_coupon.php?module=vps'`" height="20" width="20" />
+                                    <img id="couponimg" alt="" :src="`https://my.interserver.net/validate_coupon.php?module=backups`" height="20" width="20" />
                                 </div>
                             </div>
                             <hr class="mt-0" />
@@ -300,7 +300,7 @@ fetchWrapper.get(`${baseUrl}/backups/order`).then((response: BackupOrderResponse
                                             <td class="text-md">Coupon Used</td>
                                             <td class="text-bold text-md">
                                                 {{ coupon }}
-                                                <img id="couponimg" alt="" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" height="20" width="20" />
+                                                <img id="couponimg" alt="" src="https://my.interserver.net/validate_coupon.php?module=backups" style="padding-left: 10px" height="20" width="20" />
                                             </td>
                                         </tr>
                                     </template>

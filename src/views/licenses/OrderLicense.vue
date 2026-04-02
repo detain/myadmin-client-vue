@@ -345,7 +345,7 @@ loadLicenseData();
                                 <label class="col-md-3"></label>
                                 <div class="col-md-9">
                                     <button class="btn bg-secondary btn-sm mr-2 mt-1" @click="checkAvailability()">Check availability</button>
-                                    <img id="couponimg" :src="'https://my.interserver.net/validate_coupon.php?module=vps&coupon=' + coupon" height="20" width="20" alt="" />
+                                    <img id="couponimg" :src="'https://my.interserver.net/validate_coupon.php?module=licenses&coupon=' + coupon" height="20" width="20" alt="" />
                                 </div>
                             </div>
                             <div class="row">
@@ -453,7 +453,7 @@ loadLicenseData();
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ coupon }}<img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=webhosting'" style="padding-left: 10px" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }}<img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=licenses" style="padding-left: 10px" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">

@@ -204,7 +204,7 @@ try {
                                 <label class="col-md-3 col-form-label text-right">Coupon Code</label>
                                 <div class="col-md-9">
                                     <input v-model="coupon" type="text" class="form-control form-control-sm" placeholder="Coupon Code" @input="updateCoupon()" />
-                                    <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps" height="20" width="20" alt="" /></span>
+                                    <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=floating_ips" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>
                             -->
@@ -304,7 +304,7 @@ try {
                                             <div class="text-md">Coupon Used</div>
                                         </td>
                                         <td>
-                                            <div class="text-bold text-md">{{ coupon }} <img id="couponimg" :src="'https://my.interserver.net/validate_coupon.php?module=webhosting&coupon=' + validateResponse.coupon" style="padding-left: 10px" height="20" width="20" alt="" /></div>
+                                            <div class="text-bold text-md">{{ coupon }} <img id="couponimg" :src="'https://my.interserver.net/validate_coupon.php?module=floating_ips&coupon=' + validateResponse.coupon" style="padding-left: 10px" height="20" width="20" alt="" /></div>
                                         </td>
                                     </tr>
                                     <tr style="display: none">

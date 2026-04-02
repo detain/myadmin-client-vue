@@ -1006,7 +1006,7 @@ try {
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.couponCode') }}</label>
                                 <div class="input-group col-md-9">
                                     <input id="coupon" v-model="coupon" type="text" class="w-100 form-control text-sm" name="coupon" :placeholder="t('vps.order.couponCodePlaceholder')" @keyup="updateCoupon" @change="updateCoupon" />
-                                    <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" height="20" width="20" alt="" /></span>
+                                    <span class="input-group-addon" style="padding: 0"><img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps" height="20" width="20" alt="" /></span>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -1215,7 +1215,7 @@ try {
                                             <td>
                                                 <div class="text-bold text-md">
                                                     {{ coupon }}
-                                                    <img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps'" style="padding-left: 10px" height="20" width="20" alt="" />
+                                                    <img id="couponimg" src="https://my.interserver.net/validate_coupon.php?module=vps" style="padding-left: 10px" height="20" width="20" alt="" />
                                                 </div>
                                             </td>
                                         </tr>
