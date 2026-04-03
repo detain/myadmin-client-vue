@@ -1,5 +1,5 @@
 {
-    "name": "myadmin-client-vue",
+    "name": "my-interserver-client",
     "main": "./out/main/index.js",
     "description": "Vue 3 + TypeScript SPA for InterServer hosting billing and service management — built with Vite, Pinia, and Vue Router, deployable to web, desktop (Electron), and mobile (Capacitor).",
     "author": "Joe Huss <detain@interserver.net>",
