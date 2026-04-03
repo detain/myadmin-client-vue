@@ -59,14 +59,16 @@ jobs:
               run: yarn ts
 
             - name: Run unit tests with coverage
-              run: yarn test:coverage -- --reporter=default --reporter=junit --outputFile=test-results.xml
+              run: yarn test:coverage
 
             - name: Upload test results
               if: always()
               uses: actions/upload-artifact@v7
               with:
                   name: test-results
-                  path: test-results.xml
+                  path: |
+                      test-results.xml
+                      test-results.json
 
             - name: Upload coverage report
               if: always()
@@ -88,6 +90,96 @@ jobs:
               with:
                   name: coverage-badge
                   path: coverage/badge.svg
+
+            - name: Update README with test results
+              if: success() && github.event_name == 'push' && github.ref == 'refs/heads/master'
+              run: |
+                  # Parse test-results.json and coverage-summary.json into a README section
+                  node -e "
+                  const fs = require('fs');
+                  const results = JSON.parse(fs.readFileSync('test-results.json', 'utf8'));
+                  const coverage = JSON.parse(fs.readFileSync('coverage/coverage-summary.json', 'utf8'));
+
+                  const suites = results.numTotalTestSuites || 0;
+                  const tests = results.numTotalTests || 0;
+                  const passed = results.numPassedTests || 0;
+                  const failed = results.numFailedTests || 0;
+                  const skipped = (results.numPendingTests || 0) + (results.numTodoTests || 0);
+                  const duration = ((results.testResults || []).reduce((a, t) => a + (t.endTime || 0) - (t.startTime || 0), 0) / 1000).toFixed(2);
+                  const statusIcon = failed > 0 ? '🔴' : '🟢';
+                  const date = new Date().toISOString().split('T')[0];
+
+                  const total = coverage.total || {};
+                  const stmts = total.statements?.pct ?? '—';
+                  const branch = total.branches?.pct ?? '—';
+                  const funcs = total.functions?.pct ?? '—';
+                  const lines = total.lines?.pct ?? '—';
+
+                  // Build per-category coverage rows
+                  const categoryMap = {};
+                  for (const [filePath, data] of Object.entries(coverage)) {
+                    if (filePath === 'total') continue;
+                    const rel = filePath.replace(/^.*?src\//, 'src/');
+                    const cat = rel.split('/')[1] || 'other';
+                    const label = cat.charAt(0).toUpperCase() + cat.slice(1);
+                    if (!categoryMap[label]) categoryMap[label] = { stmts: [], branch: [], funcs: [], lines: [] };
+                    categoryMap[label].stmts.push(data.statements?.pct ?? 0);
+                    categoryMap[label].branch.push(data.branches?.pct ?? 0);
+                    categoryMap[label].funcs.push(data.functions?.pct ?? 0);
+                    categoryMap[label].lines.push(data.lines?.pct ?? 0);
+                  }
+                  const avg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(2) : '—';
+                  const catRows = Object.entries(categoryMap)
+                    .sort(([a], [b]) => a.localeCompare(b))
+                    .map(([label, d]) => '| ' + label + ' | ' + avg(d.stmts) + ' | ' + avg(d.branch) + ' | ' + avg(d.funcs) + ' | ' + avg(d.lines) + ' |')
+                    .join('\n');
+
+                  // Build failed test details
+                  let failedSection = '';
+                  if (failed > 0) {
+                    const failedTests = (results.testResults || [])
+                      .filter(t => t.status === 'failed')
+                      .flatMap(t => (t.assertionResults || []).filter(a => a.status === 'failed').map(a => '- \`' + a.fullName + '\`'))
+                      .slice(0, 20);
+                    if (failedTests.length) {
+                      failedSection = '\n\n<details>\n<summary>Failed Tests</summary>\n\n' + failedTests.join('\n') + '\n\n</details>';
+                    }
+                  }
+
+                  const md = '<!-- TEST-RESULTS-START -->\n' +
+                    '### Latest Test Results\n\n' +
+                    statusIcon + ' **' + passed + '/' + tests + ' tests passing** across ' + suites + ' suites | ' + duration + 's' +
+                    (skipped > 0 ? ' | ' + skipped + ' skipped' : '') +
+                    (failed > 0 ? ' | ' + failed + ' failed' : '') +
+                    '\n\n' +
+                    '| Category | % Stmts | % Branch | % Funcs | % Lines |\n' +
+                    '|----------|---------|----------|---------|---------|' + '\n' +
+                    '| **All files** | ' + stmts + ' | ' + branch + ' | ' + funcs + ' | ' + lines + ' |' + '\n' +
+                    catRows +
+                    failedSection + '\n\n' +
+                    '_Last updated: ' + date + ' via [CI/CD](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml)_\n' +
+                    '<!-- TEST-RESULTS-END -->';
+
+                  // Replace in README.md
+                  let readme = fs.readFileSync('README.md', 'utf8');
+                  const startTag = '<!-- TEST-RESULTS-START -->';
+                  const endTag = '<!-- TEST-RESULTS-END -->';
+                  const startIdx = readme.indexOf(startTag);
+                  const endIdx = readme.indexOf(endTag);
+                  if (startIdx !== -1 && endIdx !== -1) {
+                    readme = readme.substring(0, startIdx) + md + readme.substring(endIdx + endTag.length);
+                  }
+                  fs.writeFileSync('README.md', readme);
+                  console.log('README.md updated with test results');
+                  "
+
+            - name: Commit updated README
+              if: success() && github.event_name == 'push' && github.ref == 'refs/heads/master'
+              run: |
+                  git config user.name "github-actions"
+                  git config user.email "github-actions@github.com"
+                  git add README.md
+                  git diff --cached --quiet && echo "No changes to commit" || git commit -m "ci: update test results in README [skip ci]" && git push
 
     sync-release-branches:
         name: Sync master to release branches
