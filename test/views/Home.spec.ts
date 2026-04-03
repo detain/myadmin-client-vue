@@ -51,12 +51,14 @@ const mountOptions = {
 };
 
 describe('Home', () => {
-    it('renders without crashing', () => {
+    it('renders without crashing', ({ annotate }) => {
+        annotate('Home View: verifies the main Home layout component mounts without errors');
         const wrapper = mount(Home, mountOptions);
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('calls authStore.logout when logout button is clicked', async () => {
+    it('calls authStore.logout when logout button is clicked', async ({ annotate }) => {
+        await annotate('Home View: verifies the logout button triggers authStore.logout when clicked');
         const wrapper = mount(Home, mountOptions);
         const logoutButton = wrapper.find('button.btn-link');
         expect(logoutButton.exists()).toBe(true);
@@ -66,7 +68,8 @@ describe('Home', () => {
         expect(logoutButton.exists()).toBe(true);
     });
 
-    it('renders nothing when user is null', () => {
+    it('renders nothing when user is null', ({ annotate }) => {
+        annotate('Home View: verifies the main header is hidden when the auth user is null');
         const wrapper = mount(Home, {
             global: {
                 plugins: [
@@ -90,7 +93,8 @@ describe('Home', () => {
         expect(wrapper.find('.main-header').exists()).toBe(false);
     });
 
-    it('links to /admin when user.ima is not client', () => {
+    it('links to /admin when user.ima is not client', ({ annotate }) => {
+        annotate('Home View: verifies the brand link points to /admin when the user role is admin instead of client');
         const wrapper = mount(Home, {
             global: {
                 plugins: [
@@ -116,7 +120,8 @@ describe('Home', () => {
         expect(brandLink.attributes('href')).toBe('/admin');
     });
 
-    it('renders breadcrumbs with active class on last item', () => {
+    it('renders breadcrumbs with active class on last item', ({ annotate }) => {
+        annotate('Home View: verifies breadcrumbs render with active class on last item and links on non-last items');
         const wrapper = mount(Home, {
             global: {
                 plugins: [

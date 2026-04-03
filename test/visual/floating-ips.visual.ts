@@ -13,17 +13,20 @@ describe('Floating IP Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('list page renders correctly', async () => {
+    test('list page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: Floating IPs list page - displays service table with floating IP entries');
         await navigateTo(ctx.router, '/floating_ips');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('floating-ips-list');
     });
 
-    test('detail page renders correctly', async () => {
+    test('detail page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: Floating IP detail page - shows individual floating IP info and assignment status');
         await navigateTo(ctx.router, '/floating_ips/1001');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('floating-ips-detail');
     });
 
-    test('order page renders correctly', async () => {
+    test('order page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: Floating IP order page - displays floating IP ordering form');
         await navigateTo(ctx.router, '/floating_ips/order');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('floating-ips-order');
     });

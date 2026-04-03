@@ -26,7 +26,8 @@ beforeEach(() => {
 
 describe('auth.store', () => {
     describe('initial state', () => {
-        it('has null sessionId and empty user', () => {
+        it('has null sessionId and empty user', ({ annotate }) => {
+            annotate('Auth Store: verifies initial state has null sessionId and empty user object when no localStorage data exists');
             localStorage.removeItem('sessionId');
             localStorage.removeItem('user');
             setActivePinia(createPinia());
@@ -35,26 +36,30 @@ describe('auth.store', () => {
             expect(store.user).toEqual({});
         });
 
-        it('has null apiKey', () => {
+        it('has null apiKey', ({ annotate }) => {
+            annotate('Auth Store: verifies apiKey defaults to null on store initialization');
             const store = useAuthStore();
             expect(store.apiKey).toBeNull();
         });
 
-        it('has default opts', () => {
+        it('has default opts', ({ annotate }) => {
+            annotate('Auth Store: verifies default opts flags (tfa=false, verify=false, captcha=true) on initialization');
             const store = useAuthStore();
             expect(store.opts.tfa).toBe(false);
             expect(store.opts.verify).toBe(false);
             expect(store.opts.captcha).toBe(true);
         });
 
-        it('has default counts', () => {
+        it('has default counts', ({ annotate }) => {
+            annotate('Auth Store: verifies service counts default to zero for vps, websites, and servers');
             const store = useAuthStore();
             expect(store.counts).toEqual({ vps: 0, websites: 0, servers: 0 });
         });
     });
 
     describe('loggedIn()', () => {
-        it('returns false when no session or apiKey', () => {
+        it('returns false when no session or apiKey', ({ annotate }) => {
+            annotate('Auth Store: verifies loggedIn() returns false when both sessionId and apiKey are null');
             localStorage.removeItem('sessionId');
             setActivePinia(createPinia());
             const store = useAuthStore();
@@ -63,13 +68,15 @@ describe('auth.store', () => {
             expect(store.loggedIn()).toBe(false);
         });
 
-        it('returns true when sessionId is set', () => {
+        it('returns true when sessionId is set', ({ annotate }) => {
+            annotate('Auth Store: verifies loggedIn() returns true when a valid sessionId exists');
             const store = useAuthStore();
             store.sessionId = 'abc123';
             expect(store.loggedIn()).toBe(true);
         });
 
-        it('returns true when apiKey is set', () => {
+        it('returns true when apiKey is set', ({ annotate }) => {
+            annotate('Auth Store: verifies loggedIn() returns true when an API key is set without a sessionId');
             const store = useAuthStore();
             store.apiKey = 'key456';
             expect(store.loggedIn()).toBe(true);
@@ -77,7 +84,8 @@ describe('auth.store', () => {
     });
 
     describe('login()', () => {
-        it('sets user and sessionId with valid credentials', async () => {
+        it('sets user and sessionId with valid credentials', async ({ annotate }) => {
+            await annotate('Auth Store: verifies POST /login sets user, sessionId, and persists both to localStorage on valid credentials');
             const mockUser = { sessionId: 'sess123', account_id: 1, name: 'Test User' };
             vi.mocked(fetchWrapper.post).mockResolvedValue(mockUser);
 
@@ -90,7 +98,8 @@ describe('auth.store', () => {
             expect(localStorage.getItem('user')).toBe(JSON.stringify(mockUser));
         });
 
-        it('sets error via alertStore with invalid credentials', async () => {
+        it('sets error via alertStore with invalid credentials', async ({ annotate }) => {
+            await annotate('Auth Store: verifies login failure triggers alert-danger in alertStore with error message');
             const mockError = { message: 'Invalid credentials' };
             vi.mocked(fetchWrapper.post).mockRejectedValue(mockError);
 
@@ -102,7 +111,8 @@ describe('auth.store', () => {
             expect(alertStore.alert?.type).toBe('alert-danger');
         });
 
-        it('sets opts.tfa when error field is tfa', async () => {
+        it('sets opts.tfa when error field is tfa', async ({ annotate }) => {
+            await annotate('Auth Store: verifies login sets opts.tfa=true when API returns error with field=tfa indicating two-factor required');
             const mockError = { message: 'TFA required', field: 'tfa' };
             vi.mocked(fetchWrapper.post).mockRejectedValue(mockError);
 
@@ -114,7 +124,8 @@ describe('auth.store', () => {
     });
 
     describe('logout()', () => {
-        it('clears user and sessionId', async () => {
+        it('clears user and sessionId', async ({ annotate }) => {
+            await annotate('Auth Store: verifies logout clears user, sessionId, apiKey from store and removes them from localStorage');
             vi.mocked(fetchWrapper.getNoLogout).mockResolvedValue({});
 
             const store = useAuthStore();
@@ -134,7 +145,8 @@ describe('auth.store', () => {
     });
 
     describe('load()', () => {
-        it('fetches login page data and sets logo, captcha, counts', async () => {
+        it('fetches login page data and sets logo, captcha, counts', async ({ annotate }) => {
+            await annotate('Auth Store: verifies load() fetches login page config and populates logo, captcha, language, and service counts');
             const mockResponse = {
                 logo: '//example.com/logo.png',
                 captcha: 'captcha-data-abc',
@@ -154,7 +166,8 @@ describe('auth.store', () => {
     });
 
     describe('reloadCaptcha()', () => {
-        it('updates captcha', async () => {
+        it('updates captcha', async ({ annotate }) => {
+            await annotate('Auth Store: verifies reloadCaptcha() fetches a fresh captcha value and replaces the existing one');
             vi.mocked(fetchWrapper.get).mockResolvedValue({ captcha: 'new-captcha-xyz' });
 
             const store = useAuthStore();
@@ -166,7 +179,8 @@ describe('auth.store', () => {
     });
 
     describe('signup()', () => {
-        it('sets user on success', async () => {
+        it('sets user on success', async ({ annotate }) => {
+            await annotate('Auth Store: verifies signup() sets user and sessionId in store on successful registration');
             const mockUser = { sessionId: 'signup-sess', account_id: 2, name: 'New User' };
             vi.mocked(fetchWrapper.post).mockResolvedValue(mockUser);
 
@@ -177,7 +191,8 @@ describe('auth.store', () => {
             expect(store.sessionId).toBe('signup-sess');
         });
 
-        it('stores sessionId and user in localStorage on success', async () => {
+        it('stores sessionId and user in localStorage on success', async ({ annotate }) => {
+            await annotate('Auth Store: verifies signup() persists remember flag, sessionId, and user JSON to localStorage');
             const mockUser = { sessionId: 'signup-sess', account_id: 2 };
             vi.mocked(fetchWrapper.post).mockResolvedValue(mockUser);
 
@@ -189,7 +204,8 @@ describe('auth.store', () => {
             expect(localStorage.getItem('user')).toBe(JSON.stringify(mockUser));
         });
 
-        it('sets error via alertStore on failure', async () => {
+        it('sets error via alertStore on failure', async ({ annotate }) => {
+            await annotate('Auth Store: verifies signup failure triggers alert-danger in alertStore');
             const mockError = { message: 'Signup failed' };
             vi.mocked(fetchWrapper.post).mockRejectedValue(mockError);
 
@@ -201,21 +217,24 @@ describe('auth.store', () => {
             expect(alertStore.alert?.type).toBe('alert-danger');
         });
 
-        it('sets opts.tfa when error field is tfa', async () => {
+        it('sets opts.tfa when error field is tfa', async ({ annotate }) => {
+            await annotate('Auth Store: verifies signup sets opts.tfa=true when API error field is tfa');
             vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'TFA required', field: 'tfa' });
             const store = useAuthStore();
             await store.signup({ email: 'test@example.com', password: 'pass' });
             expect(store.opts.tfa).toBe(true);
         });
 
-        it('sets opts.verify when error field is email_confirmation', async () => {
+        it('sets opts.verify when error field is email_confirmation', async ({ annotate }) => {
+            await annotate('Auth Store: verifies signup sets opts.verify=true when API error field is email_confirmation');
             vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'Verify', field: 'email_confirmation' });
             const store = useAuthStore();
             await store.signup({ email: 'test@example.com', password: 'pass' });
             expect(store.opts.verify).toBe(true);
         });
 
-        it('sets opts.captcha when error field is captcha', async () => {
+        it('sets opts.captcha when error field is captcha', async ({ annotate }) => {
+            await annotate('Auth Store: verifies signup sets opts.captcha=true when API error field is captcha');
             vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'Captcha', field: 'captcha' });
             const store = useAuthStore();
             await store.signup({ email: 'test@example.com', password: 'pass' });
@@ -224,21 +243,24 @@ describe('auth.store', () => {
     });
 
     describe('login() error field branches', () => {
-        it('sets opts.verify when error field is verify', async () => {
+        it('sets opts.verify when error field is verify', async ({ annotate }) => {
+            await annotate('Auth Store: verifies login sets opts.verify=true when API error field is verify');
             vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'Verify', field: 'verify' });
             const store = useAuthStore();
             await store.login({ username: 'test', password: 'pass' });
             expect(store.opts.verify).toBe(true);
         });
 
-        it('sets opts.captcha when error field is captcha', async () => {
+        it('sets opts.captcha when error field is captcha', async ({ annotate }) => {
+            await annotate('Auth Store: verifies login sets opts.captcha=true when API error field is captcha');
             vi.mocked(fetchWrapper.post).mockRejectedValue({ message: 'Captcha', field: 'captcha' });
             const store = useAuthStore();
             await store.login({ username: 'test', password: 'pass' });
             expect(store.opts.captcha).toBe(true);
         });
 
-        it('stores remember=false in localStorage', async () => {
+        it('stores remember=false in localStorage', async ({ annotate }) => {
+            await annotate('Auth Store: verifies login persists remember=false preference to localStorage');
             const mockUser = { sessionId: 'sess123' };
             vi.mocked(fetchWrapper.post).mockResolvedValue(mockUser);
             const store = useAuthStore();
@@ -249,7 +271,8 @@ describe('auth.store', () => {
     });
 
     describe('setOAuthSession()', () => {
-        it('sets user and sessionId from OAuth data', () => {
+        it('sets user and sessionId from OAuth data', ({ annotate }) => {
+            annotate('Auth Store: verifies setOAuthSession populates user, sessionId, and localStorage from OAuth provider response');
             const store = useAuthStore();
             const oauthData = {
                 sessionId: 'oauth-sess',
@@ -271,7 +294,8 @@ describe('auth.store', () => {
             });
         });
 
-        it('uses defaults for missing oauth fields', () => {
+        it('uses defaults for missing oauth fields', ({ annotate }) => {
+            annotate('Auth Store: verifies setOAuthSession applies default values (ima=client, name=empty, gravatar=empty) for missing OAuth fields');
             const store = useAuthStore();
             store.setOAuthSession({ sessionId: 'oauth-sess', account_id: 10, account_lid: 'user@test.com' });
             expect(store.user.ima).toBe('client');
@@ -281,7 +305,8 @@ describe('auth.store', () => {
     });
 
     describe('sudo()', () => {
-        it('sets sessionId and loads account', async () => {
+        it('sets sessionId and loads account', async ({ annotate }) => {
+            await annotate('Auth Store: verifies sudo() sets new sessionId, persists to localStorage, and loads account data from API');
             const store = useAuthStore();
             // accountStore.load() fetches /account and expects response.data
             vi.mocked(fetchWrapper.get).mockResolvedValue({
@@ -302,7 +327,8 @@ describe('auth.store', () => {
             expect(store.user.account_id).toBe(5);
         });
 
-        it('initializes user to empty object when user is falsy', async () => {
+        it('initializes user to empty object when user is falsy', async ({ annotate }) => {
+            await annotate('Auth Store: verifies sudo() initializes user to empty object when current user is null/falsy before setting sessionId');
             const store = useAuthStore();
             // Set user to a falsy value to trigger the !this.user branch (line 89-90)
             store.$patch({ user: null as any });
@@ -323,7 +349,8 @@ describe('auth.store', () => {
             expect(store.user.account_id).toBe(7);
         });
 
-        it('handles sudo when user has no properties', async () => {
+        it('handles sudo when user has no properties', async ({ annotate }) => {
+            await annotate('Auth Store: verifies sudo() correctly sets sessionId on user object even when user starts as empty {}');
             const store = useAuthStore();
             vi.mocked(fetchWrapper.get).mockResolvedValue({
                 data: {
@@ -344,7 +371,8 @@ describe('auth.store', () => {
     });
 
     describe('load() error handling', () => {
-        it('does not throw on error', async () => {
+        it('does not throw on error', async ({ annotate }) => {
+            await annotate('Auth Store: verifies load() gracefully handles network errors without throwing');
             vi.mocked(fetchWrapper.get).mockRejectedValue(new Error('Network error'));
             const store = useAuthStore();
             await expect(store.load()).resolves.toBeUndefined();
@@ -352,7 +380,8 @@ describe('auth.store', () => {
     });
 
     describe('reloadCaptcha() error handling', () => {
-        it('does not throw on error', async () => {
+        it('does not throw on error', async ({ annotate }) => {
+            await annotate('Auth Store: verifies reloadCaptcha() gracefully handles network errors without throwing');
             vi.mocked(fetchWrapper.get).mockRejectedValue(new Error('Network error'));
             const store = useAuthStore();
             await expect(store.reloadCaptcha()).resolves.toBeUndefined();
@@ -360,7 +389,8 @@ describe('auth.store', () => {
     });
 
     describe('logout() error handling', () => {
-        it('still clears state on API error', async () => {
+        it('still clears state on API error', async ({ annotate }) => {
+            await annotate('Auth Store: verifies logout still clears sessionId and user from state even when the logout API call fails');
             vi.mocked(fetchWrapper.getNoLogout).mockRejectedValue(new Error('Network error'));
             const store = useAuthStore();
             store.sessionId = 'test';
@@ -372,7 +402,8 @@ describe('auth.store', () => {
     });
 
     describe('resetStores()', () => {
-        it('resets all stores', () => {
+        it('resets all stores', ({ annotate }) => {
+            annotate('Auth Store: verifies resetStores() clears state of all dependent stores including alertStore');
             const store = useAuthStore();
             const alertStore = useAlertStore();
             alertStore.success('test');

@@ -13,17 +13,20 @@ describe('VPS Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('list page', async () => {
+    test('list page', async ({ annotate }) => {
+        await annotate('Visual Regression: VPS list page - displays service table with active/pending VPS entries');
         await navigateTo(ctx.router, '/vps');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('vps-list');
     });
 
-    test('detail page', async () => {
+    test('detail page', async ({ annotate }) => {
+        await annotate('Visual Regression: VPS detail page - shows individual VPS service info, status, and action links');
         await navigateTo(ctx.router, '/vps/101');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('vps-detail');
     });
 
-    test('order page', async () => {
+    test('order page', async ({ annotate }) => {
+        await annotate('Visual Regression: VPS order page - displays VPS configuration and ordering form');
         await navigateTo(ctx.router, '/vps/order');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('vps-order');
     });

@@ -28,12 +28,14 @@ const mountOptions = {
 };
 
 describe('DomainsList', () => {
-    it('renders ServiceListTable component', () => {
+    it('renders ServiceListTable component', ({ annotate }) => {
+        annotate('Domains List: verifies the ServiceListTable child component is rendered in the DOM');
         const wrapper = mount(DomainsList, mountOptions);
         expect(wrapper.find('[data-testid="service-list-table"]').exists()).toBe(true);
     });
 
-    it('sets page heading', () => {
+    it('sets page heading', ({ annotate }) => {
+        annotate('Domains List: verifies the component mounts successfully and sets the page heading');
         const wrapper = mount(DomainsList, mountOptions);
         expect(wrapper.exists()).toBe(true);
     });

@@ -26,7 +26,8 @@ beforeEach(() => {
 
 describe('users.store', () => {
     describe('initial state', () => {
-        it('has default values', () => {
+        it('has default values', ({ annotate }) => {
+            annotate('Users Store: verifies initial state defaults (loading=false, error=false, empty users array and user object)');
             const store = useUsersStore();
             expect(store.loading).toBe(false);
             expect(store.error).toBe(false);
@@ -36,7 +37,8 @@ describe('users.store', () => {
     });
 
     describe('register()', () => {
-        it('calls fetchWrapper.post with user data', async () => {
+        it('calls fetchWrapper.post with user data', async ({ annotate }) => {
+            await annotate('Users Store: verifies register() sends POST to /register endpoint with provided user data');
             vi.mocked(fetchWrapper.post).mockResolvedValue({});
             const store = useUsersStore();
             const userData = { firstName: 'John', lastName: 'Doe', username: 'johndoe' };
@@ -49,7 +51,8 @@ describe('users.store', () => {
     });
 
     describe('getAll()', () => {
-        it('sets users on success', async () => {
+        it('sets users on success', async ({ annotate }) => {
+            await annotate('Users Store: verifies getAll() populates users array with API response and resets loading to false');
             const mockUsers = [{ id: 1, firstName: 'John' }, { id: 2, firstName: 'Jane' }];
             vi.mocked(fetchWrapper.get).mockResolvedValue(mockUsers);
             const store = useUsersStore();
@@ -58,7 +61,8 @@ describe('users.store', () => {
             expect(store.users).toEqual(mockUsers);
         });
 
-        it('sets error on failure', async () => {
+        it('sets error on failure', async ({ annotate }) => {
+            await annotate('Users Store: verifies getAll() sets error state with rejection value on API failure');
             vi.mocked(fetchWrapper.get).mockRejectedValue('Network error');
             const store = useUsersStore();
             await store.getAll();
@@ -67,7 +71,8 @@ describe('users.store', () => {
     });
 
     describe('getById()', () => {
-        it('sets user on success', async () => {
+        it('sets user on success', async ({ annotate }) => {
+            await annotate('Users Store: verifies getById() populates single user object and resets loading on success');
             const mockUser = { id: 1, firstName: 'John' };
             vi.mocked(fetchWrapper.get).mockResolvedValue(mockUser);
             const store = useUsersStore();
@@ -76,14 +81,16 @@ describe('users.store', () => {
             expect(store.user).toEqual(mockUser);
         });
 
-        it('sets error on failure', async () => {
+        it('sets error on failure', async ({ annotate }) => {
+            await annotate('Users Store: verifies getById() sets error state with rejection value when user is not found');
             vi.mocked(fetchWrapper.get).mockRejectedValue('Not found');
             const store = useUsersStore();
             await store.getById(999);
             expect(store.error).toBe('Not found');
         });
 
-        it('accepts string id', async () => {
+        it('accepts string id', async ({ annotate }) => {
+            await annotate('Users Store: verifies getById() correctly handles string ID parameter by including it in the API URL');
             vi.mocked(fetchWrapper.get).mockResolvedValue({ id: 1 });
             const store = useUsersStore();
             await store.getById('1');
@@ -92,7 +99,8 @@ describe('users.store', () => {
     });
 
     describe('update()', () => {
-        it('calls fetchWrapper.put', async () => {
+        it('calls fetchWrapper.put', async ({ annotate }) => {
+            await annotate('Users Store: verifies update() sends PUT request to /{id} endpoint with provided update params');
             vi.mocked(fetchWrapper.put).mockResolvedValue({});
             const store = useUsersStore();
             await store.update(1, { firstName: 'Updated' });
@@ -102,7 +110,8 @@ describe('users.store', () => {
             );
         });
 
-        it('updates localStorage when updating own record', async () => {
+        it('updates localStorage when updating own record', async ({ annotate }) => {
+            await annotate('Users Store: verifies update() syncs changes to authStore.user and localStorage when updating the logged-in user');
             vi.mocked(fetchWrapper.put).mockResolvedValue({});
             const authStore = useAuthStore();
             authStore.user = { account_id: 5 } as any;
@@ -113,7 +122,8 @@ describe('users.store', () => {
             expect(authStore.user.firstName).toBe('Updated');
         });
 
-        it('does not update localStorage when updating different user', async () => {
+        it('does not update localStorage when updating different user', async ({ annotate }) => {
+            await annotate('Users Store: verifies update() does not modify localStorage or authStore when updating a different user account');
             vi.mocked(fetchWrapper.put).mockResolvedValue({});
             const authStore = useAuthStore();
             authStore.user = { account_id: 5 } as any;
@@ -124,7 +134,8 @@ describe('users.store', () => {
     });
 
     describe('delete()', () => {
-        it('calls fetchWrapper.delete', async () => {
+        it('calls fetchWrapper.delete', async ({ annotate }) => {
+            await annotate('Users Store: verifies delete() sends DELETE request to endpoint with the specified user ID');
             vi.mocked(fetchWrapper.delete).mockResolvedValue({});
             const authStore = useAuthStore();
             authStore.user = { account_id: 99 } as any;
@@ -133,7 +144,8 @@ describe('users.store', () => {
             expect(fetchWrapper.delete).toHaveBeenCalledWith(expect.stringContaining('/1'));
         });
 
-        it('logs out when deleting own record', async () => {
+        it('logs out when deleting own record', async ({ annotate }) => {
+            await annotate('Users Store: verifies delete() triggers logout and clears authStore.user when deleting the currently logged-in user');
             vi.mocked(fetchWrapper.delete).mockResolvedValue({});
             vi.mocked(fetchWrapper.getNoLogout).mockResolvedValue({});
             const authStore = useAuthStore();
@@ -144,7 +156,8 @@ describe('users.store', () => {
             expect(authStore.user).toEqual({});
         });
 
-        it('does not log out when deleting different user', async () => {
+        it('does not log out when deleting different user', async ({ annotate }) => {
+            await annotate('Users Store: verifies delete() does not trigger logout when deleting a user other than the currently logged-in user');
             vi.mocked(fetchWrapper.delete).mockResolvedValue({});
             const authStore = useAuthStore();
             authStore.user = { account_id: 5, name: 'Test' } as any;

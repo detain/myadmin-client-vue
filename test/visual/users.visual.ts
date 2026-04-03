@@ -13,12 +13,14 @@ describe('User Management Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('users list page', async () => {
+    test('users list page', async ({ annotate }) => {
+        await annotate('Visual Regression: Users list page - displays user management table with sub-account entries');
         await navigateTo(ctx.router, '/users');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('users-list');
     });
 
-    test('add user page', async () => {
+    test('add user page', async ({ annotate }) => {
+        await annotate('Visual Regression: Add user page - shows new sub-account creation form with permission fields');
         await navigateTo(ctx.router, '/users/add');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('users-add');
     });

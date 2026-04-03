@@ -19,7 +19,8 @@ beforeEach(() => {
 
 describe('site.store', () => {
     describe('getBaseUrl()', () => {
-        it('returns the API base URL', () => {
+        it('returns the API base URL', ({ annotate }) => {
+            annotate('Site Store: verifies getBaseUrl() returns a string containing the interserver.net API base URL');
             const store = useSiteStore();
             const url = store.getBaseUrl();
             expect(typeof url).toBe('string');
@@ -28,7 +29,8 @@ describe('site.store', () => {
     });
 
     describe('getSettings()', () => {
-        it('returns vps module settings', () => {
+        it('returns vps module settings', ({ annotate }) => {
+            annotate('Site Store: verifies getSettings(vps) returns correct TITLE, TABLE, TITLE_FIELD, and PREFIX for VPS module');
             const store = useSiteStore();
             const vpsSettings = store.getSettings('vps');
             expect(vpsSettings).toBeDefined();
@@ -38,7 +40,8 @@ describe('site.store', () => {
             expect(vpsSettings.PREFIX).toBe('vps');
         });
 
-        it('returns domains module settings', () => {
+        it('returns domains module settings', ({ annotate }) => {
+            annotate('Site Store: verifies getSettings(domains) returns correct TITLE, TABLE, TITLE_FIELD, and PREFIX for domains module');
             const store = useSiteStore();
             const domainSettings = store.getSettings('domains');
             expect(domainSettings).toBeDefined();
@@ -48,7 +51,8 @@ describe('site.store', () => {
             expect(domainSettings.PREFIX).toBe('domain');
         });
 
-        it('returns undefined for unknown module', () => {
+        it('returns undefined for unknown module', ({ annotate }) => {
+            annotate('Site Store: verifies getSettings() returns undefined for a non-existent module name');
             const store = useSiteStore();
             const result = store.getSettings('nonexistent');
             expect(result).toBeUndefined();
@@ -56,7 +60,8 @@ describe('site.store', () => {
     });
 
     describe('setBreadcrums()', () => {
-        it('sets breadcrumbs array', () => {
+        it('sets breadcrumbs array', ({ annotate }) => {
+            annotate('Site Store: verifies setBreadcrums() stores the provided breadcrumb path/label pairs');
             const store = useSiteStore();
             const crumbs: [string, string][] = [
                 ['/home', 'Home'],
@@ -66,7 +71,8 @@ describe('site.store', () => {
             expect(store.breadcrums).toEqual(crumbs);
         });
 
-        it('replaces existing breadcrumbs', () => {
+        it('replaces existing breadcrumbs', ({ annotate }) => {
+            annotate('Site Store: verifies setBreadcrums() replaces previous breadcrumbs entirely instead of appending');
             const store = useSiteStore();
             store.setBreadcrums([['/old', 'Old']]);
             store.setBreadcrums([['/new', 'New']]);
@@ -75,7 +81,8 @@ describe('site.store', () => {
     });
 
     describe('addBreadcrum()', () => {
-        it('appends to breadcrumbs', () => {
+        it('appends to breadcrumbs', ({ annotate }) => {
+            annotate('Site Store: verifies addBreadcrum() appends a new breadcrumb entry to the existing array');
             const store = useSiteStore();
             store.setBreadcrums([['/home', 'Home']]);
             store.addBreadcrum('/vps', 'VPS');
@@ -85,7 +92,8 @@ describe('site.store', () => {
     });
 
     describe('setPageHeading()', () => {
-        it('sets page_heading', () => {
+        it('sets page_heading', ({ annotate }) => {
+            annotate('Site Store: verifies setPageHeading() updates the page_heading state value');
             const store = useSiteStore();
             store.setPageHeading('My VPS List');
             expect(store.page_heading).toBe('My VPS List');
@@ -93,7 +101,8 @@ describe('site.store', () => {
     });
 
     describe('setTitle()', () => {
-        it('sets title and document.title', () => {
+        it('sets title and document.title', ({ annotate }) => {
+            annotate('Site Store: verifies setTitle() updates both store.title and document.title with appended site name suffix');
             const store = useSiteStore();
             store.setTitle('Dashboard');
             expect(store.title).toBe('Dashboard');
@@ -102,7 +111,8 @@ describe('site.store', () => {
     });
 
     describe('setSideMenu()', () => {
-        it('sets sidemenu value', () => {
+        it('sets sidemenu value', ({ annotate }) => {
+            annotate('Site Store: verifies setSideMenu() updates the sidemenu state value');
             const store = useSiteStore();
             store.setSideMenu('collapsed');
             expect(store.sidemenu).toBe('collapsed');
@@ -110,7 +120,8 @@ describe('site.store', () => {
     });
 
     describe('checkInfoLoaded()', () => {
-        it('calls loadInfo when modules are empty', async () => {
+        it('calls loadInfo when modules are empty', async ({ annotate }) => {
+            await annotate('Site Store: verifies checkInfoLoaded() triggers loadInfo API call when modules object is empty');
             const store = useSiteStore();
             store.modules = {};
             vi.mocked(fetchWrapper.get).mockResolvedValue({
@@ -123,7 +134,8 @@ describe('site.store', () => {
             expect(fetchWrapper.get).toHaveBeenCalledWith(expect.stringContaining('/info'));
         });
 
-        it('does not call loadInfo when modules exist', async () => {
+        it('does not call loadInfo when modules exist', async ({ annotate }) => {
+            await annotate('Site Store: verifies checkInfoLoaded() skips API call when modules are already populated');
             const store = useSiteStore();
             await store.checkInfoLoaded();
             expect(fetchWrapper.get).not.toHaveBeenCalled();
@@ -131,7 +143,8 @@ describe('site.store', () => {
     });
 
     describe('loadInfo()', () => {
-        it('fetches and sets modules, services, serviceTypes, serviceCategories', async () => {
+        it('fetches and sets modules, services, serviceTypes, serviceCategories', async ({ annotate }) => {
+            await annotate('Site Store: verifies loadInfo() fetches /info endpoint and populates services, serviceTypes, and serviceCategories');
             const mockResponse = {
                 modules: { vps: { TITLE: 'VPS Updated' } },
                 services: { 1: { services_name: 'Test Service' } },
@@ -150,7 +163,8 @@ describe('site.store', () => {
     });
 
     describe('modules', () => {
-        it('has pre-populated modules including domains, vps, backups', () => {
+        it('has pre-populated modules including domains, vps, backups', ({ annotate }) => {
+            annotate('Site Store: verifies modules object is pre-populated with all expected module keys (domains, vps, backups, mail, licenses, ssl, webhosting, servers)');
             const store = useSiteStore();
             expect(store.modules).toHaveProperty('domains');
             expect(store.modules).toHaveProperty('vps');

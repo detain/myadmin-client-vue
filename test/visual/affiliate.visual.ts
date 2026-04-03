@@ -13,22 +13,26 @@ describe('Affiliate Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('affiliate dashboard', async () => {
+    test('affiliate dashboard', async ({ annotate }) => {
+        await annotate('Visual Regression: Affiliate dashboard - shows affiliate program overview with earnings and referral stats');
         await navigateTo(ctx.router, '/affiliate');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('affiliate-dashboard');
     });
 
-    test('FAQ page', async () => {
+    test('FAQ page', async ({ annotate }) => {
+        await annotate('Visual Regression: Affiliate FAQ page - displays frequently asked questions about the affiliate program');
         await navigateTo(ctx.router, '/affiliate/faq');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('affiliate-faq');
     });
 
-    test('sales report page', async () => {
+    test('sales report page', async ({ annotate }) => {
+        await annotate('Visual Regression: Affiliate sales report page - shows referral sales data and commission details');
         await navigateTo(ctx.router, '/affiliate/sales_report');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('affiliate-sales-report');
     });
 
-    test('banners page', async () => {
+    test('banners page', async ({ annotate }) => {
+        await annotate('Visual Regression: Affiliate banners page - displays promotional banner assets and embed codes');
         await navigateTo(ctx.router, '/affiliate/banners');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('affiliate-banners');
     });

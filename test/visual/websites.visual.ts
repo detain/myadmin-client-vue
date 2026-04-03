@@ -13,17 +13,20 @@ describe('Web Hosting Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('list page', async () => {
+    test('list page', async ({ annotate }) => {
+        await annotate('Visual Regression: Web Hosting list page - displays service table with hosting account entries');
         await navigateTo(ctx.router, '/websites');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('websites-list');
     });
 
-    test('detail page', async () => {
+    test('detail page', async ({ annotate }) => {
+        await annotate('Visual Regression: Web Hosting detail page - shows individual hosting account info and action links');
         await navigateTo(ctx.router, '/websites/801');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('websites-detail');
     });
 
-    test('order page', async () => {
+    test('order page', async ({ annotate }) => {
+        await annotate('Visual Regression: Web Hosting order page - displays hosting plan selection and ordering form');
         await navigateTo(ctx.router, '/websites/order');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('websites-order');
     });

@@ -13,12 +13,14 @@ describe('Scrub IP Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('list page renders correctly', async () => {
+    test('list page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: Scrub IPs list page - displays service table with scrub IP entries');
         await navigateTo(ctx.router, '/scrub_ips');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('scrub-ips-list');
     });
 
-    test('detail page renders correctly', async () => {
+    test('detail page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: Scrub IP detail page - shows individual scrub IP info and configuration');
         await navigateTo(ctx.router, '/scrub_ips/1101');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('scrub-ips-detail');
     });

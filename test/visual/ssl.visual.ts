@@ -13,17 +13,20 @@ describe('SSL Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('list page', async () => {
+    test('list page', async ({ annotate }) => {
+        await annotate('Visual Regression: SSL list page - displays service table with SSL certificate entries');
         await navigateTo(ctx.router, '/ssl');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('ssl-list');
     });
 
-    test('detail page', async () => {
+    test('detail page', async ({ annotate }) => {
+        await annotate('Visual Regression: SSL detail page - shows individual certificate info, expiry, and action links');
         await navigateTo(ctx.router, '/ssl/501');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('ssl-detail');
     });
 
-    test('order page', async () => {
+    test('order page', async ({ annotate }) => {
+        await annotate('Visual Regression: SSL order page - displays certificate type selection and ordering form');
         await navigateTo(ctx.router, '/ssl/order');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('ssl-order');
     });
