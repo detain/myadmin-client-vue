@@ -24,7 +24,8 @@ beforeEach(() => {
 
 describe('prepay.store', () => {
     describe('initial state', () => {
-        it('has default values', () => {
+        it('has default values', ({ annotate }) => {
+            annotate('Prepay Store: verifies all initial state defaults (loading, error, custid, ima, modules, prepays, pagination fields)');
             const store = usePrePayStore();
             expect(store.loading).toBe(false);
             expect(store.error).toBe(false);
@@ -42,7 +43,8 @@ describe('prepay.store', () => {
     });
 
     describe('register()', () => {
-        it('calls fetchWrapper.post with user data', async () => {
+        it('calls fetchWrapper.post with user data', async ({ annotate }) => {
+            await annotate('Prepay Store: verifies register() sends POST to /register endpoint with provided user data');
             vi.mocked(fetchWrapper.post).mockResolvedValue({});
             const store = usePrePayStore();
             const userData = { email: 'test@example.com' };
@@ -55,7 +57,8 @@ describe('prepay.store', () => {
     });
 
     describe('load()', () => {
-        it('loads prepays without page parameter', async () => {
+        it('loads prepays without page parameter', async ({ annotate }) => {
+            await annotate('Prepay Store: verifies load() without page param fetches /billing/prepays and populates custid and modules');
             const mockResponse = {
                 error: false,
                 custid: 1,
@@ -78,7 +81,8 @@ describe('prepay.store', () => {
             expect(store.modules).toEqual({ vps: 'VPS' });
         });
 
-        it('loads prepays with page parameter', async () => {
+        it('loads prepays with page parameter', async ({ annotate }) => {
+            await annotate('Prepay Store: verifies load(2) appends ?page=2 to the API URL and stores pagination state');
             const mockResponse = {
                 error: false,
                 custid: 1,
@@ -100,7 +104,8 @@ describe('prepay.store', () => {
             expect(store.total_pages).toBe(3);
         });
 
-        it('handles error during load', async () => {
+        it('handles error during load', async ({ annotate }) => {
+            await annotate('Prepay Store: verifies load() resets loading to false on network error without throwing');
             vi.mocked(fetchWrapper.get).mockRejectedValue(new Error('Network error'));
             const store = usePrePayStore();
             await store.load();
@@ -109,7 +114,8 @@ describe('prepay.store', () => {
     });
 
     describe('delete()', () => {
-        it('calls fetchWrapper.delete with id', async () => {
+        it('calls fetchWrapper.delete with id', async ({ annotate }) => {
+            await annotate('Prepay Store: verifies delete() sends DELETE request to endpoint with the specified prepay ID');
             vi.mocked(fetchWrapper.delete).mockResolvedValue({});
             const store = usePrePayStore();
             await store.delete(123);
@@ -118,7 +124,8 @@ describe('prepay.store', () => {
     });
 
     describe('update()', () => {
-        it('is a no-op placeholder', async () => {
+        it('is a no-op placeholder', async ({ annotate }) => {
+            await annotate('Prepay Store: verifies update() exists as a no-op placeholder that does not throw when called');
             const store = usePrePayStore();
             await store.update(1, { amount: 100 });
             // Should not throw

@@ -34,13 +34,15 @@ describe('Login.vue', () => {
         vi.clearAllMocks();
     });
 
-    it('renders login form', () => {
+    it('renders login form', ({ annotate }) => {
+        annotate('Login View: verifies the login form mounts and contains a password input field');
         const wrapper = mount(Login, mountOptions);
         expect(wrapper.exists()).toBe(true);
         expect(wrapper.find('input[type="password"]').exists()).toBe(true);
     });
 
-    it('updates login and password fields', async () => {
+    it('updates login and password fields', async ({ annotate }) => {
+        await annotate('Login View: verifies two-way binding on username and password input fields reflects user input');
         const wrapper = mount(Login, mountOptions);
 
         const loginInput = wrapper.find('#loginname');
@@ -53,12 +55,14 @@ describe('Login.vue', () => {
         expect((passwordInput.element as HTMLInputElement).value).toBe('secret');
     });
 
-    it('has a submit button', () => {
+    it('has a submit button', ({ annotate }) => {
+        annotate('Login View: verifies the login submit button is present in the DOM');
         const wrapper = mount(Login, mountOptions);
         expect(wrapper.find('#loginsubmit').exists()).toBe(true);
     });
 
-    it('has forgot password section', () => {
+    it('has forgot password section', ({ annotate }) => {
+        annotate('Login View: verifies the forgot password link/text is rendered on the login page');
         const wrapper = mount(Login, mountOptions);
         expect(wrapper.text()).toContain('Forgot');
     });

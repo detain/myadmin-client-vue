@@ -51,69 +51,81 @@ describe('NewTicket.vue', () => {
         },
     };
 
-    it('renders component', () => {
+    it('renders component', ({ annotate }) => {
+        annotate('New Ticket: verifies the component mounts without errors');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('has subject field', () => {
+    it('has subject field', ({ annotate }) => {
+        annotate('New Ticket: verifies the Subject label/field is present');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.text()).toContain('Subject');
     });
 
-    it('has description field', () => {
+    it('has description field', ({ annotate }) => {
+        annotate('New Ticket: verifies the Description label/field is present');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.text()).toContain('Description');
     });
 
-    it('has product selector', () => {
+    it('has product selector', ({ annotate }) => {
+        annotate('New Ticket: verifies the Product selector dropdown is present');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.text()).toContain('Product');
     });
 
-    it('has file upload section', () => {
+    it('has file upload section', ({ annotate }) => {
+        annotate('New Ticket: verifies file upload section with Choose and Reset buttons is present');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.text()).toContain('File Upload');
         expect(wrapper.text()).toContain('Choose');
         expect(wrapper.text()).toContain('Reset');
     });
 
-    it('has server access checkbox', () => {
+    it('has server access checkbox', ({ annotate }) => {
+        annotate('New Ticket: verifies the server access permission checkbox and label are present');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.text()).toContain('Server Access');
         expect(wrapper.text()).toContain('I allow InterServer to access my server');
     });
 
-    it('shows root password and IP fields when access allowed', () => {
+    it('shows root password and IP fields when access allowed', ({ annotate }) => {
+        annotate('New Ticket: verifies Root Password and IP Address fields are visible when access is allowed');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.text()).toContain('Root Password');
         expect(wrapper.text()).toContain('Your IP Address');
     });
 
-    it('has SSH restricted radio buttons', () => {
+    it('has SSH restricted radio buttons', ({ annotate }) => {
+        annotate('New Ticket: verifies the SSH root restricted radio button group is present');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.text()).toContain('Is SSH root restricted');
     });
 
-    it('shows Terms of use button', () => {
+    it('shows Terms of use button', ({ annotate }) => {
+        annotate('New Ticket: verifies the Terms of use button is rendered');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.text()).toContain('Terms of use');
     });
 
-    it('shows terms modal when button clicked', async () => {
+    it('shows terms modal when button clicked', async ({ annotate }) => {
+        await annotate('New Ticket: verifies clicking Terms of use button opens the terms modal content');
         const wrapper = mount(NewTicket, mountOptions);
         const termsBtn = wrapper.find('button.bg-gradient-gray');
         await termsBtn.trigger('click');
         expect(wrapper.text()).toContain('Before opening a ticket');
     });
 
-    it('has submit button', () => {
+    it('has submit button', ({ annotate }) => {
+        annotate('New Ticket: verifies the submit button exists with Submit text');
         const wrapper = mount(NewTicket, mountOptions);
         expect(wrapper.find('button[type="submit"]').exists()).toBe(true);
         expect(wrapper.text()).toContain('Submit');
     });
 
-    it('submits form with ticket data', async () => {
+    it('submits form with ticket data', async ({ annotate }) => {
+        await annotate('New Ticket: verifies form submission POSTs to /tickets/new with subject and body');
         vi.mocked(fetchWrapper.post).mockResolvedValue({ success: true, text: 'Created', ticket: 123 });
         const wrapper = mount(NewTicket, mountOptions);
         const form = wrapper.find('form');
@@ -127,7 +139,8 @@ describe('NewTicket.vue', () => {
         );
     });
 
-    it('handles failed ticket submission', async () => {
+    it('handles failed ticket submission', async ({ annotate }) => {
+        await annotate('New Ticket: verifies the component handles API rejection without crashing');
         vi.mocked(fetchWrapper.post).mockRejectedValue(new Error('Failed'));
         const wrapper = mount(NewTicket, mountOptions);
         const form = wrapper.find('form');
@@ -135,13 +148,15 @@ describe('NewTicket.vue', () => {
         await flushPromises();
     });
 
-    it('resets file on reset button click', async () => {
+    it('resets file on reset button click', async ({ annotate }) => {
+        await annotate('New Ticket: verifies reset button click clears the file attachment');
         const wrapper = mount(NewTicket, mountOptions);
         const resetBtn = wrapper.find('.btn-reset');
         await resetBtn.trigger('click');
     });
 
-    it('opens file dialog on choose button click', async () => {
+    it('opens file dialog on choose button click', async ({ annotate }) => {
+        await annotate('New Ticket: verifies choose button click triggers the file input dialog');
         const wrapper = mount(NewTicket, mountOptions);
         const chooseBtn = wrapper.find('.btn-choose');
         await chooseBtn.trigger('click');
@@ -176,7 +191,8 @@ describe('NewTicket.vue', () => {
             globalThis.FileReader = MockFileReader as any;
         }
 
-        it('handles file selection and converts to base64', async () => {
+        it('handles file selection and converts to base64', async ({ annotate }) => {
+            await annotate('New Ticket: verifies file selection triggers FileReader and populates filename input');
             installFileReaderMock('data:image/png;base64,dGVzdC1jb250ZW50');
 
             const wrapper = mount(NewTicket, mountOptions);
@@ -191,7 +207,8 @@ describe('NewTicket.vue', () => {
             expect((textInput.element as HTMLInputElement).value).toBe('screenshot.png');
         });
 
-        it('clears file data when no file is selected', async () => {
+        it('clears file data when no file is selected', async ({ annotate }) => {
+            await annotate('New Ticket: verifies file input change with empty file list clears attachment data');
             const wrapper = mount(NewTicket, mountOptions);
             const fileInput = wrapper.find('input[type="file"]');
 
@@ -202,7 +219,8 @@ describe('NewTicket.vue', () => {
             expect((textInput.element as HTMLInputElement).value).toBe('');
         });
 
-        it('submits attachment data with base64 when file is attached', async () => {
+        it('submits attachment data with base64 when file is attached', async ({ annotate }) => {
+            await annotate('New Ticket: verifies form submission includes base64 attachment data with name and type');
             installFileReaderMock('data:image/jpeg;base64,aW1n');
 
             vi.mocked(fetchWrapper.post).mockResolvedValue({ success: true, text: 'Created', ticket: 456 });
@@ -224,7 +242,8 @@ describe('NewTicket.vue', () => {
             );
         });
 
-        it('submits empty attachments array when no file is attached', async () => {
+        it('submits empty attachments array when no file is attached', async ({ annotate }) => {
+            await annotate('New Ticket: verifies form submission includes empty attachments array when no file attached');
             vi.mocked(fetchWrapper.post).mockResolvedValue({ success: true, text: 'Created', ticket: 789 });
             const wrapper = mount(NewTicket, mountOptions);
 
@@ -241,7 +260,8 @@ describe('NewTicket.vue', () => {
     });
 
     describe('form validation and submission', () => {
-        it('submits form fields correctly with filled data', async () => {
+        it('submits form fields correctly with filled data', async ({ annotate }) => {
+            await annotate('New Ticket: verifies form submission includes filled subject, body, server_access, and port_no');
             vi.mocked(fetchWrapper.post).mockResolvedValue({ success: true, text: 'Created', ticket: 100 });
             const wrapper = mount(NewTicket, mountOptions);
 
@@ -262,7 +282,8 @@ describe('NewTicket.vue', () => {
             );
         });
 
-        it('navigates to ticket on successful submission', async () => {
+        it('navigates to ticket on successful submission', async ({ annotate }) => {
+            await annotate('New Ticket: verifies router navigates to /tickets/{id} after successful creation');
             vi.mocked(fetchWrapper.post).mockResolvedValue({ success: true, text: 'Done', ticket: 555 });
             const wrapper = mount(NewTicket, mountOptions);
 
@@ -272,7 +293,8 @@ describe('NewTicket.vue', () => {
             expect(mockPush).toHaveBeenCalledWith('/tickets/555');
         });
 
-        it('shows warning on non-success response', async () => {
+        it('shows warning on non-success response', async ({ annotate }) => {
+            await annotate('New Ticket: verifies Swal warning is shown when API returns a non-success string response');
             const Swal = (await import('sweetalert2')).default;
             vi.mocked(fetchWrapper.post).mockResolvedValue('Some error message');
             const wrapper = mount(NewTicket, mountOptions);
@@ -283,7 +305,8 @@ describe('NewTicket.vue', () => {
             expect(Swal.fire).toHaveBeenCalledWith('Warning', 'Some error message', 'warning');
         });
 
-        it('shows error on submission exception', async () => {
+        it('shows error on submission exception', async ({ annotate }) => {
+            await annotate('New Ticket: verifies Swal error is shown when form submission throws an exception');
             const Swal = (await import('sweetalert2')).default;
             vi.mocked(fetchWrapper.post).mockRejectedValue(new Error('Network error'));
             const wrapper = mount(NewTicket, mountOptions);
@@ -296,7 +319,8 @@ describe('NewTicket.vue', () => {
     });
 
     describe('product loading', () => {
-        it('loads products on mount', async () => {
+        it('loads products on mount', async ({ annotate }) => {
+            await annotate('New Ticket: verifies products are loaded from /tickets/new and rendered as optgroups');
             const productData = {
                 VPS: { vps_123: 'My VPS Server' },
                 Dedicated: { ded_456: 'My Dedicated' },
@@ -312,7 +336,8 @@ describe('NewTicket.vue', () => {
             expect(optgroups.length).toBe(2);
         });
 
-        it('renders product options within optgroups', async () => {
+        it('renders product options within optgroups', async ({ annotate }) => {
+            await annotate('New Ticket: verifies individual product options are rendered within their optgroup categories');
             const productData = {
                 VPS: { vps_1: 'VPS Plan A', vps_2: 'VPS Plan B' },
             };
@@ -328,7 +353,8 @@ describe('NewTicket.vue', () => {
     });
 
     describe('SSH restricted fields', () => {
-        it('shows sudo fields when SSH is restricted', async () => {
+        it('shows sudo fields when SSH is restricted', async ({ annotate }) => {
+            await annotate('New Ticket: verifies Sudo User, Sudo Password, SSH Port fields appear when SSH restricted is Yes');
             const wrapper = mount(NewTicket, mountOptions);
 
             // SSH restricted defaults to '0', so sudo fields hidden
@@ -343,7 +369,8 @@ describe('NewTicket.vue', () => {
             expect(wrapper.text()).toContain('SSH Port');
         });
 
-        it('hides sudo fields when SSH is not restricted', async () => {
+        it('hides sudo fields when SSH is not restricted', async ({ annotate }) => {
+            await annotate('New Ticket: verifies sudo fields disappear when SSH restricted is toggled back to No');
             const wrapper = mount(NewTicket, mountOptions);
 
             // Set to restricted first
@@ -355,7 +382,8 @@ describe('NewTicket.vue', () => {
             expect(wrapper.text()).not.toContain('Sudo User');
         });
 
-        it('includes sudo fields in submission when SSH is restricted', async () => {
+        it('includes sudo fields in submission when SSH is restricted', async ({ annotate }) => {
+            await annotate('New Ticket: verifies form submission includes sudo_user and sudo_pass when SSH is restricted');
             vi.mocked(fetchWrapper.post).mockResolvedValue({ success: true, text: 'OK', ticket: 200 });
             const wrapper = mount(NewTicket, mountOptions);
 
@@ -390,7 +418,8 @@ describe('NewTicket.vue', () => {
     });
 
     describe('terms modal', () => {
-        it('closes terms modal when close button clicked', async () => {
+        it('closes terms modal when close button clicked', async ({ annotate }) => {
+            await annotate('New Ticket: verifies clicking close button removes the terms modal backdrop');
             const wrapper = mount(NewTicket, mountOptions);
 
             // Open the modal
@@ -404,7 +433,8 @@ describe('NewTicket.vue', () => {
     });
 
     describe('server access toggle', () => {
-        it('hides root password and IP when access is unchecked', async () => {
+        it('hides root password and IP when access is unchecked', async ({ annotate }) => {
+            await annotate('New Ticket: verifies Root Password and IP fields are hidden when server access is unchecked');
             const wrapper = mount(NewTicket, mountOptions);
 
             // By default allowAccess is true

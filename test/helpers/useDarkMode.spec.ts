@@ -24,31 +24,36 @@ describe('useDarkMode', () => {
         vi.restoreAllMocks();
     });
 
-    it('returns isDarkMode ref', () => {
+    it('returns isDarkMode ref', ({ annotate }) => {
+        annotate('useDarkMode: verifies composable exposes a boolean isDarkMode reactive ref');
         const wrapper = mount(TestComponent);
         expect(wrapper.vm.isDarkMode).toBeDefined();
         expect(typeof wrapper.vm.isDarkMode).toBe('boolean');
     });
 
-    it('reads from localStorage on mount', () => {
+    it('reads from localStorage on mount', ({ annotate }) => {
+        annotate('useDarkMode: verifies localStorage darkMode key is read during component mount');
         getItemSpy.mockReturnValue('true');
         mount(TestComponent);
         expect(getItemSpy).toHaveBeenCalledWith('darkMode');
     });
 
-    it('applies dark-mode class when localStorage is "true"', () => {
+    it('applies dark-mode class when localStorage is "true"', ({ annotate }) => {
+        annotate('useDarkMode: verifies body gets dark-mode CSS class when localStorage value is "true"');
         getItemSpy.mockReturnValue('true');
         mount(TestComponent);
         expect(document.body.classList.contains('dark-mode')).toBe(true);
     });
 
-    it('does not apply dark-mode class when localStorage is null', () => {
+    it('does not apply dark-mode class when localStorage is null', ({ annotate }) => {
+        annotate('useDarkMode: verifies body does not get dark-mode class when no localStorage preference exists');
         getItemSpy.mockReturnValue(null);
         mount(TestComponent);
         expect(document.body.classList.contains('dark-mode')).toBe(false);
     });
 
-    it('toggles body class when isDarkMode changes', async () => {
+    it('toggles body class when isDarkMode changes', async ({ annotate }) => {
+        await annotate('useDarkMode: verifies toggling isDarkMode ref syncs body class and persists to localStorage');
         getItemSpy.mockReturnValue(null);
         const wrapper = mount(TestComponent);
 

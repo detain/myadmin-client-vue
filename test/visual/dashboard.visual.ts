@@ -13,7 +13,8 @@ describe('Dashboard', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('home page', async () => {
+    test('home page', async ({ annotate }) => {
+        await annotate('Visual Regression: Dashboard home - shows authenticated layout with sidebar, service counts, and recent activity');
         await navigateTo(ctx.router, '/');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('dashboard-home');
     });

@@ -23,18 +23,21 @@ beforeEach(() => {
 
 describe('tickets.store', () => {
     describe('initial state', () => {
-        it('has empty tickets array', () => {
+        it('has empty tickets array', ({ annotate }) => {
+            annotate('Tickets Store: verifies initial state has an empty tickets array');
             const store = useTicketsStore();
             expect(store.tickets).toEqual([]);
         });
 
-        it('has loading false and error false', () => {
+        it('has loading false and error false', ({ annotate }) => {
+            annotate('Tickets Store: verifies loading and error flags both default to false');
             const store = useTicketsStore();
             expect(store.loading).toBe(false);
             expect(store.error).toBe(false);
         });
 
-        it('has default pagination values', () => {
+        it('has default pagination values', ({ annotate }) => {
+            annotate('Tickets Store: verifies default pagination state (currentPage=1, limit=50, pages=1, offset=0, totalTickets=0)');
             const store = useTicketsStore();
             expect(store.currentPage).toBe(1);
             expect(store.limit).toBe(50);
@@ -43,13 +46,15 @@ describe('tickets.store', () => {
             expect(store.totalTickets).toBe(0);
         });
 
-        it('has default view set to all', () => {
+        it('has default view set to all', ({ annotate }) => {
+            annotate('Tickets Store: verifies default view is all with viewText of All Tickets');
             const store = useTicketsStore();
             expect(store.view).toBe('all');
             expect(store.viewText).toBe('All Tickets');
         });
 
-        it('has default st_count with Open, On Hold, Closed', () => {
+        it('has default st_count with Open, On Hold, Closed', ({ annotate }) => {
+            annotate('Tickets Store: verifies st_count initializes with 3 status entries (Open, On Hold, Closed)');
             const store = useTicketsStore();
             expect(store.st_count).toHaveLength(3);
             expect(store.st_count[0].ticketstatustitle).toBe('Open');
@@ -59,23 +64,27 @@ describe('tickets.store', () => {
     });
 
     describe('getters', () => {
-        it('hasTickets returns false when empty', () => {
+        it('hasTickets returns false when empty', ({ annotate }) => {
+            annotate('Tickets Store: verifies hasTickets getter returns false when tickets array is empty');
             const store = useTicketsStore();
             expect(store.hasTickets).toBe(false);
         });
 
-        it('hasTickets returns true when tickets exist', () => {
+        it('hasTickets returns true when tickets exist', ({ annotate }) => {
+            annotate('Tickets Store: verifies hasTickets getter returns true when at least one ticket exists');
             const store = useTicketsStore();
             store.tickets = [{ ticketid: '1', checked: false } as any];
             expect(store.hasTickets).toBe(true);
         });
 
-        it('allChecked returns false when no tickets', () => {
+        it('allChecked returns false when no tickets', ({ annotate }) => {
+            annotate('Tickets Store: verifies allChecked getter returns false when tickets array is empty');
             const store = useTicketsStore();
             expect(store.allChecked).toBe(false);
         });
 
-        it('allChecked returns true when all tickets are checked', () => {
+        it('allChecked returns true when all tickets are checked', ({ annotate }) => {
+            annotate('Tickets Store: verifies allChecked getter returns true when every ticket has checked=true');
             const store = useTicketsStore();
             store.tickets = [
                 { ticketid: '1', checked: true } as any,
@@ -84,7 +93,8 @@ describe('tickets.store', () => {
             expect(store.allChecked).toBe(true);
         });
 
-        it('allChecked returns false when some tickets are unchecked', () => {
+        it('allChecked returns false when some tickets are unchecked', ({ annotate }) => {
+            annotate('Tickets Store: verifies allChecked getter returns false when at least one ticket has checked=false');
             const store = useTicketsStore();
             store.tickets = [
                 { ticketid: '1', checked: true } as any,
@@ -95,7 +105,8 @@ describe('tickets.store', () => {
     });
 
     describe('fetchTickets()', () => {
-        it('populates tickets array', async () => {
+        it('populates tickets array', async ({ annotate }) => {
+            await annotate('Tickets Store: verifies fetchTickets() populates tickets with checked=false flag, totalTickets, pages, and resets loading');
             const mockResponse = {
                 ima: 'client',
                 custid: 123,
@@ -129,7 +140,8 @@ describe('tickets.store', () => {
             expect(store.loading).toBe(false);
         });
 
-        it('sets loading during fetch', async () => {
+        it('sets loading during fetch', async ({ annotate }) => {
+            await annotate('Tickets Store: verifies fetchTickets() sets loading=true during API call and resets to false after completion');
             let resolvePromise: (value: any) => void;
             const pendingPromise = new Promise((resolve) => {
                 resolvePromise = resolve;
@@ -152,7 +164,8 @@ describe('tickets.store', () => {
             expect(store.loading).toBe(false);
         });
 
-        it('sets error on failure', async () => {
+        it('sets error on failure', async ({ annotate }) => {
+            await annotate('Tickets Store: verifies fetchTickets() extracts error message string and resets loading on API failure');
             vi.mocked(fetchWrapper.get).mockRejectedValue(new Error('Network error'));
 
             const store = useTicketsStore();
@@ -164,7 +177,8 @@ describe('tickets.store', () => {
     });
 
     describe('toggleAll()', () => {
-        it('sets all tickets checked when true', () => {
+        it('sets all tickets checked when true', ({ annotate }) => {
+            annotate('Tickets Store: verifies toggleAll(true) sets checked=true on every ticket in the array');
             const store = useTicketsStore();
             store.tickets = [
                 { ticketid: '1', checked: false } as any,
@@ -176,7 +190,8 @@ describe('tickets.store', () => {
             expect(store.tickets.every((t) => t.checked)).toBe(true);
         });
 
-        it('sets all tickets unchecked when false', () => {
+        it('sets all tickets unchecked when false', ({ annotate }) => {
+            annotate('Tickets Store: verifies toggleAll(false) sets checked=false on every ticket in the array');
             const store = useTicketsStore();
             store.tickets = [
                 { ticketid: '1', checked: true } as any,
@@ -190,7 +205,8 @@ describe('tickets.store', () => {
     });
 
     describe('clearChecks()', () => {
-        it('unsets all checked', () => {
+        it('unsets all checked', ({ annotate }) => {
+            annotate('Tickets Store: verifies clearChecks() resets all tickets to checked=false');
             const store = useTicketsStore();
             store.tickets = [
                 { ticketid: '1', checked: true } as any,
@@ -215,7 +231,8 @@ describe('tickets.store', () => {
             });
         });
 
-        it('nextPage calls fetchTickets with incremented page', async () => {
+        it('nextPage calls fetchTickets with incremented page', async ({ annotate }) => {
+            await annotate('Tickets Store: verifies nextPage() increments currentPage and fetches tickets with the new page number in the URL');
             const store = useTicketsStore();
             store.currentPage = 1;
             store.pages = 3;
@@ -227,7 +244,8 @@ describe('tickets.store', () => {
             expect(callUrl).toContain('page=2');
         });
 
-        it('nextPage does nothing when on last page', () => {
+        it('nextPage does nothing when on last page', ({ annotate }) => {
+            annotate('Tickets Store: verifies nextPage() does not trigger a fetch when already on the last page');
             const store = useTicketsStore();
             store.currentPage = 3;
             store.pages = 3;
@@ -237,7 +255,8 @@ describe('tickets.store', () => {
             expect(fetchWrapper.get).not.toHaveBeenCalled();
         });
 
-        it('prevPage calls fetchTickets with decremented page', async () => {
+        it('prevPage calls fetchTickets with decremented page', async ({ annotate }) => {
+            await annotate('Tickets Store: verifies prevPage() decrements currentPage and fetches tickets with the previous page number in the URL');
             const store = useTicketsStore();
             store.currentPage = 2;
             store.pages = 3;
@@ -249,7 +268,8 @@ describe('tickets.store', () => {
             expect(callUrl).toContain('page=1');
         });
 
-        it('prevPage does nothing when on first page', () => {
+        it('prevPage does nothing when on first page', ({ annotate }) => {
+            annotate('Tickets Store: verifies prevPage() does not trigger a fetch when already on page 1');
             const store = useTicketsStore();
             store.currentPage = 1;
 
@@ -260,7 +280,8 @@ describe('tickets.store', () => {
     });
 
     describe('searchTickets()', () => {
-        it('posts search keyword and returns results', async () => {
+        it('posts search keyword and returns results', async ({ annotate }) => {
+            await annotate('Tickets Store: verifies searchTickets() sends POST with search keyword and returns matching ticket results');
             const mockResults = [
                 { ticketid: '10', subject: 'Test search result' },
                 { ticketid: '11', subject: 'Another result' },
@@ -277,7 +298,8 @@ describe('tickets.store', () => {
             expect(results).toEqual(mockResults);
         });
 
-        it('returns empty array on search failure', async () => {
+        it('returns empty array on search failure', async ({ annotate }) => {
+            await annotate('Tickets Store: verifies searchTickets() returns empty array and logs error to console on API failure');
             const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
             vi.mocked(fetchWrapper.post).mockRejectedValue(new Error('Search failed'));
 

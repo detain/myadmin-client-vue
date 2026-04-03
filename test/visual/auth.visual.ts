@@ -38,14 +38,16 @@ describe('Auth Pages', () => {
 
     afterAll(() => cleanup());
 
-    test('login page', async () => {
+    test('login page', async ({ annotate }) => {
+        await annotate('Visual Regression: Login page - captures unauthenticated login form layout');
         await router.push('/login');
         await router.isReady();
         await new Promise((r) => setTimeout(r, 500));
         await expect(page.elementLocator(document.body)).toMatchScreenshot('auth-login');
     });
 
-    test('registration page', async () => {
+    test('registration page', async ({ annotate }) => {
+        await annotate('Visual Regression: Registration page - captures new user registration form layout');
         await router.push('/register');
         await router.isReady();
         await new Promise((r) => setTimeout(r, 500));

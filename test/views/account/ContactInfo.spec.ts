@@ -78,17 +78,20 @@ describe('ContactInfo.vue', () => {
         },
     };
 
-    it('renders component', () => {
+    it('renders component', ({ annotate }) => {
+        annotate('Contact Info: verifies the component mounts without errors');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('shows Update Contact Info heading', () => {
+    it('shows Update Contact Info heading', ({ annotate }) => {
+        annotate('Contact Info: verifies the Update Contact Info heading is displayed');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.text()).toContain('Update Contact Info');
     });
 
-    it('renders personal information fields', () => {
+    it('renders personal information fields', ({ annotate }) => {
+        annotate('Contact Info: verifies all personal info form fields (name, company, address, city, zip, phone) are present');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.find('#name').exists()).toBe(true);
         expect(wrapper.find('#company').exists()).toBe(true);
@@ -98,17 +101,20 @@ describe('ContactInfo.vue', () => {
         expect(wrapper.find('#phone').exists()).toBe(true);
     });
 
-    it('renders country select', () => {
+    it('renders country select', ({ annotate }) => {
+        annotate('Contact Info: verifies the country select dropdown is rendered');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.find('#country').exists()).toBe(true);
     });
 
-    it('renders timezone select', () => {
+    it('renders timezone select', ({ annotate }) => {
+        annotate('Contact Info: verifies the timezone select dropdown is rendered');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.find('#timezone').exists()).toBe(true);
     });
 
-    it('renders Other Settings section', () => {
+    it('renders Other Settings section', ({ annotate }) => {
+        annotate('Contact Info: verifies Other Settings section with disable toggles for notifications and security');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.text()).toContain('Other Settings');
         expect(wrapper.text()).toContain('Disable (Forgot your Password) Password Resets');
@@ -117,30 +123,35 @@ describe('ContactInfo.vue', () => {
         expect(wrapper.text()).toContain('Disable Reinstall');
     });
 
-    it('renders alternate email fields', () => {
+    it('renders alternate email fields', ({ annotate }) => {
+        annotate('Contact Info: verifies alternate email fields for invoices and abuse are present');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.find('#email_invoices').exists()).toBe(true);
         expect(wrapper.find('#email_abuse').exists()).toBe(true);
     });
 
-    it('renders Update Info submit button', () => {
+    it('renders Update Info submit button', ({ annotate }) => {
+        annotate('Contact Info: verifies the save settings submit button is present');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.find('#save_settings').exists()).toBe(true);
     });
 
-    it('renders avatar image', () => {
+    it('renders avatar image', ({ annotate }) => {
+        annotate('Contact Info: verifies the user avatar image element is rendered');
         const wrapper = mount(ContactInfo, mountOptions);
         const img = wrapper.find('img.avatar');
         expect(img.exists()).toBe(true);
     });
 
-    it('shows user name and account_id', () => {
+    it('shows user name and account_id', ({ annotate }) => {
+        annotate('Contact Info: verifies user name and account ID from store data are displayed');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.text()).toContain('Test User');
         expect(wrapper.text()).toContain('1');
     });
 
-    it('submits form and calls fetchWrapper.post', async () => {
+    it('submits form and calls fetchWrapper.post', async ({ annotate }) => {
+        await annotate('Contact Info: verifies form submission POSTs to /account endpoint with user name');
         vi.mocked(fetchWrapper.post).mockResolvedValue({ message: 'success' });
         const wrapper = mount(ContactInfo, mountOptions);
         const form = wrapper.find('form');
@@ -152,7 +163,8 @@ describe('ContactInfo.vue', () => {
         );
     });
 
-    it('handles failed form submission', async () => {
+    it('handles failed form submission', async ({ annotate }) => {
+        await annotate('Contact Info: verifies the component handles API rejection without crashing');
         vi.mocked(fetchWrapper.post).mockRejectedValue(new Error('Failed'));
         const wrapper = mount(ContactInfo, mountOptions);
         const form = wrapper.find('form');
@@ -160,7 +172,8 @@ describe('ContactInfo.vue', () => {
         await flushPromises();
     });
 
-    it('loads countries, timezones, currencies, locales on mount', () => {
+    it('loads countries, timezones, currencies, locales on mount', ({ annotate }) => {
+        annotate('Contact Info: verifies all four reference data endpoints are called on mount');
         mount(ContactInfo, mountOptions);
         // Should call get for countries, timezones, currencies, locales
         expect(fetchWrapper.get).toHaveBeenCalledWith(expect.stringContaining('/account/countries'));
@@ -169,18 +182,21 @@ describe('ContactInfo.vue', () => {
         expect(fetchWrapper.get).toHaveBeenCalledWith(expect.stringContaining('/account/locales'));
     });
 
-    it('renders Language select', () => {
+    it('renders Language select', ({ annotate }) => {
+        annotate('Contact Info: verifies the locale/language preview select is rendered');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.find('.locale-preview-select').exists()).toBe(true);
     });
 
-    it('renders Currency select', () => {
+    it('renders Currency select', ({ annotate }) => {
+        annotate('Contact Info: verifies the currency select dropdown is rendered');
         const wrapper = mount(ContactInfo, mountOptions);
         expect(wrapper.find('#currency').exists()).toBe(true);
     });
 
     describe('populated dropdown options', () => {
-        it('renders country options when countries are loaded', async () => {
+        it('renders country options when countries are loaded', async ({ annotate }) => {
+            await annotate('Contact Info: verifies country select populates with options from API response');
             vi.mocked(fetchWrapper.get).mockImplementation(async (url: string) => {
                 if (url.includes('/account/countries')) return { US: 'United States', IN: 'India' };
                 if (url.includes('/account/timezones')) return ['America/New_York', 'Asia/Kolkata'];
@@ -196,7 +212,8 @@ describe('ContactInfo.vue', () => {
             expect(options.length).toBeGreaterThanOrEqual(2);
         });
 
-        it('renders timezone options when timezones are loaded', async () => {
+        it('renders timezone options when timezones are loaded', async ({ annotate }) => {
+            await annotate('Contact Info: verifies timezone select populates with options from API response');
             vi.mocked(fetchWrapper.get).mockImplementation(async (url: string) => {
                 if (url.includes('/account/timezones')) return ['America/New_York', 'Asia/Kolkata'];
                 if (url.includes('/account/countries')) return {};
@@ -211,7 +228,8 @@ describe('ContactInfo.vue', () => {
             expect(options.length).toBeGreaterThanOrEqual(2);
         });
 
-        it('renders currency options when currencies are loaded', async () => {
+        it('renders currency options when currencies are loaded', async ({ annotate }) => {
+            await annotate('Contact Info: verifies currency select populates with options from API response');
             vi.mocked(fetchWrapper.get).mockImplementation(async (url: string) => {
                 if (url.includes('/account/currencies')) return ['USD', 'EUR'];
                 if (url.includes('/account/countries')) return {};
@@ -226,7 +244,8 @@ describe('ContactInfo.vue', () => {
             expect(options.length).toBeGreaterThanOrEqual(2);
         });
 
-        it('renders locale options when locales are loaded', async () => {
+        it('renders locale options when locales are loaded', async ({ annotate }) => {
+            await annotate('Contact Info: verifies locale dropdown populates with auto option plus locales from API');
             vi.mocked(fetchWrapper.get).mockImplementation(async (url: string) => {
                 if (url.includes('/account/locales')) return { 'en-US': { name: 'English', local_name: 'English' }, 'fr-FR': { name: 'French', local_name: 'Français' } };
                 if (url.includes('/account/countries')) return {};
@@ -247,7 +266,8 @@ describe('ContactInfo.vue', () => {
     });
 
     describe('error handling for data loading', () => {
-        it('handles loadTimezones failure', async () => {
+        it('handles loadTimezones failure', async ({ annotate }) => {
+            await annotate('Contact Info: verifies loadTimezones logs error when API call fails');
             const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
             vi.mocked(fetchWrapper.get).mockImplementation(async (url: string) => {
                 if (url.includes('/account/timezones')) throw new Error('tz fail');
@@ -261,7 +281,8 @@ describe('ContactInfo.vue', () => {
             consoleSpy.mockRestore();
         });
 
-        it('handles loadCountries failure', async () => {
+        it('handles loadCountries failure', async ({ annotate }) => {
+            await annotate('Contact Info: verifies loadCountries logs error when API call fails');
             const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
             vi.mocked(fetchWrapper.get).mockImplementation(async (url: string) => {
                 if (url.includes('/account/countries')) throw new Error('countries fail');
@@ -275,7 +296,8 @@ describe('ContactInfo.vue', () => {
             consoleSpy.mockRestore();
         });
 
-        it('handles loadCurrencies failure', async () => {
+        it('handles loadCurrencies failure', async ({ annotate }) => {
+            await annotate('Contact Info: verifies loadCurrencies logs error when API call fails');
             const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
             vi.mocked(fetchWrapper.get).mockImplementation(async (url: string) => {
                 if (url.includes('/account/currencies')) throw new Error('currencies fail');
@@ -289,7 +311,8 @@ describe('ContactInfo.vue', () => {
             consoleSpy.mockRestore();
         });
 
-        it('handles loadLocales failure', async () => {
+        it('handles loadLocales failure', async ({ annotate }) => {
+            await annotate('Contact Info: verifies loadLocales logs error when API call fails');
             const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
             vi.mocked(fetchWrapper.get).mockImplementation(async (url: string) => {
                 if (url.includes('/account/locales')) throw new Error('locales fail');
@@ -305,21 +328,24 @@ describe('ContactInfo.vue', () => {
     });
 
     describe('form field rendering with data', () => {
-        it('renders zip input with model value', () => {
+        it('renders zip input with model value', ({ annotate }) => {
+            annotate('Contact Info: verifies zip input is pre-filled with the store value 07001');
             const wrapper = mount(ContactInfo, mountOptions);
             const zip = wrapper.find('#zip');
             expect(zip.exists()).toBe(true);
             expect((zip.element as HTMLInputElement).value).toBe('07001');
         });
 
-        it('renders phone input with model value', () => {
+        it('renders phone input with model value', ({ annotate }) => {
+            annotate('Contact Info: verifies phone input is pre-filled with the store value 555-1234');
             const wrapper = mount(ContactInfo, mountOptions);
             const phone = wrapper.find('#phone');
             expect(phone.exists()).toBe(true);
             expect((phone.element as HTMLInputElement).value).toBe('555-1234');
         });
 
-        it('renders checkbox fields for disable settings', () => {
+        it('renders checkbox fields for disable settings', ({ annotate }) => {
+            annotate('Contact Info: verifies all four disable setting checkboxes are present in the DOM');
             const wrapper = mount(ContactInfo, mountOptions);
             expect(wrapper.find('#disable_reset').exists()).toBe(true);
             expect(wrapper.find('#disable_email_notifications').exists()).toBe(true);
@@ -327,21 +353,24 @@ describe('ContactInfo.vue', () => {
             expect(wrapper.find('#disable_reinstall').exists()).toBe(true);
         });
 
-        it('renders email_invoices input', () => {
+        it('renders email_invoices input', ({ annotate }) => {
+            annotate('Contact Info: verifies the email_invoices input is an email type field');
             const wrapper = mount(ContactInfo, mountOptions);
             const emailInvoices = wrapper.find('#email_invoices');
             expect(emailInvoices.exists()).toBe(true);
             expect((emailInvoices.element as HTMLInputElement).type).toBe('email');
         });
 
-        it('renders email_abuse input', () => {
+        it('renders email_abuse input', ({ annotate }) => {
+            annotate('Contact Info: verifies the email_abuse input is an email type field');
             const wrapper = mount(ContactInfo, mountOptions);
             const emailAbuse = wrapper.find('#email_abuse');
             expect(emailAbuse.exists()).toBe(true);
             expect((emailAbuse.element as HTMLInputElement).type).toBe('email');
         });
 
-        it('shows GSTIN field when country is IN', async () => {
+        it('shows GSTIN field when country is IN', async ({ annotate }) => {
+            await annotate('Contact Info: verifies GSTIN input field appears when account country is India (IN)');
             const indiaMountOptions = {
                 global: {
                     ...mountOptions.global,

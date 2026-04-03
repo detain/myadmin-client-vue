@@ -13,17 +13,20 @@ describe('Quick Server Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('list page renders correctly', async () => {
+    test('list page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: Quick Servers list page - displays service table with quick server entries');
         await navigateTo(ctx.router, '/qs');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('quickservers-list');
     });
 
-    test('detail page renders correctly', async () => {
+    test('detail page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: Quick Server detail page - shows individual quick server info and action links');
         await navigateTo(ctx.router, '/qs/901');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('quickservers-detail');
     });
 
-    test('order page renders correctly', async () => {
+    test('order page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: Quick Server order page - displays quick server configuration and ordering form');
         await navigateTo(ctx.router, '/qs/order');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('quickservers-order');
     });

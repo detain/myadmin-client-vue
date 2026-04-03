@@ -97,19 +97,22 @@ describe('InvoicesList.vue', () => {
         },
     };
 
-    it('renders component', () => {
+    it('renders component', ({ annotate }) => {
+        annotate('Invoices List: verifies the component mounts without errors');
         const wrapper = mount(InvoicesList, mountOptions);
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('renders invoice table with rows', () => {
+    it('renders invoice table with rows', ({ annotate }) => {
+        annotate('Invoices List: verifies invoice table displays heading, description and amount from store data');
         const wrapper = mount(InvoicesList, mountOptions);
         expect(wrapper.text()).toContain('Invoices List');
         expect(wrapper.text()).toContain('Monthly VPS');
         expect(wrapper.text()).toContain('$10.00');
     });
 
-    it('renders sorting headers', () => {
+    it('renders sorting headers', ({ annotate }) => {
+        annotate('Invoices List: verifies all column headers (ID, Date, Service, Description, Amount) are present');
         const wrapper = mount(InvoicesList, mountOptions);
         expect(wrapper.text()).toContain('ID');
         expect(wrapper.text()).toContain('Date');
@@ -118,26 +121,30 @@ describe('InvoicesList.vue', () => {
         expect(wrapper.text()).toContain('Amount');
     });
 
-    it('renders filter controls', () => {
+    it('renders filter controls', ({ annotate }) => {
+        annotate('Invoices List: verifies Month, Year, and Page Size filter controls are rendered');
         const wrapper = mount(InvoicesList, mountOptions);
         expect(wrapper.text()).toContain('Month');
         expect(wrapper.text()).toContain('Year');
         expect(wrapper.text()).toContain('Page Size');
     });
 
-    it('renders pagination', () => {
+    it('renders pagination', ({ annotate }) => {
+        annotate('Invoices List: verifies pagination info text shows Page 1 of 1');
         const wrapper = mount(InvoicesList, mountOptions);
         expect(wrapper.text()).toContain('Page 1 of 1');
     });
 
-    it('sorts columns when header clicked', async () => {
+    it('sorts columns when header clicked', async ({ annotate }) => {
+        await annotate('Invoices List: verifies clicking a column header triggers sorting logic');
         const wrapper = mount(InvoicesList, mountOptions);
         const headers = wrapper.findAll('th');
         await headers[0].trigger('click');
         await headers[0].trigger('click');
     });
 
-    it('filters by search text', async () => {
+    it('filters by search text', async ({ annotate }) => {
+        await annotate('Invoices List: verifies text search input filters rows to matching descriptions');
         const wrapper = mount(InvoicesList, mountOptions);
         const searchInput = wrapper.find('input[type="text"]');
         await searchInput.setValue('VPS');
@@ -145,20 +152,23 @@ describe('InvoicesList.vue', () => {
         expect(wrapper.text()).toContain('Monthly VPS');
     });
 
-    it('renders Export Excel and Export PDF buttons', () => {
+    it('renders Export Excel and Export PDF buttons', ({ annotate }) => {
+        annotate('Invoices List: verifies Export Excel and Export PDF buttons are present');
         const wrapper = mount(InvoicesList, mountOptions);
         expect(wrapper.text()).toContain('Export Excel');
         expect(wrapper.text()).toContain('Export PDF');
     });
 
-    it('shows paid/unpaid images', () => {
+    it('shows paid/unpaid images', ({ annotate }) => {
+        annotate('Invoices List: verifies paid/unpaid status images are rendered for invoice rows');
         const wrapper = mount(InvoicesList, mountOptions);
         const images = wrapper.findAll('img');
         expect(images.length).toBeGreaterThan(0);
     });
 
     describe('year filtering', () => {
-        it('filters rows by selected year', async () => {
+        it('filters rows by selected year', async ({ annotate }) => {
+            await annotate('Invoices List: verifies year filter shows only invoices from the selected year');
             const wrapper = mount(InvoicesList, mountOptions);
             const yearSelects = wrapper.findAll('select');
             // Year select is the second select
@@ -172,7 +182,8 @@ describe('InvoicesList.vue', () => {
     });
 
     describe('month filtering', () => {
-        it('filters rows by selected month', async () => {
+        it('filters rows by selected month', async ({ annotate }) => {
+            await annotate('Invoices List: verifies month filter shows only invoices from the selected month');
             const wrapper = mount(InvoicesList, mountOptions);
             const monthSelect = wrapper.findAll('select')[0];
             await monthSelect.setValue('6');
@@ -183,7 +194,8 @@ describe('InvoicesList.vue', () => {
     });
 
     describe('search text filtering', () => {
-        it('filters rows by search text matching description', async () => {
+        it('filters rows by search text matching description', async ({ annotate }) => {
+            await annotate('Invoices List: verifies search text filters to rows matching description and hides non-matching');
             const wrapper = mount(InvoicesList, mountOptions);
             const searchInput = wrapper.find('input[type="text"]');
             await searchInput.setValue('Domain');
@@ -192,7 +204,8 @@ describe('InvoicesList.vue', () => {
             expect(wrapper.text()).not.toContain('Monthly VPS');
         });
 
-        it('shows no rows when search does not match', async () => {
+        it('shows no rows when search does not match', async ({ annotate }) => {
+            await annotate('Invoices List: verifies no rows are displayed when search text matches nothing');
             const wrapper = mount(InvoicesList, mountOptions);
             const searchInput = wrapper.find('input[type="text"]');
             await searchInput.setValue('NONEXISTENT');
@@ -203,7 +216,8 @@ describe('InvoicesList.vue', () => {
     });
 
     describe('invoice detail view', () => {
-        it('renders back button when viewing an invoice by id', async () => {
+        it('renders back button when viewing an invoice by id', async ({ annotate }) => {
+            await annotate('Invoices List: verifies Back button appears when viewing a single invoice detail by route ID');
             const { useRoute } = await import('vue-router');
             vi.mocked(useRoute).mockReturnValue({
                 params: { id: '100' },
@@ -215,7 +229,8 @@ describe('InvoicesList.vue', () => {
             expect(wrapper.text()).toContain('Back');
         });
 
-        it('renders invoice detail back button', async () => {
+        it('renders invoice detail back button', async ({ annotate }) => {
+            await annotate('Invoices List: verifies invoice detail view has a Back link in card-tools area');
             const { useRoute } = await import('vue-router');
             vi.mocked(useRoute).mockReturnValue({
                 params: { id: '100' },
@@ -241,7 +256,8 @@ describe('InvoicesList.vue', () => {
             } as any);
         });
 
-        it('disables prev button on first page', () => {
+        it('disables prev button on first page', ({ annotate }) => {
+            annotate('Invoices List: verifies the Prev pagination button is disabled on the first page');
             const wrapper = mount(InvoicesList, mountOptions);
             const buttons = wrapper.findAll('button');
             const prevBtn = buttons.find((b) => b.text().includes('Prev'));
@@ -249,7 +265,8 @@ describe('InvoicesList.vue', () => {
             expect(prevBtn!.attributes('disabled')).toBeDefined();
         });
 
-        it('changes page size resets current page', async () => {
+        it('changes page size resets current page', async ({ annotate }) => {
+            await annotate('Invoices List: verifies changing page size resets pagination to page 1');
             const wrapper = mount(InvoicesList, mountOptions);
             const selects = wrapper.findAll('select');
             // Page size select is the 3rd select (month, year, page size)

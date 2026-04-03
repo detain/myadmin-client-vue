@@ -47,18 +47,21 @@ describe('Searchbox', () => {
         vi.mocked(fetchWrapper.get).mockResolvedValue({ results: [], tables: {} });
     });
 
-    it('renders search input', () => {
+    it('renders search input', ({ annotate }) => {
+        annotate('Searchbox: verifies the search input element with class new-search is present in the DOM');
         const wrapper = mount(Searchbox, mountOptions);
         expect(wrapper.find('input.new-search').exists()).toBe(true);
     });
 
-    it('shows icon', () => {
+    it('shows icon', ({ annotate }) => {
+        annotate('Searchbox: confirms the search icon element is rendered alongside the input');
         const wrapper = mount(Searchbox, mountOptions);
         const icon = wrapper.find('.search-icon');
         expect(icon.exists()).toBe(true);
     });
 
-    it('clears search on icon click when search has value', async () => {
+    it('clears search on icon click when search has value', async ({ annotate }) => {
+        await annotate('Searchbox: validates clicking the icon when input has text clears the input value to empty string');
         const wrapper = mount(Searchbox, mountOptions);
         const input = wrapper.find('input.new-search');
         await input.setValue('test query');
@@ -67,13 +70,15 @@ describe('Searchbox', () => {
         expect((input.element as HTMLInputElement).value).toBe('');
     });
 
-    it('loads search results on mount', async () => {
+    it('loads search results on mount', async ({ annotate }) => {
+        await annotate('Searchbox: confirms the component fetches search data from the /search endpoint on initial mount');
         mount(Searchbox, mountOptions);
         await flushPromises();
         expect(fetchWrapper.get).toHaveBeenCalledWith(expect.stringContaining('/search'));
     });
 
-    it('shows down arrow icon by default', () => {
+    it('shows down arrow icon by default', ({ annotate }) => {
+        annotate('Searchbox: verifies the default icon state shows a down arrow indicator when no search is active');
         const wrapper = mount(Searchbox, mountOptions);
         expect(wrapper.find('.search-icon').text()).toContain('▼');
     });
@@ -83,7 +88,8 @@ describe('Searchbox', () => {
             vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(mockSearchData)));
         });
 
-        it('filters results based on search input', async () => {
+        it('filters results based on search input', async ({ annotate }) => {
+            await annotate('Searchbox filtering: confirms typing a query shows results and filteredResults contains matching entries');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             const input = wrapper.find('input.new-search');
@@ -94,7 +100,8 @@ describe('Searchbox', () => {
             expect(vm.filteredResults.length).toBeGreaterThan(0);
         });
 
-        it('hides results when search is cleared', async () => {
+        it('hides results when search is cleared', async ({ annotate }) => {
+            await annotate('Searchbox filtering: validates the results dropdown closes when the search input is cleared back to empty');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             const input = wrapper.find('input.new-search');
@@ -106,7 +113,8 @@ describe('Searchbox', () => {
             expect(vm.showResults).toBe(false);
         });
 
-        it('shows X icon when input has value', async () => {
+        it('shows X icon when input has value', async ({ annotate }) => {
+            await annotate('Searchbox icon state: confirms the icon switches from down arrow to X clear button when input contains text');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             const input = wrapper.find('input.new-search');
@@ -115,7 +123,8 @@ describe('Searchbox', () => {
             expect(wrapper.find('.search-icon').text()).toContain('✖');
         });
 
-        it('onIconClick shows all results when results hidden', async () => {
+        it('onIconClick shows all results when results hidden', async ({ annotate }) => {
+            await annotate('Searchbox icon click: verifies clicking the icon when results are hidden toggles the dropdown open');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             const vm = wrapper.vm as any;
@@ -124,7 +133,8 @@ describe('Searchbox', () => {
             expect(vm.showResults).toBe(true);
         });
 
-        it('onIconClick hides results when showing and no search', async () => {
+        it('onIconClick hides results when showing and no search', async ({ annotate }) => {
+            await annotate('Searchbox icon click: validates a second icon click closes the dropdown when the input is empty (toggle behavior)');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             const vm = wrapper.vm as any;
@@ -136,7 +146,8 @@ describe('Searchbox', () => {
             expect(vm.showResults).toBe(false);
         });
 
-        it('navigates with ArrowDown key', async () => {
+        it('navigates with ArrowDown key', async ({ annotate }) => {
+            await annotate('Searchbox keyboard nav: confirms ArrowDown increments the highlight index to select the next result');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             // Show results first
@@ -147,7 +158,8 @@ describe('Searchbox', () => {
             expect(vm.highlightIndex).toBeGreaterThanOrEqual(0);
         });
 
-        it('navigates with ArrowUp key', async () => {
+        it('navigates with ArrowUp key', async ({ annotate }) => {
+            await annotate('Searchbox keyboard nav: confirms ArrowUp decrements the highlight index after moving down through results');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             await wrapper.find('.search-icon').trigger('click');
@@ -161,7 +173,8 @@ describe('Searchbox', () => {
             expect(vm.highlightIndex).toBeGreaterThanOrEqual(0);
         });
 
-        it('navigates on Enter key', async () => {
+        it('navigates on Enter key', async ({ annotate }) => {
+            await annotate('Searchbox keyboard nav: validates pressing Enter on a highlighted result triggers router navigation');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             await wrapper.find('.search-icon').trigger('click');
@@ -171,7 +184,8 @@ describe('Searchbox', () => {
             expect(mockPush).toHaveBeenCalled();
         });
 
-        it('does nothing on keydown when no results', async () => {
+        it('does nothing on keydown when no results', async ({ annotate }) => {
+            await annotate('Searchbox keyboard nav: ensures arrow key presses are ignored and highlight stays at -1 when there are no results');
             vi.mocked(fetchWrapper.get).mockResolvedValue({ results: [], tables: {} });
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
@@ -181,7 +195,8 @@ describe('Searchbox', () => {
             expect(vm.highlightIndex).toBe(-1);
         });
 
-        it('renders display rows with fields', async () => {
+        it('renders display rows with fields', async ({ annotate }) => {
+            await annotate('Searchbox display: verifies displayRows computed property produces rows with fields when a matching search is entered');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
             const input = wrapper.find('input.new-search');
@@ -193,32 +208,37 @@ describe('Searchbox', () => {
     });
 
     describe('utility functions', () => {
-        it('ucwords converts snake_case to Title Case', async () => {
+        it('ucwords converts snake_case to Title Case', async ({ annotate }) => {
+            await annotate('Searchbox ucwords: validates snake_case field names are converted to Title Case for display labels');
             const wrapper = mount(Searchbox, mountOptions);
             const vm = wrapper.vm as any;
             expect(vm.ucwords('vps_hostname')).toBe('Vps Hostname');
         });
 
-        it('ucwords converts id to uppercase', async () => {
+        it('ucwords converts id to uppercase', async ({ annotate }) => {
+            await annotate('Searchbox ucwords: confirms the special-case "id" token is converted to uppercase "ID"');
             const wrapper = mount(Searchbox, mountOptions);
             const vm = wrapper.vm as any;
             expect(vm.ucwords('id')).toBe('ID');
         });
 
-        it('ucwords converts ip to uppercase', async () => {
+        it('ucwords converts ip to uppercase', async ({ annotate }) => {
+            await annotate('Searchbox ucwords: confirms the special-case "ip" token is converted to uppercase "IP"');
             const wrapper = mount(Searchbox, mountOptions);
             const vm = wrapper.vm as any;
             expect(vm.ucwords('ip')).toBe('IP');
         });
 
-        it('splitHighlight returns full text when no search', async () => {
+        it('splitHighlight returns full text when no search', async ({ annotate }) => {
+            await annotate('Searchbox splitHighlight: verifies an empty search string returns the full text as a single non-matching segment');
             const wrapper = mount(Searchbox, mountOptions);
             const vm = wrapper.vm as any;
             const result = vm.splitHighlight('hello world', '');
             expect(result).toEqual([{ text: 'hello world', match: false }]);
         });
 
-        it('splitHighlight splits on match', async () => {
+        it('splitHighlight splits on match', async ({ annotate }) => {
+            await annotate('Searchbox splitHighlight: confirms text is split into multiple segments with the matching portion flagged for highlighting');
             const wrapper = mount(Searchbox, mountOptions);
             const vm = wrapper.vm as any;
             const result = vm.splitHighlight('hello world', 'world');
@@ -228,7 +248,8 @@ describe('Searchbox', () => {
     });
 
     describe('click outside', () => {
-        it('hides results when clicking outside', async () => {
+        it('hides results when clicking outside', async ({ annotate }) => {
+            await annotate('Searchbox click outside: validates the results dropdown closes when a click event occurs outside the component');
             vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(mockSearchData)));
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
@@ -243,7 +264,8 @@ describe('Searchbox', () => {
     });
 
     describe('updateSearchResults', () => {
-        it('fetches additional results when search length is 18', async () => {
+        it('fetches additional results when search length is 18', async ({ annotate }) => {
+            await annotate('Searchbox updateSearchResults: confirms a server-side search fetch is triggered when the input reaches exactly 18 characters');
             vi.mocked(fetchWrapper.get)
                 .mockResolvedValueOnce(JSON.parse(JSON.stringify(mockSearchData)))
                 .mockResolvedValueOnce({ results: [[1, '999', 'new-result.com', '10.0.0.99']] });
@@ -257,7 +279,8 @@ describe('Searchbox', () => {
     });
 
     describe('error handling', () => {
-        it('handles loadSearchResults error', async () => {
+        it('handles loadSearchResults error', async ({ annotate }) => {
+            await annotate('Searchbox error handling: verifies a network error during initial search load is caught and logged to console.error');
             vi.mocked(fetchWrapper.get).mockRejectedValue(new Error('Network error'));
             const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
             mount(Searchbox, mountOptions);
@@ -266,7 +289,8 @@ describe('Searchbox', () => {
             consoleSpy.mockRestore();
         });
 
-        it('handles updateSearchResults error', async () => {
+        it('handles updateSearchResults error', async ({ annotate }) => {
+            await annotate('Searchbox error handling: verifies a failed server-side search update is caught and logged without crashing the component');
             vi.mocked(fetchWrapper.get)
                 .mockResolvedValueOnce(JSON.parse(JSON.stringify(mockSearchData)))
                 .mockRejectedValueOnce(new Error('Search update error'));
@@ -282,7 +306,8 @@ describe('Searchbox', () => {
     });
 
     describe('getServiceId with extra fields', () => {
-        it('returns correct service id when table has extra fields', async () => {
+        it('returns correct service id when table has extra fields', async ({ annotate }) => {
+            await annotate('Searchbox getServiceId: confirms the service ID is correctly extracted when extra fields shift the column position in result rows');
             const dataWithExtras = {
                 results: [
                     [3, 'extra_val', '500', 'hostname.test.com'],
@@ -303,7 +328,8 @@ describe('Searchbox', () => {
     });
 
     describe('buildDisplayFields with extra fields and edge cases', () => {
-        it('builds display fields including extra fields', async () => {
+        it('builds display fields including extra fields', async ({ annotate }) => {
+            await annotate('Searchbox buildDisplayFields: validates both regular search fields and extra fields are included in the display output');
             const dataWithExtras = {
                 results: [
                     [3, 'linux', '500', 'hostname.test.com'],
@@ -325,7 +351,8 @@ describe('Searchbox', () => {
             expect(extraField).toBeDefined();
         });
 
-        it('handles field with no label', async () => {
+        it('handles field with no label', async ({ annotate }) => {
+            await annotate('Searchbox buildDisplayFields: verifies fields beyond the defined search columns are still included but with an undefined label');
             const dataNoLabel = {
                 results: [
                     [4, '600', 'hostname.test.com', 'extra-value'],
@@ -346,7 +373,8 @@ describe('Searchbox', () => {
             expect(noLabelField!.label).toBeUndefined();
         });
 
-        it('returns empty array when searchResults is null', async () => {
+        it('returns empty array when searchResults is null', async ({ annotate }) => {
+            await annotate('Searchbox buildDisplayFields: confirms the function returns an empty array gracefully when searchResults has been set to null');
             vi.mocked(fetchWrapper.get).mockResolvedValue({ results: [], tables: {} });
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
@@ -358,7 +386,8 @@ describe('Searchbox', () => {
     });
 
     describe('onBeforeUnmount cleanup', () => {
-        it('removes click event listener on unmount', async () => {
+        it('removes click event listener on unmount', async ({ annotate }) => {
+            await annotate('Searchbox cleanup: verifies the document click listener is properly removed during component unmount to prevent memory leaks');
             const removeListenerSpy = vi.spyOn(document, 'removeEventListener');
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
@@ -369,7 +398,8 @@ describe('Searchbox', () => {
     });
 
     describe('keyboard navigation edge cases', () => {
-        it('ArrowDown does not exceed results length', async () => {
+        it('ArrowDown does not exceed results length', async ({ annotate }) => {
+            await annotate('Searchbox keyboard edge case: ensures ArrowDown is clamped so highlightIndex never exceeds the last result index');
             vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(mockSearchData)));
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
@@ -383,7 +413,8 @@ describe('Searchbox', () => {
             expect(vm.highlightIndex).toBeLessThan(vm.filteredResults.length);
         });
 
-        it('ArrowUp does not go below 0', async () => {
+        it('ArrowUp does not go below 0', async ({ annotate }) => {
+            await annotate('Searchbox keyboard edge case: ensures ArrowUp is clamped so highlightIndex never goes below 0');
             vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(mockSearchData)));
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
@@ -395,7 +426,8 @@ describe('Searchbox', () => {
             expect(vm.highlightIndex).toBeGreaterThanOrEqual(0);
         });
 
-        it('Enter with highlightIndex -1 does not navigate', async () => {
+        it('Enter with highlightIndex -1 does not navigate', async ({ annotate }) => {
+            await annotate('Searchbox keyboard edge case: confirms pressing Enter without a highlighted result does not trigger navigation');
             vi.mocked(fetchWrapper.get).mockResolvedValue(JSON.parse(JSON.stringify(mockSearchData)));
             const wrapper = mount(Searchbox, mountOptions);
             await flushPromises();
@@ -410,7 +442,8 @@ describe('Searchbox', () => {
     });
 
     describe('updateSearchResults deduplication', () => {
-        it('does not fetch again for the same search string', async () => {
+        it('does not fetch again for the same search string', async ({ annotate }) => {
+            await annotate('Searchbox deduplication: validates that re-entering the same 18-char search string does not trigger a duplicate server fetch');
             vi.mocked(fetchWrapper.get)
                 .mockResolvedValueOnce(JSON.parse(JSON.stringify(mockSearchData)))
                 .mockResolvedValueOnce({ results: [[1, '999', 'new.com', '10.0.0.99']] });
