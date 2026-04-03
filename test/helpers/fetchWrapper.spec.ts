@@ -201,8 +201,8 @@ describe('fetchWrapper non-JSON response in getNoLogout', () => {
         expect(result).toBeNull();
     });
 
-    it('returns null for non-JSON error response via getNoLogout', async () => {
+    it('returns {message, status} for non-JSON error response via getNoLogout', async () => {
         global.fetch = mockFetchResponse(null, { ok: false, status: 500, contentType: 'text/plain' });
-        await expect(fetchWrapper.getNoLogout('https://example.com/apiv2/test')).rejects.toBeNull();
+        await expect(fetchWrapper.getNoLogout('https://example.com/apiv2/test')).rejects.toEqual({ message: 'HTTP 500', status: 500 });
     });
 });
