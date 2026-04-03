@@ -48,7 +48,7 @@ const webuzoTableExists = computed(() => typeof extraInfoTables.value.webuzo != 
 const addonsTableExists = computed(() => typeof extraInfoTables.value.addons != 'undefined' && !isEmpty(extraInfoTables.value.addons));
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
 const collapsed = ref(false);
-function loadLink(newLink: string) {
+async function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);
     linkDisplay.value = false;
     siteStore.setBreadcrums([
@@ -78,21 +78,18 @@ function loadLink(newLink: string) {
                 showLoaderOnConfirm: true,
                 confirmButtonText: t('common.confirm.yes'),
                 html: t('vps.view.resendWelcomeEmailConfirm'),
-                preConfirm: () => {
+                preConfirm: async () => {
                     try {
-                        Swal.close();
-                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
-                            Swal.fire({
-                                icon: 'success',
-                                title: `<h3>${t('vps.view.emailSent')}</h3> `,
-                                showCancelButton: false,
-                                showLoaderOnConfirm: true,
-                                confirmButtonText: t('common.confirm.yes'),
-                                html: t('vps.view.emailSentMessage'),
-                                preConfirm: () => {
-                                    router.push(`/${moduleLink(module)}/${id}`);
-                                },
-                            });
+                        await fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`);
+                        Swal.fire({
+                            icon: 'success',
+                            title: `<h3>${t('vps.view.emailSent')}</h3> `,
+                            showCancelButton: false,
+                            confirmButtonText: t('common.confirm.yes'),
+                            html: t('vps.view.emailSentMessage'),
+                            preConfirm: () => {
+                                router.push(`/${moduleLink(module)}/${id}`);
+                            },
                         });
                     } catch (error: any) {
                         console.log('error', error);
@@ -101,9 +98,8 @@ function loadLink(newLink: string) {
             });
         } else if (newLink == 'login') {
             try {
-                fetchWrapper.get(`${baseUrl}/vps/${id}/login`).then((response) => {
-                    console.log('login success', response);
-                });
+                const response = await fetchWrapper.get(`${baseUrl}/vps/${id}/login`);
+                console.log('login success', response);
             } catch (error: any) {
                 console.log('login failed', error);
             }
@@ -157,7 +153,7 @@ function capitalize(str: string) {
 function getDiskClass() {
     if (disk_percentage.value <= 80) {
         return 'bg-gradient-blue';
-    } else if (80 > disk_percentage.value && disk_percentage.value <= 90) {
+    } else if (disk_percentage.value <= 90) {
         return 'bg-gradient-yellow';
     } else {
         return 'bg-gradient-red';
@@ -170,28 +166,6 @@ function isEmpty(table: any) {
 
 function docReady() {
     $('[data-toggle="tooltip"]').tooltip();
-    const service_id = serviceInfo.value.vps_id;
-    $('.img-a').on('click', function () {
-        const cp = $(this).attr('data-cp');
-        if (cp === 'cp') {
-            $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=cp`);
-            $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text(`${$(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)} /mo`);
-        } else if (cp === 'da') {
-            const lic_cost_type = $(this).attr('data-ser');
-            $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=da&tt=${lic_cost_type}`);
-            $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text(`${$(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)} /mo`);
-        } else if (cp === 'pp') {
-            $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=pp&l_type=${$(this).attr('data-l-type')}`);
-            $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text(`${$(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)} /mo`);
-        } else if (cp === 'rs') {
-            $('#cp-order-link').attr('href', `view_vps?link=add_control_panel&id=${service_id}&cp=sr`);
-            $('#cp-name').text($(this).attr('data-name') as string);
-            $('#cp-cost').text(`${$(this).attr('data-cur-sym') + parseFloat($(this).attr('data-cost') ? ($(this).attr('data-cost') as string) : '0').toFixed(2)} /mo`);
-        }
-    });
 }
 
 function toggleFunc(cp: string) {

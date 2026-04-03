@@ -18,8 +18,9 @@ export const useAlertStore = defineStore('alert', {
         success(message: string) {
             this.alert = { message, type: 'alert-success' };
         },
-        error(message: string) {
-            this.alert = { message, type: 'alert-danger' };
+        error(message: string | { message?: string } | unknown) {
+            const msg = typeof message === 'string' ? message : (message as any)?.message ?? String(message);
+            this.alert = { message: msg, type: 'alert-danger' };
         },
         clear() {
             this.alert = null;

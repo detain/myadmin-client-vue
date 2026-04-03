@@ -29,6 +29,10 @@ app.use(i18n);
     //  v3SiteKey: 'YOUR_V3_SITEKEY_HERE',
 });*/
 setAppLocale(resolveAppLocale());
-loadCommonMessages().then(() => {
-    app.mount('#app');
-});
+loadCommonMessages()
+    .catch((err) => {
+        console.error('Failed to load i18n messages:', err);
+    })
+    .finally(() => {
+        app.mount('#app');
+    });

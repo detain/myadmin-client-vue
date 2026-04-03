@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watchEffect } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, watchEffect } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
 import { moduleLink } from '@/helpers/moduleLink';
@@ -50,28 +50,30 @@ const copyToClipboard = async (): Promise<void> => {
     }
 };
 
+function onPortletClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    // Handle ui-icon and glyphicon clicks
+    const icon = target.closest<HTMLElement>('.portlet-header .ui-icon, .portlet-header .glyphicon');
+    if (!icon) return;
+    const portlet = icon.closest<HTMLElement>('.portlet');
+    const content = portlet?.querySelector<HTMLElement>('.portlet-content');
+    if (!content) return;
+    // Toggle icon-specific classes
+    if (icon.classList.contains('ui-icon')) {
+        icon.classList.toggle('ui-icon-minusthick');
+        icon.classList.toggle('ui-icon-plusthick');
+    }
+    if (icon.classList.contains('glyphicon')) {
+        icon.classList.toggle('glyphicon-minus');
+        icon.classList.toggle('glyphicon-plus');
+    }
+    // Toggle content visibility
+    content.style.display = content.style.display === 'none' ? '' : 'none';
+}
+
 onMounted(() => {
     //$('.column').sortable({ connectWith: '.column' });
-    document.addEventListener('click', (event) => {
-        const target = event.target as HTMLElement;
-        // Handle ui-icon and glyphicon clicks
-        const icon = target.closest<HTMLElement>('.portlet-header .ui-icon, .portlet-header .glyphicon');
-        if (!icon) return;
-        const portlet = icon.closest<HTMLElement>('.portlet');
-        const content = portlet?.querySelector<HTMLElement>('.portlet-content');
-        if (!content) return;
-        // Toggle icon-specific classes
-        if (icon.classList.contains('ui-icon')) {
-            icon.classList.toggle('ui-icon-minusthick');
-            icon.classList.toggle('ui-icon-plusthick');
-        }
-        if (icon.classList.contains('glyphicon')) {
-            icon.classList.toggle('glyphicon-minus');
-            icon.classList.toggle('glyphicon-plus');
-        }
-        // Toggle content visibility
-        content.style.display = content.style.display === 'none' ? '' : 'none';
-    });
+    document.addEventListener('click', onPortletClick);
     // One-time portlet initialization
     document.querySelectorAll<HTMLElement>('.portlet').forEach((portlet) => {
         portlet.classList.add('ui-widget', 'ui-widget-content', 'ui-helper-clearfix', 'ui-corner-all');
@@ -86,27 +88,30 @@ onMounted(() => {
     //$('.column').disableSelection();
 });
 
+onBeforeUnmount(() => {
+    document.removeEventListener('click', onPortletClick);
+});
+
 const affiliateUrl = computed(() => (user.value !== null && typeof user.value.account_id !== 'undefined' && user.value.account_id !== null ? `https://www.interserver.net/r/${user.value.account_id}` : ''));
 
 const loadHome = async () => {
     try {
-        fetchWrapper.get(`${baseUrl}/home`).then((response: HomeResponse) => {
-            console.log('api success', response);
-            last_login_ip.value = response.last_login_ip;
-            last_login.value = response.last_login;
-            currency.value = response.currency;
-            amount.value = response.amount;
-            invoice_list.value = response.invoice_list;
-            balance.value = response.balance;
-            full_name.value = response.full_name;
-            email.value = response.email;
-            tickets.value = response.tickets;
-            ticketStatus.value = response.ticketStatus;
-            ticketStatusView.value = response.ticketStatusView;
-            details.value = response.details;
-            services.value = response.services;
-            AFFILIATE_AMOUNT.value = response.AFFILIATE_AMOUNT;
-        });
+        const response: HomeResponse = await fetchWrapper.get(`${baseUrl}/home`);
+        console.log('api success', response);
+        last_login_ip.value = response.last_login_ip;
+        last_login.value = response.last_login;
+        currency.value = response.currency;
+        amount.value = response.amount;
+        invoice_list.value = response.invoice_list;
+        balance.value = response.balance;
+        full_name.value = response.full_name;
+        email.value = response.email;
+        tickets.value = response.tickets;
+        ticketStatus.value = response.ticketStatus;
+        ticketStatusView.value = response.ticketStatusView;
+        details.value = response.details;
+        services.value = response.services;
+        AFFILIATE_AMOUNT.value = response.AFFILIATE_AMOUNT;
     } catch (error: any) {
         console.log('api failed', error);
     }

@@ -121,19 +121,15 @@ export const useMailStore = defineStore('mail', {
                 this.mailList = await fetchWrapper.get(`${baseUrl}/mail`);
             } catch (error: any) {
                 console.log(`got error response${error}`);
-                this.error = error;
+                this.error = error?.message ?? String(error);
             }
             this.loading = false;
         },
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            const keyMap = {
-                package: 'pkg',
-            };
             try {
                 const response = await fetchWrapper.get(`${baseUrl}/mail/${id}`);
-                this.$reset();
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;
                 this.clientLinks = response.client_links;
@@ -156,7 +152,7 @@ export const useMailStore = defineStore('mail', {
             const baseUrl = siteStore.getBaseUrl();
             //this.mailList.find((x) => x.mail_id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/mail/${id}`);
 
             // remove user from list after deleted
             this.mailList = this.mailList.filter((x) => x.mail_id !== id);

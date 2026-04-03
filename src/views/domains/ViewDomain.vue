@@ -54,21 +54,18 @@ function loadLink(newLink: string) {
                 showLoaderOnConfirm: true,
                 confirmButtonText: t('common.confirm.yes'),
                 html: t('domains.view.welcomeEmailConfirm'),
-                preConfirm: () => {
+                preConfirm: async () => {
                     try {
-                        Swal.close();
-                        fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`).then((response) => {
-                            Swal.fire({
-                                icon: 'success',
-                                title: `<h3>${t('domains.view.emailSent')}</h3> `,
-                                showCancelButton: false,
-                                showLoaderOnConfirm: true,
-                                confirmButtonText: t('common.confirm.yes'),
-                                html: t('domains.view.welcomeEmailResent'),
-                                preConfirm: () => {
-                                    router.push(`/${moduleLink(module)}/${id}`);
-                                },
-                            });
+                        await fetchWrapper.get(`/${moduleLink(module)}/${id}/welcome_email`);
+                        Swal.fire({
+                            icon: 'success',
+                            title: `<h3>${t('domains.view.emailSent')}</h3> `,
+                            showCancelButton: false,
+                            confirmButtonText: t('common.confirm.yes'),
+                            html: t('domains.view.welcomeEmailResent'),
+                            preConfirm: () => {
+                                router.push(`/${moduleLink(module)}/${id}`);
+                            },
                         });
                     } catch (error: any) {
                         console.log('error', error);
@@ -250,7 +247,7 @@ loadLink(route.params.link as string);
                         {{ t('domains.view.address') }} {{ serviceInfo.domain_address }}<br />
                         {{ serviceInfo.domain_city }}, {{ serviceInfo.domain_state }}<br />
                         {{ serviceInfo.domain_country }} - {{ serviceInfo.domain_zip }}<br />
-                        {{ t('domains.view.phone') }} <a @href="'tel:' + serviceInfo.domain_address">{{ serviceInfo.domain_phone }}</a>
+                        {{ t('domains.view.phone') }} <a :href="'tel:' + serviceInfo.domain_phone">{{ serviceInfo.domain_phone }}</a>
                     </p>
                 </div>
             </div>

@@ -16,7 +16,7 @@ interface SslListRow {
 interface SslState {
     sslList: SslListRow[];
     loading: boolean;
-    error: boolean;
+    error: boolean | string;
     pkg: number;
     ssl_id: number;
     ssl_hostname: string;
@@ -102,16 +102,13 @@ export const useSslStore = defineStore('ssl', {
                 this.sslList = await fetchWrapper.get(`${baseUrl}/ssl`);
             } catch (error: any) {
                 console.log(`got error response${error}`);
-                this.error = error;
+                this.error = error?.message ?? String(error);
             }
             this.loading = false;
         },
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            const keyMap = {
-                package: 'pkg',
-            };
             /*
             this.user = { loading: true };
             try {
@@ -122,7 +119,6 @@ export const useSslStore = defineStore('ssl', {
             */
             try {
                 const response = await fetchWrapper.get(`${baseUrl}/ssl/${id}`);
-                this.$reset();
                 this.ssl_id = response.ssl_id;
                 this.ssl_hostname = response.ssl_hostname;
                 this.ssl_order_id = response.ssl_order_id;
@@ -162,7 +158,7 @@ export const useSslStore = defineStore('ssl', {
             const baseUrl = siteStore.getBaseUrl();
             //this.sslList.find((x) => x.ssl_id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/ssl/${id}`);
 
             // remove user from list after deleted
             this.sslList = this.sslList.filter((x) => x.ssl_id !== id);
