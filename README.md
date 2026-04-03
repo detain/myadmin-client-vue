@@ -37,7 +37,22 @@ Test results, coverage reports, and Playwright HTML reports are uploaded as arti
 <!-- TEST-RESULTS-START -->
 ### Latest Test Results
 
-_Results are automatically updated by CI on each push to master._
+🟢 **840/840 tests passing** across 284 suites | 25.38s
+
+| Category | % Stmts | % Branch | % Funcs | % Lines |
+|----------|---------|----------|---------|---------|
+| **All files** | 88.01 | 85.76 | 68.05 | 88.36 |
+| Assets | 100.00 | 100.00 | 100.00 | 100.00 |
+| Components | 91.34 | 79.81 | 90.26 | 91.35 |
+| Helpers | 100.00 | 98.44 | 100.00 | 100.00 |
+| I18n | 96.42 | 95.00 | 93.33 | 100.00 |
+| Locales | 100.00 | 100.00 | 100.00 | 100.00 |
+| Mocks | 53.13 | 50.00 | 50.00 | 53.13 |
+| Router | 50.33 | 95.34 | 31.81 | 49.32 |
+| Stores | 99.39 | 94.17 | 98.99 | 99.39 |
+| Views | 92.08 | 93.03 | 87.72 | 92.34 |
+
+_Last updated: 2026-04-03 via [CI/CD](https://github.com/detain/myadmin-client-vue/actions/workflows/ci-cd.yml)_
 <!-- TEST-RESULTS-END -->
 
 Run `yarn test:coverage` to generate a detailed HTML report in `coverage/`.
