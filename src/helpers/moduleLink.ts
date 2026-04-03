@@ -1,7 +1,4 @@
-export const moduleLink = (str: string | number): string => {
-    if (typeof str !== 'string') {
-        throw new TypeError('moduleLinks expects a string parameter');
-    }
+export const moduleLink = (str: string): string => {
     if (str == 'quickservers') {
         return 'qs';
     } else if (str == 'webhosting') {

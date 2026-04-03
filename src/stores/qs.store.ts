@@ -142,7 +142,7 @@ export const useQsStore = defineStore('qs', {
                 this.qsList = await fetchWrapper.get(`${baseUrl}/qs`);
             } catch (error: any) {
                 console.log(`got error response${error}`);
-                this.error = error;
+                this.error = error?.message ?? String(error);
             }
             this.loading = false;
         },
@@ -167,13 +167,8 @@ export const useQsStore = defineStore('qs', {
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            const keyMap = {
-                package: 'pkg',
-            };
             try {
                 const response = await fetchWrapper.get(`${baseUrl}/qs/${id}`);
-                this.$reset();
-                //let key, value;
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;
                 this.clientLinks = response.client_links;
@@ -220,7 +215,7 @@ export const useQsStore = defineStore('qs', {
             const baseUrl = siteStore.getBaseUrl();
             //this.qsList.find((x) => x.qs_id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/qs/${id}`);
 
             // remove user from list after deleted
             this.qsList = this.qsList.filter((x) => x.qs_id !== id);

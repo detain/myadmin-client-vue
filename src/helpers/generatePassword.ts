@@ -24,8 +24,13 @@ export function generatePassword(length: number = 8, availableSets: string = 'lu
     if (sets.length === 0) {
         throw new Error('No character sets selected');
     }
-    const getRandomChar = (str: string): string => str[Math.floor(Math.random() * str.length)];
-    const passwordChars: string[] = [];
+    const cryptoRandom = (max: number): number => {
+        const array = new Uint32Array(1);
+        crypto.getRandomValues(array);
+        return array[0] % max;
+    };
+    const getRandomChar = (str: string): string => str[cryptoRandom(str.length)];
+    let passwordChars: string[] = [];
     let allChars = '';
     // Ensure at least one character from each selected set
     for (const set of sets) {
@@ -38,7 +43,7 @@ export function generatePassword(length: number = 8, availableSets: string = 'lu
     }
     // Shuffle (Fisher–Yates)
     for (let i = passwordChars.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
+        const j = cryptoRandom(i + 1);
         [passwordChars[i], passwordChars[j]] = [passwordChars[j], passwordChars[i]];
     }
     return passwordChars.join('');

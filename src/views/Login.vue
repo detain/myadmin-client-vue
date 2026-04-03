@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 import * as Yup from 'yup';
 import { fetchWrapper } from '@/helpers/fetchWrapper';
@@ -138,6 +138,8 @@ function toggleModal(modalID: string) {
     document.getElementById(`${modalID}-backdrop`)?.classList.toggle('flex');
 }
 
+const activeTimers: NodeJS.Timeout[] = [];
+
 function animateValue(obj: any, start = 0, end: null | number = null, duration = 1000) {
     if (obj) {
         // save starting text for later (and as a fallback text if JS not running and/or google)
@@ -166,9 +168,17 @@ function animateValue(obj: any, start = 0, end: null | number = null, duration =
             }
         };
         timer = setInterval(run, stepTime);
+        activeTimers.push(timer);
         run();
     }
 }
+
+onBeforeUnmount(() => {
+    for (const timer of activeTimers) {
+        clearInterval(timer);
+    }
+    activeTimers.length = 0;
+});
 
 function login_handler() {
     const username = login.value;

@@ -113,19 +113,15 @@ export const useLicenseStore = defineStore('license', {
                 this.licenseList = await fetchWrapper.get(`${baseUrl}/licenses`);
             } catch (error: any) {
                 console.log(`got error response${error}`);
-                this.error = error;
+                this.error = error?.message ?? String(error);
             }
             this.loading = false;
         },
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            const keyMap = {
-                package: 'pkg',
-            };
             try {
                 const response = await fetchWrapper.get(`${baseUrl}/licenses/${id}`);
-                this.$reset();
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;
                 this.clientLinks = response.client_links;
@@ -149,7 +145,7 @@ export const useLicenseStore = defineStore('license', {
             const baseUrl = siteStore.getBaseUrl();
             //this.licenseList.find((x) => x.license_id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/licenses/${id}`);
 
             // remove user from list after deleted
             this.licenseList = this.licenseList.filter((x) => x.license_id !== id);

@@ -92,9 +92,13 @@ function ucwords(str: string): string {
         .replace(/\b[a-z]/g, (c) => c.toUpperCase());
 }
 
+function escapeRegExp(str: string): string {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function splitHighlight(text: string, search: string) {
     if (!search) return [{ text, match: false }];
-    const re = new RegExp(`(${search})`, 'gi');
+    const re = new RegExp(`(${escapeRegExp(search)})`, 'gi');
     return text.split(re).map((part) => ({
         text: part,
         match: part.toLowerCase() === search.toLowerCase(),

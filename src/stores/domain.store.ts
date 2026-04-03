@@ -177,19 +177,15 @@ export const useDomainStore = defineStore('domain', {
                 this.domainList = await fetchWrapper.get(`${baseUrl}/domains`);
             } catch (error: any) {
                 console.log(`got error response${error}`);
-                this.error = error;
+                this.error = error?.message ?? String(error);
             }
             this.loading = false;
         },
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
-            const keyMap = {
-                package: 'pkg',
-            };
             try {
                 const response = await fetchWrapper.get(`${baseUrl}/domains/${id}`);
-                this.$reset();
                 console.log(response);
                 this.serviceInfo = response.serviceInfo;
                 this.serviceTypes = response.serviceTypes;
@@ -221,7 +217,7 @@ export const useDomainStore = defineStore('domain', {
             const baseUrl = siteStore.getBaseUrl();
             //this.domainList.find((x) => x.domain_id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await fetchWrapper.delete(`${baseUrl}/domains/${id}`);
 
             // remove user from list after deleted
             this.domainList = this.domainList.filter((x) => x.domain_id !== id);

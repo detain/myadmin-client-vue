@@ -94,18 +94,15 @@ export const useAuthStore = defineStore('auth', {
             localStorage.setItem('user', JSON.stringify(this.user));
             localStorage.setItem('sessionId', this.sessionId || '');
             //localStorage.setItem('apiKey', this.apiKey);
-            accountStore.load().then((response) => {
-                console.log('starting .then handler for accountStore.load trying to utilize the data');
-                this.user.account_id = accountStore.data.account_id ?? undefined;
-                this.user.account_lid = accountStore.data.account_lid ?? undefined;
-                this.user.gravatar = accountStore.gravatar ?? undefined;
-                this.user.ima = 'client'; // accountStore.data.ima;
-                this.user.name = accountStore.data.name ?? undefined;
-                localStorage.setItem('user', JSON.stringify(this.user));
-                // redirect to previous url or default to home page
-                console.log('Trying to load a different URL');
-                router.push(this.returnUrl || '/');
-            });
+            await accountStore.load();
+            this.user.account_id = accountStore.data.account_id ?? undefined;
+            this.user.account_lid = accountStore.data.account_lid ?? undefined;
+            this.user.gravatar = accountStore.gravatar ?? undefined;
+            this.user.ima = 'client'; // accountStore.data.ima;
+            this.user.name = accountStore.data.name ?? undefined;
+            localStorage.setItem('user', JSON.stringify(this.user));
+            // redirect to previous url or default to home page
+            await router.push(this.returnUrl || '/');
         },
         async load(): Promise<void> {
             //console.log("Trying to load account/info user info");
@@ -149,7 +146,7 @@ export const useAuthStore = defineStore('auth', {
             } catch (error: any) {
                 console.log('error:', error);
                 let handled = false;
-                if (typeof error.field != 'undefined') {
+                if (error && typeof error.field != 'undefined') {
                     if (error.field == 'tfa') {
                         this.opts.tfa = true;
                         handled = true;
@@ -184,7 +181,7 @@ export const useAuthStore = defineStore('auth', {
             } catch (error: any) {
                 console.log('error:', error);
                 let handled = false;
-                if (typeof error.field != 'undefined') {
+                if (error && typeof error.field != 'undefined') {
                     if (error.field == 'tfa') {
                         this.opts.tfa = true;
                         handled = true;

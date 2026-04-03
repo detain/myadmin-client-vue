@@ -40,8 +40,9 @@ export const useUsersStore = defineStore('users', {
             try {
                 this.users = await fetchWrapper.get(baseUrl);
             } catch (error: any) {
-                this.error = error;
+                this.error = error?.message ?? String(error);
             }
+            this.loading = false;
         },
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
@@ -50,8 +51,9 @@ export const useUsersStore = defineStore('users', {
             try {
                 this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
             } catch (error: any) {
-                this.error = error;
+                this.error = error?.message ?? String(error);
             }
+            this.loading = false;
         },
         async update(id: number, params: any): Promise<void> {
             const siteStore = useSiteStore();
