@@ -91,8 +91,10 @@ jobs:
                   name: coverage-badge
                   path: coverage/badge.svg
 
-            - name: Update README with test results
-              if: success() && github.event_name == 'push' && github.ref == 'refs/heads/master'
+            # DISABLED: auto-update README with test results (re-enable when ready)
+            # - name: Update README with test results
+            - name: Update README with test results (disabled)
+              if: false # was: success() && github.event_name == 'push' && github.ref == 'refs/heads/master'
               run: |
                   # Parse test-results.json and coverage-summary.json into a README section
                   node -e "
@@ -173,8 +175,9 @@ jobs:
                   console.log('README.md updated with test results');
                   "
 
-            - name: Commit updated README
-              if: success() && github.event_name == 'push' && github.ref == 'refs/heads/master'
+            # DISABLED: commit README update (re-enable when ready)
+            - name: Commit updated README (disabled)
+              if: false # was: success() && github.event_name == 'push' && github.ref == 'refs/heads/master'
               run: |
                   git config user.name "github-actions"
                   git config user.email "github-actions@github.com"
