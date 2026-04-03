@@ -7,6 +7,7 @@ import { createHead } from '@unhead/vue/client';
 import i18n, { loadCommonMessages, loadLocaleMessages } from '@/i18n';
 import { router } from '@/router';
 import AppComponent from '@/App.vue';
+import '@/plugins/jquery';
 
 describe('Auth Pages', () => {
     let cleanup: () => void;

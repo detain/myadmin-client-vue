@@ -9,14 +9,18 @@ export async function navigateTo(router: Router, path: string): Promise<void> {
     await router.push(path);
     await router.isReady();
 
-    // Wait for any pending async operations and Vue rendering
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    // Wait for Vue to flush pending renders
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Wait for content to appear in the content wrapper
     await waitForSelector('.content-wrapper', 5000);
 
-    // Extra settle time for lazy-loaded components
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    // Wait for lazy-loaded components and async data to settle
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    // Force a layout reflow to ensure dimensions are finalized
+    document.body.getBoundingClientRect();
+    await new Promise((resolve) => setTimeout(resolve, 200));
 }
 
 /** Poll until a selector is present in the DOM */

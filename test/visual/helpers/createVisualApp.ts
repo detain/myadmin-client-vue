@@ -9,6 +9,9 @@ import { useAuthStore } from '@/stores/auth.store';
 import { useSiteStore } from '@/stores/site.store';
 import type { Router } from 'vue-router';
 
+// Load jQuery + legacy plugins globally (required by App.vue onMounted)
+import '@/plugins/jquery';
+
 export interface VisualAppContext {
     app: App;
     router: Router;
@@ -75,11 +78,14 @@ export async function createVisualApp(): Promise<VisualAppContext> {
     el.id = 'app';
     document.body.appendChild(el);
 
-    // Add AdminLTE body classes the app expects
-    document.body.classList.add('hold-transition', 'sidebar-mini', 'layout-fixed');
+    // Add AdminLTE body classes — always collapse sidebar for deterministic layout
+    document.body.classList.add('hold-transition', 'sidebar-mini', 'layout-fixed', 'sidebar-collapse');
 
     app.mount(el);
     await router.isReady();
+
+    // Clear any cookie-based sidebar state to prevent inconsistency
+    document.cookie = 'toggleState=closed; path=/';
 
     return {
         app,
