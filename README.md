@@ -37,7 +37,7 @@ Test results, coverage reports, and Playwright HTML reports are uploaded as arti
 <!-- TEST-RESULTS-START -->
 ### Latest Test Results
 
-🟢 **840/840 tests passing** across 284 suites | 25.38s
+🟢 **840/840 tests passing** across 284 suites | 24.89s
 
 | Category | % Stmts | % Branch | % Funcs | % Lines |
 |----------|---------|----------|---------|---------|
