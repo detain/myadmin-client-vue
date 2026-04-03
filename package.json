@@ -43,6 +43,8 @@
         "test:browser": "vitest --config=vitest.browser.config.ts",
         "test:browser:install": "playwright install",
         "test:coverage": "vitest run --coverage",
+        "test:visual": "vitest --config=vitest.visual.config.ts",
+        "test:visual:update": "vitest --config=vitest.visual.config.ts --update",
         "test:e2e": "playwright test --workers=1",
         "coverage": "vitest run --coverage",
         "cap:sync": "npx cap sync",

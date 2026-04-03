@@ -17,13 +17,15 @@ import Inspector from 'vite-plugin-vue-inspector';
 import TurboConsole from 'unplugin-turbo-console/vite';
 
 const isProd = process.env.NODE_ENV === 'production';
+const isCI = process.env.GITHUB_ACTIONS === 'true';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
     test: {
         globals: true,
         environment: 'jsdom',
-        reporters: ['default', 'html'],
+        reporters: isCI ? ['default', 'github-actions', 'json', 'junit'] : ['default', 'html'],
+        outputFile: isCI ? { json: 'test-results.json', junit: 'test-results.xml' } : undefined,
         setupFiles: ['./test/setup.ts'],
         exclude: ['**/.claire/**', '**/.claude/**', '**/e2e/**', '**/node_modules/**'],
         coverage: {
