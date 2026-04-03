@@ -54,7 +54,7 @@ describe('users.store', () => {
             vi.mocked(fetchWrapper.get).mockResolvedValue(mockUsers);
             const store = useUsersStore();
             await store.getAll();
-            expect(store.loading).toBe(true);
+            expect(store.loading).toBe(false);
             expect(store.users).toEqual(mockUsers);
         });
 
@@ -72,7 +72,7 @@ describe('users.store', () => {
             vi.mocked(fetchWrapper.get).mockResolvedValue(mockUser);
             const store = useUsersStore();
             await store.getById(1);
-            expect(store.loading).toBe(true);
+            expect(store.loading).toBe(false);
             expect(store.user).toEqual(mockUser);
         });
 

@@ -358,7 +358,7 @@ describe('Router', () => {
             { path: '/dns_editor', withId: '/dns/123', withoutId: '/dns' },
             { path: '/view_domain', withId: '/domains/5', withoutId: '/domains' },
             { path: '/view_backup', withId: '/backups/10', withoutId: '/backups' },
-            { path: '/view_license', withId: '/license/20', withoutId: '/licenses' },
+            { path: '/view_license', withId: '/licenses/20', withoutId: '/licenses' },
             { path: '/view_mail', withId: '/mail/30', withoutId: '/mail' },
             { path: '/view_qs', withId: '/qs/40', withoutId: '/qs' },
             { path: '/view_server', withId: '/servers/50', withoutId: '/servers' },
