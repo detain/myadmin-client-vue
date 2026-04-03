@@ -13,12 +13,14 @@ describe('DNS Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('manager page renders correctly', async () => {
+    test('manager page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: DNS manager page - displays DNS zone list with domain entries');
         await navigateTo(ctx.router, '/dns');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('dns-manager');
     });
 
-    test('editor page renders correctly', async () => {
+    test('editor page renders correctly', async ({ annotate }) => {
+        await annotate('Visual Regression: DNS editor page - shows DNS record editor with zone records table');
         await navigateTo(ctx.router, '/dns/101');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('dns-editor');
     });

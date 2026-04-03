@@ -13,17 +13,20 @@ describe('Server Pages', () => {
 
     afterAll(() => ctx.cleanup());
 
-    test('list page', async () => {
+    test('list page', async ({ annotate }) => {
+        await annotate('Visual Regression: Servers list page - displays service table with dedicated server entries');
         await navigateTo(ctx.router, '/servers');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('servers-list');
     });
 
-    test('detail page', async () => {
+    test('detail page', async ({ annotate }) => {
+        await annotate('Visual Regression: Server detail page - shows individual server info, hardware specs, and action links');
         await navigateTo(ctx.router, '/servers/301');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('servers-detail');
     });
 
-    test('order page', async () => {
+    test('order page', async ({ annotate }) => {
+        await annotate('Visual Regression: Server order page - displays dedicated server configuration and ordering form');
         await navigateTo(ctx.router, '/servers/order');
         await expect(page.elementLocator(document.body)).toMatchScreenshot('servers-order');
     });

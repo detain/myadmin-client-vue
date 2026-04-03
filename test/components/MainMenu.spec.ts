@@ -35,12 +35,14 @@ describe('MainMenu.vue', () => {
         mockRoute.path = '/';
     });
 
-    it('renders navigation menu', () => {
+    it('renders navigation menu', ({ annotate }) => {
+        annotate('MainMenu: verifies the top-level nav unordered list element is present in the DOM');
         const wrapper = mount(MainMenu, mountOptions);
         expect(wrapper.find('ul.nav').exists()).toBe(true);
     });
 
-    it('renders main menu links', () => {
+    it('renders main menu links', ({ annotate }) => {
+        annotate('MainMenu: confirms the primary navigation items (Dashboard, Domains, VPS, Tickets) are all rendered');
         const wrapper = mount(MainMenu, mountOptions);
         expect(wrapper.text()).toContain('Dashboard');
         expect(wrapper.text()).toContain('Domains');
@@ -48,14 +50,16 @@ describe('MainMenu.vue', () => {
         expect(wrapper.text()).toContain('Tickets');
     });
 
-    it('renders submenu items for billing', () => {
+    it('renders submenu items for billing', ({ annotate }) => {
+        annotate('MainMenu: validates the Billing submenu contains its child items Cart and View Invoices');
         const wrapper = mount(MainMenu, mountOptions);
         expect(wrapper.text()).toContain('Billing');
         expect(wrapper.text()).toContain('Cart');
         expect(wrapper.text()).toContain('View Invoices');
     });
 
-    it('renders submenu items for settings', () => {
+    it('renders submenu items for settings', ({ annotate }) => {
+        annotate('MainMenu: validates the Settings submenu renders Account Settings, Change Login, and Change Password items');
         const wrapper = mount(MainMenu, mountOptions);
         expect(wrapper.text()).toContain('Settings');
         expect(wrapper.text()).toContain('Account Settings');
@@ -63,7 +67,8 @@ describe('MainMenu.vue', () => {
         expect(wrapper.text()).toContain('Change Password');
     });
 
-    it('renders all service links', () => {
+    it('renders all service links', ({ annotate }) => {
+        annotate('MainMenu: ensures every expected service link (DNS, Storage, Mail, Licenses, etc.) is rendered in the navigation');
         const wrapper = mount(MainMenu, mountOptions);
         const expectedLinks = [
             'DNS Manager', 'Storage', 'Mail', 'Licenses',
@@ -75,21 +80,24 @@ describe('MainMenu.vue', () => {
         }
     });
 
-    it('renders icons for menu items', () => {
+    it('renders icons for menu items', ({ annotate }) => {
+        annotate('MainMenu: confirms Font Awesome icons for Dashboard, Domains, and Tickets menu items are rendered');
         const wrapper = mount(MainMenu, mountOptions);
         expect(wrapper.find('.fas.fa-tachometer-alt').exists()).toBe(true);
         expect(wrapper.find('.fas.fa-globe').exists()).toBe(true);
         expect(wrapper.find('.fas.fa-ticket-alt').exists()).toBe(true);
     });
 
-    it('has nav-item class on list items', () => {
+    it('has nav-item class on list items', ({ annotate }) => {
+        annotate('MainMenu: verifies list items use the AdminLTE nav-item CSS class for proper sidebar styling');
         const wrapper = mount(MainMenu, mountOptions);
         const items = wrapper.findAll('li.nav-item');
         expect(items.length).toBeGreaterThan(0);
     });
 
     describe('isActive detection', () => {
-        it('marks billing submenu as active when on /cart path', () => {
+        it('marks billing submenu as active when on /cart path', ({ annotate }) => {
+            annotate('MainMenu isActive: verifies the Billing parent link receives the active class when the current route is /cart');
             mockRoute.path = '/cart';
             const wrapper = mount(MainMenu, mountOptions);
             const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
@@ -97,7 +105,8 @@ describe('MainMenu.vue', () => {
             expect(billingLink!.classes()).toContain('active');
         });
 
-        it('does not mark settings as active on /account/settings since isActive uses first path segment only', () => {
+        it('does not mark settings as active on /account/settings since isActive uses first path segment only', ({ annotate }) => {
+            annotate('MainMenu isActive: confirms isActive only matches the first path segment, so /account/settings does not activate Settings');
             mockRoute.path = '/account/settings';
             const wrapper = mount(MainMenu, mountOptions);
             const settingsLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Settings'));
@@ -105,7 +114,8 @@ describe('MainMenu.vue', () => {
             expect(settingsLink!.classes()).not.toContain('active');
         });
 
-        it('does not mark billing as active when on non-billing path', () => {
+        it('does not mark billing as active when on non-billing path', ({ annotate }) => {
+            annotate('MainMenu isActive: ensures Billing link does not receive active class when on an unrelated /vps route');
             mockRoute.path = '/vps';
             const wrapper = mount(MainMenu, mountOptions);
             const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
@@ -113,7 +123,8 @@ describe('MainMenu.vue', () => {
             expect(billingLink!.classes()).not.toContain('active');
         });
 
-        it('does not mark settings as active when on /domains path', () => {
+        it('does not mark settings as active when on /domains path', ({ annotate }) => {
+            annotate('MainMenu isActive: ensures Settings link is not marked active when the route is /domains');
             mockRoute.path = '/domains';
             const wrapper = mount(MainMenu, mountOptions);
             const settingsLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Settings'));
@@ -121,7 +132,8 @@ describe('MainMenu.vue', () => {
             expect(settingsLink!.classes()).not.toContain('active');
         });
 
-        it('marks billing as active when on /invoices path', () => {
+        it('marks billing as active when on /invoices path', ({ annotate }) => {
+            annotate('MainMenu isActive: verifies Billing link is active when navigated to the /invoices child route');
             mockRoute.path = '/invoices';
             const wrapper = mount(MainMenu, mountOptions);
             const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
@@ -129,7 +141,8 @@ describe('MainMenu.vue', () => {
             expect(billingLink!.classes()).toContain('active');
         });
 
-        it('marks billing as active when on /prepays path', () => {
+        it('marks billing as active when on /prepays path', ({ annotate }) => {
+            annotate('MainMenu isActive: verifies Billing link is active when navigated to the /prepays child route');
             mockRoute.path = '/prepays';
             const wrapper = mount(MainMenu, mountOptions);
             const billingLink = wrapper.findAll('a.nav-link').find((a) => a.text().includes('Billing'));
@@ -139,20 +152,23 @@ describe('MainMenu.vue', () => {
     });
 
     describe('submenu treeview structure', () => {
-        it('billing menu item has has-treeview class', () => {
+        it('billing menu item has has-treeview class', ({ annotate }) => {
+            annotate('MainMenu treeview: verifies at least 2 parent menu items (Billing and Settings) carry the has-treeview class for expandable submenus');
             const wrapper = mount(MainMenu, mountOptions);
             // Find li elements that have has-treeview class
             const treeviewItems = wrapper.findAll('li.has-treeview');
             expect(treeviewItems.length).toBeGreaterThanOrEqual(2); // billing and settings
         });
 
-        it('renders billing submenu with nav-treeview class', () => {
+        it('renders billing submenu with nav-treeview class', ({ annotate }) => {
+            annotate('MainMenu treeview: confirms at least 2 submenu UL elements have the nav-treeview class for AdminLTE tree styling');
             const wrapper = mount(MainMenu, mountOptions);
             const subMenus = wrapper.findAll('ul.nav-treeview');
             expect(subMenus.length).toBeGreaterThanOrEqual(2);
         });
 
-        it('billing submenu contains Cart, View Invoices, Credit Cards, Pre-Paid Funds', () => {
+        it('billing submenu contains Cart, View Invoices, Credit Cards, Pre-Paid Funds', ({ annotate }) => {
+            annotate('MainMenu treeview: validates the Billing submenu lists all four child items including Cart, View Invoices, Credit Cards, and Pre-Paid Funds');
             const wrapper = mount(MainMenu, mountOptions);
             const subMenus = wrapper.findAll('ul.nav-treeview');
             const billingSubmenu = subMenus.find((sm) => sm.text().includes('Cart'));

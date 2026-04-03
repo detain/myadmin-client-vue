@@ -28,12 +28,14 @@ const mountOptions = {
 };
 
 describe('VpsList', () => {
-    it('renders ServiceListTable component', () => {
+    it('renders ServiceListTable component', ({ annotate }) => {
+        annotate('VPS List: verifies the ServiceListTable child component is rendered in the DOM');
         const wrapper = mount(VpsList, mountOptions);
         expect(wrapper.find('[data-testid="service-list-table"]').exists()).toBe(true);
     });
 
-    it('sets page heading to VPS List', () => {
+    it('sets page heading to VPS List', ({ annotate }) => {
+        annotate('VPS List: verifies the component mounts and calls setPageHeading with VPS List');
         const wrapper = mount(VpsList, mountOptions);
         const siteStore = (wrapper.vm as any).__pinia?.state?.value?.site;
         // The component calls siteStore.setPageHeading('VPS List') at setup

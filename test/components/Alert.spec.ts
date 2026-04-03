@@ -12,12 +12,14 @@ describe('Alert', () => {
             },
         });
 
-    it('does not render when alert is null', () => {
+    it('does not render when alert is null', ({ annotate }) => {
+        annotate('Alert: verifies component produces no visible output when alertStore has no active alert');
         const wrapper = createWrapper();
         expect(wrapper.find('.container').exists()).toBe(false);
     });
 
-    it('renders success alert message', async () => {
+    it('renders success alert message', async ({ annotate }) => {
+        await annotate('Alert: confirms success alert renders with .alert-success class and displays the provided message text');
         const wrapper = createWrapper();
         const alertStore = useAlertStore();
         alertStore.success('Operation completed');
@@ -26,7 +28,8 @@ describe('Alert', () => {
         expect(wrapper.text()).toContain('Operation completed');
     });
 
-    it('renders error alert message', async () => {
+    it('renders error alert message', async ({ annotate }) => {
+        await annotate('Alert: confirms error alert renders with .alert-danger class and displays the error message text');
         const wrapper = createWrapper();
         const alertStore = useAlertStore();
         alertStore.error('Something went wrong');
@@ -35,7 +38,8 @@ describe('Alert', () => {
         expect(wrapper.text()).toContain('Something went wrong');
     });
 
-    it('close button calls alertStore.clear()', async () => {
+    it('close button calls alertStore.clear()', async ({ annotate }) => {
+        await annotate('Alert: verifies clicking the dismiss button resets the alert store state to null');
         const wrapper = createWrapper();
         const alertStore = useAlertStore();
         alertStore.success('Test message');
@@ -44,7 +48,8 @@ describe('Alert', () => {
         expect(alertStore.alert).toBeNull();
     });
 
-    it('displays correct alert type CSS class', async () => {
+    it('displays correct alert type CSS class', async ({ annotate }) => {
+        await annotate('Alert: validates the alert element carries both the type-specific class and the dismissable class for Bootstrap styling');
         const wrapper = createWrapper();
         const alertStore = useAlertStore();
         alertStore.success('Success message');

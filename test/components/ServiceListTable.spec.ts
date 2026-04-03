@@ -34,7 +34,8 @@ function createWrapper(propsOverrides = {}) {
 }
 
 describe('ServiceListTable', () => {
-    it('renders table with provided columns', () => {
+    it('renders table with provided columns', ({ annotate }) => {
+        annotate('ServiceListTable: verifies table headers match the provided column definitions plus an additional action column');
         const wrapper = createWrapper();
         const headers = wrapper.findAll('thead th');
         expect(headers.length).toBe(columns.length + 1); // +1 for action column
@@ -43,13 +44,15 @@ describe('ServiceListTable', () => {
         expect(headers[2].text()).toContain('Status');
     });
 
-    it('filters data by active status (default)', () => {
+    it('filters data by active status (default)', ({ annotate }) => {
+        annotate('ServiceListTable filtering: confirms the default filter shows only rows with active status');
         const wrapper = createWrapper();
         const rows = wrapper.findAll('tbody tr');
         expect(rows.length).toBe(2); // id 1 and 4 are active
     });
 
-    it('filters data by pending status', async () => {
+    it('filters data by pending status', async ({ annotate }) => {
+        await annotate('ServiceListTable filtering: validates clicking the Pending filter button shows only pending-status rows');
         const wrapper = createWrapper();
         const pendingBtn = wrapper.findAll('#limitStatusGroup a').find((a) => a.text() === 'Pending');
         await pendingBtn!.trigger('click');
@@ -57,7 +60,8 @@ describe('ServiceListTable', () => {
         expect(rows.length).toBe(1); // id 2 is pending
     });
 
-    it('shows all data when all filter selected', async () => {
+    it('shows all data when all filter selected', async ({ annotate }) => {
+        await annotate('ServiceListTable filtering: confirms clicking All filter displays every row regardless of status');
         const wrapper = createWrapper();
         const allBtn = wrapper.findAll('#limitStatusGroup a').find((a) => a.text() === 'All');
         await allBtn!.trigger('click');
@@ -65,7 +69,8 @@ describe('ServiceListTable', () => {
         expect(rows.length).toBe(4);
     });
 
-    it('sorts by column when header clicked', async () => {
+    it('sorts by column when header clicked', async ({ annotate }) => {
+        await annotate('ServiceListTable sorting: validates clicking a column header sorts data by that column in ascending order');
         const wrapper = createWrapper();
         // Click 'All' first so all rows are visible
         const allBtn = wrapper.findAll('#limitStatusGroup a').find((a) => a.text() === 'All');
@@ -77,7 +82,8 @@ describe('ServiceListTable', () => {
         expect(firstCell.text()).toContain('server1.test.com');
     });
 
-    it('toggles sort direction on same column click', async () => {
+    it('toggles sort direction on same column click', async ({ annotate }) => {
+        await annotate('ServiceListTable sorting: confirms clicking the same column header toggles between ascending and descending order');
         const wrapper = createWrapper();
         const allBtn = wrapper.findAll('#limitStatusGroup a').find((a) => a.text() === 'All');
         await allBtn!.trigger('click');
@@ -92,20 +98,23 @@ describe('ServiceListTable', () => {
         expect(firstCell.text()).toContain('4');
     });
 
-    it('renders order button with correct route', () => {
+    it('renders order button with correct route', ({ annotate }) => {
+        annotate('ServiceListTable: verifies the Order button is rendered and links to the provided orderRoute');
         const wrapper = createWrapper({ orderRoute: '/vps/order' });
         const orderLink = wrapper.find('#header_btns a');
         expect(orderLink.exists()).toBe(true);
         expect(orderLink.text()).toContain('Order');
     });
 
-    it('renders export dropdown with format options', () => {
+    it('renders export dropdown with format options', ({ annotate }) => {
+        annotate('ServiceListTable export: confirms the export dropdown renders all 11 supported file format options');
         const wrapper = createWrapper();
         const exportItems = wrapper.findAll('.dropdown-menu li');
         expect(exportItems.length).toBe(11); // 11 export formats
     });
 
-    it('renders router-link for link columns', () => {
+    it('renders router-link for link columns', ({ annotate }) => {
+        annotate('ServiceListTable: validates columns configured with link:true render a RouterLink anchor element in each cell');
         const wrapper = createWrapper();
         // Hostname column has link: true, check that it renders through the RouterLink stub
         const rows = wrapper.findAll('tbody tr');
@@ -115,7 +124,8 @@ describe('ServiceListTable', () => {
     });
 
     describe('crud_print and crud_export', () => {
-        it('calls window.print when print button is clicked', async () => {
+        it('calls window.print when print button is clicked', async ({ annotate }) => {
+            await annotate('ServiceListTable print: verifies clicking the Print button invokes window.print for browser printing');
             const printSpy = vi.spyOn(window, 'print').mockImplementation(() => {});
             const wrapper = createWrapper();
             const printBtn = wrapper.findAll('button').find((b) => b.text().includes('Print'));
@@ -125,7 +135,8 @@ describe('ServiceListTable', () => {
             printSpy.mockRestore();
         });
 
-        it('calls crud_export when export format is clicked', async () => {
+        it('calls crud_export when export format is clicked', async ({ annotate }) => {
+            await annotate('ServiceListTable export: confirms clicking the first export option (xlsx) triggers the export handler with the correct format');
             const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
             const wrapper = createWrapper();
             const exportItems = wrapper.findAll('.dropdown-menu li a');
@@ -138,7 +149,8 @@ describe('ServiceListTable', () => {
             consoleSpy.mockRestore();
         });
 
-        it('calls crud_export with csv type', async () => {
+        it('calls crud_export with csv type', async ({ annotate }) => {
+            await annotate('ServiceListTable export: validates clicking the CSV export option passes the csv format type to the export handler');
             const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
             const wrapper = createWrapper();
             const exportItems = wrapper.findAll('.dropdown-menu li a');
@@ -151,7 +163,8 @@ describe('ServiceListTable', () => {
     });
 
     describe('filter buttons', () => {
-        it('filters by expired status', async () => {
+        it('filters by expired status', async ({ annotate }) => {
+            await annotate('ServiceListTable filter buttons: validates the Expired filter shows only expired-status rows');
             const wrapper = createWrapper();
             const expiredBtn = wrapper.findAll('#limitStatusGroup a').find((a) => a.text() === 'Expired');
             expect(expiredBtn).toBeDefined();
@@ -160,20 +173,23 @@ describe('ServiceListTable', () => {
             expect(rows.length).toBe(1); // id 3 is expired
         });
 
-        it('active button has active class by default', () => {
+        it('active button has active class by default', ({ annotate }) => {
+            annotate('ServiceListTable filter buttons: confirms the Active filter button is highlighted by default on initial render');
             const wrapper = createWrapper();
             const activeBtn = wrapper.findAll('#limitStatusGroup a').find((a) => a.text() === 'Active');
             expect(activeBtn!.classes()).toContain('active');
         });
 
-        it('pending button gets active class when clicked', async () => {
+        it('pending button gets active class when clicked', async ({ annotate }) => {
+            await annotate('ServiceListTable filter buttons: verifies the Pending button receives the active CSS class after being clicked');
             const wrapper = createWrapper();
             const pendingBtn = wrapper.findAll('#limitStatusGroup a').find((a) => a.text() === 'Pending');
             await pendingBtn!.trigger('click');
             expect(pendingBtn!.classes()).toContain('active');
         });
 
-        it('handles pending-setup and pend-approval statuses', async () => {
+        it('handles pending-setup and pend-approval statuses', async ({ annotate }) => {
+            await annotate('ServiceListTable filter buttons: confirms pending-setup and pend-approval statuses are grouped under the Pending filter');
             const extendedData = [
                 ...sampleData,
                 { id: 5, hostname: 'server5.test.com', status: 'pending-setup' },
@@ -186,7 +202,8 @@ describe('ServiceListTable', () => {
             expect(rows.length).toBe(3); // id 2, 5, 6
         });
 
-        it('handles canceled status under expired filter', async () => {
+        it('handles canceled status under expired filter', async ({ annotate }) => {
+            await annotate('ServiceListTable filter buttons: validates that canceled status is grouped under the Expired filter alongside expired services');
             const extendedData = [
                 ...sampleData,
                 { id: 5, hostname: 'server5.test.com', status: 'canceled' },
@@ -200,7 +217,8 @@ describe('ServiceListTable', () => {
     });
 
     describe('sorting edge cases', () => {
-        it('does not sort when column has sortable: false', async () => {
+        it('does not sort when column has sortable: false', async ({ annotate }) => {
+            await annotate('ServiceListTable sorting edge case: confirms clicking a column header with sortable:false does not change the sort field');
             const nonSortableCols = [
                 { key: 'id', label: 'ID' },
                 { key: 'hostname', label: 'Hostname', sortable: false },
@@ -216,7 +234,8 @@ describe('ServiceListTable', () => {
             expect(vm.sortField).toBe('id');
         });
 
-        it('handles null values during sort', async () => {
+        it('handles null values during sort', async ({ annotate }) => {
+            await annotate('ServiceListTable sorting edge case: ensures sorting does not throw when column values contain null entries');
             const dataWithNulls = [
                 { id: 1, hostname: null, status: 'active' },
                 { id: 2, hostname: 'server2.test.com', status: 'active' },
@@ -230,7 +249,8 @@ describe('ServiceListTable', () => {
             expect(rows.length).toBe(3);
         });
 
-        it('sorts numeric values correctly', async () => {
+        it('sorts numeric values correctly', async ({ annotate }) => {
+            await annotate('ServiceListTable sorting edge case: validates numeric ID values are sorted numerically, not lexicographically');
             const wrapper = createWrapper();
             const allBtn = wrapper.findAll('#limitStatusGroup a').find((a) => a.text() === 'All');
             await allBtn!.trigger('click');
@@ -243,7 +263,8 @@ describe('ServiceListTable', () => {
     });
 
     describe('empty state', () => {
-        it('renders empty table when no data matches filter', async () => {
+        it('renders empty table when no data matches filter', async ({ annotate }) => {
+            await annotate('ServiceListTable empty state: confirms an empty-state message row is shown when no data matches the active filter');
             const noActiveData = [
                 { id: 1, hostname: 'server1.test.com', status: 'expired' },
             ];
@@ -254,7 +275,8 @@ describe('ServiceListTable', () => {
             expect(rows[0].text()).toContain('No services found matching filter');
         });
 
-        it('renders table with no data', () => {
+        it('renders table with no data', ({ annotate }) => {
+            annotate('ServiceListTable empty state: verifies an empty data array renders a single message row instead of an empty table body');
             const wrapper = createWrapper({ data: [] });
             // Empty data shows empty-state message row
             const rows = wrapper.findAll('tbody tr');
@@ -264,13 +286,15 @@ describe('ServiceListTable', () => {
     });
 
     describe('computedOrderRoute', () => {
-        it('uses provided orderRoute when given', () => {
+        it('uses provided orderRoute when given', ({ annotate }) => {
+            annotate('ServiceListTable computedOrderRoute: confirms the Order button uses the explicitly provided orderRoute prop');
             const wrapper = createWrapper({ orderRoute: '/custom/order' });
             const orderLink = wrapper.find('#header_btns a');
             expect(orderLink.exists()).toBe(true);
         });
 
-        it('computes default order route from module', () => {
+        it('computes default order route from module', ({ annotate }) => {
+            annotate('ServiceListTable computedOrderRoute: verifies a default order route is derived from the module prop when orderRoute is empty');
             const wrapper = createWrapper({ orderRoute: '' });
             const orderLink = wrapper.find('#header_btns a');
             expect(orderLink.exists()).toBe(true);

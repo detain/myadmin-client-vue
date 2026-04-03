@@ -68,17 +68,20 @@ describe('TicketsList.vue', () => {
         },
     });
 
-    it('renders component', () => {
+    it('renders component', ({ annotate }) => {
+        annotate('Tickets List: verifies the component mounts without errors');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('shows "No tickets found!" when no tickets', () => {
+    it('shows "No tickets found!" when no tickets', ({ annotate }) => {
+        annotate('Tickets List: verifies empty state message when no tickets exist');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.text()).toContain('No tickets found!');
     });
 
-    it('shows ticket status filters', () => {
+    it('shows ticket status filters', ({ annotate }) => {
+        annotate('Tickets List: verifies all status filter tabs (Open, Closed, On Hold, In Progress) are rendered');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.text()).toContain('Open');
         expect(wrapper.text()).toContain('Closed');
@@ -86,18 +89,21 @@ describe('TicketsList.vue', () => {
         expect(wrapper.text()).toContain('In Progress');
     });
 
-    it('shows status counts', () => {
+    it('shows status counts', ({ annotate }) => {
+        annotate('Tickets List: verifies status count badges display the correct numbers');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.text()).toContain('2');
         expect(wrapper.text()).toContain('5');
     });
 
-    it('renders search box', () => {
+    it('renders search box', ({ annotate }) => {
+        annotate('Tickets List: verifies the search input field is present in the sidebar');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.find('input.form-control').exists()).toBe(true);
     });
 
-    it('renders period filter', () => {
+    it('renders period filter', ({ annotate }) => {
+        annotate('Tickets List: verifies the age filter dropdown with 30, 90, and All Time options is rendered');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.text()).toContain('Filter by Age');
         expect(wrapper.text()).toContain('Last 30 Days');
@@ -105,12 +111,14 @@ describe('TicketsList.vue', () => {
         expect(wrapper.text()).toContain('All Time');
     });
 
-    it('renders New Ticket link', () => {
+    it('renders New Ticket link', ({ annotate }) => {
+        annotate('Tickets List: verifies the New Ticket navigation link is present');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.text()).toContain('New Ticket');
     });
 
-    it('renders tickets when data exists', () => {
+    it('renders tickets when data exists', ({ annotate }) => {
+        annotate('Tickets List: verifies ticket mask ID, subject, and last replier are displayed');
         const wrapper = mount(TicketsList, createMountOptions({
             tickets: [
                 {
@@ -130,7 +138,8 @@ describe('TicketsList.vue', () => {
         expect(wrapper.text()).toContain('Support');
     });
 
-    it('renders table headers when tickets exist', () => {
+    it('renders table headers when tickets exist', ({ annotate }) => {
+        annotate('Tickets List: verifies table headers (Subject, Last Replier, Date) are rendered with ticket data');
         const wrapper = mount(TicketsList, createMountOptions({
             tickets: [
                 {
@@ -150,18 +159,21 @@ describe('TicketsList.vue', () => {
         expect(wrapper.text()).toContain('Date');
     });
 
-    it('shows period label in header', () => {
+    it('shows period label in header', ({ annotate }) => {
+        annotate('Tickets List: verifies the default period label shows Last 30 Days');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.text()).toContain('Last 30 Days');
     });
 
-    it('shows Quick Filter section', () => {
+    it('shows Quick Filter section', ({ annotate }) => {
+        annotate('Tickets List: verifies the Quick Filter section heading is present');
         const wrapper = mount(TicketsList, createMountOptions());
         expect(wrapper.text()).toContain('Quick Filter');
     });
 
     describe('search functionality', () => {
-        it('does not search when search box is empty', async () => {
+        it('does not search when search box is empty', async ({ annotate }) => {
+            await annotate('Tickets List: verifies submitting empty search does not trigger search results');
             const wrapper = mount(TicketsList, createMountOptions());
             const form = wrapper.find('#sidebar form');
             await form.trigger('submit.prevent');
@@ -170,7 +182,8 @@ describe('TicketsList.vue', () => {
             expect(wrapper.find('.results').exists()).toBe(false);
         });
 
-        it('shows search results after submitting search', async () => {
+        it('shows search results after submitting search', async ({ annotate }) => {
+            await annotate('Tickets List: verifies search POST returns and displays matching ticket results');
             const { fetchWrapper } = await import('@/helpers/fetchWrapper');
             vi.mocked(fetchWrapper.post).mockResolvedValue([
                 {
@@ -194,7 +207,8 @@ describe('TicketsList.vue', () => {
             expect(wrapper.text()).toContain('Search result ticket');
         });
 
-        it('shows spinner while searching and before results arrive', async () => {
+        it('shows spinner while searching and before results arrive', async ({ annotate }) => {
+            await annotate('Tickets List: verifies spinner is shown while waiting for search API response');
             const { fetchWrapper } = await import('@/helpers/fetchWrapper');
             let resolveSearch!: (val: any) => void;
             vi.mocked(fetchWrapper.post).mockImplementation(() => new Promise((resolve) => { resolveSearch = resolve; }));
@@ -213,7 +227,8 @@ describe('TicketsList.vue', () => {
     });
 
     describe('pagination', () => {
-        it('shows pagination when pages > 1', () => {
+        it('shows pagination when pages > 1', ({ annotate }) => {
+            annotate('Tickets List: verifies pagination page items appear when there are multiple pages');
             const wrapper = mount(TicketsList, createMountOptions({
                 pages: 3,
                 currentPage: 1,
@@ -235,7 +250,8 @@ describe('TicketsList.vue', () => {
             expect(pageLinks.length).toBe(3);
         });
 
-        it('marks current page as active', () => {
+        it('marks current page as active', ({ annotate }) => {
+            annotate('Tickets List: verifies the current page number has the active CSS class');
             const wrapper = mount(TicketsList, createMountOptions({
                 pages: 3,
                 currentPage: 2,
@@ -258,7 +274,8 @@ describe('TicketsList.vue', () => {
             expect(activeItem.text()).toBe('2');
         });
 
-        it('navigates to page on click', async () => {
+        it('navigates to page on click', async ({ annotate }) => {
+            await annotate('Tickets List: verifies clicking a page link pushes the correct page query param to router');
             const wrapper = mount(TicketsList, createMountOptions({
                 pages: 3,
                 currentPage: 1,
@@ -281,7 +298,8 @@ describe('TicketsList.vue', () => {
             expect(mockPush).toHaveBeenCalledWith({ query: expect.objectContaining({ page: 3 }) });
         });
 
-        it('does not show pagination when pages <= 1', () => {
+        it('does not show pagination when pages <= 1', ({ annotate }) => {
+            annotate('Tickets List: verifies pagination is hidden when there is only one page or fewer');
             const wrapper = mount(TicketsList, createMountOptions({
                 pages: 1,
                 tickets: [],
@@ -292,7 +310,8 @@ describe('TicketsList.vue', () => {
     });
 
     describe('status icons and badges', () => {
-        it('renders correct status icon for Open tickets', () => {
+        it('renders correct status icon for Open tickets', ({ annotate }) => {
+            annotate('Tickets List: verifies Open tickets display an envelope-open icon with text-success class');
             const wrapper = mount(TicketsList, createMountOptions({
                 tickets: [
                     {
@@ -313,7 +332,8 @@ describe('TicketsList.vue', () => {
             expect(icon.classes()).toContain('text-success');
         });
 
-        it('renders correct status icon for On Hold tickets', () => {
+        it('renders correct status icon for On Hold tickets', ({ annotate }) => {
+            annotate('Tickets List: verifies On Hold tickets display a pause icon with text-warning class');
             const wrapper = mount(TicketsList, createMountOptions({
                 tickets: [
                     {
@@ -334,7 +354,8 @@ describe('TicketsList.vue', () => {
             expect(icon.classes()).toContain('text-warning');
         });
 
-        it('renders paperclip icon for tickets with attachments', () => {
+        it('renders paperclip icon for tickets with attachments', ({ annotate }) => {
+            annotate('Tickets List: verifies paperclip icon appears for tickets that have attachments');
             const wrapper = mount(TicketsList, createMountOptions({
                 tickets: [
                     {
@@ -353,7 +374,8 @@ describe('TicketsList.vue', () => {
             expect(wrapper.find('i.fa-paperclip').exists()).toBe(true);
         });
 
-        it('does not render paperclip icon for tickets without attachments', () => {
+        it('does not render paperclip icon for tickets without attachments', ({ annotate }) => {
+            annotate('Tickets List: verifies paperclip icon is absent for tickets without attachments');
             const wrapper = mount(TicketsList, createMountOptions({
                 tickets: [
                     {
@@ -374,7 +396,8 @@ describe('TicketsList.vue', () => {
     });
 
     describe('time formatting', () => {
-        it('formats time as seconds ago', () => {
+        it('formats time as seconds ago', ({ annotate }) => {
+            annotate('Tickets List: verifies time formatting shows seconds ago for very recent activity');
             const now = Math.floor(Date.now() / 1000);
             const wrapper = mount(TicketsList, createMountOptions({
                 tickets: [
@@ -394,7 +417,8 @@ describe('TicketsList.vue', () => {
             expect(wrapper.text()).toMatch(/\d+s ago/);
         });
 
-        it('formats time as minutes ago', () => {
+        it('formats time as minutes ago', ({ annotate }) => {
+            annotate('Tickets List: verifies time formatting shows minutes ago for activity within the last hour');
             const now = Math.floor(Date.now() / 1000);
             const wrapper = mount(TicketsList, createMountOptions({
                 tickets: [
@@ -414,7 +438,8 @@ describe('TicketsList.vue', () => {
             expect(wrapper.text()).toMatch(/\d+m ago/);
         });
 
-        it('formats time as hours ago', () => {
+        it('formats time as hours ago', ({ annotate }) => {
+            annotate('Tickets List: verifies time formatting shows hours ago for activity within the last day');
             const now = Math.floor(Date.now() / 1000);
             const wrapper = mount(TicketsList, createMountOptions({
                 tickets: [
@@ -434,7 +459,8 @@ describe('TicketsList.vue', () => {
             expect(wrapper.text()).toMatch(/\d+h ago/);
         });
 
-        it('formats time as days ago', () => {
+        it('formats time as days ago', ({ annotate }) => {
+            annotate('Tickets List: verifies time formatting shows days ago for older activity');
             const now = Math.floor(Date.now() / 1000);
             const wrapper = mount(TicketsList, createMountOptions({
                 tickets: [
@@ -456,7 +482,8 @@ describe('TicketsList.vue', () => {
     });
 
     describe('period filter change', () => {
-        it('pushes route query when period changes', async () => {
+        it('pushes route query when period changes', async ({ annotate }) => {
+            await annotate('Tickets List: verifies changing the period filter pushes the period query param to router');
             const wrapper = mount(TicketsList, createMountOptions());
 
             const select = wrapper.find('select.form-control');
@@ -467,7 +494,8 @@ describe('TicketsList.vue', () => {
             });
         });
 
-        it('omits period from query when set to 30 (default)', async () => {
+        it('omits period from query when set to 30 (default)', async ({ annotate }) => {
+            await annotate('Tickets List: verifies setting period back to 30 omits it from the router query');
             const wrapper = mount(TicketsList, createMountOptions());
 
             // Change to 90 first

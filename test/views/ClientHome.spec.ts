@@ -82,67 +82,79 @@ const mountOptions = {
 };
 
 describe('ClientHome', () => {
-    it('renders without crashing', () => {
+    it('renders without crashing', ({ annotate }) => {
+        annotate('Client Home: verifies the component mounts without errors');
         const wrapper = mount(ClientHome, mountOptions);
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('shows welcome section', async () => {
+    it('shows welcome section', async ({ annotate }) => {
+        await annotate('Client Home: verifies the welcome greeting section is displayed after data loads');
         const wrapper = mount(ClientHome, mountOptions);
         await flushPromises();
         expect(wrapper.text()).toContain('Welcome');
     });
 
-    it('shows PrePay Balance section', () => {
+    it('shows PrePay Balance section', ({ annotate }) => {
+        annotate('Client Home: verifies the Prepay Balance info box is rendered');
         const wrapper = mount(ClientHome, mountOptions);
         expect(wrapper.text()).toContain('Prepay Balance');
     });
 
-    it('shows Unpaid Invoices section', () => {
+    it('shows Unpaid Invoices section', ({ annotate }) => {
+        annotate('Client Home: verifies the Unpaid Invoices info box is rendered');
         const wrapper = mount(ClientHome, mountOptions);
         expect(wrapper.text()).toContain('Unpaid Invoices');
     });
 
-    it('shows Call in Pin', () => {
+    it('shows Call in Pin', ({ annotate }) => {
+        annotate('Client Home: verifies the Call-in PIN section displays the account PIN from store data');
         const wrapper = mount(ClientHome, mountOptions);
         expect(wrapper.text()).toContain('Call-in PIN');
         expect(wrapper.text()).toContain('5678');
     });
 
-    it('shows affiliate section', () => {
+    it('shows affiliate section', ({ annotate }) => {
+        annotate('Client Home: verifies the affiliate program section with Per Sale info and clipboard button is rendered');
         const wrapper = mount(ClientHome, mountOptions);
         expect(wrapper.text()).toContain('Per Sale');
         expect(wrapper.text()).toContain('Copy to Clipboard');
     });
 
-    it('shows social share links', () => {
+    it('shows social share links', ({ annotate }) => {
+        annotate('Client Home: verifies social sharing links are displayed for the affiliate URL');
         const wrapper = mount(ClientHome, mountOptions);
         expect(wrapper.text()).toContain('Share with');
     });
 
-    it('renders affiliate URL input', () => {
+    it('renders affiliate URL input', ({ annotate }) => {
+        annotate('Client Home: verifies the affiliate URL input field is present in the DOM');
         const wrapper = mount(ClientHome, mountOptions);
         const input = wrapper.find('#affiliateinput');
         expect(input.exists()).toBe(true);
     });
 
-    it('renders Manage Account link for prepay', () => {
+    it('renders Manage Account link for prepay', ({ annotate }) => {
+        annotate('Client Home: verifies the Manage Account navigation link is present in the prepay section');
         const wrapper = mount(ClientHome, mountOptions);
         expect(wrapper.text()).toContain('Manage Account');
     });
 
-    it('renders Pay Now link', () => {
+    it('renders Pay Now link', ({ annotate }) => {
+        annotate('Client Home: verifies the Pay Now link is rendered for unpaid invoices');
         const wrapper = mount(ClientHome, mountOptions);
         expect(wrapper.text()).toContain('Pay Now');
     });
 
-    it('calls fetchWrapper.get to load home data', () => {
+    it('calls fetchWrapper.get to load home data', ({ annotate }) => {
+        annotate('Client Home: verifies fetchWrapper.get is called with /home endpoint on component mount');
         mount(ClientHome, mountOptions);
         expect(fetchWrapper.get).toHaveBeenCalledWith(expect.stringContaining('/home'));
     });
 
     describe('copyToClipboard', () => {
-        it('invokes copyToClipboard on button click', async () => {
+        it('invokes copyToClipboard on button click', async ({ annotate }) => {
+            await annotate('Client Home: verifies the copy URL button click triggers the copyToClipboard function');
             const wrapper = mount(ClientHome, mountOptions);
             await flushPromises();
 
@@ -154,7 +166,8 @@ describe('ClientHome', () => {
             await flushPromises();
         });
 
-        it('does nothing if affiliateinput element is not found', async () => {
+        it('does nothing if affiliateinput element is not found', async ({ annotate }) => {
+            await annotate('Client Home: verifies copyToClipboard exits early when the affiliate input element is null');
             // Mock getElementById to return null to cover early return
             const origGetElementById = document.getElementById.bind(document);
             document.getElementById = vi.fn((id: string) => {
@@ -172,7 +185,8 @@ describe('ClientHome', () => {
             document.getElementById = origGetElementById;
         });
 
-        it('uses clipboard API when element has textContent', async () => {
+        it('uses clipboard API when element has textContent', async ({ annotate }) => {
+            await annotate('Client Home: verifies clipboard.writeText is called with the affiliate URL text content');
             const writeTextMock = vi.fn().mockResolvedValue(undefined);
             Object.assign(navigator, { clipboard: { writeText: writeTextMock } });
 
@@ -198,7 +212,8 @@ describe('ClientHome', () => {
     });
 
     describe('loadHome error handling', () => {
-        it('handles API failure in loadHome', async () => {
+        it('handles API failure in loadHome', async ({ annotate }) => {
+            await annotate('Client Home: verifies the component handles API errors in loadHome gracefully without crashing');
             const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
             // loadHome uses .then() so a rejection results in unhandled rejection
             // Instead, mock to throw synchronously in the try block
@@ -260,25 +275,29 @@ describe('ClientHome', () => {
             });
         });
 
-        it('renders service sections after data loads', async () => {
+        it('renders service sections after data loads', async ({ annotate }) => {
+            await annotate('Client Home: verifies service module headings appear after async data loads');
             const wrapper = mount(ClientHome, mountOptions);
             await flushPromises();
             expect(wrapper.text()).toContain('VPS Services');
         });
 
-        it('renders service links', async () => {
+        it('renders service links', async ({ annotate }) => {
+            await annotate('Client Home: verifies individual service hostnames are rendered as links');
             const wrapper = mount(ClientHome, mountOptions);
             await flushPromises();
             expect(wrapper.text()).toContain('my-vps.example.com');
         });
 
-        it('renders Order Now buttons for services', async () => {
+        it('renders Order Now buttons for services', async ({ annotate }) => {
+            await annotate('Client Home: verifies Order Now buttons are rendered for each service module');
             const wrapper = mount(ClientHome, mountOptions);
             await flushPromises();
             expect(wrapper.text()).toContain('Order Now');
         });
 
-        it('renders ex_links control panel button when available', async () => {
+        it('renders ex_links control panel button when available', async ({ annotate }) => {
+            await annotate('Client Home: verifies Control Panel button renders when external links (ex_links) are present for a service');
             vi.mocked(fetchWrapper.get).mockResolvedValue({
                 last_login_ip: '192.168.1.1',
                 last_login: '2024-01-15 10:30:00',
@@ -313,7 +332,8 @@ describe('ClientHome', () => {
     });
 
     describe('onMounted portlet handling', () => {
-        it('initializes portlet elements on mount', async () => {
+        it('initializes portlet elements on mount', async ({ annotate }) => {
+            await annotate('Client Home: verifies portlet DOM elements are initialized during onMounted lifecycle');
             const wrapper = mount(ClientHome, mountOptions);
             await flushPromises();
             expect(wrapper.exists()).toBe(true);
@@ -321,7 +341,8 @@ describe('ClientHome', () => {
     });
 
     describe('tickets table', () => {
-        it('renders tickets table when tickets exist', async () => {
+        it('renders tickets table when tickets exist', async ({ annotate }) => {
+            await annotate('Client Home: verifies the Recent Tickets table renders with ticket data including mask ID and subject');
             vi.mocked(fetchWrapper.get).mockResolvedValue({
                 last_login_ip: '192.168.1.1',
                 last_login: '2024-01-15 10:30:00',
@@ -348,7 +369,8 @@ describe('ClientHome', () => {
             expect(wrapper.text()).toContain('Help needed');
         });
 
-        it('does not render tickets table when no tickets', async () => {
+        it('does not render tickets table when no tickets', async ({ annotate }) => {
+            await annotate('Client Home: verifies the Recent Tickets section is hidden when the tickets array is empty');
             vi.mocked(fetchWrapper.get).mockResolvedValue({
                 last_login_ip: '192.168.1.1',
                 last_login: '2024-01-15 10:30:00',

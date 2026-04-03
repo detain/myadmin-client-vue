@@ -43,7 +43,8 @@ describe('Router Backward Compatibility Redirects', () => {
     ];
 
     for (const { from, to } of redirectTests) {
-        it(`redirects ${from} to ${to}`, () => {
+        it(`redirects ${from} to ${to}`, ({ annotate }) => {
+            annotate(`Router redirects: verifies legacy path ${from} has redirect defined for backward compatibility`);
             const resolved = router.resolve(from);
             // For redirect routes, the matched route has a redirect property
             const matchedRoute = resolved.matched[0];
@@ -52,7 +53,8 @@ describe('Router Backward Compatibility Redirects', () => {
         });
     }
 
-    it('catch-all route redirects unknown paths to /', () => {
+    it('catch-all route redirects unknown paths to /', ({ annotate }) => {
+        annotate('Router redirects: verifies catch-all route captures unrecognized paths and has a redirect defined');
         const resolved = router.resolve('/this-path-does-not-exist');
         const matchedRoute = resolved.matched[0];
         expect(matchedRoute).toBeDefined();

@@ -28,7 +28,8 @@ vi.mock('vue-router', () => ({
 }));
 
 describe('Sudo.vue', () => {
-    it('renders redirect message', () => {
+    it('renders redirect message', ({ annotate }) => {
+        annotate('Sudo View: verifies the component renders a message indicating the user is logged in as a client');
         const wrapper = mount(Sudo, {
             global: {
                 plugins: [createTestingPinia({ createSpy: vi.fn, stubActions: true })],
@@ -37,7 +38,8 @@ describe('Sudo.vue', () => {
         expect(wrapper.text()).toContain('Logged in as a client');
     });
 
-    it('calls authStore.sudo with session id from route params', () => {
+    it('calls authStore.sudo with session id from route params', ({ annotate }) => {
+        annotate('Sudo View: verifies that authStore.sudo is invoked with the sessionid route parameter on mount');
         mount(Sudo, {
             global: {
                 plugins: [createTestingPinia({ createSpy: vi.fn, stubActions: true })],

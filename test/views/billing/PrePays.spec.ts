@@ -66,27 +66,32 @@ describe('PrePays.vue', () => {
         },
     });
 
-    it('renders component', () => {
+    it('renders component', ({ annotate }) => {
+        annotate('PrePays: verifies the component mounts without errors');
         const wrapper = mount(PrePays, createMountOptions());
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('shows loading text when loading', () => {
+    it('shows loading text when loading', ({ annotate }) => {
+        annotate('PrePays: verifies loading indicator text appears when loading state is true');
         const wrapper = mount(PrePays, createMountOptions({ loading: true }));
         expect(wrapper.text()).toContain('Loading');
     });
 
-    it('shows "No Prepaid funds available" when no prepays', () => {
+    it('shows "No Prepaid funds available" when no prepays', ({ annotate }) => {
+        annotate('PrePays: verifies empty state message when no prepaid funds exist');
         const wrapper = mount(PrePays, createMountOptions());
         expect(wrapper.text()).toContain('No prepaid funds available');
     });
 
-    it('shows "Add New Prepay" button', () => {
+    it('shows "Add New Prepay" button', ({ annotate }) => {
+        annotate('PrePays: verifies the Add New Prepay button is rendered');
         const wrapper = mount(PrePays, createMountOptions());
         expect(wrapper.text()).toContain('Add New Prepay');
     });
 
-    it('renders prepays when data exists', () => {
+    it('renders prepays when data exists', ({ annotate }) => {
+        annotate('PrePays: verifies prepay entries display ID, amount, and module name');
         const wrapper = mount(PrePays, createMountOptions({
             prepays: {
                 1: {
@@ -100,7 +105,8 @@ describe('PrePays.vue', () => {
         expect(wrapper.text()).toContain('Vps');
     });
 
-    it('renders prepay with null module as "All"', () => {
+    it('renders prepay with null module as "All"', ({ annotate }) => {
+        annotate('PrePays: verifies prepay with null module shows All and auto-use No');
         const wrapper = mount(PrePays, createMountOptions({
             prepays: {
                 1: {
@@ -113,7 +119,8 @@ describe('PrePays.vue', () => {
         expect(wrapper.text()).toContain('No');
     });
 
-    it('renders history when present', () => {
+    it('renders history when present', ({ annotate }) => {
+        annotate('PrePays: verifies History Log section appears when prepay has history entries');
         const wrapper = mount(PrePays, createMountOptions({
             prepays: {
                 1: {
@@ -127,7 +134,8 @@ describe('PrePays.vue', () => {
         expect(wrapper.text()).toContain('History Log');
     });
 
-    it('shows "No History found!" when history is empty', () => {
+    it('shows "No History found!" when history is empty', ({ annotate }) => {
+        annotate('PrePays: verifies No history found message when prepay history array is empty');
         const wrapper = mount(PrePays, createMountOptions({
             prepays: {
                 1: {
@@ -139,7 +147,8 @@ describe('PrePays.vue', () => {
         expect(wrapper.text()).toContain('No history found!');
     });
 
-    it('renders pagination', () => {
+    it('renders pagination', ({ annotate }) => {
+        annotate('PrePays: verifies pagination controls with Previous/Next and page info are rendered');
         const wrapper = mount(PrePays, createMountOptions({
             prepays: {
                 1: {
@@ -157,14 +166,16 @@ describe('PrePays.vue', () => {
         expect(wrapper.text()).toContain('Showing page 1 of 3');
     });
 
-    it('renders the add prepay modal', () => {
+    it('renders the add prepay modal', ({ annotate }) => {
+        annotate('PrePays: verifies the add prepay modal with module select and amount input is rendered');
         const wrapper = mount(PrePays, createMountOptions());
         expect(wrapper.find('#add-prepay').exists()).toBe(true);
         expect(wrapper.text()).toContain('Select Module');
         expect(wrapper.text()).toContain('Amount in USD');
     });
 
-    it('submits new prepay form', async () => {
+    it('submits new prepay form', async ({ annotate }) => {
+        await annotate('PrePays: verifies submitNewPrepay POSTs to /billing/prepays with module and amount');
         vi.mocked(fetchWrapper.post).mockResolvedValue({ invoice: 123 });
         const wrapper = mount(PrePays, createMountOptions());
         // Call the component's submit method directly since the form is inside a Bootstrap modal
@@ -177,7 +188,8 @@ describe('PrePays.vue', () => {
     });
 
     describe('toggleHistory', () => {
-        it('expands history on first click and collapses on second', async () => {
+        it('expands history on first click and collapses on second', async ({ annotate }) => {
+            await annotate('PrePays: verifies history section toggles between expanded and collapsed on button clicks');
             const wrapper = mount(PrePays, createMountOptions({
                 prepays: {
                     1: {
@@ -204,7 +216,8 @@ describe('PrePays.vue', () => {
             expect(wrapper.find('.card-secondary .card-body').attributes('style')).toContain('display: none');
         });
 
-        it('shows history rows when expanded', async () => {
+        it('shows history rows when expanded', async ({ annotate }) => {
+            await annotate('PrePays: verifies history rows with descriptions are visible when expanded');
             const wrapper = mount(PrePays, createMountOptions({
                 prepays: {
                     1: {
@@ -238,7 +251,8 @@ describe('PrePays.vue', () => {
             curr_page_records: 10,
         };
 
-        it('navigates to a valid page when clicking a page number', async () => {
+        it('navigates to a valid page when clicking a page number', async ({ annotate }) => {
+            await annotate('PrePays: verifies clicking a page number triggers store.load for that page');
             const wrapper = mount(PrePays, createMountOptions(paginatedState));
             const store = usePrePayStore();
 
@@ -249,7 +263,8 @@ describe('PrePays.vue', () => {
             expect(store.load).toHaveBeenCalled();
         });
 
-        it('does not navigate when clicking current page', () => {
+        it('does not navigate when clicking current page', ({ annotate }) => {
+            annotate('PrePays: verifies goToPage does not call store.load when already on that page');
             const wrapper = mount(PrePays, createMountOptions(paginatedState));
             const store = usePrePayStore();
             (store.load as any).mockClear();
@@ -259,7 +274,8 @@ describe('PrePays.vue', () => {
             expect(store.load).not.toHaveBeenCalled();
         });
 
-        it('does not navigate to page < 1', () => {
+        it('does not navigate to page < 1', ({ annotate }) => {
+            annotate('PrePays: verifies goToPage ignores page numbers less than 1');
             const wrapper = mount(PrePays, createMountOptions(paginatedState));
             const store = usePrePayStore();
             (store.load as any).mockClear();
@@ -268,7 +284,8 @@ describe('PrePays.vue', () => {
             expect(store.load).not.toHaveBeenCalled();
         });
 
-        it('does not navigate beyond total_pages', () => {
+        it('does not navigate beyond total_pages', ({ annotate }) => {
+            annotate('PrePays: verifies goToPage ignores page numbers beyond total_pages');
             const wrapper = mount(PrePays, createMountOptions(paginatedState));
             const store = usePrePayStore();
             (store.load as any).mockClear();
@@ -277,7 +294,8 @@ describe('PrePays.vue', () => {
             expect(store.load).not.toHaveBeenCalled();
         });
 
-        it('clicking Previous on page 1 does not navigate', async () => {
+        it('clicking Previous on page 1 does not navigate', async ({ annotate }) => {
+            await annotate('PrePays: verifies Previous button on page 1 does not trigger navigation');
             const wrapper = mount(PrePays, createMountOptions(paginatedState));
             const store = usePrePayStore();
             (store.load as any).mockClear();
@@ -288,7 +306,8 @@ describe('PrePays.vue', () => {
             expect(store.load).not.toHaveBeenCalled();
         });
 
-        it('clicking Next navigates to next page', async () => {
+        it('clicking Next navigates to next page', async ({ annotate }) => {
+            await annotate('PrePays: verifies clicking Next button triggers store.load for the next page');
             const wrapper = mount(PrePays, createMountOptions(paginatedState));
             const store = usePrePayStore();
             (store.load as any).mockClear();
@@ -301,7 +320,8 @@ describe('PrePays.vue', () => {
     });
 
     describe('delete_prepay', () => {
-        it('calls Swal.fire with confirmation dialog', async () => {
+        it('calls Swal.fire with confirmation dialog', async ({ annotate }) => {
+            await annotate('PrePays: verifies delete_prepay shows Swal confirmation dialog with error icon');
             const Swal = (await import('sweetalert2')).default;
             const wrapper = mount(PrePays, createMountOptions());
             (wrapper.vm as any).delete_prepay(42);
@@ -314,7 +334,8 @@ describe('PrePays.vue', () => {
             );
         });
 
-        it('includes prepay id in the confirmation HTML', async () => {
+        it('includes prepay id in the confirmation HTML', async ({ annotate }) => {
+            await annotate('PrePays: verifies delete_prepay includes the prepay ID in the Swal confirmation HTML');
             const Swal = (await import('sweetalert2')).default;
             const wrapper = mount(PrePays, createMountOptions());
             (wrapper.vm as any).delete_prepay(99);
@@ -324,7 +345,8 @@ describe('PrePays.vue', () => {
     });
 
     describe('addPrepayUpdates', () => {
-        it('hides service and type rows when module is default', () => {
+        it('hides service and type rows when module is default', ({ annotate }) => {
+            annotate('PrePays: verifies addPrepayUpdates executes without error when module is default');
             const wrapper = mount(PrePays, createMountOptions({
                 allInfo: {
                     vps: { module_name: 'VPS', services: { 1: 'Service A' } },
@@ -335,7 +357,8 @@ describe('PrePays.vue', () => {
             // Function should execute without errors when module is 'default'
         });
 
-        it('processes module services when a non-default module is selected', () => {
+        it('processes module services when a non-default module is selected', ({ annotate }) => {
+            annotate('PrePays: verifies addPrepayUpdates processes services for a valid non-default module');
             const wrapper = mount(PrePays, createMountOptions({
                 allInfo: {
                     vps: { module_name: 'VPS', services: { 1: 'Service A', 2: 'Service B' } },
@@ -348,14 +371,16 @@ describe('PrePays.vue', () => {
     });
 
     describe('add_amount', () => {
-        it('executes without error', () => {
+        it('executes without error', ({ annotate }) => {
+            annotate('PrePays: verifies add_amount executes without throwing');
             const wrapper = mount(PrePays, createMountOptions());
             expect(() => (wrapper.vm as any).add_amount('42', 'vps')).not.toThrow();
         });
     });
 
     describe('submitNewPrepay', () => {
-        it('navigates to cart when response has invoice', async () => {
+        it('navigates to cart when response has invoice', async ({ annotate }) => {
+            await annotate('PrePays: verifies submitNewPrepay navigates to /cart/{invoiceId} on success');
             vi.mocked(fetchWrapper.post).mockResolvedValue({ invoice: 456 });
             const wrapper = mount(PrePays, createMountOptions());
 
@@ -365,7 +390,8 @@ describe('PrePays.vue', () => {
             expect(mockPush).toHaveBeenCalledWith('/cart/456');
         });
 
-        it('calls Swal.close after successful response', async () => {
+        it('calls Swal.close after successful response', async ({ annotate }) => {
+            await annotate('PrePays: verifies submitNewPrepay calls Swal.close after successful API response');
             const Swal = (await import('sweetalert2')).default;
             vi.mocked(fetchWrapper.post).mockResolvedValue({ invoice: 789 });
             const wrapper = mount(PrePays, createMountOptions());
@@ -376,7 +402,8 @@ describe('PrePays.vue', () => {
             expect(Swal.close).toHaveBeenCalled();
         });
 
-        it('does not navigate when response has no invoice', async () => {
+        it('does not navigate when response has no invoice', async ({ annotate }) => {
+            await annotate('PrePays: verifies submitNewPrepay does not navigate when response lacks an invoice');
             mockPush.mockClear();
             vi.mocked(fetchWrapper.post).mockResolvedValue({});
             const wrapper = mount(PrePays, createMountOptions());
@@ -387,7 +414,8 @@ describe('PrePays.vue', () => {
             expect(mockPush).not.toHaveBeenCalled();
         });
 
-        it('shows loading Swal before API call', async () => {
+        it('shows loading Swal before API call', async ({ annotate }) => {
+            await annotate('PrePays: verifies submitNewPrepay shows a loading Swal with no confirm button');
             const Swal = (await import('sweetalert2')).default;
             vi.mocked(Swal.fire).mockClear();
             vi.mocked(fetchWrapper.post).mockResolvedValue({});
@@ -404,7 +432,8 @@ describe('PrePays.vue', () => {
             );
         });
 
-        it('handles fetch error gracefully', async () => {
+        it('handles fetch error gracefully', async ({ annotate }) => {
+            await annotate('PrePays: verifies submitNewPrepay handles fetch errors without throwing');
             vi.mocked(fetchWrapper.post).mockImplementation(() => { throw new Error('Network error'); });
             const Swal = (await import('sweetalert2')).default;
             const wrapper = mount(PrePays, createMountOptions());
@@ -415,7 +444,8 @@ describe('PrePays.vue', () => {
     });
 
     describe('form rendering', () => {
-        it('renders module select with options from store', () => {
+        it('renders module select with options from store', ({ annotate }) => {
+            annotate('PrePays: verifies module select renders options from store modules data');
             const wrapper = mount(PrePays, createMountOptions({
                 modules: { default: 'All', vps: 'VPS', webhosting: 'Web Hosting' },
             }));
@@ -423,20 +453,23 @@ describe('PrePays.vue', () => {
             expect(options.length).toBe(3);
         });
 
-        it('renders amount input with default value', () => {
+        it('renders amount input with default value', ({ annotate }) => {
+            annotate('PrePays: verifies amount input defaults to 100');
             const wrapper = mount(PrePays, createMountOptions());
             const input = wrapper.find('#add-prepay input[type="number"]');
             expect(input.exists()).toBe(true);
             expect((input.element as HTMLInputElement).value).toBe('100');
         });
 
-        it('renders auto-use radio buttons', () => {
+        it('renders auto-use radio buttons', ({ annotate }) => {
+            annotate('PrePays: verifies two auto-use radio buttons are rendered');
             const wrapper = mount(PrePays, createMountOptions());
             const radios = wrapper.findAll('#add-prepay input[type="radio"]');
             expect(radios.length).toBe(2);
         });
 
-        it('renders submit and cancel buttons in modal', () => {
+        it('renders submit and cancel buttons in modal', ({ annotate }) => {
+            annotate('PrePays: verifies submit and cancel buttons are rendered in the add prepay modal');
             const wrapper = mount(PrePays, createMountOptions());
             const buttons = wrapper.findAll('#add-prepay .text-center button');
             expect(buttons.length).toBe(2);
@@ -444,7 +477,8 @@ describe('PrePays.vue', () => {
     });
 
     describe('pagination rendering', () => {
-        it('renders correct number of page buttons', () => {
+        it('renders correct number of page buttons', ({ annotate }) => {
+            annotate('PrePays: verifies pagination renders 5 page buttons plus Previous and Next');
             const wrapper = mount(PrePays, createMountOptions({
                 prepays: {
                     1: {
@@ -462,7 +496,8 @@ describe('PrePays.vue', () => {
             expect(pageItems.length).toBe(7);
         });
 
-        it('marks current page as active', () => {
+        it('marks current page as active', ({ annotate }) => {
+            annotate('PrePays: verifies the current page button has the active CSS class');
             const wrapper = mount(PrePays, createMountOptions({
                 prepays: {
                     1: {
@@ -480,7 +515,8 @@ describe('PrePays.vue', () => {
             expect(pageItems[2].classes()).toContain('active');
         });
 
-        it('disables Previous button on first page', () => {
+        it('disables Previous button on first page', ({ annotate }) => {
+            annotate('PrePays: verifies Previous button has disabled class on page 1');
             const wrapper = mount(PrePays, createMountOptions({
                 prepays: {
                     1: {
@@ -495,7 +531,8 @@ describe('PrePays.vue', () => {
             expect(firstPageItem.classes()).toContain('disabled');
         });
 
-        it('disables Next button on last page', () => {
+        it('disables Next button on last page', ({ annotate }) => {
+            annotate('PrePays: verifies Next button has disabled class on the last page');
             const wrapper = mount(PrePays, createMountOptions({
                 prepays: {
                     1: {
