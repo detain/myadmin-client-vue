@@ -181,6 +181,49 @@ jobs:
                   git add README.md
                   git diff --cached --quiet && echo "No changes to commit" || git commit -m "ci: update test results in README [skip ci]" && git push
 
+    # ---------------- VISUAL REGRESSION TESTS ----------------
+    visual-test:
+        name: Visual Regression Tests
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v6
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v6
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+
+            - name: Enable Corepack and set Yarn version
+              run: |
+                  corepack enable
+                  corepack prepare yarn@${{ env.YARN_VERSION }} --activate
+
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Install Playwright browsers
+              run: npx --no playwright install --with-deps chromium
+
+            - name: Run visual regression tests
+              run: yarn test:visual
+
+            - name: Upload screenshot baselines
+              if: always()
+              uses: actions/upload-artifact@v7
+              with:
+                  name: visual-regression-screenshots
+                  path: test/visual/__screenshots__/
+
+            - name: Upload diff attachments
+              if: failure()
+              uses: actions/upload-artifact@v7
+              with:
+                  name: visual-regression-diffs
+                  path: .vitest-attachments/
+
     sync-release-branches:
         name: Sync master to release branches
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'

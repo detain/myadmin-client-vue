@@ -52,8 +52,10 @@ coverage
 # Vitest related files
 __snapshots__/
 __traces__/
-__screenshots__/
 coverage/
+
+# Visual regression test diffs (baselines in __screenshots__/ ARE committed)
+.vitest-attachments/
 
 # Playwright
 /test-results/
