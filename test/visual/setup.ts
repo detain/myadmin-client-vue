@@ -7,11 +7,11 @@ const worker = setupWorker(...visualHandlers);
 
 beforeAll(async () => {
     await worker.start({
-        onUnhandledRequest: 'warn',
+        onUnhandledRequest: 'bypass',
         quiet: true,
     });
 
-    // Inject CSS to disable all transitions and animations for stable screenshots
+    // Inject CSS to disable transitions/animations and stabilize layout for consistent screenshots
     const style = document.createElement('style');
     style.id = 'visual-test-overrides';
     style.textContent = `
@@ -24,6 +24,16 @@ beforeAll(async () => {
         }
         .route-loading-overlay { display: none !important; }
         .content-dimmed { opacity: 1 !important; pointer-events: auto !important; }
+        /* Force deterministic body dimensions matching viewport */
+        html, body {
+            width: 1280px !important;
+            min-height: 800px !important;
+            overflow: hidden !important;
+        }
+        /* Hide scrollbar differences across runs */
+        ::-webkit-scrollbar { display: none !important; }
+        /* Suppress blinking cursors in inputs */
+        * { caret-color: transparent !important; }
     `;
     document.head.appendChild(style);
 

@@ -78,6 +78,139 @@ const visualOverrides = [
         });
     }),
 
+    // ==================== Order endpoints MUST come before /:id detail handlers ====================
+    // (MSW matches /:id patterns against /order if order handlers are listed after)
+
+    http.get(`${BASE_URL}/vps/order`, () => {
+        return HttpResponse.json({
+            maxSlices: 16, hdStorageSlice: 1000, cpanelCost: 20, daCost: 8, bwType: 2, bwTotal: 2, bwSlice: 2000, hdSlice: 30, ramSlice: 2048,
+            platformPackages: { kvm: 32, kvmstorage: 57, hyperv: 54 },
+            platformNames: { kvm: 'KVM', kvmstorage: 'KVM Storage', hyperv: 'HyperV' },
+            packageCosts: { 32: 10, 54: 10, 57: 6 },
+            locationStock: { 1: { kvm: true, kvmstorage: true, hyperv: true }, 2: { kvm: true, kvmstorage: false, hyperv: true } },
+            locationNames: { 1: 'New Jersey', 2: 'Los Angeles' },
+            osNames: { ubuntu: 'Ubuntu', centos: 'CentOS', windows: 'Windows' },
+            templates: {
+                kvm: { ubuntu: { 'ubuntu-22.04': 'Ubuntu 22.04', 'ubuntu-20.04': 'Ubuntu 20.04' }, centos: { 'centos-9': 'CentOS 9' } },
+                kvmstorage: { ubuntu: { 'ubuntu-22.04': 'Ubuntu 22.04' } },
+                hyperv: { windows: { Windows2019Standard: '2019 Standard', Windows2022: '2022' } },
+            },
+            serviceTypes: {}, vpsSliceSsdOvzCost: 6, vpsSliceOvzCost: 6, vpsSliceSsdVirtuozzoCost: 6, vpsSliceVirtuozzoCost: 6,
+            vpsSliceHypervCost: 10, vpsSliceVmwareCost: 6, vpsSliceLxcCost: 6, vpsSliceXenCost: 6, vpsSliceKvmLCost: 6,
+            vpsSliceKvmStorageCost: 6, vpsNyCost: 3, vpsSliceKvmWCost: 10, currency: 'USD', currencySymbol: '$',
+        });
+    }),
+
+    http.get(`${BASE_URL}/domains/order`, () => {
+        return HttpResponse.json({
+            tlds: [
+                { tld: '.com', register: '8.99', transfer: '8.99', renew: '8.99' },
+                { tld: '.net', register: '10.99', transfer: '10.99', renew: '10.99' },
+                { tld: '.org', register: '9.99', transfer: '9.99', renew: '9.99' },
+            ],
+        });
+    }),
+
+    http.get(`${BASE_URL}/servers/order`, () => {
+        return HttpResponse.json({
+            cpu: '34',
+            cpu_li: { 34: { cpu_id: 34, cpu_description: 'Intel Xeon E3-1230', cpu_cores: 4, max_lff: 2, max_sff: 4, max_nve: 1 } },
+            cpu_cores: { 34: { 1: { id: 1, core_id: 1, core_count: 4, num_cpus: 1, num_cores: 4, short_desc: 'Intel Xeon E3-1230', img: 'intel.png', memory_det: { short_desc: '16GB DDR4' } } } },
+            config_ids: { cpu: 34, memory: 1, hd: 1, bandwidth: 1, ips: 1, os: 1, cp: 0, raid: 0 },
+            config_li: {
+                cpu_li: { 34: { cpu_id: 34, cpu_description: 'Intel Xeon E3-1230', cpu_cores: 4, max_lff: 2, max_sff: 4, max_nve: 1 } },
+                memory_li: { 34: { 1: { memory_id: 1, memory_description: '16GB DDR4', memory_amount: 16, memory_cost: 0 } } },
+                hd_li: { 34: { 1: { hd_id: 1, hd_description: '500GB SSD', hd_cost: 0, hd_type: 'sff' } } },
+                bandwidth_li: { 1: { bandwidth_id: 1, bandwidth_description: '100Mbps Unmetered', bandwidth_cost: 0 } },
+                ips_li: { 1: { ips_id: 1, ips_description: '1 IP', ips_cost: 0 } },
+                os_li: { 1: { os_id: 1, os_description: 'Ubuntu 22.04', os_image: 'ubuntu.png', os_cost: 0, types: [1] }, 2: { os_id: 2, os_description: 'CentOS 9', os_image: 'centos.png', os_cost: 0, types: [1] } },
+                cp_li: { 0: { cp_id: 0, cp_description: 'No Control Panel', cp_cost: 0, types: [1, 2] } },
+                raid_li: { 0: { raid_id: 0, raid_description: 'No RAID', raid_cost: 0 } },
+            },
+            field_label: { bandwidth: { name: 'Bandwidth', active: 1 }, ips: { name: 'IPs', active: 0 }, os: { name: 'Operating System', active: 1 }, cp: { name: 'Control Panel', active: 0 }, raid: { name: 'Raid' }, memory: { name: 'Memory' }, hd: { name: 'Hard Drives' } },
+            form_values: { cpu: '34', memory: '1', hd: '1', bandwidth: '1', ips: '1', os: '1', cp: '0', raid: '0', region: '1' },
+            asset_servers: [], buy_it_servers: [], country: 'US', currency: 'USD', currencySymbol: '$', cust_discount: 0, custid: 1,
+            display_showmore: 'no', frequency: 1, ima: 'client',
+            regions: [{ region_id: 1, region_name: 'New Jersey' }, { region_id: 2, region_name: 'Los Angeles' }],
+            step: 'order_form',
+        });
+    }),
+
+    http.get(`${BASE_URL}/websites/order`, () => {
+        return HttpResponse.json({
+            currencySymbol: '$', step: 'order_form', website: '', period: 1, serviceOfferId: 0,
+            serviceTypes: {
+                11363: { services_id: 11363, services_name: 'Web Hosting Standard', services_cost: '2.50', services_category: 300, services_buyable: '1', services_type: 1, services_html: '', services_description: 'Standard hosting plan', services_moreinfo_url: '' },
+                11364: { services_id: 11364, services_name: 'Web Hosting Premium', services_cost: '5.00', services_category: 300, services_buyable: '1', services_type: 1, services_html: '', services_description: 'Premium hosting plan', services_moreinfo_url: '' },
+            },
+            serviceOffers: {
+                11363: [{ service_offer_id: 1, service_offer_name: '1 Month', service_offer_period: 1, service_offer_price: '2.50' }],
+                11364: [{ service_offer_id: 2, service_offer_name: '1 Month', service_offer_period: 1, service_offer_price: '5.00' }],
+            },
+            packges: {
+                11363: { services_id: 11363, services_name: 'Web Hosting Standard', services_cost: '2.50', services_category: 300, services_buyable: '1', services_type: 1, services_html: '<b>Standard</b>', services_description: 'Standard hosting plan', services_moreinfo_url: '' },
+                11364: { services_id: 11364, services_name: 'Web Hosting Premium', services_cost: '5.00', services_category: 300, services_buyable: '1', services_type: 1, services_html: '<b>Premium</b>', services_description: 'Premium hosting plan', services_moreinfo_url: '' },
+            },
+            enableDomainRegistering: {}, jsonServices: {}, jsonServiceOffers: {},
+        });
+    }),
+
+    http.get(`${BASE_URL}/licenses/order`, () => {
+        return HttpResponse.json({ categories: [
+            { tag: 'cpanel', name: 'cPanel', packages: [{ id: 1, name: 'cPanel Admin', cost: '15.00' }] },
+            { tag: 'directadmin', name: 'DirectAdmin', packages: [{ id: 2, name: 'DirectAdmin', cost: '5.00' }] },
+        ] });
+    }),
+
+    http.get(`${BASE_URL}/ssl/order`, () => {
+        return HttpResponse.json({ packages: [
+            { id: 1, name: 'PositiveSSL', cost: '7.99', type: 'DV', warranty: '$10,000' },
+            { id: 2, name: 'EssentialSSL', cost: '19.99', type: 'DV', warranty: '$10,000' },
+        ] });
+    }),
+
+    http.get(`${BASE_URL}/mail/order`, () => {
+        return HttpResponse.json({
+            packageCosts: { 10880: 1.0, 10881: 5.0 },
+            serviceTypes: {
+                10880: { services_id: 10880, services_name: 'Mail Baby', services_cost: '1.00', services_category: 400, services_buyable: '1', services_type: 600 },
+                10881: { services_id: 10881, services_name: 'Mail Pro', services_cost: '5.00', services_category: 400, services_buyable: '1', services_type: 600 },
+            },
+        });
+    }),
+
+    http.get(`${BASE_URL}/backups/order`, () => {
+        return HttpResponse.json({ packages: [
+            { id: 1, name: 'Storage 250GB', cost: '6.00', disk: '250GB' },
+            { id: 2, name: 'Storage 500GB', cost: '12.00', disk: '500GB' },
+        ] });
+    }),
+
+    http.get(`${BASE_URL}/floating_ips/order`, () => {
+        return HttpResponse.json({
+            packageCosts: { 10920: 3.0, 10921: 5.0 },
+            serviceTypes: {
+                10920: { services_id: 10920, services_name: 'Floating IP', services_cost: '3.00', services_category: 200, services_buyable: '1', services_type: 500 },
+                10921: { services_id: 10921, services_name: 'Floating IP - Premium', services_cost: '5.00', services_category: 200, services_buyable: '1', services_type: 500 },
+            },
+        });
+    }),
+
+    http.get(`${BASE_URL}/qs/order`, () => {
+        return HttpResponse.json({
+            qs_id: 1,
+            server_details: { 1: { cpu: 'Intel Xeon E3-1230', ram: '16GB', hd: '500GB SSD', cores: 4, cost: '30.00' }, 2: { cpu: 'Intel Xeon E5-2620', ram: '32GB', hd: '1TB SSD', cores: 6, cost: '60.00' } },
+            templates: {
+                Ubuntu: { 1: [['Ubuntu 22.04', 'ubuntu-22.04'], ['Ubuntu 20.04', 'ubuntu-20.04']] },
+                CentOS: { 2: [['CentOS 9', 'centos-9']] },
+                Debian: { 3: [['Debian 12', 'debian-12']] },
+            },
+            version: {}, distro_sel: { Ubuntu: 'Ubuntu', CentOS: 'CentOS', Debian: 'Debian' },
+        });
+    }),
+
+    // ==================== Detail handlers (must come AFTER /order handlers) ====================
+
     // ==================== Domain Detail ====================
     http.get(`${BASE_URL}/domains/:id`, ({ params }) => {
         return HttpResponse.json({
@@ -87,6 +220,10 @@ const visualOverrides = [
                 domain_address: '123 Test St', domain_city: 'Testville', domain_state: 'NJ',
                 domain_zip: '07001', domain_country: 'US', domain_phone: '555-1234',
                 domain_fax: '', domain_email: 'admin@example.com',
+                domain_firstname: 'Test', domain_lastname: 'User', domain_company: 'Test Corp',
+                domain_type: 1, domain_order_date: '2024-01-01', domain_custid: 1,
+                domain_invoice: 1001, domain_coupon: 0, domain_username: '', domain_password: '',
+                domain_address2: '', domain_address3: '',
             },
             billingDetails,
             custCurrency: 'USD', custCurrencySymbol: '$',
@@ -94,6 +231,29 @@ const visualOverrides = [
             client_links: [],
             serviceExtra: {},
             extraInfoTables: {},
+            serviceType: {
+                services_id: 20001, services_name: 'Domain Registration', services_cost: 8.99,
+                services_category: 100, services_buyable: 1, services_type: 1,
+                services_field1: '', services_field2: '', services_module: 'domains',
+            },
+            serviceTypes: {},
+            contact_details: {
+                first_name: 'Test', last_name: 'User', org_name: 'Test Corp', status: 'active',
+                email: 'admin@example.com', address1: '123 Test St', address2: '', address3: '',
+                city: 'Testville', state: 'NJ', postal_code: '07001', country: 'US',
+                phone: '555-1234', fax: '',
+            },
+            pwarning: '',
+            transfer_info: '',
+            errors: false,
+            domain_logs: [],
+            allInfo: {},
+            registrarStatus: 'active',
+            locked: 'locked',
+            whoisPrivacy: 'enabled',
+            autoRenew: 'enabled',
+            package: 'Domain Registration',
+            linkDisplay: false,
             module: 'domains',
         });
     }),
@@ -104,13 +264,39 @@ const visualOverrides = [
             serviceInfo: {
                 server_id: Number(params.id), server_hostname: 'dedicated1.example.com', server_status: 'active',
                 server_ip: '10.0.0.1', server_root: 'root', server_os: 'Ubuntu 22.04',
+                server_custid: 1, server_type: 1, server_currency: 'USD', server_order_date: '2024-01-01',
+                server_invoice: 1001, server_coupon: 0, server_dedicated_tag: '0', server_custom_tag: '',
+                server_comment: '', server_initial_bill: 0, server_hardware: 0, server_ips: 0,
+                server_monthly_bill: 99, server_setup: 0, server_discount: null, server_rep: 0,
+                server_date: 1704067200, server_total_cost: 99.0, server_location: null,
+                server_hardware_ordered: 0, server_billed: 0, server_welcome_email: 0,
+                server_dedicated_cpu: 0, server_dedicated_memory: 0, server_dedicated_hd1: 0,
+                server_dedicated_hd2: null, server_dedicated_bandwidth: 0, server_dedicated_ips: 0,
+                server_dedicated_os: 0, server_dedicated_cp: null, server_dedicated_raid: 0,
+                server_extra: '[]',
             },
             billingDetails: { ...billingDetails, service_cost_info: '$99.00/month' },
             custCurrency: 'USD', custCurrencySymbol: '$',
             serviceMaster: { server_id: 1, server_name: 'node1' },
             client_links: [],
-            serviceExtra: {},
+            serviceExtra: {
+                assets: {
+                    title: 'Assets', size: 2, type: 'table',
+                    header: ['Id', 'Hostname', 'Description', 'Location Name', 'Rack Name', 'Status', 'Primary Ipv4', 'Comments'],
+                    rows: [],
+                },
+            },
             extraInfoTables: {},
+            ipmiAuth: false,
+            ipmiLease: false,
+            networkInfo: {
+                vlans: {},
+                vlans6: {},
+                assets: {},
+                switchports: {},
+            },
+            locations: {},
+            package: 'Dedicated Server',
             module: 'servers',
             bandwidth_xaxis: [], bandwidth_yaxis: [],
         });
@@ -139,15 +325,27 @@ const visualOverrides = [
         return HttpResponse.json({
             serviceInfo: {
                 license_id: Number(params.id), license_ip: '10.0.0.1', license_status: 'active',
-                license_hostname: 'lic1.example.com', license_type: 'cPanel',
-                license_extra: '',
+                license_hostname: 'lic1.example.com', license_type: 1,
+                license_extra: '', license_key: 'LIC-12345-ABCDE',
+                license_currency: 'USD', license_order_date: '2024-01-01',
+                license_custid: 1, license_invoice: 1001, license_coupon: 0,
             },
             billingDetails: { ...billingDetails, service_cost_info: '$15.00/month' },
             custCurrency: 'USD', custCurrencySymbol: '$',
             serviceMaster: { license_id: 1 },
             client_links: [],
-            serviceExtra: {},
-            extraInfoTables: {},
+            serviceExtra: [''],
+            extraInfoTables: {
+                ip_info: { title: 'IP Information', rows: [] },
+            },
+            serviceType: {
+                services_id: 40001, services_name: 'cPanel Admin', services_cost: 15.0,
+                services_category: 507, services_buyable: 1, services_type: 1,
+                services_field1: '', services_field2: '', services_module: 'licenses',
+            },
+            service_overview_extra: '',
+            package: 'cPanel Admin',
+            linkDisplay: false,
             module: 'licenses',
         });
     }),
@@ -242,7 +440,10 @@ const visualOverrides = [
         return HttpResponse.json({
             serviceInfo: {
                 scrub_ip_id: Number(params.id), scrub_ip_ip: '10.0.0.200', scrub_ip_status: 'active',
-                scrub_ip_target_ip: '192.168.1.100',
+                scrub_ip_target_ip: '192.168.1.100', scrub_ip_type: 1, scrub_ip_currency: 'USD',
+                scrub_ip_order_date: '2024-01-01', scrub_ip_custid: 1, scrub_ip_invoice: 1001,
+                scrub_ip_coupon: 0, scrub_ip_extra: '', scrub_ip_comment: '',
+                scrub_ip_service_module: '', scrub_ip_service_id: 0,
             },
             billingDetails: { ...billingDetails, service_cost_info: '$5.00/month' },
             custCurrency: 'USD', custCurrencySymbol: '$',
@@ -250,6 +451,17 @@ const visualOverrides = [
             client_links: [],
             serviceExtra: {},
             extraInfoTables: {},
+            serviceType: {
+                services_id: 110001, services_name: 'Scrub IP', services_cost: 5.0,
+                services_category: 500, services_buyable: 1, services_type: 1,
+            },
+            filter_firewall: {
+                rules: [],
+                geo_rules: [],
+                filters: [],
+            },
+            package: 'Scrub IP',
+            linkDisplay: false,
             module: 'scrub_ips',
         });
     }),
@@ -279,11 +491,53 @@ const visualOverrides = [
     http.get(`${BASE_URL}/billing/prepays`, () => {
         return HttpResponse.json({
             custid: 1,
-            balance: '50.00',
-            currency: 'USD',
-            prepays: [
-                { id: 1, date: '2024-01-01', amount: '100.00', remaining: '50.00', type: 'Manual' },
-            ],
+            ima: 'client',
+            error: false,
+            modules: { vps: 'VPS', servers: 'Dedicated Servers', webhosting: 'Web Hosting' },
+            prepays: {
+                1: {
+                    prepay: {
+                        prepay_id: 1,
+                        prepay_amount: 100.0,
+                        prepay_automatic_use: '1',
+                        prepay_created: '2024-01-01',
+                        prepay_currency: 'USD',
+                        prepay_custid: 1,
+                        prepay_date: '2024-01-01',
+                        prepay_deleted: 0,
+                        prepay_module: 'vps',
+                        prepay_remaining: 50.0,
+                        prepay_remaining_disp: '$50.00',
+                        prepay_service: 0,
+                        prepay_status: 'active',
+                        prepay_type: 0,
+                    },
+                    history: [
+                        {
+                            history_id: 1,
+                            history_timestamp_disp: '2024-01-15',
+                            desc: 'Payment applied',
+                            amt_used: '50.00',
+                            history_creator: 0,
+                            history_new_value: 50,
+                            history_old_value: 100,
+                            history_owner: 1,
+                            history_section: 0,
+                            history_sid: '',
+                            history_timestamp: '2024-01-15',
+                            history_type: 0,
+                        },
+                    ],
+                },
+            },
+            total_pages: 1,
+            total_records: 1,
+            limit: 10,
+            page: 1,
+            curr_page_records: 1,
+            allInfo: {
+                vps: { module_name: 'VPS', services: { 1: 'VPS Slice 1' } },
+            },
         });
     }),
 
@@ -312,10 +566,25 @@ const visualOverrides = [
                 ticketstatustitle: 'Open', prioritytitle: 'Normal', departmenttitle: 'Technical Support',
                 fullname: 'Test User', email: 'test@example.com', created: '2024-01-10 09:00:00',
             },
-            replies: [
-                { id: 1, fullname: 'Test User', message: 'I need help migrating my server.', date: '2024-01-10 09:00:00', type: 'client' },
-                { id: 2, fullname: 'Support Agent', message: 'We can help with that. Let me check your account.', date: '2024-01-10 10:30:00', type: 'staff' },
+            posts: [
+                { ticketpostid: '1', creator: '1', fullname: 'Test User', email: 'test@example.com', contents: 'I need help migrating my server.', dateline: 1704877200 },
+                { ticketpostid: '2', creator: '2', fullname: 'Support Agent', email: 'support@interserver.net', contents: 'We can help with that. Let me check your account.', dateline: 1704882600 },
             ],
+            st_count: [
+                { ticketstatustitle: 'Open', st_count: 3 },
+                { ticketstatustitle: 'Closed', st_count: 5 },
+            ],
+            files: {},
+            suppressed_email: null,
+            custom_values: {
+                5: { fieldvalue: '10.0.0.1' },
+                6: { fieldvalue: '' },
+                7: { fieldvalue: '' },
+                8: { fieldvalue: '' },
+                9: { fieldvalue: '' },
+                10: { fieldvalue: '22' },
+                11: { fieldvalue: 'n' },
+            },
         });
     }),
 
@@ -405,99 +674,6 @@ const visualOverrides = [
         });
     }),
 
-    // ==================== Order endpoints (return available packages) ====================
-    http.get(`${BASE_URL}/vps/order`, () => {
-        return HttpResponse.json({
-            packages: [
-                { id: 1, name: 'VPS Slice 1', cost: '6.00', ram: '1024', disk: '25', cpu: 1 },
-                { id: 2, name: 'VPS Slice 2', cost: '12.00', ram: '2048', disk: '50', cpu: 2 },
-                { id: 3, name: 'VPS Slice 4', cost: '24.00', ram: '4096', disk: '100', cpu: 4 },
-            ],
-            os_list: ['Ubuntu 22.04', 'CentOS 9', 'Debian 12', 'Windows Server 2022'],
-        });
-    }),
-
-    http.get(`${BASE_URL}/domains/order`, () => {
-        return HttpResponse.json({
-            tlds: [
-                { tld: '.com', register: '8.99', transfer: '8.99', renew: '8.99' },
-                { tld: '.net', register: '10.99', transfer: '10.99', renew: '10.99' },
-                { tld: '.org', register: '9.99', transfer: '9.99', renew: '9.99' },
-            ],
-        });
-    }),
-
-    http.get(`${BASE_URL}/servers/order`, () => {
-        return HttpResponse.json({
-            packages: [
-                { id: 1, name: 'Intel Xeon E3', cost: '49.00', ram: '16GB', disk: '500GB SSD', cpu: 'E3-1230' },
-                { id: 2, name: 'Intel Xeon E5', cost: '99.00', ram: '32GB', disk: '1TB SSD', cpu: 'E5-2620' },
-            ],
-        });
-    }),
-
-    http.get(`${BASE_URL}/websites/order`, () => {
-        return HttpResponse.json({
-            packages: [
-                { id: 1, name: 'Web Hosting Basic', cost: '2.00', disk: '10GB', bandwidth: '100GB' },
-                { id: 2, name: 'Web Hosting Pro', cost: '5.00', disk: '50GB', bandwidth: 'Unlimited' },
-            ],
-        });
-    }),
-
-    http.get(`${BASE_URL}/licenses/order`, () => {
-        return HttpResponse.json({
-            categories: [
-                { tag: 'cpanel', name: 'cPanel', packages: [{ id: 1, name: 'cPanel Admin', cost: '15.00' }] },
-                { tag: 'directadmin', name: 'DirectAdmin', packages: [{ id: 2, name: 'DirectAdmin', cost: '5.00' }] },
-                { tag: 'litespeed', name: 'LiteSpeed', packages: [{ id: 3, name: 'LiteSpeed Web Server', cost: '12.00' }] },
-            ],
-        });
-    }),
-
-    http.get(`${BASE_URL}/ssl/order`, () => {
-        return HttpResponse.json({
-            packages: [
-                { id: 1, name: 'PositiveSSL', cost: '7.99', type: 'DV', warranty: '$10,000' },
-                { id: 2, name: 'EssentialSSL', cost: '19.99', type: 'DV', warranty: '$10,000' },
-            ],
-        });
-    }),
-
-    http.get(`${BASE_URL}/mail/order`, () => {
-        return HttpResponse.json({
-            packages: [
-                { id: 1, name: 'Mail Baby', cost: '1.00', mailboxes: 'Unlimited' },
-                { id: 2, name: 'Mail Pro', cost: '5.00', mailboxes: 'Unlimited' },
-            ],
-        });
-    }),
-
-    http.get(`${BASE_URL}/backups/order`, () => {
-        return HttpResponse.json({
-            packages: [
-                { id: 1, name: 'Storage 250GB', cost: '6.00', disk: '250GB' },
-                { id: 2, name: 'Storage 500GB', cost: '12.00', disk: '500GB' },
-            ],
-        });
-    }),
-
-    http.get(`${BASE_URL}/floating_ips/order`, () => {
-        return HttpResponse.json({
-            packages: [
-                { id: 1, name: 'Floating IP', cost: '3.00' },
-            ],
-        });
-    }),
-
-    http.get(`${BASE_URL}/qs/order`, () => {
-        return HttpResponse.json({
-            packages: [
-                { id: 1, name: 'Rapid Deploy 1', cost: '30.00', ram: '8GB', disk: '100GB SSD' },
-                { id: 2, name: 'Rapid Deploy 2', cost: '60.00', ram: '16GB', disk: '200GB SSD' },
-            ],
-        });
-    }),
 ];
 
 // Visual handlers = overrides first (checked first by MSW), then base handlers as fallback
