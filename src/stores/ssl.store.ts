@@ -117,6 +117,7 @@ export const useSslStore = defineStore('ssl', {
                 this.user = { error };
             }
             */
+            this.loading = true;
             try {
                 const response = await fetchWrapper.get(`${baseUrl}/ssl/${id}`);
                 this.ssl_id = response.ssl_id;
@@ -150,6 +151,7 @@ export const useSslStore = defineStore('ssl', {
             } catch (error: any) {
                 console.log('api failed', error);
             }
+            this.loading = false;
         },
         async update(id: number, params: any): Promise<void> {},
         async delete(id: number): Promise<void> {

@@ -21,6 +21,7 @@ import Migration from '@/views/webhosting/Migration.vue';
 import ReverseDns from '@/views/webhosting/ReverseDns.vue';
 
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 
 const module = 'webhosting';
 const siteStore = useSiteStore();
@@ -34,6 +35,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => modules.value[module]);
 const websiteStore = useWebsiteStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(websiteStore);
+useServiceLoading(loading);
 function isEmpty(table: any) {
     return table === null || table === undefined || table.length === 0;
 }
