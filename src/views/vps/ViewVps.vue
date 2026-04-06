@@ -121,16 +121,6 @@ function toggleCP() {}
 
 function openPopUp() {}
 
-watch(
-    () => route.params.link,
-    (newLink) => {
-        loadLink(newLink as string);
-    }
-);
-
-loadLink(route.params.link as string);
-vpsStore.getById(id);
-
 function openCommentForm() {
     $('#commentForm').modal('show');
 }
@@ -178,6 +168,16 @@ function toggleFunc(cp: string) {
     }
     $('.toggleTr').show();
 }
+
+watch(
+    () => route.params.link,
+    (newLink) => {
+        loadLink(newLink as string);
+    }
+);
+
+loadLink(route.params.link as string);
+vpsStore.getById(id);
 </script>
 
 <template>
@@ -477,7 +477,7 @@ function toggleFunc(cp: string) {
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label != 'View Desktop'">
                                 <router-link :key="index" :to="'/' + moduleLink(module) + '/' + id + '/' + clientLink.link" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip">
-                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                                    <i :class="clientLink.icon.replace('fa fa-linux', 'fab fa-linux')" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </router-link>
                             </template>
@@ -485,7 +485,7 @@ function toggleFunc(cp: string) {
                         <template v-for="(clientLink, index) in clientLinks">
                             <template v-if="clientLink.label == 'View Desktop'">
                                 <button :key="index" class="btn btn-app mb-3" :title="clientLink.help_text" data-toggle="tooltip" @click="openPopUp">
-                                    <i :class="clientLink.icon" aria-hidden="true">{{ clientLink.icon_text }}</i
+                                    <i :class="clientLink.icon.replace('fa fa-linux', 'fab fa-linux')" aria-hidden="true">{{ clientLink.icon_text }}</i
                                     >{{ clientLink.label }}
                                 </button>
                             </template>
