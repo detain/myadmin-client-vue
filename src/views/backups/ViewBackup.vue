@@ -13,6 +13,7 @@ import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 
 const module = 'backups';
 const siteStore = useSiteStore();
@@ -33,6 +34,7 @@ siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Backup ${id}`);
 
 const backupStore = useBackupStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, serviceExtra, extraInfoTables } = storeToRefs(backupStore);
+useServiceLoading(loading);
 backupStore.getById(id);
 
 const billingStatus = computed(() => {

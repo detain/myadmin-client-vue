@@ -56,6 +56,7 @@ import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
 import { useScrubIpStore } from '@/stores/scrub_ips.store';
 import { moduleLink } from '@/helpers/moduleLink';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 import { ucwords } from '@/helpers/ucwords';
 import Package from '@/components/services/view_service/Package.vue';
 import Billing from '@/components/services/view_service/Billing.vue';
@@ -87,6 +88,7 @@ watchEffect(() => {
 });
 
 const { loading, error, serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, pkg, linkDisplay, firewallRules, geoFirewallRules, filterRules, filterTypes, countries } = storeToRefs(scrubIpStore);
+useServiceLoading(loading);
 
 const footer_val = computed(() => {
     let val = '';
