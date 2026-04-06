@@ -5,7 +5,7 @@ import { moduleLink } from '@/helpers/moduleLink';
 import { computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useSiteStore } from '@/stores/site.store';
-
+import { useRouter } from 'vue-router';
 import Swal from 'sweetalert2';
 
 const { t } = useI18n();
@@ -25,6 +25,7 @@ const pkg = computed(() => props.package);
 const titleField = computed(() => props['titleField']);
 const titleField2 = computed(() => props['titleField2']);
 const settings = computed(() => modules.value[module.value]);
+const router = useRouter();
 
 siteStore.setTitle('');
 siteStore.setPageHeading('');
@@ -47,8 +48,9 @@ function onSubmit() {
         html: `<p>${t('common.confirm.cancelConfirm', { module: module.value, id: id.value })}</p>`,
         preConfirm: () => {
             try {
-                fetchWrapper.get(`${baseUrl}/${moduleLink(module.value)}/${id.value}/cancel`).then((response) => {
+                fetchWrapper.delete(`${baseUrl}/${moduleLink(module.value)}/${id.value}`).then((response) => {
                     console.log(`${module.value} cancel success`, response);
+                    router.push(`/${moduleLink(module.value)}/${id.value}`); // Redirect to the service details page after cancellation
                 });
             } catch (error: any) {
                 console.log(`${module.value} cancel failed`, error);
