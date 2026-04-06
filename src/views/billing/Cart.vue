@@ -393,6 +393,8 @@ function formattedCost(amount: number): string {
 
 async function initializePayPalButtons() {
     if (!paypalLoaded.value || !(window as any).paypal) return;
+    const container = document.getElementById('paypal-button-container');
+    if (!container) return;
     await nextTick();
     if (ppButtons.value?.close) {
         ppButtons.value.close();
@@ -1030,20 +1032,22 @@ pageInit();
                             </div>
                             <div class="col-md-12 b-radius mt-4 px-5 py-3" style="background: #f4f4f4">
                                 <h5 class="text-bold text-md text-capitalize">{{ t('billing.cart.howToPay') }}</h5>
-                                <span v-show="showMethods" id="payments-section">
-                                    <template v-for="(methodData, methodId) in filteredPaymentMethods" :key="methodId">
-                                        <a v-if="String(methodId) === 'cc' || methodData.text === 'Select Credit Card' || methodData.text === 'Credit Card'" :class="paymentBtnClass('cc')" :style="methodData.link_style" @click.prevent="selectPaymentMethod('cc')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
-                                        <template v-else-if="methodData.text == 'PayPal'">
-                                            <a :class="paymentBtnClass('paypal')" :style="methodData.link_style" @click.prevent="selectPaymentMethod('paypal')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
-                                            <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" class="btn btn-custom btn-sm mx-1 payment-method-btn" :style="methodData.link_style">
-                                                <div style="float: right">{{ methodData.text }}<br />(old)</div>
-                                                <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" />
-                                            </router-link>
+                                <span id="payments-section">
+                                    <template v-if="showMethods">
+                                        <template v-for="(methodData, methodId) in filteredPaymentMethods" :key="methodId">
+                                            <a v-if="String(methodId) === 'cc' || methodData.text === 'Select Credit Card' || methodData.text === 'Credit Card'" :class="paymentBtnClass('cc')" :style="methodData.link_style" @click.prevent="selectPaymentMethod('cc')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                            <template v-else-if="methodData.text == 'PayPal'">
+                                                <a :class="paymentBtnClass('paypal')" :style="methodData.link_style" @click.prevent="selectPaymentMethod('paypal')">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></a>
+                                                <router-link :to="'/pay/' + methodId + '/' + invoices.join(',')" class="btn btn-custom btn-sm mx-1 payment-method-btn" :style="methodData.link_style">
+                                                    <div style="float: right">{{ methodData.text }}<br />(old)</div>
+                                                    <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" />
+                                                </router-link>
+                                            </template>
+                                            <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="paymentBtnClass(String(methodId))" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
                                         </template>
-                                        <router-link v-else :to="'/pay/' + methodId + '/' + invoices.join(',')" :class="paymentBtnClass(String(methodId))" :style="methodData.link_style">{{ methodData.text }} <img alt="" :src="'https://my.interserver.net' + methodData.image" :style="methodData.image_style" /></router-link>
                                     </template>
                                     <router-link v-if="showPrepay" :to="'/pay/prepay/' + invoices.join(',')" class="btn btn-custom btn-sm mx-1">
-                                        PrePay ({{ formattedCost(prepayAvailable) }})
+                                        PrePay <img src="https://my.interserver.net/images/myadmin/wallet.png" alt="Pay with PrePay" style="height: 35px;margin-left:40px;" border="0">
                                     </router-link>
                                 </span>
                             </div>
