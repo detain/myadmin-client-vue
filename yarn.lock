@@ -551,20 +551,10 @@
     globals "^16.0.0"
     typescript-eslint "^8.29.1"
 
-"@electron-toolkit/preload@*":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@electron-toolkit/preload/-/preload-3.0.2.tgz#ee5bb33aba48741c5bc539a9a6faad0be455465e"
-  integrity sha512-TWWPToXd8qPRfSXwzf5KVhpXMfONaUuRAZJHsKthKgZR/+LqX1dZVSSClQ8OTAEduvLGdecljCsoT2jSshfoUg==
-
 "@electron-toolkit/tsconfig@*":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@electron-toolkit/tsconfig/-/tsconfig-2.0.0.tgz#fdf9424ebd3a2bee35f83d230ab819d5dd06bece"
   integrity sha512-AdPsP770WhW7b260h13SHMdmjEEHJL6xFtgi3jwgdsSQbJOkJLeNnnpZW9qxTPCvmRI6vmdzWz5K3gibFS6SNg==
-
-"@electron-toolkit/utils@*":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@electron-toolkit/utils/-/utils-4.0.0.tgz#fd850c519a4ae692a2a6fb6a174010e6b377a113"
-  integrity sha512-qXSntwEzluSzKl4z5yFNBknmPGjPa3zFhE4mp9+h0cgokY5ornAeP+CJQDBhKsL1S58aOQfcwkD3NwLZCl+64g==
 
 "@electron/asar@3.4.1", "@electron/asar@^3.3.1":
   version "3.4.1"
@@ -1266,6 +1256,39 @@
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.4.tgz#4d4ff677e1609214fc71c580125ddddd86abcabf"
   integrity sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==
+
+"@launchdarkly/js-client-sdk-common@1.23.0":
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/@launchdarkly/js-client-sdk-common/-/js-client-sdk-common-1.23.0.tgz#933dceb460429817082fa6f5ba8f0010f8399a4d"
+  integrity sha512-fKFuvjDESwY4IvAcY1+1diwiZqfBO1bw6faVOnuMKLKrugq4FTx0DZ5W5X4523aBVYo/ZUQ/5LUvsrjp9YSTJg==
+  dependencies:
+    "@launchdarkly/js-sdk-common" "2.24.0"
+
+"@launchdarkly/js-client-sdk@^4.0.0":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@launchdarkly/js-client-sdk/-/js-client-sdk-4.4.1.tgz#c15b79a37b13fc2297fa979414e1b708061251f3"
+  integrity sha512-WNi1KT5dINEKwBR+fJ+wY7tnMxPmSwTv4mIcDh338Xw6/4bEmllwesXqLkkTYEOvsrMLgmZ9p4ZulCUlQUUgFw==
+  dependencies:
+    "@launchdarkly/js-client-sdk-common" "1.23.0"
+
+"@launchdarkly/js-sdk-common@2.24.0":
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/@launchdarkly/js-sdk-common/-/js-sdk-common-2.24.0.tgz#43ee6599013507e14b5c1b8a0aab53b93c45aeb0"
+  integrity sha512-f/xRD8gl/bSOVljat79nAzX0V0QjJ76R54aAbB6PJDWL+7BWBSFMxduaeokzbX53cs3oOVajL8ej/ps7+ojMeQ==
+
+"@launchdarkly/observability@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@launchdarkly/observability/-/observability-1.1.2.tgz#303b7885e454426e782896642ee294a14465e7f5"
+  integrity sha512-lGqQ4vIb2p2rlyviTRr5dZ+30WX5P4mGRz9pkW/8pFonJebaTgAac0V894j8/i2MwBEWJ9YFArrv/tqibw64yA==
+  dependencies:
+    highlight.run "10.0.0"
+
+"@launchdarkly/session-replay@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@launchdarkly/session-replay/-/session-replay-1.1.2.tgz#5346d616124f571aa2b2aef3f2c68eb63282fcd8"
+  integrity sha512-gehUtMxMhPYV0blDvhmtjPTbSwBtp18U1G0xPQrvzm9U0iuJE+XU0gw+Q9NYiqiD1St8ZKVZG7FJrNZuKtldtQ==
+  dependencies:
+    highlight.run "10.0.0"
 
 "@lgaitan/pace-progress@^1.0.7":
   version "1.0.7"
@@ -4131,20 +4154,6 @@ electron-to-chromium@^1.5.328:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.331.tgz#3e4e845042d517c68b3c00be5fc33204f13b2058"
   integrity sha512-IbxXrsTlD3hRodkLnbxAPP4OuJYdWCeM3IOdT+CpcMoIwIoDfCmRpEtSPfwBXxVkg9xmBeY7Lz2Eo2TDn/HC3Q==
 
-electron-updater@>=6.8.3:
-  version "6.8.3"
-  resolved "https://registry.yarnpkg.com/electron-updater/-/electron-updater-6.8.3.tgz#bb0c8ef6509e5c67663f6481a729244d1bce21fb"
-  integrity sha512-Z6sgw3jgbikWKXei1ENdqFOxBP0WlXg3TtKfz0rgw2vIZFJUyI4pD7ZN7jrkm7EoMK+tcm/qTnPUdqfZukBlBQ==
-  dependencies:
-    builder-util-runtime "9.5.1"
-    fs-extra "^10.1.0"
-    js-yaml "^4.1.0"
-    lazy-val "^1.0.5"
-    lodash.escaperegexp "^4.1.2"
-    lodash.isequal "^4.5.0"
-    semver "~7.7.3"
-    tiny-typed-emitter "^2.1.0"
-
 electron-vite@*:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/electron-vite/-/electron-vite-5.0.0.tgz#f5bfac1c30d63d5c8261c6504e3005d5203a930a"
@@ -4607,6 +4616,11 @@ extsprintf@^1.2.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.1.tgz#8d172c064867f235c0c84a596806d279bf4bcc07"
   integrity sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==
+
+fast-deep-equal@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
+  integrity sha512-bCK/2Z4zLidyB4ReuIsvALH6w31YfAQDmXMqMx6FyfHqvBxtjC0eRumeSu4Bs3XtXwpyIywtSTrVT99BxY1f9w==
 
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
@@ -5143,6 +5157,14 @@ headers-polyfill@^4.0.2:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/headers-polyfill/-/headers-polyfill-4.0.3.tgz#922a0155de30ecc1f785bcf04be77844ca95ad07"
   integrity sha512-IScLbePpkvO846sIwOtOTDjutRMWdXdJmXdMvk6gCBHxFO8d+QKOQedyZSxFTTFYRSmlgSTDtXqqq4pcenBXLQ==
+
+highlight.run@10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/highlight.run/-/highlight.run-10.0.0.tgz#ae9d440e8038bd9e9607a521ab7a8f154b1c85c5"
+  integrity sha512-U0GTbJ1mVitkX3lSCvw+L7Y6IR+cu3lhthXgmKHoyOeLcdc6xT37TOXOwGeXtLT3LGQk5AG705oSIGu4Wy8iZA==
+  dependencies:
+    "@launchdarkly/js-client-sdk" "^4.0.0"
+    imurmurhash "^0.1.4"
 
 hookable@^5.5.3:
   version "5.5.3"
@@ -5969,6 +5991,30 @@ launch-editor@^2.11.1:
     picocolors "^1.1.1"
     shell-quote "^1.8.3"
 
+launchdarkly-js-client-sdk@3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/launchdarkly-js-client-sdk/-/launchdarkly-js-client-sdk-3.9.0.tgz#92a769389c495ff87035540e79c15fe3551deb3d"
+  integrity sha512-uPL9il6dOZrVQqEcpjDYc2c7HtBTlKpLJb1Q0187i4UokBVZwBXWKjTnNk9hkwaDD5PGD4puoe7POikrR8ACwQ==
+  dependencies:
+    escape-string-regexp "^4.0.0"
+    launchdarkly-js-sdk-common "5.8.0"
+
+launchdarkly-js-sdk-common@5.8.0:
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/launchdarkly-js-sdk-common/-/launchdarkly-js-sdk-common-5.8.0.tgz#fa5f35668ceb9fdb884cf4ddf025b156d914cbfa"
+  integrity sha512-9X70K3kN1fuR6ZnRudkH7etMgFhi3sEU0mnJ+y2nhID+DpfkNDVnYUGnUs8/s4tsSDs7Q7Gpm4qnr3oqOqT9+A==
+  dependencies:
+    base64-js "^1.3.0"
+    fast-deep-equal "^2.0.1"
+    uuid "^8.0.0"
+
+launchdarkly-vue-client-sdk@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/launchdarkly-vue-client-sdk/-/launchdarkly-vue-client-sdk-2.5.0.tgz#668ca5e9754a27b4e2c1a0271e3120c1ba6fe550"
+  integrity sha512-KIKrNxhiHrVgXELaBrviket13qzShxbyjvuvWFWfi4DVgbN+w6wjj2/nkUZQ+1qtvKomOL0aDfImYdRWnn6Cww==
+  dependencies:
+    launchdarkly-js-client-sdk "3.9.0"
+
 lazy-val@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/lazy-val/-/lazy-val-1.0.5.tgz#6cf3b9f5bc31cee7ee3e369c0832b7583dcd923d"
@@ -6127,16 +6173,6 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==
-
-lodash.escaperegexp@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/lodash.escaperegexp/-/lodash.escaperegexp-4.1.2.tgz#64762c48618082518ac3df4ccf5d5886dae20347"
-  integrity sha512-TM9YBvyC84ZxE3rgfefxUWiQKLilstD6k7PTGt6wfbtXF8ixIJLOL3VYyV/z+ZiPLsVxAsKAFVwWlWeb2Y8Yyw==
-
-lodash.isequal@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
-  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
 
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
@@ -8242,11 +8278,6 @@ tiny-invariant@^1.3.3:
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.3.3.tgz#46680b7a873a0d5d10005995eb90a70d74d60127"
   integrity sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==
 
-tiny-typed-emitter@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/tiny-typed-emitter/-/tiny-typed-emitter-2.1.0.tgz#b3b027fdd389ff81a152c8e847ee2f5be9fad7b5"
-  integrity sha512-qVtvMxeXbVej0cQWKqVSSAHmKZEHAvxdF8HEUBFWts8h+xEo5m/lEiPakuyZ3BnCBjOD8i24kzNOiOLLgsSxhA==
-
 tinybench@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/tinybench/-/tinybench-2.9.0.tgz#103c9f8ba6d7237a47ab6dd1dcff77251863426b"
@@ -8627,6 +8658,11 @@ util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
+
+uuid@^8.0.0:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
+  integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
