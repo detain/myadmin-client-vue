@@ -11,6 +11,7 @@ import { useDomainStore } from '@/stores/domain.store';
 import { useSiteStore } from '@/stores/site.store';
 
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
 import Contact from './Contact.vue';
@@ -31,6 +32,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => modules.value[module]);
 const domainStore = useDomainStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, serviceTypes, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, contact_details, pwarning, transfer_info, errors, domain_logs, allInfo, registrarStatus, locked, whoisPrivacy, autoRenew } = storeToRefs(domainStore);
+useServiceLoading(loading);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);

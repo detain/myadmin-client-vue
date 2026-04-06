@@ -27,6 +27,7 @@ import SetupVnc from '@/views/vps/SetupVnc.vue';
 import Vnc from '@/views/vps/Vnc.vue';
 
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 const module = 'quickservers';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();
@@ -46,6 +47,7 @@ siteStore.addBreadcrum(`/${moduleLink(module)}/${id}`, `View Qs ${id}`);
 
 const qsStore = useQsStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceMaster, osTemplate, serviceExtra, extraInfoTables, cpu_graph_data, bandwidth_xaxis, bandwidth_yaxis, token, service_disk_used, service_disk_total, disk_percentage, memory, hdd, serviceOverviewExtra, responseText, queueId } = storeToRefs(qsStore);
+useServiceLoading(loading);
 const noForm = ['eject_cd', 'disable_cd', 'enable_quota', 'disable_quota', 'stop', 'start', 'restart', 'block_smtp'];
 
 qsStore.getById(id);

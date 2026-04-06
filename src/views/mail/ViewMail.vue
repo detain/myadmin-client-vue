@@ -9,6 +9,7 @@ import { useI18n } from 'vue-i18n';
 import { useMailStore } from '@/stores/mail.store';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 
 const { t } = useI18n();
 import Cancel from '@/components/services/Cancel.vue';
@@ -30,6 +31,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => modules.value[module]);
 const mailStore = useMailStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(mailStore);
+useServiceLoading(loading);
 const status = computed(() => serviceInfo.value.mail_status); // compute your status value here
 const statusClass = computed(() => {
     if (serviceInfo.value.mail_status === 'active') return 'small-box b-radius bg-success';

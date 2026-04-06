@@ -9,6 +9,7 @@ import { useI18n } from 'vue-i18n';
 import { useServerStore } from '@/stores/server.store';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 
 const { t } = useI18n();
 import Cancel from '@/components/services/Cancel.vue';
@@ -28,6 +29,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => modules.value[module]);
 const serverStore = useServerStore();
 const { loading, error, pkg, linkDisplay, ipmiAuth, ipmiLease, serviceInfo, titleField, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, networkInfo, locations } = storeToRefs(serverStore);
+useServiceLoading(loading);
 
 const orderedOn = computed(() => new Date(serviceInfo.value.server_date * 1000).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }));
 

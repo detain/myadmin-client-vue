@@ -15,6 +15,7 @@ import ChangeApproverEmail from '@/views/ssl/ChangeApproverEmail.vue';
 
 import { ClientLink, ServiceType, BillingDetails, ExtraInfoTableRow, ExtraInfoTables } from '@/types/view-service-common';
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 
 const module: string = 'ssl';
 const siteStore = useSiteStore();
@@ -25,6 +26,7 @@ const link = computed(() => route.params.link);
 
 const sslStore = useSslStore();
 const { loading, error, pkg, linkDisplay, titleField } = storeToRefs(sslStore);
+useServiceLoading(loading);
 const isCollapsed = ref(false);
 const clientLinks = ref<ClientLink[]>([]);
 const serviceInfo = ref<ServiceInfo>({

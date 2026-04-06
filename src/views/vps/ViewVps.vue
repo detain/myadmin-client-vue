@@ -32,9 +32,11 @@ import Vnc from '@/views/vps/Vnc.vue';
 
 import $ from 'jquery';
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 const { t } = useI18n();
 const vpsStore = useVpsStore();
 const { responseText, queueId, loading, error, pkg, linkDisplay, osTemplate, serviceMaster, serviceInfo, titleField, titleField2, titleField3, serviceAddons, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, service_disk_used, service_disk_total, daLink, srLink, cpLink, ppLink, srData, cpData, daData, plesk12Data, token, errors, vps_logs, cpuGraphData, disk_percentage, memory, hdd } = storeToRefs(vpsStore);
+useServiceLoading(loading);
 const module = 'vps';
 const siteStore = useSiteStore();
 const baseUrl = siteStore.getBaseUrl();

@@ -11,6 +11,7 @@ import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
 import ChangeIp from './ChangeIp.vue';
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 
 const module = 'floating_ips';
 const siteStore = useSiteStore();
@@ -21,6 +22,7 @@ const id = Number(route.params.id);
 const link = computed(() => route.params.link);
 const { modules } = storeToRefs(siteStore);
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceType, usage_count } = storeToRefs(floatingIpStore);
+useServiceLoading(loading);
 const settings = computed(() => modules.value[module]);
 siteStore.setPageHeading('View Floating IPs');
 siteStore.setTitle('View Floating IPs');

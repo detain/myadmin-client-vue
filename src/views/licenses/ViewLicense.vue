@@ -8,6 +8,7 @@ import { computed, watch } from 'vue';
 import { useLicenseStore } from '@/stores/license.store';
 import { useSiteStore } from '@/stores/site.store';
 import Swal from 'sweetalert2';
+import { useServiceLoading } from '@/helpers/useServiceLoading';
 import Cancel from '@/components/services/Cancel.vue';
 import Invoices from '@/components/services/Invoices.vue';
 import ChangeIp from '@/views/licenses/ChangeIp.vue';
@@ -23,6 +24,7 @@ const { modules } = storeToRefs(siteStore);
 const settings = computed(() => modules.value[module]);
 const licenseStore = useLicenseStore();
 const { loading, error, pkg, linkDisplay, serviceInfo, titleField, titleField2, titleField3, clientLinks, billingDetails, custCurrency, custCurrencySymbol, serviceExtra, extraInfoTables, serviceOverviewExtra, serviceType } = storeToRefs(licenseStore);
+useServiceLoading(loading);
 
 function loadLink(newLink: string) {
     console.log(`link is now ${newLink}`);

@@ -128,6 +128,7 @@ export const useMailStore = defineStore('mail', {
         async getById(id: number | string): Promise<void> {
             const siteStore = useSiteStore();
             const baseUrl = siteStore.getBaseUrl();
+            this.loading = true;
             try {
                 const response = await fetchWrapper.get(`${baseUrl}/mail/${id}`);
                 console.log(response);
@@ -144,6 +145,7 @@ export const useMailStore = defineStore('mail', {
             } catch (error: any) {
                 console.log('api failed', error);
             }
+            this.loading = false;
         },
         async update(id: number, params: any): Promise<void> {},
         async delete(id: number): Promise<void> {
