@@ -55,9 +55,9 @@
         "build:linux": "npm run build && electron-builder --linux"
     },
     "dependencies": {
-        "@electron-toolkit/preload": "*",
-        "@electron-toolkit/utils": "*",
-        "electron-updater": ">=6.8.3"
+        "@launchdarkly/observability": "^1.1.2",
+        "@launchdarkly/session-replay": "^1.1.2",
+        "launchdarkly-vue-client-sdk": "^2.5.0"
     },
     "devDependencies": {
         "@commitlint/cli": "*",
@@ -210,10 +210,5 @@
         "workerDirectory": [
             "public"
         ]
-    },
-    "dependencies": {
-        "@launchdarkly/observability": "^1.1.2",
-        "@launchdarkly/session-replay": "^1.1.2",
-        "launchdarkly-vue-client-sdk": "^2.5.0"
     }
 }
