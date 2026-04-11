@@ -6,6 +6,11 @@ vi.mock('sweetalert2', () => ({
     default: { fire: vi.fn() },
 }));
 
+vi.mock('vue-router', () => ({
+    useRouter: () => ({ push: vi.fn() }),
+    useRoute: () => ({ params: {}, query: {} }),
+}));
+
 vi.mock('@/helpers/fetchWrapper', () => ({
     fetchWrapper: {
         get: vi.fn().mockResolvedValue({}),
@@ -96,11 +101,11 @@ describe('Cancel.vue', () => {
             );
         });
 
-        it('preConfirm calls fetchWrapper.get for cancel endpoint', async ({ annotate }) => {
-            await annotate('Cancel onSubmit preConfirm: validates the SweetAlert preConfirm callback calls the correct module/id/cancel API endpoint');
+        it('preConfirm calls fetchWrapper.delete for cancel endpoint', async ({ annotate }) => {
+            await annotate('Cancel onSubmit preConfirm: validates the SweetAlert preConfirm callback calls DELETE on the correct module/id API endpoint');
             const { fetchWrapper } = await import('@/helpers/fetchWrapper');
             const Swal = (await import('sweetalert2')).default;
-            vi.mocked(fetchWrapper.get).mockResolvedValue({ success: true });
+            vi.mocked(fetchWrapper.delete).mockResolvedValue({ success: true });
             vi.mocked(Swal.fire).mockImplementation(async (options: any) => {
                 if (options.preConfirm) {
                     options.preConfirm();
@@ -113,7 +118,7 @@ describe('Cancel.vue', () => {
             await form.trigger('submit.prevent');
             await flushPromises();
 
-            expect(fetchWrapper.get).toHaveBeenCalledWith(expect.stringContaining('/vps/101/cancel'));
+            expect(fetchWrapper.delete).toHaveBeenCalledWith(expect.stringContaining('/vps/101'));
         });
 
         it('preConfirm catches synchronous errors', async ({ annotate }) => {
@@ -121,8 +126,8 @@ describe('Cancel.vue', () => {
             const { fetchWrapper } = await import('@/helpers/fetchWrapper');
             const Swal = (await import('sweetalert2')).default;
             const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-            // Make fetchWrapper.get throw synchronously to trigger the catch block
-            vi.mocked(fetchWrapper.get).mockImplementation(() => { throw new Error('sync cancel fail'); });
+            // Make fetchWrapper.delete throw synchronously to trigger the catch block
+            vi.mocked(fetchWrapper.delete).mockImplementation(() => { throw new Error('sync cancel fail'); });
             vi.mocked(Swal.fire).mockImplementation(async (options: any) => {
                 if (options.preConfirm) {
                     options.preConfirm();
