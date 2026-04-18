@@ -25,11 +25,11 @@ yarn ts               # Type-check only (vue-tsc --noEmit)
 
 **Views** (`src/views/`): `vps/` · `domains/` · `webhosting/` · `servers/` · `tickets/` · `billing/` · `billing/affiliates/` · `ssl/` · `licenses/` · `mail/` · `floating_ips/` · `scrub_ips/` · `quickservers/` · `backups/` · `dns/` · `account/` · `users/`
 
-**Components** (`src/components/`): `MainMenu.vue` · `Searchbox.vue` · `ServiceListTable.vue` · `Alert.vue` · `Nav.vue` · `account/ApiAccess.vue` · `account/SshKeys.vue` · `account/TwoFactorAuth.vue` · `services/Cancel.vue` · `services/Invoices.vue`
+**Components** (`src/components/`): `MainMenu.vue` · `Searchbox.vue` · `ServiceListTable.vue` · `Alert.vue` · `Nav.vue` · `Dialog.vue` · `account/ApiAccess.vue` · `account/SshKeys.vue` · `account/TwoFactorAuth.vue` · `account/AccountFeatures.vue` · `account/IpLimits.vue` · `account/LinkedAccounts.vue` · `services/Cancel.vue` · `services/Invoices.vue` · `services/ServiceActionCardHeader.vue` · `services/view_service/ClientLinks.vue` · `services/view_service/InfoBox.vue`
 
 **Stores** (`src/stores/`): one per domain — `account.store.ts` · `auth.store.ts` · `mail.store.ts` · `floating_ips.store.ts` · `website.store.ts` · `site.store.ts` · `alert.store.ts` · pattern: `use{Domain}Store` via `defineStore`
 
-**Helpers** (`src/helpers/`): `fetchWrapper.ts` (central HTTP client) · `moduleLink.ts` · `ucwords.ts` · `generatePassword.ts` · `useDarkMode.ts`
+**Helpers** (`src/helpers/`): `fetchWrapper.ts` (central HTTP client) · `moduleLink.ts` · `ucwords.ts` · `generatePassword.ts` · `useDarkMode.ts` · `useServiceLoading.ts`
 
 **i18n** (`src/i18n/index.ts`): lazy-loaded namespaces from `src/locales/en/vps.json`, `src/locales/en/domains.json`, etc. across 110 locale directories · 40+ languages · English default
 
@@ -101,7 +101,6 @@ yarn vitest --coverage                            # Coverage report
 - `.claude/` and `.claire/` excluded from lint, tests, and Vite watch
 - CSP headers configured in `index.html` — update when adding external scripts
 
-<!-- caliber:managed:pre-commit -->
 ## Before Committing
 
 Run `caliber refresh` before creating git commits to keep docs in sync with code changes.
@@ -110,6 +109,28 @@ After it completes, stage any modified doc files before committing:
 ```bash
 caliber refresh && git add CLAUDE.md .claude/ .cursor/ AGENTS.md CALIBER_LEARNINGS.md 2>/dev/null
 ```
+## Session Learnings
+
+Read `CALIBER_LEARNINGS.md` for patterns and anti-patterns learned from previous sessions.
+These are auto-extracted from real tool usage — treat them as project-specific rules.
+
+<!-- caliber:managed:pre-commit -->
+## Before Committing
+
+**IMPORTANT:** Before every git commit, you MUST ensure Caliber syncs agent configs with the latest code changes.
+
+First, check if the pre-commit hook is already installed:
+```bash
+grep -q "caliber" .git/hooks/pre-commit 2>/dev/null && echo "hook-active" || echo "no-hook"
+```
+
+- If **hook-active**: the hook handles sync automatically — just commit normally. Tell the user: "Caliber will sync your agent configs automatically via the pre-commit hook."
+- If **no-hook**: run Caliber manually before committing:
+  1. Tell the user: "Caliber: Syncing agent configs with your latest changes..."
+  2. Run: `/home/my/.nvm/versions/node/v22.22.2/bin/caliber refresh && git add CLAUDE.md .claude/ .cursor/ .cursorrules .github/copilot-instructions.md .github/instructions/ AGENTS.md CALIBER_LEARNINGS.md .agents/ .opencode/ 2>/dev/null`
+  3. After it completes, briefly tell the user what Caliber updated. Then proceed with the commit.
+
+If `/home/my/.nvm/versions/node/v22.22.2/bin/caliber` is not found, tell the user: "This project uses Caliber for agent config sync. Run /setup-caliber to get set up."
 <!-- /caliber:managed:pre-commit -->
 
 <!-- caliber:managed:learnings -->
@@ -118,3 +139,20 @@ caliber refresh && git add CLAUDE.md .claude/ .cursor/ AGENTS.md CALIBER_LEARNIN
 Read `CALIBER_LEARNINGS.md` for patterns and anti-patterns learned from previous sessions.
 These are auto-extracted from real tool usage — treat them as project-specific rules.
 <!-- /caliber:managed:learnings -->
+
+<!-- caliber:managed:model-config -->
+## Model Configuration
+
+Recommended default: `claude-sonnet-4-6` with high effort (stronger reasoning; higher cost and latency than smaller models).
+Smaller/faster models trade quality for speed and cost — pick what fits the task.
+Pin your choice (`/model` in Claude Code, or `CALIBER_MODEL` when using Caliber with an API provider) so upstream default changes do not silently change behavior.
+
+<!-- /caliber:managed:model-config -->
+
+<!-- caliber:managed:sync -->
+## Context Sync
+
+This project uses [Caliber](https://github.com/caliber-ai-org/ai-setup) to keep AI agent configs in sync across Claude Code, Cursor, Copilot, and Codex.
+Configs update automatically before each commit via `/home/my/.nvm/versions/node/v22.22.2/bin/caliber refresh`.
+If the pre-commit hook is not set up, run `/setup-caliber` to configure everything automatically.
+<!-- /caliber:managed:sync -->
