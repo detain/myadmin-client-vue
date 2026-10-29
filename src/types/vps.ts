@@ -18,7 +18,6 @@ export interface VpsInfo {
     vps_order_date: string;
     vps_os: string;
     vps_platform: string;
-    vps_rootpass: string;
     vps_server: number;
     vps_server_status: string;
     vps_slices: number;

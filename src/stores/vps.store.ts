@@ -72,7 +72,6 @@ export const useVpsStore = defineStore('vps', {
             vps_order_date: '',
             vps_os: '',
             vps_platform: 'kvm',
-            vps_rootpass: '',
             vps_server: 0,
             vps_server_status: '',
             vps_slices: 0,

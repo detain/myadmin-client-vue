@@ -20,7 +20,6 @@ export interface QsInfo {
     qs_slices: string;
     qs_vnc: string;
     qs_vnc_port: string | null;
-    qs_rootpass: string;
     qs_mac: string;
     qs_os: string;
     qs_version: string;
