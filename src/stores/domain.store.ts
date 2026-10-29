@@ -10,7 +10,6 @@ interface DomainInfo {
     domain_id: number;
     domain_hostname: string;
     domain_username: string;
-    domain_password: string;
     domain_status: string;
     domain_type: number;
     domain_expire_date: string;
@@ -88,7 +87,6 @@ export const useDomainStore = defineStore('domain', {
             domain_id: 0,
             domain_hostname: '',
             domain_username: '',
-            domain_password: '',
             domain_status: '',
             domain_type: 0,
             domain_expire_date: '',

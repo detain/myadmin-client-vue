@@ -998,7 +998,7 @@ try {
                             <div id="rootpassrownew" class="row">
                                 <label class="col-sm-3 col-form-label">{{ t('vps.order.rootPassword') }}<span class="text-danger"> *</span></label>
                                 <div class="form-group col-md-9">
-                                    <input v-model="rootpass" type="text" name="rootpass" class="form-control text-sm" />
+                                    <input v-model="rootpass" type="text" name="rootpass" maxlength="128" class="form-control text-sm" />
                                     <small class="form-text text-muted">{{ t('vps.order.rootPasswordNote') }}</small>
                                 </div>
                             </div>

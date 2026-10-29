@@ -222,7 +222,7 @@ const visualOverrides = [
                 domain_fax: '', domain_email: 'admin@example.com',
                 domain_firstname: 'Test', domain_lastname: 'User', domain_company: 'Test Corp',
                 domain_type: 1, domain_order_date: '2024-01-01', domain_custid: 1,
-                domain_invoice: 1001, domain_coupon: 0, domain_username: '', domain_password: '',
+                domain_invoice: 1001, domain_coupon: 0, domain_username: '',
                 domain_address2: '', domain_address3: '',
             },
             billingDetails,
