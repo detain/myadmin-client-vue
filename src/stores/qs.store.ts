@@ -35,7 +35,6 @@ export const useQsStore = defineStore('qs', {
             qs_slices: '0',
             qs_vnc: '',
             qs_vnc_port: null,
-            qs_rootpass: '',
             qs_mac: '',
             qs_os: '',
             qs_version: '64',

@@ -71,13 +71,13 @@ function submitForm() {
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password">{{ t('vps.changeRootPassword.newPassword') }} </label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="password" v-model="password" type="password" class="pr-password form-control form-control-sm" name="password" required />
+                                    <input id="password" v-model="password" type="password" class="pr-password form-control form-control-sm" name="password" maxlength="128" required />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="password2">{{ t('vps.changeRootPassword.confirmPassword') }} </label>
                                 <div class="col-sm-9 input-group">
-                                    <input id="password2" v-model="password2" type="password" class="pr-password form-control form-control-sm" name="password2" required />
+                                    <input id="password2" v-model="password2" type="password" class="pr-password form-control form-control-sm" name="password2" maxlength="128" required />
                                 </div>
                             </div>
                             <hr />

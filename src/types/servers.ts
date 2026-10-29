@@ -67,7 +67,6 @@ export interface AssetRow {
     ipmi_mac: string;
     ipmi_ip: string;
     ipmi_admin_username: string;
-    ipmi_admin_password: string;
     ipmi_client_username: string;
     ipmi_client_password: string;
     ipmi_updated: string;

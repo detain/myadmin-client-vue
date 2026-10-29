@@ -204,7 +204,7 @@ fetchWrapper.get(`${baseUrl}/qs/order`).then((response: QsOrderResponse) => {
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Root Password</label>
-                                <input id="mypassword" v-model="rootpass" type="password" class="form-control form-control-sm col-md-9" name="rootpass" placeholder="Root Password" />
+                                <input id="mypassword" v-model="rootpass" type="password" class="form-control form-control-sm col-md-9" name="rootpass" maxlength="128" placeholder="Root Password" />
                                 <small class="form-text text-muted">Note: Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number, a special character.</small>
                             </div>
                             <div class="form-group row">
