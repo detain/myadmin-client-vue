@@ -279,10 +279,12 @@ async function submitUpdate() {
     try {
         const res = await fetchWrapper.put(`${baseUrl}/tickets/${ticketMaskId.value}`, formData);
         Swal.close();
-        if (res.status === 'success') {
-            Swal.fire('Ticket Settings Updated', res.message, 'success');
+        // PUT /tickets/{id} answers {success, text}; {status, message} is the older shape.
+        const message = res.text ?? res.message;
+        if (res.success === true || res.status === 'success') {
+            Swal.fire('Ticket Settings Updated', message, 'success');
         } else {
-            Swal.fire('Warning', res.message, 'warning');
+            Swal.fire('Warning', message, 'warning');
         }
     } catch {
         Swal.close();
